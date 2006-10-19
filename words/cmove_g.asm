@@ -1,8 +1,8 @@
 ; (addr-from addr-to n -- )
 VE_CMOVE_G:
     .db $06, "cmove>",0
-    .dw VE_LATEST
-    .set VE_LATEST  = VE_CMOVE_G
+    .dw VE_HEAD
+    .set VE_HEAD  = VE_CMOVE_G
 XT_CMOVE_G:
     .dw PFA_CMOVE_G
 PFA_CMOVE_G:

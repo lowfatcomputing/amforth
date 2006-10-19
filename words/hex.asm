@@ -1,8 +1,8 @@
 ; ( -- )
 VE_HEX:
     .db $03, "hex"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_HEX
+    .dw VE_HEAD
+    .set VE_HEAD = VE_HEX
 XT_HEX:
     .dw DO_COLON
 PFA_HEX:

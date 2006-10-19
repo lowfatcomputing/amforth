@@ -1,8 +1,8 @@
 ; ( -- )
 VE_DECIMAL:
     .db $07, "decimal"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DECIMAL
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DECIMAL
 XT_DECIMAL:
     .dw DO_COLON
 PFA_DECIMAL:

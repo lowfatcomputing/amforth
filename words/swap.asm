@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n2 n1)
 VE_SWAP:
     .db $04, "swap",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_SWAP
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SWAP
 XT_SWAP:
     .dw PFA_SWAP
 PFA_SWAP:

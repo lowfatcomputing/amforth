@@ -1,8 +1,8 @@
 ; ( -- 32 )
 VE_BL:
     .db $02, "bl", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_BL
+    .dw VE_HEAD
+    .set VE_HEAD = VE_BL
 XT_BL:
     .dw DO_COLON
 PFA_BL:

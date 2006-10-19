@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n3 )
 VE_OR:
     .db $02, "or",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_OR
+    .dw VE_HEAD
+    .set VE_HEAD = VE_OR
 XT_OR:
     .dw PFA_OR
 PFA_OR:

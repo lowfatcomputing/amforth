@@ -1,8 +1,8 @@
 ; (n1 n2 -- n3 )
 VE_AND:
     .db $03, "and"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_AND
+    .dw VE_HEAD
+    .set VE_HEAD = VE_AND
 XT_AND:
     .dw PFA_AND
 PFA_AND:

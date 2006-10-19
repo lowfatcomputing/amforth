@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n3 n4)
 VE_SLASHMOD:
     .db $04, "/mod",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_SLASHMOD
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SLASHMOD
 XT_SLASHMOD:
     .dw PFA_SLASHMOD
 PFA_SLASHMOD:
@@ -36,6 +36,11 @@ PFA_SLASHMODmod_loop:
     cpc temp7,zerol
 
     brcs PFA_SLASHMODmod_loop_control
+
+PFA_SLASHMODmod_subtract:
+    ; dividend is large enough
+    ; do the subtraction for real
+    ; and set lowest bit
     inc temp0
     sub temp2, temp4
     sbc temp3, temp5

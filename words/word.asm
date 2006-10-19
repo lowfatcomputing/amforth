@@ -1,8 +1,8 @@
 ; ( -- addr )
 VE_WORD:
     .db $04, "word",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_WORD
+    .dw VE_HEAD
+    .set VE_HEAD = VE_WORD
 XT_WORD:
     .dw DO_COLON
 PFA_WORD:

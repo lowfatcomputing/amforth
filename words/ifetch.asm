@@ -3,8 +3,8 @@
 ; first byte gets into the lower word on tos
 VE_IFETCH:
     .db $02, "i@", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_IFETCH
+    .dw VE_HEAD
+    .set VE_HEAD = VE_IFETCH
 XT_IFETCH:
     .dw PFA_IFETCH
 PFA_IFETCH:

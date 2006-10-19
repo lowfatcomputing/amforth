@@ -2,8 +2,8 @@
 ; R:(llimit counter -- (limit counter+n1)|)
 VE_DOPLUSLOOP:
     .db 7, "(+loop)"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DOPLUSLOOP
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOPLUSLOOP
 XT_DOPLUSLOOP:
     .dw PFA_DOPLUSLOOP
 PFA_DOPLUSLOOP:

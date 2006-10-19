@@ -1,8 +1,8 @@
 ; ( n1 n2 n3 -- n2 n3 n1)
 VE_ROT:
     .db $03, "rot"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_ROT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ROT
 XT_ROT:
     .dw PFA_ROT
 PFA_ROT:

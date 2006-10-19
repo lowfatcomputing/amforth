@@ -1,8 +1,8 @@
 
 VE_ESTORE:
     .db $02, "e!",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_ESTORE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ESTORE
 XT_ESTORE:
     .dw PFA_ESTORE
 PFA_ESTORE:

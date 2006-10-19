@@ -1,8 +1,8 @@
 ; (n1 -- u1)
 VE_ABS:
     .db $03, "abs"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_ABS
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ABS
 XT_ABS:
     .dw DO_COLON
 PFA_ABS:

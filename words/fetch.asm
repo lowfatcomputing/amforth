@@ -1,8 +1,8 @@
 ; ( addr -- n )
 VE_FETCH:
     .db $01, "@"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_FETCH
+    .dw VE_HEAD
+    .set VE_HEAD = VE_FETCH
 XT_FETCH:
     .dw PFA_FETCH
 PFA_FETCH:

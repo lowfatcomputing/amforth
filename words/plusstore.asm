@@ -1,8 +1,8 @@
 ; ( n addr -- )
 VE_PLUSSTORE:
     .db $02, "+!",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_PLUSSTORE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_PLUSSTORE
 XT_PLUSSTORE:
     .dw PFA_PLUS
 PFA_PLUSSTORE:

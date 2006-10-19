@@ -20,6 +20,9 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+.include "words/literal.asm"
+.include "words/variable.asm"
+
 .include "words/state.asm"
 .include "words/base.asm"
 .include "words/g_in.asm"
@@ -27,7 +30,6 @@
 .include "words/tib.asm"
 .include "words/pad.asm"
 .include "words/hld.asm"
-.include "words/dp.asm"
 
 .include "words/decimal.asm"
 .include "words/hex.asm"
@@ -60,11 +62,20 @@
 .include "words/type.asm"
 .include "words/words.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/handler.asm"
+.include "words/catch.asm"
+.include "words/throw.asm"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/number.asm"
 .include "words/word.asm"
 .include "words/find.asm"
 .include "words/quit.asm"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/g_mark.asm"
+.include "words/g_resolve.asm"
+.include "words/l_mark.asm"
+.include "words/l_resolve.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/interpret.asm"
 .include "words/ver.asm"

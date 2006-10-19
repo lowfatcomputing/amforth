@@ -1,8 +1,8 @@
 ; ( -- )
 VE_VER:
     .db $03, "ver"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_VER
+    .dw VE_HEAD
+    .set VE_HEAD = VE_VER
 XT_VER:
     .dw DO_COLON
 PFA_VER:
@@ -12,4 +12,4 @@ PFA_VER:
     .dw XT_DROP
     .dw XT_EXIT
 PFA_VER1:
-    .db 13,13,10,"amforth 0.1"
+    .db 13,13,10,"amforth 0.2"

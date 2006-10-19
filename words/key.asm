@@ -2,8 +2,8 @@
 ; waits for key event
 VE_KEY:
     .db $03, "key"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_KEY
+    .dw VE_HEAD
+    .set VE_HEAD = VE_KEY
 XT_KEY:
     .dw PFA_KEY
 PFA_KEY:

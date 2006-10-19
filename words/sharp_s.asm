@@ -1,8 +1,8 @@
 ; ( n1 -- 0)
 VE_SHARP_S:
     .db $02, "#s",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_SHARP_S
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SHARP_S
 XT_SHARP_S:
     .dw DO_COLON
 PFA_SHARP_S:

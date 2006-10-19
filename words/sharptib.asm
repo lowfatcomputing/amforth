@@ -1,8 +1,8 @@
 ; ( -- addr )
 VE_NUMBERTIB:
     .db $04, "#tib",0
-    .dw VE_LATEST
-    .set VE_LATEST  = VE_NUMBERTIB
+    .dw VE_HEAD
+    .set VE_HEAD  = VE_NUMBERTIB
 XT_NUMBERTIB:
     .dw PFA_DOVARIABLE
 PFA_NUMBERTIB:

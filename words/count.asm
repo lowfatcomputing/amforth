@@ -1,8 +1,8 @@
 ; ( addr - addr+1 n)
 VE_COUNT:
     .db $05, "count"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_COUNT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_COUNT
 XT_COUNT:
     .dw DO_COLON
 PFA_COUNT:

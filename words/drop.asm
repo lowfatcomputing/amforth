@@ -1,8 +1,8 @@
 ; ( n -- )
 VE_DROP:
     .db $04, "drop", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DROP
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DROP
 XT_DROP:
     .dw PFA_DROP
 PFA_DROP:

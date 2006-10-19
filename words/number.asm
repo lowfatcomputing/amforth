@@ -1,8 +1,8 @@
 ; (addr -- n )
 VE_NUMBER:
     .db $06, "number",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_NUMBER
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NUMBER
 XT_NUMBER:
     .dw DO_COLON
 PFA_NUMBER:

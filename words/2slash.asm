@@ -1,8 +1,8 @@
 ; ( n1 -- n2 )
 VE_2SLASH:
     .db $02, "2/", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_2SLASH
+    .dw VE_HEAD
+    .set VE_HEAD = VE_2SLASH
 XT_2SLASH:
     .dw PFA_2SLASH
 PFA_2SLASH:

@@ -1,8 +1,8 @@
 ; ( n1 n2 -- flag)
 VE_NOTEQUAL:
     .db $02, "<>", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_NOTEQUAL
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NOTEQUAL
 XT_NOTEQUAL:
     .dw PFA_NOTEQUAL
 PFA_NOTEQUAL:

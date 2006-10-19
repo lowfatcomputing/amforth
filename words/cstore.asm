@@ -1,8 +1,8 @@
 ; ( c addr -- )
 VE_CSTORE:
     .db $02, "c!",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_CSTORE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_CSTORE
 XT_CSTORE:
     .dw PFA_CSTORE
 PFA_CSTORE:

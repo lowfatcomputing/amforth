@@ -1,8 +1,8 @@
 ; ( -- n )
 VE_DEPTH:
     .db $05, "depth"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DEPTH
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DEPTH
 XT_DEPTH:
     .dw PFA_DEPTH
 PFA_DEPTH:

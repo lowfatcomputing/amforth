@@ -2,8 +2,8 @@
 ; ( c -- )
 VE_HOLD:
     .db $04, "hold",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_HOLD
+    .dw VE_HEAD
+    .set VE_HEAD = VE_HOLD
 XT_HOLD:
     .dw DO_COLON
 PFA_HOLD:

@@ -1,14 +1,14 @@
 ; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] )
 VE_FIND:
     .db $04, "find", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_FIND
+    .dw VE_HEAD
+    .set VE_HEAD = VE_FIND
 XT_FIND:
     .dw DO_COLON
 PFA_FIND:
     .dw XT_DUP
     .dw XT_TO_R
-    .dw XT_DP
+    .dw XT_HEAD
     .dw XT_EFETCH
 PFA_FIND1:
     ; ( addr )
@@ -62,7 +62,7 @@ PFA_ICOMPARE:
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL
-    .dw $001f
+    .dw $007f
     .dw XT_AND
     .dw XT_2SLASH
     .dw XT_1PLUS

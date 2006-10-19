@@ -1,8 +1,8 @@
 ; ( n1 -- n2 )
 VE_NEGATE:
     .db $06, "negate",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_NEGATE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NEGATE
 XT_NEGATE:
     .dw DO_COLON
 PFA_NEGATE:

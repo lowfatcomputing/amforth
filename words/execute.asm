@@ -2,11 +2,13 @@
 ; R: ( -- )
 VE_EXECUTE:
     .db $07, "execute"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_EXECUTE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_EXECUTE
 XT_EXECUTE:
     .dw PFA_EXECUTE
 PFA_EXECUTE:
+    push xl
+    push xh
     ld wh, Y+
     ld wl, Y+
     rjmp DO_EXECUTE

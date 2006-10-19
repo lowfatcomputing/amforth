@@ -2,8 +2,8 @@
 ; not the same stack diagram as type!!
 VE_ITYPE:
     .db $05, "itype"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_ITYPE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ITYPE
 XT_ITYPE:
     .dw DO_COLON
 PFA_ITYPE:

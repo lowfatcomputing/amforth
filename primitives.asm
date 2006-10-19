@@ -1,4 +1,3 @@
-.set VE_LATEST = $0000
 
 .include "words/exit.asm"
 .include "words/execute.asm"
@@ -40,14 +39,13 @@
 .include "words/keyq.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/less.asm"
 .include "words/notequal.asm"
 .include "words/equal.asm"
+.include "words/equalzero.asm"
+.include "words/less.asm"
 .include "words/greater.asm"
 .include "words/lesszero.asm"
-.include "words/equalzero.asm"
 .include "words/greaterzero.asm"
-.include "words/not.asm"
 
 .include "words/minus.asm"
 .include "words/plus.asm"
@@ -72,6 +70,18 @@
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
 .include "words/dounloop.asm"
+
+.include "words/rpfetch.asm"
+.include "words/rpstore.asm"
+.include "words/spfetch.asm"
+.include "words/spstore.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/dp.asm"
+.include "words/head.asm"
+.include "words/here.asm"
+.include "words/allot.asm"
+.include "words/comma.asm"

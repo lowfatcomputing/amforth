@@ -1,8 +1,8 @@
 ; ( n1 n2 -- flasg)
 VE_LESS:
     .db $01, "<"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_LESS
+    .dw VE_HEAD
+    .set VE_HEAD = VE_LESS
 XT_LESS:
     .dw PFA_LESS
 PFA_LESS:

@@ -1,8 +1,8 @@
 ; ( n1 n2 -- flag )
 VE_GREATER:
     .db $01, ">"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_GREATER
+    .dw VE_HEAD
+    .set VE_HEAD = VE_GREATER
 XT_GREATER:
     .dw PFA_GREATER
 PFA_GREATER:

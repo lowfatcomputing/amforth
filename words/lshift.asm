@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n3)
 VE_LSHIFT:
     .db $06, "lshift",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_LSHIFT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_LSHIFT
 XT_LSHIFT:
     .dw PFA_LSHIFT
 PFA_LSHIFT:

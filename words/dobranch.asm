@@ -1,8 +1,8 @@
 ; ( -- )
 VE_DOBRANCH:
     .db $08, "(branch)",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DOBRANCH
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOBRANCH
 XT_DOBRANCH:
     .dw PFA_DOBRANCH
 PFA_DOBRANCH:

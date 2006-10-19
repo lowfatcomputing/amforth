@@ -1,8 +1,8 @@
 ; ( addr n1 -- n2 )
 VE_ACCEPT:
     .db $06, "accept",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_ACCEPT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ACCEPT
 XT_ACCEPT:
     .dw DO_COLON
 PFA_ACCEPT:

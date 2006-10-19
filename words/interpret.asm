@@ -2,8 +2,8 @@
 ; R: (ix - jx )
 VE_INTERPRET:
     .db $09, "interpret"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_INTERPRET
+    .dw VE_HEAD
+    .set VE_HEAD = VE_INTERPRET
 XT_INTERPRET:
     .dw DO_COLON
 PFA_INTERPRET:

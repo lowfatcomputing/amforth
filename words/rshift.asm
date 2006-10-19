@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n3)
 VE_RSHIFT:
     .db $06, "rshift",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_RSHIFT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_RSHIFT
 XT_RSHIFT:
     .dw PFA_RSHIFT
 PFA_RSHIFT:

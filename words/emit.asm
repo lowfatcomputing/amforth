@@ -1,8 +1,8 @@
 ; (c -- )
 VE_EMIT:
     .db $04, "emit",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_EMIT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_EMIT
 XT_EMIT:
     .dw PFA_EMIT
 PFA_EMIT:

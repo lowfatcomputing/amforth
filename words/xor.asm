@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n3)
 VE_XOR:
     .db $03, "xor"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_XOR
+    .dw VE_HEAD
+    .set VE_HEAD = VE_XOR
 XT_XOR:
     .dw PFA_XOR
 PFA_XOR:

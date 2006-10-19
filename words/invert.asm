@@ -1,8 +1,8 @@
 ; ( n1 -- n2)
 VE_INVERT:
     .db $06, "invert",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_INVERT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_INVERT
 XT_INVERT:
     .dw PFA_INVERT
 PFA_INVERT:

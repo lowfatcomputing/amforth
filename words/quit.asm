@@ -1,8 +1,8 @@
 ; ( -- )
 VE_QUIT:
     .db $04, "quit", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_QUIT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_QUIT
 XT_QUIT:
     .dw DO_COLON
 PFA_QUIT:

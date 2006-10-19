@@ -1,8 +1,8 @@
 ; ( n1 n2 -- n1 n2 n1 )
 VE_OVER:
     .db $04, "over",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_OVER
+    .dw VE_HEAD
+    .set VE_HEAD = VE_OVER
 XT_OVER:
     .dw PFA_OVER
 PFA_OVER:

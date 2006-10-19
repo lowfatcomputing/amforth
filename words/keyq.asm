@@ -1,8 +1,8 @@
 ; ( -- flag )
 VE_KEYQ:
     .db $04, "key?",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_KEYQ
+    .dw VE_HEAD
+    .set VE_HEAD = VE_KEYQ
 XT_KEYQ:
     .dw PFA_KEYQ
 PFA_KEYQ:

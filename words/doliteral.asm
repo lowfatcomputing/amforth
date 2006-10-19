@@ -1,8 +1,8 @@
 ; ( -- n1 )
 VE_DOLITERAL:
     .db $09, "(literal)"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DOLITERAL
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOLITERAL
 XT_DOLITERAL:
     .dw PFA_DOLITERAL
 PFA_DOLITERAL:

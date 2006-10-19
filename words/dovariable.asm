@@ -1,8 +1,8 @@
 ; ( -- addr )
 VE_DOVARIABLE:
     .db $0a, "(variable)", 0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DOVARIABLE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOVARIABLE
 XT_DOVARIABLE:
     .dw PFA_DOVARIABLE
 PFA_DOVARIABLE:

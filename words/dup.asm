@@ -1,8 +1,8 @@
 ; ( n -- n n )
 VE_DUP:
     .db $03, "dup"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DUP
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DUP
 XT_DUP:
     .dw PFA_DUP
 PFA_DUP:

@@ -1,8 +1,8 @@
 ; ( n1 -- [ n1 n1 ] | 0)
 VE_DUPQ:
     .db $04, "?dup",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_DUPQ
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DUPQ
 XT_DUPQ:
     .dw PFA_DUPQ
 PFA_DUPQ:

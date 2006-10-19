@@ -1,8 +1,8 @@
 ; ( n1 -- n2 )
 VE_1MINUS:
     .db $02, "1-",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_1MINUS
+    .dw VE_HEAD
+    .set VE_HEAD = VE_1MINUS
 XT_1MINUS:
     .dw PFA_1MINUS
 PFA_1MINUS:

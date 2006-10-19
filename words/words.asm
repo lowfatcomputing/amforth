@@ -2,12 +2,12 @@
 
 VE_WORDS:
     .db $05, "words"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_WORDS
+    .dw VE_HEAD
+    .set VE_HEAD = VE_WORDS
 XT_WORDS:
     .dw DO_COLON
 PFA_WORDS:
-    .dw XT_DP
+    .dw XT_HEAD
     .dw XT_EFETCH
 
 PFA_WORDS1:

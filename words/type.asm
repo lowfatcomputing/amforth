@@ -1,8 +1,8 @@
 ; ( addr n -- )
 VE_TYPE:
     .db $04, "type",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_TYPE
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TYPE
 XT_TYPE:
     .dw DO_COLON
 PFA_TYPE:

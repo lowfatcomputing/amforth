@@ -34,9 +34,9 @@
 .org UDREaddr
   jmp usart0_udre_isr
 
-; $0400 = 1K
-; $0800 = 2K
-.org flashend - $0800
+; $03ff = 1K
+; $07ff = 2K
+.org flashend - $07ff
 
 ; interpreter routines
 ; core dictionary with assembler primitives
@@ -94,15 +94,21 @@ DO_EXECUTE:
     movw zl, temp0
     ijmp
 
+.set VE_HEAD = $0000
+; interrupt driven
 .include "usart.asm"
+
+; assembler core and flash write words
 .include "primitives.asm"
 
 .org $26
-
 dictionary:
 .include "core.asm"
 ; .include "devices/m32.voc"
 
+VE_LATEST:
+
 .eseg
 dp:  .dw VE_LATEST
+head:.dw VE_HEAD
 .cseg

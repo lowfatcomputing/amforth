@@ -2,8 +2,8 @@
 ; ( loop-sys -- loop-sys)
 VE_I:
     .db 1, "i"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_I
+    .dw VE_HEAD
+    .set VE_HEAD = VE_I
 XT_I:
     .dw PFA_I
 PFA_I:

@@ -1,8 +1,8 @@
 ; ( -- addr )
 VE_HLD:
     .db $03, "hld"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_HLD
+    .dw VE_HEAD
+    .set VE_HEAD = VE_HLD
 XT_HLD:
     .dw PFA_DOVARIABLE
 PFA_HLD:

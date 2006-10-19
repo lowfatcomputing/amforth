@@ -1,8 +1,8 @@
 ; ( addr - c1 )
 VE_CFETCH:
     .db $02, "c@",0
-    .dw VE_LATEST
-    .set VE_LATEST  = VE_CFETCH
+    .dw VE_HEAD
+    .set VE_HEAD  = VE_CFETCH
 XT_CFETCH:
     .dw PFA_CFETCH
 PFA_CFETCH:

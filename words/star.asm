@@ -1,8 +1,8 @@
 ; (n1 n2 -- n3)
 VE_MUL:
     .db $01, "*"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_MUL
+    .dw VE_HEAD
+    .set VE_HEAD = VE_MUL
 XT_MUL:
     .dw PFA_MUL
 PFA_MUL:

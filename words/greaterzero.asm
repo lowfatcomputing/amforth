@@ -1,8 +1,8 @@
 ; ( n1 -- flag )
 VE_GREATERZERO:
     .db $02, "0>",0
-    .dw VE_LATEST
-    .set VE_LATEST = VE_GREATERZERO
+    .dw VE_HEAD
+    .set VE_HEAD = VE_GREATERZERO
 XT_GREATERZERO:
     .dw PFA_GREATERZERO
 PFA_GREATERZERO:
