@@ -24,11 +24,11 @@ PFA_ESTORE2: ; estore_wait_low_spm:
     ld temp1, Y+
     ld temp0, Y+
     out EEDR, temp0
-
+    in temp2, SREG
     cli
     sbi EECR,EEMWE
     sbi EECR,EEWE
-    sei
+    out SREG, temp2
   
     adiw zl,1
 PFA_ESTORE3:
@@ -44,9 +44,9 @@ PFA_ESTORE4: ; estore_wait_hi_spm:
     out EEARH,zh
     out EEARL,zl
     out EEDR, temp1
-
+    in temp2, SREG
     cli
     sbi EECR,EEMWE
     sbi EECR,EEWE
-    sei
+    out SREG, temp2
     rjmp DO_NEXT

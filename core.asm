@@ -65,8 +65,16 @@
 .include "words/handler.asm"
 .include "words/catch.asm"
 .include "words/throw.asm"
+.include "words/if.asm"
+.include "words/else.asm"
+.include "words/then.asm"
+.include "words/begin.asm"
+.include "words/while.asm"
+.include "words/repeat.asm"
+.include "words/until.asm"
+.include "words/again.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+.include "words/char.asm"
 .include "words/number.asm"
 .include "words/word.asm"
 .include "words/find.asm"

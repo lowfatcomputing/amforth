@@ -1,14 +1,14 @@
 ;;;; avr forth
 ;;;;
-;;;; GPL V2 see LICENSE.txt
+;;;; GPL V2 (only)
 
 .nolist
-.include "devices/m32def.inc"
+.include "devices/m16def.inc"
 .list
 
-.include "devices/atmega32.asm"
+.include "devices/atmega16.asm"
   ; cpu clock in hertz
-  .equ cpu_frequency = 8000000
+  .equ cpu_frequency = 16000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
@@ -84,7 +84,6 @@ DO_NEXT:
     lpm wl, Z+
     lpm wh, Z      ; done read IP
     adiw xl, 1        ; INC IP
-
 DO_EXECUTE:
     movw zl, wl
     lsl zl
@@ -95,7 +94,7 @@ DO_EXECUTE:
     ijmp
 
 .set VE_HEAD = $0000
-; interrupt driven
+; interrupt driver
 .include "usart.asm"
 
 ; assembler core and flash write words
@@ -104,8 +103,8 @@ DO_EXECUTE:
 .org $26
 dictionary:
 .include "core.asm"
-; .include "devices/m32.voc"
 
+; set label to latest used byte in cseg
 VE_LATEST:
 
 .eseg

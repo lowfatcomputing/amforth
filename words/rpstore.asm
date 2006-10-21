@@ -9,8 +9,9 @@ XT_RP_STORE:
 PFA_RP_STORE:
     ld temp1, Y+
     ld temp0, Y+
+    in temp2, SREG
     cli
     out SPL, temp0
     out SPH, temp1
-    sei
+    out SREG, temp2
     rjmp DO_NEXT

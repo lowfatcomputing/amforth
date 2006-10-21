@@ -1,6 +1,5 @@
-; ( -- addr )
 VE_BEGIN:
-    .db $84, "begin"
+    .db $85, "begin"
     .dw VE_HEAD
     .set VE_HEAD = VE_BEGIN
 XT_BEGIN:

@@ -58,6 +58,7 @@
 .include "words/and.asm"
 .include "words/or.asm"
 .include "words/xor.asm"
+.include "words/not.asm"
 
 .include "words/1plus.asm"
 .include "words/1minus.asm"

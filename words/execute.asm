@@ -7,8 +7,6 @@ VE_EXECUTE:
 XT_EXECUTE:
     .dw PFA_EXECUTE
 PFA_EXECUTE:
-    push xl
-    push xh
     ld wh, Y+
     ld wl, Y+
     rjmp DO_EXECUTE

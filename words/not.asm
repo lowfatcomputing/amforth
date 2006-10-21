@@ -1,8 +1,8 @@
 ; ( n1 n2 -- flag )
 VE_NOT:
     .db $03, "not"
-    .dw VE_LATEST
-    .set VE_LATEST = VE_NOT
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NOT
 XT_NOT:
     .dw PFA_NOT
 PFA_NOT:

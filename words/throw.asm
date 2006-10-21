@@ -24,7 +24,6 @@ PFA_THROW1:
     .dw XT_TO_R
     .dw XT_SP_STORE
     .dw XT_DROP
-    .dw XT_R_FROM
-    
+    .dw XT_R_FROM    
     .dw XT_EXIT
 

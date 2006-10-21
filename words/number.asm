@@ -23,7 +23,12 @@ PFA_NUMBER1:
     .dw XT_FETCH
     .dw XT_DIGIT
     ; check for non number characters and stop converting if found
-    .dw XT_DROP
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBER3
+    .dw XT_DOUNLOOP
+    .dw XT_DOBRANCH
+    .dw PFA_NUMBER2
+PFA_NUMBER3:
     .dw XT_ROT
     .dw XT_BASE
     .dw XT_FETCH

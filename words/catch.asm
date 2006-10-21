@@ -22,10 +22,8 @@ PFA_CATCH:
     .dw XT_R_FROM
     .dw XT_HANDLER
     .dw XT_STORE
-    .dw XT_FETCH
     .dw XT_R_FROM
     .dw XT_DROP
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_EXIT
-

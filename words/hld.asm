@@ -7,4 +7,4 @@ XT_HLD:
     .dw PFA_DOVARIABLE
 PFA_HLD:
     .dw heap
-    .set heap = heap + 32
+    .set heap = heap + 20

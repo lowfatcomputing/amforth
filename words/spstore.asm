@@ -8,8 +8,9 @@ XT_SP_STORE:
 PFA_SP_STORE:
     ld temp1, Y+
     ld temp0, Y+
+    in temp2, SREG
     cli
     mov yl, temp0
     mov yh, temp1
-    sei
+    out SREG, temp2
     rjmp DO_NEXT

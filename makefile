@@ -1,8 +1,8 @@
-DEVICE=atmega32
+# user modifiable secion is up here
+DEVICE=atmega16
 PROGRAMMER=avr911
 PORT=/dev/ttyUSB2
 
-#
 AVRDUDE=avrdude -c $(PROGRAMMER) -p $(DEVICE) -P $(PORT) 
 
 amforth.hex:	amforth.asm usart.asm core.asm primitives.asm words/*.asm
@@ -13,3 +13,6 @@ upload: amforth.hex amforth.eep.hex
 
 clean:
 	rm -f amforth.hex amforth.eep.hex amforth.lst amforth.map amforth.cof amforth.obj
+
+serial:
+	screen /dev/ttyUSB0 9600 8N1
