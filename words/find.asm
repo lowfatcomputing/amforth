@@ -13,22 +13,22 @@ PFA_FIND:
 PFA_FIND1:
     ; ( addr )
     .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_NOTEQUAL
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND2
     .dw XT_ICOMPARE
     ; (addr-ram addr-flash -- addr-flash' 0|1
-    .dw XT_GREATERZERO
+    .dw XT_DUPQ
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND3
     ; we found the word
+    .dw XT_SWAP
+    .dw XT_1PLUS ; make XT
+    .dw XT_SWAP
     .dw XT_R_FROM
     .dw XT_DROP
-    .dw XT_1PLUS ; make XT
-    .dw XT_DOLITERAL
-    .dw 1
+
     .dw XT_EXIT
 
 PFA_FIND3:
@@ -54,24 +54,30 @@ PFA_FIND2:
 XT_ICOMPARE:
     .dw DO_COLON
 PFA_ICOMPARE:
-    ; ( addr-ram addr-flash -- 0|1
-    ; save ram address
+    ; ( addr-ram addr-flash -- 0| +/-1
+    .dw XT_DUP
+    .dw XT_IFETCH
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw $0080
+    .dw XT_AND
+    .dw XT_TO_R
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_TO_R
-    .dw XT_DUP
-    .dw XT_IFETCH
     .dw XT_DOLITERAL
-    .dw $007f
+    .dw $001f
     .dw XT_AND
     .dw XT_2SLASH
     .dw XT_1PLUS
     .dw XT_TO_R
-    
 PFA_ICOMPARE1:
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_IFETCH
+    .dw XT_DOLITERAL
+    .dw $ff7f
+    .dw XT_AND
     .dw XT_SWAP
     .dw XT_FETCH
     .dw XT_EQUAL
@@ -96,7 +102,7 @@ PFA_ICOMPARE1:
     .dw XT_R_FROM
     .dw XT_DROP
     .dw XT_DOLITERAL
-    .dw 1
+    .dw $ffff
     .dw XT_TO_R
     .dw XT_TO_R
     .dw XT_DOBRANCH
@@ -111,4 +117,10 @@ PFA_ICOMPARE3:
     .dw XT_R_FROM
     .dw XT_PLUS
     .dw XT_R_FROM
+    .dw XT_R_FROM
+    .dw XT_EQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ICOMPARE4
+    .dw XT_NEGATE
+PFA_ICOMPARE4:
     .dw XT_EXIT

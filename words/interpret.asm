@@ -18,18 +18,54 @@ PFA_INTERPRET1:
     .dw PFA_INTERPRET4
 
     .dw XT_FIND
+	.dw XT_DUP
+	.dw XT_DOT
     .dw XT_DUPQ
     .dw XT_EQUALZERO
-    .dw XT_DOCONDBRANCH ; jump for not 0 > word found
+    .dw XT_DOCONDBRANCH 
     .dw PFA_INTERPRET2
     .dw XT_NUMBER
-    ; maybe compile
+    ; check state
+    .dw XT_STATE
+    .dw XT_FETCH
+    .dw XT_NOTEQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_INTERPRET9
+    ; 
+    .dw XT_DOLITERAL
+    .dw XT_DOLITERAL
+    .dw XT_COMMA
+    .dw XT_COMMA
+PFA_INTERPRET9:
     .dw XT_DOBRANCH
     .dw PFA_INTERPRET3
 PFA_INTERPRET2:
     ; either compile or execute
-    .dw XT_DROP
+    .dw XT_GREATERZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_INTERPRET5
+    ; flag was 1: always execute
     .dw XT_EXECUTE
+    .dw XT_DOBRANCH
+    .dw PFA_INTERPRET6
+PFA_INTERPRET5:
+    ; check state
+    .dw XT_STATE
+    .dw XT_FETCH
+    .dw XT_EQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_INTERPRET7
+    ; state is zero, execute xt
+    .dw XT_EXECUTE
+    .dw XT_DOBRANCH
+    .dw PFA_INTERPRET8
+PFA_INTERPRET7:
+    .dw XT_DOLITERAL
+    .dw 'C'
+    .dw XT_EMIT
+    .dw XT_COMMA
+PFA_INTERPRET8:
+PFA_INTERPRET6:
 PFA_INTERPRET3:
     .dw XT_DOBRANCH
     .dw PFA_INTERPRET1

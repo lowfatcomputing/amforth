@@ -13,8 +13,6 @@
 .include "words/cstore.asm"
 .include "words/cfetch.asm"
 
-.include "words/ifetch.asm"
-.include "words/istore.asm"
 
 .include "words/estore.asm"
 .include "words/efetch.asm"
@@ -40,6 +38,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/notequal.asm"
+.include "words/notequalzero.asm"
 .include "words/equal.asm"
 .include "words/equalzero.asm"
 .include "words/less.asm"
@@ -50,11 +49,11 @@
 .include "words/minus.asm"
 .include "words/plus.asm"
 .include "words/star.asm"
-.include "words/slashmod.asm"
+
 .include "words/invert.asm"
 .include "words/2slash.asm"
 .include "words/2star.asm"
-
+.include "words/slashmod.asm"
 .include "words/and.asm"
 .include "words/or.asm"
 .include "words/xor.asm"
@@ -66,23 +65,21 @@
 .include "words/rshift.asm"
 .include "words/plusstore.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/rpfetch.asm"
+.include "words/rpstore.asm"
+.include "words/spfetch.asm"
+.include "words/spstore.asm"
+
 .include "words/dodo.asm"
 .include "words/i.asm"
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
 .include "words/dounloop.asm"
 
-.include "words/rpfetch.asm"
-.include "words/rpstore.asm"
-.include "words/spfetch.asm"
-.include "words/spstore.asm"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/ifetch.asm"
+.include "words/istore.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/dp.asm"
-.include "words/head.asm"
-.include "words/here.asm"
-.include "words/allot.asm"
-.include "words/comma.asm"

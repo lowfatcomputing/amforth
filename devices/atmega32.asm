@@ -1,3 +1,7 @@
+.nolist
+.include "devices/m32def.inc"
+.list
+
   ; first address of RAM 
   .equ ramstart = $60
   .equ stackstart = RAMEND - $80

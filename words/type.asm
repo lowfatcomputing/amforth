@@ -7,9 +7,7 @@ XT_TYPE:
     .dw DO_COLON
 PFA_TYPE:
     .dw XT_DUPQ
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_NOTEQUAL
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_TYPE2
     .dw XT_DOLITERAL

@@ -1,12 +1,11 @@
-; ( addr -- addr' )
-; not the same stack diagram as type!!
-VE_ITYPE:
-    .db $05, "itype"
+; ( addr --  )
+VE_CREATE:
+    .db $06, "create",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_ITYPE
-XT_ITYPE:
+    .set VE_HEAD = VE_CREATE
+XT_CREATE:
     .dw DO_COLON
-PFA_ITYPE:
+PFA_CREATE:
     ; zellenzahl = (bytezahl + 1 ) / 2
     
     .dw XT_DUP
@@ -17,12 +16,12 @@ PFA_ITYPE:
 	.dw XT_RSHIFT
 	.dw XT_EMIT
     .dw XT_DOLITERAL
-    .dw $001f
+    .dw $007f
     .dw XT_AND
     .dw XT_DUP
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
-    .dw PFA_ITYPE4
+    .dw PFA_CREATE4
     .dw XT_2SLASH
     .dw XT_1PLUS
     ; ( addr ncells -- )
@@ -33,11 +32,11 @@ PFA_ITYPE:
     .dw XT_DUPQ
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
-    .dw PFA_ITYPE5
+    .dw PFA_CREATE5
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_DODO
-PFA_ITYPE1:
+PFA_CREATE1:
 	.dw XT_1PLUS
 	.dw XT_DUP
 	.dw XT_IFETCH
@@ -52,9 +51,9 @@ PFA_ITYPE1:
 	.dw XT_EMIT
 
     .dw XT_DOLOOP
-    .dw PFA_ITYPE1
-PFA_ITYPE5:
+    .dw PFA_CREATE1
+PFA_CREATE5:
     .dw XT_DROP
-PFA_ITYPE4:
+PFA_CREATE4:
     .dw XT_PLUS
     .dw XT_EXIT

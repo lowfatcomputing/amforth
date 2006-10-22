@@ -8,8 +8,7 @@ XT_1PLUS:
 PFA_1PLUS:
     ld zh, Y+
     ld zl, Y+
-    inc zl
-    adc zh, zeroh
+    adiw zl,1
     st -Y, zl
     st -Y, zh
     rjmp DO_NEXT

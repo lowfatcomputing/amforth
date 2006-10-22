@@ -49,9 +49,7 @@ PFA_WORD3:
     .dw XT_R_FROM
     .dw XT_DUP
     .dw XT_TO_R
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_NOTEQUAL
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_WORD2
 PFA_WORD6:

@@ -8,9 +8,7 @@ XT_SHARP_S:
 PFA_SHARP_S:
     .dw XT_SHARP
     .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_EQUAL
+    .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_SHARP_S
     .dw XT_EXIT

@@ -2,13 +2,10 @@
 ;;;;
 ;;;; GPL V2 (only)
 
-.nolist
-.include "devices/m16def.inc"
-.list
 
-.include "devices/atmega16.asm"
+.include "devices/atmega32.asm"
   ; cpu clock in hertz
-  .equ cpu_frequency = 16000000
+  .equ cpu_frequency = 8000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
@@ -37,19 +34,7 @@
 ; $03ff = 1K
 ; $07ff = 2K
 .org flashend - $07ff
-
-; interpreter routines
-; core dictionary with assembler primitives
-; resides at the flash end to use the self programming
-; feature of the mc.
-;
-; Forth   AVR
-;  RP       SP
-;  W        R24/25
-;  IP       R26/27 (X)
-;  SP       R28/29 (Y)
-;           R30/31 (Z)
-
+; interrupt driver
 reset:
 abort:
     clr zerol
@@ -93,14 +78,28 @@ DO_EXECUTE:
     movw zl, temp0
     ijmp
 
+
+
 .set VE_HEAD = $0000
-; interrupt driver
+
 .include "usart.asm"
 
+; interpreter routines
+; core dictionary with assembler primitives
+; resides at the flash end to use the self programming
+; feature of the mc.
+;
+; Forth   AVR
+;  RP       SP
+;  W        R24/25
+;  IP       R26/27 (X)
+;  SP       R28/29 (Y)
+;           R30/31 (Z)
 ; assembler core and flash write words
 .include "primitives.asm"
 
 .org $26
+
 dictionary:
 .include "core.asm"
 

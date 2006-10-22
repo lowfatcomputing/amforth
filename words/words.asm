@@ -13,9 +13,7 @@ PFA_WORDS:
 PFA_WORDS1:
     ; ( addr )
     .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_NOTEQUAL
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_WORDS2
     ; (addr -- addr' )

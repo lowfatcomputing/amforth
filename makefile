@@ -1,5 +1,5 @@
 # user modifiable secion is up here
-DEVICE=atmega16
+DEVICE=atmega32
 PROGRAMMER=avr911
 PORT=/dev/ttyUSB2
 

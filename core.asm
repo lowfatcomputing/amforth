@@ -31,6 +31,12 @@
 .include "words/pad.asm"
 .include "words/hld.asm"
 
+.include "words/dp.asm"
+.include "words/head.asm"
+.include "words/here.asm"
+.include "words/allot.asm"
+.include "words/comma.asm"
+
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
@@ -61,6 +67,7 @@
 .include "words/itype.asm"
 .include "words/type.asm"
 .include "words/words.asm"
+.include "words/tick.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/handler.asm"
 .include "words/catch.asm"
