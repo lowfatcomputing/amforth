@@ -40,6 +40,8 @@
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
+.include "words/eheap.asm"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;.include "words/execute.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -91,6 +93,12 @@
 .include "words/g_resolve.asm"
 .include "words/l_mark.asm"
 .include "words/l_resolve.asm"
+.include "words/vheader.asm"
+.include "words/colon.asm"
+.include "words/semicolon.asm"
+.include "words/forget.asm"
+.include "words/rightbracket.asm"
+.include "words/leftbracket.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/interpret.asm"
 .include "words/ver.asm"

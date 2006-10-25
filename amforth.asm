@@ -84,17 +84,6 @@ DO_EXECUTE:
 
 .include "usart.asm"
 
-; interpreter routines
-; core dictionary with assembler primitives
-; resides at the flash end to use the self programming
-; feature of the mc.
-;
-; Forth   AVR
-;  RP       SP
-;  W        R24/25
-;  IP       R26/27 (X)
-;  SP       R28/29 (Y)
-;           R30/31 (Z)
 ; assembler core and flash write words
 .include "primitives.asm"
 
@@ -103,10 +92,17 @@ DO_EXECUTE:
 dictionary:
 .include "core.asm"
 
-; set label to latest used byte in cseg
+; set label to latest used cell in cseg
 VE_LATEST:
 
 .eseg
+; flash addresses
 dp:  .dw VE_LATEST
 head:.dw VE_HEAD
+; ram addresses
+rheap:
+    .dw heap
+; eeprom addresses
+    .dw eheap
+eheap:
 .cseg

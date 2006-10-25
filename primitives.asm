@@ -5,6 +5,11 @@
 .include "words/dobranch.asm"
 .include "words/docondbranch.asm"
 
+.include "words/estore.asm"
+.include "words/efetch.asm"
+
+.include "words/depth.asm"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
@@ -12,12 +17,6 @@
 .include "words/store.asm"
 .include "words/cstore.asm"
 .include "words/cfetch.asm"
-
-
-.include "words/estore.asm"
-.include "words/efetch.asm"
-
-.include "words/depth.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/dup.asm"
 .include "words/qdup.asm"
@@ -75,7 +74,6 @@
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
 .include "words/dounloop.asm"
-
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/ifetch.asm"

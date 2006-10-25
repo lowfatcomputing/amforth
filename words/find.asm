@@ -102,7 +102,7 @@ PFA_ICOMPARE1:
     .dw XT_R_FROM
     .dw XT_DROP
     .dw XT_DOLITERAL
-    .dw $ffff
+    .dw 1
     .dw XT_TO_R
     .dw XT_TO_R
     .dw XT_DOBRANCH

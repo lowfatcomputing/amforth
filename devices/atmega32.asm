@@ -1,5 +1,5 @@
 .nolist
-.include "devices/m32def.inc"
+.include "m32def.inc"
 .list
 
   ; first address of RAM 
