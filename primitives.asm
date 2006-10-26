@@ -81,3 +81,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
+.include "words/byteswap.asm"

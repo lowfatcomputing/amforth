@@ -82,6 +82,9 @@
 .include "words/repeat.asm"
 .include "words/until.asm"
 .include "words/again.asm"
+.include "words/do.asm"
+.include "words/loop.asm"
+.include "words/plusloop.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/char.asm"
 .include "words/number.asm"
@@ -100,6 +103,8 @@
 .include "words/rightbracket.asm"
 .include "words/leftbracket.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/idump.asm"
+.include "words/dot-s.asm"
 .include "words/interpret.asm"
 .include "words/ver.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
