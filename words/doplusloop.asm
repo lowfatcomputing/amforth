@@ -15,9 +15,9 @@ PFA_DOPLUSLOOP:
     adc zh, temp1
     pop temp1
     pop temp0
-    cp temp0, zl
-    cpc temp1, zh
-    breq PFA_DOPLUSLOOP1 ; exit loop
+    cp zl, temp0
+    cpc zh, temp1
+    brge PFA_DOLOOP1 ; exit loop
     ; next iteration
     push temp0
     push temp1
