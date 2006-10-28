@@ -23,18 +23,17 @@
   .def wl = r24
 
   .set heap = ramstart
+.set VE_HEAD = $0000
 
 .org $0000
-  jmp reset
+  rjmp reset
 .org URXCaddr
-  jmp usart0_rx_isr
+  rjmp usart0_rx_isr
 .org UDREaddr
-  jmp usart0_udre_isr
+  rjmp usart0_udre_isr
 
-; $03ff = 1K
-; $07ff = 2K
-.org flashend - $07ff
-; interrupt driver
+.org $26
+; main entry point
 reset:
 abort:
     clr zerol
@@ -55,6 +54,20 @@ abort:
     movw wl,xl
     ; enable interrupts (needed for getting (terminal) input)
     sei
+    ; its a far jump...
+    jmp DO_COLON
+
+; ISR routines
+.include "usart.asm"
+
+; lower part of the dictionary (secondaries)
+dictionary:
+.include "core.asm"
+
+; high part of the dictionary (primitives and words for self programming)
+; $03ff = 1K
+; $07ff = 2K
+.org flashend - $07ff
  
 DO_COLON:
     push xl
@@ -78,19 +91,8 @@ DO_EXECUTE:
     movw zl, temp0
     ijmp
 
-
-
-.set VE_HEAD = $0000
-
-.include "usart.asm"
-
 ; assembler core and flash write words
 .include "primitives.asm"
-
-.org $26
-
-dictionary:
-.include "core.asm"
 
 ; set label to latest used cell in cseg
 VE_LATEST:

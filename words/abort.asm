@@ -6,4 +6,4 @@ VE_ABORT:
 XT_ABORT:
     .dw PFA_ABORT
 PFA_ABORT:
-    rjmp abort ; identical to power on reset
+    jmp abort ; identical to power on reset

@@ -1,4 +1,4 @@
-Date: 16.10.2006
+Date: 27.10.2006
 Author: mtrute
 
 amforth: Forth for Atmel ATmega micro controllers.
@@ -44,12 +44,11 @@ Current state
     
     interpreter is working. number conversion does no error checking
 	
-    no compiling words
+    compiler (colon) works.
 
     Some secondary words cannot be reverse compiled to forth code.
     
 ToDo
-    compiling words (will compile directly into flash)
     documentation and web site
     optimize build process for different mc (atmega168 is known
         to work with minor changes in usart.asm)
