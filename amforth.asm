@@ -3,9 +3,9 @@
 ;;;; GPL V2 (only)
 
 
-.include "devices/atmega32.asm"
+.include "devices/atmega16.asm"
   ; cpu clock in hertz
-  .equ cpu_frequency = 8000000
+  .equ cpu_frequency = 16000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
@@ -31,6 +31,7 @@
   rjmp usart0_rx_isr
 .org UDREaddr
   rjmp usart0_udre_isr
+
 
 .org $26
 ; main entry point
@@ -64,10 +65,11 @@ abort:
 dictionary:
 .include "core.asm"
 
+; set label to latest used cell in cseg
+VE_LATEST:
+
 ; high part of the dictionary (primitives and words for self programming)
-; $03ff = 1K
-; $07ff = 2K
-.org flashend - $07ff
+.org nrww
  
 DO_COLON:
     push xl
@@ -93,9 +95,6 @@ DO_EXECUTE:
 
 ; assembler core and flash write words
 .include "primitives.asm"
-
-; set label to latest used cell in cseg
-VE_LATEST:
 
 .eseg
 ; flash addresses

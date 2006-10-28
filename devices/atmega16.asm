@@ -9,3 +9,4 @@
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
   .set PAGEMASK =  ~ ( PAGESIZE - 1 )
+  .equ nrww = $1c00
