@@ -1,8 +1,8 @@
 ; ( -- eaddr) address from eeprom
-_VE_HEAP:
+VE_HEAP:
     .db $04, "heap",0
-    .dw VE_HEAP
-    .set VE_HEAP = _VE_HEAP
+    .dw VE_HEAD
+    .set VE_HEAD = VE_HEAP
 XT_HEAP:
     .dw PFA_DOVARIABLE
 PFA_HEAP:

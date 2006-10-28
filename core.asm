@@ -21,7 +21,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/literal.asm"
-.include "words/variable.asm"
+
 
 .include "words/state.asm"
 .include "words/base.asm"
@@ -41,7 +41,7 @@
 .include "words/hex.asm"
 .include "words/bl.asm"
 .include "words/eheap.asm"
-
+.include "words/heap.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;.include "words/execute.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -102,6 +102,8 @@
 .include "words/forget.asm"
 .include "words/rightbracket.asm"
 .include "words/leftbracket.asm"
+.include "words/variable.asm"
+.include "words/constant.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/idump.asm"
 .include "words/dot-s.asm"

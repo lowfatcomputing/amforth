@@ -12,4 +12,4 @@ PFA_VER:
     .dw XT_DROP
     .dw XT_EXIT
 PFA_VER1:
-    .db 13,13,10,"amforth 0.2"
+    .db 13,13,10,"amforth 0.3"
