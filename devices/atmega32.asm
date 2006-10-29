@@ -11,3 +11,5 @@
   .set PAGEMASK =  ~ ( PAGESIZE - 1 )
 
   .equ nrww = $3800
+  .equ codestart = $26
+   

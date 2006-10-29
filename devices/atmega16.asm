@@ -10,3 +10,5 @@
   .equ CELLSIZE = 2   ;
   .set PAGEMASK =  ~ ( PAGESIZE - 1 )
   .equ nrww = $1c00
+  .equ codestart = $2a
+  

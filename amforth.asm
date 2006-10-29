@@ -33,7 +33,7 @@
   rjmp usart0_udre_isr
 
 
-.org $26
+.org codestart
 ; main entry point
 reset:
 abort:
@@ -59,12 +59,13 @@ abort:
     jmp DO_COLON
 
 ; ISR routines
-.include "usart.asm"
 
 ; lower part of the dictionary (secondaries)
 dictionary:
 .include "core.asm"
-
+.include "devices/m16def.asm"
+.include "timer.asm"
+.include "usart.asm"
 ; set label to latest used cell in cseg
 VE_LATEST:
 
