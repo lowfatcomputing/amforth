@@ -1,5 +1,4 @@
-; ( limit counter -- )
-; R: ( -- -- limit counter ) == loop-sys
+; ( -- addr )
 VE_LMARK:
     .db 5, "<mark"
     .dw VE_HEAD

@@ -1,5 +1,4 @@
-; ( limit counter -- )
-; R: ( -- -- limit counter ) == loop-sys
+; ( addr -- )
 VE_GRESOLVE:
     .db 8, ">resolve",0
     .dw VE_HEAD
