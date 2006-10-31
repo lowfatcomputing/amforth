@@ -9,7 +9,7 @@ PFA_DIGIT:
     .dw XT_SWAP
     .dw XT_DUP
     .dw XT_DOLITERAL
-    .dw $30
+    .dw $2a
     .dw XT_GREATER
     .dw XT_DOCONDBRANCH
     .dw PFA_DIGIT2
@@ -18,7 +18,7 @@ PFA_DIGIT:
     .dw XT_MINUS
     .dw XT_DUP
     .dw XT_DOLITERAL
-    .dw 10
+    .dw 9
     .dw XT_GREATER
     .dw XT_DOCONDBRANCH
     .dw PFA_DIGIT1

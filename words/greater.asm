@@ -12,10 +12,11 @@ PFA_GREATER:
     ld temp2, Y+
     cp temp2, temp0
     cpc temp3, temp1
-    movw temp0, zerol
+    movw zl, zerol
     brlt PFA_GREATER1
-    inc temp0
+    brbs 1, PFA_GREATER1
+    sbiw zl, 1
 PFA_GREATER1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

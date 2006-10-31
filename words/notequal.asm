@@ -12,10 +12,10 @@ PFA_NOTEQUAL:
     ld temp2, Y+
     cp temp0, temp2
     cpc temp1, temp3
-    movw temp0, zerol
+    movw zl, zerol
     breq PFA_NOTEQUAL_EQUAL
-    inc temp0
+    sbiw zl, 1
 PFA_NOTEQUAL_EQUAL:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

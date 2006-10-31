@@ -15,7 +15,7 @@ PFA_SHARP:
     .dw XT_PLUS
     .dw XT_DUP
     .dw XT_DOLITERAL
-    .dw $3A
+    .dw $39
     .dw XT_GREATER
     .dw XT_DOCONDBRANCH
     .dw PFA_SHARP1

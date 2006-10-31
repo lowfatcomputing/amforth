@@ -10,7 +10,7 @@ PFA_KEYQ:
     lds temp1,usart0_rx_in
     movw zl, zerol
     cpse temp0, temp1
-    inc zl
+    sbiw zl, 1
     st -Y, zl
     st -Y, zh
     rjmp DO_NEXT

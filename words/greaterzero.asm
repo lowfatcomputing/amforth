@@ -10,11 +10,11 @@ PFA_GREATERZERO:
     ld temp2, Y+
     cp temp2, zerol
     cpc temp3, zeroh
-    movw temp0, zerol
+    movw zl, zerol
     brlt PFA_GREATERZERO1
     brbs 1, PFA_GREATERZERO1
-    inc temp0
+    sbiw zl, 1
 PFA_GREATERZERO1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

@@ -11,10 +11,12 @@ PFA_RSHIFT:
     ld temp1, Y+
     ld temp0, Y+
 PFA_RSHIFT1:
+    sbiw zl, 1
+    brmi PFA_RSHIFT2
     lsr temp1
     ror temp0
-    sbiw zl, 1
-    brbc 1, PFA_RSHIFT1
+    rjmp PFA_RSHIFT1
+PFA_RSHIFT2:
     st -Y, temp0
     st -Y, temp1
     rjmp DO_NEXT

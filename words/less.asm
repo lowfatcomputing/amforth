@@ -12,10 +12,11 @@ PFA_LESS:
     ld temp2, Y+
     cp temp0, temp2
     cpc temp1, temp3
-    movw temp0, zerol
-    brlt PFA_LESS1
-    inc temp0
+    movw zl, zerol
+    brmi PFA_LESS1
+    brbs 1, PFA_LESS1
+    sbiw zl, 1
 PFA_LESS1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

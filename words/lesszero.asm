@@ -10,10 +10,10 @@ PFA_LESSZERO:
     ld temp2, Y+
     cp temp2, zerol
     cpc temp3, zeroh
-    movw temp0, zerol
+    movw zl, zerol
     brge PFA_LESSZERO1
-    inc temp0
+    sbiw zl, 1
 PFA_LESSZERO1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

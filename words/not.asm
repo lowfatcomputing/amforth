@@ -9,10 +9,10 @@ PFA_NOT:
     ld temp1, Y+
     ld temp0, Y+
     or temp0, temp1
-    movw temp0, zerol
+    movw zl, zerol
     brne PFA_NOT1
-    inc temp0
+    sbiw zl, 1
 PFA_NOT1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT

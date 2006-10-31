@@ -10,10 +10,10 @@ PFA_EQUALZERO:
     ld temp2, Y+
     cp zerol, temp2
     cpc zeroh, temp3
-    movw temp0, zerol
+    movw zl, zerol
     brne PFA_EQUALZERO1
-    inc temp0
+    sbiw zl, 1
 PFA_EQUALZERO1:
-    st -Y, temp0
-    st -Y, temp1
+    st -Y, zl
+    st -Y, zh
     rjmp DO_NEXT
