@@ -60,9 +60,9 @@ PFA_TIMERINIT:
     .dw XT_TIMSK
     .dw XT_CSTORE
 
-    ; timer0 clear timer on compare, prescaler at /1024
+    ; timer0 clear timer on compare, prescaler at /64
     .dw XT_DOLITERAL
-    .dw (1<<WGM01)|(1<<CS02)|(1<<CS00)
+    .dw (1<<WGM01)|(1<<CS01)|(1<<CS00)
     .dw XT_TCCR0
     .dw XT_CSTORE
     .dw XT_EXIT
