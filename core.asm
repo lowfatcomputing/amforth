@@ -50,6 +50,8 @@
 .include "words/slash.asm"
 .include "words/mod.asm"
 .include "words/abs.asm"
+.include "words/min.asm"
+.include "words/max.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/cr.asm"
 .include "words/space.asm"
