@@ -10,10 +10,10 @@ XT_DOTS:
 PFA_DOTS:
     .dw XT_SP_FETCH
     .dw XT_DEPTH
-    .dw XT_1MINUS
     .dw XT_DUPQ
     .dw XT_DOCONDBRANCH
     .dw PFA_DOTS2
+    .dw XT_1MINUS
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_DODO

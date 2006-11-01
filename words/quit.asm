@@ -36,11 +36,13 @@ PFA_QUIT4:
     .dw XT_G_IN
     .dw XT_STORE
     
-;    .dw XT_DOLITERAL
+    .dw XT_DOLITERAL
     .dw XT_INTERPRET
-;    .dw XT_CATCH
-;    .dw XT_DOT
-
+    .dw XT_CATCH
+    .dw XT_DUPQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_QUIT2
+    .dw XT_DOT
     .dw XT_DOBRANCH
     .dw PFA_QUIT2
 

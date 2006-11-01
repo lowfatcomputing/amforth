@@ -25,9 +25,10 @@ PFA_NUMBER1:
     ; check for non number characters and stop converting if found
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER3
-    .dw XT_DOUNLOOP
-    .dw XT_DOBRANCH
-    .dw PFA_NUMBER2
+    .dw XT_DOLITERAL
+    .dw 1
+    .dw XT_THROW
+    ; exception: no number
 PFA_NUMBER3:
     .dw XT_ROT
     .dw XT_BASE
