@@ -11,6 +11,9 @@ PFA_DOTS:
     .dw XT_SP_FETCH
     .dw XT_DEPTH
     .dw XT_1MINUS
+    .dw XT_DUPQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_DOTS2
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_DODO
@@ -29,6 +32,7 @@ PFA_DOTS1:
     .dw XT_CR
     .dw XT_DOLOOP
     .dw PFA_DOTS1
+PFA_DOTS2:
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_EXIT

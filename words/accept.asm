@@ -10,6 +10,9 @@ PFA_ACCEPT:
     .dw XT_TO_R
     .dw XT_TO_R
 PFA_ACCEPT1:
+    .dw XT_KEYQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ACCEPT1
     .dw XT_KEY
     .dw XT_DUP
     .dw XT_EMIT
