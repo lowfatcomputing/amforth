@@ -87,6 +87,10 @@
 .include "words/do.asm"
 .include "words/loop.asm"
 .include "words/plusloop.asm"
+.include "words/case.asm"
+.include "words/of.asm"
+.include "words/endof.asm"
+.include "words/endcase.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/char.asm"
 .include "words/number.asm"

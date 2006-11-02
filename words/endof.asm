@@ -1,0 +1,11 @@
+VE_ENDOF:
+    .db $85, "endof"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ENDOF
+XT_ENDOF:
+    .dw DO_COLON
+PFA_ENDOF:
+    .dw XT_DOLITERAL
+    .dw XT_ELSE
+    .dw XT_COMMA
+    .dw XT_EXIT
