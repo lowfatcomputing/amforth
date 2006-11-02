@@ -1,0 +1,8 @@
+VE_DOTSTRING:
+    .db $82, ".",$22,0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOTSTRING
+XT_DOTSTRING:
+    .dw DO_COLON
+PFA_DOTSTRING:
+    .dw XT_EXIT

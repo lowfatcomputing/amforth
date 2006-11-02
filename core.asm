@@ -68,6 +68,8 @@
 .include "words/accept.asm"
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/dodotstring.asm"
+.include "words/dotstring.asm"
 .include "words/itype.asm"
 .include "words/type.asm"
 .include "words/words.asm"
