@@ -4,6 +4,8 @@ VE_ABORT:
     .dw VE_HEAD
     .set VE_HEAD = VE_ABORT
 XT_ABORT:
-    .dw PFA_ABORT
+    .dw DO_COLON
 PFA_ABORT:
-    jmp abort ; identical to power on reset
+    .dw XT_DOLITERAL
+    .dw -1
+    .dw XT_THROW

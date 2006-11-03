@@ -37,7 +37,7 @@ PFA_QUIT4:
     .dw XT_DOLITERAL
     .dw XT_INTERPRET
     .dw XT_CATCH
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_DOCONDBRANCH
     .dw PFA_QUIT3
     .dw XT_DODOTSTRING

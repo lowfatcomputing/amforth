@@ -18,7 +18,7 @@ PFA_FIND1:
     .dw PFA_FIND2
     .dw XT_ICOMPARE
     ; (addr-ram addr-flash -- addr-flash' 0|1
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND3

@@ -6,7 +6,7 @@ XT_ENDCASE:
     .dw DO_COLON
 PFA_ENDCASE:
 PFA_ENDCASE1:
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_DOCONDBRANCH
     .dw PFA_ENDCASE2
     .dw XT_DOLITERAL

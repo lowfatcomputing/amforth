@@ -18,7 +18,7 @@ PFA_INTERPRET1:
     .dw PFA_INTERPRET4
 
     .dw XT_FIND
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH 
     .dw PFA_INTERPRET2

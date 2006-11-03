@@ -30,7 +30,7 @@ PFA_ITYPE:
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_1MINUS
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE5

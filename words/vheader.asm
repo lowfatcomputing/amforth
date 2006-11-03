@@ -13,7 +13,7 @@ PFA_VHEADER:
     .dw XT_SWAP
     .dw XT_DUP
     .dw XT_CFETCH
-    .dw XT_DUPQ
+    .dw XT_QDUP
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_VHEADER4
