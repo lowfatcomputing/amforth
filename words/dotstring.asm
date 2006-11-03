@@ -21,9 +21,6 @@ PFA_DOTSTRING:
     .dw XT_COMMA
     .dw XT_DODO
 PFA_DOTSTRING1:
-	.dw XT_DOLITERAL
-	.dw '*'
-	.dw XT_EMIT
     .dw XT_DUP
     .dw XT_FETCH
     .dw XT_COMMA
