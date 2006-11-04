@@ -21,7 +21,7 @@ PFA_QUIT2:
     .dw PFA_QUIT4
     .dw XT_CR
     .dw XT_DODOTSTRING
-    .db 1, ">"
+    .db 2, "> ",0
 PFA_QUIT4:    
     .dw XT_TIB
     .dw XT_DOLITERAL

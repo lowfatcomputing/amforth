@@ -3,9 +3,9 @@
 ;;;; GPL V2 (only)
 
 
-.include "devices/atmega16.asm"
+.include "devices/atmega8.asm"
   ; cpu clock in hertz
-  .equ cpu_frequency = 16000000
+  .equ cpu_frequency = 8000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
@@ -23,7 +23,7 @@
   .def wl = r24
 
   .set heap = ramstart
-.set VE_HEAD = $0000
+  .set VE_HEAD = $0000
 
 .org $0000
   rjmp reset
@@ -31,7 +31,6 @@
   rjmp usart0_rx_isr
 .org UDREaddr
   rjmp usart0_udre_isr
-
 
 .org codestart
 ; main entry point
@@ -63,8 +62,7 @@ abort:
 ; lower part of the dictionary (secondaries)
 dictionary:
 .include "core.asm"
-.include "devices/m16def.asm"
-.include "timer.asm"
+;.include "timer.asm"
 .include "usart.asm"
 ; set label to latest used cell in cseg
 VE_LATEST:

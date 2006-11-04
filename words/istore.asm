@@ -180,7 +180,7 @@ XT_SPMRWW:
     .dw DO_COLON
 PFA_SPMRWW:
     .dw XT_DOLITERAL
-    .dw (1<<ASRE|1<<SPMEN)
+    .dw (1<<RWWSRE|1<<SPMEN)
     .dw XT_DOLITERAL
     .dw 0
     .dw XT_DOLITERAL
