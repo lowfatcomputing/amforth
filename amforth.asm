@@ -3,7 +3,7 @@
 ;;;; GPL V2 (only)
 
 
-.include "devices/atmega8.asm"
+.include "devices/atmega32.asm"
   ; cpu clock in hertz
   .equ cpu_frequency = 8000000
    ; baud rate of terminal
@@ -58,32 +58,32 @@ abort:
     jmp DO_COLON
 
 ; ISR routines
-
-; lower part of the dictionary (secondaries)
-dictionary:
-.include "core.asm"
 ;.include "timer.asm"
 .include "usart.asm"
+
+; lower part of the dictionary (no assembly)
+dictionary:
+.include "core.asm"
 ; set label to latest used cell in cseg
 VE_LATEST:
 
 ; high part of the dictionary (primitives and words for self programming)
 .org nrww
  
-DO_COLON:
+DO_COLON: ; 30 CPU cycles to ijmp
     push xl
     push xh          ; PUSH IP
     adiw wl, 1       ; set W to PFA
     movw xl, wl
 
-DO_NEXT:
+DO_NEXT: ; 23 CPU cycles to ijmp
     movw zl,xl        ; READ IP
     lsl zl
     rol zh
     lpm wl, Z+
     lpm wh, Z      ; done read IP
     adiw xl, 1        ; INC IP
-DO_EXECUTE:
+DO_EXECUTE: ; 12 cpu cycles to ijmp
     movw zl, wl
     lsl zl
     rol zh

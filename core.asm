@@ -22,7 +22,6 @@
 
 .include "words/literal.asm"
 
-
 .include "words/state.asm"
 .include "words/base.asm"
 .include "words/g_in.asm"
@@ -114,7 +113,11 @@
 .include "words/constant.asm"
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"
+.include "words/postpone.asm"
+.include "words/recurse.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/sp0.asm"
+.include "words/rp0.asm"
 .include "words/idump.asm"
 .include "words/dot-s.asm"
 .include "words/interpret.asm"
