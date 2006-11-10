@@ -183,8 +183,7 @@ PFA_SPMRWW:
     .dw (1<<RWWSRE|1<<SPMEN)
     .dw XT_DOLITERAL
     .dw 0
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_DUP
     .dw XT_DOSPM
     .dw XT_EXIT
 

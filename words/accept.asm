@@ -18,10 +18,17 @@ PFA_ACCEPT1:
     .dw XT_EMIT
     .dw XT_DUP
     .dw XT_DOLITERAL
+    .dw 10
+    .dw XT_NOTEQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ACCEPT2
+    .dw XT_DUP
+    .dw XT_DOLITERAL
     .dw 13
     .dw XT_NOTEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT2
+
     ; now store the key
     .dw XT_OVER
     .dw XT_CSTORE
