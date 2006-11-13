@@ -58,7 +58,7 @@ abort:
     jmp DO_COLON
 
 ; ISR routines
-;.include "timer.asm"
+.include "timer.asm"
 .include "usart.asm"
 
 ; lower part of the dictionary (no assembly)

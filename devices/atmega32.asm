@@ -12,4 +12,7 @@
 
   .equ nrww = $3800
   .equ codestart = $26
-   
+  
+; some hacks
+  .equ RWWSRE = ASRE
+ 

@@ -35,34 +35,9 @@ XT_TIMERTICKS:
 PFA_TIMERTICKS:
     .dw timerticks
 
-;; ( n1 -- n2 )
-;VE_TIMERINIT:
-;    .db $09, "timerinit"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_TIMERINIT
-;XT_TIMERINIT:
-;    .dw DO_COLON
-;PFA_TIMERINIT:
-;    .dw XT_DOLITERAL
-;    .dw 0
-;    .dw XT_TIMERTICKS
-;    .dw XT_STORE
-;
-;    ; compare of 250 -> 1ms interrupt period
-;    .dw XT_DOLITERAL
-;    .dw 250
-;    .dw XT_OCR0
-;    .dw XT_CSTORE
-;
-;    ; output compare interrupt
-;    .dw XT_DOLITERAL
-;    .dw 1<<OCIE0
-;    .dw XT_TIMSK
-;    .dw XT_CSTORE
-;
-;    ; timer0 clear timer on compare, prescaler at /64
-;    .dw XT_DOLITERAL
-;    .dw (1<<CTC0)|(1<<CS01)|(1<<CS00)
-;    .dw XT_TCCR0
-;    .dw XT_CSTORE
-;    .dw XT_EXIT
+; : timerinit
+; 	0 timerticks !
+; 	250 OCR0 c!
+; 	1 OCIE0 lshift timsk c!
+; 	1 CTC0 lshift 1 CS01 lshift 1 CS00 lshift or or TCCR0 c!
+; ;
