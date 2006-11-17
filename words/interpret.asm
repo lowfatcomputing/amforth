@@ -10,7 +10,6 @@ PFA_INTERPRET:
 PFA_INTERPRET1:
     .dw XT_BL
     .dw XT_WORD
-
     .dw XT_DUP
     .dw XT_CFETCH
     .dw XT_GREATERZERO

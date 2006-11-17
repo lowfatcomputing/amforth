@@ -8,8 +8,6 @@
 .include "words/estore.asm"
 .include "words/efetch.asm"
 
-.include "words/depth.asm"
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"

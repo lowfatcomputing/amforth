@@ -118,6 +118,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
 .include "words/rp0.asm"
+.include "words/depth.asm"
 .include "words/idump.asm"
 .include "words/dot-s.asm"
 .include "words/interpret.asm"

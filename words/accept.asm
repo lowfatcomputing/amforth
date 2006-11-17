@@ -9,7 +9,7 @@ PFA_ACCEPT:
     .dw XT_DUP
     .dw XT_TO_R
     .dw XT_TO_R
-PFA_ACCEPT1:
+PFA_ACCEPT1: ; ( addr -- )
     .dw XT_KEYQ
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT1
@@ -28,16 +28,35 @@ PFA_ACCEPT1:
     .dw XT_NOTEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT2
-
+    ; check backspace
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw 8
+    .dw XT_NOTEQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ACCEPT3
     ; now store the key
     .dw XT_OVER
     .dw XT_CSTORE
     .dw XT_1PLUS
-    ; now check number of charaters
     .dw XT_R_FROM
     .dw XT_1MINUS
     .dw XT_DUP
     .dw XT_TO_R
+    .dw XT_DOBRANCH
+    .dw PFA_ACCEPT4
+PFA_ACCEPT3:
+    ; delete previous character
+    .dw XT_SPACE
+    .dw XT_EMIT
+    .dw XT_1MINUS
+    .dw XT_R_FROM
+    .dw XT_1PLUS
+    .dw XT_DUP
+    .dw XT_TO_R
+
+PFA_ACCEPT4:
+    ; now check number of charaters
     .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT1
