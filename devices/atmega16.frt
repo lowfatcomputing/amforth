@@ -1,3 +1,4 @@
+decimal
 95 constant SREG
 94 constant SPH
 93 constant SPL
