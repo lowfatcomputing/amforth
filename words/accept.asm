@@ -35,6 +35,17 @@ PFA_ACCEPT1: ; ( addr -- )
     .dw XT_NOTEQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT3
+    ; check for remaining control characters, replace them
+    ; with blank
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw 32
+    .dw XT_LESS
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ACCEPT6
+    .dw XT_DROP
+    .dw XT_BL
+PFA_ACCEPT6:
     ; now store the key
     .dw XT_OVER
     .dw XT_CSTORE
