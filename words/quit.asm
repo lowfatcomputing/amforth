@@ -43,6 +43,9 @@ PFA_QUIT4:
     .dw XT_DODOTSTRING
     .db 3, " ??"
     .dw XT_DOT
+    .dw XT_G_IN
+    .dw XT_FETCH
+    .dw XT_DOT
     .dw XT_DOBRANCH
     .dw PFA_QUIT2
 PFA_QUIT3:
