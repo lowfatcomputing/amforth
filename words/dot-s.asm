@@ -34,5 +34,4 @@ PFA_DOTS1:
     .dw PFA_DOTS1
 PFA_DOTS2:
     .dw XT_DROP
-    .dw XT_DROP
     .dw XT_EXIT

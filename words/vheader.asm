@@ -33,7 +33,6 @@ PFA_VHEADER1:
     .dw XT_DOLOOP
     .dw PFA_VHEADER1
     .dw XT_DROP ; remove addr from loop
-    .dw XT_DROP
     ; make voc link
     .dw XT_HEAD
     .dw XT_EFETCH

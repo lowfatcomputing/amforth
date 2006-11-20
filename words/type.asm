@@ -23,5 +23,4 @@ PFA_TYPE1:
     .dw PFA_TYPE1
 PFA_TYPE2:
     .dw XT_DROP
-    .dw XT_DROP
     .dw XT_EXIT

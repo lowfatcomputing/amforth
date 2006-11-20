@@ -38,7 +38,5 @@ PFA_NUMBER3:
     .dw XT_SWAP
     .dw XT_DOLOOP
     .dw PFA_NUMBER1
-PFA_NUMBER2:
-    .dw XT_DROP
     .dw XT_DROP
     .dw XT_EXIT

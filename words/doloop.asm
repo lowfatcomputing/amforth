@@ -22,4 +22,5 @@ PFA_DOLOOP:
     push zh
     rjmp PFA_DOBRANCH ; read next cell from dictionary and jump to its destination
 PFA_DOLOOP1:
+    adiw xl,1
     rjmp DO_NEXT
