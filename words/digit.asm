@@ -25,6 +25,9 @@ PFA_DIGIT:
     .dw XT_DOLITERAL
     .dw $07
     .dw XT_MINUS
+    .dw XT_DOLITERAL
+    .dw $df
+    .dw XT_AND
 PFA_DIGIT1:
     .dw XT_DUP
     .dw XT_ROT

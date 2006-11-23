@@ -26,9 +26,8 @@ PFA_NUMBER1:
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER3
     .dw XT_DOLITERAL
-    .dw -1
+    .dw -13
     .dw XT_THROW
-    ; exception: no number
 PFA_NUMBER3:
     .dw XT_ROT
     .dw XT_BASE

@@ -103,7 +103,7 @@
 .include "words/g_resolve.asm"
 .include "words/l_mark.asm"
 .include "words/l_resolve.asm"
-.include "words/vheader.asm"
+.include "words/docreate.asm"
 .include "words/colon.asm"
 .include "words/semicolon.asm"
 .include "words/forget.asm"

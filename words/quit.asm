@@ -6,6 +6,10 @@ VE_QUIT:
 XT_QUIT:
     .dw DO_COLON
 PFA_QUIT:
+    .dw XT_SP0
+    .dw XT_SP_STORE
+    .dw XT_RP0
+    .dw XT_RP_STORE
     .dw XT_HEX
     .dw XT_DOLITERAL
     .dw 0
@@ -40,6 +44,15 @@ PFA_QUIT4:
     .dw XT_QDUP
     .dw XT_DOCONDBRANCH
     .dw PFA_QUIT3
+	.dw XT_DUP
+	.dw XT_DOLITERAL
+	.dw -1
+	.dw XT_EQUAL
+	.dw XT_DOCONDBRANCH
+	.dw PFA_QUIT5
+	.dw XT_DOBRANCH
+	.dw XT_QUIT
+PFA_QUIT5:
     .dw XT_DODOTSTRING
     .db 3, " ??"
     .dw XT_DOT

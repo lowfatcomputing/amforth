@@ -7,7 +7,7 @@ XT_COLON:
 PFA_COLON:
     .dw XT_BL
     .dw XT_WORD
-    .dw XT_VHEADER
+    .dw XT_DOCREATE
     .dw XT_DOLITERAL
     .dw DO_COLON
     .dw XT_COMMA

@@ -9,7 +9,7 @@ XT_VARIABLE:
 PFA_VARIABLE:
     .dw XT_BL
     .dw XT_WORD
-    .dw XT_VHEADER
+    .dw XT_DOCREATE
     .dw XT_DOLITERAL
     .dw XT_DOVARIABLE
     .dw XT_COMMA

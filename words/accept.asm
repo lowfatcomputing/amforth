@@ -38,8 +38,7 @@ PFA_ACCEPT1: ; ( addr -- )
     ; check for remaining control characters, replace them
     ; with blank
     .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw 32
+    .dw XT_BL
     .dw XT_LESS
     .dw XT_DOCONDBRANCH
     .dw PFA_ACCEPT6

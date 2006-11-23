@@ -8,13 +8,8 @@ PFA_OF:
     .dw XT_DOLITERAL
     .dw XT_OVER
     .dw XT_COMMA
-    ; [ ' over literal ] compile
     .dw XT_DOLITERAL
     .dw XT_EQUAL
     .dw XT_COMMA
-    ; [ ' =    literal ] compile
-    .dw XT_DOLITERAL
     .dw XT_IF
-    .dw XT_COMMA
-    ;  [compile] if ; immediate
     .dw XT_EXIT
