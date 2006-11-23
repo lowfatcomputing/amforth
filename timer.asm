@@ -1,24 +1,30 @@
 ;;; system tick
-.set timerticks = heap
+.set timer2ticks = heap
+.set heap = heap + CELLSIZE
+.set timer2init  = heap
 .set heap = heap + CELLSIZE
 
 .set pc_ = pc
-.org OC0ADDR
-  rjmp timer0_compare
+.org OC2ADDR
+  rjmp timer2_compare
 .org pc_
 
-timer0_compare:
+timer2_compare:
   push xl
   in xl,SREG
   push xl
   push xh
 
-  lds xl,timerticks
-  lds xh,timerticks+1
+  lds xl,timer2ticks
+  lds xh,timer2ticks+1
   adiw xl,1
-  sts timerticks,xl
-  sts timerticks+1,xh
-
+  sts timer2ticks,xl
+  sts timer2ticks+1,xh
+  
+  lds xl, timer2init
+  in xh, TCNT0
+  add xh, xl
+  out TCNT0, xh
   pop xh
   pop xl,
   out SREG,xl
@@ -26,18 +32,22 @@ timer0_compare:
   reti
 
 ; ( -- addr )
-VE_TIMERTICKS:
-    .db $0a, "timerticks",0
+VE_TIMER2TICKS:
+    .db $0b, "timer2ticks"
     .dw VE_HEAD
-    .set VE_HEAD = VE_TIMERTICKS
-XT_TIMERTICKS:
+    .set VE_HEAD = VE_TIMER2TICKS
+XT_TIMER2TICKS:
     .dw PFA_DOVARIABLE
-PFA_TIMERTICKS:
-    .dw timerticks
+PFA_TIMER2TICKS:
+    .dw timer2ticks
 
-; : timerinit
-; 	0 timerticks !
-; 	250 OCR0 c!
-; 	1 OCIE0 lshift timsk c!
-; 	1 CTC0 lshift 1 CS01 lshift 1 CS00 lshift or or TCCR0 c!
-; ;
+; ( -- addr )
+VE_TIMER2INIT:
+    .db $0a, "timer2init",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TIMER2INIT
+XT_TIMER2INIT:
+    .dw PFA_DOVARIABLE
+PFA_TIMER2INT:
+    .dw timer2init
+
