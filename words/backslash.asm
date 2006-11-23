@@ -1,6 +1,6 @@
 ; ( nx -- )
 VE_BACKSLASH:
-    .db $01, "\"
+    .db $81, "\"
     .dw VE_HEAD
     .set VE_HEAD = VE_BACKSLASH
 XT_BACKSLASH:
