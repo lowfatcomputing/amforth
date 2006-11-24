@@ -41,6 +41,7 @@
 .include "words/bl.asm"
 .include "words/eheap.asm"
 .include "words/heap.asm"
+.include "words/turnkey.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;.include "words/execute.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

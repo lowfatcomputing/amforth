@@ -17,6 +17,19 @@ PFA_QUIT:
     .dw XT_STORE
     .dw XT_VER
     .dw XT_CR
+    .dw XT_TURNKEY
+    .dw XT_EFETCH
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw -1
+    .dw XT_NOTEQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_QUIT1
+    .dw XT_EXECUTE
+    .dw XT_DOBRANCH
+    .dw PFA_QUIT2
+PFA_QUIT1:
+    .dw XT_DROP
 PFA_QUIT2:
     .dw XT_STATE
     .dw XT_FETCH
