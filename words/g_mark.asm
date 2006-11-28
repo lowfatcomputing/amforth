@@ -7,7 +7,6 @@ XT_GMARK:
     .dw DO_COLON
 PFA_GMARK:
     .dw XT_HERE
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_COMMA
     .dw XT_EXIT

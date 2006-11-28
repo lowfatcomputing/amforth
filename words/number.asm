@@ -6,12 +6,10 @@ VE_NUMBER:
 XT_NUMBER:
     .dw DO_COLON
 PFA_NUMBER:
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_SWAP
     .dw XT_COUNT
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_NUMBER1:
     .dw XT_DUP

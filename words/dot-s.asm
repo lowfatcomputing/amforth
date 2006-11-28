@@ -14,8 +14,7 @@ PFA_DOTS:
     .dw XT_DOCONDBRANCH
     .dw PFA_DOTS2
     .dw XT_1MINUS
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_DOTS1:
     .dw XT_DUP

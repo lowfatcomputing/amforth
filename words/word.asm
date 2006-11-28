@@ -6,8 +6,7 @@ VE_WORD:
 XT_WORD:
     .dw DO_COLON
 PFA_WORD:
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_TO_R
 PFA_WORD2:
     .dw XT_G_IN

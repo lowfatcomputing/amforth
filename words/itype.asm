@@ -34,8 +34,7 @@ PFA_ITYPE:
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE5
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_ITYPE1:
 	.dw XT_1PLUS

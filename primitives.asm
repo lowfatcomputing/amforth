@@ -81,4 +81,4 @@
 .include "words/cmove_g.asm"
 .include "words/byteswap.asm"
 .include "words/1ms.asm"
-;.include "words/zero.asm"
+.include "words/zero.asm"

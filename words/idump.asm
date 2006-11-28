@@ -9,8 +9,7 @@ VE_IDUMP:
 XT_IDUMP:
     .dw DO_COLON
 PFA_IDUMP:
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_IDUMP1:
     .dw XT_I

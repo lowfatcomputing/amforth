@@ -147,8 +147,7 @@ PFA_SPMERASE:
     .dw XT_TO_R
     .dw XT_DOLITERAL
     .dw (1<<PGERS|1<<SPMEN)
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_R_FROM
     .dw XT_DOSPM
     .dw XT_EXIT
@@ -166,8 +165,7 @@ PFA_SPMWRITE:
     .dw XT_TO_R
     .dw XT_DOLITERAL
     .dw (1<<PGWRT|1<<SPMEN)
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_R_FROM
     .dw XT_DOSPM
     .dw XT_EXIT
@@ -181,9 +179,8 @@ XT_SPMRWW:
 PFA_SPMRWW:
     .dw XT_DOLITERAL
     .dw (1<<RWWSRE|1<<SPMEN)
-    .dw XT_DOLITERAL
-    .dw 0
-    .dw XT_DUP
+    .dw XT_ZERO
+    .dw XT_ZERO
     .dw XT_DOSPM
     .dw XT_EXIT
 

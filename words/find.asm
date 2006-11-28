@@ -44,8 +44,7 @@ PFA_FIND2:
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_R_FROM
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_EXIT
 
 ; private headerless routine
@@ -62,8 +61,7 @@ PFA_ICOMPARE:
     .dw $0080
     .dw XT_AND
     .dw XT_TO_R
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_TO_R
     .dw XT_DOLITERAL
     .dw $001f

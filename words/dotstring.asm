@@ -14,8 +14,7 @@ PFA_DOTSTRING:
     .dw XT_SWAP
     .dw XT_2SLASH
     .dw XT_1PLUS
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DOLITERAL
     .dw XT_DODOTSTRING
     .dw XT_COMMA

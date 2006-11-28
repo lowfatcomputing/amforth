@@ -35,7 +35,6 @@ PFA_DIGIT1:
     .dw XT_EXIT
 
 PFA_DIGIT2:
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DUP
     .dw XT_EXIT

@@ -5,6 +5,5 @@ VE_CASE:
 XT_CASE:
     .dw DO_COLON
 PFA_CASE:
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_EXIT

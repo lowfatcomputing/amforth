@@ -10,8 +10,7 @@ PFA_TYPE:
     .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_TYPE2
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_TYPE1:
     .dw XT_DUP

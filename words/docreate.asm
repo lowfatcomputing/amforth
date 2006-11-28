@@ -21,8 +21,7 @@ PFA_DOCREATE:
     .dw XT_1PLUS
     ; ( addr ncells -- )
     ; fetch every cell and compile it into flash
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_DODO
 PFA_DOCREATE1:
         .dw XT_DUP

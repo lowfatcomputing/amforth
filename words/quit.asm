@@ -11,8 +11,7 @@ PFA_QUIT:
     .dw XT_RP0
     .dw XT_RP_STORE
     .dw XT_HEX
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_STATE
     .dw XT_STORE
     .dw XT_VER
@@ -46,8 +45,7 @@ PFA_QUIT4:
     .dw XT_ACCEPT
     .dw XT_NUMBERTIB
     .dw XT_STORE
-    .dw XT_DOLITERAL
-    .dw 0
+    .dw XT_ZERO
     .dw XT_G_IN
     .dw XT_STORE
     

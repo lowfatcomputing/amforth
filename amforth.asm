@@ -104,5 +104,7 @@ rheap:
     .dw heap
 ; eeprom addresses
     .dw eheap
+; turnkey address
+    .dw -1
 eheap:
 .cseg
