@@ -1,8 +1,8 @@
 ; ( addr --  )
-VE_DOCREATE:
-    .db $08, "(create)",0
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DOCREATE
+;VE_DOCREATE:
+;    .db $08, "(create)",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOCREATE
 XT_DOCREATE:
     .dw DO_COLON
 PFA_DOCREATE:

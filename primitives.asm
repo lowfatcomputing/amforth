@@ -11,6 +11,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
+.include "words/douser.asm"
 .include "words/fetch.asm"
 .include "words/store.asm"
 .include "words/cstore.asm"
@@ -82,3 +83,4 @@
 .include "words/byteswap.asm"
 .include "words/1ms.asm"
 .include "words/zero.asm"
+.include "words/up.asm"

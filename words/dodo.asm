@@ -1,9 +1,9 @@
 ; ( limit counter -- )
 ; R: ( -- -- limit counter ) == loop-sys
-VE_DODO:
-    .db 4, "(do)", 0
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DODO
+;VE_DODO:
+;    .db 4, "(do)", 0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DODO
 XT_DODO:
     .dw PFA_DODO
 PFA_DODO:

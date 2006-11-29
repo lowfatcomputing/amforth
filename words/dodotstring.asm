@@ -1,7 +1,7 @@
-VE_DODOTSTRING:
-    .db $04, "(.",$22, ")",0
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DODOTSTRING
+;VE_DODOTSTRING:
+;    .db $04, "(.",$22, ")",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DODOTSTRING
 XT_DODOTSTRING:
     .dw DO_COLON
 PFA_DODOTSTRING:

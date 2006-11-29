@@ -1,9 +1,9 @@
 ; ( -- )
 ; R: limit counter  -- (limit counter+1'|)
-VE_DOLOOP:
-    .db 6, "(loop)", 0
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DOLOOP
+;VE_DOLOOP:
+;    .db 6, "(loop)", 0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOLOOP
 XT_DOLOOP:
     .dw PFA_DOLOOP
 PFA_DOLOOP:

@@ -6,6 +6,12 @@ VE_RP0:
 XT_RP0:
     .dw DO_COLON
 PFA_RP0:
-    .dw XT_DOLITERAL
-    .dw ramend
+    .dw XT_DORP0
+    .dw XT_FETCH
     .dw XT_EXIT
+
+XT_DORP0:
+    .dw PFA_DOUSER
+PFA_DORP0:
+    .dw 2
+    

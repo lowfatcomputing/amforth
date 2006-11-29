@@ -3,14 +3,17 @@
 ;;;; GPL V2 (only)
 
 
-.include "devices/atmega32.asm"
+.include "devices/atmega8.asm"
   ; cpu clock in hertz
   .equ cpu_frequency = 8000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
-  .def zerol = r14
-  .def zeroh = r15
+  .def zerol = r2
+  .def zeroh = r3
+  .def upl = r4
+  .def uph = r5
+
   .def temp0 = r16
   .def temp1 = r17
   .def temp2 = r18
@@ -19,8 +22,10 @@
   .def temp5 = r21
   .def temp6 = r22
   .def temp7 = r23
-  .def wh = r25
+  
   .def wl = r24
+  .def wh = r25
+
 
   .set heap = ramstart
   .set VE_HEAD = $0000
@@ -35,23 +40,34 @@
 .org codestart
 ; main entry point
 reset:
-abort:
     clr zerol
     clr zeroh
+
+    ; init first user data area
+    ldi zl, low(heap)
+    ldi zh, high(heap)
+    movw upl, zl
     ; init return stack pointer
-    ldi temp0,high(ramend)
-    out SPH,temp0
+    ldi temp1,high(ramend)
+    out SPH,temp1
+    std zl+3, temp1
     ldi temp0,low(ramend)
     out SPL,temp0
-    rcall baud0
+    std zl+2, temp0
 
     ; init parameter stack pointer
     ldi yh,high(stackstart)
+    std Zl+5, yh
     ldi yl,low(stackstart)
+    std Zl+4, yl
     ; load Forth IP with starting word (quit)
-    ldi xl, LOW(XT_QUIT)
-    ldi xh, HIGH(XT_QUIT)
+    ldi xl, low(XT_QUIT)
+    ldi xh, high(XT_QUIT)
     movw wl,xl
+    .set heap = heap + UPSIZE * CELLSIZE
+    
+    rcall baud0
+
     ; enable interrupts (needed for getting (terminal) input)
     sei
     ; its a far jump...
@@ -60,6 +76,7 @@ abort:
 ; ISR routines
 .include "timer.asm"
 .include "usart.asm"
+.include "intx.asm"
 
 ; lower part of the dictionary (no assembly)
 dictionary:

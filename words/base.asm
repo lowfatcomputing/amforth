@@ -4,7 +4,6 @@ VE_BASE:
     .dw VE_HEAD
     .set VE_HEAD = VE_BASE
 XT_BASE:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOUSER
 PFA_BASE:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw 0
