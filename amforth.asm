@@ -3,7 +3,7 @@
 ;;;; GPL V2 (only)
 
 
-.include "devices/atmega8.asm"
+.include "devices/atmega32.asm"
   ; cpu clock in hertz
   .equ cpu_frequency = 8000000
    ; baud rate of terminal
@@ -50,16 +50,16 @@ reset:
     ; init return stack pointer
     ldi temp1,high(ramend)
     out SPH,temp1
-    std zl+3, temp1
+    std Z+3, temp1
     ldi temp0,low(ramend)
     out SPL,temp0
-    std zl+2, temp0
+    std Z+2, temp0
 
     ; init parameter stack pointer
     ldi yh,high(stackstart)
-    std Zl+5, yh
+    std Z+5, yh
     ldi yl,low(stackstart)
-    std Zl+4, yl
+    std Z+4, yl
     ; load Forth IP with starting word (quit)
     ldi xl, low(XT_QUIT)
     ldi xh, high(XT_QUIT)
