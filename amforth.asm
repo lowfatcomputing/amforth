@@ -71,7 +71,7 @@ reset:
     ; enable interrupts (needed for getting (terminal) input)
     sei
     ; its a far jump...
-    jmp DO_COLON
+    rjmp DO_COLON
 
 ; ISR routines
 .include "timer.asm"
