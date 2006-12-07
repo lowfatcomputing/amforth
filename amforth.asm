@@ -61,9 +61,8 @@ reset:
     ldi yl,low(stackstart)
     std Z+4, yl
     ; load Forth IP with starting word (quit)
-    ldi xl, low(XT_QUIT)
-    ldi xh, high(XT_QUIT)
-    movw wl,xl
+    ldi xl, low(PFA_QUIT)
+    ldi xh, high(PFA_QUIT)
     .set heap = heap + UPSIZE * CELLSIZE
     
     rcall baud0
@@ -71,7 +70,7 @@ reset:
     ; enable interrupts (needed for getting (terminal) input)
     sei
     ; its a far jump...
-    rjmp DO_COLON
+    rjmp DO_NEXT
 
 ; ISR routines
 .include "timer.asm"
