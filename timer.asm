@@ -14,19 +14,25 @@ timer2_compare:
   in xl,SREG
   push xl
   push xh
+  push zl
+  push zh
+  ldi zl, low(timer2ticks)
+  ldi zh, high(timer2ticks)
 
-  lds xl,timer2ticks
-  lds xh,timer2ticks+1
+  ldd xl, Z+0
+  ldd xh, Z+1
   adiw xl,1
-  sts timer2ticks,xl
-  sts timer2ticks+1,xh
+  std Z+0,xl
+  std Z+1,xh
   
-  lds xl, timer2init
-  in xh, TCNT0
-  add xh, xl
-  out TCNT0, xh
+;  lds xl, timer2init
+;  in xh, TCNT0
+;  add xh, xl
+;  out TCNT0, xh
+  pop zh
+  pop zl
   pop xh
-  pop xl,
+  pop xl
   out SREG,xl
   pop xl
   reti

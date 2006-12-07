@@ -1,7 +1,18 @@
 ;;; usart driver
 
 ;; bit definitions
- 
+
+
+.set pc_ = pc
+
+
+.org URXCaddr
+  rjmp usart0_rx_isr
+.org UDREaddr
+  rjmp usart0_udre_isr
+
+.org pc_
+
 .equ baudrate  = cpu_frequency/(baud_rate*16)-1
 ; sizes have to be powers of 2!
 .equ usart0_tx_size = $10
@@ -35,14 +46,14 @@ baud0:
   sts usart0_rx_out,zerol
 
   ldi temp0, LOW( baudrate )
-  out UBRRL, temp0
+  out_ UBRR0L, temp0
   ldi temp0, HIGH( baudrate )
-  out UBRRH, temp0
-  ldi temp0, (1<<URSEL)|(3<<UCSZ0)
-  out UCSRC, temp0
-  sbi UCSRB, TXEN
-  sbi UCSRB, RXEN
-  sbi UCSRB, RXCIE
+  out_ UBRR0H, temp0
+  ldi temp0, (1<<UMSEL01)|(3<<UCSZ00)
+  out_ UCSR0C, temp0
+  sbi_ UCSR0B, TXEN0, temp0
+  sbi_ UCSR0B, RXEN0, temp0
+  sbi_ UCSR0B, RXCIE0, temp0
 
   ret
  
@@ -61,9 +72,9 @@ usart0_udre_isr:
   brne usart0_udre_next
 
 usart0_udre_last:
-  in xl,UCSRB
-  cbr xl,(1<<UDRIE)
-  out UCSRB,xl
+  in_ xl,UCSR0B
+  cbr xl,(1<<UDRIE0)
+  out_ UCSR0B,xl
 
   rjmp usart0_udre_done
 
@@ -78,7 +89,7 @@ usart0_udre_next:
   adc zh,zeroh
   
   ld xl,z
-  out UDR,xl
+  out_ UDR0,xl
 
 usart0_udre_done:
   pop zh
@@ -106,14 +117,14 @@ usart0_rx_isr:
   brne usart0_rxc_next
 
 usart0_rxc_full:
-  in xl,UDR
+  in_ xl,UDR0
   rjmp usart0_rxc_done
 usart0_rxc_next:
   ldi zl,low(usart0_rx_data)
   ldi zh,high(usart0_rx_data)
   add zl,xl
   adc zh,zeroh
-  in xh,UDR
+  in_ xh,UDR0
   st z,xh
   sts usart0_rx_in,xl
   

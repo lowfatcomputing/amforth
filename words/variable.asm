@@ -22,4 +22,3 @@ PFA_VARIABLE:
     .dw XT_HEAP
     .dw XT_ESTORE
     .dw XT_EXIT
-

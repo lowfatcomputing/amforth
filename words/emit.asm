@@ -26,7 +26,7 @@ PFA_EMIT_tx0_store:
     ld temp0, Y+
     st z,temp0
   
-    in temp0,UCSRB
-    sbr temp0,(1<<UDRIE)
-    out UCSRB,temp0
+    in_ temp0,UCSR0B
+    sbr temp0,(1<<UDRIE0)
+    out_ UCSR0B,temp0
     rjmp DO_NEXT

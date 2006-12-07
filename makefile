@@ -5,7 +5,7 @@ PORT=/dev/ttyUSB2
 
 AVRDUDE=avrdude -c $(PROGRAMMER) -p $(DEVICE) -P $(PORT) 
 
-amforth.hex:	amforth.asm usart.asm core.asm primitives.asm words/*.asm
+amforth.hex:	amforth.asm usart.asm dict_low.asm dict_high.asm words/*.asm
 	avra -I ~/lib/avra --listmac -l amforth.lst -m amforth.map amforth.asm
 
 upload: amforth.hex amforth.eep.hex
