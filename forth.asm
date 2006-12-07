@@ -4,9 +4,15 @@ DO_DODOES:
     adiw wl, 1
     st -Y, wl
     st -Y, wh
-    pop xh
-    pop xl
+    
+    pop wh
+    pop wl
+    
+    push xl
+    push xh
+    movw xl, wl
     rjmp DO_NEXT
+
 DO_COLON: ; 30 CPU cycles to ijmp
     push xl
     push xh          ; PUSH IP
