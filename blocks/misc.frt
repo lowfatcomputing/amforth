@@ -1,7 +1,7 @@
 \ some useful definitions
 
 \ stack operations
-: nib 
+: nip
     swap drop 
 ;
 : tuck 
