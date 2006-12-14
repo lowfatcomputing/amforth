@@ -13,4 +13,4 @@ PFA_SP0:
 XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:
-    .dw 4
+    .dw 6

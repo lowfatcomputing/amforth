@@ -33,9 +33,9 @@ reset:
 
     ; init parameter stack pointer
     ldi yl,low(stackstart)
-    std Z+4, yl
+    std Z+6, yl
     ldi yh,high(stackstart)
-    std Z+5, yh
+    std Z+7, yh
     ; keep free space for User Area
     .set heap = heap + UPSIZE * CELLSIZE
 
