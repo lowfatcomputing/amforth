@@ -11,6 +11,7 @@ PFA_1MS:
     .set delay_cycles = cpu_frequency / 1000
     ldi zl, LOW( delay_cycles / 4 )
     ldi zh, HIGH(delay_cycles / 4 )
+    sbiw zl, 2
 PFA_1MS1:
     sbiw zl, 1
     brne PFA_1MS1
