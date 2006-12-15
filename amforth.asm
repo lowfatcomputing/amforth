@@ -37,7 +37,7 @@ reset:
     ldi yh,high(stackstart)
     std Z+7, yh
     ; keep free space for User Area
-    .set heap = heap + UPSIZE * CELLSIZE
+    .set heap = heap + USERSIZE * CELLSIZE
 
     ; load Forth IP with starting word (quit)
     ldi xl, low(PFA_QUIT)

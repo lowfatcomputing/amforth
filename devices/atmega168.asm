@@ -8,7 +8,7 @@
   .equ PADSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
-  .equ UPSIZE   = 16  ; size of user area (at least 16 bytes)
+  .equ USERSIZE = 16  ; size of user area (at least 16 bytes)
 
   .set PAGEMASK =  ~ ( PAGESIZE - 1 )
 
