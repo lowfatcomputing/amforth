@@ -4,7 +4,6 @@ VE_HANDLER:
     .dw VE_HEAD
     .set VE_HEAD = VE_HANDLER
 XT_HANDLER:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOUSER
 PFA_HANDLER:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw 10
