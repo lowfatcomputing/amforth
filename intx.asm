@@ -22,7 +22,10 @@ int1_isr:
 int0_isr:
     push yl
     ldi yl, 0
+    
 intx_isr:
+    push zh
+    in zh,SREG
     push zh
     push zl
     push yh
@@ -41,6 +44,8 @@ intx_isr:
     std Z+1, yh
     pop yh
     pop zl
+    pop zh
+    out SREG,zh
     pop zh
     pop yl
     set ; set the interrupt flag for the inner interpreter
