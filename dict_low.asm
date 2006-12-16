@@ -128,5 +128,4 @@
 .include "words/interpret.asm"
 .include "words/ver.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
+.include "words/noop.asm"
