@@ -37,7 +37,7 @@ DO_EXECUTE: ; 12 cpu cycles to ijmp
     movw zl, temp0
     ijmp
 
-DO_INTERRUPT:
+DO_INTERRUPT: ; 16 cpu cycles to rjmp (+12=28 to ijmp)
     ; here we deal with interrupts the forth way
     ldi zl, LOW(intcur)
     ldi zh, HIGH(intcur)
