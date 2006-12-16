@@ -13,13 +13,14 @@ DO_DODOES:
     movw xl, wl
     rjmp DO_NEXT
 
-DO_COLON: ; 30 CPU cycles to ijmp
+DO_COLON: ; 31 CPU cycles to ijmp
     push xl
     push xh          ; PUSH IP
     adiw wl, 1       ; set W to PFA
     movw xl, wl
 
-DO_NEXT: ; 23 CPU cycles to ijmp
+DO_NEXT: ; 24 CPU cycles to ijmp
+    brts DO_INTERRUPT
     movw zl,xl        ; READ IP
     lsl zl
     rol zh
@@ -35,3 +36,19 @@ DO_EXECUTE: ; 12 cpu cycles to ijmp
     lpm temp1, Z
     movw zl, temp0
     ijmp
+
+DO_INTERRUPT:
+    ; here we deal with interrupts the forth way
+    ldi zl, LOW(intcur)
+    ldi zh, HIGH(intcur)
+    ldd temp0, Z+0
+    ldi zl, LOW(intvec)
+    ldi zh, HIGH(intvec)
+    lsl temp0
+    add zl, temp0
+    adc zh, zeroh
+    ldd wl, Z+0
+    ldd wh, Z+1
+
+    clt ; clear the t flag to indicate that the interrupt is handled
+    rjmp DO_EXECUTE

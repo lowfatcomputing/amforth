@@ -44,14 +44,14 @@ reset:
     ldi xh, high(PFA_QUIT)
     ; the following is a turnkey-action, and a few more words for the dictionary
     rcall baud0
-
+    rcall init_isr
     ; enable interrupts (needed for getting (terminal) input)
     sei
     ; its a far jump...
     jmp DO_NEXT
 
 ; ISR routines
-.include "timer.asm"
+.include "intx.asm"
 .include "usart.asm"
 
 ; lower part of the dictionary
