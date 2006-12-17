@@ -7,7 +7,7 @@
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 16  ; size of user area (at least 16 bytes)
-  .set PAGEMASK =  ~ ( PAGESIZE - 1 )
+  .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
 
   .equ nrww = $3800
   .equ codestart = $2a

@@ -27,3 +27,42 @@
   .equ UMSEL01 = URSEL
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
+
+.org	INT0addr
+    reti	; External Interrupt0 Vector Address
+.org	INT1addr
+    reti	; External Interrupt1 Vector Address
+.org	OC2addr 
+    reti	; Output Compare2 Interrupt Vector Address
+.org	OVF2addr
+    reti	; Overflow2 Interrupt Vector Address
+.org	ICP1addr
+    reti	; Input Capture1 Interrupt Vector Address
+.org	OC1Aaddr
+    reti	; Output Compare1A Interrupt Vector Address
+.org	OC1Baddr
+    reti	; Output Compare1B Interrupt Vector Address
+.org	OVF1addr
+    reti	; Overflow1 Interrupt Vector Address
+.org	OVF0addr
+    reti	; Overflow0 Interrupt Vector Address
+.org	SPIaddr 
+    reti	; SPI Interrupt Vector Address
+.org	URXCaddr
+    reti	; USART Receive Complete Interrupt Vector Address
+.org	UDREaddr
+    reti	; USART Data Register Empty Interrupt Vector Address
+.org	UTXCaddr
+    reti	; USART Transmit Complete Interrupt Vector Address
+.org	ADCCaddr
+    reti	; ADC Interrupt Vector Address
+.org	ERDYaddr
+    reti	; EEPROM Interrupt Vector Address
+.org	ACIaddr 
+    reti	; Analog Comparator Interrupt Vector Address
+.org    TWIaddr 
+    reti   ; Irq. vector address for Two-Wire Interface
+.org	SPMaddr 
+    reti	; SPM complete Interrupt Vector Address
+.org	SPMRaddr 
+    reti	; SPM complete Interrupt Vector Address
