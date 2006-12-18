@@ -3,7 +3,7 @@
 ;;;; GPL V2 (only)
 
   ; cpu clock in hertz
-  .equ cpu_frequency = 16000000
+  .equ cpu_frequency = 8000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
