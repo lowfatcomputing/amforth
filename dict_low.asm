@@ -115,6 +115,7 @@
 .include "words/leftbracket.asm"
 .include "words/variable.asm"
 .include "words/constant.asm"
+.include "words/user.asm"
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"
 .include "words/postpone.asm"
