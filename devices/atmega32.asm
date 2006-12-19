@@ -29,44 +29,55 @@
   .equ UDRIE0  = UDRIE
 
 ; default interrupt handlers
-.org	INT0addr
-    reti 	; External Interrupt0 Vector Address
-.org	INT1addr
-    reti	; External Interrupt1 Vector Address
-.org	INT2addr
-    reti	; External Interrupt2 Vector Address
-.org	OC2addr
-    reti	; Output Compare2 Interrupt Vector Address
-.org	OVF2addr
-    reti	; Overflow2 Interrupt Vector Address
-.org	ICP1addr
-    reti	; Input Capture1 Interrupt Vector Address
-.org	OC1Aaddr
-    reti	; Output Compare1A Interrupt Vector Address
-.org	OC1Baddr
-    reti	; Output Compare1B Interrupt Vector Address
-.org	OVF1addr
-    reti	; Overflow1 Interrupt Vector Address
-.org	OC0addr
-    reti	; Output Compare0 Interrupt Vector Address
-.org	OVF0addr
-    reti	; Overflow0 Interrupt Vector Address
-.org	SPIaddr
-    reti	; SPI Interrupt Vector Address
-.org	URXCaddr
-    reti	; USART Receive Complete Interrupt Vector Address
-.org	UDREaddr
-    reti	; USART Data Register Empty Interrupt Vector Address
-.org	UTXCaddr
-    reti	; USART Transmit Complete Interrupt Vector Address
-.org	ADCCaddr
-    reti	; ADC Interrupt Vector Address
-.org	ERDYaddr
-    reti	; EEPROM Interrupt Vector Address
-.org	ACIaddr
-    reti	; Analog Comparator Interrupt Vector Address
-.org    TWSIaddr
-    reti   ; Irq. vector address for Two-Wire Interface
-.org	SPMRaddr
-    reti	; Store Program Memory Ready Interrupt Vector Address
+.org	INT0addr ; External Interrupt0 Vector Address
+    rjmp int0_isr 
+.org	INT1addr ; External Interrupt1 Vector Address
+    rjmp int1_isr 
+.org	INT2addr ; External Interrupt2 Vector Address
+    reti	
+.org	OC2addr  ; Output Compare2 Interrupt Vector Address
+    reti	
+.org	OVF2addr ; Overflow2 Interrupt Vector Address
+    reti	
+.org	ICP1addr ; Input Capture1 Interrupt Vector Address
+    reti	
+.org	OC1Aaddr ; Output Compare1A Interrupt Vector Address
+    reti	
+.org	OC1Baddr ; Output Compare1B Interrupt Vector Address
+    reti	
+.org	OVF1addr ; Overflow1 Interrupt Vector Address
+    reti	
+.org	OC0addr  ; Output Compare0 Interrupt Vector Address
+    reti	
+.org	OVF0addr ; Overflow0 Interrupt Vector Address
+    reti	
+.org	SPIaddr  ; SPI Interrupt Vector Address
+    reti	
+.org	URXCaddr ; USART Receive Complete Interrupt Vector Address
+    reti	
+.org	UDREaddr ; USART Data Register Empty Interrupt Vector Address
+    reti	
+.org	UTXCaddr ; USART Transmit Complete Interrupt Vector Address
+    reti	
+.org	ADCCaddr ; ADC Interrupt Vector Address
+    reti	
+.org	ERDYaddr ; EEPROM Interrupt Vector Address
+    reti	
+.org	ACIaddr  ; Analog Comparator Interrupt Vector Address
+    reti	
+.org    TWSIaddr ; Irq. vector address for Two-Wire Interface
+    reti   
+.org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
+    reti	
+
+; map avr interrupts to amforth interrupts
+int0_isr:
+    push yl
+    ldi yl, 0
+    rjmp intx_isr
+
+int1_isr:
+    push yl
+    ldi yl, 1
+    rjmp intx_isr
 

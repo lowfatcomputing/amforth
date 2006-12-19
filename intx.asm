@@ -1,12 +1,5 @@
 
-.set pc_ = pc
-.org INT0addr
-    rjmp int0_isr
-.org INT1addr
-    rjmp int1_isr
-.org pc_
-
-.equ INTVECTORS = 2 ; only two interrupts for now
+.equ INTVECTORS = 2 ; only a few interrupts for now
 
 .set intcur   = heap ; current interrupt
 .set heap     = heap + 1
@@ -15,14 +8,6 @@
 .set intvec   = heap ; forth interrupt vector (contains the XT)
 .set heap     = heap + INTVECTORS * CELLSIZE
 
-int1_isr:
-    push yl
-    ldi yl, 1
-    rjmp intx_isr
-int0_isr:
-    push yl
-    ldi yl, 0
-    
 intx_isr:
     push zh
     in zh,SREG
@@ -50,23 +35,6 @@ intx_isr:
     pop yl
     set ; set the interrupt flag for the inner interpreter
     reti
-
-init_isr:
-    ldi zl, LOW(intcount)
-    ldi zh, HIGH(intcount)
-    std Z+0, zerol
-    std Z+1, zeroh
-    std Z+2, zerol
-    std Z+3, zeroh
-    ldi zl, LOW(intvec)
-    ldi zh, HIGH(intvec)
-    ldi temp0, LOW(XT_NOOP)
-    ldi temp1, HIGH(XT_NOOP)
-    std Z+0, temp0
-    std Z+1, temp1
-    std Z+2, temp0
-    std Z+3, temp1
-    ret
 
 VE_INTCOUNTER:
     .db $0a, "intcounter",0

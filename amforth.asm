@@ -3,7 +3,7 @@
 ;;;; GPL V2 (only)
 
   ; cpu clock in hertz
-  .equ cpu_frequency = 8000000
+  .equ cpu_frequency = 16000000
    ; baud rate of terminal
   .equ baud_rate = 9600
 
@@ -44,7 +44,6 @@ reset:
     ldi xh, high(PFA_QUIT)
     ; the following is a turnkey-action, and a few more words for the dictionary
     rcall baud0
-    rcall init_isr
     ; enable interrupts (needed for getting (terminal) input)
     sei
     ; its a far jump...
