@@ -74,6 +74,7 @@
 .include "words/type.asm"
 .include "words/words.asm"
 .include "words/tick.asm"
+.include "words/brackettick.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/handler.asm"
 .include "words/catch.asm"
