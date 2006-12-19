@@ -12,23 +12,24 @@ decimal
 hex
 
 \ port and bit number combined
-: portpin create swap 8 lshift or , does> i@ ;
+\ runtime of the defined words
+\   ( -- portaddr pinmask )
+: portpin create 
+    swap 8 lshift or , 
+  does> i@ 
+    dup 8 rshift swap ff and over c@   
+;
 
-PORTD 20 portpin led1
-PORTD 40 portpin led2
-
-\ could be part of a library
 : on ( n -- )
-    dup 8 rshift swap ff and 
-    over c@ or swap c! 
+    or swap c! 
 ;
 
 : off ( n -- ) 
-    dup 8 rshift swap ff and 
-    over c@ swap invert and swap 
-    c! 
+    swap invert and swap c! 
 ;
 
+PORTD 20 portpin led1
+PORTD 40 portpin led2
 
 : portinit 
     E0 DDRD c! 
