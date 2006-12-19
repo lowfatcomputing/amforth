@@ -1,19 +1,21 @@
 \ some useful definitions
 
 \ stack operations
-: nip
+: nip ( a b -- b )
     swap drop 
 ;
-: tuck 
-    swap over 
+: tuck ( a b -- b a b )
+    swap over
 ;
-: peek 1+ cells sp@ + @ ;
-: -rot rot rot ;
 
 \ part of the core wordset
 
 : cells 2* ;
-: cell+ 2+ ;
+: cell+ 2 + ;
+
+
+: peek 1+ cells sp@ + @ ;
+: -rot rot rot ;
 
 \ eeprom management, similiar to 
 \ flash related words (prefix e)
@@ -34,3 +36,4 @@
 : rallot ( n -- )
     heap e@ + heap e! 
 ;
+
