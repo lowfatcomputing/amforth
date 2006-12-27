@@ -72,6 +72,7 @@
 .org    LCDSFaddr
     reti   ;LCD Start of Frame Interrupt Vector
 
+.org codestart
 ; map avr interrupts to amforth interrupts
 int0_isr:
     push yl

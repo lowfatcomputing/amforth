@@ -70,6 +70,7 @@
 .org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
     reti	
 
+.org codestart
 ; map avr interrupts to amforth interrupts
 int0_isr:
     push yl

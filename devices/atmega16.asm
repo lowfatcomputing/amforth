@@ -67,6 +67,7 @@
 .org	SPMRaddr 
     reti	; SPM complete Interrupt Vector Address
 
+.org codestart
 ; map avr interrupts to amforth interrupts
 int0_isr:
     push yl

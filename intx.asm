@@ -1,5 +1,5 @@
 
-.equ INTVECTORS = 2 ; only a few interrupts for now
+.equ INTVECTORS = 4 ; only a few interrupts for now
 
 .set intcur   = heap ; current interrupt
 .set heap     = heap + 1

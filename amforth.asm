@@ -8,13 +8,13 @@
   .equ baud_rate = 9600
 
 .include "devices/atmega32.asm"
-
+.set pc_ = pc
 .include "macros.asm"
 
 .org $0000
   rjmp reset
 
-.org codestart
+.org pc_
 ; main entry point
 reset:
     clr zerol
