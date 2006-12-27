@@ -28,14 +28,14 @@
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
 
-.org	INT0addr
-    reti	; External Interrupt0 Vector Address
-.org	INT1addr
-    reti	; External Interrupt1 Vector Address
-.org	OC2addr 
-    reti	; Output Compare2 Interrupt Vector Address
-.org	OVF2addr
-    reti	; Overflow2 Interrupt Vector Address
+.org	INT0addr ; External Interrupt0 Vector Address
+    rjmp int0_isr 
+.org	INT1addr ; External Interrupt1 Vector Address
+    rjmp int1_isr 
+.org	OC2addr  ; Output Compare2 Interrupt Vector Address
+    rjmp oc2_isr
+.org	OVF2addr ; Overflow2 Interrupt Vector Address
+    reti	
 .org	ICP1addr
     reti	; Input Capture1 Interrupt Vector Address
 .org	OC1Aaddr
@@ -54,8 +54,8 @@
     reti	; USART Data Register Empty Interrupt Vector Address
 .org	UTXCaddr
     reti	; USART Transmit Complete Interrupt Vector Address
-.org	ADCCaddr
-    reti	; ADC Interrupt Vector Address
+.org	ADCCaddr ; ADC Interrupt Vector Address
+    rjmp adc_isr
 .org	ERDYaddr
     reti	; EEPROM Interrupt Vector Address
 .org	ACIaddr 
@@ -66,3 +66,25 @@
     reti	; SPM complete Interrupt Vector Address
 .org	SPMRaddr 
     reti	; SPM complete Interrupt Vector Address
+
+; map avr interrupts to amforth interrupts
+int0_isr:
+    push yl
+    ldi yl, 0
+    rjmp intx_isr
+
+int1_isr:
+    push yl
+    ldi yl, 1
+    rjmp intx_isr
+
+adc_isr:
+    push yl
+    ldi yl, 2
+    rjmp intx_isr
+
+oc2_isr:
+    push yl
+    ldi yl, 3
+    rjmp intx_isr
+

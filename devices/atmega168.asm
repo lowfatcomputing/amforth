@@ -15,3 +15,7 @@
   .equ nrww = $1c00
   .equ codestart = $34
  
+  .equ EEWE = EEPE
+  .equ SPMCR = SPMCSR
+  .equ SPMEN = SELFPRGEN
+  .equ EEMWE = EEMPE

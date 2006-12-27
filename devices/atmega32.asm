@@ -36,7 +36,7 @@
 .org	INT2addr ; External Interrupt2 Vector Address
     reti	
 .org	OC2addr  ; Output Compare2 Interrupt Vector Address
-    reti	
+    rjmp oc2_isr
 .org	OVF2addr ; Overflow2 Interrupt Vector Address
     reti	
 .org	ICP1addr ; Input Capture1 Interrupt Vector Address
@@ -60,7 +60,7 @@
 .org	UTXCaddr ; USART Transmit Complete Interrupt Vector Address
     reti	
 .org	ADCCaddr ; ADC Interrupt Vector Address
-    reti	
+    rjmp adc_isr
 .org	ERDYaddr ; EEPROM Interrupt Vector Address
     reti	
 .org	ACIaddr  ; Analog Comparator Interrupt Vector Address
@@ -79,5 +79,15 @@ int0_isr:
 int1_isr:
     push yl
     ldi yl, 1
+    rjmp intx_isr
+
+adc_isr:
+    push yl
+    ldi yl, 2
+    rjmp intx_isr
+
+oc2_isr:
+    push yl
+    ldi yl, 3
     rjmp intx_isr
 
