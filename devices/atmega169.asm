@@ -28,11 +28,13 @@
   .equ SPMCR = SPMCSR
 
   .equ UMSEL01 = 7
- 
+
+.org	INT0addr
+    rjmp int0_isr   ; External Interrupt Request 0
 .org    PCINT0addr
-    rjmp int0_isr   ;Pin Change 0 Interrupt Vector
+    reti   ;Pin Change 0 Interrupt Vector
 .org    PCINT1addr
-    rjmp int1_isr   ;Pin Change 1 Interrupt Vector
+    reti   ;Pin Change 1 Interrupt Vector
 .org    OC2addr
     rjmp oc2_isr   ;Timer/Counter2 Compare Match Interrupt Vector
 .org    OVF2addr
