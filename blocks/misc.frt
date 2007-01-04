@@ -20,11 +20,11 @@
 \ eeprom management, similiar to 
 \ flash related words (prefix e)
 : ehere ( -- n )
-    eheap e@ 
+    edp e@ 
 ;
 
 : eallot ( n -- )
-    eheap e@ + eheap e!
+    edp e@ + edp e!
 ;
 
 \ ram management, similiar to
