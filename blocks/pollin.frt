@@ -1,13 +1,11 @@
 ( test routines for the atmel evaluation )
 ( boards from www.pollin.de )
 ( needs the device register definitions loaded )
-forget ms
-decimal
 
+decimal
 \ wait some milliseconds
 
-: ms 0 do 1ms loop ;
-: blinkdelay 250 ms ;
+: blinkdelay 250 0 do 1ms loop ;
 
 hex
 
@@ -32,7 +30,9 @@ PORTD 20 portpin led1
 PORTD 40 portpin led2
 
 : portinit 
-    E0 DDRD c! 
+    E0 DDRD  c! \ io direction
+    05 MCUCR c! \ int0/1
+    C0 GICR  c! \ enable int0/1
 ;
 
 \ test runs until a terminal-key is pressed
@@ -67,4 +67,4 @@ PORTD 40 portpin led2
 ;
 
 \ autoconfig the i/o ports
-' portinit 'turnkey e!
+\ ' portinit 'turnkey e!
