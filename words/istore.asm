@@ -7,7 +7,7 @@ VE_ISTORE:
 XT_ISTORE:
     .dw DO_COLON
 PFA_ISTORE:
-
+    .dw XT_INTOFF
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_SPMBUF
@@ -32,7 +32,19 @@ PFA_ISTORE_WRITE:
     .dw XT_SPMRWW
     .dw XT_DROP
     .dw XT_DROP
-    .dw XT_EXIT  
+    .dw XT_INTON
+    .dw XT_EXIT
+
+XT_INTON:
+    .dw PFA_INTON
+PFA_INTON:
+    sei
+    rjmp DO_NEXT
+XT_INTOFF:
+    .dw PFA_INTOFF
+PFA_INTOFF:
+    cli
+    rjmp DO_NEXT
 
 ;; pageload
 ;;
@@ -88,14 +100,14 @@ PFA_SPMPAGELOADDONE:
 XT_DOSPM:
     .dw PFA_DOSPM
 PFA_DOSPM:
+;    in temp2, SREG
+;    cli
   ; wait for pending spm instruction
 PFA_DOSPM1:
     in temp1, SPMCR
     andi temp1, (1<<SPMEN)
     brne PFA_DOSPM1
     
-    in temp2, SREG
-    cli
 PFA_DOSPM2:
     sbic EECR, EEWE
     rjmp PFA_DOSPM2
@@ -115,7 +127,7 @@ PFA_DOSPM2:
     out SPMCR, temp0
     spm
 
-    out SREG, temp2
+;    out SREG, temp2
     rjmp DO_NEXT
 
 ;; spmbuf
