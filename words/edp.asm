@@ -1,9 +1,9 @@
 ; ( -- eaddr) first free address in eeprom
-VE_EHEAP:
-    .db $05, "eheap"
+VE_EDP:
+    .db $03, "edp"
     .dw VE_HEAD
-    .set VE_HEAD = VE_EHEAP
-XT_EHEAP:
+    .set VE_HEAD = VE_EDP
+XT_EDP:
     .dw PFA_DOVARIABLE
-PFA_EHEAP:
+PFA_EDP:
     .dw $06

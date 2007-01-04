@@ -39,7 +39,7 @@
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
-.include "words/eheap.asm"
+.include "words/edp.asm"
 .include "words/heap.asm"
 .include "words/turnkey.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
