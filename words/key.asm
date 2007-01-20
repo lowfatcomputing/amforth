@@ -1,6 +1,6 @@
 ; ( -- ) 
 VE_TICKKEY:
-    .db $04, $27, "KEY",0
+    .db $04, $27, "key",0
     .dw VE_HEAD
     .set VE_HEAD = VE_TICKKEY
 XT_TICKKEY:
@@ -11,7 +11,7 @@ PFA_TICKKEY:
 ; fetch 'KEY vector and execute its token
 ; if not zero
 VE_KEY:
-    .db $03, "KEY"
+    .db $03, "key"
     .dw VE_HEAD
     .set VE_HEAD = VE_KEY
 XT_KEY:
