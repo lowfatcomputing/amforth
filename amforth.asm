@@ -36,6 +36,24 @@ reset:
     std Z+6, yl
     ldi yh,high(stackstart)
     std Z+7, yh
+    
+    ; set IO 
+    ldi yl, low(xt_tx0)
+    std Z+8, yl
+    ldi yh, high(xt_tx0)
+    std Z+9, yh
+
+    ldi yl, low(xt_rx0)
+    std Z+10, yl
+    ldi yh, high(xt_rx0)
+    std Z+11, yh
+
+    ldi yl, low(xt_rx0q)
+    std Z+12, yl
+    ldi yh, high(xt_rx0q)
+    std Z+13, yh
+
+    
     ; keep free space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 

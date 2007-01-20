@@ -1,16 +1,27 @@
-; ( -- flag )
+; ( -- ) 
+VE_TICKKEYQ:
+    .db $05, $27, "KEY?"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TICKKEYQ
+XT_TICKKEYQ:
+    .dw XT_DOUSER
+PFA_TICKKEYQ:
+    .dw 12
+
+; fetch 'KEYQ vector and execute its token
+; if not zero
 VE_KEYQ:
-    .db $04, "key?",0
+    .db $04, "KEY?",0
     .dw VE_HEAD
     .set VE_HEAD = VE_KEYQ
 XT_KEYQ:
-    .dw PFA_KEYQ
+    .dw DO_COLON
 PFA_KEYQ:
-    lds temp0,usart0_rx_out
-    lds temp1,usart0_rx_in
-    movw zl, zerol
-    cpse temp0, temp1
-    sbiw zl, 1
-    st -Y, zl
-    st -Y, zh
-    rjmp DO_NEXT
+    .dw XT_TICKKEYQ
+    .dw XT_FETCH
+    .dw XT_QDUP
+    .dw XT_DOCONDBRANCH
+    .dw PFA_KEYQ1
+    .dw XT_EXECUTE
+PFA_KEYQ1:
+    .dw XT_EXIT

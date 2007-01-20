@@ -32,9 +32,9 @@
 .include "words/to_r.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/emit.asm"
-.include "words/key.asm"
-.include "words/keyq.asm"
+;.include "words/emit.asm"
+;.include "words/key.asm"
+;.include "words/keyq.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/notequal.asm"

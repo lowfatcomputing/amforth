@@ -137,3 +137,79 @@ usart0_rxc_done:
   pop xl
   reti
   
+; (c -- )
+VE_TX0:
+    .db $03, "tx0"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TX0
+XT_TX0:
+    .dw PFA_TX0
+PFA_TX0:
+    lds temp0,usart0_tx_in
+    inc temp0
+    andi temp0,usart0_tx_mask
+
+    lds temp1,usart0_tx_out
+    cp temp0,temp1
+    brne PFA_tx0_store
+    rjmp PFA_tx0
+  
+PFA_tx0_store:
+    sts usart0_tx_in,temp0
+    ldi zl,low(usart0_tx_data)
+    ldi zh,high(usart0_tx_data)
+    add zl, temp0
+    adc zh, zeroh
+    ld temp1, Y+
+    ld temp0, Y+
+    st z,temp0
+  
+    in_ temp0,UCSR0B
+    sbr temp0,(1<<UDRIE0)
+    out_ UCSR0B,temp0
+    jmp DO_NEXT
+
+; (c -- )
+VE_RX0:
+    .db $03, "rx0"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_RX0
+XT_RX0:
+    .dw PFA_RX0
+PFA_RX0:
+    lds temp1,usart0_rx_out
+    lds temp0,usart0_rx_in
+    cp temp1, temp0
+    brne PFA_rx0_fetch
+    rjmp PFA_rx0
+  
+PFA_rx0_fetch:
+    inc temp1
+    andi temp1,usart0_rx_mask
+    sts usart0_rx_out, temp1
+
+    ldi zl,low(usart0_rx_data)
+    ldi zh,high(usart0_rx_data)
+    add zl, temp1
+    adc zh, zeroh
+    ld temp0, Z	
+    st -Y, temp0
+    st -Y, zeroh
+    jmp DO_NEXT
+
+; (c -- )
+VE_RX0Q:
+    .db $04, "rx0?",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_RX0Q
+XT_RX0Q:
+    .dw PFA_RX0Q
+PFA_RX0Q:
+    lds temp0,usart0_rx_out
+    lds temp1,usart0_rx_in
+    movw zl, zerol
+    cpse temp0, temp1
+    sbiw zl, 1
+    st -Y, zl
+    st -Y, zh
+    jmp DO_NEXT

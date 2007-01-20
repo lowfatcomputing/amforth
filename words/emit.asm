@@ -1,32 +1,27 @@
-; (c -- )
+; ( -- ) 
+VE_TICKEMIT:
+    .db $05, $27, "EMIT"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TICKEMIT
+XT_TICKEMIT:
+    .dw XT_DOUSER
+PFA_TICKEMIT:
+    .dw 8
+
+; fetch 'EMIT vector and execute its token
+; if not zero
 VE_EMIT:
-    .db $04, "emit",0
+    .db $04, "EMIT",0
     .dw VE_HEAD
     .set VE_HEAD = VE_EMIT
 XT_EMIT:
-    .dw PFA_EMIT
+    .dw DO_COLON
 PFA_EMIT:
-PFA_EMIT_tx0:
-    lds temp0,usart0_tx_in
-    inc temp0
-    andi temp0,usart0_tx_mask
-
-    lds temp1,usart0_tx_out
-    cp temp0,temp1
-    brne PFA_EMIT_tx0_store
-    rjmp PFA_EMIT_tx0
-  
-PFA_EMIT_tx0_store:
-    sts usart0_tx_in,temp0
-    ldi zl,low(usart0_tx_data)
-    ldi zh,high(usart0_tx_data)
-    add zl, temp0
-    adc zh, zeroh
-    ld temp1, Y+
-    ld temp0, Y+
-    st z,temp0
-  
-    in_ temp0,UCSR0B
-    sbr temp0,(1<<UDRIE0)
-    out_ UCSR0B,temp0
-    rjmp DO_NEXT
+    .dw XT_TICKEMIT
+    .dw XT_FETCH
+    .dw XT_QDUP
+    .dw XT_DOCONDBRANCH
+    .dw PFA_EMIT1
+    .dw XT_EXECUTE
+PFA_EMIT1:
+    .dw XT_EXIT

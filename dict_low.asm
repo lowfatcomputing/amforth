@@ -30,6 +30,10 @@
 .include "words/pad.asm"
 .include "words/hld.asm"
 
+.include "words/emit.asm"
+.include "words/key.asm"
+.include "words/keyq.asm"
+
 .include "words/dp.asm"
 .include "words/head.asm"
 .include "words/here.asm"
