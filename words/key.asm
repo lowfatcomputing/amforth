@@ -6,7 +6,7 @@ VE_TICKKEY:
 XT_TICKKEY:
     .dw XT_DOUSER
 PFA_TICKKEY:
-    .dw 10
+    .dw 12
 
 ; fetch 'KEY vector and execute its token
 ; if not zero

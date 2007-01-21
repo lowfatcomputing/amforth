@@ -6,9 +6,9 @@ VE_TICKKEYQ:
 XT_TICKKEYQ:
     .dw XT_DOUSER
 PFA_TICKKEYQ:
-    .dw 12
+    .dw 14
 
-; fetch 'KEYQ vector and execute its token
+; fetch 'key? vector and execute its token
 ; if not zero
 VE_KEYQ:
     .db $04, "key?",0

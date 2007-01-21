@@ -170,6 +170,20 @@ PFA_tx0_store:
     jmp DO_NEXT
 
 ; (c -- )
+VE_TX0Q:
+    .db $04, "tx0?",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TX0Q
+XT_TX0Q:
+    .dw PFA_TX0Q
+PFA_TX0Q:
+    movw zl, zerol
+    sbiw zl, 1
+    st -Y, zl
+    st -Y, zh
+    jmp DO_NEXT
+
+; (c -- )
 VE_RX0:
     .db $03, "rx0"
     .dw VE_HEAD

@@ -31,6 +31,7 @@
 .include "words/hld.asm"
 
 .include "words/emit.asm"
+.include "words/emitq.asm"
 .include "words/key.asm"
 .include "words/keyq.asm"
 
