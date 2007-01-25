@@ -6,7 +6,7 @@ VE_TICKEMITQ:
 XT_TICKEMITQ:
     .dw XT_DOUSER
 PFA_TICKEMITQ:
-    .dw 10
+    .dw 14
 
 ; fetch 'emit? vector and execute its token
 ; if not zero
