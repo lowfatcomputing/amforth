@@ -169,7 +169,7 @@ PFA_tx0_store:
     out_ UCSR0B,temp0
     jmp DO_NEXT
 
-; (c -- )
+; ( -- f) always true 
 VE_TX0Q:
     .db $04, "tx0?",0
     .dw VE_HEAD
@@ -183,7 +183,7 @@ PFA_TX0Q:
     st -Y, zh
     jmp DO_NEXT
 
-; (c -- )
+; ( -- c)
 VE_RX0:
     .db $03, "rx0"
     .dw VE_HEAD
@@ -211,7 +211,7 @@ PFA_rx0_fetch:
     st -Y, zeroh
     jmp DO_NEXT
 
-; (c -- )
+; ( -- f)
 VE_RX0Q:
     .db $04, "rx0?",0
     .dw VE_HEAD
