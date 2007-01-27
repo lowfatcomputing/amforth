@@ -2,12 +2,6 @@
 ;;;;
 ;;;; GPL V2 (only)
 
-  ; cpu clock in hertz
-  .equ cpu_frequency = 16000000
-   ; baud rate of terminal
-  .equ baud_rate = 9600
-
-.include "devices/atmega32.asm"
 .set pc_ = pc
 .include "macros.asm"
 
@@ -36,7 +30,7 @@ reset:
     std Z+6, yl
     ldi yh,high(stackstart)
     std Z+7, yh
-    ; 8 & 10 set when used
+    
     ; set IO 
     ldi yl, low(xt_tx0)
     std Z+12, yl
@@ -58,6 +52,7 @@ reset:
     ldi yh, high(xt_rx0q)
     std Z+19, yh
 
+    
     ; keep free space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 
