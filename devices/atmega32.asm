@@ -2,7 +2,7 @@
 .include "m32def.inc"
 .list
   .equ ramstart = $60 ; first address of RAM 
-  .equ stackstart = RAMEND - $80
+  .equ stackstart = RAMEND - 80
   .equ PADSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
@@ -69,26 +69,4 @@
     reti   
 .org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
     reti	
-
-.org codestart
-; map avr interrupts to amforth interrupts
-int0_isr:
-    push yl
-    ldi yl, 0
-    rjmp intx_isr
-
-int1_isr:
-    push yl
-    ldi yl, 1
-    rjmp intx_isr
-
-adc_isr:
-    push yl
-    ldi yl, 2
-    rjmp intx_isr
-
-oc2_isr:
-    push yl
-    ldi yl, 3
-    rjmp intx_isr
 

@@ -8,6 +8,29 @@
 .set intvec   = heap ; forth interrupt vector (contains the XT)
 .set heap     = heap + INTVECTORS * CELLSIZE
 
+; map avr interrupts to amforth interrupts
+int0_isr:
+    push yl
+    ldi yl, 0
+    rjmp intx_isr
+
+int1_isr:
+    push yl
+    ldi yl, 1
+    rjmp intx_isr
+
+adc_isr:
+    push yl
+    ldi yl, 2
+    rjmp intx_isr
+
+oc2_isr:
+    push yl
+    ldi yl, 3
+    rjmp intx_isr
+
+
+
 intx_isr:
     push zh
     in zh,SREG

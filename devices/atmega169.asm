@@ -4,9 +4,9 @@
 
   ; first address of RAM 
   .equ ramstart = $100
-  .equ stackstart = RAMEND - $80
-  .equ PADSIZE  = $10 ; 16 bit cellsize with binary representation
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
+  .equ stackstart = RAMEND - 80
+  .equ PADSIZE  = 16  ; 16 bit cellsize with binary representation
+  .equ TIBSIZE  = 80  ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
 
@@ -30,7 +30,7 @@
   .equ UMSEL01 = 7
 
 .org	INT0addr
-    rjmp int0_isr   ; External Interrupt Request 0
+    reti   ; External Interrupt Request 0
 .org    PCINT0addr
     reti   ;Pin Change 0 Interrupt Vector
 .org    PCINT1addr
@@ -53,12 +53,12 @@
     reti   ;Timer/Counter0 Overflow Interrupt Vector
 .org    SPIaddr
     reti   ;SPI Serial Transfer Complete Interrupt Vector
-.org    URXC0addr
-    reti   ;USART, Rx Complete Interrupt Vector
-.org    UDRE0addr
-    reti   ;USART, Data Register Empty Interrupt Vector
-.org    UTXC0addr
-    reti   ;USART, Tx Complete Interrupt Vector
+;.org    URXC0addr
+;    reti   ;USART, Rx Complete Interrupt Vector
+;.org    UDRE0addr
+;    reti   ;USART, Data Register Empty Interrupt Vector
+;.org    UTXC0addr
+;    reti   ;USART, Tx Complete Interrupt Vector
 .org    USI_STARTaddr
     reti   ;USI Start Condition Interrupt Vector
 .org    USI_OVFaddr
@@ -73,26 +73,4 @@
     reti   ;Store Program Memory Ready Interrupt Vector
 .org    LCDSFaddr
     reti   ;LCD Start of Frame Interrupt Vector
-
-.org codestart
-; map avr interrupts to amforth interrupts
-int0_isr:
-    push yl
-    ldi yl, 0
-    rjmp intx_isr
-
-int1_isr:
-    push yl
-    ldi yl, 1
-    rjmp intx_isr
-
-adc_isr:
-    push yl
-    ldi yl, 2
-    rjmp intx_isr
-
-oc2_isr:
-    push yl
-    ldi yl, 3
-    rjmp intx_isr
 
