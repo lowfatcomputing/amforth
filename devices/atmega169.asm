@@ -15,16 +15,6 @@
   .equ nrww = $1c00
   .equ codestart = $2e
  
-  .equ UBRRL = UBRR0L
-  .equ UBRRH = UBRR0H
-  .equ UCSRC = UCSR0C
-  .equ UCSRB = UCSR0B
-  .equ UDR = UDR0
-  .equ UCSZ0 = UCSZ00
-  .equ TXEN = TXEN0
-  .equ RXEN = RXEN0
-  .equ RXCIE = RXCIE0
-  .equ UDRIE = UDRIE0
   .equ SPMCR = SPMCSR
 
   .equ UMSEL01 = 7

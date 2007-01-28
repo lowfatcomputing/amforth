@@ -1,19 +1,19 @@
 decimal
-254 constant LCDDR18
-253 constant LCDDR17
-252 constant LCDDR16
-251 constant LCDDR15
-249 constant LCDDR13
-248 constant LCDDR12
-247 constant LCDDR11
-246 constant LCDDR10
-244 constant LCDDR8
-243 constant LCDDR7
-242 constant LCDDR6
-241 constant LCDDR5
-239 constant LCDDR3
-238 constant LCDDR2
-237 constant LCDDR1
+\ 254 constant LCDDR18
+\ 253 constant LCDDR17
+\ 252 constant LCDDR16
+\ 251 constant LCDDR15
+\ 249 constant LCDDR13
+\ 248 constant LCDDR12
+\ 247 constant LCDDR11
+\ 246 constant LCDDR10
+\ 244 constant LCDDR8
+\ 243 constant LCDDR7
+\ 242 constant LCDDR6
+\ 241 constant LCDDR5
+\ 239 constant LCDDR3
+\ 238 constant LCDDR2
+\ 237 constant LCDDR1
 236 constant LCDDR0
 231 constant LCDCCR
 230 constant LCDFRR
