@@ -15,15 +15,15 @@
   .equ nrww = $1c00
   .equ codestart = $2e
  
-  .equ SPMCR = SPMCSR
+;  .equ SPMCR = SPMCSR
 
   .equ UMSEL01 = 7
 
 .org	INT0addr
     reti   ; External Interrupt Request 0
-.org    PCINT0addr
+.org    PCI0addr
     reti   ;Pin Change 0 Interrupt Vector
-.org    PCINT1addr
+.org    PCI1addr
     reti   ;Pin Change 1 Interrupt Vector
 .org    OC2addr
     reti   ;Timer/Counter2 Compare Match Interrupt Vector
