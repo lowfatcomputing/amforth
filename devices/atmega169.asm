@@ -26,7 +26,7 @@
 .org    PCINT1addr
     reti   ;Pin Change 1 Interrupt Vector
 .org    OC2addr
-    rjmp oc2_isr   ;Timer/Counter2 Compare Match Interrupt Vector
+    reti   ;Timer/Counter2 Compare Match Interrupt Vector
 .org    OVF2addr
     reti   ;Timer/Counter2 Overflow Interrupt Vector
 .org    ICP1addr

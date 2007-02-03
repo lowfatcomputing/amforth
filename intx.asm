@@ -24,13 +24,6 @@ adc_isr:
     ldi yl, 2
     rjmp intx_isr
 
-oc2_isr:
-    push yl
-    ldi yl, 3
-    rjmp intx_isr
-
-
-
 intx_isr:
     push zh
     in zh,SREG

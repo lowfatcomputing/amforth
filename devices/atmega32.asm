@@ -36,7 +36,7 @@
 .org	INT2addr ; External Interrupt2 Vector Address
     reti	
 .org	OC2addr  ; Output Compare2 Interrupt Vector Address
-    rjmp oc2_isr
+    reti
 .org	OVF2addr ; Overflow2 Interrupt Vector Address
     reti	
 .org	ICP1addr ; Input Capture1 Interrupt Vector Address

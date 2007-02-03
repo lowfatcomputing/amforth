@@ -1,19 +1,17 @@
-; Settings for the avr butterfly demo board
+; Settings for the eval board with Atmega32 & 16 MHz
 
 ; cpu clock in hertz
-.equ cpu_frequency = 8000000
+.equ cpu_frequency = 16000000
 ; baud rate of terminal
 .equ baud_rate = 9600
 
-.include "devices/atmega169.asm"
+.include "devices/atmega32.asm"
 
   .set heap = ramstart
   .set VE_HEAD = $0000
 
 device_init:
-    ; just a dummy, for now
+    ; just a dummy
     ret
 
 .include "amforth.asm"
-
-    
