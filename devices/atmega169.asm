@@ -15,10 +15,14 @@
   .equ nrww = $1c00
   .equ codestart = $2e
  
-;  .equ SPMCR = SPMCSR
-
   .equ UMSEL01 = 7
 
+; comment out the following 3 definitions for avr assembler2
+.equ PCI0addr = PCINT0addr
+.equ PCI1addr = PCINT1addr
+.equ SPMCR = SPMCSR
+
+;
 .org	INT0addr
     reti   ; External Interrupt Request 0
 .org    PCI0addr

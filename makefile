@@ -6,7 +6,7 @@ AVRA=/opt/cdk4avr/bin/avra
 default: menu
 
 bf.hex: *.asm words/*.asm devices/*.asm
-	$(AVRA)  -I $(INCLUDE) --listmac -l bf.lst -m bf.map bf.asm -o bf.hex
+	$(AVRA) -I $(INCLUDE) --listmac -l bf.lst -m bf.map bf.asm
 
 bf: bf.hex bf.eep.hex
 	$(AVRDUDE) -c avr911 -p atmega169 -P /dev/ttyUSB2 -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
