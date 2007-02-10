@@ -1,3 +1,5 @@
+; ( addr1 -- addr2 )
+; R( -- )
 VE_ENDOF:
     .db $85, "endof"
     .dw VE_HEAD

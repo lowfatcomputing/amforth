@@ -1,3 +1,5 @@
+; ( -- addr )
+; R( -- )
 VE_WHILE:
     .db $85, "while"
     .dw VE_HEAD

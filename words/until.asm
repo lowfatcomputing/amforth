@@ -1,3 +1,5 @@
+; ( addr -- )
+; R( -- )
 VE_UNTIL:
     .db $85, "until"
     .dw VE_HEAD

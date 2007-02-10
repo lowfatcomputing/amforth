@@ -1,4 +1,5 @@
 ; ( --  )
+; R( -- )
 VE_LBRACKET:
     .db $81, "["
     .dw VE_HEAD

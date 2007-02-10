@@ -1,5 +1,5 @@
-; (  -- )
-; R: (ix - jx )
+; ( -- )
+; R( -- )
 VE_POSTPONE:
     .db $88, "postpone",0
     .dw VE_HEAD

@@ -1,4 +1,5 @@
 ; ( n1 -- 0)
+; R( -- )
 VE_SHARP_S:
     .db $02, "#s",0
     .dw VE_HEAD

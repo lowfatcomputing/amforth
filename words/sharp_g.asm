@@ -1,4 +1,5 @@
 ; (n1 -- addr count)
+; R( -- )
 VE_SHARP_G:
     .db $02, "#>",0
     .dw VE_HEAD

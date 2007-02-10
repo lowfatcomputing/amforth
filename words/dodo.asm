@@ -1,5 +1,5 @@
 ; ( limit counter -- )
-; R: ( -- -- limit counter ) == loop-sys
+; R( -- -- limit counter ) == loop-sys
 ;VE_DODO:
 ;    .db 4, "(do)", 0
 ;    .dw VE_HEAD

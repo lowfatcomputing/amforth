@@ -1,4 +1,5 @@
 ; ( n -- )
+; R( -- )
 VE_SIGN:
     .db $04, "sign",0
     .dw VE_HEAD

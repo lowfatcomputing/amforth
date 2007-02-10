@@ -1,5 +1,5 @@
-; ( -- n)
-
+; ( -- n )
+; R( n -- n )
 VE_R_FETCH:
     .db $02, "r@",0
     .dw VE_HEAD

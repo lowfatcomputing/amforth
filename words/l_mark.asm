@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_LMARK:
     .db 5, "<mark"
     .dw VE_HEAD

@@ -1,4 +1,5 @@
 ; ( n1 n2 -- flasg)
+; R( -- )
 VE_LESS:
     .db $01, "<"
     .dw VE_HEAD

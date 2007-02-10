@@ -1,4 +1,5 @@
 ; (addr -- n )
+; R( -- )
 VE_NUMBER:
     .db $06, "number",0
     .dw VE_HEAD

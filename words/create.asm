@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_CREATE:
     .db $6, "create",0
     .dw VE_HEAD

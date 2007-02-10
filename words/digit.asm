@@ -1,4 +1,5 @@
 ; ( c base -- number flag )
+; R( -- )
 VE_DIGIT:
     .db $05, "digit"
     .dw VE_HEAD

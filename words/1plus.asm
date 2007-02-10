@@ -1,4 +1,5 @@
 ; ( n1 -- n2 )
+; R( -- )
 VE_1PLUS:
     .db $02, "1+",0
     .dw VE_HEAD

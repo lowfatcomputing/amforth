@@ -1,4 +1,5 @@
 ; ( n -- flag )
+; R( -- )
 VE_EQUALZERO:
     .db $02, "0=",0
     .dw VE_HEAD

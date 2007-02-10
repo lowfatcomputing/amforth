@@ -1,3 +1,5 @@
+; ( -- addr )
+; R( -- )
 VE_BEGIN:
     .db $85, "begin"
     .dw VE_HEAD

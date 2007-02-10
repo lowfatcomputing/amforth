@@ -1,4 +1,5 @@
 ; ( -- n )
+; R( -- )
 VE_DEPTH:
     .db $05, "depth"
     .dw VE_HEAD

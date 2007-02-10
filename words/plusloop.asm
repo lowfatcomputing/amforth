@@ -1,3 +1,5 @@
+; ( addr -- )
+; R( -- )
 VE_PLOOP:
     .db $85, "+loop"
     .dw VE_HEAD

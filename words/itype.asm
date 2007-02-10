@@ -1,4 +1,5 @@
 ; ( addr -- addr' )
+; R( -- )
 ; not the same stack diagram as type!!
 VE_ITYPE:
     .db $05, "itype"

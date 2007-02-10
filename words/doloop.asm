@@ -1,5 +1,5 @@
 ; ( -- )
-; R: limit counter  -- (limit counter+1'|)
+; R( limit counter  -- (limit counter+1'|)
 ;VE_DOLOOP:
 ;    .db 6, "(loop)", 0
 ;    .dw VE_HEAD

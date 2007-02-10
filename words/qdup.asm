@@ -1,4 +1,5 @@
 ; ( n1 -- [ n1 n1 ] | 0)
+; R( -- )
 VE_QDUP:
     .db $04, "?dup",0
     .dw VE_HEAD

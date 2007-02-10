@@ -1,4 +1,5 @@
 ; ( n1 n2 -- flag )
+; R( -- )
 VE_EQUAL:
     .db $01, "="
     .dw VE_HEAD

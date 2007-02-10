@@ -1,4 +1,5 @@
-; ( -- ) 
+; ( -- f ) 
+; R( -- )
 VE_TICKEMITQ:
     .db $06, $27, "emit?",0
     .dw VE_HEAD

@@ -1,4 +1,5 @@
-; 
+; ( n -- )
+; R( -- )
 VE_LITERAL:
     .db $87, "literal"
     .dw VE_HEAD

@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_CR:
     .db $02, "cr", 0
     .dw VE_HEAD

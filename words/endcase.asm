@@ -1,3 +1,5 @@
+; ( f -- )
+; R( -- )
 VE_ENDCASE:
     .db $87, "endcase"
     .dw VE_HEAD

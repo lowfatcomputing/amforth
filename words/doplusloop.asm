@@ -1,5 +1,5 @@
 ; ( n1 -- )
-; R:(llimit counter -- (limit counter+n1)|)
+; R(llimit counter -- (limit counter+n1)|)
 ;VE_DOPLUSLOOP:
 ;    .db 7, "(+loop)"
 ;    .dw VE_HEAD

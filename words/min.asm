@@ -1,4 +1,5 @@
 ; (n1 -- u1)
+; R( -- )
 VE_MIN:
     .db $03, "min"
     .dw VE_HEAD

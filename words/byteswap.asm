@@ -1,4 +1,5 @@
-; (n1 n2 -- n3 )
+; (n1 -- n2 )
+; R( -- )
 VE_BYTESWAP:
     .db $02, "><",0
     .dw VE_HEAD

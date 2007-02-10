@@ -1,4 +1,5 @@
 ; ( -- eaddr) first free address in eeprom
+; R( -- )
 VE_TICKTURNKEY:
     .db $08, $27, "turnkey",0
     .dw VE_HEAD

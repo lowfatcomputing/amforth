@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_HEX:
     .db $03, "hex"
     .dw VE_HEAD

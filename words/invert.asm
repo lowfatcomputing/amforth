@@ -1,4 +1,5 @@
 ; ( n1 -- n2)
+; R( -- )
 VE_INVERT:
     .db $06, "invert",0
     .dw VE_HEAD

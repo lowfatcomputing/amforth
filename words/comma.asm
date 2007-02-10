@@ -1,4 +1,5 @@
-; ( -- addr )
+; ( n -- )
+; R( -- )
 VE_COMMA:
     .db $01, $2c ; ,
     .dw VE_HEAD

@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_HERE:
     .db $04, "here",0
     .dw VE_HEAD

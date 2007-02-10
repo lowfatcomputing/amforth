@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_SPACE:
     .db $05, "space"
     .dw VE_HEAD

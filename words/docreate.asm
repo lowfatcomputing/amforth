@@ -1,4 +1,5 @@
 ; ( addr --  )
+; R( -- )
 ;VE_DOCREATE:
 ;    .db $08, "(create)",0
 ;    .dw VE_HEAD

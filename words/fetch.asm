@@ -1,4 +1,5 @@
 ; ( addr -- n )
+; R( -- )
 VE_FETCH:
     .db $01, "@"
     .dw VE_HEAD

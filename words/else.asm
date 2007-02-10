@@ -1,3 +1,5 @@
+; ( addr1 -- addr2)
+; R( -- )
 VE_ELSE:
     .db $84, "else",0
     .dw VE_HEAD

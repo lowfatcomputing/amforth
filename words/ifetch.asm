@@ -1,4 +1,5 @@
 ; ( addr -- n1 )
+; R( -- )
 ; reads a cell from flash, addr is cell address, not byte addres
 ; first byte gets into the lower word on tos
 VE_IFETCH:

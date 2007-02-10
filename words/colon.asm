@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- ) 
 VE_COLON:
     .db $1, ":"
     .dw VE_HEAD

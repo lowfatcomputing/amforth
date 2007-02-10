@@ -1,3 +1,5 @@
+; ( -- addr )
+; R( -- )
 VE_DO:
     .db $82, "do",0
     .dw VE_HEAD

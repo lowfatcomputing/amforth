@@ -1,4 +1,5 @@
 ; ( n1 n2 -- n1 n2 n1 )
+; R( -- )
 VE_OVER:
     .db $04, "over",0
     .dw VE_HEAD

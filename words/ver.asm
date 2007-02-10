@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_VER:
     .db $03, "ver"
     .dw VE_HEAD

@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_PAD:
     .db $03, "pad"
     .dw VE_HEAD

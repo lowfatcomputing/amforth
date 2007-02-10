@@ -1,4 +1,5 @@
 ; ( addr -- )
+; R( -- )
 VE_GRESOLVE:
     .db 8, ">resolve",0
     .dw VE_HEAD

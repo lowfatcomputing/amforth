@@ -1,3 +1,5 @@
+; ( addr -- )
+; R( -- )
 VE_THEN:
     .db $84, "then",0
     .dw VE_HEAD

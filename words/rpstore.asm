@@ -1,5 +1,5 @@
 ; ( n  -- )
-; R: stack pointer changed
+; R( -- xy) 
 VE_RP_STORE:
     .db $03, "rp!"
     .dw VE_HEAD

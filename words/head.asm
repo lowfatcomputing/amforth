@@ -1,4 +1,5 @@
 ; ( -- eaddr) address from eeprom
+; R( -- )
 _VE_HEAD:
     .db $04, "head",0
     .dw VE_HEAD

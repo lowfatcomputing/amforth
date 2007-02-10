@@ -1,5 +1,5 @@
 ; ( c<char> -- )
-
+; R( -- )
 VE_FORGET:
     .db $06, "forget",0
     .dw VE_HEAD

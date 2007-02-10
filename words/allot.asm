@@ -1,4 +1,5 @@
 ; (n -- )
+; R( -- )
 VE_ALLOT:
     .db $05, "allot"
     .dw VE_HEAD

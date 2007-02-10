@@ -1,5 +1,5 @@
 ; ( -- )
-; R:(loop-sys -- )
+; R(loop-sys -- )
 ;VE_DOUNLOOP:
 ;    .db 8, "(unloop)", 0
 ;    .dw VE_HEAD

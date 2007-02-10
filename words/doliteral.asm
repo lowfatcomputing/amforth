@@ -1,4 +1,5 @@
 ; ( -- n1 )
+; R( -- )
 ;VE_DOLITERAL:
 ;    .db $09, "(literal)"
 ;    .dw VE_HEAD

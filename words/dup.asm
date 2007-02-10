@@ -1,4 +1,5 @@
 ; ( n -- n n )
+; R( -- )
 VE_DUP:
     .db $03, "dup"
     .dw VE_HEAD

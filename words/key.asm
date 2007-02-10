@@ -1,4 +1,5 @@
-; ( -- ) 
+; ( -- c ) 
+; R( -- )
 VE_TICKKEY:
     .db $04, $27, "key",0
     .dw VE_HEAD

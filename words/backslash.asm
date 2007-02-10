@@ -1,4 +1,5 @@
-; ( nx -- )
+; ( -- )
+; R( -- )
 VE_BACKSLASH:
     .db $81, "\"
     .dw VE_HEAD

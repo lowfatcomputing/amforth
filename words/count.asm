@@ -1,4 +1,5 @@
-; ( addr - addr+1 n)
+; ( addr -- addr+1 n)
+; R( -- )
 VE_COUNT:
     .db $05, "count"
     .dw VE_HEAD

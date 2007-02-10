@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 ; compile (does)
 ; compile (colon)
 VE_DOES:

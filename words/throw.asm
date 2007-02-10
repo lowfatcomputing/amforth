@@ -1,4 +1,5 @@
-; ( ?? -- ) 
+; ( n -- ) or stackpointer changed
+; R( -- ) or stackpointer reset
 VE_THROW:
     .db $05, "throw"
     .dw VE_HEAD

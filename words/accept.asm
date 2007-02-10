@@ -1,4 +1,5 @@
 ; ( addr n1 -- n2 )
+; R( -- )
 VE_ACCEPT:
     .db $06, "accept",0
     .dw VE_HEAD

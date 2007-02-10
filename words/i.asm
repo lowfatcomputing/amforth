@@ -1,5 +1,5 @@
 ; ( -- n )
-; ( loop-sys -- loop-sys)
+; R( loop-sys -- loop-sys)
 VE_I:
     .db 1, "i"
     .dw VE_HEAD

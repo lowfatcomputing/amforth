@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_LPARENTHESIS:
     .db $81, "(" 
     .dw VE_HEAD

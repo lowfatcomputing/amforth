@@ -1,4 +1,5 @@
 ; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] )
+; R( -- )
 VE_FIND:
     .db $04, "find", 0
     .dw VE_HEAD

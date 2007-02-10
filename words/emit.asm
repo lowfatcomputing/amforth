@@ -1,4 +1,5 @@
-; ( -- ) 
+; ( c -- ) 
+; R( -- )
 VE_TICKEMIT:
     .db $05, $27, "emit"
     .dw VE_HEAD

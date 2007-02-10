@@ -1,4 +1,5 @@
 ; ( f -- )
+; R( -- )
 ;VE_DOCONDBRANCH:
 ;    .db $09, "(?branch)"
 ;    .dw  VE_HEAD

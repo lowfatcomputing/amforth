@@ -1,4 +1,5 @@
 ; ( n1 n2 -- n3)
+; R( -- )
 VE_LSHIFT:
     .db $06, "lshift",0
     .dw VE_HEAD

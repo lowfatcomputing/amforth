@@ -1,4 +1,5 @@
-; ( n1 n2 -- flag )
+; ( flag -- flag' )
+; R( -- )
 VE_NOT:
     .db $03, "not"
     .dw VE_HEAD

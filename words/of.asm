@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_OF:
     .db $82, "of",0
     .dw VE_HEAD

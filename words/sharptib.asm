@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_NUMBERTIB:
     .db $04, "#tib",0
     .dw VE_HEAD

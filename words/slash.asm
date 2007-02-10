@@ -1,4 +1,5 @@
 ; ( n1 n2 -- n3)
+; R( -- )
 VE_DIV:
     .db $01, "/"
     .dw VE_HEAD

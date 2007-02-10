@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_DECIMAL:
     .db $07, "decimal"
     .dw VE_HEAD

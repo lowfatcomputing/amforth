@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 VE_QUIT:
     .db $04, "quit", 0
     .dw VE_HEAD

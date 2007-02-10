@@ -1,4 +1,5 @@
 ; (  -- )
+; R( -- )
 VE_1MS:
     .db $03, "1ms"
     .dw VE_HEAD

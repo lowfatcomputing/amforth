@@ -1,4 +1,5 @@
 ; ( -- eaddr) first free address in eeprom
+; R( -- )
 VE_EDP:
     .db $03, "edp"
     .dw VE_HEAD

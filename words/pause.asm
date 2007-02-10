@@ -1,4 +1,5 @@
 ; ( -- ) 
+; R( -- ) may make a context switch
 VE_TICKPAUSE:
     .db $06, $27, "pause", 0
     .dw VE_HEAD

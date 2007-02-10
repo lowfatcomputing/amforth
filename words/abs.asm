@@ -1,4 +1,5 @@
 ; (n1 -- u1)
+; R( -- )
 VE_ABS:
     .db $03, "abs"
     .dw VE_HEAD

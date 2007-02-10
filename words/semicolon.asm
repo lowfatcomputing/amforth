@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_SEMICOLON:
     .db $81, $3b
     .dw VE_HEAD

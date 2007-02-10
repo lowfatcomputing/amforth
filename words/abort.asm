@@ -1,4 +1,5 @@
 ; ( nx -- )
+; R( ny -- )
 VE_ABORT:
     .db $05, "abort"
     .dw VE_HEAD

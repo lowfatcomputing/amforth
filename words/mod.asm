@@ -1,4 +1,5 @@
 ; ( n1 n2 -- n3)
+; R( -- )
 VE_MOD:
     .db $03, "mod"
     .dw VE_HEAD

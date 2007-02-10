@@ -1,4 +1,5 @@
 ; ( n addr -- )
+; R( -- )
 ; writes a cell into flash, unfinished
 VE_ISTORE:
     .db $02, "i!",0

@@ -1,4 +1,5 @@
 ; ( n addr -- )
+; R( -- )
 VE_PLUSSTORE:
     .db $02, "+!",0
     .dw VE_HEAD

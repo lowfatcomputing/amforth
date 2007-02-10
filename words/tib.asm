@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_TIB:
     .db $03, "tib"
     .dw VE_HEAD

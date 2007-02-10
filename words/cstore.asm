@@ -1,4 +1,5 @@
 ; ( c addr -- )
+; R( -- )
 VE_CSTORE:
     .db $02, "c!",0
     .dw VE_HEAD

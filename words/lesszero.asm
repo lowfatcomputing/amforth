@@ -1,4 +1,5 @@
 ; ( n1 -- flag)
+; R( -- )
 VE_LESSZERO:
     .db $02, "0<",0
     .dw VE_HEAD

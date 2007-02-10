@@ -1,4 +1,5 @@
 ; (n1 n2 -- n3 )
+; R( -- )
 VE_AND:
     .db $03, "and"
     .dw VE_HEAD

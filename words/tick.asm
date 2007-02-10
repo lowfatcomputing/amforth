@@ -1,4 +1,5 @@
-; ( -- )
+; ( -- addr )
+; R( -- )
 VE_TICK:
     .db $01, "'"
     .dw VE_HEAD

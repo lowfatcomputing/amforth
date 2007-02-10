@@ -1,4 +1,5 @@
 ; ( addr - c1 )
+; R( -- )
 VE_CFETCH:
     .db $02, "c@",0
     .dw VE_HEAD

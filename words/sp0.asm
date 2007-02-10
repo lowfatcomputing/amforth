@@ -1,4 +1,5 @@
-; stack pointer changed
+; ( -- addr)
+; R( -- )
 VE_SP0:
     .db $03, "sp0"
     .dw VE_HEAD

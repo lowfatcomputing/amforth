@@ -1,4 +1,5 @@
 ; (n1 -- u1)
+; R( -- )
 VE_MAX:
     .db $03, "max"
     .dw VE_HEAD

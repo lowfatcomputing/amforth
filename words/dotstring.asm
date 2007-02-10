@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_DOTSTRING:
     .db $82, ".",$22,0
     .dw VE_HEAD

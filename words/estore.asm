@@ -1,4 +1,5 @@
-
+; ( n addr -- )
+; R( -- )
 VE_ESTORE:
     .db $02, "e!",0
     .dw VE_HEAD

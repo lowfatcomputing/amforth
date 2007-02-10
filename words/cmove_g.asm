@@ -1,4 +1,5 @@
 ; (addr-from addr-to n -- )
+; R( -- )
 VE_CMOVE_G:
     .db $06, "cmove>",0
     .dw VE_HEAD

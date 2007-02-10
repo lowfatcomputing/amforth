@@ -1,3 +1,5 @@
+; ( -- )
+; R( -- )
 VE_AGAIN:
     .db $85, "again"
     .dw VE_HEAD

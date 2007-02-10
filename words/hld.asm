@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_HLD:
     .db $03, "hld"
     .dw VE_HEAD

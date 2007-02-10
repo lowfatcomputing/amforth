@@ -1,3 +1,5 @@
+; ( -- c )
+; R( -- )
 VE_CHAR:
     .db $4, "char",0
     .dw VE_HEAD

@@ -1,4 +1,5 @@
-; ( -- 0 )
+; ( -- addr )
+; R( -- )
 VE_UP:
     .db $02, "up",0
     .dw VE_HEAD

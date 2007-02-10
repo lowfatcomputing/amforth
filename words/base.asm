@@ -1,4 +1,5 @@
 ; ( -- addr )
+; R( -- )
 VE_BASE:
     .db $04, "base",0
     .dw VE_HEAD

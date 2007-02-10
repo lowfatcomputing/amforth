@@ -1,4 +1,5 @@
-; ( -- )
+; ( xt -- )
+; R( -- ) or R( ny -- )
 VE_CATCH:
     .db $05, "catch"
     .dw VE_HEAD

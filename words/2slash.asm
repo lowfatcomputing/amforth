@@ -1,4 +1,5 @@
 ; ( n1 -- n2 )
+; R( -- )
 VE_2SLASH:
     .db $02, "2/", 0
     .dw VE_HEAD

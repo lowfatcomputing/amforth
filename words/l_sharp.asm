@@ -1,4 +1,5 @@
 ; ( -- )
+; R( -- )
 ; emties counted string at address from hld
 VE_L_SHARP:
     .db $02, "<#",0

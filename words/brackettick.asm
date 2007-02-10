@@ -1,4 +1,5 @@
-; ( -- )
+; ( -- addr )
+; R( -- )
 VE_BRACKETTICK:
     .db $83, "[']"
     .dw VE_HEAD
