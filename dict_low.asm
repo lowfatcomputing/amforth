@@ -125,6 +125,7 @@
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"
 .include "words/postpone.asm"
+.include "words/immediate.asm"
 .include "words/recurse.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
