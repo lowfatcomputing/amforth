@@ -8,6 +8,8 @@ VE_ISTORE:
 XT_ISTORE:
     .dw DO_COLON
 PFA_ISTORE:
+    .dw XT_INTOFF
+    .dw XT_TO_R
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_SPMBUF
@@ -32,8 +34,37 @@ PFA_ISTORE_WRITE:
     .dw XT_SPMRWW
     .dw XT_DROP
     .dw XT_DROP
+    .dw XT_R_FROM
+    .dw XT_INTRESTORE
     .dw XT_EXIT
 
+; the following 3 words may be useful for others too.
+; ( -- sreg )
+XT_INTOFF:
+    .dw PFA_INTOFF
+PFA_INTOFF:
+    in temp0, SREG
+    st -Y, temp0
+    st -Y, zeroh
+    cli
+    rjmp DO_NEXT
+
+XT_INTON:
+    .dw PFA_INTON
+PFA_INTON:
+    sei
+    rjmp DO_NEXT
+
+; ( sreg -- )
+XT_INTRESTORE:
+    .dw PFA_INTRESTORE
+PFA_INTRESTORE:
+    ld temp1, Y+
+    ld temp0, Y+
+    out SREG, temp0
+    rjmp DO_NEXT
+    
+    
 ;; pageload
 ;;
 ;; ( addr -- )
@@ -88,8 +119,6 @@ PFA_SPMPAGELOADDONE:
 XT_DOSPM:
     .dw PFA_DOSPM
 PFA_DOSPM:
-    in temp2, SREG
-    cli
   ; wait for pending spm instruction
 PFA_DOSPM1:
     in temp1, SPMCR
@@ -114,8 +143,6 @@ PFA_DOSPM2:
     ; spm timed sequence
     out SPMCR, temp0
     spm
-
-    out SREG, temp2
     rjmp DO_NEXT
 
 ;; spmbuf
