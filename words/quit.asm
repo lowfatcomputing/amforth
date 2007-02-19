@@ -62,7 +62,7 @@ PFA_QUIT4:
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
 	.dw XT_DOBRANCH
-	.dw XT_QUIT
+	.dw PFA_QUIT
 PFA_QUIT5:
     .dw XT_DODOTSTRING
     .db 3, " ??"
