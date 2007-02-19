@@ -1,13 +1,16 @@
-; ( -- n )
-; R( n -- n )
+; ( -- n)
+; ( R: n -- n )
 VE_R_FETCH:
     .db $02, "r@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_R_FETCH
 XT_R_FETCH:
-    .dw DO_COLON
+    .dw PFA_R_FETCH
 PFA_R_FETCH:
-    .dw XT_R_FROM
-    .dw XT_DUP
-    .dw XT_TO_R
-    .dw XT_EXIT
+    pop temp1
+    pop temp0
+    st -Y, temp0
+    st -Y, temp1
+    push temp0
+    push temp1
+    rjmp DO_NEXT

@@ -27,14 +27,9 @@
 .include "words/rot.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
-
 .include "words/r_from.asm"
 .include "words/to_r.asm"
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;.include "words/emit.asm"
-;.include "words/key.asm"
-;.include "words/keyq.asm"
+.include "words/r_fetch.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/notequal.asm"

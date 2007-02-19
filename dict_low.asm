@@ -48,9 +48,6 @@
 .include "words/heap.asm"
 .include "words/turnkey.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;.include "words/execute.asm"
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/r_fetch.asm"
 .include "words/negate.asm"
 .include "words/slash.asm"
 .include "words/mod.asm"
@@ -125,8 +122,10 @@
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"
 .include "words/postpone.asm"
-.include "words/immediate.asm"
 .include "words/recurse.asm"
+.include "words/immediate.asm"
+.include "words/compile.asm"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
 .include "words/rp0.asm"
