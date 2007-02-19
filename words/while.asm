@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( dest -- orig dest )
 ; R( -- )
 VE_WHILE:
     .db $85, "while"
