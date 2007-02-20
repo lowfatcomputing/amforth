@@ -1,9 +1,18 @@
-\ some words for ans compatability
+\ some words missing for ans compatability
 
 \ a cell is 16 bit in amforth
 : cell+ 2 + ;
 : cells 2* ;
 
+\ atmegas are always aligned
+: align ;
+: aligned ;
+
+\ we do not have any environment
+: environment?
+    drop drop 0 ;
+
+\ not really ans, but often used
 : nip ( a b -- b )
     swap drop 
 ;
@@ -11,12 +20,13 @@
     swap over
 ;
 
-\ a stack is an array, sometimes
+\ a stack is an array too
 : peek 1+ cells sp@ + @ ;
 
 : -rot rot rot ;
 
-: +! ( n addr -- )
+\ +! ( n addr -- )
+: +! 
   tuck @ + swap ! ;
 
 \ some double cell words, mostly taken from gforth
