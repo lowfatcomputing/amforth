@@ -1,5 +1,32 @@
 \ some words missing for ans compatability
 
+\ forget ccc resets dictionary to the word given
+: forget
+    bl word find if
+	1-
+	dup 
+	i@ head e!
+	dp e!
+    else
+        drop
+    then
+;
+
+\ defines a word which resets the dictionary when called 
+: marker
+    head e@
+    dp   e@
+    edp  e@
+    heap e@
+    create , , , ,
+    does>
+    dup i@ heap e!
+    1+ dup i@ edp  e!
+    1+ dup i@ dp   e!
+    1+ i@ head e!
+;
+
+
 \ a cell is 16 bit in amforth
 : cell+ 2 + ;
 : cells 2* ;

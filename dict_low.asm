@@ -113,7 +113,6 @@
 .include "words/does.asm"
 .include "words/colon.asm"
 .include "words/semicolon.asm"
-.include "words/forget.asm"
 .include "words/rightbracket.asm"
 .include "words/leftbracket.asm"
 .include "words/variable.asm"
