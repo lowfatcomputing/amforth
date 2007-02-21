@@ -31,6 +31,19 @@
 : cell+ 2 + ;
 : cells 2* ;
 
+\ ( xt -- pfa ) converts the address of the xt into the body address
+: >body
+    1+
+;
+
+\ (addr -- ) displays the value of the given address with current base
+: ? @ . ;
+
+\ some stack checks
+: ?stack
+    depth 0< if -4 throw then
+;
+
 \ atmegas are always aligned
 : align ;
 : aligned ;
