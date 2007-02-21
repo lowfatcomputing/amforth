@@ -9,7 +9,9 @@ XT_COMMA:
 PFA_COMMA:
     .dw XT_HERE
     .dw XT_ISTORE
-    .dw XT_DOLITERAL
-    .dw 1
-    .dw XT_ALLOT
+    .dw XT_DP
+    .dw XT_EFETCH
+    .dw XT_1PLUS
+    .dw XT_DP
+    .dw XT_ESTORE
     .dw XT_EXIT
