@@ -13,6 +13,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
+.include "words/doconstant.asm"
 .include "words/douser.asm"
 .include "words/fetch.asm"
 .include "words/store.asm"

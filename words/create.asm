@@ -11,6 +11,6 @@ PFA_CREATE:
     .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_DOLITERAL
-    .dw XT_DOVARIABLE
+    .dw XT_DOCONSTANT
     .dw XT_COMMA
     .dw XT_EXIT
