@@ -13,13 +13,3 @@
     edp e@ + edp e!
 ;
 
-\ ram management, similiar to
-\ flash and eeprom (prefix r)
-: rhere ( -- n )
-    heap e@
-;
-
-: rallot ( n -- )
-    heap e@ + heap e! 
-;
-
