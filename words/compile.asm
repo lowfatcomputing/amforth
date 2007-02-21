@@ -1,8 +1,8 @@
 ; ( -- )
-;VE_COMPILE:
-;    .db $07, "compile"
-;    .dw  VE_HEAD
-;    .set VE_HEAD = VE_COMPILE
+VE_COMPILE:
+    .db $07, "compile"
+    .dw  VE_HEAD
+    .set VE_HEAD = VE_COMPILE
 XT_COMPILE:
     .dw DO_COLON
 PFA_COMPILE:
