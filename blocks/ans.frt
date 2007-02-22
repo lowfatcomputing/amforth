@@ -1,6 +1,7 @@
 \ some words missing for ans compatability
 
 \ forget ccc resets dictionary to the word given
+\ following code contains errors!
 : forget
     bl word find if
 	1-
@@ -25,6 +26,25 @@
     1+ dup i@ dp   e!
     1+ i@ head e!
 ;
+
+
+: postpone ( -- )
+    bl word find dup 0< if compile compile , exit then
+    if , exit then
+    [ decimal ] -13 throw ; immediate
+
+\ *******************************************
+\ values operate in EEPROM. See documentation
+\ *******************************************
+: value ( n -- )
+      create   edp e@   dup ,   dup 1+ 1+ edp e!   e!
+   does> ( -- n )  i@ e@ ; 
+
+: (to) ( n -- )   r> dup 1+ >r   i@  i@  e! ;
+
+: to ( x <name> -- )
+    '  1+  state @   if compile (to)  ,  exit then
+    i@ e!  ; immediate 
 
 
 \ a cell is 16 bit in amforth

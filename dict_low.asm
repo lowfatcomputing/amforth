@@ -120,7 +120,6 @@
 .include "words/user.asm"
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"
-.include "words/postpone.asm"
 .include "words/recurse.asm"
 .include "words/immediate.asm"
 .include "words/compile.asm"
