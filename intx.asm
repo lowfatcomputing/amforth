@@ -34,9 +34,17 @@ intx_isr:
     push yh
     in yh,SREG
     push yh
-    lds yh, intcount
-    add yh, yl
-    sts intcount, yh
+    push zh
+    push zl
+    ldi zl, low(intcount)
+    ldi zh, high(intcount)
+    add zl, yl
+    adc zh, zeroh
+    ldd yl, Z+0
+    inc yl
+    std Z+0, yl
+    pop zl
+    pop zh
     pop yh
     out SREG,yh
     pop yh
