@@ -61,7 +61,7 @@
 .org  UTXCaddr        
     reti  ; USART Tx Complete
 .org  ADCaddr         
-    rjmp adc_isr  ; ADC Conversion Complete
+    rjmp int2_isr  ; ADC Conversion Complete
 .org  ERDYaddr        
     reti  ; EEPROM Ready
 .org  ACIaddr         

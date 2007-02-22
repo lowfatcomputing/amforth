@@ -60,11 +60,11 @@
 .org    ACIaddr
     reti   ;Analog Comparator Interrupt Vector
 .org    ADCCaddr
-    rjmp adc_isr   ;ADC Conversion Complete Interrupt Vector
+    rjmp int2_isr   ;ADC Conversion Complete Interrupt Vector
 .org    ERDYaddr
     reti   ;EEPROM Ready Interrupt Vector
 .org    SPMRaddr
     reti   ;Store Program Memory Ready Interrupt Vector
 .org    LCDSFaddr
-    reti   ;LCD Start of Frame Interrupt Vector
+    rjmp int3_isr   ;LCD Start of Frame Interrupt Vector
 

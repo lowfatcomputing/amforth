@@ -55,7 +55,7 @@
 .org	UTXCaddr
     reti	; USART Transmit Complete Interrupt Vector Address
 .org	ADCCaddr ; ADC Interrupt Vector Address
-    rjmp adc_isr
+    rjmp int2_isr
 .org	ERDYaddr
     reti	; EEPROM Interrupt Vector Address
 .org	ACIaddr 
