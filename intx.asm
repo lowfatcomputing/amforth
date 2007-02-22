@@ -4,7 +4,7 @@
 .set intcur   = heap ; current interrupt
 .set heap     = heap + 1
 .set intcount = heap ; interrupt counter, incremented for every int
-.set heap     = heap + INTVECTORS * CELLSIZE
+.set heap     = heap + INTVECTORS
 .set intvec   = heap ; forth interrupt vector (contains the XT)
 .set heap     = heap + INTVECTORS * CELLSIZE
 
@@ -19,35 +19,27 @@ int1_isr:
     ldi yl, 1
     rjmp intx_isr
 
-adc_isr:
+int2_isr:
     push yl
     ldi yl, 2
     rjmp intx_isr
 
+int3_isr:
+    push yl
+    ldi yl, 3
+    rjmp intx_isr
+
 intx_isr:
-    push zh
-    in zh,SREG
-    push zh
-    push zl
+    sts intcur, yl
     push yh
-    ldi zl, LOW(intcur)
-    ldi zh, HIGH(intcur)
-    std Z+0, yl
-    ldi zl, LOW(intcount)
-    ldi zh, HIGH(intcount)
-    lsl yl
-    add zl, yl
-    adc zh, zeroh
-    ldd yl, Z+0
-    ldd yh, Z+1
-    adiw yl, 1
-    std Z+0, yl
-    std Z+1, yh
+    in yh,SREG
+    push yh
+    lds yh, intcount
+    add yh, yl
+    sts intcount, yh
     pop yh
-    pop zl
-    pop zh
-    out SREG,zh
-    pop zh
+    out SREG,yh
+    pop yh
     pop yl
     set ; set the interrupt flag for the inner interpreter
     reti
@@ -59,7 +51,6 @@ VE_INTCOUNTER:
 XT_INTCOUNTER:
     .dw DO_COLON
 PFA_INTCOUNTER:
-    .dw XT_2STAR
     .dw XT_DOLITERAL
     .dw intcount
     .dw XT_PLUS
