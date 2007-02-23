@@ -1,8 +1,8 @@
 \ some words missing for ans compatability
 
 \ forget ccc resets dictionary to the word given
-\ following code contains errors!
-: forget
+\ the following code does not do a complete restore
+: forget ( <name> -- )
     bl word find if
 	1-
 	dup 
@@ -14,7 +14,8 @@
 ;
 
 \ defines a word which resets the dictionary when called 
-: marker
+\ better then forget but has still limitations
+: marker 
     head e@
     dp   e@
     edp  e@
@@ -48,19 +49,22 @@
 
 
 \ a cell is 16 bit in amforth
-: cell+ 2 + ;
-: cells 2* ;
+: cell+ ( n1 -- n2) 
+    2 + ;
+: cells ( n -- n' )
+    2* ;
 
-\ ( xt -- pfa ) converts the address of the xt into the body address
-: >body
+\  converts the address of the xt into the body address
+: >body ( xt -- pfa )
     1+
 ;
 
-\ (addr -- ) displays the value of the given address with current base
-: ? @ . ;
+\ displays the value of the given address with current base
+: ? (addr -- )
+    @ . ;
 
 \ some stack checks
-: ?stack
+: ?stack ( -- )
     depth 0< if -4 throw then
 ;
 
@@ -69,7 +73,7 @@
 : aligned ;
 
 \ we do not have any environment
-: environment?
+: environment? ( addr n -- f )
     drop drop 0 ;
 
 \ not really ans, but often used
@@ -80,16 +84,19 @@
     swap over
 ;
 
-\ a stack is an array too
-: peek 1+ cells sp@ + @ ;
+\ a stack is an array too (note the ><)
+: peek ( n -- ) 
+    1+ cells sp@ + @ >< ;
 
-: -rot rot rot ;
+: -rot ( a b c -- c a b )
+    rot rot ;
 
-\ +! ( n addr -- )
-: +! 
+: +! ( n addr -- )
   tuck @ + swap ! ;
 
+\ *************************************************
 \ some double cell words, mostly taken from gforth
+\ *************************************************
 
 \ 2drop	( w1 w2 -- )		core	two_drop
 : 2drop
