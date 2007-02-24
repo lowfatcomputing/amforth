@@ -1,5 +1,5 @@
-Date: 4.1.2007
-Author: mtrute
+Date: 24.2.2007
+Author: mtrute@users.sourceforge.net (will be forwarded)
 
 amforth: interactive Forth for Atmel ATmega micro controllers.
 
