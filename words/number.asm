@@ -42,6 +42,7 @@ PFA_NUMBER2:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_DIGIT
+    .dw XT_EQUALZERO ; a not is needed
     ; check for non number characters and stop converting if found
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER3
