@@ -41,6 +41,9 @@
 .include "words/allot.asm"
 .include "words/comma.asm"
 
+.include "words/abort.asm"
+.include "words/abortstring.asm"
+
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
@@ -117,6 +120,8 @@
 .include "words/leftbracket.asm"
 .include "words/variable.asm"
 .include "words/constant.asm"
+; .include "words/value.asm"
+; .include "words/to.asm"
 .include "words/user.asm"
 .include "words/backslash.asm"
 .include "words/lparenthesis.asm"

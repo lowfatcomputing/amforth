@@ -19,8 +19,8 @@ PFA_QUIT:
     .dw XT_TICKPAUSE
     .dw XT_STORE
 
-    .dw XT_VER
     .dw XT_CR
+    .dw XT_VER
 
     .dw XT_TICKTURNKEY
     .dw XT_EFETCH
@@ -57,8 +57,8 @@ PFA_QUIT4:
     .dw PFA_QUIT3
 	.dw XT_DUP
 	.dw XT_DOLITERAL
-	.dw -1
-	.dw XT_EQUAL
+	.dw -3
+	.dw XT_GREATER
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
 	.dw XT_DOBRANCH

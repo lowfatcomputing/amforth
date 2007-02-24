@@ -3,7 +3,6 @@
 
 .include "words/exit.asm"
 .include "words/execute.asm"
-.include "words/abort.asm"
 .include "words/dobranch.asm"
 .include "words/docondbranch.asm"
 
