@@ -91,7 +91,7 @@ rheap:
 ; eeprom free memory
     .dw eheap
 ; turnkey address
-    .dw 0
+    .dw XT_VER
 ; 1st free address in EEPROM, see above
 eheap:
 .cseg
