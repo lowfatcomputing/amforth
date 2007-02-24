@@ -14,7 +14,7 @@ PFA_LESS:
     cp temp0, temp2
     cpc temp1, temp3
     movw zl, zerol
-    brmi PFA_LESS1
+    brlt PFA_LESS1
     brbs 1, PFA_LESS1
     sbiw zl, 1
 PFA_LESS1:
