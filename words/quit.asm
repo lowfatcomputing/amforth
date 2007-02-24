@@ -19,9 +19,6 @@ PFA_QUIT:
     .dw XT_TICKPAUSE
     .dw XT_STORE
 
-    .dw XT_CR
-    .dw XT_VER
-
     .dw XT_TICKTURNKEY
     .dw XT_EFETCH
     .dw XT_QDUP
@@ -57,21 +54,19 @@ PFA_QUIT4:
     .dw PFA_QUIT3
 	.dw XT_DUP
 	.dw XT_DOLITERAL
-	.dw -3
-	.dw XT_GREATER
+	.dw -2
+	.dw XT_LESS
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
-	.dw XT_DOBRANCH
-	.dw PFA_QUIT
+    	    .dw XT_DODOTSTRING
+	    .db 3, " ??"
+    	    .dw XT_DOT
+    	    .dw XT_G_IN
+    	    .dw XT_FETCH
+    	    .dw XT_DOT
 PFA_QUIT5:
-    .dw XT_DODOTSTRING
-    .db 3, " ??"
-    .dw XT_DOT
-    .dw XT_G_IN
-    .dw XT_FETCH
-    .dw XT_DOT
-    .dw XT_DOBRANCH
-    .dw PFA_QUIT2
+        .dw XT_DOBRANCH
+	.dw PFA_QUIT
 PFA_QUIT3:
     .dw XT_DODOTSTRING
     .db 3, " ok"
