@@ -60,6 +60,7 @@ PFA_QUIT4:
 	.dw PFA_QUIT5
     	    .dw XT_DODOTSTRING
 	    .db 3, " ??"
+	    .dw XT_DECIMAL
     	    .dw XT_DOT
     	    .dw XT_G_IN
     	    .dw XT_FETCH
