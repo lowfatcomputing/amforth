@@ -48,9 +48,29 @@
     i@ e!  ; immediate 
 
 
+\ ******************************************
+\ some exceptions 
+\ ******************************************
+
+: ?stack ( -- )
+    depth 0< 
+    if [ decimal ] -4 throw then
+;
+
+: ?comp  ( -- )
+    state @ 0= 
+    if [ decimal ] -14 throw then 
+;
+
+: ?pairs ( n1 n2 -- ) 
+    - 
+    if [ decimal ] -22 throw then 
+;
+
 \ a cell is 16 bit in amforth
 : cell+ ( n1 -- n2) 
     2 + ;
+
 : cells ( n -- n' )
     2* ;
 
@@ -61,12 +81,9 @@
 
 \ displays the value of the given address with current base
 : ? ( addr -- )
-    @ . ;
-
-\ some stack checks
-: ?stack ( -- )
-    depth 0< if -4 throw then
+    @ . 
 ;
+
 
 \ atmegas are always aligned
 : align ;
@@ -74,12 +91,14 @@
 
 \ we do not have any environment
 : environment? ( addr n -- f )
-    drop drop 0 ;
+    drop drop 0 
+;
 
 \ not really ans, but often used
 : nip ( a b -- b )
     swap drop 
 ;
+
 : tuck ( a b -- b a b )
     swap over
 ;
