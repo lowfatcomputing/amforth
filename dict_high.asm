@@ -69,7 +69,7 @@
 .include "words/i.asm"
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
-.include "words/dounloop.asm"
+.include "words/unloop.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/ifetch.asm"
