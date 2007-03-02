@@ -7,5 +7,6 @@ VE_PAD:
 XT_PAD:
     .dw PFA_DOVARIABLE
 PFA_PAD:
-    .dw heap
-    .set heap = heap + PADSIZE
+    .dw XT_HEAP
+    .dw XT_EFETCH
+    .dw XT_EXIT
