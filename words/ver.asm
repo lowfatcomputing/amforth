@@ -8,5 +8,5 @@ XT_VER:
     .dw DO_COLON
 PFA_VER:
     .dw XT_DODOTSTRING
-    .db 11,"amforth 1.4"
+    .db 11,"amforth 1.5"
     .dw XT_EXIT
