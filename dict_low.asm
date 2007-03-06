@@ -101,6 +101,7 @@
 .include "words/word.asm"
 .include "words/find.asm"
 .include "words/quit.asm"
+.include "words/cold.asm"
 .include "words/pause.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/g_mark.asm"

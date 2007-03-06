@@ -15,16 +15,6 @@ PFA_QUIT:
     .dw XT_ZERO
     .dw XT_STATE
     .dw XT_STORE
-    .dw XT_ZERO
-    .dw XT_TICKPAUSE
-    .dw XT_STORE
-
-    .dw XT_TICKTURNKEY
-    .dw XT_EFETCH
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_QUIT2
-    .dw XT_EXECUTE
 
 PFA_QUIT2:
     .dw XT_STATE
