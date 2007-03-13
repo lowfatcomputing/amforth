@@ -57,8 +57,8 @@ reset:
     .set heap = heap + USERSIZE * CELLSIZE
 
     ; load Forth IP with starting word (quit)
-    ldi xl, low(PFA_QUIT)
-    ldi xh, high(PFA_QUIT)
+    ldi xl, low(PFA_COLD)
+    ldi xh, high(PFA_COLD)
     ; the following is a turnkey-action, and a few more words for the dictionary
     rcall baud0
     rcall device_init
