@@ -48,7 +48,6 @@
 .include "words/invert.asm"
 .include "words/2slash.asm"
 .include "words/2star.asm"
-.include "words/slashmod.asm"
 .include "words/and.asm"
 .include "words/or.asm"
 .include "words/xor.asm"
@@ -81,3 +80,4 @@
 .include "words/1ms.asm"
 .include "words/zero.asm"
 .include "words/up.asm"
+

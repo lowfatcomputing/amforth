@@ -51,6 +51,9 @@
 .include "words/heap.asm"
 .include "words/turnkey.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/slashmod.asm"
+.include "words/uslashmod.asm"
+
 .include "words/negate.asm"
 .include "words/slash.asm"
 .include "words/mod.asm"
@@ -68,8 +71,8 @@
 .include "words/sharp_s.asm"
 .include "words/sharp_g.asm" ; #>
 .include "words/sign.asm"
+.include "words/udot.asm"
 .include "words/dot.asm"
-
 .include "words/accept.asm"
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -129,7 +132,6 @@
 .include "words/sp0.asm"
 .include "words/rp0.asm"
 .include "words/depth.asm"
-.include "words/dot-s.asm"
 .include "words/interpret.asm"
 .include "words/ver.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

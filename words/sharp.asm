@@ -9,7 +9,7 @@ XT_SHARP:
 PFA_SHARP:
     .dw XT_BASE
     .dw XT_FETCH
-    .dw XT_SLASHMOD
+    .dw XT_USLASHMOD
     .dw XT_SWAP
     .dw XT_DOLITERAL
     .dw $30
