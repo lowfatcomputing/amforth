@@ -20,8 +20,9 @@ PFA_SLASHMOD:
     com	temp1		;    change sign of dividend
     com	temp0		
     subi	temp0,low(-1)
-    sbci	temp0,high(-1)
-PFA_SLASHMOD_1:	sbrs	temp3,7	;if MSB in divisor set
+    sbci	temp1,high(-1)
+PFA_SLASHMOD_1:	
+    sbrs	temp3,7	;if MSB in divisor set
     rjmp	PFA_SLASHMOD_2
     com	temp3		;    change sign of divisor
     com	temp2		
