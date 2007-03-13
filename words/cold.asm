@@ -7,6 +7,11 @@ VE_COLD:
 XT_COLD:
     .dw DO_COLON
 PFA_COLD:
+    .dw XT_SP0
+    .dw XT_SP_STORE
+    .dw XT_RP0
+    .dw XT_RP_STORE
+
     .dw XT_ZERO
     .dw XT_STATE
     .dw XT_STORE
