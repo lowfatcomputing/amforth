@@ -79,6 +79,7 @@
 .include "words/dodotstring.asm"
 .include "words/dotstring.asm"
 .include "words/itype.asm"
+.include "words/icount.asm"
 .include "words/type.asm"
 .include "words/words.asm"
 .include "words/tick.asm"
