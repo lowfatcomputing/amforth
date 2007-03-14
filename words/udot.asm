@@ -11,4 +11,5 @@ PFA_UDOT:
     .dw XT_SHARP_S
     .dw XT_SHARP_G
     .dw XT_TYPE
+    .dw XT_SPACE
     .dw XT_EXIT
