@@ -52,7 +52,6 @@ reset:
     ldi yh, high(xt_rx0q)
     std Z+19, yh
 
-    
     ; keep free space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 
@@ -60,7 +59,7 @@ reset:
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
     ; the following is a turnkey-action, and a few more words for the dictionary
-    rcall baud0
+    rcall usart0_init
     rcall device_init
     ; enable interrupts (needed for getting (terminal) input)
     sei

@@ -39,7 +39,7 @@
 .set usart0_rx_data = heap
 .set heap = heap + usart0_rx_size
 
-baud0:
+usart0_init:
   sts usart0_tx_in,zerol
   sts usart0_tx_out,zerol
   sts usart0_rx_in,zerol
