@@ -1,5 +1,4 @@
 \ some words missing for ans compatability
-
 \ forget ccc resets dictionary to the word given
 \ the following code does not do a complete restore
 : forget ( <name> -- )
@@ -34,6 +33,10 @@
     if , exit then
     [ decimal ] -13 throw ; immediate
 
+: true ( -- true )
+    -1
+;
+
 \ *******************************************
 \ values operate in EEPROM. See documentation
 \ *******************************************
@@ -47,30 +50,38 @@
     '  1+  state @   if compile (to)  ,  exit then
     i@ e!  ; immediate 
 
+: source-id ( -- f )
+    zero \ always user input device
+;
+
+\ provide some rewind
+: save-input ( -- x1 1 )
+    >in @ 1 
+;
+
+\ 
+: restore-input ( x1 1 -- )
+    drop >in !
+;
+
+: refill ( -- f )
+    -1
+;
 
 \ ******************************************
 \ some exceptions 
 \ ******************************************
-
-: ?stack ( -- )
-    depth 0< 
-    if [ decimal ] -4 throw then
-;
-
 : ?comp  ( -- )
     state @ 0= 
-    if [ decimal ] -14 throw then 
-;
+    if [ decimal ] -14 throw then ;
 
 : ?pairs ( n1 n2 -- ) 
     - 
-    if [ decimal ] -22 throw then 
-;
+    if [ decimal ] -22 throw then ;
 
 \ a cell is 16 bit in amforth
 : cell+ ( n1 -- n2) 
     2 + ;
-
 : cells ( n -- n' )
     2* ;
 
@@ -81,9 +92,12 @@
 
 \ displays the value of the given address with current base
 : ? ( addr -- )
-    @ . 
-;
+    @ . ;
 
+\ some stack checks
+: ?stack ( -- )
+    depth 0< if -4 throw then
+;
 
 \ atmegas are always aligned
 : align ;
@@ -91,14 +105,26 @@
 
 \ we do not have any environment
 : environment? ( addr n -- f )
-    drop drop 0 
+    drop drop 0 ;
+
+\ we do not evaluate strings
+: evaluate? ( *ix uaddr n -- *jx )
+    drop drop
+;
+
+: fill ( c-addr u c -- )
+    rot rot ( -- c c-addr u )
+    0 do
+	over over
+	c!
+	1+
+    loop 
 ;
 
 \ not really ans, but often used
 : nip ( a b -- b )
     swap drop 
 ;
-
 : tuck ( a b -- b a b )
     swap over
 ;
@@ -112,6 +138,12 @@
 
 : +! ( n addr -- )
   tuck @ + swap ! ;
+
+: spaces ( u -- ) ?dup if 0 do space loop then ;
+
+: u.r ( u w -- )
+      >r  <# #s #>  r> over - 0 max spaces type ;
+
 
 \ *************************************************
 \ some double cell words, mostly taken from gforth
