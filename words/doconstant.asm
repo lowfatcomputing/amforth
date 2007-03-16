@@ -1,9 +1,9 @@
 ; ( -- addr )
 ; R( -- )
-;VE_DOVARIABLE:
-;    .db $0a, "(variable)", 0
+;VE_DOCONSTAN:
+;    .db $0a, "(constant)", 0
 ;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOVARIABLE
+;    .set VE_HEAD = VE_DOCONSTANT
 XT_DOCONSTANT:
     .dw PFA_DOCONSTANT
 PFA_DOCONSTANT:

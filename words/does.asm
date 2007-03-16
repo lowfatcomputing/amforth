@@ -1,7 +1,5 @@
 ; ( -- )
 ; R( -- )
-; compile (does)
-; compile (colon)
 VE_DOES:
     .db $85, "does>"
     .dw VE_HEAD
@@ -20,16 +18,17 @@ PFA_DOES:
     .dw XT_COMMA ; the address of this cell is used by (does>)
     .dw XT_EXIT
 
-; R> LATEST @ NAME> i! ;
-
+; ( -- )
+;R( -- )
+;VE_DODOES:
+;   .db $07, "(does>)"
+;   .set VE_HEAD = VE_DODOES
 XT_DODOES:
     .dw DO_COLON
 PFA_DODOES:
     .dw XT_R_FROM
-    ; LATEST
     .dw XT_HEAD
     .dw XT_EFETCH
-    ; NAME>
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL
