@@ -5,7 +5,7 @@ VE_PLUSSTORE:
     .dw VE_HEAD
     .set VE_HEAD = VE_PLUSSTORE
 XT_PLUSSTORE:
-    .dw PFA_PLUS
+    .dw PFA_PLUSSTORE
 PFA_PLUSSTORE:
     ld zh, Y+
     ld zl, Y+
