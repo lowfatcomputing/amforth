@@ -11,7 +11,7 @@ PFA_VARIABLE:
     .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_DOLITERAL
-    .dw XT_DOVARIABLE
+    .dw PFA_DOVARIABLE
     .dw XT_COMMA
     .dw XT_HEAP
     .dw XT_EFETCH

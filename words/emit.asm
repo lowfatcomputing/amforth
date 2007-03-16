@@ -5,7 +5,7 @@ VE_TICKEMIT:
     .dw VE_HEAD
     .set VE_HEAD = VE_TICKEMIT
 XT_TICKEMIT:
-    .dw XT_DOUSER
+    .dw PFA_DOUSER
 PFA_TICKEMIT:
     .dw 12
 

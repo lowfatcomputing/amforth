@@ -5,7 +5,7 @@ VE_TICKPAUSE:
     .dw VE_HEAD
     .set VE_HEAD = VE_TICKPAUSE
 XT_TICKPAUSE:
-    .dw XT_DOVARIABLE
+    .dw PFA_DOVARIABLE
 PFA_TICKPAUSE:
     .dw heap
     .set heap = heap + CELLSIZE

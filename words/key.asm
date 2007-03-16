@@ -5,7 +5,7 @@ VE_TICKKEY:
     .dw VE_HEAD
     .set VE_HEAD = VE_TICKKEY
 XT_TICKKEY:
-    .dw XT_DOUSER
+    .dw PFA_DOUSER
 PFA_TICKKEY:
     .dw 16
 
