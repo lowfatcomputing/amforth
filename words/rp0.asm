@@ -15,4 +15,14 @@ XT_DORP0:
     .dw PFA_DOUSER
 PFA_DORP0:
     .dw 2
-    
+
+; ( -- addr)
+; R( -- )
+VE_RP:
+    .db $02, "rp",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_RP
+XT_RP:
+    .dw PFA_DOUSER
+PFA_RP:
+    .dw 4    

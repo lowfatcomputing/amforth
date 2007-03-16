@@ -15,3 +15,14 @@ XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:
     .dw 6
+
+; ( -- addr)
+; R( -- )
+VE_SP:
+    .db $02, "sp",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SP
+XT_DOSP:
+    .dw PFA_DOUSER
+PFA_DOSP:
+    .dw 8
