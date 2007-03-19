@@ -55,7 +55,7 @@ reset:
     ; keep free space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 
-    ; load Forth IP with starting word (quit)
+    ; load Forth IP with starting word 
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
     ; the following is a turnkey-action, and a few more words for the dictionary
