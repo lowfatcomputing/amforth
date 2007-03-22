@@ -1,4 +1,4 @@
-; ( -- ) 
+; ( -- )
 ; R( -- ) may make a context switch
 VE_TICKPAUSE:
     .db $06, $27, "pause", 0
@@ -21,9 +21,5 @@ XT_PAUSE:
 PFA_PAUSE:
     .dw XT_TICKPAUSE
     .dw XT_FETCH
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_PAUSE1
-    .dw XT_EXECUTE
-PFA_PAUSE1:
+    .dw XT_QEXECUTE
     .dw XT_EXIT
