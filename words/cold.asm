@@ -22,10 +22,6 @@ PFA_COLD:
 
     .dw XT_TICKTURNKEY
     .dw XT_EFETCH
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_COLD1
-    .dw XT_EXECUTE
-PFA_COLD1:
+    .dw XT_QEXECUTE
     .dw XT_QUIT
     .dw XT_EXIT

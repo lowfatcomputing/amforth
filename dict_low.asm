@@ -1,13 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; header
 ;  +--1+x--++--2--+--2----0+x...--
-;  | VOC   |  L  | XT  | PF      
+;  | VOC   |  L  | XT  | PF
 ;  +-------#-----+-----+----....--
 ; VOC (flags may be inverted to be flash friendly)
 ;       Bit
 ;         7 6 5 4-0
 ;         I U U Length
-;    I = Immediate 
+;    I = Immediate
 ;    U = Unused
 ;    Length = length of word name (1..31)
 ;      Length number of bytes, filled to next cell
@@ -29,7 +29,7 @@
 .include "words/tib.asm"
 .include "words/pad.asm"
 .include "words/hld.asm"
-
+.include "words/qexecute.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"
 .include "words/key.asm"

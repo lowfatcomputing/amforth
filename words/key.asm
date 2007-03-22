@@ -1,4 +1,4 @@
-; ( -- c ) 
+; ( -- c )
 ; R( -- )
 VE_TICKKEY:
     .db $04, $27, "key",0
@@ -20,9 +20,5 @@ XT_KEY:
 PFA_KEY:
     .dw XT_TICKKEY
     .dw XT_FETCH
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_KEY1
-    .dw XT_EXECUTE
-PFA_KEY1:
+    .dw XT_QEXECUTE
     .dw XT_EXIT

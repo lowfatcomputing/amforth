@@ -1,4 +1,4 @@
-; ( -- f ) 
+; ( -- f )
 ; R( -- )
 VE_TICKEMITQ:
     .db $06, $27, "emit?",0
@@ -20,9 +20,5 @@ XT_EMITQ:
 PFA_EMITQ:
     .dw XT_TICKEMITQ
     .dw XT_FETCH
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_EMITQ1
-    .dw XT_EXECUTE
-PFA_EMITQ1:
+    .dw XT_QEXECUTE
     .dw XT_EXIT
