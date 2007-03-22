@@ -66,6 +66,7 @@
 
 .include "words/dodo.asm"
 .include "words/i.asm"
+.include "words/j.asm"
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
 .include "words/unloop.asm"
