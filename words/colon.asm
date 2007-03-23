@@ -10,8 +10,7 @@ PFA_COLON:
     .dw XT_BL
     .dw XT_WORD
     .dw XT_DOCREATE
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw DO_COLON
-    .dw XT_COMMA
     .dw XT_RBRACKET
     .dw XT_EXIT

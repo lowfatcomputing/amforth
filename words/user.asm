@@ -10,8 +10,7 @@ PFA_USER:
     .dw XT_BL
     .dw XT_WORD
     .dw XT_DOCREATE
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw PFA_DOUSER
-    .dw XT_COMMA
     .dw XT_COMMA
     .dw XT_EXIT

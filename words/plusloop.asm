@@ -7,8 +7,7 @@ VE_PLOOP:
 XT_PLOOP:
     .dw DO_COLON
 PFA_PLOOP:
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw XT_DOPLUSLOOP
-    .dw XT_COMMA
     .dw XT_LRESOLVE
     .dw XT_EXIT

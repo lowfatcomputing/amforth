@@ -29,9 +29,8 @@ PFA_INTERPRET1:
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET9
     ; 
+    .dw XT_COMPILE
     .dw XT_DOLITERAL
-    .dw XT_DOLITERAL
-    .dw XT_COMMA
     .dw XT_COMMA
 PFA_INTERPRET9:
     .dw XT_DOBRANCH

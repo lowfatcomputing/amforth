@@ -8,7 +8,6 @@ XT_GMARK:
     .dw DO_COLON
 PFA_GMARK:
     .dw XT_HERE
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw -1           ; ffff does not erase flash
-    .dw XT_COMMA
     .dw XT_EXIT

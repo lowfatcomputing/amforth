@@ -10,12 +10,10 @@ PFA_DOES:
     .dw XT_DOLITERAL
     .dw XT_DODOES
     .dw XT_COMMA
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw $940e
-    .dw XT_COMMA
-    .dw XT_DOLITERAL 
+    .dw XT_COMPILE; the address of this cell is used by (does>)
     .dw DO_DODOES
-    .dw XT_COMMA ; the address of this cell is used by (does>)
     .dw XT_EXIT
 
 ; ( -- )

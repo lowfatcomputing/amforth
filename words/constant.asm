@@ -10,9 +10,8 @@ PFA_CONSTANT:
     .dw XT_BL
     .dw XT_WORD
     .dw XT_DOCREATE
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw PFA_DOVARIABLE
-    .dw XT_COMMA
     .dw XT_COMMA
     .dw XT_EXIT
 

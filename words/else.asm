@@ -7,9 +7,8 @@ VE_ELSE:
 XT_ELSE:
     .dw DO_COLON
 PFA_ELSE:
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw XT_DOBRANCH
-    .dw XT_COMMA
     .dw XT_GMARK
     .dw XT_SWAP
     .dw XT_GRESOLVE

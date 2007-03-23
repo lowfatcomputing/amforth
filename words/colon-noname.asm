@@ -8,8 +8,7 @@ XT_COLONNONAME:
     .dw DO_COLON
 PFA_COLONNONAME:
     .dw XT_HERE
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw DO_COLON
-    .dw XT_COMMA
     .dw XT_RBRACKET
     .dw XT_EXIT

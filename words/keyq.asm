@@ -1,5 +1,6 @@
 ; ( -- f )
 ; R( -- )
+; vector for XT of the word executed when checking for key input. defaults to rx0?
 VE_TICKKEYQ:
     .db $05, $27, "key?"
     .dw VE_HEAD
@@ -9,8 +10,9 @@ XT_TICKKEYQ:
 PFA_TICKKEYQ:
     .dw 18
 
-; fetch 'key? vector and execute its token
-; if not zero
+; ( -- f)
+; R:( -- )
+; fetch 'key? vector and execute it if not zero. Leave true if a character can be read, false otherwise
 VE_KEYQ:
     .db $04, "key?",0
     .dw VE_HEAD

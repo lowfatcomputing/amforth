@@ -7,8 +7,7 @@ VE_SEMICOLON:
 XT_SEMICOLON:
     .dw DO_COLON
 PFA_SEMICOLON:
-    .dw XT_DOLITERAL
+    .dw XT_COMPILE
     .dw XT_EXIT
-    .dw XT_COMMA
     .dw XT_LBRACKET
     .dw XT_EXIT
