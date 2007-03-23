@@ -88,6 +88,7 @@ PFA_ACCEPT4:
     .dw PFA_ACCEPT1
     .dw XT_DUP
 PFA_ACCEPT2:
+    .dw XT_SLASHKEY
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_R_FROM

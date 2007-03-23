@@ -52,10 +52,15 @@ reset:
     ldi yh, high(xt_rx0q)
     std Z+19, yh
 
+    ldi yl, low(xt_noop)
+    std Z+20, yl
+    ldi yh, high(xt_noop)
+    std Z+21, yh
+
     ; keep free space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 
-    ; load Forth IP with starting word 
+    ; load Forth IP with starting word
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
     ; the following is a turnkey-action, and a few more words for the dictionary
