@@ -12,10 +12,6 @@ PFA_SIGN:
     .dw PFA_SIGN1
     .dw XT_DOLITERAL
     .dw $2d
-    .dw XT_DOBRANCH
-    .dw PFA_SIGN2
-PFA_SIGN1:
-    .dw XT_BL
-PFA_SIGN2:
     .dw XT_HOLD
+PFA_SIGN1:
     .dw XT_EXIT
