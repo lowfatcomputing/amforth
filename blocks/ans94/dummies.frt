@@ -1,7 +1,7 @@
 \ following words are stupid placeholders
 \ 
 : source-id ( -- f )
-    zero \ always user input device
+    0 \ always user input device
 ;
 
 \ provide some kind of rewind
