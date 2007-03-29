@@ -1,5 +1,6 @@
 ; (addr -- n )
 ; R( -- )
+; convert a word to a number, throw exception -1 on error
 VE_NUMBER:
     .db $06, "number",0
     .dw VE_HEAD

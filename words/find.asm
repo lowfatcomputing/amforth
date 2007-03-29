@@ -1,5 +1,6 @@
 ; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] )
 ; R( -- )
+; search dictionary
 VE_FIND:
     .db $04, "find", 0
     .dw VE_HEAD
@@ -61,7 +62,7 @@ PFA_ICOMPARE:
     .dw XT_DOLITERAL
     .dw $0080
     .dw XT_AND
-    .dw XT_TO_R
+    .dw XT_TO_R           ; send immediate flag to r-stack
     .dw XT_ZERO
     .dw XT_TO_R
     .dw XT_DOLITERAL

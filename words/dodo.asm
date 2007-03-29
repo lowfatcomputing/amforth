@@ -1,5 +1,6 @@
 ; ( limit counter -- )
 ; R( -- -- limit counter ) == loop-sys
+; runtime of do
 ;VE_DODO:
 ;    .db 4, "(do)", 0
 ;    .dw VE_HEAD

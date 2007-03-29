@@ -1,5 +1,6 @@
 ; ( addr -- )
 ; R( -- )
+; finish begin with conditional branch
 VE_UNTIL:
     .db $85, "until"
     .dw VE_HEAD

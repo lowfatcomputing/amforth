@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; start conditional branch
 VE_IF:
     .db $82, "if",0
     .dw VE_HEAD

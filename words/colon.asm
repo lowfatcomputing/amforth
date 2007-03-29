@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- ) 
+; create named entry in the dictionary
 VE_COLON:
     .db $1, ":"
     .dw VE_HEAD

@@ -1,4 +1,6 @@
-;  ( adr -- adr n )  get count byte out of packed counted string
+;  ( adr -- adr n )  
+; R( -- )
+; get count byte out of packed counted string in flash
 VE_ICOUNT:
     .db $06, "icount",0
     .dw VE_HEAD

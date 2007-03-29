@@ -1,5 +1,6 @@
 ; ( n1 -- n2)
 ; R( -- )
+; 1-complement of TOS
 VE_INVERT:
     .db $06, "invert",0
     .dw VE_HEAD

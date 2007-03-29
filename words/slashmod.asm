@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3 n4)
 ; R( -- )
+; signed division and remainder
 VE_SLASHMOD:
     .db $04, "/mod",0
     .dw VE_HEAD

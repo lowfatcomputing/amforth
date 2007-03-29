@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( w1 -- w2 )
+; runtime of ."
 ;VE_DODOTSTRING:
 ;    .db $04, "(.",$22, ")",0
 ;    .dw VE_HEAD

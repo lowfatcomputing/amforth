@@ -1,5 +1,6 @@
 ; ( n -- n n )
 ; R( -- )
+; duplicate TOS
 VE_DUP:
     .db $03, "dup"
     .dw VE_HEAD

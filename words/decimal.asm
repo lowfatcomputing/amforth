@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; set base to 10 (decimal)
 VE_DECIMAL:
     .db $07, "decimal"
     .dw VE_HEAD

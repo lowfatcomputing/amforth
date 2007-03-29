@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n2 n1)
 ; R( -- )
+; stack manipulation
 VE_SWAP:
     .db $04, "swap",0
     .dw VE_HEAD

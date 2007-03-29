@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; emits the version string
 VE_VER:
     .db $03, "ver"
     .dw VE_HEAD
@@ -8,5 +9,5 @@ XT_VER:
     .dw DO_COLON
 PFA_VER:
     .dw XT_DODOTSTRING
-    .db 11,"amforth 1.6"
+    .db 11,"amforth 1.7"
     .dw XT_EXIT

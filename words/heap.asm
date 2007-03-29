@@ -1,5 +1,6 @@
-; ( -- eaddr) address from eeprom
+; ( -- eaddr)
 ; R( -- )
+;  address of first unallocated RAM
 VE_HEAP:
     .db $04, "heap",0
     .dw VE_HEAD

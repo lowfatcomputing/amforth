@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; place PFA on TOS
 ;VE_DOCONSTAN:
 ;    .db $0a, "(constant)", 0
 ;    .dw VE_HEAD

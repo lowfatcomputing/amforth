@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3)
 ; R( -- )
+; logical shift right
 VE_RSHIFT:
     .db $06, "rshift",0
     .dw VE_HEAD

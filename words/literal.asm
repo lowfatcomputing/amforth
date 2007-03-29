@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; compile a literal in colon defintions
 VE_LITERAL:
     .db $87, "literal"
     .dw VE_HEAD

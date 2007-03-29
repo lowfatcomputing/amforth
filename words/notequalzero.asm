@@ -1,5 +1,6 @@
 ; ( n -- flag )
 ; R( -- )
+; compare with zero
 VE_NOTEQUALZERO:
     .db $03, "0<>"
     .dw VE_HEAD

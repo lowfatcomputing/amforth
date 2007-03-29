@@ -1,5 +1,6 @@
 ; ( xt -- )
 ; R: ( -- )
+; execute XT
 VE_EXECUTE:
     .db $07, "execute"
     .dw VE_HEAD

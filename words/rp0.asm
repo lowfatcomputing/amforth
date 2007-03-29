@@ -1,5 +1,6 @@
 ; ( -- addr)
 ; R( -- )
+; start value of return stack
 VE_RP0:
     .db $03, "rp0"
     .dw VE_HEAD
@@ -18,6 +19,7 @@ PFA_DORP0:
 
 ; ( -- addr)
 ; R( -- )
+; address of variable to store the return stack pointer for inactive tasks
 VE_RP:
     .db $02, "rp",0
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- n)
 ; ( R: n -- n )
+; fetch content of TOR
 VE_R_FETCH:
     .db $02, "r@",0
     .dw VE_HEAD

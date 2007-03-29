@@ -1,5 +1,6 @@
 ; (  -- n)
 ; R( -- )
+; current data stack pointer
 VE_SP_FETCH:
     .db $03, "sp@"
     .dw VE_HEAD

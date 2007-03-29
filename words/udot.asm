@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; unsigned numeric output
 VE_UDOT:
     .db $02, "u.",0
     .dw VE_HEAD

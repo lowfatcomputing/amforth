@@ -1,5 +1,6 @@
 ; ( -- )
 ; R(loop-sys -- )
+; remove loop-sys
 VE_UNLOOP:
     .db 6, "unloop", 0
     .dw VE_HEAD

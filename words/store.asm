@@ -1,5 +1,6 @@
 ; ( n addr -- )
 ; R( -- )
+; write 16bit to RAM memory (or IO or CPU registers)
 VE_STORE:
     .db $01, "!"
     .dw VE_HEAD

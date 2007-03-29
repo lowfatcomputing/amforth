@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; compile 16 bit into flash at here.
 VE_COMMA:
     .db $01, $2c ; ,
     .dw VE_HEAD

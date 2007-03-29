@@ -1,4 +1,6 @@
-; stack pointer changed
+; ( -- )
+; R( -- )
+; compile  XT of the word beeing currently defined into dictionary (! not conforming to ANS!)
 VE_RECURSE:
     .db $87, "recurse"
     .dw VE_HEAD

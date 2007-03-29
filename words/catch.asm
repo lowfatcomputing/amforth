@@ -1,5 +1,6 @@
 ; ( xt -- )
 ; R( -- ) or R( ny -- )
+; execute the XT and restore stack frame if an exception is thrown
 VE_CATCH:
     .db $05, "catch"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( addr -- )
 ; R( -- )
+; compile +loop and resolve branch
 VE_PLOOP:
     .db $85, "+loop"
     .dw VE_HEAD

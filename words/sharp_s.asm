@@ -1,5 +1,6 @@
 ; ( n1 -- 0)
 ; R( -- )
+; call # until a value of zero is reached
 VE_SHARP_S:
     .db $02, "#s",0
     .dw VE_HEAD

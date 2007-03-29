@@ -1,5 +1,6 @@
 ; (n1 -- addr count)
 ; R( -- )
+; convert HLD buffer to a usable string
 VE_SHARP_G:
     .db $02, "#>",0
     .dw VE_HEAD

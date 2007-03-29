@@ -1,5 +1,6 @@
-; ( addr - n) read 2 bytes from eeprom
+; ( addr - n) 
 ; R( -- )
+; read 2 bytes from eeprom
 VE_EFETCH:
     .db $02, "e@",0
     .dw VE_HEAD

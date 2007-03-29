@@ -1,5 +1,6 @@
-; ( c -- )
+; ( -- addr )
 ; R( -- )
+; contains the address of the variable that contains the XT of the emit action
 VE_TICKEMIT:
     .db $05, $27, "emit"
     .dw VE_HEAD
@@ -9,8 +10,9 @@ XT_TICKEMIT:
 PFA_TICKEMIT:
     .dw 12
 
-; fetch 'EMIT vector and execute its token
-; if not zero
+; ( c -- )
+; R( -- )
+; fetch 'EMIT vector and execute its token if not zero
 VE_EMIT:
     .db $04, "emit",0
     .dw VE_HEAD

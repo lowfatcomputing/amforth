@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; main entry word. executes turnkey operation and executes quit
 VE_COLD:
     .db $04, "cold", 0
     .dw VE_HEAD

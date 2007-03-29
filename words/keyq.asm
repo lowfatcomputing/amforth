@@ -1,4 +1,4 @@
-; ( -- f )
+; ( -- addr )
 ; R( -- )
 ; vector for XT of the word executed when checking for key input. defaults to rx0?
 VE_TICKKEYQ:

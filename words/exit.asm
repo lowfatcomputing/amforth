@@ -1,5 +1,6 @@
 ; ( -- ) 
 ; R: ( xt -- )
+; end of current colon word
 VE_EXIT:
     .db $04, "exit",0
     .dw VE_HEAD

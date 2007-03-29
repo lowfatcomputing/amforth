@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; pointer to current read position in TIB
 VE_G_IN:
     .db $03, ">in"
     .dw VE_HEAD

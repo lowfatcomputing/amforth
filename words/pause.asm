@@ -1,5 +1,6 @@
-; ( -- )
-; R( -- ) may make a context switch
+; ( -- addr )
+; R( -- ) 
+; task changer vector in RAM
 VE_TICKPAUSE:
     .db $06, $27, "pause", 0
     .dw VE_HEAD
@@ -10,8 +11,9 @@ PFA_TICKPAUSE:
     .dw heap
     .set heap = heap + CELLSIZE
 
-; fetch 'pause vector and execute its token
-; if not zero
+; ( -- )
+; R( -- ) 
+; fetch 'pause vector and execute its token if not zero. may make a context/task switch
 VE_PAUSE:
     .db $05, "pause"
     .dw VE_HEAD

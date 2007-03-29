@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3 )
 ; R( -- )
+; subtract 
 VE_MINUS:
     .db $01, "-"
     .dw VE_HEAD

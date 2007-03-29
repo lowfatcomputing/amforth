@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3)
 ; R( -- )
+; remainder of division
 VE_MOD:
     .db $03, "mod"
     .dw VE_HEAD

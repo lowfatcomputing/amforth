@@ -1,5 +1,6 @@
-; ( -- eaddr) first free address in eeprom
+; ( -- eaddr) 
 ; R( -- )
+; first unused address in eeprom
 VE_EDP:
     .db $03, "edp"
     .dw VE_HEAD

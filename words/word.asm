@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; skipd leading delimiter characters and parses TIB to the next
 VE_WORD:
     .db $04, "word",0
     .dw VE_HEAD

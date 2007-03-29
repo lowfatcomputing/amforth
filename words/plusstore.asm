@@ -1,5 +1,6 @@
 ; ( n addr -- )
 ; R( -- )
+; add value to content of RAM address
 VE_PLUSSTORE:
     .db $02, "+!",0
     .dw VE_HEAD

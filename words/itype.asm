@@ -1,5 +1,6 @@
 ; R( -- )
 ; ( addr n --  )
+; reads packed string from flash and emit it
 VE_ITYPE:
     .db $05, "itype"
     .dw VE_HEAD
@@ -89,14 +90,9 @@ PFA_ITYPE6:
     .dw XT_DROP
     .dw XT_EXIT
 
-;;;;;;;;;;;;;;;;;;
-;
-;  : lo-emit ( w -- ) 
-;    0ff and emit ;
-;
-;;;;;;;;;;;;;;;;;;
-
-; ( w -- )    content of cell fetched on stack.
+; ( w -- )    
+; R: ( -- )
+; content of cell fetched on stack.
 ; VE_LOEMIT:
 ;    .db $06, "loemit"
 ;    .dw VE_HEAD
@@ -112,14 +108,9 @@ PFA_LOEMIT:
 
 
 
-;;;;;;;;;;;;;;;;;;
-;
-; : hi-emit ( w -- ) 
-;   8 rshift emit ;
-;
-;;;;;;;;;;;;;;;;;;
-
-; ( w -- )    content of cell fetched on stack.
+; ( w -- )    
+; R:( -- )
+; content of cell fetched on stack.
 ; VE_HIEMIT:
 ;    .db $06, "hiemit"
 ;    .dw VE_HEAD

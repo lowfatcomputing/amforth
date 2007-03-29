@@ -1,5 +1,6 @@
 ; ( addr --  )
 ; R( -- )
+; creates the vocabulary header without XT and PFA
 ;VE_DOCREATE:
 ;    .db $08, "(create)",0
 ;    .dw VE_HEAD

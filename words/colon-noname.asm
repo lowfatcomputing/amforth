@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- ) 
+; create unnamed entry in the dictionary
 VE_COLONNONAME:
     .db $7, ":noname"
     .dw VE_HEAD

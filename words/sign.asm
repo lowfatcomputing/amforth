@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; place a - in HLD if value is negative
 VE_SIGN:
     .db $04, "sign",0
     .dw VE_HEAD

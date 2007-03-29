@@ -1,5 +1,6 @@
 ; (addr1 -- addr2 )
 ; R( -- )
+; go back to begin
 VE_REPEAT:
     .db $86, "repeat",0
     .dw VE_HEAD

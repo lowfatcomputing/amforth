@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; runtime portion of branch
 ;VE_DOBRANCH:
 ;    .db $08, "(branch)",0
 ;    .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- 0 )
 ; R( -- )
+; leaves the value 0 on TOS
 VE_ZERO:
     .db $01, "0"
     .dw VE_HEAD

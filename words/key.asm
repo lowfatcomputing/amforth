@@ -1,4 +1,4 @@
-; ( -- c )
+; ( -- addr )
 ; R( -- )
 ; vector for XT of the word executed when waiting for key input. Defaults to rx0
 VE_TICKKEY:
@@ -10,7 +10,7 @@ XT_TICKKEY:
 PFA_TICKKEY:
     .dw 16
 
-; ( -- c)
+; ( -- c )
 ; R( -- )
 ; fetch 'KEY vector and execute its token if not zero
 VE_KEY:

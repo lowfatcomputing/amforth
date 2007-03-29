@@ -1,5 +1,6 @@
 ; (n1 n2 -- n3 )
 ; R( -- )
+; bitwise and
 VE_AND:
     .db $03, "and"
     .dw VE_HEAD

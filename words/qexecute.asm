@@ -1,5 +1,6 @@
 ; ( xt|0 -- )
 ; R( -- )
+; execute XT if non-zero
 VE_QEXECUTE:
     .db $08, "?execute",0
     .dw VE_HEAD

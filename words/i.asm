@@ -1,5 +1,6 @@
 ; ( -- n )
 ; R( loop-sys -- loop-sys)
+; current loop counter
 VE_I:
     .db 1, "i"
     .dw VE_HEAD

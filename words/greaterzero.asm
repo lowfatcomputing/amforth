@@ -1,5 +1,6 @@
 ; ( n1 -- flag )
 ; R( -- )
+; compare with zero
 VE_GREATERZERO:
     .db $02, "0>",0
     .dw VE_HEAD

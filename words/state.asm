@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; system state
 VE_STATE:
     .db $05, "state"
     .dw VE_HEAD

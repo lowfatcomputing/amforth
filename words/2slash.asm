@@ -1,5 +1,6 @@
 ; ( n1 -- n2 )
 ; R( -- )
+; arithmetic shift right
 VE_2SLASH:
     .db $02, "2/", 0
     .dw VE_HEAD

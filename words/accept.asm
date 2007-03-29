@@ -1,5 +1,6 @@
 ; ( addr n1 -- n2 )
 ; R( -- )
+; reads a line with with KEY into TIB until line is full or cr/lf 
 VE_ACCEPT:
     .db $06, "accept",0
     .dw VE_HEAD

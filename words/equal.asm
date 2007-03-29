@@ -1,5 +1,6 @@
 ; ( n1 n2 -- flag )
 ; R( -- )
+; compares two values
 VE_EQUAL:
     .db $01, "="
     .dw VE_HEAD

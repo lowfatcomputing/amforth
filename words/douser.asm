@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; runtime part of user
 ;VE_DOUSER:
 ;    .db $06, "(user)", 0
 ;    .dw VE_HEAD

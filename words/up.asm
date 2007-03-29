@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; get user pointer
 VE_UP_FETCH:
     .db $03, "up@"
     .dw VE_HEAD
@@ -13,6 +14,7 @@ PFA_UP_FETCH:
 
 ; ( addr -- )
 ; R( -- )
+; set user pointer
 VE_UP_STORE:
     .db $03, "up!"
     .dw VE_HEAD

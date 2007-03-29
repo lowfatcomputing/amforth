@@ -1,5 +1,6 @@
 ; ( -- c )
 ; R( -- )
+; first character of the next word
 VE_CHAR:
     .db $4, "char",0
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; start a control structture
 VE_BEGIN:
     .db $85, "begin"
     .dw VE_HEAD

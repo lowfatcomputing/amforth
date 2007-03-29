@@ -1,5 +1,6 @@
 ; ( addr -- addr+1 n)
 ; R( -- )
+; addr is the address of a counted string in RAM
 VE_COUNT:
     .db $05, "count"
     .dw VE_HEAD

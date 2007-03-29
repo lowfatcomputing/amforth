@@ -1,5 +1,6 @@
 ; ( --  )
 ; R( -- )
+; put system to interpreter state
 VE_LBRACKET:
     .db $81, "["
     .dw VE_HEAD

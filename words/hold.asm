@@ -1,5 +1,6 @@
 ; ( c -- )
 ; R( -- )
+; prepend character to pictured numeric output buffer
 VE_HOLD:
     .db $04, "hold",0
     .dw VE_HEAD
@@ -7,8 +8,6 @@ VE_HOLD:
 XT_HOLD:
     .dw DO_COLON
 PFA_HOLD:
-    ; prepends lower byte (character) from tos to counted string in HLD
-    
     ; move characters to the right
     .dw XT_HLD ; from
     .dw XT_1PLUS

@@ -1,5 +1,6 @@
 ; ( n1 n2 n3 -- n2 n3 n1)
 ; R( -- )
+; stack manupulation
 VE_ROT:
     .db $03, "rot"
     .dw VE_HEAD

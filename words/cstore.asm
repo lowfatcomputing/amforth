@@ -1,5 +1,6 @@
 ; ( c addr -- )
 ; R( -- )
+; store a byte to RAM address
 VE_CSTORE:
     .db $02, "c!",0
     .dw VE_HEAD

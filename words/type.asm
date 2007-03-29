@@ -1,5 +1,6 @@
 ; ( addr n -- )
 ; R( -- )
+; emits a string
 VE_TYPE:
     .db $04, "type",0
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; create a variable entry and allocate RAM space for it
 VE_VARIABLE:
     .db $08, "variable",0
     .dw VE_HEAD

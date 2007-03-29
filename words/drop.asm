@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; drop TOS
 VE_DROP:
     .db $04, "drop", 0
     .dw VE_HEAD

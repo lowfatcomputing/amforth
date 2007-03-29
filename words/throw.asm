@@ -1,5 +1,6 @@
 ; ( n -- ) or stackpointer changed
 ; R( -- ) or stackpointer reset
+; throw an exception
 VE_THROW:
     .db $05, "throw"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- n )
 ; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
+; loop conter of outer loop
 VE_J:
     .db 1, "j"
     .dw VE_HEAD

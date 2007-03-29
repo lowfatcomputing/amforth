@@ -1,5 +1,6 @@
 ; (  -- )
 ; R( -- )
+; busy waits exactly 1 milli second
 VE_1MS:
     .db $03, "1ms"
     .dw VE_HEAD

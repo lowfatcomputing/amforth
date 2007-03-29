@@ -1,5 +1,6 @@
-; (n1 -- u1)
+; (n1 n2 -- n1|n2)
 ; R( -- )
+; compare two values leave the smaller one
 VE_MIN:
     .db $03, "min"
     .dw VE_HEAD

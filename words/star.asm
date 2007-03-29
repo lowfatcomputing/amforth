@@ -1,5 +1,6 @@
 ; (n1 n2 -- n3)
 ; R( -- )
+; multiply routine
 VE_MUL:
     .db $01, "*"
     .dw VE_HEAD

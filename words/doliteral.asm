@@ -1,5 +1,6 @@
 ; ( -- n1 )
 ; R( -- )
+; runtime of literal
 ;VE_DOLITERAL:
 ;    .db $09, "(literal)"
 ;    .dw VE_HEAD

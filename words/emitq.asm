@@ -1,4 +1,4 @@
-; ( -- f )
+; ( -- addr )
 ; R( -- )
 VE_TICKEMITQ:
     .db $06, $27, "emit?",0
@@ -9,8 +9,9 @@ XT_TICKEMITQ:
 PFA_TICKEMITQ:
     .dw 14
 
-; fetch 'emit? vector and execute its token
-; if not zero
+; ( -- c)
+; R( -- )
+; fetch 'emit? vector and execute its token if not zero
 VE_EMITQ:
     .db $05, "emit?"
     .dw VE_HEAD

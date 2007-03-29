@@ -1,5 +1,6 @@
 ; ( n  -- )
 ; R( -- xy) 
+; set return stack pointer
 VE_RP_STORE:
     .db $03, "rp!"
     .dw VE_HEAD

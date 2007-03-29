@@ -1,5 +1,6 @@
 ; (n -- )
 ; R( -- )
+; allocate memory in RAM
 VE_ALLOT:
     .db $05, "allot"
     .dw VE_HEAD

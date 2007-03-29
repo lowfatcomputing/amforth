@@ -1,5 +1,6 @@
 ; ( -- 32 )
 ; R( -- )
+; put ascii code of the blank to the stack
 VE_BL:
     .db $02, "bl", 0
     .dw VE_HEAD

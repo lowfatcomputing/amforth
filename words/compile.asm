@@ -1,4 +1,6 @@
 ; ( -- )
+; R( -- )
+; copy the next flash cell to here
 VE_COMPILE:
     .db $07, "compile"
     .dw  VE_HEAD

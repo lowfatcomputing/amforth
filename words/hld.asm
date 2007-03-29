@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; address of buffer for pictured numeric output
 VE_HLD:
     .db $03, "hld"
     .dw VE_HEAD

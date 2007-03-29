@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; create a named constant
 VE_CONSTANT:
     .db $08, "constant",0
     .dw VE_HEAD

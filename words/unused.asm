@@ -1,5 +1,6 @@
-; ( addr -- )
+; ( -- n )
 ; R( -- )
+; number of unused flash cells
 VE_UNUSED:
     .db $6, "unused",0
     .dw VE_HEAD

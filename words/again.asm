@@ -1,5 +1,6 @@
-; ( -- )
+; ( addr -- )
 ; R( -- )
+; go back to begin
 VE_AGAIN:
     .db $85, "again"
     .dw VE_HEAD

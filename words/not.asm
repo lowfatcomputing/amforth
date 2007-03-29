@@ -1,5 +1,6 @@
 ; ( flag -- flag' )
 ; R( -- )
+; identical to 0=
 VE_NOT:
     .db $03, "not"
     .dw VE_HEAD

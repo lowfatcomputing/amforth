@@ -1,5 +1,6 @@
-; ( -- addr )
+; ( -- XT )
 ; R( -- )
+; what does ' in the interpreter mode do in colon definitions
 VE_BRACKETTICK:
     .db $83, "[']"
     .dw VE_HEAD

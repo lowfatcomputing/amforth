@@ -1,5 +1,6 @@
 ; ( n1 n2 -- flag)
 ; R( -- )
+; compare two values
 VE_NOTEQUAL:
     .db $02, "<>", 0
     .dw VE_HEAD

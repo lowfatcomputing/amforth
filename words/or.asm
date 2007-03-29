@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3 )
 ; R( -- )
+; logical or
 VE_OR:
     .db $02, "or",0
     .dw VE_HEAD

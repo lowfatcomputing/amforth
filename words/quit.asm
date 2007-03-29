@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; main loop of amforth. accept - interpret in an endless loop
 VE_QUIT:
     .db $04, "quit", 0
     .dw VE_HEAD

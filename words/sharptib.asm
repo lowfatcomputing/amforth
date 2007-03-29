@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; number of characters in TIB
 VE_NUMBERTIB:
     .db $04, "#tib",0
     .dw VE_HEAD

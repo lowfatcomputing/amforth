@@ -1,5 +1,6 @@
 ; ( n1 -- n2)
 ; R( -- )
+; compiles next digit to HLD
 VE_SHARP:
     .db $01, "#"
     .dw VE_HEAD

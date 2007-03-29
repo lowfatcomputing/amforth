@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; finish colon defintion, compiles (exit) and returns to interpreter state 
 VE_SEMICOLON:
     .db $81, $3b
     .dw VE_HEAD

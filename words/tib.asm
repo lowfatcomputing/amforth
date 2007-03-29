@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; terminal input buffer address
 VE_TIB:
     .db $03, "tib"
     .dw VE_HEAD

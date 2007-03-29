@@ -1,4 +1,6 @@
 ; ( -- )
+; R( -- )
+; set immediate flag
 VE_IMMEDIATE:
     .db $09, "immediate"
     .dw VE_HEAD

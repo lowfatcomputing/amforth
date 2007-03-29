@@ -1,5 +1,6 @@
 ; ( n addr -- )
 ; R( -- )
+; write to eeprom address
 VE_ESTORE:
     .db $02, "e!",0
     .dw VE_HEAD

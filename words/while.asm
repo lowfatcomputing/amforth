@@ -1,5 +1,6 @@
 ; ( dest -- orig dest )
 ; R( -- )
+; control structure
 VE_WHILE:
     .db $85, "while"
     .dw VE_HEAD

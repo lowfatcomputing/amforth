@@ -1,6 +1,6 @@
 ; ( n addr -- )
 ; R( -- )
-; writes a cell into flash, unfinished
+; writes a cell into flash
 VE_ISTORE:
     .db $02, "i!",0
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( n1 -- n2 )
 ; R( -- )
+; 2-complement
 VE_NEGATE:
     .db $06, "negate",0
     .dw VE_HEAD

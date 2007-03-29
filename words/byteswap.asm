@@ -1,5 +1,6 @@
 ; (n1 -- n2 )
 ; R( -- )
+; swap the bytes of the TOS
 VE_BYTESWAP:
     .db $02, "><",0
     .dw VE_HEAD

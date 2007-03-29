@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; define  a new user variable
 VE_USER:
     .db $04, "user",0
     .dw VE_HEAD

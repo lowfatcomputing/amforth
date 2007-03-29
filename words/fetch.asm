@@ -1,5 +1,6 @@
 ; ( addr -- n )
 ; R( -- )
+; read 1 cell from RAM (or IO or CPU register)
 VE_FETCH:
     .db $01, "@"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; skip everything up to the closing bracket on the same line
 VE_LPARENTHESIS:
     .db $81, "(" 
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; used by catch/throw
 VE_HANDLER:
     .db $07, "handler"
     .dw VE_HEAD

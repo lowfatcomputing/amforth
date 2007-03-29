@@ -1,5 +1,6 @@
 ; ( -- addr )
 ; R( -- )
+; places current dictionary position for backward resolves
 VE_GMARK:
     .db 5, ">mark"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( n1 n2 -- n3)
 ; R( -- )
+; exclusive or
 VE_XOR:
     .db $03, "xor"
     .dw VE_HEAD

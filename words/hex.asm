@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; set base to 16 (decimal)
 VE_HEX:
     .db $03, "hex"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; do nothing
 VE_NOOP:
     .db $04, "noop",0
     .dw VE_HEAD

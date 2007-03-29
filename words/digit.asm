@@ -1,5 +1,6 @@
 ; ( c base -- number flag )
 ; R( -- )
+; convert character to number, set flag if successful
 VE_DIGIT:
     .db $05, "digit"
     .dw VE_HEAD

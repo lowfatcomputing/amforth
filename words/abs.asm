@@ -1,5 +1,6 @@
 ; (n1 -- u1)
 ; R( -- )
+; get the absolute value
 VE_ABS:
     .db $03, "abs"
     .dw VE_HEAD

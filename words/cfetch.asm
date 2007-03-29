@@ -1,5 +1,6 @@
 ; ( addr - c1 )
 ; R( -- )
+; fetch a single byte from RAM (or IO or CPU register)
 VE_CFETCH:
     .db $02, "c@",0
     .dw VE_HEAD

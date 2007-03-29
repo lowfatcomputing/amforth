@@ -1,5 +1,6 @@
 ; ( nx -- )
 ; R( ny -- )
+; send an exception -1
 VE_ABORT:
     .db $05, "abort"
     .dw VE_HEAD

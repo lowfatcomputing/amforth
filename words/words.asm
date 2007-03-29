@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; emits a list of all (visible) words in the dictionary
 VE_WORDS:
     .db $05, "words"
     .dw VE_HEAD

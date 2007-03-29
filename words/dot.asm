@@ -1,5 +1,6 @@
 ; ( n -- )
 ; R( -- )
+; prints TOS in free number format
 VE_DOT:
     .db $01, "."
     .dw VE_HEAD

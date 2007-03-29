@@ -1,5 +1,6 @@
 ; ( n1 -- n2 )
 ; R( -- )
+; arithmetic shift left
 VE_2STAR:
     .db $02, "2*", 0
     .dw VE_HEAD

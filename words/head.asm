@@ -1,5 +1,6 @@
-; ( -- eaddr) address from eeprom
+; ( -- eaddr) 
 ; R( -- )
+; address of first unallocated flash (below NRWW)
 _VE_HEAD:
     .db $04, "head",0
     .dw VE_HEAD

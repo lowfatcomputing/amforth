@@ -1,5 +1,6 @@
 ; ( -- )
 ; R( -- )
+; 
 VE_DOES:
     .db $85, "does>"
     .dw VE_HEAD
@@ -18,6 +19,7 @@ PFA_DOES:
 
 ; ( -- )
 ;R( -- )
+; runtime of does>
 ;VE_DODOES:
 ;   .db $07, "(does>)"
 ;   .set VE_HEAD = VE_DODOES

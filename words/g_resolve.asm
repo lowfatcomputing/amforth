@@ -1,5 +1,6 @@
 ; ( addr -- )
 ; R( -- )
+; resolved backward jumps
 VE_GRESOLVE:
     .db 8, ">resolve",0
     .dw VE_HEAD

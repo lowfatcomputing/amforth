@@ -1,5 +1,6 @@
 ; (  -- )
 ; R: (ix - jx )
+; interpret content of TIB. may throw exceptions
 VE_INTERPRET:
     .db $09, "interpret"
     .dw VE_HEAD

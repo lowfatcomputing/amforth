@@ -1,5 +1,6 @@
 ; ( u1 u2 -- u3 u4)
 ; R( -- )
+; unsigned division with remainder
 VE_USLASHMOD:
     .db $05, "u/mod"
     .dw VE_HEAD

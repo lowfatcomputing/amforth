@@ -1,5 +1,6 @@
-; ( -- addr )
+; ( -- XT )
 ; R( -- )
+; search dictionary, returns XT or throw an exception -13
 VE_TICK:
     .db $01, "'"
     .dw VE_HEAD
