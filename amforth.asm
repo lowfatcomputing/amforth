@@ -57,16 +57,16 @@ reset:
     ldi yh, high(xt_noop)
     std Z+21, yh
 
-    ; keep free space for User Area
+    ; allocate space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
 
     ; load Forth IP with starting word
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
-    ; the following is a turnkey-action, and a few more words for the dictionary
+    ; the following should be turnkey-action, but adds a few more words to the the dictionary
     rcall usart0_init
     rcall device_init
-    ; enable interrupts (needed for getting (terminal) input)
+    ; enable interrupts to receive terminal input
     sei
     ; its a far jump...
     jmp DO_NEXT
@@ -77,25 +77,28 @@ reset:
 
 ; lower part of the dictionary
 .include "dict_low.asm"
-; set label to latest used cell in cseg
-VE_LATEST:
+.if dict_optional==1
+ .include "dict_optional.asm"
+.endif
+
+.set lowflashlast = pc
 
 ; high part of the dictionary (primitives and words for self programming)
 .org nrww
 .include "forth.asm"
 .include "dict_high.asm"
 
+.if dict_optional==2
+ .include "dict_optional.asm"
+.endif
+.set flashlast = pc
+
 .eseg
-; flash addresses
-dp:  .dw VE_LATEST
-head:.dw VE_HEAD
-; ram free memory (well, stack matters)
-rheap:
-    .dw heap
-; eeprom free memory
-    .dw eheap
-; turnkey address
-    .dw XT_VER
+    .dw lowflashlast ; DP
+    .dw VE_HEAD      ; HEAD
+    .dw heap         ; HEAP
+    .dw edp          ; EDP
+    .dw XT_VER       ; 'TURNKEY
 ; 1st free address in EEPROM, see above
-eheap:
+edp:
 .cseg

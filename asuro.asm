@@ -1,11 +1,14 @@
 ; Settings for the arexx(DLR asuro mini robot
 
+.set dict_optional=0
+
 ; cpu clock in hertz
 .equ cpu_frequency = 8000000
 ; baud rate of terminal
 .equ baud_rate = 2400
 
 .include "devices/atmega8.asm"
+
   .set heap = ramstart
   .set VE_HEAD = $0000
 
@@ -17,12 +20,13 @@ device_init:
 
     ldi r16, $6e
     out OCR2, r16
+    
+    ldi r16, (1<<PB3 | 1 << PB0)
+    out DDRB, r16
+    out PORTD, r16
     ldi r16, (1<<OCIE2)
     out TIMSK, r16
-    
-    ldi r16, (1<<PB3 | 1 << PB2)
-    out DDRB, r16
-    
+
     ret
 
 .set pc_ = pc

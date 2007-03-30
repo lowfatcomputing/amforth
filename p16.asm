@@ -1,5 +1,6 @@
 ; Settings for the eval board with Atmega32 & 16 MHz
 
+.equ dict_optional = 2
 ; cpu clock in hertz
 .equ cpu_frequency = 16000000
 ; baud rate of terminal
@@ -15,3 +16,4 @@ device_init:
     ret
 
 .include "amforth.asm"
+
