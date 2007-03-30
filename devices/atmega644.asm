@@ -1,6 +1,7 @@
 .nolist
 .include "m644def.inc"
 .list
+  
   .equ ramstart = $100 ; first address of RAM 
   .equ stackstart = RAMEND - 80
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation

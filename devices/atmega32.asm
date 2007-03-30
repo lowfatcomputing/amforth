@@ -1,6 +1,7 @@
 .nolist
 .include "m32def.inc"
 .list
+  
   .equ ramstart = $60 ; first address of RAM 
   .equ stackstart = RAMEND - 80
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
@@ -13,13 +14,24 @@
   .equ codestart = $2a
   
 ; some hacks
+.if defined(UDRE0)
+    ;
+.else
+
+.if defined(RWWSRE)
+.else
   .equ RWWSRE = ASRE
+.endif
 
   .equ UBRR0L = UBRRL
   .equ UBRR0H = UBRRH 
   .equ UCSR0C = UCSRC
   .equ UCSR0B = UCSRB
-  .equ UDR0   = UDR
+
+.if defined(UDR0)
+.else
+  .equ UDR0 = UDR
+.endif
   
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
@@ -27,6 +39,7 @@
   .equ UMSEL01 = URSEL
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
+.endif
 
 ; default interrupt handlers
 .org	INT0addr ; External Interrupt0 Vector Address
@@ -53,10 +66,10 @@
     reti	
 .org	SPIaddr  ; SPI Interrupt Vector Address
     reti	
-.org	URXCaddr ; USART Receive Complete Interrupt Vector Address
-    reti	
-.org	UDREaddr ; USART Data Register Empty Interrupt Vector Address
-    reti	
+;.org	URXCaddr ; USART Receive Complete Interrupt Vector Address
+;    reti	
+;.org	UDREaddr ; USART Data Register Empty Interrupt Vector Address
+;    reti	
 .org	UTXCaddr ; USART Transmit Complete Interrupt Vector Address
     reti	
 .org	ADCCaddr ; ADC Interrupt Vector Address
@@ -65,8 +78,8 @@
     reti	
 .org	ACIaddr  ; Analog Comparator Interrupt Vector Address
     reti	
-.org    TWSIaddr ; Irq. vector address for Two-Wire Interface
-    reti   
+;.org    TWSIaddr ; Irq. vector address for Two-Wire Interface
+;    reti   
 .org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
     reti	
 
