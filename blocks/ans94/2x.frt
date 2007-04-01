@@ -3,6 +3,8 @@
 \ more 2x and dx words are in the otional dictionary
 \ *************************************************
 
+\ requires cell.frt
+
 \ 2drop	( w1 w2 -- )		core	two_drop
 : 2drop
  drop drop ;
