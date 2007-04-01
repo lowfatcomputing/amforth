@@ -1,17 +1,21 @@
 ; this dictionary contains optional words
 ; they may be moved to the core dictionary if needed
 
-.include "words/optional/case.asm"
-.include "words/optional/of.asm"
-.include "words/optional/endof.asm"
-.include "words/optional/endcase.asm"
+.include "words/case.asm"
+.include "words/of.asm"
+.include "words/endof.asm"
+.include "words/endcase.asm"
 
-.include "words/optional/value.asm"
-.include "words/optional/to.asm"
+.include "words/value.asm"
+.include "words/to.asm"
 
-.include "words/optional/ustarslashmod.asm"
-.include "words/optional/d-2star.asm"
-.include "words/optional/d-2slash.asm"
-.include "words/optional/d-plus.asm"
-.include "words/optional/d-minus.asm"
-.include "words/optional/d-invert.asm"
+.include "words/ustarslashmod.asm"
+.include "words/d-2star.asm"
+.include "words/d-2slash.asm"
+.include "words/d-plus.asm"
+.include "words/d-minus.asm"
+.include "words/d-invert.asm"
+.include "words/s_to_d.asm"
+.include "words/d_to_s.asm"
+
+.include "words/dot-s.asm"
