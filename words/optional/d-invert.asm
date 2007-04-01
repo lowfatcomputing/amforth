@@ -19,4 +19,4 @@ PFA_DINVERT:
     st -Y, temp1
     st -Y, temp2
     st -Y, temp3
-    rjmp DO_NEXT
+    jmp DO_NEXT

@@ -1,6 +1,6 @@
 ; ( u1 u2 u3 -- u4 u5)
 ; R( -- )
-; unsigned multiply and division with double cell intermediate. remainder u3 * u2 / u1 -> u4(quot) u5(rem)
+; unsigned division with remainder u3 * u2 / u1 
 VE_USTARSLASHMOD:
     .db $06, "u*/mod",0
     .dw VE_HEAD
@@ -12,10 +12,10 @@ PFA_USTARSLASHMOD:
     ld temp4, Y+
     push temp4
     push temp5
-    ld temp3, Y+
-    ld temp2, Y+
     ld temp1, Y+
     ld temp0, Y+
+    ld temp3, Y+
+    ld temp2, Y+
     ; result: (temp3*temp1)* 65536 + (temp3*temp0 + temp1*temp2) * 256 + (temp0 * temp2)
     ; low bytes
     mul temp0,temp2

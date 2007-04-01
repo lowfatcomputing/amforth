@@ -22,4 +22,4 @@ PFA_D2STAR:
     st -Y, temp2
     st -Y, temp3
 
-    rjmp DO_NEXT
+    jmp DO_NEXT
