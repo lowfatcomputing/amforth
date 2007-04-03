@@ -139,3 +139,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/noop.asm"
 .include "words/unused.asm"
+
+.include "words/f_cpu.asm"
