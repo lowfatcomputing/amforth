@@ -20,14 +20,14 @@ PFA_DOTS1:
     .dw XT_DUP
     .dw XT_I
     .dw XT_DUP
-    .dw XT_DOT
+    .dw XT_UDOT
     .dw XT_2STAR
     .dw XT_PLUS
     .dw XT_DUP
-    .dw XT_DOT
+    .dw XT_UDOT
     .dw XT_FETCH 
     .dw XT_BYTESWAP
-    .dw XT_DOT
+    .dw XT_UDOT
     .dw XT_CR
     .dw XT_DOLOOP
     .dw PFA_DOTS1

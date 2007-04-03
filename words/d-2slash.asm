@@ -1,5 +1,6 @@
-; ( n1 -- n2 )
+; ( d1 -- d2 )
 ; R( -- )
+; shift a double cell value right
 VE_D2SLASH:
     .db $03, "d2/"
     .dw VE_HEAD

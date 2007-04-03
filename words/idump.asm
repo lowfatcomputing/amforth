@@ -1,8 +1,6 @@
 ; ( addr len -- )
 ; R( -- )
 ; dumps flash memory beginning with address addr and len cells long
-;    aaaa    0  1  2  3
-;    aaaa+4  4  5  6  7
 VE_IDUMP:
     .db $5, "idump"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( d1 -- d2)
 ; R( -- )
+; flip all bits in the double cell value
 VE_DINVERT:
     .db $07, "dinvert"
     .dw VE_HEAD

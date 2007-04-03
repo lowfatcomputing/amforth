@@ -1,5 +1,6 @@
 ;( n <name> -- )
-; 
+; R( -- )
+; allocate space for 1 cell in EEPROM. used in conjunction with TO
 VE_VALUE:
     .db $05, "value"
     .dw VE_HEAD

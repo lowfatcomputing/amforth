@@ -6,7 +6,7 @@ VE_HLD:
     .dw VE_HEAD
     .set VE_HEAD = VE_HLD
 XT_HLD:
-    .dw PFA_DOVARIABLE
+    .dw DO_COLON
 PFA_HLD:
-    .dw heap
-    .set heap = heap + HLDSIZE
+    .dw XT_PAD
+    .dw XT_EXIT

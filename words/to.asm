@@ -1,4 +1,6 @@
 ; ( n <name> -- )
+; R( --)
+; store the TOS to value (an EEPROM 16bit cell)
 VE_TO:			
     .db $82, "to", 0
     .dw VE_HEAD

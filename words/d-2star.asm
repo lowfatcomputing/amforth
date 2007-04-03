@@ -1,5 +1,6 @@
 ; ( d1 -- d2 )
 ; R( -- )
+; shift a double cell left
 VE_D2STAR:
     .db $03, "d2*"
     .dw VE_HEAD

@@ -1,5 +1,6 @@
 ; ( n1 -- d1 )
 ; R( -- )
+; extend (signed) single cell value to double cell
 VE_S2D:
     .db $03, "s>d"
     .dw VE_HEAD

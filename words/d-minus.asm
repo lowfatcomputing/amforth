@@ -1,5 +1,6 @@
 ; ( d1 d2 -- d3 )
 ; R( -- )
+; subtract double cell values
 VE_DMINUS:
     .db $02, "d-",0
     .dw VE_HEAD
