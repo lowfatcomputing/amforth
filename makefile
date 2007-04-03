@@ -27,11 +27,11 @@ p16: p16.hex p16.eep.hex
 p16.back:
 	$(AVRDUDE) $(PP) -p atmega32  -U flash:r:p16.hex:i -U eeprom:r:p16.eep.hex:i
 
-ct.hex: *.asm words/*.asm devices/*.asm
-	$(AVRA) -I $(INCLUDE) --listmac -l ct.lst -m ct.map ct.asm
+ct-bot.hex: *.asm words/*.asm devices/*.asm
+	$(AVRA) -I $(INCLUDE) --listmac -l ct-bot.lst -m ct-bot.map ct-bot.asm
 
-ct: ct.hex ct.eep.hex
-	$(AVRDUDE) -c avr911 -p atmega32 -P /dev/ttyUSB0 -e -U flash:w:ct.hex:i -U eeprom:w:ct.eep.hex:i
+ct-bot: ct-bot.hex ct-bot.eep.hex
+	$(AVRDUDE) -c avr911 -p atmega32 -P /dev/ttyUSB0 -e -U flash:w:ct-bot.hex:i -U eeprom:w:ct-bot.eep.hex:i
 
 p8.hex: *.asm words/*.asm devices/*.asm
 	$(AVRA) -I $(INCLUDE) --listmac -l p8.lst -m p8.map p8.asm
@@ -48,7 +48,7 @@ asuro: asuro.hex asuro.eep.hex
 clean:
 	rm -f p16.hex p16.eep.hex p16.lst p16.map p16.cof p16.obj
 	rm -f p8.hex p8.eep.hex p8.lst p8.map p8.cof p8.obj
-	rm -f ct.hex ct.eep.hex ct.lst ct.map ct.cof ct.obj
+	rm -f ct-bot.hex ct-bot.eep.hex ct-bot.lst ct-bot.map ct-bot.cof ct-bot.obj
 	rm -f bf.hex bf.eep.hex bf.lst bf.map bf.cof bf.obj
 	rm -f asuro.hex asuro.eep.hex asuro.lst asuro.map asuro.cof asuro.obj
 
@@ -62,5 +62,7 @@ menu:
 	@echo make p16.hex -- Evaluation Board atmega32 at 16 MHz without upload
 	@echo make p8      -- Evaluation Board atmega8 at 8 MHz with upload
 	@echo make p8.hex  -- Evaluation Board atmega8 at 8 MHz without upload
-	@echo make asuro   -- AREXX asuro controller in programmer
+	@echo make asuro      -- AREXX asuro controller in programmer
 	@echo make asuro.hex  -- AVR asuro 
+	@echo make ct-bot     -- ct-bot with upload
+	@echo make ct-bot.hex -- ct-bot without upload 
