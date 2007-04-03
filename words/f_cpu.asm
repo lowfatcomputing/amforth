@@ -1,6 +1,6 @@
 ; ( -- f_cou )
 ; R( -- )
-; put the cpu frequency on stack
+; put the cpu frequency in HZ on stack
 VE_F_CPU:
     .db $05, "f_cpu"
     .dw VE_HEAD
