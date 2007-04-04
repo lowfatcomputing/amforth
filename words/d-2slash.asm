@@ -8,16 +8,12 @@ VE_D2SLASH:
 XT_D2SLASH:
     .dw PFA_D2SLASH
 PFA_D2SLASH:
-    ld temp3, Y+
-    ld temp2, Y+
-    ld temp1, Y+
     ld temp0, Y+
-    asr temp3
-    ror temp2
-    ror temp1
+    ld temp1, Y+
+    asr temp1
     ror temp0
-    st -Y, temp0
+    ror tosh
+    ror tosl
     st -Y, temp1
-    st -Y, temp2
-    st -Y, temp3
+    st -Y, temp0
     jmp DO_NEXT

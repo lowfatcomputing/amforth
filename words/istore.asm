@@ -39,16 +39,30 @@ PFA_ISTORE_WRITE:
     .dw XT_EXIT
 
 ; the following 3 words may be useful for others too.
+
 ; ( -- sreg )
+; R( -- )
+; turns off all interrupts and leaves SREG in TOS
+;VE_INTOFF:
+;    .db $04, "/int",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_INTOFF
 XT_INTOFF:
     .dw PFA_INTOFF
 PFA_INTOFF:
-    in temp0, SREG
-    st -Y, temp0
-    st -Y, zeroh
+    savetos
+    eor tosh, tosh
+    in tosl, SREG
     cli
     rjmp DO_NEXT
 
+; ( --  )
+; R( -- )
+; turns on all interrupts
+;VE_INTON:
+;    .db $03, "int"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_INTON
 XT_INTON:
     .dw PFA_INTON
 PFA_INTON:
@@ -56,19 +70,27 @@ PFA_INTON:
     rjmp DO_NEXT
 
 ; ( sreg -- )
+; R( -- )
+; restores SREG from TOS (
+;VE_INTRESTORE:
+;    .db $0B, "int_restore"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_INTRESTORE
 XT_INTRESTORE:
     .dw PFA_INTRESTORE
 PFA_INTRESTORE:
-    ld temp1, Y+
-    ld temp0, Y+
-    out SREG, temp0
+    out SREG, tosl
+    loadtos
     rjmp DO_NEXT
     
     
-;; pageload
-;;
-;; ( addr -- )
-
+; ( addr -- )
+; R( -- )
+; load the flash page of cell addr into write buffer, omitting addr itself
+;VE_SPMPAGELOAD:
+;    .db $04, "/int",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_INTSPMPAGELOAD
 XT_SPMPAGELOAD:
     .dw DO_COLON
 PFA_SPMPAGELOAD:
@@ -110,12 +132,13 @@ PFA_SPMPAGELOADDONE:
     .dw XT_DROP
     .dw XT_EXIT
 
-;; dospm
-;;
-;; ( spmcsr x addr -- )
-;;
-;; execute spm instruction
-
+; ( spmcsr x addr -- )
+; R( -- )
+; execute spm instruction
+;VE_DOSPM:
+;    .db $05, "dospm"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOSPM
 XT_DOSPM:
     .dw PFA_DOSPM
 PFA_DOSPM:
@@ -130,19 +153,19 @@ PFA_DOSPM2:
     rjmp PFA_DOSPM2
     
     ; address
-    ld zh, Y+
-    ld zl, Y+
+    movw zl, tosl
     lsl zl
     rol zh
     ; value
-    ld r1, Y+
     ld r0, Y+
+    ld r1, Y+
     ; command
-    ld temp1, Y+
     ld temp0, Y+
+    ld temp1, Y+
     ; spm timed sequence
     out SPMCR, temp0
     spm
+    loadtos
     rjmp DO_NEXT
 
 ;; spmbuf

@@ -8,12 +8,9 @@ VE_MINUS:
 XT_MINUS:
     .dw PFA_MINUS
 PFA_MINUS:
-    ld temp3, Y+
-    ld temp2, Y+
-    ld temp1, Y+
     ld temp0, Y+
-    sub temp0, temp2
-    sbc temp1, temp3
-    st -Y, temp0
-    st -Y, temp1
+    ld temp1, Y+
+    sub temp0, tosl
+    sbc temp1, tosh
+    movw tosl, temp0
     rjmp DO_NEXT

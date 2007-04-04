@@ -8,14 +8,13 @@ VE_PLUSSTORE:
 XT_PLUSSTORE:
     .dw PFA_PLUSSTORE
 PFA_PLUSSTORE:
-    ld zh, Y+
-    ld zl, Y+
-    ld temp1, Y+
-    ld temp0, Y+
+    movw zl, tosl
+    loadtos
     ldd temp2, Z+0
     ldd temp3, Z+1
-    add temp0, temp2
-    adc temp1, temp3
-    st    Z, temp0
-    std Z+1, temp1
+    add tosl, temp2
+    adc tosh, temp3
+    std Z+0, tosl
+    std Z+1, tosh
+    loadtos
     rjmp DO_NEXT

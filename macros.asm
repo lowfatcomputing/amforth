@@ -4,6 +4,9 @@
   .def upl = r4
   .def uph = r5
 
+  .def tosl = r6
+  .def tosh = r7
+  
   .def temp0 = r16
   .def temp1 = r17
   .def temp2 = r18
@@ -16,8 +19,20 @@
   .def wl = r24
   .def wh = r25
 
-  .set heap = ramstart
-  .set VE_HEAD = $0000
+.macro loadtos
+    ld tosl, Y+
+    ld tosh, Y+
+.endmacro
+
+.macro savetos
+    st -Y, tosh
+    st -Y, tosl
+.endmacro
+
+.macro loadsos
+    ld temp0, Y+
+    ld temp1, Y+
+.endmacro
 
 .macro in_
 .if (@1 < $40)

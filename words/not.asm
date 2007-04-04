@@ -6,15 +6,7 @@ VE_NOT:
     .dw VE_HEAD
     .set VE_HEAD = VE_NOT
 XT_NOT:
-    .dw PFA_NOT
+    .dw DO_COLON
 PFA_NOT:
-    ld temp1, Y+
-    ld temp0, Y+
-    or temp0, temp1
-    movw zl, zerol
-    brne PFA_NOT1
-    sbiw zl, 1
-PFA_NOT1:
-    st -Y, zl
-    st -Y, zh
-    rjmp DO_NEXT
+    .dw XT_EQUALZERO
+    .dw XT_EXIT

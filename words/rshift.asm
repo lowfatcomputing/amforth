@@ -8,18 +8,14 @@ VE_RSHIFT:
 XT_RSHIFT:
     .dw PFA_RSHIFT
 PFA_RSHIFT:
-    ld zh, Y+
-    ld zl, Y+
-    ld temp1, Y+
-    ld temp0, Y+
+    movw zl, tosl
+    loadtos
 PFA_RSHIFT1:
     sbiw zl, 1
     brmi PFA_RSHIFT2
-    lsr temp1
-    ror temp0
+    lsr tosh
+    ror tosl
     rjmp PFA_RSHIFT1
 PFA_RSHIFT2:
-    st -Y, temp0
-    st -Y, temp1
     rjmp DO_NEXT
 

@@ -8,8 +8,7 @@ VE_RP_FETCH:
 XT_RP_FETCH:
     .dw PFA_RP_FETCH
 PFA_RP_FETCH:
-    in temp0, SPL
-    in temp1, SPH
-    st -Y, temp0
-    st -Y, temp1
+    savetos
+    in tosl, SPL
+    in tosh, SPH
     rjmp DO_NEXT

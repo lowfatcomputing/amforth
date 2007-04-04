@@ -8,10 +8,9 @@ VE_R_FETCH:
 XT_R_FETCH:
     .dw PFA_R_FETCH
 PFA_R_FETCH:
-    pop temp1
-    pop temp0
-    st -Y, temp0
-    st -Y, temp1
-    push temp0
-    push temp1
+    savetos
+    pop tosl
+    pop tosh
+    push tosh
+    push tosl
     rjmp DO_NEXT

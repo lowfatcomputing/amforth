@@ -8,8 +8,8 @@ VE_UP_FETCH:
 XT_UP_FETCH:
     .dw PFA_UP_FETCH
 PFA_UP_FETCH:
-    st -Y, upl
-    st -Y, uph
+    savetos
+    movw tosl, upl
     rjmp DO_NEXT
 
 ; ( addr -- )
@@ -22,6 +22,6 @@ VE_UP_STORE:
 XT_UP_STORE:
     .dw PFA_UP_STORE
 PFA_UP_STORE:
-    ld uph, Y+
-    ld upl, Y+
+    movw upl, tosl
+    loadtos
     rjmp DO_NEXT

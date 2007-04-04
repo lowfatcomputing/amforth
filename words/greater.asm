@@ -8,17 +8,15 @@ VE_GREATER:
 XT_GREATER:
     .dw PFA_GREATER
 PFA_GREATER:
-    ld temp1, Y+
-    ld temp0, Y+
-    ld temp3, Y+
+
     ld temp2, Y+
-    cp temp2, temp0
-    cpc temp3, temp1
+    ld temp3, Y+
+    cp temp2, tosl
+    cpc temp3, tosh
     movw zl, zerol
     brlt PFA_GREATER1
     brbs 1, PFA_GREATER1
     sbiw zl, 1
 PFA_GREATER1:
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     rjmp DO_NEXT

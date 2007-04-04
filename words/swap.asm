@@ -8,12 +8,8 @@ VE_SWAP:
 XT_SWAP:
     .dw PFA_SWAP
 PFA_SWAP:
-    ld temp0, Y+
-    ld temp1, Y+
-    ld temp2, Y+
-    ld temp3, Y+
+    movw temp0, tosl
+    loadtos
     st -Y, temp1
     st -Y, temp0
-    st -Y, temp3
-    st -Y, temp2
     rjmp DO_NEXT

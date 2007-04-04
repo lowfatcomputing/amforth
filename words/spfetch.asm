@@ -8,7 +8,6 @@ VE_SP_FETCH:
 XT_SP_FETCH:
     .dw PFA_SP_FETCH
 PFA_SP_FETCH:
-    movw temp0, yl
-    st -Y, temp0
-    st -Y, temp1
+    savetos
+    movw tosl, yl
     rjmp DO_NEXT

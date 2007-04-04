@@ -8,19 +8,18 @@ VE_J:
 XT_J:
     .dw PFA_J
 PFA_J:
+    savetos
     pop temp1
     pop temp0
     pop temp3
     pop temp2
-    pop temp5
-    pop temp4
+    pop tosl
+    pop tosh
     
-    push temp4
-    push temp5
+    push tosh
+    push tosl
     push temp2
     push temp3
     push temp0
     push temp1
-    st -Y, temp4
-    st -Y, temp5
     rjmp DO_NEXT

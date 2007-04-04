@@ -8,7 +8,6 @@ VE_SP_STORE:
 XT_SP_STORE:
     .dw PFA_SP_STORE
 PFA_SP_STORE:
-    ld temp1, Y+
-    ld temp0, Y+
-    movw yl, temp0
+    movw yl, tosl
+    loadtos
     rjmp DO_NEXT

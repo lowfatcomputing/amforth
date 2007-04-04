@@ -8,5 +8,5 @@ VE_DROP:
 XT_DROP:
     .dw PFA_DROP
 PFA_DROP:
-    adiw yl, 2
+    loadtos
     rjmp DO_NEXT

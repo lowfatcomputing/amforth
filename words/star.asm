@@ -8,10 +8,9 @@ VE_MUL:
 XT_MUL:
     .dw PFA_MUL
 PFA_MUL:
-    ld temp3, Y+
-    ld temp2, Y+
-    ld temp1, Y+
+    movw temp2, tosl
     ld temp0, Y+
+    ld temp1, Y+
     ; result: (temp3*temp1)* 65536 + (temp3*temp0 + temp1*temp2) * 256 + (temp0 * temp2)
     ; low bytes
     mul temp0,temp2
@@ -24,6 +23,5 @@ PFA_MUL:
     add zh, r0
 
     ; put low cell on stack
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     rjmp DO_NEXT

@@ -8,6 +8,6 @@ VE_EXECUTE:
 XT_EXECUTE:
     .dw PFA_EXECUTE
 PFA_EXECUTE:
-    ld wh, Y+
-    ld wl, Y+
+    movw wl, tosl
+    loadtos
     rjmp DO_EXECUTE

@@ -2,20 +2,20 @@
 ; the inner interpreter. 
 DO_DODOES:
     adiw wl, 1
-    st -Y, wl
-    st -Y, wh
+    savetos
+    movw tosl, wl
     
-    pop wh
     pop wl
+    pop wh
     
-    push xl
     push xh
+    push xl
     movw xl, wl
     rjmp DO_NEXT
 
 DO_COLON: ; 31 CPU cycles to ijmp
-    push xl
-    push xh          ; PUSH IP
+    push xh
+    push xl          ; PUSH IP
     adiw wl, 1       ; set W to PFA
     movw xl, wl
 

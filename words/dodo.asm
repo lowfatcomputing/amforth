@@ -8,12 +8,11 @@
 XT_DODO:
     .dw PFA_DODO
 PFA_DODO:
-    ld temp1, Y+
-    ld temp0, Y+
-    ld temp3, Y+
     ld temp2, Y+
-    push temp2
+    ld temp3, Y+
     push temp3
-    push temp0
-    push temp1
+    push temp2
+    push tosh
+    push tosl
+    loadtos
     rjmp DO_NEXT

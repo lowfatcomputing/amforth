@@ -8,14 +8,13 @@
 XT_DOUSER:
     .dw PFA_DOUSER
 PFA_DOUSER:
+    savetos
     movw zl, wl
     adiw zl, 1
     lsl zl
     rol zh
-    lpm temp0, Z+
-    lpm temp1, Z
-    add temp0, upl
-    adc temp1, uph
-    st -Y, temp0
-    st -Y, temp1
+    lpm tosl, Z+
+    lpm tosh, Z
+    add tosl, upl
+    adc tosh, uph
     rjmp DO_NEXT

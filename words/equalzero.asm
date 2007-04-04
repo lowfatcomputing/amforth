@@ -8,14 +8,10 @@ VE_EQUALZERO:
 XT_EQUALZERO:
     .dw PFA_EQUALZERO
 PFA_EQUALZERO:
-    ld temp3, Y+
-    ld temp2, Y+
-    cp zerol, temp2
-    cpc zeroh, temp3
+    or tosh, tosl
     movw zl, zerol
     brne PFA_EQUALZERO1
     sbiw zl, 1
 PFA_EQUALZERO1:
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     rjmp DO_NEXT

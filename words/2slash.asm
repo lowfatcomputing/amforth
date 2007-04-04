@@ -8,11 +8,6 @@ VE_2SLASH:
 XT_2SLASH:
     .dw PFA_2SLASH
 PFA_2SLASH:
-    ld temp1, Y+
-    ld temp0, Y+
-    asr temp1
-    ror temp0
-    ; put low cell on stack
-    st -Y, temp0
-    st -Y, temp1
+    asr tosh
+    ror tosl
     rjmp DO_NEXT

@@ -8,12 +8,9 @@ VE_IFETCH:
 XT_IFETCH:
     .dw PFA_IFETCH
 PFA_IFETCH:
-    ld zh, Y+
-    ld zl, Y+
+    movw zl, tosl
     lsl zl
     rol zh
-    lpm temp0, z+
-    lpm temp1, z
-    st -Y, temp0
-    st -Y, temp1
+    lpm tosl, z+
+    lpm tosh, z+
     rjmp DO_NEXT

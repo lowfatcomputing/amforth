@@ -160,10 +160,8 @@ PFA_tx0_store:
     ldi zh,high(usart0_tx_data)
     add zl, temp0
     adc zh, zeroh
-    ld temp1, Y+
-    ld temp0, Y+
-    st z,temp0
-  
+    st z,tosl
+    loadtos  
     in_ temp0,UCSR0B
     sbr temp0,(1<<UDRIE0)
     out_ UCSR0B,temp0
@@ -177,10 +175,10 @@ VE_TX0Q:
 XT_TX0Q:
     .dw PFA_TX0Q
 PFA_TX0Q:
+    savetos
     movw zl, zerol
     sbiw zl, 1
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     jmp DO_NEXT
 
 ; ( -- c)
@@ -198,6 +196,7 @@ PFA_RX0:
     rjmp PFA_rx0
   
 PFA_rx0_fetch:
+    savetos
     inc temp1
     andi temp1,usart0_rx_mask
     sts usart0_rx_out, temp1
@@ -206,9 +205,7 @@ PFA_rx0_fetch:
     ldi zh,high(usart0_rx_data)
     add zl, temp1
     adc zh, zeroh
-    ld temp0, Z	
-    st -Y, temp0
-    st -Y, zeroh
+    ld tosl, Z	
     jmp DO_NEXT
 
 ; ( -- f)
@@ -219,11 +216,11 @@ VE_RX0Q:
 XT_RX0Q:
     .dw PFA_RX0Q
 PFA_RX0Q:
+    savetos
     lds temp0,usart0_rx_out
     lds temp1,usart0_rx_in
     movw zl, zerol
     cpse temp0, temp1
     sbiw zl, 1
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     jmp DO_NEXT

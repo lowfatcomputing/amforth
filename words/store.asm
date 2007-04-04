@@ -8,10 +8,9 @@ VE_STORE:
 XT_STORE:
     .dw PFA_STORE
 PFA_STORE:
-    ld zh, Y+
-    ld zl, Y+
-    ld temp1, Y+
-    ld temp0, Y+
-    st Z+, temp0
-    st Z, temp1
+    movw zl, tosl
+    loadtos
+    std Z+0, tosl
+    std Z+1, tosh
+    loadtos
     rjmp DO_NEXT

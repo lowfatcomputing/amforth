@@ -8,14 +8,13 @@ VE_USTARSLASHMOD:
 XT_USTARSLASHMOD:
     .dw PFA_USTARSLASHMOD
 PFA_USTARSLASHMOD:
-    ld temp5, Y+
-    ld temp4, Y+
+    movw temp4, tosl
     push temp4
     push temp5
-    ld temp1, Y+
     ld temp0, Y+
-    ld temp3, Y+
+    ld temp1, Y+
     ld temp2, Y+
+    ld temp3, Y+
     ; result: (temp3*temp1)* 65536 + (temp3*temp0 + temp1*temp2) * 256 + (temp0 * temp2)
     ; low bytes
     mul temp0,temp2
@@ -80,10 +79,9 @@ PFA_USTARSLASHMODmod_loop_control:
 
 PFA_USTARSLASHMODmod_done:
     ; put remainder on stack
-    st -Y,temp2
     st -Y,temp3
+    st -Y,temp2
 
     ; put quotient on stack
-    st -Y, temp0
-    st -Y, temp1
+    movw tosl, temp0
     jmp DO_NEXT

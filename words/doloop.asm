@@ -8,19 +8,19 @@
 XT_DOLOOP:
     .dw PFA_DOLOOP
 PFA_DOLOOP:
-    pop zh
     pop zl
+    pop zh
     adiw zl,1
-    pop temp1
     pop temp0
+    pop temp1
     cp zl, temp0
     cpc zh, temp1
     brge PFA_DOLOOP1 ; exit loop
     ; next iteration
-    push temp0
     push temp1
-    push zl
+    push temp0
     push zh
+    push zl
     rjmp PFA_DOBRANCH ; read next cell from dictionary and jump to its destination
 PFA_DOLOOP1:
     adiw xl,1

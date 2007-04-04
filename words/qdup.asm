@@ -8,14 +8,9 @@ VE_QDUP:
 XT_QDUP:
     .dw PFA_QDUP
 PFA_QDUP:
-    ld temp0, Y+
-    ld temp1, Y+
-    mov temp2, temp0
-    or temp2, temp1
+    mov temp0, tosl
+    or temp0, tosh
     breq PFA_QDUP1
-    st -Y, temp1
-    st -Y, temp0
+    savetos
 PFA_QDUP1:
-    st -Y, temp1
-    st -Y, temp0
     rjmp DO_NEXT

@@ -8,14 +8,13 @@ VE_CMOVE_G:
 XT_CMOVE_G:
     .dw PFA_CMOVE_G
 PFA_CMOVE_G:
-    push xl
     push xh
-    ld wh, Y+
-    ld wl, Y+ ; n
-    ld zh, Y+
-    ld zl, Y+ ; addr-to
-    ld xh, Y+
-    ld xl, Y+ ; addr-from
+    push xl
+    movw wl, tosl
+    ld zl, Y+
+    ld zh, Y+ ; addr-to
+    ld xl, Y+
+    ld xh, Y+ ; addr-from
     mov temp0, wh
     or temp0, wl
     brbs 1, PFA_CMOVE_G1
@@ -29,6 +28,7 @@ PFA_CMOVE_G2:
     sbiw wl, 1
     brbc 1, PFA_CMOVE_G2
 PFA_CMOVE_G1:
-    pop xh
     pop xl
+    pop xh
+    loadtos
     rjmp DO_NEXT

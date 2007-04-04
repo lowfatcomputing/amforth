@@ -8,11 +8,10 @@ VE_SLASHMOD:
 XT_SLASHMOD:
     .dw PFA_SLASHMOD
 PFA_SLASHMOD:
-    ld temp3, Y+
-    ld temp2, Y+
+    movw temp2, tosl
     
-    ld temp1, Y+
     ld temp0, Y+
+    ld temp1, Y+
 
     mov	temp6,temp1	;move dividend High to sign register
     eor	temp6,temp3	;xor divisor High with sign register
@@ -58,10 +57,9 @@ PFA_SLASHMOD_6:	sec			;    set carry to be shifted into result
 
 PFA_SLASHMODmod_done:
     ; put remainder on stack
-    st -Y,temp4
     st -Y,temp5
+    st -Y,temp4
 
     ; put quotient on stack
-    st -Y, temp0
-    st -Y, temp1
+    movw tosl, temp0
     jmp DO_NEXT

@@ -8,9 +8,7 @@ VE_1PLUS:
 XT_1PLUS:
     .dw PFA_1PLUS
 PFA_1PLUS:
-    ld zh, Y+
-    ld zl, Y+
+    movw zl, tosl
     adiw zl,1
-    st -Y, zl
-    st -Y, zh
+    movw tosl, zl
     rjmp DO_NEXT

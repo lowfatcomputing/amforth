@@ -8,13 +8,12 @@ VE_USLASHMOD:
 XT_USLASHMOD:
     .dw PFA_USLASHMOD
 PFA_USLASHMOD:
-    ld temp5, Y+
-    ld temp4, Y+
+    movw temp4, tosl
     
-    ld temp1, Y+
     ld temp0, Y+
-    ldi temp3, 0
+    ld temp1, Y+
     ldi temp2, 0
+    ldi temp3, 0
 
 ;; unsigned 32/16 -> 16r16 divide
 
@@ -53,10 +52,9 @@ PFA_USLASHMODmod_loop_control:
 
 PFA_USLASHMODmod_done:
     ; put remainder on stack
-    st -Y,temp2
     st -Y,temp3
+    st -Y,temp2
 
     ; put quotient on stack
-    st -Y, temp0
-    st -Y, temp1
+    movw tosl, temp0
     jmp DO_NEXT

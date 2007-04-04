@@ -8,9 +8,7 @@ VE_EFETCH:
 XT_EFETCH:
     .dw PFA_EFETCH
 PFA_EFETCH:
-    ; read a cell from eeprom
-    ld zh, Y+
-    ld zl, Y+
+    movw zl, tosl
 
 PFA_EFETCH1:
     in temp0, EECR
@@ -21,7 +19,7 @@ PFA_EFETCH1:
     out EEARL, zl
 
     sbi EECR,EERE
-    in temp0,EEDR
+    in tosl,EEDR
 
     adiw zl,1
 
@@ -34,8 +32,6 @@ PFA_EFETCH2:
     out EEARL,zl
 
     sbi EECR,EERE
-    in  temp1,EEDR
-    st -Y, temp0
-    st -Y, temp1
+    in  tosh,EEDR
 
     rjmp DO_NEXT

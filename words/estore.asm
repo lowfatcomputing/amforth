@@ -8,9 +8,8 @@ VE_ESTORE:
 XT_ESTORE:
     .dw PFA_ESTORE
 PFA_ESTORE:
-    ld zh, Y+
-    ld zl, Y+
-
+    movw zl, tosl
+    loadtos
 PFA_ESTORE1:
     in temp0, EECR
     sbrc temp0,EEWE
@@ -23,9 +22,8 @@ PFA_ESTORE2: ; estore_wait_low_spm:
 
     out EEARH,zh
     out EEARL,zl
-    ld temp1, Y+
-    ld temp0, Y+
-    out EEDR, temp0
+
+    out EEDR, tosl
     in temp2, SREG
     cli
     sbi EECR,EEMWE
@@ -45,10 +43,11 @@ PFA_ESTORE4: ; estore_wait_hi_spm:
 
     out EEARH,zh
     out EEARL,zl
-    out EEDR, temp1
+    out EEDR, tosh
     in temp2, SREG
     cli
     sbi EECR,EEMWE
     sbi EECR,EEWE
     out SREG, temp2
+    loadtos
     rjmp DO_NEXT

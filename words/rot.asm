@@ -8,16 +8,14 @@ VE_ROT:
 XT_ROT:
     .dw PFA_ROT
 PFA_ROT:
-    ld temp1, Y+
-    ld temp0, Y+ ; n3
-    ld temp3, Y+
-    ld temp2, Y+ ; n2 
-    ld temp5, Y+
-    ld temp4, Y+ ; n1
+    movw temp0, tosl
+    ld temp2, Y+
+    ld temp3, Y+ 
+    loadtos
+        
+    st -Y, temp3
     st -Y, temp2
-    st -Y, temp3 ; n2
+    st -Y, temp1
     st -Y, temp0
-    st -Y, temp1 ; n3
-    st -Y, temp4
-    st -Y, temp5 ; n1
+
     rjmp DO_NEXT

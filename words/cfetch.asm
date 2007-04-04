@@ -8,9 +8,7 @@ VE_CFETCH:
 XT_CFETCH:
     .dw PFA_CFETCH
 PFA_CFETCH:
-    ld zh, Y+
-    ld zl, Y+
-    ld temp0, Z
-    st -Y, temp0
-    st -Y, zeroh
+    movw zl, tosl
+    eor tosh, tosh
+    ld tosl, Z
     rjmp DO_NEXT

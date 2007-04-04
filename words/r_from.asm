@@ -8,8 +8,7 @@ VE_R_FROM:
 XT_R_FROM:
     .dw PFA_R_FROM
 PFA_R_FROM:
-    pop temp1
-    pop temp0
-    st -Y, temp0
-    st -Y, temp1
+    savetos
+    pop tosl
+    pop tosh
     rjmp DO_NEXT

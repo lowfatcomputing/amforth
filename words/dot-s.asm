@@ -26,7 +26,6 @@ PFA_DOTS1:
     .dw XT_DUP
     .dw XT_UDOT
     .dw XT_FETCH 
-    .dw XT_BYTESWAP
     .dw XT_UDOT
     .dw XT_CR
     .dw XT_DOLOOP
