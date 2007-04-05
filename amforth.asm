@@ -24,12 +24,6 @@ reset:
     ldi temp1,high(ramend)
     out SPH,temp1
     std Z+3, temp1
-
-    ; init parameter stack pointer
-    ldi yl,low(stackstart)
-    std Z+6, yl
-    ldi yh,high(stackstart)
-    std Z+7, yh
     
     ; set IO 
     ldi yl, low(xt_tx0)
@@ -56,6 +50,13 @@ reset:
     std Z+20, yl
     ldi yh, high(xt_noop)
     std Z+21, yh
+
+    ; init parameter stack pointer
+    ldi yl,low(stackstart)
+    std Z+6, yl
+    ldi yh,high(stackstart)
+    std Z+7, yh
+
 
     ; allocate space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
