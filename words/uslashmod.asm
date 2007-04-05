@@ -14,47 +14,4 @@ PFA_USLASHMOD:
     ld temp1, Y+
     ldi temp2, 0
     ldi temp3, 0
-
-;; unsigned 32/16 -> 16r16 divide
-
-PFA_USLASHMODmod:
-
-  ; set loop counter
-    ldi temp6,$10
-
-PFA_USLASHMODmod_loop:
-    ; shift left, saving high bit
-    clr temp7
-    lsl temp0
-    rol temp1
-    rol temp2
-    rol temp3
-    rol temp7
-
-  ; try subtracting divisor
-    cp temp2, temp4
-    cpc temp3, temp5
-    cpc temp7,zerol
-
-    brcs PFA_USLASHMODmod_loop_control
-
-PFA_USLASHMODmod_subtract:
-    ; dividend is large enough
-    ; do the subtraction for real
-    ; and set lowest bit
-    inc temp0
-    sub temp2, temp4
-    sbc temp3, temp5
-
-PFA_USLASHMODmod_loop_control:
-    dec  temp6
-    brne PFA_USLASHMODmod_loop
-
-PFA_USLASHMODmod_done:
-    ; put remainder on stack
-    st -Y,temp3
-    st -Y,temp2
-
-    ; put quotient on stack
-    movw tosl, temp0
-    jmp DO_NEXT
+    jmp PFA_UMSLASHMODmod

@@ -9,13 +9,10 @@
 .include "words/value.asm"
 .include "words/to.asm"
 
-.include "words/ustarslashmod.asm"
 .include "words/d-2star.asm"
 .include "words/d-2slash.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/d-invert.asm"
-.include "words/s_to_d.asm"
-.include "words/d_to_s.asm"
 
 .include "words/dot-s.asm"
