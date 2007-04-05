@@ -6,12 +6,11 @@ VE_USLASHMOD:
     .dw VE_HEAD
     .set VE_HEAD = VE_USLASHMOD
 XT_USLASHMOD:
-    .dw PFA_USLASHMOD
+    .dw DO_COLON
 PFA_USLASHMOD:
-    movw temp4, tosl
-    
-    ld temp0, Y+
-    ld temp1, Y+
-    ldi temp2, 0
-    ldi temp3, 0
-    jmp PFA_UMSLASHMODmod
+    .dw XT_TO_R
+    .dw XT_ZERO
+    .dw XT_SWAP	
+    .dw XT_R_FROM
+    .dw XT_UMSLASHMOD
+    .dw XT_EXIT

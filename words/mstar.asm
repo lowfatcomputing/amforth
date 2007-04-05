@@ -1,6 +1,6 @@
-; ( u1 u2 -- d)
+; ( n1 n2 -- d)
 ; R( -- )
-; multiply 2 cells to s double cell
+; multiply 2 cells to a double cell
 VE_MSTAR:
     .db $02, "m*",0
     .dw VE_HEAD
