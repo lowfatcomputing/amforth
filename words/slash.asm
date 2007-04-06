@@ -1,13 +1,13 @@
 ; ( n1 n2 -- n3)
 ; R( -- )
 ; diviion
-VE_DIV:
+VE_SLASH:
     .db $01, "/"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DIV
-XT_DIV:
+    .set VE_HEAD = VE_SLASH
+XT_SLASH:
     .dw DO_COLON
-PFA_DIV:
+PFA_SLASH:
     .dw XT_SLASHMOD
     .dw XT_SWAP
     .dw XT_DROP

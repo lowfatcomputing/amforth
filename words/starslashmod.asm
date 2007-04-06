@@ -11,6 +11,6 @@ PFA_STARSLASHMOD:
     .dw XT_TO_R
     .dw XT_MSTAR
     .dw XT_R_FROM
-    .dw XT_SLASHMOD
+    .dw XT_UMSLASHMOD
     .dw XT_EXIT
     
