@@ -168,10 +168,13 @@ PFA_DOSPM2:
     loadtos
     rjmp DO_NEXT
 
-;; spmbuf
-;;
-;; ( x addr -- )
-
+; ( x addr -- )
+; R( -- )
+; execute spm buf instruction
+;VE_SPMBUF:
+;    .db $06, "spmbuf",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SPMBUF
 XT_SPMBUF:
     .dw DO_COLON
 PFA_SPMBUF:
@@ -184,10 +187,13 @@ PFA_SPMBUF:
     .dw XT_DOSPM
     .dw XT_EXIT
 
-;; spmerase
-;;
-;; ( addr -- )
-
+; ( addr -- )
+; R( -- )
+; execute spm erase instruction
+;VE_SPMERASE:
+;    .db $08, "spmerase",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SPMERASE
 XT_SPMERASE:
     .dw DO_COLON
 PFA_SPMERASE:
@@ -202,10 +208,13 @@ PFA_SPMERASE:
     .dw XT_DOSPM
     .dw XT_EXIT
 
-;; spmwrite
-;;
-;; ( addr -- )
-
+; ( spmcsr x addr -- )
+; R( -- )
+; execute spm write instruction
+;VE_SPMWRITE:
+;    .db $08, "spmwrite",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_WPMWRITE
 XT_SPMWRITE:
     .dw DO_COLON
 PFA_SPMWRITE:
@@ -220,10 +229,13 @@ PFA_SPMWRITE:
     .dw XT_DOSPM
     .dw XT_EXIT
 
-;; spmrww
-;;
-;; ( -- )
-
+; ( -- )
+; R( -- )
+; re-enables rww section execute spm rww instruction
+;VE_SPMRWW:
+;    .db $05, "spmrww"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SPMRWW
 XT_SPMRWW:
     .dw DO_COLON
 PFA_SPMRWW:
