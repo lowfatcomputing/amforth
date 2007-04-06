@@ -12,6 +12,31 @@ PFA_COLD:
     .dw XT_SP_STORE
     .dw XT_RP0
     .dw XT_RP_STORE
+    ; set IO 
+    .dw XT_DOLITERAL
+    .dw XT_TX0
+    .dw XT_TICKEMIT
+    .dw XT_STORE
+
+    .dw XT_DOLITERAL
+    .dw XT_TX0Q
+    .dw XT_TICKEMITQ
+    .dw XT_STORE
+
+    .dw XT_DOLITERAL
+    .dw XT_RX0
+    .dw XT_TICKKEY
+    .dw XT_STORE
+
+    .dw XT_DOLITERAL
+    .dw XT_RX0Q
+    .dw XT_TICKKEYQ
+    .dw XT_STORE
+
+    .dw XT_DOLITERAL
+    .dw XT_NOOP
+    .dw XT_TICKSLASHKEY
+    .dw XT_STORE
 
     .dw XT_ZERO
     .dw XT_STATE

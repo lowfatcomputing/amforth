@@ -24,39 +24,12 @@ reset:
     ldi temp1,high(ramend)
     out SPH,temp1
     std Z+3, temp1
-    
-    ; set IO 
-    ldi yl, low(xt_tx0)
-    std Z+12, yl
-    ldi yh, high(xt_tx0)
-    std Z+13, yh
-
-    ldi yl, low(xt_tx0q)
-    std Z+14, yl
-    ldi yh, high(xt_tx0q)
-    std Z+15, yh
-
-    ldi yl, low(xt_rx0)
-    std Z+16, yl
-    ldi yh, high(xt_rx0)
-    std Z+17, yh
-
-    ldi yl, low(xt_rx0q)
-    std Z+18, yl
-    ldi yh, high(xt_rx0q)
-    std Z+19, yh
-
-    ldi yl, low(xt_noop)
-    std Z+20, yl
-    ldi yh, high(xt_noop)
-    std Z+21, yh
 
     ; init parameter stack pointer
     ldi yl,low(stackstart)
     std Z+6, yl
     ldi yh,high(stackstart)
     std Z+7, yh
-
 
     ; allocate space for User Area
     .set heap = heap + USERSIZE * CELLSIZE
