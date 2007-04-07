@@ -9,7 +9,9 @@
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
   .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
-
+ 
+  .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
+  .equ intvecsize = 2
   .equ nrww = $3800
   .equ codestart = $2a
   
@@ -43,43 +45,43 @@
 
 ; default interrupt handlers
 .org	INT0addr ; External Interrupt0 Vector Address
-    rjmp int0_isr 
+    rcall isr
 .org	INT1addr ; External Interrupt1 Vector Address
-    rjmp int1_isr 
+    rcall isr 
 .org	INT2addr ; External Interrupt2 Vector Address
-    reti	
+    rcall isr 
 .org	OC2addr  ; Output Compare2 Interrupt Vector Address
-    reti
+    rcall isr
 .org	OVF2addr ; Overflow2 Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	ICP1addr ; Input Capture1 Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	OC1Aaddr ; Output Compare1A Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	OC1Baddr ; Output Compare1B Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	OVF1addr ; Overflow1 Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	OC0addr  ; Output Compare0 Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	OVF0addr ; Overflow0 Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	SPIaddr  ; SPI Interrupt Vector Address
-    reti	
+    rcall isr	
 ;.org	URXCaddr ; USART Receive Complete Interrupt Vector Address
-;    reti	
+;    rcall isr	
 ;.org	UDREaddr ; USART Data Register Empty Interrupt Vector Address
-;    reti	
+;    rcall isr	
 .org	UTXCaddr ; USART Transmit Complete Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	ADCCaddr ; ADC Interrupt Vector Address
-    rjmp int2_isr
+    rcall isr
 .org	ERDYaddr ; EEPROM Interrupt Vector Address
-    reti	
+    rcall isr	
 .org	ACIaddr  ; Analog Comparator Interrupt Vector Address
-    reti	
+    rcall isr	
 ;.org    TWSIaddr ; Irq. vector address for Two-Wire Interface
-;    reti   
+;    rcall isr   
 .org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
-    reti	
+    rcall isr	
 
