@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( c -- addr )
 ; R( -- )
 ; skipd leading delimiter characters and parses TIB to the next
 VE_WORD:
