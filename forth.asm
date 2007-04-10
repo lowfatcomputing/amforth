@@ -1,13 +1,13 @@
-; 
-; the inner interpreter. 
+;
+; the inner interpreter.
 DO_DODOES:
     adiw wl, 1
     savetos
     movw tosl, wl
-    
-    pop wl
+
     pop wh
-    
+    pop wl
+
     push xh
     push xl
     movw xl, wl
