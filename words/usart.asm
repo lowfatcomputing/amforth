@@ -56,7 +56,7 @@ usart0_init:
   sbi_ UCSR0B, RXCIE0, temp0
 
   ret
- 
+
 usart0_udre_isr:
   push xl
   in xl,SREG
@@ -82,12 +82,12 @@ usart0_udre_next:
   inc xh
   andi xh,usart0_tx_mask
   sts usart0_tx_out,xh
-  
+
   ldi zl,low(usart0_tx_data)
   ldi zh,high(usart0_tx_data)
   add zl,xh
   adc zh,zeroh
-  
+
   ld xl,z
   out_ UDR0,xl
 
@@ -127,7 +127,7 @@ usart0_rxc_next:
   in_ xh,UDR0
   st z,xh
   sts usart0_rx_in,xl
-  
+
 usart0_rxc_done:
   pop zh
   pop zl
@@ -136,8 +136,10 @@ usart0_rxc_done:
   out SREG,xl
   pop xl
   reti
-  
+
 ; (c -- )
+; R( --)
+; put 1 character into output queue, wait if needed, enable UDRIE0 interrupt
 VE_TX0:
     .db $03, "tx0"
     .dw VE_HEAD
@@ -153,7 +155,7 @@ PFA_TX0:
     cp temp0,temp1
     brne PFA_tx0_store
     rjmp PFA_tx0
-  
+
 PFA_tx0_store:
     sts usart0_tx_in,temp0
     ldi zl,low(usart0_tx_data)
@@ -161,13 +163,15 @@ PFA_tx0_store:
     add zl, temp0
     adc zh, zeroh
     st z,tosl
-    loadtos  
+    loadtos
     in_ temp0,UCSR0B
     sbr temp0,(1<<UDRIE0)
     out_ UCSR0B,temp0
     jmp DO_NEXT
 
-; ( -- f) always true 
+; ( -- f)
+; R( --)
+; check if a character can be appended to output queue.
 VE_TX0Q:
     .db $04, "tx0?",0
     .dw VE_HEAD
@@ -176,12 +180,19 @@ XT_TX0Q:
     .dw PFA_TX0Q
 PFA_TX0Q:
     savetos
+    lds temp0,usart0_tx_out
+    lds temp1,usart0_tx_in
     movw zl, zerol
+    cp temp0, temp1
+    brne PFA_TX0Q1
     sbiw zl, 1
+PFA_TX0Q1:
     movw tosl, zl
     jmp DO_NEXT
 
 ; ( -- c)
+; R( --)
+; get 1 character from input queue, wait if needed
 VE_RX0:
     .db $03, "rx0"
     .dw VE_HEAD
@@ -194,7 +205,7 @@ PFA_RX0:
     cp temp1, temp0
     brne PFA_rx0_fetch
     rjmp PFA_rx0
-  
+
 PFA_rx0_fetch:
     savetos
     inc temp1
@@ -205,11 +216,13 @@ PFA_rx0_fetch:
     ldi zh,high(usart0_rx_data)
     add zl, temp1
     adc zh, zeroh
+    ld tosl, Z
     clr tosh
-    ld tosl, Z	
     jmp DO_NEXT
 
 ; ( -- f)
+; R( --)
+; check if unread characters are in the input queue.
 VE_RX0Q:
     .db $04, "rx0?",0
     .dw VE_HEAD
