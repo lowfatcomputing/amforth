@@ -1,10 +1,13 @@
-Date: 24.2.2007
+Date: 10.4.2007
+
 Author: mtrute@users.sourceforge.net (will be forwarded)
 
 amforth: interactive Forth for Atmel ATmega micro controllers.
 
 amforth is a forth running on an atmega mc. It uses
 the serial line uart0 (hard coded) as the terminal.
+It does not need additional hardware, but can be extended
+to make use of it.
 
 Serial line settings are 9600 8N1, no handshake.
 
@@ -23,19 +26,11 @@ Current state
     compatability may never get implemented. 
 
     All words should have ans94 (core with some from ext) stack diagrams,
-    words not found in the standard do have there own ones ;=)
-
-    Some secondary words cannot be reverse compiled to forth code.
+    Exception: # and co. They use the singel cell values only.
     
 ToDo
     documentation and web site (partly done)
-    optimize build process for different mc (atmega168 is known
-        to work with minor changes in usart.asm)
-    interrupts sometimes behave strange.
-
-Wishlist
-    move TOS from data stack to a register pair
-
+    more/better standards compliance?
 
 Post scriptum
 
