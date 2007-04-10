@@ -205,6 +205,7 @@ PFA_rx0_fetch:
     ldi zh,high(usart0_rx_data)
     add zl, temp1
     adc zh, zeroh
+    clr tosh
     ld tosl, Z	
     jmp DO_NEXT
 
