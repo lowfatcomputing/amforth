@@ -12,6 +12,7 @@
   .set heap = ramstart
   .set VE_HEAD = $0000
 
+.org codestart
 device_init:
     ; just a dummy
     ret
