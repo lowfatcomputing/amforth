@@ -46,8 +46,8 @@ reset:
     jmp DO_NEXT
 
 ; ISR routines
-.include "intx.asm"
-.include "usart.asm"
+.include "words/intx.asm"
+.include "words/usart.asm"
 
 ; lower part of the dictionary
 .include "dict_low.asm"
