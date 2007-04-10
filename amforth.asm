@@ -32,7 +32,7 @@ reset:
     std Z+7, yh
 
     ; allocate space for User Area
-    .set heap = heap + USERSIZE * CELLSIZE
+    .set heap = heap + USERSIZE 
 
     ; load Forth IP with starting word
     ldi xl, low(PFA_COLD)
