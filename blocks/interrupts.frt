@@ -1,7 +1,7 @@
 \ initialize interrupt vectors
 
 : initIntVectors
-    numint 0 do
-	['] noop i intvector !
+    #int 0 do
+	['] noop i int!
     loop
 ;
