@@ -15,9 +15,9 @@ PFA_IDUMP1:
     .dw XT_OVER
     .dw XT_PLUS
 	.dw XT_DUP
-	.dw XT_DOT
+	.dw XT_UDOT
     .dw XT_IFETCH
-    .dw XT_DOT    
+    .dw XT_UDOT
     .dw XT_CR
     .dw XT_DOLOOP
     .dw PFA_IDUMP1
