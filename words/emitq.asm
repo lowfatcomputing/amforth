@@ -19,6 +19,7 @@ VE_EMITQ:
 XT_EMITQ:
     .dw DO_COLON
 PFA_EMITQ:
+    .dw XT_PAUSE
     .dw XT_TICKEMITQ
     .dw XT_FETCH
     .dw XT_QEXECUTE

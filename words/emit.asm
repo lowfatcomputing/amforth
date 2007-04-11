@@ -20,6 +20,10 @@ VE_EMIT:
 XT_EMIT:
     .dw DO_COLON
 PFA_EMIT:
+    .dw XT_PAUSE
+    .dw XT_EMITQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_EMIT
     .dw XT_TICKEMIT
     .dw XT_FETCH
     .dw XT_QEXECUTE

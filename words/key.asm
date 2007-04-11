@@ -20,6 +20,10 @@ VE_KEY:
 XT_KEY:
     .dw DO_COLON
 PFA_KEY:
+    .dw XT_PAUSE
+    .dw XT_KEYQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_KEY
     .dw XT_TICKKEY
     .dw XT_FETCH
     .dw XT_QEXECUTE

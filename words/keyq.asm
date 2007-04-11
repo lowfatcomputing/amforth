@@ -20,6 +20,7 @@ VE_KEYQ:
 XT_KEYQ:
     .dw DO_COLON
 PFA_KEYQ:
+    .dw XT_PAUSE
     .dw XT_TICKKEYQ
     .dw XT_FETCH
     .dw XT_QEXECUTE
