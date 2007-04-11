@@ -12,12 +12,13 @@ PFA_COLD:
     .dw XT_SP_STORE
     .dw XT_RP0
     .dw XT_RP_STORE
-    ; set IO 
+    ; set IO
     .dw XT_DOLITERAL
     .dw XT_TX0
     .dw XT_TICKEMIT
     .dw XT_STORE
 
+    .dw XT_USART0
     .dw XT_DOLITERAL
     .dw XT_TX0Q
     .dw XT_TICKEMITQ
@@ -49,5 +50,6 @@ PFA_COLD:
     .dw XT_TICKTURNKEY
     .dw XT_EFETCH
     .dw XT_QEXECUTE
+
     .dw XT_QUIT
     .dw XT_EXIT

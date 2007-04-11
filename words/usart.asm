@@ -39,23 +39,57 @@
 .set usart0_rx_data = heap
 .set heap = heap + usart0_rx_size
 
-usart0_init:
-  sts usart0_tx_in,zerol
-  sts usart0_tx_out,zerol
-  sts usart0_rx_in,zerol
-  sts usart0_rx_out,zerol
+; ( -- )
+; R( --)
+; initialize usart0
+VE_USART0:
+  .db $06, "usart0",0
+  .dw VE_HEAD
+  .set VE_HEAD = VE_USART0
+XT_USART0:
+  .dw DO_COLON
+PFA_USART0:          ; ( -- )
+  .dw XT_ZERO
+  .dw XT_DOLITERAL
+  .dw usart0_tx_in
+  .dw XT_CSTORE
 
-  ldi temp0, LOW( baudrate )
-  out_ UBRR0L, temp0
-  ldi temp0, HIGH( baudrate )
-  out_ UBRR0H, temp0
-  ldi temp0, (1<<UMSEL01)|(3<<UCSZ00)
-  out_ UCSR0C, temp0
-  sbi_ UCSR0B, TXEN0, temp0
-  sbi_ UCSR0B, RXEN0, temp0
-  sbi_ UCSR0B, RXCIE0, temp0
+  .dw XT_ZERO
+  .dw XT_DOLITERAL
+  .dw usart0_tx_out
+  .dw XT_CSTORE
 
-  ret
+  .dw XT_ZERO
+  .dw XT_DOLITERAL
+  .dw usart0_rx_in
+  .dw XT_CSTORE
+
+  .dw XT_ZERO
+  .dw XT_DOLITERAL
+  .dw usart0_rx_out
+  .dw XT_CSTORE
+
+  .dw XT_DOLITERAL
+  .dw baudrate
+  .dw XT_DUP
+  .dw XT_DOLITERAL
+  .dw UBRR0L+$20
+  .dw XT_CSTORE
+  .dw XT_BYTESWAP
+  .dw XT_DOLITERAL
+  .dw UBRR0H
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw (1<<UMSEL01)|(3<<UCSZ00)
+  .dw XT_DOLITERAL
+  .dw UCSR0C+$20
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .dw XT_DOLITERAL
+  .dw UCSR0B+$20
+  .dw XT_CSTORE
+  .dw XT_EXIT
 
 usart0_udre_isr:
   push xl
