@@ -9,6 +9,6 @@ XT_CFETCH:
     .dw PFA_CFETCH
 PFA_CFETCH:
     movw zl, tosl
-    eor tosh, tosh
+    clr tosh
     ld tosl, Z
     rjmp DO_NEXT

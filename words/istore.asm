@@ -29,7 +29,7 @@ PFA_ISTORE:
         .dw XT_DUP
 	.dw XT_SPMERASE
 PFA_ISTORE_WRITE:
-    .dw XT_DUP 
+    .dw XT_DUP
     .dw XT_SPMWRITE
     .dw XT_SPMRWW
     .dw XT_DROP
@@ -51,7 +51,7 @@ XT_INTOFF:
     .dw PFA_INTOFF
 PFA_INTOFF:
     savetos
-    eor tosh, tosh
+    clr tosh
     in tosl, SREG
     cli
     rjmp DO_NEXT
@@ -82,8 +82,8 @@ PFA_INTRESTORE:
     out SREG, tosl
     loadtos
     rjmp DO_NEXT
-    
-    
+
+
 ; ( addr -- )
 ; R( -- )
 ; load the flash page of cell addr into write buffer, omitting addr itself
@@ -147,11 +147,11 @@ PFA_DOSPM1:
     in temp1, SPMCR
     andi temp1, (1<<SPMEN)
     brne PFA_DOSPM1
-    
+
 PFA_DOSPM2:
     sbic EECR, EEWE
     rjmp PFA_DOSPM2
-    
+
     ; address
     movw zl, tosl
     lsl zl

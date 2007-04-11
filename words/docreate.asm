@@ -1,6 +1,6 @@
 ; ( addr --  )
 ; R( -- )
-; creates the vocabulary header without XT and PFA
+; creates the vocabulary header without XT and data field (PF)
 ;VE_DOCREATE:
 ;    .db $08, "(create)",0
 ;    .dw VE_HEAD
@@ -8,38 +8,34 @@
 XT_DOCREATE:
     .dw DO_COLON
 PFA_DOCREATE:
-    ; copy counted string into flash,
-    ; make voclink entry and update dictionary pointer
-    ; zellenzahl = (bytezahl + 1 ) / 2
-    .dw XT_HERE
-    .dw XT_SWAP
-    .dw XT_DUP
-    .dw XT_CFETCH
-    .dw XT_QDUP
-    .dw XT_GREATERZERO
+    .dw XT_HERE   ; ( -- addr here )
+    .dw XT_SWAP   ; ( -- here addr )
+    .dw XT_DUP    ; ( -- here addr addr )
+    .dw XT_CFETCH ; ( -- here addr n )
+    .dw XT_QDUP   ; ( -- here addr nn|0 )
+    .dw XT_GREATERZERO ;
     .dw XT_DOCONDBRANCH
-    .dw PFA_DOCREATE4
+    .dw PFA_DOCREATE4 ; ( -- here addr n )
     .dw XT_2SLASH
-    .dw XT_1PLUS
-    ; ( addr ncells -- )
+    .dw XT_1PLUS      ; ( -- here addr ncells )
     ; fetch every cell and compile it into flash
     .dw XT_ZERO
     .dw XT_DODO
-PFA_DOCREATE1:
-        .dw XT_DUP
-	.dw XT_FETCH
-	.dw XT_COMMA
-	.dw XT_1PLUS
-	.dw XT_1PLUS
+PFA_DOCREATE1:        ; ( -- here addr )
+        .dw XT_DUP    ; ( -- here addr addr )
+	.dw XT_FETCH  ; ( -- here addr cc )
+	.dw XT_COMMA  ; ( -- here addr )
+	.dw XT_1PLUS  ; ( -- here addr++ )
+	.dw XT_1PLUS  ; ( -- here addr++ )
     .dw XT_DOLOOP
     .dw PFA_DOCREATE1
-    .dw XT_DROP ; remove addr from loop
+    .dw XT_DROP       ; ( -- here  )
     ; make voc link
-    .dw XT_HEAD
+    .dw XT_HEAD       ; ( -- here head )
     .dw XT_EFETCH
-    .dw XT_COMMA
-    .dw XT_HEAD
-    .dw XT_ESTORE
+    .dw XT_COMMA      ; ( -- here)
+    .dw XT_HEAD       ; ( -- here head )
+    .dw XT_ESTORE     ; ( -- )
     .dw XT_EXIT
 
 PFA_DOCREATE4:
