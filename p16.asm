@@ -16,7 +16,6 @@
 device_init:
     ; just a dummy
     ret
-    call device_init
     
 .include "amforth.asm"
 
