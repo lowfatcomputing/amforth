@@ -6,9 +6,6 @@
 .include "words/endof.asm"
 .include "words/endcase.asm"
 
-.include "words/value.asm"
-.include "words/to.asm"
-
 .include "words/d-2star.asm"
 .include "words/d-2slash.asm"
 .include "words/d-plus.asm"

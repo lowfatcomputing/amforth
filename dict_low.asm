@@ -147,3 +147,5 @@
 .include "words/unused.asm"
 
 .include "words/f_cpu.asm"
+.include "words/value.asm"
+.include "words/to.asm"
