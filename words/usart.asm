@@ -38,6 +38,9 @@
 .set usart0_rx_data = heap
 .set heap = heap + usart0_rx_size
 
+; ( -- v)
+; R( -- )
+; returns usart0 baudrate
 VE_BAUD0:
   .db 05,"baud0"
   .dw VE_HEAD
@@ -90,7 +93,7 @@ PFA_USART0:          ; ( -- )
     
   .dw XT_DUP
   .dw XT_DOLITERAL
-  .dw UBRR0L+$20
+  .dw UBRR0L
   .dw XT_CSTORE
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL
@@ -99,12 +102,12 @@ PFA_USART0:          ; ( -- )
   .dw XT_DOLITERAL
   .dw (1<<UMSEL01)|(3<<UCSZ00)
   .dw XT_DOLITERAL
-  .dw UCSR0C+$20
+  .dw UCSR0C
   .dw XT_CSTORE
   .dw XT_DOLITERAL
   .dw (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .dw XT_DOLITERAL
-  .dw UCSR0B+$20
+  .dw UCSR0B
   .dw XT_CSTORE
   .dw XT_EXIT
 
@@ -123,9 +126,9 @@ usart0_udre_isr:
   brne usart0_udre_next
 
 usart0_udre_last:
-  in_ xl,UCSR0B
+  in_ xl,UCSR0B-$20
   cbr xl,(1<<UDRIE0)
-  out_ UCSR0B,xl
+  out_ UCSR0B-$20,xl
 
   rjmp usart0_udre_done
 
@@ -196,29 +199,39 @@ VE_TX0:
     .dw VE_HEAD
     .set VE_HEAD = VE_TX0
 XT_TX0:
-    .dw PFA_TX0
+    .dw DO_COLON
 PFA_TX0:
-    lds temp0,usart0_tx_in
-    inc temp0
-    andi temp0,usart0_tx_mask
-
-    lds temp1,usart0_tx_out
-    cp temp0,temp1
-    brne PFA_tx0_store
-    rjmp PFA_tx0
-
-PFA_tx0_store:
-    sts usart0_tx_in,temp0
-    ldi zl,low(usart0_tx_data)
-    ldi zh,high(usart0_tx_data)
-    add zl, temp0
-    adc zh, zeroh
-    st z,tosl
-    loadtos
-    in_ temp0,UCSR0B
-    sbr temp0,(1<<UDRIE0)
-    out_ UCSR0B,temp0
-    jmp DO_NEXT
+  ; wait for queue
+  .dw XT_TX0Q
+  .dw XT_DOCONDBRANCH
+  .dw PFA_TX0
+  ; append to queue
+  .dw XT_DOLITERAL
+  .dw usart0_tx_in
+  .dw XT_CFETCH        ; ( -- c tx_in)
+  .dw XT_1PLUS
+  .dw XT_DOLITERAL
+  .dw usart0_tx_mask
+  .dw XT_AND           ; ( -- c tx_in_new)
+  .dw XT_DUP
+  .dw XT_DOLITERAL
+  .dw usart0_tx_in
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw usart0_tx_data   ; ( -- c tx_in_new data)
+  .dw XT_PLUS
+  .dw XT_CSTORE
+  ; enable interrupt
+  .dw XT_DOLITERAL
+  .dw UCSR0B
+  .dw XT_DUP            ;
+  .dw XT_CFETCH
+  .dw XT_DOLITERAL
+  .dw 1<<UDRIE0
+  .dw XT_OR
+  .dw XT_SWAP
+  .dw XT_CSTORE
+  .dw XT_EXIT
 
 ; ( -- f)
 ; R( --)
@@ -228,18 +241,16 @@ VE_TX0Q:
     .dw VE_HEAD
     .set VE_HEAD = VE_TX0Q
 XT_TX0Q:
-    .dw PFA_TX0Q
+    .dw DO_COLON
 PFA_TX0Q:
-    savetos
-    lds temp0,usart0_tx_out
-    lds temp1,usart0_tx_in
-    movw zl, zerol
-    cp temp0, temp1
-    brne PFA_TX0Q1
-    sbiw zl, 1
-PFA_TX0Q1:
-    movw tosl, zl
-    jmp DO_NEXT
+  .dw XT_DOLITERAL
+  .dw usart0_tx_out
+  .dw XT_CFETCH
+  .dw XT_DOLITERAL
+  .dw usart0_tx_in
+  .dw XT_CFETCH
+  .dw XT_EQUAL
+  .dw XT_EXIT
 
 ; ( -- c)
 ; R( --)
@@ -249,27 +260,24 @@ VE_RX0:
     .dw VE_HEAD
     .set VE_HEAD = VE_RX0
 XT_RX0:
-    .dw PFA_RX0
+    .dw DO_COLON
 PFA_RX0:
-    lds temp1,usart0_rx_out
-    lds temp0,usart0_rx_in
-    cp temp1, temp0
-    brne PFA_rx0_fetch
-    rjmp PFA_rx0
-
-PFA_rx0_fetch:
-    savetos
-    inc temp1
-    andi temp1,usart0_rx_mask
-    sts usart0_rx_out, temp1
-
-    ldi zl,low(usart0_rx_data)
-    ldi zh,high(usart0_rx_data)
-    add zl, temp1
-    adc zh, zeroh
-    ld tosl, Z
-    clr tosh
-    jmp DO_NEXT
+  .dw XT_DOLITERAL
+  .dw usart0_rx_out
+  .dw XT_CFETCH
+  .dw XT_1PLUS
+  .dw XT_DOLITERAL
+  .dw usart0_rx_mask
+  .dw XT_AND
+  .dw XT_DUP
+  .dw XT_DOLITERAL
+  .dw usart0_rx_out
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw usart0_rx_data
+  .dw XT_PLUS
+  .dw XT_CFETCH
+  .dw XT_EXIT
 
 ; ( -- f)
 ; R( --)
@@ -279,13 +287,13 @@ VE_RX0Q:
     .dw VE_HEAD
     .set VE_HEAD = VE_RX0Q
 XT_RX0Q:
-    .dw PFA_RX0Q
+    .dw DO_COLON
 PFA_RX0Q:
-    savetos
-    lds temp0,usart0_rx_out
-    lds temp1,usart0_rx_in
-    movw zl, zerol
-    cpse temp0, temp1
-    sbiw zl, 1
-    movw tosl, zl
-    jmp DO_NEXT
+  .dw XT_DOLITERAL
+  .dw usart0_rx_out
+  .dw XT_CFETCH
+  .dw XT_DOLITERAL
+  .dw usart0_rx_in
+  .dw XT_CFETCH
+  .dw XT_NOTEQUAL
+  .dw XT_EXIT
