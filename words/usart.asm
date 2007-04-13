@@ -13,7 +13,6 @@
 
 .org pc_
 
-.equ baudrate  = cpu_frequency/(baud_rate*16)-1
 ; sizes have to be powers of 2!
 .equ usart0_tx_size = $10
 .equ usart0_rx_size = $10
@@ -38,6 +37,15 @@
 
 .set usart0_rx_data = heap
 .set heap = heap + usart0_rx_size
+
+VE_BAUD0:
+  .db 05,"baud0"
+  .dw VE_HEAD
+  .set VE_HEAD = VE_BAUD0
+XT_BAUD0:
+  .dw PFA_DOVALUE
+PFA_BAUD00:          ; ( -- )
+  .dw 10
 
 ; ( -- )
 ; R( --)
@@ -69,8 +77,17 @@ PFA_USART0:          ; ( -- )
   .dw usart0_rx_out
   .dw XT_CSTORE
 
-  .dw XT_DOLITERAL
-  .dw baudrate
+  .dw XT_F_CPU
+  .dw XT_D2SLASH
+  .dw XT_D2SLASH
+  .dw XT_D2SLASH
+  .dw XT_D2SLASH
+  .dw XT_BAUD0
+  .dw XT_UMSLASHMOD
+  .dw XT_SWAP
+  .dw XT_DROP
+  .dw XT_1MINUS
+    
   .dw XT_DUP
   .dw XT_DOLITERAL
   .dw UBRR0L+$20

@@ -32,13 +32,12 @@ reset:
     std Z+7, yh
 
     ; allocate space for User Area
-    .set heap = heap + USERSIZE 
+    .set heap = heap + USERSIZE
 
     ; load Forth IP with starting word
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
     ; the following should be turnkey-action, but adds a few more words to the the dictionary
-    rcall usart0_init
     rcall device_init
     ; enable interrupts to receive terminal input
     sei
@@ -73,6 +72,7 @@ reset:
     .dw heap         ; HEAP
     .dw edp          ; EDP
     .dw XT_VER       ; 'TURNKEY
+    .dw baud_rate    ; BAUDRATE
 ; 1st free address in EEPROM, see above
 edp:
 .cseg
