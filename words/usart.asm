@@ -85,7 +85,7 @@ PFA_USART0:          ; ( -- )
   .dw XT_D2SLASH
   .dw XT_D2SLASH
   .dw XT_D2SLASH
-  .dw XT_BAUD0
+  .dw XT_ROT
   .dw XT_UMSLASHMOD
   .dw XT_SWAP
   .dw XT_DROP

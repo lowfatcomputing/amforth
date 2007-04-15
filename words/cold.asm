@@ -18,7 +18,6 @@ PFA_COLD:
     .dw XT_TICKEMIT
     .dw XT_STORE
 
-    .dw XT_USART0
     .dw XT_DOLITERAL
     .dw XT_TX0Q
     .dw XT_TICKEMITQ
@@ -47,9 +46,14 @@ PFA_COLD:
     .dw XT_TICKPAUSE
     .dw XT_STORE
 
+    .dw XT_BAUD0
+    .dw XT_USART0
+    .dw XT_INTON
+
     .dw XT_TICKTURNKEY
     .dw XT_EFETCH
     .dw XT_QEXECUTE
 
+    
     .dw XT_QUIT
     .dw XT_EXIT
