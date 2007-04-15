@@ -68,3 +68,47 @@ XT_NUMINT:
     .dw PFA_DOVARIABLE
 PFA_NUMINT:
     .dw INTVECTORS
+
+
+; ( -- sreg )
+; R( -- )
+; turns off all interrupts and leaves SREG in TOS
+VE_INTOFF:
+    .db $04, "/int",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_INTOFF
+XT_INTOFF:
+    .dw PFA_INTOFF
+PFA_INTOFF:
+    savetos
+    clr tosh
+    in tosl, SREG
+    cli
+    jmp_ DO_NEXT
+
+; ( --  )
+; R( -- )
+; turns on all interrupts
+VE_INTON:
+    .db $03, "int"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_INTON
+XT_INTON:
+    .dw PFA_INTON
+PFA_INTON:
+    sei
+    jmp_ DO_NEXT
+
+; ( sreg -- )
+; R( -- )
+; restores SREG from TOS (
+;VE_INTRESTORE:
+;    .db $0B, "int_restore"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_INTRESTORE
+XT_INTRESTORE:
+    .dw PFA_INTRESTORE
+PFA_INTRESTORE:
+    out SREG, tosl
+    loadtos
+    jmp_ DO_NEXT

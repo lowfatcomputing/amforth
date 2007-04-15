@@ -38,51 +38,6 @@ PFA_ISTORE_WRITE:
     .dw XT_INTRESTORE
     .dw XT_EXIT
 
-; the following 3 words may be useful for others too.
-
-; ( -- sreg )
-; R( -- )
-; turns off all interrupts and leaves SREG in TOS
-;VE_INTOFF:
-;    .db $04, "/int",0
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_INTOFF
-XT_INTOFF:
-    .dw PFA_INTOFF
-PFA_INTOFF:
-    savetos
-    clr tosh
-    in tosl, SREG
-    cli
-    rjmp DO_NEXT
-
-; ( --  )
-; R( -- )
-; turns on all interrupts
-;VE_INTON:
-;    .db $03, "int"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_INTON
-XT_INTON:
-    .dw PFA_INTON
-PFA_INTON:
-    sei
-    rjmp DO_NEXT
-
-; ( sreg -- )
-; R( -- )
-; restores SREG from TOS (
-;VE_INTRESTORE:
-;    .db $0B, "int_restore"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_INTRESTORE
-XT_INTRESTORE:
-    .dw PFA_INTRESTORE
-PFA_INTRESTORE:
-    out SREG, tosl
-    loadtos
-    rjmp DO_NEXT
-
 
 ; ( addr -- )
 ; R( -- )
