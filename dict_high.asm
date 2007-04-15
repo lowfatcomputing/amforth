@@ -86,3 +86,4 @@
 
 .include "words/s_to_d.asm"
 .include "words/d_to_s.asm"
+.include "words/d-2slash.asm"
