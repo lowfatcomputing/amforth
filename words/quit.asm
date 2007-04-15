@@ -24,9 +24,10 @@ PFA_QUIT2:
     .dw XT_DOCONDBRANCH
     .dw PFA_QUIT4
     .dw XT_CR
-    .dw XT_DODOTSTRING
+    .dw XT_SLITERAL
     .db 2, "> ",0
-PFA_QUIT4:    
+    .dw XT_ITYPE
+PFA_QUIT4:
     .dw XT_TIB
     .dw XT_DOLITERAL
     .dw TIBSIZE
@@ -36,7 +37,7 @@ PFA_QUIT4:
     .dw XT_ZERO
     .dw XT_G_IN
     .dw XT_STORE
-    
+
     .dw XT_DOLITERAL
     .dw XT_INTERPRET
     .dw XT_CATCH
@@ -49,8 +50,9 @@ PFA_QUIT4:
 	.dw XT_LESS
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
-    	    .dw XT_DODOTSTRING
+    	    .dw XT_SQUOTE
 	    .db 3, " ??"
+            .dw XT_ITYPE
 	    .dw XT_DECIMAL
     	    .dw XT_DOT
     	    .dw XT_G_IN
@@ -60,8 +62,9 @@ PFA_QUIT5:
         .dw XT_DOBRANCH
 	.dw PFA_QUIT
 PFA_QUIT3:
-    .dw XT_DODOTSTRING
+    .dw XT_SLITERAL
     .db 3, " ok"
+    .dw XT_ITYPE
     .dw XT_DOBRANCH
     .dw PFA_QUIT2
 

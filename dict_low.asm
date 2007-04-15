@@ -118,7 +118,7 @@
 .include "words/accept.asm"
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/dodotstring.asm"
+.include "words/sliteral.asm"
 .include "words/itype.asm"
 .include "words/icount.asm"
 .include "words/type.asm"

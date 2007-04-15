@@ -8,6 +8,7 @@ VE_VER:
 XT_VER:
     .dw DO_COLON
 PFA_VER:
-    .dw XT_DODOTSTRING
+    .dw XT_SLITERAL
     .db 11,"amforth 1.9"
+    .dw XT_ITYPE
     .dw XT_EXIT
