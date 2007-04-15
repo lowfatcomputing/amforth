@@ -7,9 +7,9 @@
 .include "words/endcase.asm"
 
 .include "words/d-2star.asm"
-.include "words/d-2slash.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/d-invert.asm"
 
 .include "words/dot-s.asm"
+.include "words/idump.asm"

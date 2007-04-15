@@ -20,6 +20,11 @@
  
   .equ UMSEL01 = 7
 
+.macro jmp_
+    jmp @0
+.endmacro
+
+
 .ifdef PCINT0addr
     .equ PCI0addr = PCINT0addr
 .endif
@@ -61,8 +66,8 @@
 ;    rcall isr   ;USART, Rx Complete Interrupt Vector
 ;.org    UDRE0addr
 ;    rcall isr   ;USART, Data Register Empty Interrupt Vector
-;.org    UTXC0addr
-;    rcall isr   ;USART, Tx Complete Interrupt Vector
+.org    UTXC0addr
+    rcall isr   ;USART, Tx Complete Interrupt Vector
 .org    USI_STARTaddr
     rcall isr   ;USI Start Condition Interrupt Vector
 .org    USI_OVFaddr

@@ -6,7 +6,7 @@
 
   .def tosl = r6
   .def tosh = r7
-  
+
   .def temp0 = r16
   .def temp1 = r17
   .def temp2 = r18
@@ -15,7 +15,7 @@
   .def temp5 = r21
   .def temp6 = r22
   .def temp7 = r23
-  
+
   .def wl = r24
   .def wh = r25
 
@@ -27,11 +27,6 @@
 .macro savetos
     st -Y, tosh
     st -Y, tosl
-.endmacro
-
-.macro loadsos
-    ld temp0, Y+
-    ld temp1, Y+
 .endmacro
 
 .macro in_

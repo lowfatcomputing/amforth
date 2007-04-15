@@ -39,8 +39,6 @@ reset:
     ldi xh, high(PFA_COLD)
     ; the following should be turnkey-action, but adds a few more words to the the dictionary
     rcall device_init
-    ; enable interrupts to receive terminal input
-    sei
     ; its a far jump...
     jmp DO_NEXT
 

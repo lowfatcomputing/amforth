@@ -15,6 +15,11 @@
   .equ nrww = $3800
   .equ codestart = $2a
 
+.macro jmp_
+    jmp @0
+.endmacro
+
+
 ; some hacks
 .if defined(UDRE0)
     ;

@@ -12,6 +12,7 @@
   .set heap = ramstart
   .set VE_HEAD = $0000
 
+.org codestart
 device_init:
     ldi r16, (1<< WGM21)
     ori r16, (1<<COM20)
