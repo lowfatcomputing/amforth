@@ -8,8 +8,6 @@ VE_VALUE:
 XT_VALUE:
     .dw DO_COLON
 PFA_VALUE:
-    .dw XT_BL
-    .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_COMPILE
     .dw PFA_DOVALUE
@@ -27,7 +25,7 @@ PFA_VALUE:
 
 PFA_DOVALUE:
     .dw $940e            ; (;code>
-    .dw DO_DODOES	 
+    .dw DO_DODOES
     .dw XT_IFETCH
     .dw XT_EFETCH
     .dw XT_EXIT
@@ -35,4 +33,3 @@ PFA_DOVALUE:
 ; : value ( n -- )
 ;	create edp e@ dup , dup 1+ 1+ edp e! e! does> i@ e@ ;
 
-	

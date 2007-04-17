@@ -13,3 +13,12 @@
 
 .include "words/dot-s.asm"
 .include "words/idump.asm"
+
+; string words and related
+.include "words/slashstring.asm"
+.include "words/abortstring.asm"
+.include "words/dotstring.asm"
+.include "words/squote.asm"
+.include "words/parse.asm"
+.include "words/char-scan.asm"
+.include "words/char-skip.asm"

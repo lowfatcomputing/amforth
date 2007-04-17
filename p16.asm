@@ -1,6 +1,6 @@
 ; Settings for the eval board with Atmega32 & 16 MHz
 
-.equ dict_optional = 2
+.equ dict_optional = 0
 ; cpu clock in hertz
 .equ cpu_frequency = 16000000
 ; baud rate of terminal

@@ -8,8 +8,6 @@ VE_CONSTANT:
 XT_CONSTANT:
     .dw DO_COLON
 PFA_CONSTANT:
-    .dw XT_BL
-    .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_COMPILE
     .dw PFA_DOVARIABLE

@@ -50,7 +50,7 @@ PFA_QUIT4:
 	.dw XT_LESS
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
-    	    .dw XT_SQUOTE
+    	    .dw XT_SLITERAL
 	    .db 3, " ??"
             .dw XT_ITYPE
 	    .dw XT_DECIMAL

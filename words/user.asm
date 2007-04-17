@@ -8,8 +8,6 @@ VE_USER:
 XT_USER:
     .dw DO_COLON
 PFA_USER:
-    .dw XT_BL
-    .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_COMPILE
     .dw PFA_DOUSER

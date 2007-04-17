@@ -78,10 +78,8 @@
 .include "words/immediate.asm"
 .include "words/compile.asm"
 
-.include "words/abortstring.asm"
-.include "words/dotstring.asm"
 .include "words/brackettick.asm"
-
+.include "words/source.asm"
 
 .include "words/decimal.asm"
 .include "words/hex.asm"
@@ -119,6 +117,7 @@
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sliteral.asm"
+.include "words/scomma.asm"
 .include "words/itype.asm"
 .include "words/icount.asm"
 .include "words/type.asm"

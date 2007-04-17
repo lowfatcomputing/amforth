@@ -1,5 +1,5 @@
 ; ( -- )
-; R( -- ) 
+; R( -- )
 ; create named entry in the dictionary
 VE_COLON:
     .db $1, ":"
@@ -8,8 +8,6 @@ VE_COLON:
 XT_COLON:
     .dw DO_COLON
 PFA_COLON:
-    .dw XT_BL
-    .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_COMPILE
     .dw DO_COLON

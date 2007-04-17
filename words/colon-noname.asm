@@ -1,5 +1,5 @@
-; ( -- )
-; R( -- ) 
+; ( -- xt )
+; R( -- )
 ; create unnamed entry in the dictionary
 VE_COLONNONAME:
     .db $7, ":noname"

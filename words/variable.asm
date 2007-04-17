@@ -8,8 +8,6 @@ VE_VARIABLE:
 XT_VARIABLE:
     .dw DO_COLON
 PFA_VARIABLE:
-    .dw XT_BL
-    .dw XT_WORD
     .dw XT_DOCREATE
     .dw XT_COMPILE
     .dw PFA_DOVARIABLE
