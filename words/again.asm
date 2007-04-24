@@ -1,4 +1,4 @@
-; ( addr -- )
+; ( addr -- ) Control Structure
 ; R( -- )
 ; go back to begin
 VE_AGAIN:

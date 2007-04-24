@@ -1,4 +1,4 @@
-; ( addr -- addr+1 n)
+; ( addr -- addr+1 n) String
 ; R( -- )
 ; addr is the address of a counted string in RAM
 VE_COUNT:

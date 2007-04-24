@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Control Structure
 ; R( -- )
 ; start do .. [+]loop 
 VE_DO:

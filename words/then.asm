@@ -1,4 +1,4 @@
-; ( addr -- )
+; ( addr -- ) Compiler
 ; R( -- )
 ; finish if
 VE_THEN:

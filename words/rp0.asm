@@ -1,4 +1,4 @@
-; ( -- addr)
+; ( -- addr) Stackpointer
 ; R( -- )
 ; start value of return stack
 VE_RP0:
@@ -17,7 +17,7 @@ XT_DORP0:
 PFA_DORP0:
     .dw 2
 
-; ( -- addr)
+; ( -- addr) Stackpointer
 ; R( -- )
 ; address of variable to store the return stack pointer for inactive tasks
 VE_RP:

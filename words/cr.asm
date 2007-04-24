@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Character IO
 ; R( -- )
 ; emits CR/LF
 VE_CR:

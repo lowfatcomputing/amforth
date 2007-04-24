@@ -1,4 +1,4 @@
-; ( n1 -- flag)
+; ( n1 -- flag) Compare
 ; R( -- )
 ; compare with zero
 VE_LESSZERO:

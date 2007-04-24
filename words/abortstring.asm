@@ -1,4 +1,4 @@
-; ( nx -- )
+; ( nx -- ) Exceptions
 ; R( ny -- )
 ; check flag. If true emit some text and throw  exception -2 
 VE_ABORTSTRING:

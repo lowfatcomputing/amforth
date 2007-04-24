@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; set immediate flag
 VE_IMMEDIATE:

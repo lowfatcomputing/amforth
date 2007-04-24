@@ -1,4 +1,4 @@
-; ( d1 -- d2 )
+; ( d1 -- d2 ) Arithmetics
 ; R( -- )
 ; shift a double cell value right
 VE_D2SLASH:

@@ -1,4 +1,4 @@
-; ( addr - c1 )
+; ( addr - c1 ) Memory
 ; R( -- )
 ; fetch a single byte from RAM (or IO or CPU register)
 VE_CFETCH:

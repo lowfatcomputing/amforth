@@ -1,5 +1,5 @@
-; ( -- n)
-; R: (n --)
+; ( -- n) Stack
+; R(n --)
 ; move TOR to TOS
 VE_R_FROM:
     .db $02, "r>", 0

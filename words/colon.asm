@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; create named entry in the dictionary
 VE_COLON:

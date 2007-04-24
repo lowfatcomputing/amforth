@@ -1,4 +1,4 @@
-; ( nx -- )
+; ( nx -- ) Exceptions
 ; R( ny -- )
 ; send an exception -1
 VE_ABORT:

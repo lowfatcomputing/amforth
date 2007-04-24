@@ -1,8 +1,8 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; compiles string into dictionary to be typed at runtime
 VE_DOTSTRING:
-    .db $82, ".",$22,0
+    .db $82, ".",$22,$20
     .dw VE_HEAD
     .set VE_HEAD = VE_DOTSTRING
 XT_DOTSTRING:

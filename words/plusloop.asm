@@ -1,4 +1,4 @@
-; ( addr -- )
+; ( addr -- ) Control Structure
 ; R( -- )
 ; compile +loop and resolve branch
 VE_PLOOP:

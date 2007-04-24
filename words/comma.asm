@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Dictionary
 ; R( -- )
 ; compile 16 bit into flash at here.
 VE_COMMA:

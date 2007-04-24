@@ -1,4 +1,4 @@
-; ( -- c )
+; ( -- c ) Tools
 ; R( -- )
 ; first character of the next word
 VE_CHAR:

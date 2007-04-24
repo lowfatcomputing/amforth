@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Numeric IO
 ; R( -- )
 ; prints TOS in free number format
 VE_DOT:

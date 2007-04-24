@@ -1,4 +1,4 @@
-; ( -- XT )
+; ( -- XT ) Dictionary
 ; R( -- )
 ; search dictionary, returns XT or throw an exception -13
 VE_TICK:

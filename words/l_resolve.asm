@@ -1,4 +1,4 @@
-; ( addr -- )
+; ( addr -- ) Control Structure
 ; R( -- )
 ; resolve backward branch
 VE_LRESOLVE:

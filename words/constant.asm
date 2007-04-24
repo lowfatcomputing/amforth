@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Compiler
 ; R( -- )
 ; create a named constant
 VE_CONSTANT:

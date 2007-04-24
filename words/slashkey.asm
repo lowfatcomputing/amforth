@@ -1,4 +1,4 @@
-; ( -- f )
+; ( -- f ) Character IO
 ; R( -- )
 ; vector for XT of the word executed when checking for key input. defaults to rx0?
 VE_TICKSLASHKEY:
@@ -10,8 +10,8 @@ XT_TICKSLASHKEY:
 PFA_TICKSLASHKEY:
     .dw 20
 
-; ( -- f)
-; R:( -- )
+; ( -- f) Character IO
+; R( -- )
 ; fetch 'key? vector and execute it if not zero. Leave true if a character can be read, false otherwise
 VE_SLASHKEY:
     .db $04, "/key",0

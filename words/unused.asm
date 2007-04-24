@@ -1,4 +1,4 @@
-; ( -- n )
+; ( -- n ) Tools
 ; R( -- )
 ; number of unused flash cells
 VE_UNUSED:

@@ -1,4 +1,4 @@
-; ( addr -- ) 
+; ( addr -- ) Control Structure
 ; R( -- )
 ; cpmpile (loop) and resolve branch
 VE_LOOP:

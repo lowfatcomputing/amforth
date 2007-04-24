@@ -1,4 +1,4 @@
-; ( -- eaddr) 
+; ( -- eaddr) System Pointer
 ; R( -- )
 ; first unused address in eeprom
 VE_EDP:

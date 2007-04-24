@@ -1,4 +1,4 @@
-; ( -- 0 )
+; ( -- 0 ) Control Structure
 ; R( -- )
 ; 
 VE_CASE:

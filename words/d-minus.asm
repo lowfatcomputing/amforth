@@ -1,4 +1,4 @@
-; ( d1 d2 -- d3 )
+; ( d1 d2 -- d3 ) Arithmetics
 ; R( -- )
 ; subtract double cell values
 VE_DMINUS:

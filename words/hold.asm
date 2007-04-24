@@ -1,4 +1,4 @@
-; ( c -- )
+; ( c -- ) Numeric IO
 ; R( -- )
 ; prepend character to pictured numeric output buffer
 VE_HOLD:

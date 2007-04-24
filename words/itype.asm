@@ -1,4 +1,4 @@
-; ( addr n --  )
+; ( addr n --  ) Tools
 ; R( -- )
 ; reads packed string from flash and emit it
 VE_ITYPE:
@@ -91,7 +91,7 @@ PFA_ITYPE6:
     .dw XT_EXIT
 
 ; ( w -- )
-; R: ( -- )
+; R( -- )
 ; content of cell fetched on stack.
 ;VE_LOEMIT:
 ;    .db $06, "loemit"
@@ -109,7 +109,7 @@ PFA_LOEMIT:
 
 
 ; ( w -- )
-; R:( -- )
+; R( -- )
 ; content of cell fetched on stack.
 ;VE_HIEMIT:
 ;    .db $06, "hiemit"

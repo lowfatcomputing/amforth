@@ -1,8 +1,8 @@
-; ( addr len -- )
+; ( addr len -- ) Compiler
 ; R( -- )
 ; compiles a string from RAM to Flash
 VE_SCOMMA:
-  .db $02,"s,",0
+  .db $02,"s",$2c,$20
   .dw VE_HEAD
   .set VE_HEAD = VE_SCOMMA
 XT_SCOMMA:

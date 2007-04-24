@@ -1,4 +1,4 @@
-; ( dest -- orig dest )
+; ( dest -- orig dest ) Control Structure
 ; R( -- )
 ; control structure
 VE_WHILE:

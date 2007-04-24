@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) System
 ; R( -- )
 ; get user pointer
 VE_UP_FETCH:
@@ -12,7 +12,7 @@ PFA_UP_FETCH:
     movw tosl, upl
     rjmp DO_NEXT
 
-; ( addr -- )
+; ( addr -- ) System
 ; R( -- )
 ; set user pointer
 VE_UP_STORE:

@@ -1,4 +1,4 @@
-; (addr-from addr-to n -- )
+; (addr-from addr-to n -- ) Memory
 ; R( -- )
 ; copy data in RAM
 VE_CMOVE_G:

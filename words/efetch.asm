@@ -1,4 +1,4 @@
-; ( addr - n) 
+; ( addr - n) Memory
 ; R( -- )
 ; read 2 bytes from eeprom
 VE_EFETCH:

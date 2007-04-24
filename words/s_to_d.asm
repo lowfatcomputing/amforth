@@ -1,4 +1,4 @@
-; ( n1 -- d1 )
+; ( n1 -- d1 ) Conversion
 ; R( -- )
 ; extend (signed) single cell value to double cell
 VE_S2D:

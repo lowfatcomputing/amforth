@@ -1,4 +1,4 @@
-; ( n addr -- )
+; ( n addr -- ) Memory
 ; R( -- )
 ; write to eeprom address
 VE_ESTORE:

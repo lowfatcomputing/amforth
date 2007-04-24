@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Compiler
 ; R( -- )
 ; compile a literal in colon defintions
 VE_LITERAL:

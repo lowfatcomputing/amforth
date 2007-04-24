@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Compiler
 ; R( -- )
 ; define  a new user variable
 VE_USER:

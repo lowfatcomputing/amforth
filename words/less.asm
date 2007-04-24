@@ -1,4 +1,4 @@
-; ( n1 n2 -- flasg)
+; ( n1 n2 -- flasg) Compare
 ; R( -- )
 ; compare two values
 VE_LESS:

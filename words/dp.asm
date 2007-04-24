@@ -1,4 +1,4 @@
-; ( -- eaddr) 
+; ( -- eaddr)  System Pointer
 ; R( -- )
 ; first unused address in flash (NRWW is always used)
 VE_DP:

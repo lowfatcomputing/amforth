@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Numeric IO
 ; R( -- )
 ; place a - in HLD if value is negative
 VE_SIGN:

@@ -1,4 +1,4 @@
-; ( -- eaddr)
+; ( -- eaddr) System Pointer
 ; R( -- )
 ;  address of first unallocated RAM
 VE_HEAP:

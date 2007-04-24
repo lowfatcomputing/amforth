@@ -1,5 +1,6 @@
-; ( -- addr )
+; ( -- addr ) Character IO
 ; R( -- )
+;  contains the address of the variable that contains the XT of the emit? action
 VE_TICKEMITQ:
     .db $06, $27, "emit?",0
     .dw VE_HEAD
@@ -9,7 +10,7 @@ XT_TICKEMITQ:
 PFA_TICKEMITQ:
     .dw 14
 
-; ( -- c)
+; ( -- c) Character IO
 ; R( -- )
 ; fetch 'emit? vector and execute its token if not zero
 VE_EMITQ:

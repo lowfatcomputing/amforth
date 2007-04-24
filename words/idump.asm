@@ -1,4 +1,4 @@
-; ( addr len -- )
+; ( addr len -- ) Tools
 ; R( -- )
 ; dumps flash memory beginning with address addr and len cells long
 VE_IDUMP:

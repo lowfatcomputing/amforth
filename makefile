@@ -1,6 +1,6 @@
 # user modifiable secion is up here
 
-AVRDUDE=/usr/local/bin/avrdude 
+AVRDUDE=avrdude 
 AVRA=/opt/cdk4avr/bin/avra
 INCLUDE=~/lib/avralib
 

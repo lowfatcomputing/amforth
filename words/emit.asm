@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Character IO
 ; R( -- )
 ; contains the address of the variable that contains the XT of the emit action
 VE_TICKEMIT:
@@ -10,7 +10,7 @@ XT_TICKEMIT:
 PFA_TICKEMIT:
     .dw 12
 
-; ( c -- )
+; ( c -- ) Character IO
 ; R( -- )
 ; fetch 'EMIT vector and execute its token if not zero
 VE_EMIT:

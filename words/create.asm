@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Dictionary
 ; R( -- )
 ; create a complete dictionary header.
 VE_CREATE:

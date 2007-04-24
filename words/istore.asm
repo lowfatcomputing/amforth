@@ -1,6 +1,6 @@
-; ( n addr -- )
+; ( n addr -- ) Memory
 ; R( -- )
-; writes a cell into flash
+; writes a cell in flash
 VE_ISTORE:
     .db $02, "i!",0
     .dw VE_HEAD
@@ -43,7 +43,7 @@ PFA_ISTORE_WRITE:
 ; R( -- )
 ; load the flash page of cell addr into write buffer, omitting addr itself
 ;VE_SPMPAGELOAD:
-;    .db $04, "/int",0
+;    .db 11, "spmpageload"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_INTSPMPAGELOAD
 XT_SPMPAGELOAD:
@@ -91,7 +91,7 @@ PFA_SPMPAGELOADDONE:
 ; R( -- )
 ; execute spm instruction
 ;VE_DOSPM:
-;    .db $05, "dospm"
+;    .db $03, "(spm)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOSPM
 XT_DOSPM:

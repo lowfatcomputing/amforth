@@ -1,4 +1,4 @@
-; ( addr -- i*x)
+; ( addr -- i*x) Stackpointer
 ; R( -- )
 ; data stack pointer changed to addr
 VE_SP_STORE:

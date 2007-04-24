@@ -1,5 +1,5 @@
 ; ( n1 -- )
-; R(llimit counter -- (limit counter+n1)|)
+; R(llimit counter -- limit counter+n1|)
 ; runtime of +loop
 ;VE_DOPLUSLOOP:
 ;    .db 7, "(+loop)"

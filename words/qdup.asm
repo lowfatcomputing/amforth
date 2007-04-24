@@ -1,4 +1,4 @@
-; ( n1 -- [ n1 n1 ] | 0)
+; ( n1 -- [ n1 n1 ] | 0) Stack
 ; R( -- )
 ; duplicate TOS if non-zero
 VE_QDUP:

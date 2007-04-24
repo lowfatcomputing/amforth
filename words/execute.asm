@@ -1,5 +1,5 @@
-; ( xt -- )
-; R: ( -- )
+; ( xt -- ) System
+; R( -- )
 ; execute XT
 VE_EXECUTE:
     .db $07, "execute"

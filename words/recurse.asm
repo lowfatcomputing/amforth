@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; compile  XT of the word beeing currently defined into dictionary (! not conforming to ANS!)
 VE_RECURSE:

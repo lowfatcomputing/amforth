@@ -1,4 +1,4 @@
-; ( n1 -- n2)
+; ( n1 -- n2) Arithmetics
 ; R( -- )
 ; 1-complement of TOS
 VE_INVERT:

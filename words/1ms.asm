@@ -1,4 +1,4 @@
-; (  -- )
+; (  -- ) Time
 ; R( -- )
 ; busy waits exactly 1 milli second
 VE_1MS:

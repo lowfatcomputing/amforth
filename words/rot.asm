@@ -1,4 +1,4 @@
-; ( n1 n2 n3 -- n2 n3 n1)
+; ( n1 n2 n3 -- n2 n3 n1) Stack
 ; R( -- )
 ; stack manupulation
 VE_ROT:

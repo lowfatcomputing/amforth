@@ -1,4 +1,4 @@
-; ( --  )
+; ( --  ) Compiler
 ; R( -- )
 ; put system to interpreter state
 VE_LBRACKET:

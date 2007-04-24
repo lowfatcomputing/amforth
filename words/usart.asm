@@ -38,7 +38,7 @@
 .set usart0_rx_data = heap
 .set heap = heap + usart0_rx_size
 
-; ( -- v)
+; ( -- v) System Value
 ; R( -- )
 ; returns usart0 baudrate
 VE_BAUD0:
@@ -50,7 +50,7 @@ XT_BAUD0:
 PFA_BAUD00:          ; ( -- )
   .dw 10
 
-; ( -- )
+; ( -- ) Hardware Access
 ; R( --)
 ; initialize usart0
 VE_USART0:
@@ -191,7 +191,7 @@ usart0_rxc_done:
   pop xl
   reti
 
-; (c -- )
+; (c -- ) Hardware Access
 ; R( --)
 ; put 1 character into output queue, wait if needed, enable UDRIE0 interrupt
 VE_TX0:
@@ -233,7 +233,7 @@ PFA_TX0:
   .dw XT_CSTORE
   .dw XT_EXIT
 
-; ( -- f)
+; ( -- f)  Hardware Access
 ; R( --)
 ; check if a character can be appended to output queue.
 VE_TX0Q:
@@ -252,7 +252,7 @@ PFA_TX0Q:
   .dw XT_EQUAL
   .dw XT_EXIT
 
-; ( -- c)
+; ( -- c)  Hardware Access
 ; R( --)
 ; get 1 character from input queue, wait if needed
 VE_RX0:
@@ -279,7 +279,7 @@ PFA_RX0:
   .dw XT_CFETCH
   .dw XT_EXIT
 
-; ( -- f)
+; ( -- f)  Hardware Access
 ; R( --)
 ; check if unread characters are in the input queue.
 VE_RX0Q:

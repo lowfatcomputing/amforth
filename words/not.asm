@@ -1,4 +1,4 @@
-; ( flag -- flag' )
+; ( flag -- flag' ) Logic
 ; R( -- )
 ; identical to 0=
 VE_NOT:

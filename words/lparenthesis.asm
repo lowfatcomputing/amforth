@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; skip everything up to the closing bracket on the same line
 VE_LPARENTHESIS:

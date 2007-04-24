@@ -1,4 +1,4 @@
-; ( n1 n2 -- d)
+; ( n1 n2 -- d) Arithmetics
 ; R( -- )
 ; multiply 2 cells to a double cell
 VE_MSTAR:

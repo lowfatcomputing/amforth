@@ -1,4 +1,4 @@
-; ( addr n -- )
+; ( addr n -- ) Character IO
 ; R( -- )
 ; emits a string
 VE_TYPE:

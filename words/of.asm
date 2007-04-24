@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; see case
 VE_OF:

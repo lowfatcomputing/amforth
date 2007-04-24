@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Control Structure
 ; R( -- )
 ; places current dictionary position for backward resolves
 VE_GMARK:

@@ -1,4 +1,4 @@
-; ( -- addr)
+; ( -- addr) Stackpointer
 ; R( -- )
 ; start of data stack
 VE_SP0:
@@ -17,7 +17,7 @@ XT_DOSP0:
 PFA_DOSP0:
     .dw 6
 
-; ( -- addr)
+; ( -- addr) Stackpointer
 ; R( -- )
 ; address of variable to store data stack pointer for inactive tasks
 VE_SP:

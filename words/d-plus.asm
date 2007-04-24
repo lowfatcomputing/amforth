@@ -1,4 +1,4 @@
-; ( d1 d2 -- d3)
+; ( d1 d2 -- d3) Arithmetics
 ; R( -- )
 ; add double cell values
 VE_DPLUS:

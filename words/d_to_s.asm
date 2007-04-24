@@ -1,4 +1,4 @@
-; ( n1 -- d1 )
+; ( n1 -- d1 ) Conversion
 ; R( -- )
 ; shrink double cell value to single cell. 
 VE_D2S:

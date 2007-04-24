@@ -1,4 +1,4 @@
-; ( d1 -- d2)
+; ( d1 -- d2) Arithmetics
 ; R( -- )
 ; flip all bits in the double cell value
 VE_DINVERT:

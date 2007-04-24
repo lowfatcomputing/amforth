@@ -1,5 +1,5 @@
-; ( -- n)
-; ( R: n -- n )
+; ( -- n) Stack
+; R( n -- n )
 ; fetch content of TOR
 VE_R_FETCH:
     .db $02, "r@",0

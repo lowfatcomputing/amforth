@@ -1,4 +1,4 @@
-; ( n1 -- n2 )
+; ( n1 -- n2 ) Logic
 ; R( -- )
 ; 2-complement
 VE_NEGATE:

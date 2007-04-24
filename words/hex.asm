@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Numeric IO
 ; R( -- )
 ; set base to 16 (decimal)
 VE_HEX:

@@ -1,4 +1,4 @@
-; (n1 -- addr count)
+; (n1 -- addr count) Numeric IO
 ; R( -- )
 ; convert HLD buffer to a usable string
 VE_SHARP_G:

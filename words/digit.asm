@@ -1,4 +1,4 @@
-; ( c base -- number flag )
+; ( c base -- number flag ) Numeric IO
 ; R( -- )
 ; convert character to number, set flag if successful
 VE_DIGIT:

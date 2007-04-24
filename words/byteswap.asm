@@ -1,4 +1,4 @@
-; (n1 -- n2 )
+; (n1 -- n2 ) Arithmetics
 ; R( -- )
 ; swap the bytes of the TOS
 VE_BYTESWAP:

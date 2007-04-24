@@ -1,4 +1,4 @@
-; ( -- addr n)
+; ( -- addr n) Compiler
 ; R( -- )
 ; runtime portion of s"
 ;VE_SLITERAL:

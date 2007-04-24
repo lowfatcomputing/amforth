@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Compiler
 ; R( -- )
 ; system state
 VE_STATE:

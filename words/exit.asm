@@ -1,5 +1,5 @@
-; ( -- ) 
-; R: ( xt -- )
+; ( -- ) Compiler
+; R( xt -- )
 ; end of current colon word
 VE_EXIT:
     .db $04, "exit",0

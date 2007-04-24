@@ -1,4 +1,4 @@
-; (  -- n)
+; (  -- n) Stackpointer
 ; R( -- )
 ; current data stack pointer
 VE_SP_FETCH:

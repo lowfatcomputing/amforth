@@ -1,4 +1,4 @@
-; ( n addr -- )
+; ( n addr -- ) Memory
 ; R( -- )
 ; write 16bit to RAM memory (or IO or CPU registers)
 VE_STORE:

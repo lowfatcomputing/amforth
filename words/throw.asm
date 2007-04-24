@@ -1,5 +1,5 @@
-; ( n -- ) or stackpointer changed
-; R( -- ) or stackpointer reset
+; ( n -- ) Exceptions
+; R( -- )
 ; throw an exception
 VE_THROW:
     .db $05, "throw"

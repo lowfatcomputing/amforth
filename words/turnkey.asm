@@ -1,6 +1,6 @@
-; ( -- eaddr) first free address in eeprom
+; ( -- eaddr) System Pointer
 ; R( -- )
-; address of XT to be started by cold bevore quit takes over
+; address of the variable that holds an XT to be started by cold before quit takes over
 VE_TICKTURNKEY:
     .db $08, $27, "turnkey",0
     .dw VE_HEAD

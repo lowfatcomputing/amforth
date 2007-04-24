@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Control Structure
 ; R( -- )
 ; place destination for backward branch
 VE_LMARK:

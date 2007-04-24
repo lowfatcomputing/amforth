@@ -1,4 +1,4 @@
-; ( -- 0 )
+; ( -- 0 ) Arithmetics
 ; R( -- )
 ; leaves the value 0 on TOS
 VE_ZERO:

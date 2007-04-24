@@ -1,6 +1,6 @@
-; ( -- addr )
+; ( -- addr ) System
 ; R( -- )
-; number of characters in TIB
+; address of variable holding the number of characters in TIB
 VE_NUMBERTIB:
     .db $04, "#tib",0
     .dw VE_HEAD

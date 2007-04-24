@@ -1,4 +1,4 @@
-; ( n addr -- )
+; ( n addr -- ) Arithmetics
 ; R( -- )
 ; add value to content of RAM address
 VE_PLUSSTORE:

@@ -1,4 +1,4 @@
-; ( n1 -- 0)
+; ( n1 -- 0) Numeric IO
 ; R( -- )
 ; call # until a value of zero is reached
 VE_SHARP_S:

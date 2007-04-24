@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; everything up to the end of the current line is a comment
 VE_BACKSLASH:

@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Character IO
 ; R( -- )
 ; emits a space (bl)
 VE_SPACE:

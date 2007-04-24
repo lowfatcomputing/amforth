@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) System Pointer
 ; R( -- )
 ; terminal input buffer address
 VE_TIB:

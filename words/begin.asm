@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Control Structure
 ; R( -- )
 ; start a control structture
 VE_BEGIN:

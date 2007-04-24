@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Multitasking
 ; R( -- ) 
 ; task changer vector in RAM
 VE_TICKPAUSE:
@@ -11,7 +11,7 @@ PFA_TICKPAUSE:
     .dw heap
     .set heap = heap + CELLSIZE
 
-; ( -- )
+; ( -- ) Multitasking
 ; R( -- ) 
 ; fetch 'pause vector and execute its token if not zero. may make a context/task switch
 VE_PAUSE:

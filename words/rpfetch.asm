@@ -1,5 +1,5 @@
-; (  -- n)
-; R:( -- )
+; (  -- n) Stackpointer
+; R( -- )
 ; current return stack pointer address
 VE_RP_FETCH:
     .db $03, "rp@"

@@ -1,4 +1,4 @@
-; ( addr n1 -- n2 )
+; ( addr n1 -- n2 ) System
 ; R( -- )
 ; reads a line with with KEY into addr until n2 characters are reveived or cr/lf detected.
 VE_ACCEPT:

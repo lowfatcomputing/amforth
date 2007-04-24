@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Numeric IO
 ; R( -- )
 ; base fo numeric IO
 VE_BASE:

@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Numeric IO
 ; R( -- )
 ; address of buffer for pictured numeric output
 VE_HLD:

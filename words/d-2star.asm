@@ -1,4 +1,4 @@
-; ( d1 -- d2 )
+; ( d1 -- d2 ) Arithmetics
 ; R( -- )
 ; shift a double cell left
 VE_D2STAR:

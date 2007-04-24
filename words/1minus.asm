@@ -1,4 +1,4 @@
-; ( n1 -- n2 )
+; ( n1 -- n2 ) Arithmetics
 ; R( -- )
 ; optimized decrement (CORE)
 VE_1MINUS:

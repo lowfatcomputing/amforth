@@ -1,4 +1,4 @@
-; ( n1 -- n2 )
+; ( n1 -- n2 ) Arithmetics
 ; R( -- )
 ; optimized increment
 VE_1PLUS:

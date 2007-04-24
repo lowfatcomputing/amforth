@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) Exceptions
 ; R( -- )
 ; used by catch/throw
 VE_HANDLER:

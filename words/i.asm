@@ -1,4 +1,4 @@
-; ( -- n )
+; ( -- n ) Control Structure
 ; R( loop-sys -- loop-sys)
 ; current loop counter
 VE_I:

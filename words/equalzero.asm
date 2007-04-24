@@ -1,4 +1,4 @@
-; ( n -- flag )
+; ( n -- flag ) Compare
 ; R( -- )
 ; compare with 0 (zero)
 VE_EQUALZERO:

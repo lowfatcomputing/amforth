@@ -1,4 +1,4 @@
-; ( -- n )
+; ( -- n ) Stack
 ; R( -- )
 ; currently used data stack size in cells
 VE_DEPTH:

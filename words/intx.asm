@@ -19,7 +19,7 @@ isr:
     set ; set the interrupt flag for the inner interpreter
     reti
 
-; ( xt i -- )
+; ( xt i -- )  Interrupt
 ; R( -- )
 ; stores XT as interrupt vector i
 VE_INTSTORE:
@@ -38,7 +38,7 @@ PFA_INTSTORE:
     .dw XT_STORE
     .dw XT_EXIT
 
-; ( i -- xt )
+; ( i -- xt ) Interrupt
 ; R( -- )
 ; fetches XT from interrupt vector i
 VE_INTFETCH:
@@ -57,7 +57,7 @@ PFA_INTFETCH:
     .dw XT_FETCH
     .dw XT_EXIT
 
-; ( -- n )
+; ( -- n )  Interrupt
 ; R( -- )
 ; number of interrupt vectors (0 based)
 VE_NUMINT:
@@ -70,7 +70,7 @@ PFA_NUMINT:
     .dw INTVECTORS
 
 
-; ( -- sreg )
+; ( -- sreg ) Interrupt
 ; R( -- )
 ; turns off all interrupts and leaves SREG in TOS
 VE_INTOFF:
@@ -86,7 +86,7 @@ PFA_INTOFF:
     cli
     jmp_ DO_NEXT
 
-; ( --  )
+; ( --  )  Interrupt
 ; R( -- )
 ; turns on all interrupts
 VE_INTON:
@@ -99,7 +99,7 @@ PFA_INTON:
     sei
     jmp_ DO_NEXT
 
-; ( sreg -- )
+; ( sreg -- ) Interrupt
 ; R( -- )
 ; restores SREG from TOS (
 ;VE_INTRESTORE:

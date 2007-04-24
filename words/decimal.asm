@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Numeric IO
 ; R( -- )
 ; set base to 10 (decimal)
 VE_DECIMAL:

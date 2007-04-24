@@ -1,4 +1,4 @@
-; ( -- 32 )
+; ( -- 32 ) Character IO
 ; R( -- )
 ; put ascii code of the blank to the stack
 VE_BL:

@@ -1,4 +1,4 @@
-; ( n1 -- n2)
+; ( n1 -- n2) Numeric IO
 ; R( -- )
 ; compiles next digit to HLD
 VE_SHARP:

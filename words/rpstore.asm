@@ -1,4 +1,4 @@
-; ( n  -- )
+; ( n  -- ) Stackpointer
 ; R( -- xy) 
 ; set return stack pointer
 VE_RP_STORE:

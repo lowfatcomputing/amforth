@@ -1,4 +1,4 @@
-; ( addr -- )
+; ( addr -- ) Control Structure
 ; R( -- )
 ; resolved backward jumps
 VE_GRESOLVE:

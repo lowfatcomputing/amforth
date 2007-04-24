@@ -1,4 +1,4 @@
-; ( n <name> -- )
+; ( n <name> -- ) Tools
 ; R( --)
 ; store the TOS to value (an EEPROM 16bit cell)
 VE_TO:			
@@ -23,7 +23,10 @@ PFA_TO1:
     .dw XT_ESTORE
     .dw XT_EXIT
 
-;VE_DOTO:			
+; ( n -- ) Tools
+; R( IP -- IP+1)
+; runtime portion of to
+;VE_DOTO:		
 ;    .db $04, "(to)", 0
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_VALUE

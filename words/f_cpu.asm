@@ -1,4 +1,4 @@
-; ( -- f_cou )
+; ( -- f_cou ) System
 ; R( -- )
 ; put the cpu frequency on stack
 VE_F_CPU:

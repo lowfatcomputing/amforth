@@ -1,4 +1,4 @@
-; ( -- XT )
+; ( -- XT ) Compiler
 ; R( -- )
 ; what does ' in the interpreter mode do in colon definitions
 VE_BRACKETTICK:

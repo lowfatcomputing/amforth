@@ -1,4 +1,4 @@
-; ( c addr -- )
+; ( c addr -- ) Memory
 ; R( -- )
 ; store a byte to RAM address
 VE_CSTORE:

@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Numeric IO
 ; R( -- )
 ; emties counted string at address from hld
 VE_L_SHARP:

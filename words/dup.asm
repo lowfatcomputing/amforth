@@ -1,4 +1,4 @@
-; ( n -- n n )
+; ( n -- n n ) Stack
 ; R( -- )
 ; duplicate TOS
 VE_DUP:

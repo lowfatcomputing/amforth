@@ -1,4 +1,4 @@
-; (addr1 -- addr2 )
+; (addr1 -- addr2 ) Control Structure
 ; R( -- )
 ; go back to begin
 VE_REPEAT:

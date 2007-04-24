@@ -1,4 +1,4 @@
-; ( -- addr )
+; ( -- addr ) System Pointer
 ; R( -- )
 ; scratch buffer. 
 VE_PAD:

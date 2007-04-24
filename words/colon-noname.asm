@@ -1,4 +1,4 @@
-; ( -- xt )
+; ( -- xt ) Compiler
 ; R( -- )
 ; create unnamed entry in the dictionary
 VE_COLONNONAME:

@@ -1,4 +1,4 @@
-; ( --  )
+; ( --  ) Compiler
 ; R( -- )
 ; turn on compiler
 VE_RBRACKET:

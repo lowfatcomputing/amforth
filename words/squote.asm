@@ -1,4 +1,4 @@
-; ( <cchar> -- )
+; ( <cchar> -- ) Compiler
 ; R( -- )
 ; compiles a string to flash, at runtime leaves ( -- addr count) on stack
 VE_SQUOTE:

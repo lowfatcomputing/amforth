@@ -1,4 +1,4 @@
-; ( addr -- n )
+; ( addr -- n ) Memory
 ; R( -- )
 ; read 1 cell from RAM (or IO or CPU register)
 VE_FETCH:

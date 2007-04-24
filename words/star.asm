@@ -1,4 +1,4 @@
-; (n1 n2 -- n3)
+; (n1 n2 -- n3) Arithmetics
 ; R( -- )
 ; multiply routine
 VE_MUL:

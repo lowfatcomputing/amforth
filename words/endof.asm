@@ -1,4 +1,4 @@
-; ( addr1 -- addr2 )
+; ( addr1 -- addr2 ) Compiler
 ; R( -- )
 ; 
 VE_ENDOF:

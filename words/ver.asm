@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Tools
 ; R( -- )
 ; emits the version string
 VE_VER:

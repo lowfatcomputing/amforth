@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Compiler
 ; R( -- )
 ; finish colon defintion, compiles (exit) and returns to interpreter state 
 VE_SEMICOLON:

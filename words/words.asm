@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Tools
 ; R( -- )
 ; emits a list of all (visible) words in the dictionary
 VE_WORDS:

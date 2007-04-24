@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) System
 ; R( -- )
 ; main loop of amforth. accept - interpret in an endless loop
 VE_QUIT:

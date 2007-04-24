@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Dictionary
 ; R( -- )
 ; copy the next flash cell to here
 VE_COMPILE:

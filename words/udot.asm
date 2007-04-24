@@ -1,4 +1,4 @@
-; ( n -- )
+; ( n -- ) Numeric IO
 ; R( -- )
 ; unsigned numeric output
 VE_UDOT:

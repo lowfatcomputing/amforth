@@ -1,4 +1,4 @@
-; (addr -- n )
+; (addr -- n ) Numeric IO
 ; R( -- )
 ; convert a word to a number, throw exception -1 on error
 VE_NUMBER:
