@@ -1,6 +1,6 @@
-; ( addr1 n1 c -- addr2 n2 )
+; ( addr1 n1 c -- addr2 n2 ) String
 ; R( -- )
-; skips leading occurancies in string at addr1/n1 leaving addr2/n2
+; skips leading occurancies in string at addr1/n1 leaving addr2/n2 pointing to the 1st non-c character
 VE_CSKIP:
     .db $05, "cskip"
     .dw VE_HEAD
@@ -11,6 +11,7 @@ PFA_CSKIP:
     .dw XT_TO_R           ; ( -- addr1 n1 )
 PFA_CSKIP1:
     .dw XT_DUP            ; ( -- addr' n' n' )
+    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH   ; ( -- addr' n')
     .dw PFA_CSKIP2
     .dw XT_OVER           ; ( -- addr' n' addr' )

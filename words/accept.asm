@@ -35,10 +35,8 @@ PFA_ACCEPT1:          ; ( -- addr )
     ; delete previous character
     ; check beginning of line
     .dw XT_R_FROM             ; ( -- addr k n1 )
-    .dw XT_R_FROM             ; ( -- addr k n1 n2)
+    .dw XT_R_FETCH            ; ( -- addr k n1 n2)
     .dw XT_OVER               ; ( -- addr k n1 n2 n1)
-    .dw XT_OVER               ; ( -- addr k n1 n2 n1 n2 )
-    .dw XT_TO_R
     .dw XT_TO_R
     .dw XT_EQUAL              ; ( -- addr k f )
     .dw XT_DOCONDBRANCH

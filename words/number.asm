@@ -10,14 +10,13 @@ XT_NUMBER:
 PFA_NUMBER:
     ; sign flag
     .dw XT_DOLITERAL
-    .dw 1
-    .dw XT_SWAP
-    .dw XT_ZERO
-    .dw XT_SWAP
-    .dw XT_COUNT
+    .dw 1             ; ( -- addr 1)
+    .dw XT_ZERO       ; ( -- addr 1 0)
+    .dw XT_ROT        ; ( -- 1 0 addr)
+    .dw XT_COUNT      ; ( -- 1 0 addr' len)
     .dw XT_ZERO
     .dw XT_DODO
-PFA_NUMBER1: ; ( n a -- )
+PFA_NUMBER1: ; ( n addr -- )
     .dw XT_DUP
     .dw XT_I
     .dw XT_PLUS
@@ -43,7 +42,7 @@ PFA_NUMBER2:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_DIGIT
-    .dw XT_EQUALZERO ; a not is needed
+    .dw XT_EQUALZERO
     ; check for non number characters and stop converting if found
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER3

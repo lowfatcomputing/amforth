@@ -1,4 +1,4 @@
-; ( n1 -- n2 ) Arithmetics
+; ( n1 -- n2 ) Interrupt
 ; R( -- )
 ; optimized decrement (CORE)
 VE_SLEEP:
