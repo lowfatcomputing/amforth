@@ -18,19 +18,24 @@
   .equ nrww = $0c00
   .equ codestart = $14
 
+.macro jmp_
+    rjmp @0
+.endmacro
+
+
 ; some hacks
 .if defined(UDRE0)
     ;
 .else
  
-  .equ UBRR0L = UBRRL
-  .equ UBRR0H = UBRRH 
-  .equ UCSR0C = UCSRC
-  .equ UCSR0B = UCSRB
+  .equ UBRR0L = UBRRL+$20
+  .equ UBRR0H = UBRRH+$20
+  .equ UCSR0C = UCSRC+$20
+  .equ UCSR0B = UCSRB+$20
 
 .if defined(UDR0)
 .else
-  .equ UDR0 = UDR
+  .equ UDR0 = UDR+$20
 .endif
   
   .equ TXEN0  = TXEN
