@@ -47,7 +47,7 @@ reset:
 .include "words/usart.asm"
 
 ; lower part of the dictionary
-.include "dict_low.asm"
+.include "dict_minimum.asm"
 .if dict_optional==1
  .include "dict_optional.asm"
 .endif

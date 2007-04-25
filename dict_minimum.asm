@@ -19,6 +19,7 @@
 ;    Parameter Field (List of XT, Constant Value etc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/f_cpu.asm"
 
 .include "words/state.asm"
 .include "words/base.asm"
@@ -26,7 +27,6 @@
 .include "words/sharptib.asm"
 .include "words/tib.asm"
 .include "words/pad.asm"
-.include "words/hld.asm"
 .include "words/qexecute.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"
@@ -79,7 +79,6 @@
 .include "words/compile.asm"
 
 .include "words/brackettick.asm"
-.include "words/source.asm"
 
 .include "words/decimal.asm"
 .include "words/hex.asm"
@@ -100,34 +99,32 @@
 .include "words/abs.asm"
 .include "words/min.asm"
 .include "words/max.asm"
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/cr.asm"
-.include "words/space.asm"
-.include "words/count.asm"
 ;;;;;;;;;;;;;;;;;;;;;;
+.include "words/hld.asm"
 .include "words/hold.asm"
 .include "words/l_sharp.asm" ; <#
 .include "words/sharp.asm"
 .include "words/sharp_s.asm"
 .include "words/sharp_g.asm" ; #>
 .include "words/sign.asm"
-.include "words/udot.asm"
 .include "words/dot.asm"
-.include "words/accept.asm"
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sliteral.asm"
 .include "words/scomma.asm"
 .include "words/itype.asm"
 .include "words/icount.asm"
+.include "words/cr.asm"
+.include "words/space.asm"
+.include "words/count.asm"
 .include "words/type.asm"
-.include "words/words.asm"
 .include "words/tick.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/handler.asm"
 .include "words/catch.asm"
 .include "words/throw.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/accept.asm"
 .include "words/char.asm"
 .include "words/number.asm"
 .include "words/word.asm"
@@ -145,6 +142,5 @@
 .include "words/noop.asm"
 .include "words/unused.asm"
 
-.include "words/f_cpu.asm"
 .include "words/value.asm"
 .include "words/to.asm"
