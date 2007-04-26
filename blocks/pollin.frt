@@ -3,8 +3,8 @@
 \ needs the device register definitions loaded
 
 decimal
-\ wait some milliseconds
 
+\ wait some milliseconds
 : blinkdelay 250 0 do 1ms loop ;
 
 hex
@@ -15,22 +15,63 @@ hex
 : portpin create
     swap 8 lshift or ,
   does> i@
-    dup 8 rshift swap ff and over c@
+    dup 8 rshift swap ff and 
 ;
 
-: on ( n -- )
-    or swap c!
+: on ( port pin -- )
+    swap ( -- pinmask port )
+    dup ( -- pin port port )
+    c@ ( -- pin port current )
+    rot ( -- port current pinmask )
+    or  ( -- port new)
+    swap ( -- new port)
+    c!
 ;
 
 : off ( n -- )
-    swap invert and swap c!
+    swap ( -- pinmask port )
+    dup ( -- pin port port )
+    c@ ( -- pin port current )
+    rot ( -- port current pinmask )
+    invert and ( -- port new)
+    swap ( -- new port)
+    c!
 ;
 
-PORTD 20 portpin led1
-PORTD 40 portpin led2
+: mode_output ( port pin -- )
+    swap 1- 
+    dup ( -- pin port-1 port-1 )
+    c@ ( -- pin port-1 current)
+    rot or
+    swap
+    c!
+;
+
+: mode_input ( port pin -- )
+    swap 1- 
+    dup ( -- pin port-1 port-1 )
+    c@ ( -- pin port-1 current)
+    rot ( -- port-1 current pin )
+    negate and
+    swap
+    c!
+;
+
+
+PORTD 1 5 lshift portpin led1
+PORTD 1 6 lshift portpin led2
+
+PORTD 1 2 lshift portpin key1
+PORTD 1 3 lshift portpin key2
+PORTD 1 4 lshift portpin key3
 
 : portinit
-    E0 DDRD  c! \ io direction
+    led1 mode_output
+    led2 mode_output
+    key1 mode_input
+    key2 mode_input
+    key3 mode_input
+
     05 MCUCR c! \ int0/1
     C0 GICR  c! \ enable int0/1
 ;
