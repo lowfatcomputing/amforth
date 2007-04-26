@@ -19,6 +19,11 @@
     jmp @0
 .endmacro
 
+; the baud rate registers are io addresses!
+  .equ BAUDRATE0_LOW = UBRRL+$20
+  .equ BAUDRATE0_HIGH = UBRRH+$20
+  .equ USART0_C = UCSRC+$20
+  .equ USART0_B = UCSRB+$20
 
 ; some hacks
 .if defined(UDRE0)
@@ -30,16 +35,11 @@
   .equ RWWSRE = ASRE
 .endif
 
-  .equ UBRR0L = UBRRL+$20
-  .equ UBRR0H = UBRRH+$20
-  .equ UCSR0C = UCSRC+$20
-  .equ UCSR0B = UCSRB+$20
-
 .if defined(UDR0)
 .else
   .equ UDR0 = UDR
 .endif
-
+  ; bit numbers
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
   .equ RXCIE0 = RXCIE

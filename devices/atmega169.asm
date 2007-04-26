@@ -1,8 +1,8 @@
 .nolist
 .include "m169def.inc"
 .list
-    
-  ; first address of RAM 
+
+  ; first address of RAM
   .equ ramstart = $100
   .equ stackstart = RAMEND - 80
   .equ HLDSIZE  = $16  ; 16 bit cellsize with binary representation
@@ -17,13 +17,18 @@
 
   .equ nrww = $1c00
   .equ codestart = $2e
- 
+
   .equ UMSEL01 = 7
 
 .macro jmp_
     jmp @0
 .endmacro
 
+; the baud rate registers are memory addresses!
+  .equ BAUDRATE0_LOW = UBRR0L
+  .equ BAUDRATE0_HIGH = UBRR0H
+  .equ USART0_C = UCSR0C
+  .equ USART0_B = UCSR0B
 
 .ifdef PCINT0addr
     .equ PCI0addr = PCINT0addr
@@ -32,12 +37,14 @@
     .equ PCI1addr = PCINT1addr
 .endif
 
+; difference between avra and avrasm2.exe definition files
 .if defined(SPMCR)
     ; .message "SPMCR"
 .else
     .equ SPMCR = SPMCSR
 .endif
-;
+
+; interrupt table
 .org	INT0addr
     rcall isr   ; External Interrupt Request 0
 .org    PCI0addr
@@ -71,7 +78,7 @@
 .org    USI_STARTaddr
     rcall isr   ;USI Start Condition Interrupt Vector
 .org    USI_OVFaddr
-    rcall isr   ;USI Overflow Interrupt Vector  
+    rcall isr   ;USI Overflow Interrupt Vector
 .org    ACIaddr
     rcall isr   ;Analog Comparator Interrupt Vector
 .org    ADCCaddr

@@ -5,12 +5,10 @@
 
 .set pc_ = pc
 
-
 .org URXCaddr
   rjmp usart0_rx_isr
 .org UDREaddr
   rjmp usart0_udre_isr
-
 .org pc_
 
 ; sizes have to be powers of 2!
@@ -90,24 +88,24 @@ PFA_USART0:          ; ( -- )
   .dw XT_SWAP
   .dw XT_DROP
   .dw XT_1MINUS
-    
+
   .dw XT_DUP
   .dw XT_DOLITERAL
-  .dw UBRR0L
+  .dw BAUDRATE0_LOW
   .dw XT_CSTORE
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL
-  .dw UBRR0H
+  .dw BAUDRATE0_HIGH
   .dw XT_CSTORE
   .dw XT_DOLITERAL
   .dw (1<<UMSEL01)|(3<<UCSZ00)
   .dw XT_DOLITERAL
-  .dw UCSR0C
+  .dw USART0_C
   .dw XT_CSTORE
   .dw XT_DOLITERAL
   .dw (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .dw XT_DOLITERAL
-  .dw UCSR0B
+  .dw USART0_B
   .dw XT_CSTORE
   .dw XT_EXIT
 
@@ -126,9 +124,9 @@ usart0_udre_isr:
   brne usart0_udre_next
 
 usart0_udre_last:
-  in_ xl,UCSR0B-$20
+  lds xl, USART0_B
   cbr xl,(1<<UDRIE0)
-  out_ UCSR0B-$20,xl
+  sts USART0_B,xl
 
   rjmp usart0_udre_done
 
@@ -223,7 +221,7 @@ PFA_TX0:
   .dw XT_CSTORE
   ; enable interrupt
   .dw XT_DOLITERAL
-  .dw UCSR0B
+  .dw USART0_B
   .dw XT_DUP            ;
   .dw XT_CFETCH
   .dw XT_DOLITERAL
