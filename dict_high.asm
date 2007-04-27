@@ -1,4 +1,4 @@
-; this part of the dictionay has to fit into the nrww flash 
+; this part of the dictionay has to fit into the nrww flash
 ; section together with the forth inner interpreter
 
 .include "words/exit.asm"
@@ -43,6 +43,7 @@
 .include "words/lesszero.asm"
 .include "words/greaterzero.asm"
 
+.include "words/log2.asm"
 .include "words/minus.asm"
 .include "words/plus.asm"
 .include "words/star.asm"
