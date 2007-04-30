@@ -8,6 +8,8 @@
 ; address of the int-vector on the stack.
 isr:
     st -Y, r0
+    in r0, SREG
+    st -Y, r0
     pop r0
     pop r0          ; intnum * intvectorsize + 1 (address following the rcall)
     dec r0
@@ -15,6 +17,8 @@ isr:
     lsr r0
 .endif
     sts intcur, r0
+    ld r0, Y+
+    out SREG, r0
     ld r0, Y+
     set ; set the interrupt flag for the inner interpreter
     reti
