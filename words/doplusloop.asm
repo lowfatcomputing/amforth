@@ -13,6 +13,7 @@ PFA_DOPLUSLOOP:
     add zl, tosl
     adc zh, tosh
     loadtos
+PFA_DOPLUSLOOP4:
     pop temp2
     pop temp3
     cp zl, temp2
