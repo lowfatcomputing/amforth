@@ -42,7 +42,6 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     lds temp0, intcur
     ldi zl, LOW(intvec)
     ldi zh, HIGH(intvec)
-    lsl temp0
     add zl, temp0
     adc zh, zeroh
     ldd wl, Z+0

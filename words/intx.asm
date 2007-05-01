@@ -13,8 +13,8 @@ isr:
     pop r0
     pop r0          ; intnum * intvectorsize + 1 (address following the rcall)
     dec r0
-.if intvecsize == 2 ;
-    lsr r0
+.if intvecsize == 1 ;
+    lsl r0
 .endif
     sts intcur, r0
     ld r0, Y+
