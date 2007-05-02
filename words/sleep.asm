@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Interrupt
+; ( -- ) Interrupt
 ; R( -- )
-; optimized decrement (CORE)
+; calls the MCU sleep instruction. Not useful itself!
 VE_SLEEP:
     .db $05, "sleep"
     .dw VE_HEAD

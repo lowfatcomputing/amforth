@@ -1,6 +1,6 @@
 ; ( -- addr n) Compiler
 ; R( -- )
-; runtime portion of s"
+; runtime portion of s" 
 ;VE_SLITERAL:
 ;  .db 10,"(sliteral)",0
 ;  .dw VE_HEAD

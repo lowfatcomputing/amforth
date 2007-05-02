@@ -1,6 +1,6 @@
-; ( n1 n2 n3 -- n4 n5) Arithmetics
+; (n1 n2 n3 -- n4) Arithmetics
 ; R( -- )
-; signed multiply with division and remainder
+; signed multiply and division with double precision intermediate
 VE_STARSLASH:
     .db $02, "*/",0
     .dw VE_HEAD

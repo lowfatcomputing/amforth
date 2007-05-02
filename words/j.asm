@@ -1,6 +1,6 @@
 ; ( -- n ) Control Structure
 ; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
-; loop conter of outer loop
+; loop counter of outer loop
 VE_J:
     .db 1, "j"
     .dw VE_HEAD

@@ -11,4 +11,3 @@ PFA_EXIT:
     pop xl
     pop xh
     rjmp DO_NEXT
-;;;;;;;;;;;;;;;;;;;;;;;;;;

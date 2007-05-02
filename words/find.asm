@@ -1,4 +1,4 @@
-; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] )
+; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] ) Tools
 ; R( -- )
 ; search dictionary
 VE_FIND:
@@ -52,6 +52,13 @@ PFA_FIND2:
 ; private headerless routine
 ; compares counted string in RAM with counted string in flash
 ; 
+; ( addr --  -- [ addr 0 ] | [ xt [-1|1]] )
+; R( -- )
+; search dictionary
+;VE_ICOMPARE:
+;    .db $04, "icompare"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_ICOMPARE
 XT_ICOMPARE:
     .dw DO_COLON
 PFA_ICOMPARE:

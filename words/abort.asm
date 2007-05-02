@@ -1,5 +1,5 @@
-; ( nx -- ) Exceptions
-; R( ny -- )
+; ( n*x -- ) Exceptions
+; R( n*y -- )
 ; send an exception -1
 VE_ABORT:
     .db $05, "abort"
