@@ -42,6 +42,8 @@
 .include "words/greater.asm"
 .include "words/lesszero.asm"
 .include "words/greaterzero.asm"
+.include "words/uless.asm"
+.include "words/ugreater.asm"
 
 .include "words/log2.asm"
 .include "words/minus.asm"
