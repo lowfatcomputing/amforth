@@ -1,4 +1,4 @@
-; (n1 -- u1) Arithmetics
+; ( n1 -- u1 ) Arithmetics
 ; R( -- )
 ; get the absolute value
 VE_ABS:

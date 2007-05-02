@@ -154,38 +154,29 @@ usart0_udre_done:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 usart0_rx_isr:
   push xl
-  in xl,SREG
+  in xl, SREG
   push xl
   push xh
   push zl
   push zh
 
   lds xl,usart0_rx_in
-  lds xh,usart0_rx_out
-
   inc xl
   andi xl,usart0_rx_mask
-  cp xh,xl
-  brne usart0_rxc_next
 
-usart0_rxc_full:
-  in_ xl,UDR0
-  rjmp usart0_rxc_done
-usart0_rxc_next:
-  ldi zl,low(usart0_rx_data)
-  ldi zh,high(usart0_rx_data)
-  add zl,xl
-  adc zh,zeroh
-  in_ xh,UDR0
-  st z,xh
-  sts usart0_rx_in,xl
+  ldi zl, low(usart0_rx_data)
+  ldi zh, high(usart0_rx_data)
+  add zl, xl
+  adc zh, zeroh
+  in_ xh, UDR0
+  st Z, xh
+  sts usart0_rx_in, xl
 
-usart0_rxc_done:
   pop zh
   pop zl
   pop xh
   pop xl
-  out SREG,xl
+  out SREG, xl
   pop xl
   reti
 

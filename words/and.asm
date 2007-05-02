@@ -1,4 +1,4 @@
-; (n1 n2 -- n3 ) Logic
+; ( n1 n2 -- n3 ) Logic
 ; R( -- )
 ; bitwise and
 VE_AND:

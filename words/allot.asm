@@ -1,4 +1,4 @@
-; (n -- ) System
+; ( n -- ) System
 ; R( -- )
 ; allocate memory in RAM
 VE_ALLOT:

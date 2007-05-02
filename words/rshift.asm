@@ -1,4 +1,4 @@
-; ( n1 n2 -- n3) Arithmetics
+; ( n1 n2 -- n3 ) Arithmetics
 ; R( -- )
 ; logical shift right
 VE_RSHIFT:

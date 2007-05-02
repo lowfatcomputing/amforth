@@ -1,4 +1,4 @@
-; (n1 n2 -- n1|n2) Compare
+; ( n1 n2 -- n1|n2 ) Compare
 ; R( -- )
 ; compare two values, leave the bigger one
 VE_MAX:

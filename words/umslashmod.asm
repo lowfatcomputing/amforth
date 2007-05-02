@@ -1,6 +1,6 @@
-; ( ud u2 -- u3 u4) Arithmetics
+; ( ud u2 -- rem quot) Arithmetics
 ; R( -- )
-; unsigned division with remainder
+; unsigned division ud / u2 with remainder
 VE_UMSLASHMOD:
     .db $06, "um/mod",0
     .dw VE_HEAD
