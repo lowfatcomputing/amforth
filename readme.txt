@@ -1,6 +1,9 @@
-Date: 10.4.2007
+Date: 2.5.2007
 
 Author: mtrute@users.sourceforge.net (will be forwarded)
+
+License: General Public License (GPL) Version2 from 1991. See the
+	file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
 
 amforth: interactive Forth for Atmel ATmega micro controllers.
 
@@ -9,12 +12,12 @@ the serial line uart0 (hard coded) as the terminal.
 It does not need additional hardware, but can be extended
 to make use of it.
 
-Serial line settings are 9600 8N1, no handshake.
+Default serial line settings are 9600 8N1, no handshake.
 
 amforth uses the indirect threading model. 
 
 Development hardware is an evaluation board running an atmega32
-at 8 MHz with a few led's and pushbuttons. Targets for the
+at 8 & 16 MHz MHz with a few led's and pushbuttons. Targets for the
 final version are robots (asuro and ct-bot) and model railroad
 systems using atmega32 and atmega8 (atmegaX8). Other controllers
 work too but may require minor adjustments. Feedback is welcome!
@@ -31,6 +34,9 @@ Current state
 ToDo
     documentation and web site (partly done)
     more/better standards compliance?
+
+Contact
+    mailto:amforth-devel@lists.sourceforge.net for all questions.
 
 Post scriptum
 
