@@ -2,7 +2,7 @@
 ; R( -- )
 ; compare two values
 VE_DLESS:
-    .db $02, "d<"
+    .db $02, "d<",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DLESS
 XT_DLESS:
@@ -20,10 +20,4 @@ PFA_DLESS:
     cpc tosh, temp3
     cpc temp0, temp4
     cpc temp1, temp5
-    movw zl, zerol
-    brlt PFA_DLESS1
-    brbs 1, PFA_DLESS1
-    sbiw zl, 1
-PFA_DLESS1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    rjmp PFA_LESSDONE

@@ -10,9 +10,4 @@ XT_LESSZERO:
 PFA_LESSZERO:
     cp tosl, zerol
     cpc tosh, zeroh
-    movw zl, zerol
-    brge PFA_LESSZERO1
-    sbiw zl, 1
-PFA_LESSZERO1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    rjmp PFA_LESSDONE

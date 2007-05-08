@@ -12,6 +12,7 @@ PFA_LESS:
     ld temp3, Y+
     cp tosl, temp2
     cpc tosh, temp3
+PFA_LESSDONE:
     movw zl, zerol
     brlt PFA_LESS1
     brbs 1, PFA_LESS1

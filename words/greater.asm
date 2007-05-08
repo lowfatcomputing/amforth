@@ -13,6 +13,7 @@ PFA_GREATER:
     ld temp3, Y+
     cp temp2, tosl
     cpc temp3, tosh
+PFA_GREATERDONE:
     movw zl, zerol
     brlt PFA_GREATER1
     brbs 1, PFA_GREATER1

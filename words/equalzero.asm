@@ -9,9 +9,4 @@ XT_EQUALZERO:
     .dw PFA_EQUALZERO
 PFA_EQUALZERO:
     or tosh, tosl
-    movw zl, zerol
-    brne PFA_EQUALZERO1
-    sbiw zl, 1
-PFA_EQUALZERO1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    rjmp PFA_EQUALDONE

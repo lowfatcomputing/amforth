@@ -10,10 +10,4 @@ XT_GREATERZERO:
 PFA_GREATERZERO:
     cp tosl, zerol
     cpc tosh, zeroh
-    movw zl, zerol
-    brlt PFA_GREATERZERO1
-    brbs 1, PFA_GREATERZERO1
-    sbiw zl, 1
-PFA_GREATERZERO1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    rjmp PFA_GREATERDONE

@@ -4,14 +4,14 @@
 .set intvec   = heap ; forth interrupt vector (contain the XT)
 .set heap     = heap + INTVECTORS * CELLSIZE
 
-; interrupt routine get called (again) by rcall! This gives the
+; interrupt routine gets called (again) by rcall! This gives the
 ; address of the int-vector on the stack.
 isr:
     st -Y, r0
     in r0, SREG
     st -Y, r0
     pop r0
-    pop r0          ; intnum * intvectorsize + 1 (address following the rcall)
+    pop r0          ; = intnum * intvectorsize + 1 (address following the rcall)
     dec r0
 .if intvecsize == 1 ;
     lsl r0
@@ -21,7 +21,7 @@ isr:
     out SREG, r0
     ld r0, Y+
     set ; set the interrupt flag for the inner interpreter
-    reti
+    reti ; returns the interrupt, the rcall stack frame is removed!
 
 ; ( xt i -- )  Interrupt
 ; R( -- )
@@ -33,9 +33,7 @@ VE_INTSTORE:
 XT_INTSTORE:
     .dw DO_COLON
 PFA_INTSTORE:
-.if intvecsize == 2
     .dw XT_2STAR
-.endif
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS
@@ -52,9 +50,7 @@ VE_INTFETCH:
 XT_INTFETCH:
     .dw DO_COLON
 PFA_INTFETCH:
-.if intvecsize == 2
     .dw XT_2STAR
-.endif
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS

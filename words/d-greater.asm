@@ -20,10 +20,4 @@ PFA_DGREATER:
     cpc temp3, tosh
     cpc temp4, temp0
     cpc temp5, temp1
-    movw zl, zerol
-    brlt PFA_DGREATER1
-    brbs 1, PFA_DGREATER1
-    sbiw zl, 1
-PFA_DGREATER1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    rjmp PFA_GREATERDONE

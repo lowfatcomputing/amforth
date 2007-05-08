@@ -12,6 +12,7 @@ PFA_EQUAL:
     ld temp3, Y+
     cp tosl, temp2
     cpc tosh, temp3
+PFA_EQUALDONE:
     movw zl, zerol
     brne PFA_EQUAL1
     sbiw zl, 1
