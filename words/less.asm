@@ -10,12 +10,11 @@ XT_LESS:
 PFA_LESS:
     ld temp2, Y+
     ld temp3, Y+
-    cp tosl, temp2
-    cpc tosh, temp3
+    cp temp2, tosl
+    cpc temp3, tosh
 PFA_LESSDONE:
     movw zl, zerol
-    brlt PFA_LESS1
-    brbs 1, PFA_LESS1
+    brge PFA_LESS1
     sbiw zl, 1
 PFA_LESS1:
     movw tosl, zl

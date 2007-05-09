@@ -16,8 +16,8 @@ PFA_DLESS:
     ld temp4, Y+
     ld temp5, Y+
 
-    cp tosl, temp2
-    cpc tosh, temp3
-    cpc temp0, temp4
-    cpc temp1, temp5
+    cp temp2, tosl
+    cpc temp3, tosh
+    cpc temp4, temp0
+    cpc temp5, temp1
     rjmp PFA_LESSDONE
