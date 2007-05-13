@@ -28,16 +28,9 @@ PFA_QUIT2:
     .db 2, "> ",0
     .dw XT_ITYPE
 PFA_QUIT4:
-    .dw XT_TIB
-    .dw XT_DOLITERAL
-    .dw TIBSIZE
-    .dw XT_ACCEPT
-    .dw XT_NUMBERTIB
-    .dw XT_STORE
-    .dw XT_ZERO
-    .dw XT_G_IN
-    .dw XT_STORE
-
+    .dw XT_REFILL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_QUIT2
     .dw XT_DOLITERAL
     .dw XT_INTERPRET
     .dw XT_CATCH
