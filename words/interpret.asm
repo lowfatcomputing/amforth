@@ -1,6 +1,6 @@
 ; ( -- ) System
-; R(ix - jx )
-; interpret content of TIB. may throw exceptions
+; R(i*x - j*x )
+; interpret input word by word. may throw exceptions
 VE_INTERPRET:
     .db $09, "interpret"
     .dw VE_HEAD
