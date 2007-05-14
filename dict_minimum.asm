@@ -124,9 +124,16 @@
 .include "words/catch.asm"
 .include "words/throw.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "words/char-skip.asm"
 .include "words/accept.asm"
+.include "words/refill.asm"
 .include "words/char.asm"
 .include "words/number.asm"
+.include "words/parse.asm"
+.include "words/char-scan.asm"
+.include "words/source.asm"
+.include "words/slashstring.asm"
+
 .include "words/word.asm"
 .include "words/find.asm"
 .include "words/quit.asm"
