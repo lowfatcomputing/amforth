@@ -2,7 +2,7 @@
 .include "m8def.inc"
 .list
 
-  ; first address of RAM 
+  ; first address of RAM
   .equ ramstart = $60
   .equ stackstart = RAMEND - 80
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
@@ -11,33 +11,35 @@
   .equ USERSIZE = 32  ; size of user area
 
   .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
- 
-  .equ INTVECTORS = 19 ; INT_VECTORS_SIZE 
+
+  .equ INTVECTORS = 19 ; INT_VECTORS_SIZE
   .equ intvecsize = 1
-  
+
   .equ nrww = $0c00
-  .equ codestart = $14
+  .equ codestart = $14+7/2 ; mcustring
 
 .macro jmp_
     rjmp @0
 .endmacro
 
+.macro call_
+    rcall @0
+.endmacro
 
 ; some hacks
 .if defined(UDRE0)
     ;
 .else
- 
-  .equ UBRR0L = UBRRL+$20
-  .equ UBRR0H = UBRRH+$20
-  .equ UCSR0C = UCSRC+$20
-  .equ UCSR0B = UCSRB+$20
+  .equ BAUDRATE0_LOW = UBRRL+$20
+  .equ BAUDRATE0_HIGH = UBRRH+$20
+  .equ USART0_C = UCSRC+$20
+  .equ USART0_B = UCSRB+$20
 
 .if defined(UDR0)
 .else
-  .equ UDR0 = UDR+$20
+  .equ UDR0 = UDR
 .endif
-  
+
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
   .equ RXCIE0 = RXCIE
@@ -49,11 +51,11 @@
 .org	INT0addr ; External Interrupt0 Vector Address
     rcall isr
 .org	INT1addr ; External Interrupt1 Vector Address
-    rcall isr 
-;.org	OC2addr  ; Output Compare2 Interrupt Vector Address
-;    rcall isr
+    rcall isr
+.org	OC2addr  ; Output Compare2 Interrupt Vector Address
+    rcall isr
 .org	OVF2addr ; Overflow2 Interrupt Vector Address
-    rcall isr	
+    rcall isr
 .org	ICP1addr
     rcall isr	; Input Capture1 Interrupt Vector Address
 .org	OC1Aaddr
@@ -64,19 +66,22 @@
     rcall isr	; Overflow1 Interrupt Vector Address
 .org	OVF0addr
     rcall isr	; Overflow0 Interrupt Vector Address
-.org	SPIaddr 
+.org	SPIaddr
     rcall isr	; SPI Interrupt Vector Address
 ;.org	URXCaddr
 ;    rcall isr	; USART Receive Complete Interrupt Vector Address
 ;.org	UDREaddr
 ;    rcall isr	; USART Data Register Empty Interrupt Vector Address
-;.org	UTXCaddr
-;    rcall isr	; USART Transmit Complete Interrupt Vector Address
+.org	UTXCaddr
+    rcall isr	; USART Transmit Complete Interrupt Vector Address
 .org	ADCCaddr ; ADC Interrupt Vector Address
     rcall isr
 .org	ERDYaddr
     rcall isr	; EEPROM Interrupt Vector Address
-.org	ACIaddr 
+.org	ACIaddr
     rcall isr	; Analog Comparator Interrupt Vector Address
-.org    TWIaddr 
+.org    TWIaddr
     rcall isr   ; Irq. vector address for Two-Wire Interface
+
+mcustring:
+  .db 7,"ATmega8"

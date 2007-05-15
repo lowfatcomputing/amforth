@@ -16,12 +16,16 @@
   .equ intvecsize = 2
 
   .equ nrww = $1c00
-  .equ codestart = $2e
+  .equ codestart = $2e + 9/2 ; mcustring
 
   .equ UMSEL01 = 7
 
 .macro jmp_
     jmp @0
+.endmacro
+
+.macro call_
+    call @0
 .endmacro
 
 ; the baud rate registers are memory addresses!
@@ -89,4 +93,7 @@
     rcall isr   ;Store Program Memory Ready Interrupt Vector
 .org    LCDSFaddr
     rcall isr   ;LCD Start of Frame Interrupt Vector
+
+mcustring:
+  .db 9,"ATmega169"
 

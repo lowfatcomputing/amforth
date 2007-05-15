@@ -10,24 +10,50 @@
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
 
+  .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
+  .equ intvecsize = 2
+
   .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
   .equ nrww = $1c00
-  .equ codestart = $2a
+  .equ codestart = $2a +  8/2 ; mcustring
   
-;  .equ RWWSRE = ASRE
+.macro jmp_
+    jmp @0
+.endmacro
 
-  .equ UBRR0L = UBRRL
-  .equ UBRR0H = UBRRH 
-  .equ UCSR0C = UCSRC
-  .equ UCSR0B = UCSRB
-;  .equ UDR0   = UDR
-  
+.macro call_
+    call @0
+.endmacro
+
+; the baud rate registers are io addresses!
+  .equ BAUDRATE0_LOW = UBRRL+$20
+  .equ BAUDRATE0_HIGH = UBRRH+$20
+  .equ USART0_C = UCSRC+$20
+  .equ USART0_B = UCSRB+$20
+
+; some hacks
+.if defined(UDRE0)
+    ;
+.else
+
+.if defined(RWWSRE)
+.else
+  .equ RWWSRE = ASRE
+.endif
+
+.if defined(UDR0)
+.else
+  .equ UDR0 = UDR
+.endif
+  ; bit numbers
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
   .equ RXCIE0 = RXCIE
   .equ UMSEL01 = URSEL
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
+.endif
+
 
 
 .org	INT0addr
@@ -66,4 +92,7 @@
     rcall isr   	; Irq. vector address for Two-Wire Interface
 .org	SPMRaddr 
     rcall isr	; SPM complete Interrupt Vector Address
+
+mcustring:
+  .db 8,"ATmega16",0
 

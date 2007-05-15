@@ -13,11 +13,16 @@
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
   .equ nrww = $3800
-  .equ codestart = $2a
+  .equ codestart = $2a + 8/2 ; mcustring
 
 .macro jmp_
     jmp @0
 .endmacro
+
+.macro call_
+    call @0
+.endmacro
+
 
 ; the baud rate registers are io addresses!
   .equ BAUDRATE0_LOW = UBRRL+$20
@@ -89,3 +94,6 @@
     rcall isr
 .org	SPMRaddr ; Store Program Memory Ready Interrupt Vector Address
     rcall isr
+
+mcustring:
+  .db 8,"ATmega32",0
