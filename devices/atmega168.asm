@@ -17,7 +17,21 @@
   
   .equ nrww = $1c00
   .equ codestart = $34
- 
+
+
+.macro jmp_
+    jmp @0
+.endmacro
+
+.macro call_
+    call @0
+.endmacro
+
+  .equ BAUDRATE0_LOW = UBRR0L
+  .equ BAUDRATE0_HIGH = UBRR0H
+  .equ USART0_C = UCSR0C
+  .equ USART0_B = UCSR0B
+
   .equ EEWE = EEPE
   .equ SPMCR = SPMCSR
   .equ SPMEN = SELFPRGEN
@@ -74,3 +88,5 @@
 .org  SPMRaddr        
     rcall isr  ; Store Program Memory Read
 
+mcustring:
+  .db 9,"ATmega168"

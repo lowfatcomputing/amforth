@@ -2,9 +2,9 @@
 
 AVRDUDE=avrdude
 AVRA=/opt/cdk4avr/bin/avra
-INCLUDE=~/lib/avralib
+INCLUDE=~/lib/avra
 
-USB=-c avr911  -P /dev/ttyUSB1
+USB=-c avr911  -P /dev/ttyUSB0
 PP=-c stk200  -P /dev/parport0
 JTAG=-c jtag2 -P /dev/ttyUSB2
 

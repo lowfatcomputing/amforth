@@ -38,9 +38,9 @@ reset:
     ldi xl, low(PFA_COLD)
     ldi xh, high(PFA_COLD)
     ; the following should be turnkey-action, but adds a few more words to the the dictionary
-    rcall device_init
+    call_ device_init
     ; its a far jump...
-    jmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ISR routines
 .include "words/intx.asm"
