@@ -72,11 +72,11 @@
 \ USER defered 
 \ **************************
 : Udefer@ ( xt1 -- xt2 )
-    1+ i@ up@ + @
+    >body i@ up@ + @
 ;
 
 : Udefer! ( xt2 xt1 -- )
-    1+ i@ up@ + !
+    >body i@ up@ + !
 ;
 
 
@@ -85,7 +85,7 @@
       ['] Udefer@ ,
       ['] Udefer! ,
    does> ( i*x -- j*x ) 
-      @ execute 
+      i@ up@ + @ execute 
 ;
 
 \ ***************************
@@ -93,20 +93,17 @@
 \ ***************************
 
 : Rdefer@ ( xt1 -- xt2 )
-    1+ i@ @
+    >body i@ @
 ;
 
 : Rdefer! ( xt2 xt1 -- )
-    1+ i@ !
+    >body i@ !
 ;
 
 : Rdefer ( "name" -- )
-      create
-      heap e@ 
-      dup ,              \ save in dictionary
-      2 allot            \ allot 1 cell in RAM
-      ['] abort swap !   \ default action is abort
+      variable
       ['] Rdefer@ ,
       ['] Rdefer! ,
-   does> ( i*x -- j*x ) i@ @ execute 
+   does> ( i*x -- j*x ) 
+      i@ @ execute 
 ; 
