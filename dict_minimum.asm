@@ -151,3 +151,12 @@
 
 .include "words/value.asm"
 .include "words/to.asm"
+
+.include "words/edefer-fetch.asm"
+.include "words/edefer-store.asm"
+.include "words/rdefer-fetch.asm"
+.include "words/rdefer-store.asm"
+.include "words/udefer-fetch.asm"
+.include "words/udefer-store.asm"
+
+.include "words/do-defer.asm"

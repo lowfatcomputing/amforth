@@ -22,3 +22,8 @@
 .include "words/squote.asm"
 
 .include "words/words.asm"
+
+.include "words/defer-store.asm"
+.include "words/defer-fetch.asm"
+;.include "words/edefer.asm"
+.include "words/is.asm"

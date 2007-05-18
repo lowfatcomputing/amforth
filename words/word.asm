@@ -37,12 +37,12 @@ PFA_WORD:
     .dw XT_SWAP        ; ( -- addr''' pad+1 len''')
     .dw XT_CMOVE_G     ; ( --- )
     .dw XT_PAD
-    .dw XT_PAD         ; append a zero byte. find/icompare _does_ need it
+
+    .dw XT_ZERO	       ; append a zero byte. find/icompare _does_ need it
+    .dw XT_PAD         
     .dw XT_DUP
     .dw XT_CFETCH
     .dw XT_PLUS        ; ( -- pad pad+len )
     .dw XT_1PLUS
-    .dw XT_ZERO
-    .dw XT_SWAP
     .dw XT_CSTORE
     .dw XT_EXIT

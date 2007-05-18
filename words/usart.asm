@@ -251,6 +251,9 @@ VE_RX0:
 XT_RX0:
     .dw DO_COLON
 PFA_RX0:
+  .dw XT_RX0Q
+  .dw XT_DOCONDBRANCH
+  .dw PFA_RX0
   .dw XT_DOLITERAL
   .dw usart0_rx_out
   .dw XT_CFETCH
