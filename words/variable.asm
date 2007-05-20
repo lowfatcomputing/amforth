@@ -13,10 +13,8 @@ PFA_VARIABLE:
     .dw PFA_DOVARIABLE
     .dw XT_HEAP
     .dw XT_EFETCH
-    .dw XT_DUP
     .dw XT_COMMA
-    .dw XT_1PLUS
-    .dw XT_1PLUS
-    .dw XT_HEAP
-    .dw XT_ESTORE
+    .dw XT_DOLITERAL
+    .dw 2
+    .dw XT_ALLOT
     .dw XT_EXIT
