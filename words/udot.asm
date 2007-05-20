@@ -8,6 +8,8 @@ VE_UDOT:
 XT_UDOT:
     .dw DO_COLON
 PFA_UDOT:
+    .dw XT_ZERO
+    .dw XT_SWAP
     .dw XT_L_SHARP
     .dw XT_SHARP_S
     .dw XT_BL

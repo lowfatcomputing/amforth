@@ -10,9 +10,10 @@ XT_DOT:
 PFA_DOT:
     .dw XT_DUP
     .dw XT_ABS
+    .dw XT_S2D
     .dw XT_L_SHARP
     .dw XT_SHARP_S
-    .dw XT_SWAP
+    .dw XT_ROT
     .dw XT_SIGN
     .dw XT_BL
     .dw XT_HOLD

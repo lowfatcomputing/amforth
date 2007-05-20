@@ -1,4 +1,4 @@
-; ( n1 -- n2) Numeric IO
+; ( d1 -- d2) Numeric IO
 ; R( -- )
 ; compiles next digit to HLD
 VE_SHARP:
@@ -8,10 +8,11 @@ VE_SHARP:
 XT_SHARP:
     .dw DO_COLON
 PFA_SHARP:
-    .dw XT_BASE
-    .dw XT_FETCH
-    .dw XT_USLASHMOD
-    .dw XT_SWAP
+    .dw XT_BASE 
+    .dw XT_FETCH        ; ( -- d1 b)
+    .dw XT_UMSLASHMOD   ; ( -- rem quot)
+    .dw XT_S2D       ; ( -- rem d2)
+    .dw XT_ROT
     .dw XT_DOLITERAL
     .dw $30
     .dw XT_PLUS
