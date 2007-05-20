@@ -2,6 +2,8 @@
 
 .set dict_optional=0
 
+.include "macros.asm"
+
 ; cpu clock in hertz
 .equ cpu_frequency = 8000000
 ; baud rate of terminal

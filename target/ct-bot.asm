@@ -1,4 +1,5 @@
 ; Settings for the eval board with Atmega32 & 16 MHz
+.include "macros.asm"
 
 .set dict_optional=2
 

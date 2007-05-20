@@ -1,4 +1,5 @@
 ; Settings for the avr butterfly demo board
+.include "macros.asm"
 
 ; cpu clock in hertz
 .equ cpu_frequency = 8000000
