@@ -20,14 +20,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/f_cpu.asm"
-
 .include "words/state.asm"
 .include "words/base.asm"
 .include "words/g_in.asm"
 .include "words/sharptib.asm"
 .include "words/tib.asm"
 .include "words/pad.asm"
-.include "words/qexecute.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"
 .include "words/key.asm"
@@ -44,6 +42,11 @@
 .include "words/literal.asm"
 .include "words/comma.asm"
 
+.include "words/g_mark.asm"
+.include "words/g_resolve.asm"
+.include "words/l_mark.asm"
+.include "words/l_resolve.asm"
+
 .include "words/if.asm"
 .include "words/else.asm"
 .include "words/then.asm"
@@ -55,11 +58,6 @@
 .include "words/do.asm"
 .include "words/loop.asm"
 .include "words/plusloop.asm"
-
-.include "words/g_mark.asm"
-.include "words/g_resolve.asm"
-.include "words/l_mark.asm"
-.include "words/l_resolve.asm"
 
 .include "words/docreate.asm"
 .include "words/create.asm"
@@ -135,7 +133,7 @@
 .include "words/slashstring.asm"
 
 .include "words/word.asm"
-.include "words/find.asm"
+
 .include "words/quit.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"
@@ -160,3 +158,4 @@
 .include "words/udefer-store.asm"
 
 .include "words/do-defer.asm"
+.include "words/find.asm"
