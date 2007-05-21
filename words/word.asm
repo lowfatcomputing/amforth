@@ -23,6 +23,7 @@ PFA_WORD:
     .dw XT_MINUS       ; ( -- addr'' len'' dlen)
     .dw XT_G_IN        ; ( -- addr'' len'' dlen >in)
     .dw XT_PLUSSTORE   ; ( -- addr'' len'')
+    
     .dw XT_R_FROM      ; ( -- addr'' len'' c)
     .dw XT_CSCAN       ; ( -- addr''' len''')
     .dw XT_DUP         ; ( -- addr''' len''' len''')

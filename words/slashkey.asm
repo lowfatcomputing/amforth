@@ -6,7 +6,7 @@ VE_SLASHKEY:
     .dw VE_HEAD
     .set VE_HEAD = VE_SLASHKEY
 XT_SLASHKEY:
-    .dw XT_DODEFER
+    .dw PFA_DODEFER
 PFA_SLASHKEY:
     .dw 20
     .dw XT_UDEFERFETCH
