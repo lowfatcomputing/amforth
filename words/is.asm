@@ -1,6 +1,6 @@
-; ( n <name> -- ) ISols
+; ( xt1 c<char> -- ) System
 ; R( --)
-; sISre the ISS IS value (an EEPROM 16bit cell)
+; stores xt into defer or compiles code to do so at runtime
 VE_IS:
     .db $82, "is", 0
     .dw VE_HEAD

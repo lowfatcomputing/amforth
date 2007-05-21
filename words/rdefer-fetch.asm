@@ -1,6 +1,6 @@
-; ( n <name> -- ) Memory
+; ( xt1 -- xt2 ) System
 ; R( -- )
-; 
+; does the real defer@ for ram defers
 ;VE_RDEFERFETCH:
 ;    .db $07, "Rdefer@"
 ;    .dw VE_HEAD

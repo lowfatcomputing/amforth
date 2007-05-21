@@ -1,6 +1,6 @@
-; ( n <name> -- ) Memory
+; ( xt1 -- xt2 ) System
 ; R( -- )
-; 
+; does the real defer@ for user based defers
 ;VE_UDEFERFETCH:
 ;    .db $07, "Udefer@"
 ;    .dw VE_HEAD

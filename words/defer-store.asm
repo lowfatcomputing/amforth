@@ -1,6 +1,6 @@
-; ( xt1 xt2 -- ) Memory
+; ( xt1 xt2 -- ) System
 ; R( -- )
-; 
+; stores xt1 as the xt to be executed when xt2 is called
 VE_DEFERSTORE:
     .db $06, "defer!",0
     .dw VE_HEAD

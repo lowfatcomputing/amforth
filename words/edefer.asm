@@ -1,6 +1,6 @@
 ; ( n <name> -- ) Compiler
 ; R( -- )
-; allocate space for 1 cell in EEPROM. used in conjunction with TO
+; creates a defer vector which is kept in eeprom.
 VE_EDEFER:
     .db $06, "Edefer",0
     .dw VE_HEAD

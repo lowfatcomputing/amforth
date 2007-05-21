@@ -1,6 +1,6 @@
-; ( xt1 -- xt2 ) Memory
+; ( xt1 -- xt2 ) System
 ; R( -- )
-; 
+; returns the XT assoziates with the given XT
 VE_DEFERFETCH:
     .db $06, "defer@",0
     .dw VE_HEAD

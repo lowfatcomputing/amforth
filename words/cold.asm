@@ -17,37 +17,37 @@ PFA_COLD:
     .dw XT_TX0
     .dw XT_DOLITERAL
     .dw XT_EMIT
-    .dw XT_UDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_DOLITERAL
     .dw XT_TX0Q
     .dw XT_DOLITERAL
     .dw XT_EMITQ
-    .dw XT_UDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_DOLITERAL
     .dw XT_RX0
     .dw XT_DOLITERAL
     .dw XT_KEY
-    .dw XT_UDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_DOLITERAL
     .dw XT_RX0Q
     .dw XT_DOLITERAL
     .dw XT_KEYQ
-    .dw XT_UDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_DOLITERAL
     .dw XT_NOOP
     .dw XT_DOLITERAL
     .dw XT_SLASHKEY
-    .dw XT_UDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_DOLITERAL
     .dw XT_NOOP
     .dw XT_DOLITERAL
     .dw XT_PAUSE
-    .dw XT_RDEFERSTORE
+    .dw XT_DEFERSTORE
 
     .dw XT_ZERO
     .dw XT_STATE

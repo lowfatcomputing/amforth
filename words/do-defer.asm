@@ -1,6 +1,6 @@
-; ( -- addr )
+; ( i*x -- j*x )
 ; R( -- )
-;
+; runtime of defer
 ;VE_DOEDEFER:
 ;    .db $0a, "(defer)", 0
 ;    .dw VE_HEAD
@@ -8,8 +8,7 @@
 XT_DODEFER:
     .dw PFA_DODEFER
 PFA_DODEFER:
-    .dw $940e            ; (;code>
-    .dw DO_DODOES
+    call_ DO_DODOES
     .dw XT_DUP
     .dw XT_1MINUS
     .dw XT_SWAP

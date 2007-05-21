@@ -1,6 +1,6 @@
-; ( xt1 xt2 -- ) Memory
+; ( xt1 xt2 -- ) System
 ; R( -- )
-; 
+; does the real defer! for eeprom defers
 ;VE_EDEFERSTORE:
 ;    .db $07, "Edefer!"
 ;    .dw VE_HEAD

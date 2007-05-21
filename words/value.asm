@@ -24,8 +24,7 @@ PFA_VALUE:
     .dw XT_EXIT
 
 PFA_DOVALUE:
-    .dw $940e            ; (;code>
-    .dw DO_DODOES
+    call_ DO_DODOES
     .dw XT_IFETCH
     .dw XT_EFETCH
     .dw XT_EXIT
