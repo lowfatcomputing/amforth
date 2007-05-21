@@ -12,7 +12,6 @@ PFA_IS:
     .dw XT_FETCH
     .dw XT_DOCONDBRANCH
     .dw PFA_IS1
-    .dw XT_COMPILE
     .dw XT_BRACKETTICK
     .dw XT_COMPILE
     .dw XT_DEFERSTORE
