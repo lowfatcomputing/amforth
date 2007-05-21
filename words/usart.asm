@@ -232,6 +232,7 @@ VE_TX0Q:
 XT_TX0Q:
     .dw DO_COLON
 PFA_TX0Q:
+  .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw usart0_tx_out
   .dw XT_CFETCH
@@ -281,6 +282,7 @@ VE_RX0Q:
 XT_RX0Q:
     .dw DO_COLON
 PFA_RX0Q:
+  .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw usart0_rx_out
   .dw XT_CFETCH
