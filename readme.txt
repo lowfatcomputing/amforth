@@ -1,4 +1,4 @@
-Date: 2.5.2007
+Date: 22.5.2007
 
 Author: mtrute@users.sourceforge.net (will be forwarded)
 
@@ -28,8 +28,12 @@ Current state
     complete, the missing words to achieve 100% ANS 94 forth
     compatability may never get implemented. 
 
-    All words should have ans94 (core with some from ext) stack diagrams,
-    Exception: # and co. They use the singel cell values only.
+    All words should have ans94 (core with some from ext) stack 
+    diagrams,
+    
+    As of release 2.1 amforth is turned into (some kind of) a library. 
+    See http://amforth.svn.sourceforge.net/viewvc/amforth/appl/    
+    for examples how to include it into your project
     
 ToDo
     documentation and web site (partly done)
