@@ -4,7 +4,7 @@
 
   ; first address of RAM
   .equ ramstart = $100
-  .equ stackstart = RAMEND - $rstacksize
+  .equ stackstart = RAMEND - rstacksize
   .equ HLDSIZE  = $16  ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64  ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
