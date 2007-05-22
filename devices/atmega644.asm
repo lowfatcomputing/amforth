@@ -3,7 +3,7 @@
 .list
 
   .equ ramstart = $100 ; first address of RAM
-  .equ stackstart = RAMEND - 80
+  .equ stackstart = RAMEND - $rstacksize
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;

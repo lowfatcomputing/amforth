@@ -3,7 +3,7 @@
 .list
 
   .equ ramstart = $60 ; first address of RAM
-  .equ stackstart = RAMEND - 80
+  .equ stackstart = RAMEND - $rstacksize
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
@@ -13,7 +13,7 @@
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
   .equ nrww = $3800
-  .equ codestart = $2a + 8/2 ; mcustring
+  .equ codestart = $2a + 9/2 ; mcustring
 
 .macro jmp_
     jmp @0
@@ -96,4 +96,4 @@
     rcall isr
 
 mcustring:
-  .db 8,"ATmega32",0
+  .db 9,"ATmega32 "
