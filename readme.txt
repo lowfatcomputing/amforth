@@ -20,7 +20,7 @@ Development hardware is an evaluation board running an atmega32
 at 8 & 16 MHz MHz with a few led's and pushbuttons. Targets for the
 final version are robots (asuro and ct-bot) and model railroad
 systems using atmega32 and atmega8 (atmegaX8). Other controllers
-work too but may require minor adjustments. Feedback is welcome!
+work with minor adjustments. Feedback is welcome!
 
 
 Current state
@@ -29,7 +29,7 @@ Current state
     compatability may never get implemented. 
 
     All words should have ans94 (core with some from ext) stack 
-    diagrams,
+    diagrams, but not nessesairly the complete semantics.
     
     As of release 2.1 amforth is turned into (some kind of) a library. 
     See http://amforth.svn.sourceforge.net/viewvc/amforth/appl/    
