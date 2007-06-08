@@ -10,6 +10,7 @@ XT_IDUMP:
 PFA_IDUMP:
     .dw XT_ZERO
     .dw XT_DODO
+    .dw PFA_IDUMP2
 PFA_IDUMP1:
     .dw XT_I
     .dw XT_OVER
@@ -21,5 +22,6 @@ PFA_IDUMP1:
     .dw XT_CR
     .dw XT_DOLOOP
     .dw PFA_IDUMP1
+PFA_IDUMP2:
     .dw XT_DROP
     .dw XT_EXIT

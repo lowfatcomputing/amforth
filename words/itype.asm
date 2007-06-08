@@ -50,6 +50,7 @@ PFA_ITYPE2:
     .dw XT_ZERO
  ; DO
     .dw XT_DODO
+    .dw PFA_ITYPE7
 PFA_ITYPE3:
     .dw XT_1PLUS
     .dw XT_DUP
@@ -60,6 +61,7 @@ PFA_ITYPE3:
     .dw XT_DOLOOP
     .dw PFA_ITYPE3
  ; LOOP
+PFA_ITYPE7:
     .dw XT_SWAP
 ; THEN
 

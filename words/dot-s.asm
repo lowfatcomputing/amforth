@@ -16,6 +16,7 @@ PFA_DOTS:
     .dw PFA_DOTS2
     .dw XT_ZERO
     .dw XT_DODO
+    .dw PFA_DOTS2
 PFA_DOTS1:
     .dw XT_DUP
     .dw XT_I

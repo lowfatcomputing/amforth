@@ -22,3 +22,5 @@
 .include "words/edefer.asm"
 .include "words/rdefer.asm"
 .include "words/is.asm"
+
+.include "words/leave.asm"

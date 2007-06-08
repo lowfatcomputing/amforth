@@ -20,10 +20,9 @@ PFA_CSKIP1:
     .dw XT_EQUAL          ; ( -- addr' n' f )
     .dw XT_DOCONDBRANCH   ; ( -- addr' n')
     .dw PFA_CSKIP2
-    .dw XT_1MINUS         ; ( -- addr' n'')
-    .dw XT_SWAP           ; ( -- n'' addr')
-    .dw XT_1PLUS          ; ( -- n'' addr'')
-    .dw XT_SWAP           ; ( -- addr'' n'')
+    .dw XT_DOLITERAL
+    .dw 1
+    .dw XT_SLASHSTRING
     .dw XT_DOBRANCH
     .dw PFA_CSKIP1
 PFA_CSKIP2:

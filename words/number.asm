@@ -16,6 +16,7 @@ PFA_NUMBER:
     .dw XT_COUNT      ; ( -- 1 0 addr' len)
     .dw XT_ZERO
     .dw XT_DODO
+    .dw PFA_NUMBER6
 PFA_NUMBER1: ; ( n addr -- )
     .dw XT_DUP
     .dw XT_I
@@ -59,6 +60,7 @@ PFA_NUMBER3:
 PFA_NUMBER4:
     .dw XT_DOLOOP
     .dw PFA_NUMBER1
+PFA_NUMBER6:
     .dw XT_DROP
     ; incorporate sign into number
     .dw XT_SWAP

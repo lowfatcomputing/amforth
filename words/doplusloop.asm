@@ -13,7 +13,7 @@ PFA_DOPLUSLOOP:
     add zl, tosl
     adc zh, tosh
     loadtos
-PFA_DOPLUSLOOP4:
+PFA_DOPLUSLOOP4:   ; entry point for (loop)
     pop temp2
     pop temp3
     cp zl, temp2
@@ -32,5 +32,7 @@ PFA_DOPLUSLOOP3:
     push zl
     rjmp PFA_DOBRANCH ; read next cell from dictionary and jump to its destination
 PFA_DOPLUSLOOP1:
-    adiw xl, 1
+    pop  temp0
+    pop  temp1  ; remove leave destination
+    adiw xl, 1  ; skip branch-back address
     rjmp DO_NEXT

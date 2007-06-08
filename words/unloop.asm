@@ -12,4 +12,6 @@ PFA_UNLOOP:
     pop temp0
     pop temp1
     pop temp0
+    pop temp1
+    pop temp0
     rjmp DO_NEXT

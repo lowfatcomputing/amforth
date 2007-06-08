@@ -14,6 +14,7 @@ PFA_TYPE:
     .dw PFA_TYPE2
     .dw XT_ZERO
     .dw XT_DODO
+    .dw PFA_TYPE2
 PFA_TYPE1:
     .dw XT_DUP
     .dw XT_I

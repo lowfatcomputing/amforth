@@ -10,5 +10,6 @@ XT_DO:
 PFA_DO:
     .dw XT_COMPILE
     .dw XT_DODO
+    .dw XT_GMARK
     .dw XT_LMARK
     .dw XT_EXIT

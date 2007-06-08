@@ -6,20 +6,11 @@ VE_J:
     .dw VE_HEAD
     .set VE_HEAD = VE_J
 XT_J:
-    .dw PFA_J
+    .dw DO_COLON
 PFA_J:
-    savetos
-    pop temp1
-    pop temp0
-    pop temp3
-    pop temp2
-    pop tosl
-    pop tosh
-    
-    push tosh
-    push tosl
-    push temp2
-    push temp3
-    push temp0
-    push temp1
-    rjmp DO_NEXT
+    .dw XT_RP_FETCH
+    .dw XT_DOLITERAL
+    .dw 9
+    .dw XT_PLUS
+    .dw XT_FETCH
+    .dw XT_EXIT

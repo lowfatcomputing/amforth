@@ -11,4 +11,5 @@ PFA_LOOP:
     .dw XT_COMPILE
     .dw XT_DOLOOP
     .dw XT_LRESOLVE
+    .dw XT_GRESOLVE
     .dw XT_EXIT
