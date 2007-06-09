@@ -1,6 +1,6 @@
 ; ( -- c) Character IO
 ; R( -- )
-; fetch 'emit? vector and execute its token if not zero
+; fetch emit? vector and execute it
 VE_EMITQ:
     .db $05, "emit?"
     .dw VE_HEAD

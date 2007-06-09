@@ -1,6 +1,6 @@
 ; ( -- f) Character IO
 ; R( -- )
-; fetch 'key? vector and execute it if not zero. Leave true if a character can be read, false otherwise
+; fetch 'key? vector and execute it. Leave true if a character can be read, false otherwise
 VE_KEYQ:
     .db $04, "key?",0
     .dw VE_HEAD

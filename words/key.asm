@@ -1,6 +1,6 @@
 ; ( -- c ) Character IO
 ; R( -- )
-; fetch 'KEY vector and execute its token if not zero
+; fetch key vector and execute it
 VE_KEY:
     .db $03, "key"
     .dw VE_HEAD

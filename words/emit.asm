@@ -1,6 +1,6 @@
-; ( -- eaddr) System Pointer
+; ( -- eaddr) Character IO
 ; R( -- )
-; address of the variable that holds an XT to be started by cold before quit takes over
+; fetch the emit vector and execute it
 VE_EMIT:
     .db $04, "emit",0
     .dw VE_HEAD
