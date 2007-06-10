@@ -1,6 +1,6 @@
 ; ( -- ) Dictionary
 ; R( -- )
-; copy the next flash cell to here
+; copy the next flash cell to HERE
 VE_COMPILE:
     .db $07, "compile"
     .dw  VE_HEAD
