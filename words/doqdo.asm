@@ -5,9 +5,9 @@
 ;    .db 4, "(do)", 0
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DODO
-XT_DODO:
-    .dw PFA_DODO
-PFA_DODO:
+XT_DOQDO:
+    .dw PFA_DOQDO
+PFA_DOQDO:
     ; put the content of the next flash cell on return stack
     ; it is the address of the instruction _after_ the (+)loop
     movw zl, xl
@@ -19,12 +19,10 @@ PFA_DODO:
 
     ld temp2, Y+
     ld temp3, Y+
-PFA_DODO1:
-    push temp1
-    push temp0
-    push temp3
-    push temp2
-    push tosh
-    push tosl
-    loadtos
+    ; now check for equality
+    cp tosl, temp2
+    cpc tosh, temp3
+    brne PFA_DODO1
+    ; both values are the same -> skip to loop
+    movw xl, temp0
     rjmp DO_NEXT

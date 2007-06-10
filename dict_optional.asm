@@ -24,3 +24,4 @@
 .include "words/is.asm"
 
 .include "words/leave.asm"
+.include "words/qdo.asm"
