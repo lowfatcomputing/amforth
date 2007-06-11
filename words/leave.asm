@@ -14,4 +14,4 @@ PFA_LEAVE:
     pop temp1
     pop xl
     pop xh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
