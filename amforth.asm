@@ -46,15 +46,17 @@ reset:
 .include "words/usart.asm"
 
 ; lower part of the dictionary
-.include "dict_minimum.asm"
-.if dict_optional==1
- .include "dict_optional.asm"
+.include "dict_minimum.inc"
+.if dict_appl==1
+ .include "dict_appl.inc"
 .endif
 
 .set lowflashlast = pc
 
 ; high part of the dictionary (primitives and words for self programming)
 .org nrww
+; some helper functions
+
 ; the inner interpreter.
 DO_DODOES:
     adiw wl, 1
@@ -106,10 +108,10 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     clt ; clear the t flag to indicate that the interrupt is handled
     rjmp DO_EXECUTE
 
-.include "dict_high.asm"
+.include "dict_high.inc"
 
-.if dict_optional==2
- .include "dict_optional.asm"
+.if dict_appl==2
+ .include "dict_appl.inc"
 .endif
 .set flashlast = pc
 
