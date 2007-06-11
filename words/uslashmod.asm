@@ -1,4 +1,4 @@
-; (u1 u2 -- quot rem) Arithmetics
+; (u1 u2 -- rem quot) Arithmetics
 ; R( -- )
 ; unsigned division with remainder
 VE_USLASHMOD:

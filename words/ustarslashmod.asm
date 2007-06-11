@@ -1,4 +1,4 @@
-; ( u1 u2 u3 -- quot rem) Arithmetics
+; ( u1 u2 u3 -- rem quot) Arithmetics
 ; R( -- )
 ; unsigned division with remainder u3 * u2 / u1 
 VE_USTARSLASHMOD:
