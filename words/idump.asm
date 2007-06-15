@@ -9,7 +9,7 @@ XT_IDUMP:
     .dw DO_COLON
 PFA_IDUMP:
     .dw XT_ZERO
-    .dw XT_DODO
+    .dw XT_DOQDO
     .dw PFA_IDUMP2
 PFA_IDUMP1:
     .dw XT_I

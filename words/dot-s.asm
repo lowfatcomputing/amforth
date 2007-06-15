@@ -11,11 +11,8 @@ PFA_DOTS:
     .dw XT_SP_FETCH
     .dw XT_DEPTH
     .dw XT_1MINUS
-    .dw XT_QDUP
-    .dw XT_DOCONDBRANCH
-    .dw PFA_DOTS2
     .dw XT_ZERO
-    .dw XT_DODO
+    .dw XT_DOQDO
     .dw PFA_DOTS2
 PFA_DOTS1:
     .dw XT_DUP

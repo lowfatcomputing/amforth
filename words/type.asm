@@ -8,12 +8,8 @@ VE_TYPE:
 XT_TYPE:
     .dw DO_COLON
 PFA_TYPE:
-    .dw XT_QDUP
-    .dw XT_NOTEQUALZERO
-    .dw XT_DOCONDBRANCH
-    .dw PFA_TYPE2
     .dw XT_ZERO
-    .dw XT_DODO
+    .dw XT_DOQDO
     .dw PFA_TYPE2
 PFA_TYPE1:
     .dw XT_DUP

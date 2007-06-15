@@ -22,11 +22,8 @@ PFA_SCOMMA:
     .dw XT_1PLUS       ; ( -- addr+1)
     .dw XT_R_FROM      ; ( -- addr+1 k+1)
     .dw XT_1MINUS      ; ( -- addr+1 k)
-    .dw XT_QDUP        ; ( -- addr+1 [k k | 0])
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SCOMMA2
     .dw XT_ZERO        ; ( -- addr+1 k 0)
-    .dw XT_DODO        ; ( -- addr)
+    .dw XT_DOQDO        ; ( -- addr)
     .dw PFA_SCOMMA2
 PFA_SCOMMA1:
     .dw XT_DUP         ; ( -- addr addr )
