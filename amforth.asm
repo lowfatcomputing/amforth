@@ -62,7 +62,7 @@ DO_DODOES:
     adiw wl, 1
     savetos
     movw tosl, wl
-
+    ; the following takes the address from a real uC-call
     pop wh
     pop wl
 
