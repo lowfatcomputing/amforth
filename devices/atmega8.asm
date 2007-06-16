@@ -26,6 +26,19 @@
     rcall @0
 .endmacro
 
+.macro readflashcell
+    lsl zl
+    rol zh
+    lpm @0, Z+
+    lpm @1, Z+
+.endmacro
+
+.macro writeflashcell
+    lsl zl
+    rol zh
+.endmacro
+
+
 ; some hacks
 .if defined(UDRE0)
     ;

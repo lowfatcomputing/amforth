@@ -11,10 +11,7 @@ PFA_DOUSER:
     savetos
     movw zl, wl
     adiw zl, 1
-    lsl zl
-    rol zh
-    lpm tosl, Z+
-    lpm tosh, Z
+    readflashcell tosl,tosh
     add tosl, upl
     adc tosh, uph
     rjmp DO_NEXT

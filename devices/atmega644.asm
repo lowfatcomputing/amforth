@@ -3,7 +3,7 @@
 .list
 
   .equ ramstart = $100 ; first address of RAM
-  .equ stackstart = RAMEND - $rstacksize
+  .equ stackstart = RAMEND - rstacksize
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
@@ -35,6 +35,19 @@
 .macro call_
     call @0
 .endmacro
+
+.macro readflashcell
+    lsl zl
+    rol zh
+    lpm @0, Z+
+    lpm @1, Z+
+.endmacro
+
+.macro writeflashcell
+    lsl zl
+    rol zh
+.endmacro
+
 
 ; default interrupt handlers
 .org	INT0addr ; External Interrupt0 Vector Address

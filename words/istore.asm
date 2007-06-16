@@ -99,7 +99,7 @@ XT_DOSPM:
 PFA_DOSPM:
   ; wait for pending spm instruction
 PFA_DOSPM1:
-    in temp1, SPMCR
+    in_ temp1, SPMCR
     andi temp1, (1<<SPMEN)
     brne PFA_DOSPM1
 
@@ -107,18 +107,17 @@ PFA_DOSPM2:
     sbic EECR, EEWE
     rjmp PFA_DOSPM2
 
-    ; address
-    movw zl, tosl
-    lsl zl
-    rol zh
     ; value
     ld r0, Y+
     ld r1, Y+
     ; command
     ld temp0, Y+
     ld temp1, Y+
+    ; address
+    movw zl, tosl
+    writeflashcell
     ; spm timed sequence
-    out SPMCR, temp0
+    out_ SPMCR, temp0
     spm
     loadtos
     rjmp DO_NEXT

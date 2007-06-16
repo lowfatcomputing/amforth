@@ -15,13 +15,3 @@ PFA_DOLITERAL:
     .dw XT_IFETCH
     .dw XT_EXIT
 
-;    .dw PFA_DOLITERAL
-;PFA_DOLITERAL:
-;    savetos
-;    movw zl, xl
-;    lsl zl
-;    rol zh
-;    lpm tosl, Z+
-;    lpm tosh, Z
-;    adiw xl, 1
-;    rjmp DO_NEXT

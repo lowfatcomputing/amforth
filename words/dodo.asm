@@ -11,10 +11,7 @@ PFA_DODO:
     ; put the content of the next flash cell on return stack
     ; it is the address of the instruction _after_ the (+)loop
     movw zl, xl
-    lsl  zl
-    rol  zh
-    lpm  temp0, Z+
-    lpm  temp1, Z+
+    readflashcell temp0,temp1
     adiw xl, 1    ; adjust to NEXT+1 = jump over <mark (for leave)
 
     ld temp2, Y+

@@ -27,6 +27,18 @@
     call @0
 .endmacro
 
+.macro readflashcell
+    lsl zl
+    rol zh
+    lpm @0, Z+
+    lpm @1, Z+
+.endmacro
+
+.macro writeflashcell
+    lsl zl
+    rol zh
+.endmacro
+
   .equ BAUDRATE0_LOW = UBRR0L
   .equ BAUDRATE0_HIGH = UBRR0H
   .equ USART0_C = UCSR0C

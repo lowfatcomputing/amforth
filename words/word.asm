@@ -1,6 +1,6 @@
 ; ( c -- addr ) Tools
 ; R( -- )
-; skip leading delimiter characters and parses TIB to the next delimiter. copy the word into PAD
+; skip leading delimiter characters and parses SOURCE to the next delimiter. copy the word to PAD
 VE_WORD:
     .db $04, "word",0
     .dw VE_HEAD

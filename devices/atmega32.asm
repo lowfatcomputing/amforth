@@ -23,6 +23,18 @@
     call @0
 .endmacro
 
+.macro readflashcell
+    lsl zl
+    rol zh
+    lpm @0, Z+
+    lpm @1, Z+
+.endmacro
+
+.macro writeflashcell
+    lsl zl
+    rol zh
+.endmacro
+
 
 ; the baud rate registers are io addresses!
   .equ BAUDRATE0_LOW = UBRRL+$20

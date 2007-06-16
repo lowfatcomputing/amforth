@@ -9,8 +9,5 @@ XT_IFETCH:
     .dw PFA_IFETCH
 PFA_IFETCH:
     movw zl, tosl
-    lsl zl
-    rol zh
-    lpm tosl, z+
-    lpm tosh, z+
+    readflashcell tosl,tosh
     rjmp DO_NEXT

@@ -11,8 +11,5 @@ PFA_DOVARIABLE:
     savetos
     movw zl, wl
     adiw zl,1
-    lsl zl
-    rol zh
-    lpm tosl, Z+
-    lpm tosh, Z
+    readflashcell tosl,tosh
     rjmp DO_NEXT

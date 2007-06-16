@@ -18,4 +18,3 @@ PFA_SLASHSTRING:
     .dw XT_MINUS   ; ( -- addr2 u2)
     .dw XT_EXIT
 
-; : /STRING SWAP OVER - >R + R> ;

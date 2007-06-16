@@ -67,3 +67,8 @@ PFA_INTERPRET3:
 PFA_INTERPRET4:
     .dw XT_DROP
     .dw XT_EXIT
+
+; The word INTERPRET could be replaced by the phrase
+; SOURCE >IN @ /STRING EVALUATE SOURCE SWAP DROP >IN !
+; (note that for block interpretation the word \ is
+; not equivalent to SOURCE NIP >IN ! ).
