@@ -16,10 +16,10 @@
   .equ nrww = $7000
   .equ codestart = $3e+9/2 ; mcustring
 
-  .equ BAUDRATE0_LOW = UBRRL+$20
-  .equ BAUDRATE0_HIGH = UBRRH+$20
-  .equ USART0_C = UCSRC+$20
-  .equ USART0_B = UCSRB+$20
+  .equ BAUDRATE0_LOW = UBRR0L+$20
+  .equ BAUDRATE0_HIGH = UBRR0H+$20
+  .equ USART0_C = UCSR0C+$20
+  .equ USART0_B = UCSR0B+$20
 
   ; needs atmel avrasm32.exe
   .equ URXCaddr = URXC0addr
