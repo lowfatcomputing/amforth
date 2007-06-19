@@ -2,7 +2,6 @@
 
 ;; bit definitions
 
-
 .set pc_ = pc
 
 .org URXCaddr
@@ -107,6 +106,38 @@ PFA_USART0:          ; ( -- )
   .dw XT_DOLITERAL
   .dw USART0_B
   .dw XT_CSTORE
+  
+    ; set IO
+    .dw XT_DOLITERAL
+    .dw XT_TX0
+    .dw XT_DOLITERAL
+    .dw XT_EMIT
+    .dw XT_DEFERSTORE
+
+    .dw XT_DOLITERAL
+    .dw XT_TX0Q
+    .dw XT_DOLITERAL
+    .dw XT_EMITQ
+    .dw XT_DEFERSTORE
+
+    .dw XT_DOLITERAL
+    .dw XT_RX0
+    .dw XT_DOLITERAL
+    .dw XT_KEY
+    .dw XT_DEFERSTORE
+
+    .dw XT_DOLITERAL
+    .dw XT_RX0Q
+    .dw XT_DOLITERAL
+    .dw XT_KEYQ
+    .dw XT_DEFERSTORE
+
+    .dw XT_DOLITERAL
+    .dw XT_NOOP
+    .dw XT_DOLITERAL
+    .dw XT_SLASHKEY
+    .dw XT_DEFERSTORE
+
   .dw XT_EXIT
 
 usart0_udre_isr:

@@ -120,7 +120,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     .dw VE_HEAD      ; HEAD
     .dw heap         ; HEAP
     .dw edp          ; EDP
-    .dw XT_VER       ; TURNKEY
+    .dw XT_APPLTURNKEY  ; TURNKEY
     .dw baud_rate    ; BAUDRATE
 ; 1st free address in EEPROM, see above
 edp:

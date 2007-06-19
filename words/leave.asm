@@ -1,6 +1,6 @@
-; ( -- )
-; R(next limit counter -- next )
-; runtime of leave
+; ( -- ) Control Structure
+; R( loop-sys -- loop-sys )
+; immediatly leave the current DO..LOOP
 VE_LEAVE:
    .db 5, "leave"
    .dw VE_HEAD
