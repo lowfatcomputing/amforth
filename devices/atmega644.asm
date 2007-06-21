@@ -28,6 +28,8 @@
   .equ EEMWE    = EEMPE
   .equ SPMCR    = SPMCSR
 
+  .equ PE0      = UPE0
+  
 .macro jmp_
     jmp @0
 .endmacro

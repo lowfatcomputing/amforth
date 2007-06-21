@@ -49,6 +49,8 @@
   .equ SPMEN = SELFPRGEN
   .equ EEMWE = EEMPE
 
+  .equ PE0  = UPE0
+
 .org  INT0addr       
     rcall isr  ; External Interrupt .orgest 0
 .org  INT1addr       

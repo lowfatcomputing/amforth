@@ -199,10 +199,14 @@ usart0_rx_isr:
   ldi zh, high(usart0_rx_data)
   add zl, xl
   adc zh, zeroh
+  in_ xh, UCSR0A ; read status 
+  andi zh, (1<<FE0) | (1<<DOR0) | (1<<PE0)
+  brne usart0_rx_isr_error
   in_ xh, UDR0
   st Z, xh
   sts usart0_rx_in, xl
 
+usart0_rx_isr_error:
   pop zh
   pop zl
   pop xh

@@ -53,12 +53,22 @@
   .equ UDR0 = UDR
 .endif
 
+.if defined(UCSR0A)
+.else
+  .equ UCSR0A = UCSRA
+.endif
+
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
   .equ RXCIE0 = RXCIE
   .equ UMSEL01 = URSEL
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
+  
+  .equ PE0  = PE
+  .equ FE0  = FE
+  .equ DOR0 = DOR
+
 .endif
 
 .org	INT0addr ; External Interrupt0 Vector Address

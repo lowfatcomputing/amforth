@@ -56,6 +56,12 @@
 .else
   .equ UDR0 = UDR
 .endif
+
+.if defined(UCSR0A)
+.else
+  .equ UCSR0A = UCSRA
+.endif
+
   ; bit numbers
   .equ TXEN0  = TXEN
   .equ RXEN0  = RXEN
@@ -63,6 +69,10 @@
   .equ UMSEL01 = URSEL
   .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
+  
+  .equ PE0  = PE
+  .equ FE0  = FE
+  .equ DOR0 = DOR
 .endif
 
 ; default interrupt handlers
