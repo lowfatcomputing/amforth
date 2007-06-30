@@ -5,11 +5,11 @@
 .set pc_ = pc
 
 .org $0000
-  rjmp reset
+  rjmp amforthstart
 
 .org pc_
 ; main entry point
-reset:
+amforthstart:
     clr zerol
     clr zeroh
     ; init first user data area
@@ -80,18 +80,12 @@ DO_COLON: ; 31 CPU cycles to ijmp
 DO_NEXT: ; 24 CPU cycles to ijmp
     brts DO_INTERRUPT
     movw zl,xl        ; READ IP
-    lsl zl
-    rol zh
-    lpm wl, Z+
-    lpm wh, Z      ; done read IP
+    readflashcell wl, wh
     adiw xl, 1        ; INC IP
 
 DO_EXECUTE: ; 12 cpu cycles to ijmp
     movw zl, wl
-    lsl zl
-    rol zh
-    lpm temp0, Z+
-    lpm temp1, Z
+    readflashcell temp0,temp1
     movw zl, temp0
     ijmp
 
