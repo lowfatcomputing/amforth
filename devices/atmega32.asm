@@ -13,7 +13,6 @@
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
   .equ nrww = $3800
-  .equ codestart = $2a + 9/2 ; mcustring
 
 .macro jmp_
     jmp @0
@@ -119,3 +118,4 @@
 
 mcustring:
   .db 9,"ATmega32 "
+.set codestart = pc

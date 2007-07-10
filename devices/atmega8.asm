@@ -16,7 +16,6 @@
   .equ intvecsize = 1
 
   .equ nrww = $0c00
-  .equ codestart = $14+7/2 ; mcustring
 
 .macro jmp_
     rjmp @0
@@ -108,3 +107,4 @@
 
 mcustring:
   .db 7,"ATmega8"
+.set codestart = pc

@@ -16,7 +16,6 @@
   .equ intvecsize = 2
 
   .equ nrww = $1c00
-  .equ codestart = $2e + 9/2 ; mcustring
 
   .equ UMSEL01 = 7
 
@@ -110,3 +109,4 @@
 mcustring:
   .db 9,"ATmega169"
 
+.set codestart = pc

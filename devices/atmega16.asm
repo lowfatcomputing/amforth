@@ -15,7 +15,6 @@
 
   .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
   .equ nrww = $1c00
-  .equ codestart = $2a +  8/2 ; mcustring
   
 .macro jmp_
     jmp @0
@@ -120,3 +119,4 @@
 mcustring:
   .db 8,"ATmega16",0
 
+.set codestart = pc

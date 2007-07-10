@@ -16,8 +16,6 @@
   .equ intvecsize = 2
   
   .equ nrww = $1c00
-  .equ codestart = $34
-
 
 .macro jmp_
     jmp @0
@@ -104,3 +102,4 @@
 
 mcustring:
   .db 9,"ATmega168"
+.set codestart = pc

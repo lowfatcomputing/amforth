@@ -14,7 +14,6 @@
   .equ intvecsize = 2
 
   .equ nrww = $7000
-  .equ codestart = $3e+9/2 ; mcustring
 
   .equ BAUDRATE0_LOW = UBRR0L+$20
   .equ BAUDRATE0_HIGH = UBRR0H+$20
@@ -29,7 +28,7 @@
   .equ SPMCR    = SPMCSR
 
   .equ PE0      = UPE0
-  
+
 .macro jmp_
     jmp @0
 .endmacro
@@ -85,3 +84,4 @@
 
 mcustring:
   .db 9,"ATmega644"
+.set codestart = pc
