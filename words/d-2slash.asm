@@ -16,4 +16,4 @@ PFA_D2SLASH:
     ror tosl
     st -Y, temp1
     st -Y, temp0
-    jmp DO_NEXT
+    rjmp DO_NEXT

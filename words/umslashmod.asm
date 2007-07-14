@@ -57,4 +57,4 @@ PFA_UMSLASHMODmod_done:
 
     ; put quotient on stack
     movw tosl, temp0
-    jmp DO_NEXT
+    jmp_ DO_NEXT

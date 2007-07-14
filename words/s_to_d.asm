@@ -13,4 +13,4 @@ PFA_S2D:
     ser zl
     st -Y, zl
     st -Y, zl
-    jmp DO_NEXT
+    jmp_ DO_NEXT

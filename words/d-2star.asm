@@ -16,4 +16,4 @@ PFA_D2STAR:
     rol temp1
     st -Y, temp1
     st -Y, temp0
-    jmp DO_NEXT
+    jmp_ DO_NEXT

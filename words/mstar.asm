@@ -33,4 +33,4 @@ PFA_MSTAR:
     movw tosl, temp2
     savetos
     movw tosl, zl
-    jmp DO_NEXT
+    rjmp DO_NEXT

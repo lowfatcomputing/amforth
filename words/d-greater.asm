@@ -20,4 +20,4 @@ PFA_DGREATER:
     cpc temp3, tosh
     cpc temp4, temp0
     cpc temp5, temp1
-    rjmp PFA_GREATERDONE
+    jmp_ PFA_GREATERDONE

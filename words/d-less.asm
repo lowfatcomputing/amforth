@@ -20,4 +20,4 @@ PFA_DLESS:
     cpc temp3, tosh
     cpc temp4, temp0
     cpc temp5, temp1
-    rjmp PFA_LESSDONE
+    jmp_ PFA_LESSDONE

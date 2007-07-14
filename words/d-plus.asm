@@ -23,4 +23,4 @@ PFA_DPLUS:
     
     st -Y, temp3
     st -Y, temp2
-    jmp DO_NEXT
+    jmp_ DO_NEXT
