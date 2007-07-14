@@ -1,0 +1,19 @@
+; ( n -- ) Character IO
+; R( -- )
+; emits n space(s) (bl)
+VE_SPACES:
+    .db $06, "spaces",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SPACES
+XT_SPACES:
+    .dw DO_COLON
+PFA_SPACES:
+    .dw XT_ZERO
+    .dw XT_DOQDO
+    .dw PFA_SPACES2
+PFA_SPACES1:
+    .dw XT_SPACE
+    .dw XT_DOLOOP
+    .dw PFA_SPACES1
+PFA_SPACES2:
+    .dw XT_EXIT
