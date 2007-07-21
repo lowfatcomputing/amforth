@@ -13,7 +13,7 @@ PFA_WORD:
     .dw XT_G_IN     ; ( -- addr len >in)
     .dw XT_FETCH
     .dw XT_SLASHSTRING ; ( -- addr' len' )
-
+    ; skip leading char
     .dw XT_SWAP        ; ( -- len' addr' )
     .dw XT_OVER        ; ( -- len' addr' len')
     .dw XT_R_FETCH     ; ( -- len' addr' len' c)
@@ -23,27 +23,25 @@ PFA_WORD:
     .dw XT_MINUS       ; ( -- addr'' len'' dlen)
     .dw XT_G_IN        ; ( -- addr'' len'' dlen >in)
     .dw XT_PLUSSTORE   ; ( -- addr'' len'')
-    
+    ; scan
     .dw XT_R_FROM      ; ( -- addr'' len'' c)
     .dw XT_CSCAN       ; ( -- addr''' len''')
     .dw XT_DUP         ; ( -- addr''' len''' len''')
     .dw XT_1PLUS       ;
     .dw XT_G_IN
     .dw XT_PLUSSTORE   ; ( -- addr''' len''')
-    .dw XT_PAD         ; ( -- addr''' len''' pad)
-    .dw XT_OVER        ; ( -- addr''' len''' pad len''')
-    .dw XT_OVER        ; ( -- addr''' len''' pad len''' pad)
-    .dw XT_CSTORE      ; ( -- addr''' len''' pad)
-    .dw XT_1PLUS       ; ( -- addr''' len''' pad+1)
-    .dw XT_SWAP        ; ( -- addr''' pad+1 len''')
-    .dw XT_CMOVE_G     ; ( --- )
-    .dw XT_PAD
 
-    .dw XT_ZERO	       ; append a zero byte. find/icompare _does_ need it
+    ; move to PAD
+    .dw XT_PAD         ; ( -- addr''' len''' pad)
+    .dw XT_PLACE
+    ; append a zero byte. find/icompare _does_ need it
+    .dw XT_ZERO	       
     .dw XT_PAD         
     .dw XT_DUP
     .dw XT_CFETCH
     .dw XT_PLUS        ; ( -- pad pad+len )
     .dw XT_1PLUS
     .dw XT_CSTORE
+    ; leave result
+    .dw XT_PAD
     .dw XT_EXIT
