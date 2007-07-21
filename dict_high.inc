@@ -37,7 +37,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/notequal.asm"
-.include "words/notequalzero.asm"
 .include "words/equal.asm"
 .include "words/equalzero.asm"
 .include "words/less.asm"
@@ -52,7 +51,6 @@
 .include "words/log2.asm"
 .include "words/minus.asm"
 .include "words/plus.asm"
-.include "words/star.asm"
 .include "words/mstar.asm"
 .include "words/umslashmod.asm"
 

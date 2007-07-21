@@ -163,3 +163,6 @@
 .include "words/find.asm"
 .include "words/defer-store.asm"
 .include "words/defer-fetch.asm"
+
+.include "words/notequalzero.asm"
+.include "words/star.asm"
