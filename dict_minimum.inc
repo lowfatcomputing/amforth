@@ -114,6 +114,7 @@
 .include "words/icount.asm"
 .include "words/cr.asm"
 .include "words/space.asm"
+.include "words/spaces.asm"
 .include "words/count.asm"
 .include "words/type.asm"
 .include "words/tick.asm"
@@ -133,6 +134,7 @@
 .include "words/slashstring.asm"
 
 .include "words/word.asm"
+.include "words/place.asm"
 
 .include "words/quit.asm"
 .include "words/pause.asm"
