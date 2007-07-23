@@ -11,4 +11,5 @@ PFA_DOLOOP:
     pop zl
     pop zh
     adiw zl,1
+    clr temp1
     jmp_ PFA_DOPLUSLOOP4

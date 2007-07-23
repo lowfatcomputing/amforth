@@ -12,13 +12,14 @@ PFA_DOPLUSLOOP:
     pop zh
     add zl, tosl
     adc zh, tosh
+    mov temp1, tosh
     loadtos
 PFA_DOPLUSLOOP4:   ; entry point for (loop)
     pop temp2
     pop temp3
     cp zl, temp2
     cpc zh, temp3
-    sbrs tosh, 7 ; if msb is set, increment is negative. in that case skip the next instruction
+    sbrs temp1, 7 ; if msb is set, increment is negative. in that case skip the next instruction
     rjmp PFA_DOPLUSLOOP2 ; jump to test for positive overflow
     brlt PFA_DOPLUSLOOP1 ; exit if underflow
     rjmp PFA_DOPLUSLOOP3
