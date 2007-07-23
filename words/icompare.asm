@@ -1,10 +1,10 @@
 ; ( addr-ram addr-flash  --  f)
 ; R( -- )
 ; compares counted string in RAM with counted string in flash
-;VE_ICOMPARE:
-;    .db $08, "icompare", 0
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_ICOMPARE
+VE_ICOMPARE:
+    .db $08, "icompare", 0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ICOMPARE
 XT_ICOMPARE:
     .dw DO_COLON
 PFA_ICOMPARE:
