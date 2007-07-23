@@ -23,8 +23,7 @@ PFA_FIND1:
     .dw XT_ICOMPARE ; ( -- addr-flash f)
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND3
-    ; we found the word
-    ; first read the i-flag
+    ; word found, read flags and exit
     .dw XT_DUP    ; ( -- addr-flash addr-flash )
     .dw XT_IFETCH
     .dw XT_DOLITERAL
@@ -38,7 +37,6 @@ PFA_FIND1:
     .dw XT_NEGATE
 PFA_FIND4:
     .dw XT_SWAP
-    ; now calculate the xt
     .dw XT_R_FROM
     .dw XT_CFETCH ; ( -- addr-flash len)
     .dw XT_2SLASH
