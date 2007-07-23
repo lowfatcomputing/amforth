@@ -38,7 +38,6 @@ PFA_ISTORE_WRITE:
     .dw XT_INTRESTORE
     .dw XT_EXIT
 
-
 ; ( addr -- )
 ; R( -- )
 ; load the flash page of cell addr into write buffer, omitting addr itself
@@ -185,6 +184,24 @@ PFA_SPMWRITE:
 
 ; ( -- )
 ; R( -- )
+; checks the rww enable flag
+;VE_SPMRWWQ:
+;    .db 7, "spmrww?"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SPMRWWQ
+XT_SPMRWWQ:
+    .dw PFA_SPMRWWQ
+PFA_SPMRWWQ:
+    savetos
+    in_ tosl, SPMCR
+    movw zl, zerol
+    sbrs tosl, RWWSB
+    sbiw zl, 1
+    movw tosl, zl
+    rjmp DO_NEXT
+
+; ( -- )
+; R( -- )
 ; re-enables rww section execute spm rww instruction
 ;VE_SPMRWW:
 ;    .db $05, "spmrww"
@@ -198,5 +215,7 @@ PFA_SPMRWW:
     .dw XT_ZERO
     .dw XT_ZERO
     .dw XT_DOSPM
+    .dw XT_SPMRWWQ
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SPMRWW
     .dw XT_EXIT
-
