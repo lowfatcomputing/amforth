@@ -22,4 +22,5 @@ PFA_DOQDO:
     brne PFA_DODO1
     ; both values are the same -> skip loop
     movw xl, temp0
+    loadtos
     rjmp DO_NEXT
