@@ -6,11 +6,9 @@ VE_R_FETCH:
     .dw VE_HEAD
     .set VE_HEAD = VE_R_FETCH
 XT_R_FETCH:
-    .dw PFA_R_FETCH
+    .dw DO_COLON
 PFA_R_FETCH:
-    savetos
-    pop tosl
-    pop tosh
-    push tosh
-    push tosl
-    rjmp DO_NEXT
+    .dw XT_R_FROM
+    .dw XT_DUP
+    .dw XT_TO_R
+    .dw XT_EXIT
