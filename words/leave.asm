@@ -1,5 +1,5 @@
 ; ( -- ) Control Structure
-; R( loop-sys -- loop-sys )
+; R( loop-sys -- )
 ; immediatly leave the current DO..LOOP
 VE_LEAVE:
    .db 5, "leave"
