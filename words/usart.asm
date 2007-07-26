@@ -200,7 +200,7 @@ usart0_rx_isr:
   add zl, xl
   adc zh, zeroh
   in_ xh, UCSR0A ; read status 
-  andi zh, (1<<FE0) | (1<<DOR0) | (1<<PE0)
+  andi xh, (1<<FE0) | (1<<DOR0) | (1<<PE0)
   brne usart0_rx_isr_error
   in_ xh, UDR0
   st Z, xh
