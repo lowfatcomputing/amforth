@@ -167,4 +167,3 @@
 
 .include "words/notequalzero.asm"
 .include "words/star.asm"
-.include "words/r_fetch.asm"
