@@ -10,12 +10,12 @@ XT_EFETCH:
 PFA_EFETCH:
     movw zl, tosl
     rcall PFA_EFETCH1
-    in tosl, EEDR
+    in_ tosl, EEDR
 
     adiw zl,1
 
     rcall PFA_EFETCH1
-    in  tosh, EEDR
+    in_  tosh, EEDR
 
     rjmp DO_NEXT
 
@@ -28,4 +28,5 @@ PFA_EFETCH1:
     out_ EEARL,zl
 
     sbi EECR,EERE
-    ret    
+    ret
+    

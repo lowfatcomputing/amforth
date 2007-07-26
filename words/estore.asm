@@ -41,4 +41,3 @@ PFA_ESTORE2: ; estore_wait_low_spm:
     sbi EECR,EEWE
     out_ SREG, temp2
     ret
-
