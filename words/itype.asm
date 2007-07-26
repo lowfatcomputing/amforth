@@ -102,9 +102,6 @@ PFA_ITYPE6:
 XT_LOEMIT:
     .dw DO_COLON
 PFA_LOEMIT:
-    .dw XT_DOLITERAL
-    .dw $00ff
-    .dw XT_AND
     .dw XT_EMIT
     .dw XT_EXIT
 
@@ -120,9 +117,7 @@ PFA_LOEMIT:
 XT_HIEMIT:
     .dw DO_COLON
 PFA_HIEMIT:
-	.dw XT_DOLITERAL
-	.dw 8
-	.dw XT_RSHIFT
-	.dw XT_EMIT
-	.dw XT_EXIT
+    .dw XT_BYTESWAP
+    .dw XT_EMIT
+    .dw XT_EXIT
 
