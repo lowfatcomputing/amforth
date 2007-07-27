@@ -19,4 +19,4 @@ PFA_1MS1:
     brne PFA_1MS1
     rjmp DO_NEXT
 
-; : ms 0 do 1ms loop ;
+; : ms 0 ?do 1ms loop ;
