@@ -49,6 +49,7 @@
 .if defined(RWWSRE)
 .else
   .equ RWWSRE = ASRE
+  .equ RWWSB  = ASB
 .endif
 
 .if defined(UDR0)
