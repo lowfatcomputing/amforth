@@ -3,6 +3,7 @@
 .include "words/int-on.asm"
 .include "words/int-off.asm"
 .include "words/int-restore.asm"
+
 .include "words/exit.asm"
 .include "words/execute.asm"
 .include "words/dobranch.asm"
@@ -11,8 +12,8 @@
 .include "words/estore.asm"
 .include "words/efetch.asm"
 
-.include "words/sleep.asm"
-.include "words/wdr.asm"
+;.include "words/sleep.asm"
+;.include "words/wdr.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
@@ -34,6 +35,7 @@
 .include "words/r_from.asm"
 .include "words/to_r.asm"
 .include "words/r_fetch.asm"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/notequal.asm"
 .include "words/equal.asm"
@@ -75,7 +77,6 @@
 .include "words/dodo.asm"
 .include "words/doqdo.asm"
 .include "words/i.asm"
-.include "words/j.asm"
 .include "words/doloop.asm"
 .include "words/doplusloop.asm"
 .include "words/unloop.asm"
