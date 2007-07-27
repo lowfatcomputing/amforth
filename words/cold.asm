@@ -14,7 +14,5 @@ PFA_COLD:
     .dw XT_PAUSE
     .dw XT_DEFERSTORE
     .dw XT_TURNKEY
-    .dw XT_INTON
-
     .dw XT_QUIT
     .dw XT_EXIT
