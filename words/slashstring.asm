@@ -1,6 +1,6 @@
 ; ( addr1 u1 n-- addr2 u2 ) String
 ; R( -- )
-; adjust string from addr1 to addr1+n, reduce length from u1 to u2
+; adjust string from addr1 to addr1+n, reduce length from u1 to u2 by n
 VE_SLASHSTRING:
     .db $7, "/string"
     .dw VE_HEAD

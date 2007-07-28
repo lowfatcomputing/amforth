@@ -1,6 +1,6 @@
 ; ( -- f) Character IO
 ; R( -- )
-; fetch 'key? vector and execute it if not zero. Leave true if a character can be read, false otherwise
+; fetch /key vector and execute it
 VE_SLASHKEY:
     .db $04, "/key",0
     .dw VE_HEAD

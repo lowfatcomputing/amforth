@@ -1,6 +1,6 @@
 ; (addr -- n ) Numeric IO
 ; R( -- )
-; convert a word to a number, throw exception -1 on error
+; convert a counted string at addr to a number, throw exception -13 on error
 VE_NUMBER:
     .db $06, "number",0
     .dw VE_HEAD

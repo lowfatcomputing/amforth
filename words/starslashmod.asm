@@ -1,6 +1,6 @@
 ; ( n1 n2 n3 -- rem quot) Arithmetics
 ; R( -- )
-; signed multiply and division  with double precision intermediate and remainder
+; signed multiply n1 * n2 and division  with n3 with double precision intermediate and remainder
 VE_STARSLASHMOD:
     .db $05, "*/mod"
     .dw VE_HEAD

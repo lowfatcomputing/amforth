@@ -10,5 +10,5 @@ XT_CREATE:
 PFA_CREATE:
     .dw XT_DOCREATE
     .dw XT_COMPILE
-    .dw XT_DOCONSTANT
+    .dw PFA_DOCONSTANT
     .dw XT_EXIT

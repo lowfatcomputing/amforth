@@ -1,6 +1,6 @@
 ; ( -- addr) Stackpointer
 ; R( -- )
-; start of data stack
+; start address of the data stack
 VE_SP0:
     .db $03, "sp0"
     .dw VE_HEAD
@@ -19,7 +19,7 @@ PFA_DOSP0:
 
 ; ( -- addr) Stackpointer
 ; R( -- )
-; address of variable to store data stack pointer for inactive tasks
+; address of user variable to store data stack pointer for inactive tasks
 VE_SP:
     .db $02, "sp",0
     .dw VE_HEAD

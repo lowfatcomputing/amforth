@@ -1,10 +1,10 @@
 ; ( limit counter -- )
-; R( -- limit counter )
-; runtime of do
-;VE_DODO:
-;    .db 4, "(do)", 0
+; R( -- limit counter| )
+; runtime of ?do
+;VE_DOQDO:
+;    .db 5, "(?do)"
 ;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DODO
+;    .set VE_HEAD = VE_DOQDO
 XT_DOQDO:
     .dw PFA_DOQDO
 PFA_DOQDO:
