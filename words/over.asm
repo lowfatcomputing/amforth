@@ -8,10 +8,8 @@ VE_OVER:
 XT_OVER:
     .dw PFA_OVER
 PFA_OVER:
-    movw temp0, tosl
-    ldd tosl, Y+0
-    ldd tosh, Y+1
-    st -Y, temp1
-    st -Y, temp0
+    savetos
+    ldd tosl, Y+2
+    ldd tosh, Y+3
 
     rjmp DO_NEXT
