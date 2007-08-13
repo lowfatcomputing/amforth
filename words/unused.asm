@@ -9,7 +9,7 @@ XT_UNUSED:
     .dw DO_COLON
 PFA_UNUSED:
     .dw XT_DOLITERAL
-    .dw nrww
+    .dw amforth_interpreter
     .dw XT_HERE
     .dw XT_MINUS
     .dw XT_EXIT

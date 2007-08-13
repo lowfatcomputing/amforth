@@ -14,7 +14,7 @@
   .equ intvecsize = 2
 
   .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
-  .equ nrww = $1c00
+  .equ amforth_interpreter = $1c00
   
 .macro jmp_
     jmp @0

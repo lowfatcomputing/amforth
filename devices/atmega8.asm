@@ -15,7 +15,7 @@
   .equ INTVECTORS = 19 ; INT_VECTORS_SIZE
   .equ intvecsize = 1
 
-  .equ nrww = $0c00
+  .equ amforth_interpreter = $0c00
 
 .macro jmp_
     rjmp @0

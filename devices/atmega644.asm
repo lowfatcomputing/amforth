@@ -13,7 +13,7 @@
   .equ INTVECTORS = 28
   .equ intvecsize = 2
 
-  .equ nrww = $7000
+  .equ amforth_interpreter = $7000
 
   .equ BAUDRATE0_LOW = UBRR0L+$20
   .equ BAUDRATE0_HIGH = UBRR0H+$20
