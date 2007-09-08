@@ -54,12 +54,12 @@ PFA_USART0:          ; ( -- )
   .dw XT_1MINUS
 
   .dw XT_DUP
-  .dw XT_DOLITERAL
-  .dw BAUDRATE0_LOW
-  .dw XT_CSTORE
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL
   .dw BAUDRATE0_HIGH
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw BAUDRATE0_LOW
   .dw XT_CSTORE
   .dw XT_DOLITERAL
   .dw (1<<UMSEL01)|(3<<UCSZ00)
