@@ -168,3 +168,7 @@
 .include "words/notequalzero.asm"
 .include "words/star.asm"
 .include "words/j.asm"
+
+.include "words/rx0.asm"
+.include "words/tx0.asm"
+.include "words/usart.asm"
