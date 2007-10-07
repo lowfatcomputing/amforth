@@ -15,10 +15,13 @@
 
   .equ amforth_interpreter = $7000
 
-  .equ BAUDRATE0_LOW = UBRR0L+$20
-  .equ BAUDRATE0_HIGH = UBRR0H+$20
-  .equ USART0_C = UCSR0C+$20
-  .equ USART0_B = UCSR0B+$20
+  .equ BAUDRATE0_LOW = UBRR0L
+  .equ BAUDRATE0_HIGH = UBRR0H
+  .equ USART0_C = UCSR0C
+  .equ USART0_B = UCSR0B
+
+  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART0_C_VALUE = (1<<URSEL0)|(3<<UCSZ00)
 
   ; needs atmel avrasm32.exe
   .equ URXCaddr = URXC0addr

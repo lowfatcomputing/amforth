@@ -62,12 +62,12 @@ PFA_USART0:          ; ( -- )
   .dw BAUDRATE0_LOW
   .dw XT_CSTORE
   .dw XT_DOLITERAL
-  .dw (1<<UMSEL01)|(3<<UCSZ00)
+  .dw USART0_C_VALUE
   .dw XT_DOLITERAL
   .dw USART0_C
   .dw XT_CSTORE
   .dw XT_DOLITERAL
-  .dw (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .dw USART0_B_VALUE
   .dw XT_DOLITERAL
   .dw USART0_B
   .dw XT_CSTORE

@@ -42,6 +42,10 @@
   .equ USART0_C = UCSR0C
   .equ USART0_B = UCSR0B
 
+  .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
+  .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+
+
   .equ EEWE = EEPE
   .equ SPMCR = SPMCSR
   .equ SPMEN = SELFPRGEN
@@ -83,10 +87,10 @@
     rcall isr  ; Timer/Couner0 Overflow
 .org  SPIaddr         
     rcall isr  ; SPI Serial Transfer Complete
-.org  URXCaddr        
-    rcall isr  ; USART Rx Complete
-.org  UDREaddr        
-    rcall isr  ; USART, Data Register Empty
+;.org  URXCaddr        
+;    rcall isr  ; USART Rx Complete
+;.org  UDREaddr        
+;    rcall isr  ; USART, Data Register Empty
 .org  UTXCaddr        
     rcall isr  ; USART Tx Complete
 .org  ADCaddr         

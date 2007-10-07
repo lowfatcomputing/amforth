@@ -43,6 +43,9 @@
   .equ USART0_C = UCSRC+$20
   .equ USART0_B = UCSRB+$20
 
+  .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
+  .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+
 ; some hacks
 .if defined(UDRE0)
     ;
@@ -64,12 +67,6 @@
   .equ UCSR0A = UCSRA
 .endif
 
-  ; bit numbers
-  .equ TXEN0  = TXEN
-  .equ RXEN0  = RXEN
-  .equ RXCIE0 = RXCIE
-  .equ UMSEL01 = URSEL
-  .equ UCSZ00  = UCSZ0
   .equ UDRIE0  = UDRIE
   
   .equ PE0  = PE

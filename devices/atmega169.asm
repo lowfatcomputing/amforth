@@ -17,8 +17,6 @@
 
   .equ amforth_interpreter = $1c00
 
-  .equ UMSEL01 = 7
-
 .macro jmp_
     jmp @0
 .endmacro
@@ -45,6 +43,10 @@
   .equ BAUDRATE0_HIGH = UBRR0H
   .equ USART0_C = UCSR0C
   .equ USART0_B = UCSR0B
+
+  .equ USART0_B_VALUE = (1<<TXEN0)  | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART0_C_VALUE = (1<<UCSZ01) | (1<<UCSZ00)
+
 
 .ifdef PCINT0addr
     .equ PCI0addr = PCINT0addr
