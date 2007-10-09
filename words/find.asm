@@ -14,8 +14,7 @@ PFA_FIND:
     .dw XT_EFETCH  ; ( -- addr ve-start )
 PFA_FIND1:
     ; ( addr-ram addr-flash )
-    .dw XT_DUP     
-    .dw XT_NOTEQUALZERO 
+    .dw XT_QDUP     
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND2   ; end-of-list signature (ve-start == 0) -> skip to end
     .dw XT_SWAP     ; ( -- addr-flash addr-ram )
@@ -63,7 +62,6 @@ PFA_FIND3:
     .dw PFA_FIND1    ; check next word
 
 PFA_FIND2: ; clean up, word not found.
-    .dw XT_DROP
     .dw XT_DROP
     .dw XT_R_FROM
     .dw XT_ZERO

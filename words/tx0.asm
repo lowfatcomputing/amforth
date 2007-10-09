@@ -1,7 +1,10 @@
+;;; usart driver
+
+;; bit definitions
 
 .set pc_ = pc
 .org UDREaddr
-  rjmp usart0_udre_isr
+  jmp_ usart0_udre_isr
 .org pc_
 
 ; sizes have to be powers of 2!

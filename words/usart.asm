@@ -32,35 +32,26 @@ PFA_USART0:          ; ( -- )
   .dw XT_CSTORE
 
   .dw XT_DOLITERAL
-  .dw USART0_C_VALUE
-  .dw XT_DOLITERAL
-  .dw USART0_C
-  .dw XT_CSTORE
-  .dw XT_DOLITERAL
   .dw USART0_B_VALUE
   .dw XT_DOLITERAL
   .dw USART0_B
   .dw XT_CSTORE
 
-  .dw XT_ZERO
   .dw XT_DOLITERAL
-  .dw usart0_tx_in
+  .dw USART0_C_VALUE
+  .dw XT_DOLITERAL
+  .dw USART0_C
   .dw XT_CSTORE
 
   .dw XT_ZERO
   .dw XT_DOLITERAL
-  .dw usart0_tx_out
-  .dw XT_CSTORE
+  .dw usart0_tx_in
+  .dw XT_STORE
 
   .dw XT_ZERO
   .dw XT_DOLITERAL
   .dw usart0_rx_in
-  .dw XT_CSTORE
-
-  .dw XT_ZERO
-  .dw XT_DOLITERAL
-  .dw usart0_rx_out
-  .dw XT_CSTORE
+  .dw XT_STORE
 
   .dw XT_EXIT
 

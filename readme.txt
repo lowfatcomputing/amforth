@@ -1,4 +1,4 @@
-Date: 17.6.2007
+Date: 10.10.2007
 
 Author: Matthias Trute <mtrute@users.sourceforge.net> 
 	    (will be forwarded)
@@ -22,7 +22,7 @@ and well tested.
 
 All words have ans94-draft6 (core and extension word sets) stack 
 diagrams, but not nessesairly the complete semantics. Some words
-from the standard are omitted, ask for them if yu really need them.
+from the standard are omitted, ask for them if you really need them.
 
 Since release 2.1 amforth is a library.
 See http://amforth.svn.sourceforge.net/viewvc/amforth/appl/

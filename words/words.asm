@@ -11,8 +11,7 @@ PFA_WORDS:
     .dw XT_HEAD
     .dw XT_EFETCH
 PFA_WORDS1:
-    .dw XT_DUP           ; ( -- addr addr ) 
-    .dw XT_NOTEQUALZERO  ; ( -- addr f )
+    .dw XT_QDUP           ; ( -- addr addr ) 
     .dw XT_DOCONDBRANCH  ; ( -- addr ) is nfa = counted string
     .dw PFA_WORDS2       ; 
  
@@ -34,6 +33,5 @@ PFA_WORDS1:
     .dw PFA_WORDS1       ; ( -- addr )
 
 PFA_WORDS2:
-    .dw XT_DROP          ; ( addr --  )
     .dw XT_EXIT
 

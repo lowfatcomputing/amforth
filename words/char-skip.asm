@@ -11,7 +11,6 @@ PFA_CSKIP:
     .dw XT_TO_R           ; ( -- addr1 n1 )
 PFA_CSKIP1:
     .dw XT_DUP            ; ( -- addr' n' n' )
-    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH   ; ( -- addr' n')
     .dw PFA_CSKIP2
     .dw XT_OVER           ; ( -- addr' n' addr' )

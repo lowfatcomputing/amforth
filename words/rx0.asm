@@ -1,3 +1,6 @@
+;;; usart driver
+
+;; bit definitions
 
 .set pc_ = pc
 .org URXCaddr

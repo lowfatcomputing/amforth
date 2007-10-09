@@ -21,7 +21,7 @@
   .equ USART0_B = UCSR0B
 
   .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<URSEL0)|(3<<UCSZ00)
+  .equ USART0_C_VALUE = (3<<UCSZ00)
 
   ; needs atmel avrasm32.exe
   .equ URXCaddr = URXC0addr

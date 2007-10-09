@@ -56,7 +56,7 @@ PFA_ITYPE3:
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DUP
-    .dw XT_LOEMIT
+    .dw XT_EMIT
     .dw XT_HIEMIT
     .dw XT_DOLOOP
     .dw PFA_ITYPE3
@@ -77,35 +77,20 @@ PFA_ITYPE4:
     .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE5
     .dw XT_IFETCH
-    .dw XT_LOEMIT
+    .dw XT_EMIT
     .dw XT_DOBRANCH
     .dw PFA_ITYPE6
 ; ELSE
 PFA_ITYPE5:
     .dw XT_IFETCH
     .dw XT_DUP
-    .dw XT_LOEMIT
+    .dw XT_EMIT
     .dw XT_HIEMIT
 ; THEN
 PFA_ITYPE6:
     .dw XT_R_FROM  ; remove k
     .dw XT_DROP
     .dw XT_EXIT
-
-; ( w -- )
-; R( -- )
-; content of cell fetched on stack.
-;VE_LOEMIT:
-;    .db $06, "loemit"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_LOEMIT
-XT_LOEMIT:
-    .dw DO_COLON
-PFA_LOEMIT:
-    .dw XT_EMIT
-    .dw XT_EXIT
-
-
 
 ; ( w -- )
 ; R( -- )

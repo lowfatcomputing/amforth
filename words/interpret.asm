@@ -26,7 +26,6 @@ PFA_INTERPRET1:
     ; check state
     .dw XT_STATE
     .dw XT_FETCH
-    .dw XT_NOTEQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET9
     ; 
