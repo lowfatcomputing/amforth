@@ -8,18 +8,16 @@ VE_FILL:
 XT_FILL:
     .dw DO_COLON
 PFA_FILL:
-    .dw XT_SWAP
+    .dw XT_ROT
+    .dw XT_ROT
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_FILL2
 PFA_FILL1:
-    
-    .dw XT_SWAP ; ( -- c c-addr)
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_CSTORE  ; ( -- c c-addr)
     .dw XT_1PLUS
-    .dw XT_SWAP
     .dw XT_DOLOOP
     .dw PFA_FILL1
 PFA_FILL2:
