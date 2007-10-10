@@ -13,7 +13,7 @@
 .include "words/efetch.asm"
 
 .include "words/sleep.asm"
-.include "words/wdr.asm"
+;.include "words/wdr.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"

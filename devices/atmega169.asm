@@ -44,8 +44,8 @@
   .equ USART0_C = UCSR0C
   .equ USART0_B = UCSR0B
 
-  .equ USART0_B_VALUE = (1<<TXEN0)  | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UCSZ01) | (1<<UCSZ00)
+  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART0_C_VALUE = (1<<UCSZ00)|(1<<UCSZ01)
 
 
 .ifdef PCINT0addr
