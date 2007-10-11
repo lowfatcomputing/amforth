@@ -42,8 +42,8 @@
   .equ USART0_C = UCSR0C
   .equ USART0_B = UCSR0B
 
-  .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
-  .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART0_C_VALUE = (3<<UCSZ00)
 
 
   .equ EEWE = EEPE
