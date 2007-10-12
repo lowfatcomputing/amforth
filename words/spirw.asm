@@ -1,6 +1,6 @@
-; SPI read/write of dataflash
-; Send byte to data flash, get byte returnd by previos command.
-; ( txbyte -- rxbyte)
+; ( txbyte -- rxbyte) MCU 
+; R( -- )
+; SPI exchange of 1 byte
 VE_SPIRW:
     .db $05, "spirw"
     .dw VE_HEAD
