@@ -5,12 +5,6 @@
   ; first address of RAM
   .equ ramstart = $60
   .equ stackstart = RAMEND - rstacksize
-  .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ CELLSIZE = 2   ;
-  .equ USERSIZE = 32  ; size of user area
-
-  .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
 
   .equ INTVECTORS = 19 ; INT_VECTORS_SIZE
   .equ intvecsize = 1

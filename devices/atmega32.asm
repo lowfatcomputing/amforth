@@ -4,11 +4,6 @@
 
   .equ ramstart = $60 ; first address of RAM
   .equ stackstart = RAMEND - rstacksize
-  .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ CELLSIZE = 2   ;
-  .equ USERSIZE = 24  ; size of user area
-  .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
 
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
@@ -43,6 +38,7 @@
 
   .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
   .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+
 ; some hacks
 .if defined(UDRE0)
     ;

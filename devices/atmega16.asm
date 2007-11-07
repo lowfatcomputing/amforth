@@ -5,15 +5,10 @@
   ; first address of RAM 
   .equ ramstart = $60
   .equ stackstart = RAMEND - rstacksize
-  .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ CELLSIZE = 2   ;
-  .equ USERSIZE = 24  ; size of user area
 
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
 
-  .equ PAGEMASK =  ~ ( PAGESIZE - 1 )
   .equ amforth_interpreter = $1c00
   
 .macro jmp_

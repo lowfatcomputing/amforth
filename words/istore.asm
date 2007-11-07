@@ -51,7 +51,8 @@ PFA_SPMPAGELOAD:
     .dw XT_DUP
     .dw XT_TO_R
     .dw XT_DOLITERAL
-    .dw PAGEMASK
+    .dw ~ ( PAGESIZE - 1 )
+
     .dw XT_AND
     .dw XT_DOLITERAL
     .dw PAGESIZE
@@ -151,7 +152,7 @@ XT_SPMERASE:
     .dw DO_COLON
 PFA_SPMERASE:
     .dw XT_DOLITERAL
-    .dw PAGEMASK
+    .dw ~ ( PAGESIZE - 1 )
     .dw XT_AND
     .dw XT_TO_R
     .dw XT_DOLITERAL
@@ -172,7 +173,7 @@ XT_SPMWRITE:
     .dw DO_COLON
 PFA_SPMWRITE:
     .dw XT_DOLITERAL
-    .dw PAGEMASK
+    .dw ~ ( PAGESIZE - 1 )
     .dw XT_AND
     .dw XT_TO_R
     .dw XT_DOLITERAL
