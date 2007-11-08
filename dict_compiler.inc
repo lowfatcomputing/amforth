@@ -37,3 +37,6 @@
 .include "words/bracketchar.asm"
 .include "words/abortstring.asm"
 .include "words/abort.asm"
+
+.include "words/cells.asm"
+.include "words/cellplus.asm"
