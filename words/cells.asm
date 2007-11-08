@@ -7,7 +7,7 @@ VE_CELLS:
     .set VE_HEAD = VE_CELLS
 XT_CELLS:
     .dw DO_COLON
-PFA_CELLPLUS:
+PFA_CELLS:
 .if CELLSIZE == 2 ;
     .dw XT_2STAR
 .else
