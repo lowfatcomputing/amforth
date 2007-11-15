@@ -11,7 +11,8 @@ PFA_DEPTH:
     .dw XT_SP0
     .dw XT_SP_FETCH
     .dw XT_MINUS
-    .dw XT_1MINUS
-    .dw XT_1MINUS
+; if cellsize == 2
     .dw XT_2SLASH
+; endif
+    .dw XT_1MINUS
     .dw XT_EXIT
