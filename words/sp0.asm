@@ -19,12 +19,12 @@ PFA_DOSP0:
 
 ; ( -- addr) Stackpointer
 ; R( -- )
-; address of user variable to store data stack pointer for inactive tasks
+; address of user variable to store top-of-stack for inactive tasks
 VE_SP:
     .db $02, "sp",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SP
-XT_DOSP:
+XT_SP:
     .dw PFA_DOUSER
-PFA_DOSP:
+PFA_SP:
     .dw 8

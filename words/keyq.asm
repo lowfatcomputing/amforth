@@ -8,6 +8,6 @@ VE_KEYQ:
 XT_KEYQ:
     .dw PFA_DODEFER
 PFA_KEYQ:
-    .dw 18
+    .dw 20
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE

@@ -8,6 +8,6 @@ VE_SLASHKEY:
 XT_SLASHKEY:
     .dw PFA_DODEFER
 PFA_SLASHKEY:
-    .dw 20
+    .dw 22
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE
