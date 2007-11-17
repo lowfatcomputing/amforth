@@ -29,8 +29,7 @@ PFA_SCOMMA1:
     .dw XT_DUP         ; ( -- addr addr )
     .dw XT_FETCH       ; ( -- addr c1c2 )
     .dw XT_COMMA       ; ( -- addr )
-    .dw XT_1PLUS       ; ( -- addr+1 )
-    .dw XT_1PLUS       ; ( -- addr+2 )
+    .dw XT_CELLPLUS    ; ( -- addr+cell )
     .dw XT_DOLOOP
     .dw PFA_SCOMMA1
 PFA_SCOMMA2:

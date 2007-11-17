@@ -37,8 +37,7 @@ PFA_ICOMPARE2:
     ; ( addr-ram addr-flash -- )
     .dw XT_1PLUS
     .dw XT_SWAP
-    .dw XT_1PLUS
-    .dw XT_1PLUS  ; ( -- addr-flash addr-ram )
+    .dw XT_CELLPLUS
     .dw XT_OVER   ; ( -- addr-flash addr-ram addr-flash)
     .dw XT_IFETCH
     .dw XT_OVER   

@@ -20,8 +20,7 @@ PFA_EDEFER:
     .dw XT_EDEFERFETCH
     .dw XT_COMPILE
     .dw XT_EDEFERSTORE
-    .dw XT_1PLUS
-    .dw XT_1PLUS
+    .dw XT_CELLPLUS
     .dw XT_EDP
     .dw XT_ESTORE
     .dw XT_EXIT
