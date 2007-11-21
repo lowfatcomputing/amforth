@@ -1,3 +1,5 @@
+.include "words/cells.asm"
+.include "words/cellplus.asm"
 
 
 .include "words/literal.asm"
@@ -38,5 +40,3 @@
 .include "words/abortstring.asm"
 .include "words/abort.asm"
 
-.include "words/cells.asm"
-.include "words/cellplus.asm"
