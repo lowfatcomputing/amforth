@@ -8,7 +8,7 @@
 .org pc_
 
 ; sizes have to be powers of 2!
-.equ usart0_tx_size = $10
+.equ usart0_tx_size = $4
 
 .equ usart0_tx_mask = usart0_tx_size - 1
 
@@ -86,13 +86,15 @@ PFA_TX0:
   .dw XT_DOLITERAL
   .dw usart0_tx_mask
   .dw XT_AND           ; ( -- c tx_in_new)
-  .dw XT_DUP
-  .dw XT_DOLITERAL
-  .dw usart0_tx_in
-  .dw XT_CSTORE
+  .dw XT_SWAP
+  .dw XT_OVER          ; ( -- tx_in_new c tx_in_new
   .dw XT_DOLITERAL
   .dw usart0_tx_data   ; ( -- c tx_in_new data)
   .dw XT_PLUS
+  .dw XT_CSTORE
+
+  .dw XT_DOLITERAL
+  .dw usart0_tx_in
   .dw XT_CSTORE
   ; enable interrupt
   .dw XT_DOLITERAL
