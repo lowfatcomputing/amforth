@@ -19,10 +19,10 @@ amforthstart:
     ; init return stack pointer
     ldi temp0,low(ramend)
     out SPL,temp0
-    std Z+2, temp0
+    std Z+4, temp0
     ldi temp1,high(ramend)
     out SPH,temp1
-    std Z+3, temp1
+    std Z+5, temp1
 
     ; init parameter stack pointer
     ldi yl,low(stackstart)
@@ -127,6 +127,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
 .if dict_appl==2
  .include "dict_appl.inc"
 .endif
+
 .set flashlast = pc
 
 .eseg
