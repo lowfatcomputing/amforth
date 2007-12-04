@@ -13,6 +13,7 @@ PFA_COLD:
     .dw XT_DOLITERAL
     .dw XT_PAUSE
     .dw XT_DEFERSTORE
+    .dw XT_HEX
     .dw XT_TURNKEY
     .dw XT_QUIT
     .dw XT_EXIT

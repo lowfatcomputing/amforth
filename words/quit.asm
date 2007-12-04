@@ -12,7 +12,6 @@ PFA_QUIT:
     .dw XT_SP_STORE
     .dw XT_RP0
     .dw XT_RP_STORE
-    .dw XT_HEX
     .dw XT_ZERO
     .dw XT_STATE
     .dw XT_STORE
