@@ -12,7 +12,7 @@
 ;    Length = length of word name (1..31)
 ;      Length number of bytes, filled to next cell
 ;  L
-;    Link to previos Dictionary entry or zero for first entry
+;    Link to previous Dictionary entry or zero for first entry
 ;  XT
 ;    Address of Executable Code
 ;  PF
@@ -22,6 +22,11 @@
 .include "words/f_cpu.asm"
 .include "words/state.asm"
 .include "words/base.asm"
+
+.include "words/cells.asm"
+.include "words/cellplus.asm"
+
+
 .include "words/g_in.asm"
 .include "words/sharptib.asm"
 .include "words/tib.asm"

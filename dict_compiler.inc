@@ -1,7 +1,3 @@
-.include "words/cells.asm"
-.include "words/cellplus.asm"
-
-
 .include "words/literal.asm"
 .include "words/g_mark.asm"
 .include "words/g_resolve.asm"
