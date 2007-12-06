@@ -1,4 +1,4 @@
-; ( c-addr u c -- ) CORE EXT
+; ( c-addr u c -- ) Memory
 ; R( -- )
 ; Fill memory beginning at a-addr with character u
 VE_FILL:
