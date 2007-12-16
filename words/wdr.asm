@@ -1,4 +1,4 @@
-; ( -- ) Interrupt
+; ( -- ) MCU
 ; R( -- )
 ; calls the MCU wdr instruction
 VE_WDR:

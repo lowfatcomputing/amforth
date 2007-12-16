@@ -11,9 +11,6 @@
 
 .include "words/estore.asm"
 .include "words/efetch.asm"
-
-.include "words/sleep.asm"
-;.include "words/wdr.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
@@ -61,7 +58,6 @@
 .include "words/and.asm"
 .include "words/or.asm"
 .include "words/xor.asm"
-.include "words/not.asm"
 
 .include "words/1plus.asm"
 .include "words/1minus.asm"
@@ -95,3 +91,8 @@
 .include "words/s_to_d.asm"
 .include "words/d_to_s.asm"
 .include "words/d-2slash.asm"
+
+;.include "words/no-jtag.asm"
+;.include "words/no-wdt.asm"
+;.include "words/sleep.asm"
+;.include "words/wdr.asm"

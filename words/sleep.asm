@@ -1,4 +1,4 @@
-; ( -- ) Interrupt
+; ( -- ) MCU
 ; R( -- )
 ; calls the MCU sleep instruction. Not useful itself!
 VE_SLEEP:
