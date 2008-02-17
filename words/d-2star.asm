@@ -10,10 +10,10 @@ XT_D2STAR:
 PFA_D2STAR:
     ld temp0, Y+
     ld temp1, Y+
-    lsl tosl
-    rol tosh
-    rol temp0
+    lsl temp0
     rol temp1
+    rol tosl
+    rol tosh
     st -Y, temp1
     st -Y, temp0
     jmp_ DO_NEXT

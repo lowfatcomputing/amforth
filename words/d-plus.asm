@@ -15,11 +15,11 @@ PFA_DPLUS:
     ld temp5, Y+
     ld temp6, Y+
     ld temp7, Y+
-    
-    add tosl, temp4
-    adc tosh, temp5
-    adc temp2, temp6
+
+    add temp2, temp6
     adc temp3, temp7
+    adc tosl, temp4
+    adc tosh, temp5
     
     st -Y, temp3
     st -Y, temp2

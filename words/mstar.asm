@@ -30,7 +30,7 @@ PFA_MSTAR:
     mul tosh, temp1
     add temp2, r0
     adc temp3, r1
-    movw tosl, temp2
-    savetos
     movw tosl, zl
+    savetos
+    movw tosl, temp2
     rjmp DO_NEXT

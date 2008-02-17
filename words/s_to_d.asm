@@ -6,11 +6,8 @@ VE_S2D:
     .dw VE_HEAD
     .set VE_HEAD = VE_S2D
 XT_S2D:
-    .dw PFA_S2D
+    .dw DO_COLON
 PFA_S2D:
-    clr zl
-    sbrc tosh,7
-    ser zl
-    st -Y, zl
-    st -Y, zl
-    jmp_ DO_NEXT
+    .dw XT_DUP
+    .dw XT_LESSZERO
+    .dw XT_EXIT

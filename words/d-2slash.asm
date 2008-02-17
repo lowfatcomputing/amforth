@@ -10,10 +10,10 @@ XT_D2SLASH:
 PFA_D2SLASH:
     ld temp0, Y+
     ld temp1, Y+
-    asr temp1
-    ror temp0
-    ror tosh
+    asr tosh
     ror tosl
+    ror temp1
+    ror temp0
     st -Y, temp1
     st -Y, temp0
     rjmp DO_NEXT

@@ -16,10 +16,10 @@ PFA_DMINUS:
     ld temp2, Y+
     ld temp3, Y+
 
-    sub tosl, temp4
-    sbc tosh, temp5
-    sbc temp2, temp6
+    sub temp2, temp6
     sbc temp3, temp7
+    sbc tosl, temp4
+    sbc tosh, temp5
 
     st -Y, temp3
     st -Y, temp2

@@ -11,7 +11,6 @@ PFA_DOT:
     .dw XT_DUP
     .dw XT_ABS
     .dw XT_ZERO
-    .dw XT_SWAP
     .dw XT_L_SHARP
     .dw XT_SHARP_S
     .dw XT_ROT

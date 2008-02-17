@@ -9,11 +9,12 @@ XT_UMSLASHMOD:
     .dw PFA_UMSLASHMOD
 PFA_UMSLASHMOD:
     movw temp4, tosl
-    
-    ld temp0, Y+
-    ld temp1, Y+
+
     ld temp2, Y+
     ld temp3, Y+
+  
+    ld temp0, Y+
+    ld temp1, Y+
 
 ;; unsigned 32/16 -> 16r16 divide
 
