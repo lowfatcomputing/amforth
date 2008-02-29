@@ -10,27 +10,27 @@ XT_MSTAR:
 PFA_MSTAR:
     movw temp0, tosl
     loadtos
-    ; result: (temp3*temp1)* 65536 + (temp3*temp0 + temp1*temp2) * 256 + (temp0 * temp2)
-    ; low bytes
-    mul tosl,temp0
-    movw zl, r0
-    clr temp2
-    clr temp3
-    ; middle bytes
-    mul tosh, temp0
-    add zh, r0
-    adc temp2, r1
-    adc temp3, zeroh
-        
-    mul tosl, temp1
-    add zh, r0
-    adc temp2, r1
-    adc temp3, zeroh
+    movw temp2, tosl
+    ; high cell ah*bh
+    muls temp3, temp1
+    movw temp4, r0
+    ; low cell  al*bl
+    mul  temp2, temp0
+    movw tosl, r0
+    ; signed ah*bl
+    mulsu temp3, temp0
+    sbc   temp5, zeroh
+    add   tosh,  r0
+    adc   temp4, r1
+    adc   temp5, zeroh
     
-    mul tosh, temp1
-    add temp2, r0
-    adc temp3, r1
-    movw tosl, zl
+    ; signed al*bh
+    mulsu temp1, temp2
+    sbc   temp5, zeroh
+    add   tosh,  r0
+    adc   temp4, r1
+    adc   temp5, zeroh
+
     savetos
-    movw tosl, temp2
+    movw tosl, temp4
     rjmp DO_NEXT
