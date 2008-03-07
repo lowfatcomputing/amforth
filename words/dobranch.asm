@@ -8,6 +8,6 @@
 XT_DOBRANCH:
     .dw PFA_DOBRANCH
 PFA_DOBRANCH:
-    movw zl, xl
-    readflashcell xl,xh
+    movw zl, XL
+    readflashcell XL,XH
     rjmp DO_NEXT

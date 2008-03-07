@@ -36,5 +36,3 @@
 .include "words/abortstring.asm"
 .include "words/abort.asm"
 
-.include "words/code.asm"
-.include "words/end-code.asm"

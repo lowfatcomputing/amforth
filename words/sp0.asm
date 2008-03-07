@@ -12,6 +12,13 @@ PFA_SP0:
     .dw XT_FETCH
     .dw XT_EXIT
 
+; ( -- addr) Stackpointer
+; R( -- )
+; start address of the data stack
+;VE_DOSP0:
+;    .db $05, "(sp0)"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOSP0
 XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:

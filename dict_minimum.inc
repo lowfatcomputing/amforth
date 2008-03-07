@@ -26,7 +26,6 @@
 .include "words/cells.asm"
 .include "words/cellplus.asm"
 
-
 .include "words/g_in.asm"
 .include "words/sharptib.asm"
 .include "words/tib.asm"

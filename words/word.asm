@@ -31,17 +31,20 @@ PFA_WORD:
     .dw XT_G_IN
     .dw XT_PLUSSTORE   ; ( -- addr''' len''')
 
-    ; move to PAD
-    .dw XT_PAD         ; ( -- addr''' len''' pad)
+    ; move to heap
+    .dw XT_HEAP
+    .dw XT_EFETCH      ; ( -- addr''' len''' heap)
     .dw XT_PLACE
     ; append a zero byte. find/icompare _does_ need it
     .dw XT_ZERO	       
-    .dw XT_PAD         
+    .dw XT_HEAP
+    .dw XT_EFETCH         
     .dw XT_DUP
     .dw XT_CFETCH
-    .dw XT_PLUS        ; ( -- pad pad+len )
+    .dw XT_PLUS        ; ( -- addr addr+len )
     .dw XT_1PLUS
     .dw XT_CSTORE
     ; leave result
-    .dw XT_PAD
+    .dw XT_HEAP
+    .dw XT_EFETCH
     .dw XT_EXIT

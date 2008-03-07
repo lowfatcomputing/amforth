@@ -6,6 +6,9 @@
 
   .def tosl = r6
   .def tosh = r7
+  
+  ;.def ipl  = r26
+  ;.def iph  = r27
 
   .def temp0 = r16
   .def temp1 = r17

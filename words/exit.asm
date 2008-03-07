@@ -8,6 +8,6 @@ VE_EXIT:
 XT_EXIT:
     .dw PFA_EXIT
 PFA_EXIT:
-    pop xl
-    pop xh
+    pop XL
+    pop XH
     rjmp DO_NEXT

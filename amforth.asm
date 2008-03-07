@@ -34,8 +34,8 @@ amforthstart:
     .set heap = heap + USERSIZE
 
     ; load Forth IP with starting word
-    ldi xl, low(PFA_COLD)
-    ldi xh, high(PFA_COLD)
+    ldi XL, low(PFA_COLD)
+    ldi XH, high(PFA_COLD)
     ; its a far jump...
     jmp_ DO_NEXT
 
@@ -86,22 +86,22 @@ DO_DODOES:
     pop wh
     pop wl
 
-    push xh
-    push xl
-    movw xl, wl
+    push XH
+    push XL
+    movw XL, wl
     rjmp DO_NEXT
 
 DO_COLON: ; 31 CPU cycles to ijmp
-    push xh
-    push xl          ; PUSH IP
+    push XH
+    push XL          ; PUSH IP
     adiw wl, 1       ; set W to PFA
-    movw xl, wl
+    movw XL, wl
 
 DO_NEXT: ; 24 CPU cycles to ijmp
     brts DO_INTERRUPT
-    movw zl,xl        ; READ IP
+    movw zl, XL        ; READ IP
     readflashcell wl, wh
-    adiw xl, 1        ; INC IP
+    adiw XL, 1        ; INC IP
 
 DO_EXECUTE: ; 12 cpu cycles to ijmp
     movw zl, wl

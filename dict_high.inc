@@ -94,5 +94,5 @@
 
 ;.include "words/no-jtag.asm"
 ;.include "words/no-wdt.asm"
-;.include "words/sleep.asm"
+.include "words/sleep.asm"
 ;.include "words/wdr.asm"
