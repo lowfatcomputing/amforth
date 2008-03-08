@@ -8,6 +8,5 @@ VE_HLD:
 XT_HLD:
     .dw DO_COLON
 PFA_HLD:
-    .dw XT_HEAP
-    .dw XT_EFETCH
+    .dw XT_PAD
     .dw XT_EXIT
