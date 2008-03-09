@@ -8,7 +8,6 @@ VE_1MINUS:
 XT_1MINUS:
     .dw PFA_1MINUS
 PFA_1MINUS:
-    movw zl, tosl
-    sbiw zl, 1
-    movw tosl, zl
+    subi tosl, 1
+    sbc  tosh, zeroh
     rjmp DO_NEXT

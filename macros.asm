@@ -4,11 +4,11 @@
   .def upl = r4
   .def uph = r5
 
-  .def tosl = r6
-  .def tosh = r7
+  .def tosl = r22
+  .def tosh = r23
   
-  ;.def ipl  = r26
-  ;.def iph  = r27
+  ; .def ipl  = r26
+  ; .def iph  = r27
 
   .def temp0 = r16
   .def temp1 = r17
@@ -16,8 +16,8 @@
   .def temp3 = r19
   .def temp4 = r20
   .def temp5 = r21
-  .def temp6 = r22
-  .def temp7 = r23
+  .def temp6 = r30
+  .def temp7 = r31
 
   .def wl = r24
   .def wh = r25

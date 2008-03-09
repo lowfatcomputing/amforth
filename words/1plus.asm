@@ -8,7 +8,6 @@ VE_1PLUS:
 XT_1PLUS:
     .dw PFA_1PLUS
 PFA_1PLUS:
-    movw zl, tosl
-    adiw zl,1
-    movw tosl, zl
+    subi tosl, low(-1)
+    sbci tosh, high(-1)
     rjmp DO_NEXT
