@@ -10,8 +10,7 @@ XT_LOG2:
 PFA_LOG2:
     movw zl, tosl
     clr tosh
-    ldi temp0, 16
-    mov tosl, temp0
+    ldi tosl, 16
 PFA_LOG2_1:
     dec tosl
     brmi PFA_LOG2_2 ; wrong data
