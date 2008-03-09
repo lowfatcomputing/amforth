@@ -10,7 +10,6 @@ XT_USLASHMOD:
 PFA_USLASHMOD:
     .dw XT_TO_R
     .dw XT_ZERO
-    .dw XT_SWAP	
     .dw XT_R_FROM
     .dw XT_UMSLASHMOD
     .dw XT_EXIT
