@@ -1,0 +1,183 @@
+#!/usr/bin/perl
+use strict;
+
+my $version = "2.6";
+
+my %XT;
+my %VOC;
+my %ASM;
+my %USEDBY;
+my %DESCRIPTION;
+my %DSTACK;
+my %RSTACK;
+my %CATEGORY;
+
+my $texdir="../doc";
+my $asmdir="../trunk/words";
+
+sub readASM {
+    my ($filename) = @_;
+    open(ASM, $filename) or die ("$filename: $!\n");
+    my @ASM = <ASM>;
+    close(ASM);
+    my $ASM = "";
+    my ($lbl, $state, $voc, $xt, $dstack, $rstack, $category);
+    my ($prevline1, $prevline2, $prevline3, $description) = ("","","", "");
+    foreach my $line (@ASM) {
+	chomp($line);
+	$line =~ s/_VE_HEAD/VE_HEAD/;
+	$ASM .= $line;
+	if($line=~/^VE_(.*):/) {
+	    # start a new definition
+	    $ASM = "";
+	    $lbl = "XT_$1";
+	    $state = "new_header_found";
+	    $voc   = "(unnamed)";
+	    $category = "unclassified";
+	    $dstack = $prevline3;
+	    $dstack = "($1)" if $dstack=~/\( (.+) \)/;
+	    $rstack = $prevline2;
+	    $rstack = "R($1)" if $rstack=~/\( (.+) \)/;
+            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
+	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
+	        $category = $2;
+		$dstack   = "($1)";
+	    }
+#	    print "***\n$prevline3\n$prevline2\n$prevline1\n$line\n***\n";
+#	    print "$prevline3 : $category\n";
+#	    die;
+	    next;
+	}
+	if($line=~/^;VE_(.*):/) {
+	    # start a new definition
+	    $ASM = "";
+	    $lbl = "XT_$1";
+	    $state = "new_header_found";
+	    $voc   = "(hidden)";
+	    $dstack = $prevline3;
+	    $dstack = "($1)" if $dstack=~/\(\s*(.+)\s*\)/;
+	    $rstack = $prevline2;
+	    $rstack = "R($1)" if $rstack=~/\(\s*(.+)\s*\)/;
+	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
+	        $category = $2;
+		$dstack   = "($1)";
+	    }
+            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
+	    $category = "internal/hidden";
+	    next;
+	}
+	if($state =~ /new_header_found/ && $line=~/.db\s*(.*)/) {
+	    my @voc = split/,/, $1;
+	    my $i=0;
+	    $voc = "";
+	    foreach my $v (@voc) {
+		#print "[$v]";
+		next if $i++ == 0;
+		$voc .= chr(hex($1)) if $v=~/\$([\da-fA-F]+)/;
+		$voc .= $1 if $v=~/"(\S+)"/;
+	    }
+	    $state = "vocabulary entry found";
+	    next;
+	}
+	if($line=~/^XT_(.*)/){
+	    $state = "xt_found";
+	    next;
+	}
+	if($state=~/xt_found/ && $line=~/.dw\s+(\w+)/) {
+	    $xt = $1;
+	    $state = "header_complete";
+	    next;
+	}
+	if($state =~ /header_complete/) {
+	    $DSTACK{$lbl} = $dstack;
+	    $RSTACK{$lbl} = $rstack;
+	    
+	    $XT{$lbl} = $xt;
+	    $VOC{$lbl} = $voc;
+            $DESCRIPTION{$lbl} = $description;
+	    push @{$CATEGORY{$category}}, $lbl;
+	    $state = "parsing_body";
+	    next;
+	}
+        $prevline3 = $prevline2;
+        $prevline2 = $prevline1;
+        $prevline1 = $line;
+
+	if($state =~ /parsing_body/) {
+	    $ASM{$lbl} = $ASM if $ASM=~/\w/;
+	}
+    }
+}
+
+sub latex_head {
+    my ($title) = @_;
+    return "
+\\documentclass[a4paper,10pt]{article}
+\\usepackage{a4wide}
+\\usepackage[utf-8]{inputenc}
+\\usepackage{url}
+\\usepackage{multicol}
+\\usepackage{supertabular}
+
+\\setlength{\\parindent}{0cm}
+\\setlength{\\oddsidemargin}{0cm}
+\\setlength{\\topmargin}{-1cm}
+\\setlength{\\headheight}{0cm}
+\\setlength{\\headsep}{0cm}
+\\def\\colsa{p{1cm}p{4cm}}
+\\def\\colsb{p{2.4cm}p{4cm}}
+\\def\\colsc{p{1.5cm}p{4cm}}
+
+\\begin{document}
+\\thispagestyle{empty}
+\\pagestyle{empty}
+
+\\begin{footnotesize}
+\\section*{\\Large amforth $title Reference Card}
+\\begin{multicols}{3}
+";
+}
+
+sub latex_foot {
+    return "
+\\end{multicols}
+\\end{footnotesize}
+\\end{document}";
+}
+
+sub printLaTeX {
+    my ($title) = @_;
+    open(LATEX, ">$texdir/refcard-${version}.tex") or die "$!\n";;
+    print LATEX latex_head($title);
+    foreach my $category (sort keys %CATEGORY) {
+	print "$category\n";
+	print LATEX "\n\\subsection*{$category}\n";
+	print LATEX "\\begin{tabular}{\\colsa}\n";
+	foreach my $lbl (sort @{$CATEGORY{$category}}) {
+	    print "\t$lbl\n";
+	    my $xt  = $XT{$lbl};
+	    my $voc = $VOC{$lbl};
+	    my $shortlbl = substr($lbl, 3);
+	    my $dstack = $DSTACK{$lbl};
+	    my $rstack = $RSTACK{$lbl};
+	    my $verbdelim = "|";
+	    $verbdelim = "/" if $dstack=~/$verbdelim/;
+	    print LATEX "% $lbl\n";
+	    print LATEX "\\verb|$voc|  & \\verb$verbdelim$dstack$verbdelim\\\\\n";
+	    print LATEX "              & \\verb$verbdelim$rstack$verbdelim\\\\\n" unless $rstack =~ /R\(\s*--\s*\)/;
+	}
+	print LATEX "\\end{tabular}\n";
+    }
+    print LATEX latex_foot();
+}
+
+opendir(CWD, $asmdir);
+foreach (reverse sort readdir(CWD)) {
+        next unless -f "$asmdir/$_";
+        next unless /(.*).asm$/;
+        my $basename = "$asmdir/$_";
+        readASM($basename);
+}
+print "\n";
+printLaTeX($version);
+print "\n";
