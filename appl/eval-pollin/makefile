@@ -1,7 +1,7 @@
 # user modifiable secion is up here
 
 # AMFORTH=../../releases/2.0
-AMFORTH=../../trunk
+AMFORTH=../../core
 AVRDUDE=avrdude
 AVRA=/opt/cdk4avr/bin/avra
 MCU=atmega32

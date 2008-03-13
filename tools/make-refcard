@@ -13,7 +13,7 @@ my %RSTACK;
 my %CATEGORY;
 
 my $texdir="../doc";
-my $asmdir="../trunk/words";
+my $asmdir="../core/words";
 
 sub readASM {
     my ($filename) = @_;

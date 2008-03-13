@@ -2,7 +2,7 @@
 
 MCU=atmega169
 
-AMFORTH=../../trunk
+AMFORTH=../../core
 AVRDUDE=avrdude
 AVRA=avra
 INCLUDE=-I ~/lib/avra -I $(AMFORTH)

@@ -6,7 +6,7 @@
 # _always_ use the trunk.
 
 #AMFORTH=../../releases/1.8
-AMFORTH=../../trunk
+AMFORTH=../../core
 
 # the MCU should be identical to the device
 # setting in template.asm
