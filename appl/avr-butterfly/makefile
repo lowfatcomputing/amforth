@@ -7,9 +7,9 @@ AVRDUDE=avrdude
 AVRA=avra
 INCLUDE=-I ~/lib/avra -I $(AMFORTH)
 
-AVRASM=wine ~/projekte/avr/AvrAssembler2/avrasm2.exe -I ~/projekte/avr/AvrAssembler2/Appnotes
+AVRASM=wine ~/Projekte/avr/AvrAssembler2/avrasm2.exe -I ~/Projekte/avr/AvrAssembler2/Appnotes
 
-USB=-c avr911  -P /dev/ttyUSB3
+USB=-c avr911  -P /dev/ttyUSB1
 PP=-c stk200  -P /dev/parport0
 JTAG=-c jtag2 -P /dev/ttyUSB2
 
@@ -17,7 +17,7 @@ JTAG=-c jtag2 -P /dev/ttyUSB2
 bf: bf.hex
 	$(AVRDUDE) $(USB) -p $(MCU) -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
 
-bf.hex: bf.asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
+bf.hex: bf.asm $(AMFORTH)/*.asm $(AMFORTH)/*.inc $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
 #	$(AVRA) $(INCLUDE) --listmac -l bf.lst -m bf.map bf.asm
 	$(AVRASM) $(INCLUDE) -fI -v1 -W+iw  -e bf.eep.hex -l bf.lst bf.asm
 

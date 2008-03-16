@@ -19,3 +19,4 @@
 .include "words/int-fetch.asm"
 
 .include "dict_compiler.inc"
+.include "dict_mcu.inc"
