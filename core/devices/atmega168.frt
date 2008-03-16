@@ -1,10 +1,15 @@
 decimal
+\ generial registers
+
+\serial IO
 198 constant UDR0
 197 constant UBRR0H
 196 constant UBRR0L
 194 constant UCSR0C
 193 constant UCSR0B
 192 constant UCSR0A
+
+\ TWI IO
 189 constant TWAMR
 188 constant TWCR
 187 constant TWDR
