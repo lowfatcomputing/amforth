@@ -19,7 +19,7 @@
 \ please note that with amforth rp@ @ accesses another location 
 \ than r@ due to hardware characteristics.
 
-marker _multitask_
+\ marker _multitask_
 
 decimal
 
@@ -74,6 +74,7 @@ decimal
 	['] rx0  over 18 + ! \ is key
 	['] rx0? over 20 + ! \ is key?
 	['] noop over 22 + ! \ is /key
+	dup task-sleep       \ make it sleep
 	1 allot \ keep heap away
 ;
 
