@@ -1,3 +1,3 @@
 #!/bin/sh
 
-svn copy https://amforth.svn.sourceforge.net/svnroot/amforth/trunk https://amforth.svn.sourceforge.net/svnroot/amforth/releases/2.6
+svn copy https://amforth.svn.sourceforge.net/svnroot/amforth/trunk https://amforth.svn.sourceforge.net/svnroot/amforth/releases/2.7
