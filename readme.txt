@@ -1,18 +1,19 @@
-Date: 10.10.2007
+Date: 19.03.2008
 
-Author: Matthias Trute <mtrute@users.sourceforge.net> 
-	    (will be forwarded)
+Author: 
+    Matthias Trute <mtrute@users.sourceforge.net> 
 
 License: General Public License (GPL) Version2 from 1991. See the
 	file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
 
 amforth is an interactive 16bit Forth for Atmel ATmega micro controllers.
 It does not need additional hard or software. It works completly on
-the controller (no cross-compiler). Porting to different ATmegas is easy.
+the controller (no cross-compiler). Porting to other Atmega types is easy.
 
 amforth uses the indirect threading model. The forth dictionary
 is in the flash memory, new words are compiled directly into
-flash.
+flash. Since no (widely available) bootloader supports an API 
+to write to flash, amforth needs to replace it.
 
 Default terminal is the serial line (usart0) at 9600 8N1, no flow
 control.
@@ -22,7 +23,7 @@ and well tested.
 
 All words have ans94-draft6 (core and extension word sets) stack 
 diagrams, but not nessesairly the complete semantics. Some words
-from the standard are omitted, ask for them if you really need them.
+from the standard are omitted, ask for them if you need them.
 
 Since release 2.1 amforth is a library.
 See http://amforth.svn.sourceforge.net/viewvc/amforth/appl/
@@ -33,8 +34,7 @@ Development hardware are evaluation boards running varios atmega's
 at 8 & 16 MHz MHz with a few led's and pushbuttons and the
 AVR Butterfly.
 
-ToDo
-    documentation and web site (partly done)
+Documentation can be found in the doc/ subdirectory.
 
 Contact, Bugreports, Questions, Wishes etc:
     mailto:amforth-devel@lists.sourceforge.net

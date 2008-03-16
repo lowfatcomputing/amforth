@@ -29,7 +29,7 @@
             depend on any additional hard- or software. It places no
             restrictions on using external hardware.
         </para>
-        <para>This document covers version 2.7</para>
+        <para>This document covers version 2.7.</para>
         <para>
             amforth implements a large subset of the Forth standard
             ANS94. Most of the CORE and CORE EXT words and a varying
@@ -81,7 +81,7 @@
                 <prompt>></prompt>
                 .
                 <screen>
-                    amforth 2.5 ATmega32
+                    amforth 2.7 ATmega32
                     <prompt>></prompt>
                     <command>words</command>
                     cell+ cells abort abort" [char] ...
@@ -97,10 +97,10 @@
             <para>
                 Amforth uses the self programming features of the
                 ATmegas to extend the dictionary. It is ok to use the
-                factory default settings plus (!) changes for the
-                oscillator settings. It is recommended to use a higher
-                CPU frequency to meet the timing requirements of the
-                serial terminal.
+                factory default settings plus changes for the oscillator
+                settings. It is recommended to use a higher CPU
+                frequency to meet the timing requirements of the serial
+                terminal.
             </para>
         </sect1>
     </chapter>
@@ -108,10 +108,6 @@
         <title>Source Organisation</title>
         <sect1 id="src_overview">
             <title>Overview</title>
-            <para>
-                The source code can be processed with both the AVR
-                Studio and the linux avr assembler avra.
-            </para>
             <para>
                 amforth needs an assembler to generate the hex files for
                 Flash and EEPROM. That does not mean that every word is
@@ -122,10 +118,14 @@
                 words.
             </para>
             <para>
-                amforth consists of a great number of relatively small
-                source files. Nearly all words are coded in their own
-                source file. A number of files are organized with
-                include files, called
+                The source code can be processed with both the AVR
+                Studio and the linux avr assembler avra.
+            </para>
+            <para>
+                amforth consists of a great number of small source
+                files. Nearly all words are coded in their own source
+                file. A number of files are organized with include
+                files, named after the pattern
                 <filename>dict*.inc</filename>
                 . Currently 3 such files exists:
                 <filename>dict_minimum</filename>
@@ -133,7 +133,9 @@
                 <filename>dict_high.inc</filename>
                 and
                 <filename>dict_compiler.inc</filename>
-                .
+                . The order in which the files are included defines the
+                search order only. Most words can be moved from one
+                include file to another to optimize the flash usage.
             </para>
             <para>
                 There are two additional files:
@@ -163,8 +165,10 @@
                     The dictionary files have two tasks: First they
                     include the word definition files. Second, they
                     determine each word's location in the resulting
-                    flash layout. The file dict_high.inc contains all
-                    words for the NRWW flash section, Since the word
+                    flash layout. The file
+                    <filename>dict_high.inc</filename>
+                    contains all words for the NRWW flash section, Since
+                    the word
                     <command>I!</command>
                     cannot write to this address range, no new words can
                     be compiled to this section at runtime. Thus it is
@@ -191,21 +195,24 @@
                     are some variants of existing words or simply cannot
                     be included in the core system due to size
                     limitations in the NRWW section with smaller
-                    atmegas.
+                    atmegas. They are usually included by the
+                    application specific include file(s).
                 </para>
             </sect2>
             <sect2>
                 <title>Device Settings</title>
                 <para>
-                    Every Atmega has it own specific settings. They are
-                    based on the official include files provided by
-                    Atmel, which define the most important settings for
-                    the serial IO port (which port and which
-                    parameters), the interrupt vectors and some macros.
+                    Every Atmega has it's own specific settings. They
+                    are based on the official include files provided by
+                    Atmel and define the most important settings for the
+                    serial IO port (which port and which parameters),
+                    the interrupt vectors and some macros.
                 </para>
                 <para>
                     The last setting is a string with the device name in
-                    clear text. This string is used within the word VER.
+                    clear text. This string is used within the word
+                    <command>VER</command>
+                    .
                 </para>
             </sect2>
         </sect1>
@@ -214,8 +221,8 @@
             <para>
                 Every build of amforth needs an application. There are a
                 few sample applications, which can be used either
-                directly (such as the AVR Butterfly) or serve as a
-                source for inspiration (template application).
+                directly (AVR Butterfly) or serve as a source for
+                inspiration (template application).
             </para>
             <para>
                 The structure is basically always the same. First the
@@ -227,10 +234,12 @@
             </para>
             <para>
                 For a comfortable development cycle the use of a make
-                utility such as make itself is recommended. The
-                assembler needs quite a few settings and the proper
-                order of the include directories. The sample
-                applications use the standard make, but others such as
+                utility such as
+                <command>make</command>
+                itself is recommended. The assembler needs quite a few
+                settings and the proper order of the include
+                directories. The sample applications use the standard
+                make, but others such as
                 <command>ant</command>
                 or
                 <command>maven</command>
@@ -313,8 +322,7 @@
                 In addition the register pair R0:R1 is used internally
                 e.g. to hold the the result of multiply operations. The
                 register pair R2:R3 is used as the zero value in many
-                words. These registers cannot be used by user programs
-                and should never be changed.
+                words. These registers must never be changed.
             </para>
             <para>
                 The registers from R8 to R15 are currently unused. The
@@ -393,16 +401,7 @@
                         points to the body of the (colon) word, and sets
                         IP to point to same location. Then it continues
                         with NEXT, which begins executing the words in
-                        the body of the colon word
-                        <!--                   
-                            PUSH IP onto the "return address stack"
-                            
-                            W+2 -> IP W still points to the Code Field, so W+2 is
-                            the address of the Body! (Assuming a 2-byte address - -
-                            other Forths may be different.)
-                            
-                            JUMP to interpreter ("NEXT")
-                        -->
+                        the body of the colon word.
                     </para>
                 </sect3>
                 <sect3 id="II_UNNEST">
@@ -410,13 +409,9 @@
                     <para>
                         The code for UNNEST is the word
                         <command>EXIT</command>
-                        in the dictionary. It pops the IP from the
-                        return stack and jumps to NEXT.
-                        <!-- 
-                            POP IP from the "return address stack"
-                            
-                            JUMP to interpreter
-                        -->
+                        in the dictionary. It reads the IP from the
+                        return stack and jumps to NEXT. The return stack
+                        pointer is incremented by 2.
                     </para>
                 </sect3>
                 <sect3 id="II_DODOES">
@@ -445,7 +440,7 @@
                         (TOS) is in a register pair. Compared to a
                         straight forward implementation this approach
                         saves both code space and gives higher execution
-                        speed (approx 10-20 %). Saving more stack
+                        speed (approx 10-20 %). Saving even more stack
                         elements does not really provide a greater
                         benefit (much more code and only little speed
                         enhancements).
@@ -461,8 +456,8 @@
                     <para>
                         The Return Stack is the hardware stack of the
                         controller. It is managed with push/pop
-                        instructions. The return stack starts at RAMEND
-                        und grows downward.
+                        assembler instructions. The return stack starts
+                        at RAMEND und grows downward.
                     </para>
                 </sect3>
             </sect2>
@@ -474,8 +469,8 @@
                     switches the execution to a predefined word if an
                     interrupt occurs. When that word finishes execution,
                     the interrupted word is continued. The interrupt
-                    handlers are completely normal forth words without
-                    any stack effect.
+                    handlers are completly normal forth colon words
+                    without any stack effect.
                 </para>
                 <para>
                     The processing of the interrupts takes two steps:
@@ -486,11 +481,12 @@
                     this in a RAM cell. Then the low level ISR sets the
                     <command>T</command>
                     flag in the status register of the controller. The
-                    inner interpreter checks this flaf every time it is
-                    entered and if it is set it switches to interrupt
+                    inner interpreter checks this flag every time it is
+                    entered and, if it is set, it switches to interrupt
                     handling at forth level. This approach has a penalty
                     of 2 CPU cycles for checking and skipping the branch
-                    instruction to the isr forth code.
+                    instruction to the isr forth code if no interrupt
+                    occured.
                 </para>
                 <para>
                     The ISR at forth level is a RAM based table much
@@ -501,12 +497,13 @@
                     Interrupts from hardware sources (such as the usart)
                     may not work as expected. The reason is that the
                     interrupt source is not cleared within the generic
-                    ISR. This leads to an immediate re-interrupt. There
-                    is currently no solution but a custom ISR that
-                    clears the interrupt source and calls the main ISR.
-                    This code has to be run within the interrupt and
-                    cannot be (easily) turned into forth code, since the
-                    forth inner interpreter is not reentrant.
+                    ISR. This leads to an immediate re-interrupt when
+                    the ISR is left. There is currently no solution but
+                    a custom ISR that clears the interrupt source and
+                    calls the main ISR. This code has to be run within
+                    the interrupt and cannot be (easily) turned into
+                    forth code, since the forth inner interpreter is not
+                    reentrant.
                     <!-- maybe run an forth
                         interpreter in background to handle interrupts? -->
                 </para>
@@ -515,35 +512,44 @@
                 <title>Multitasking</title>
                 <para>
                     amforth does not implement multitasking directly. It
-                    only provides the basic functions. Within the IO
-                    words the deferred word
+                    only provides the basic functions. Within IO words
+                    the deferred word
                     <command>PAUSE</command>
                     is called whenever possible. This word is
-                    initialized to do nothing
+                    initialized to do nothing (
                     <command>NOOP</command>
-                    .
+                    ).
                 </para>
             </sect2>
             <sect2 id="EXCEPTIONS">
                 <title>Exception Handling</title>
                 <para>
-                    amforth implements the CATCH/THROW exception
-                    handling. The outermost catch frame is located at
-                    the interpreter level in the word QUIT. If an
-                    exception with the value -1 or -2 is thrown, QUIT
+                    amforth implements the
+                    <command>CATCH</command>
+                    and
+                    <command>THROW</command>
+                    exception handling. The outermost catch frame is
+                    located at the interpreter level in the word
+                    <command>QUIT</command>
+                    . If an exception with the value -1 or -2 is thrown,
+                    <command>QUIT</command>
                     will print a message and re-start itself. Other
-                    values silently restart QUIT.
+                    values silently restart
+                    <command>QUIT</command>
+                    .
                 </para>
             </sect2>
             <sect2 id="USERAREA">
                 <title>User Area</title>
                 <para>
-                    The User Area is a special RAM based storage area.
-                    It contains the USER variables and the User deferred
+                    The User Area is a special RAM storage area. It
+                    contains the USER variables and the User deferred
                     definitions. Access is based upon the value of the
-                    user pointer UP. It can be changed with the word UP!
-                    and read with UP@. The UP itself is stored in a
-                    register pair.
+                    user pointer UP. It can be changed with the word
+                    <command>UP!</command>
+                    and read with
+                    <command>UP@</command>
+                    . The UP itself is stored in a register pair.
                 </para>
                 <para>
                     The size of the user area is defined at compile time
@@ -558,9 +564,10 @@
                     variable and the exception handler.
                 </para>
                 <para>
-                    A multitasker can use the first 2 cells for own
-                    purposes. In that situation the user area is/can be
-                    seen as the task control block.
+                    The multitasker uses the first 2 cells to store the
+                    status and the link to the next entry in the task
+                    list. In that situation the user area is/can be seen
+                    as the task control block.
                 </para>
             </sect2>
         </sect1>
@@ -580,8 +587,9 @@
                     It is executed whenever the controller starts. The
                     code sets up the basic infrastructure for the forth
                     interpreter. This step is finished by calling the
-                    forth interpreter with the word COLD as the entry
-                    word.
+                    forth interpreter with the word
+                    <command>COLD</command>
+                    as the entry word.
                 </para>
                 <para>
                     The 3rd section contains the low level interrupt
@@ -618,10 +626,10 @@
                     system to achieve it. A side effect is that amforth
                     cannot co-exist with classic bootloaders. If a
                     particular boot loader provides an API to enable
-                    applications call the flash write operation, amforth
-                    can be restructured to use it. Currently only very
-                    few and seldom used bootloaders exist that enable
-                    this feature.
+                    applications to call the flash write operation,
+                    amforth can be restructured to use it. Currently
+                    only very few and seldom used bootloaders exist that
+                    enable this feature.
                 </para>
                 <para>
                     Atmegas can have more than 64 KB Flash. This
@@ -635,22 +643,26 @@
                     but cells it is possible to use the whole address
                     range with a 16 bit cell. The Atmegas with 128
                     KBytes Flash operate slightly slower since the
-                    address interpretation does need more code to access
-                    the flash (both read and write).
+                    address interpretation needs more code to access the
+                    flash (both read and write). The source code uses
+                    assembly macros to hide the differences.
                 </para>
                 <para>
                     The technique described above does not work for the
                     Atmega256x. These controllers definitely need a
-                    bigger cell size: 17 bits (or more).
+                    bigger cell size: 17 bits (or more) that amforth
+                    does not support.
                 </para>
                 <sect3>
                     <title>Flash Write</title>
                     <para>
                         The word performing the actual flash write
-                        operation is I! (i-store). This word takes the
-                        value and the address of a single cell to be
-                        written to flash from the data stack. The
-                        address is a word address, not a byte address!
+                        operation is
+                        <command>I!</command>
+                        (i-store). This word takes the value and the
+                        address of a single cell to be written to flash
+                        from the data stack. The address is a word
+                        address, not a byte address!
                     </para>
                     <para>
                         The flash write strategy follows Atmel's
@@ -664,7 +676,8 @@
                         erase operation be done. In the fourth step the
                         new flash data is written and the flash is set
                         back to normal operation and the interrupt flag
-                        is restored.
+                        is restored. The whole process takes a few
+                        milliseconds.
                     </para>
                     <para>
                         This write strategy ensures that the flash has
@@ -694,17 +707,19 @@
                     executes the XT at runtime. It is based on the
                     DEFER/IS standard. To define a deferred word in the
                     EEPROM use the Edefer defintion word. The standard
-                    word IS is used to put a new XT into the vector.
+                    word IS is used to put a new XT into it.
                 </para>
                 <para>
                     Low level space management is done through the the
                     EDP variable. This is not a forth value but a EEPROM
-                    based variable. To read the current value an e@
+                    based variable. To read the current value an
+                    <command>e@</command>
                     operation must be used, changes are written back
-                    with e!. It contains the highest EEPROM address
-                    currently allocated. The name is based on the DP
-                    variable, which points to the highest dictionary
-                    address.
+                    with
+                    <command>e!</command>
+                    . It contains the highest EEPROM address currently
+                    allocated. The name is based on the DP variable,
+                    which points to the highest dictionary address.
                 </para>
             </sect2>
             <sect2 id="ML_RAM">
@@ -716,10 +731,14 @@
                     IO registers and finally the RAM itself.
                 </para>
                 <para>
-                    amforth needs a few (real) RAM locations for its
+                    amforth needs very little (real) RAM space for its
                     internal data structures. The biggest part are the
                     buffers for the terminal IO. RAM Memory is managed
-                    by the words VARIABLE and ALLOT.
+                    by the words
+                    <command>VARIABLE</command>
+                    and
+                    <command>ALLOT</command>
+                    .
                 </para>
                 <para>
                     With amforth all three sections can be accessed
@@ -734,27 +753,28 @@
                 <para>
                     For the RAM there is the word
                     <command>Rdefer</command>
-                    which implements a deferred word, placed in RAM. As
-                    a special case there is the word
+                    which defines a deferred word, placed in RAM. As a
+                    special case there is the word
                     <command>Udefer</command>
                     , which sets up a deferred word in the user area. To
                     put an XT into them the word
                     <command>IS</command>
                     is used. This word is smart enough to distinguish
-                    between the various xDefer definitions.
+                    between the various Xdefer definitions.
                 </para>
             </sect2>
         </sect1>
     </chapter>
-    <chapter id="Implementation">
-        <title>Forth Implementation</title>
+    <chapter id="ForthWords">
+        <title>Forth Words</title>
         <sect1 id="ANS">
             <title>ANS Words</title>
             <para>
                 amforth implements most or all words from the ANS word
                 sets CORE, CORE EXT, EXCEPTION and DOUBLE NUMBERS. The
-                words from the word sets LOCALS, BLOCKS, FILE-ACCESS and
-                FLOATING-POINT are dropped completly.
+                words from the word sets LOCALS, FILE-ACCESS and
+                FLOATING-POINT are dropped completly. The others are
+                partially implemented.
             </para>
             <sect2 id="ANS_CORE">
                 <title>Core and Core EXT</title>
@@ -772,40 +792,45 @@
                     words created with
                     <command>:</command>
                     are immediately visible. An earlier definition with
-                    the same name will never be accessible. Work around
+                    the same name will never be accessible. Work arounds
                     may be done with
                     <command>DEFER</command>
-                    /
+                    and
                     <command>IS</command>
                     .
                 </para>
                 <para>
-                    loop counters are checked on signed compares.
+                    Loop counters are checked on signed compares.
                 </para>
             </sect2>
             <sect2 id="ANS_BLOCK">
                 <title>Block</title>
                 <para>
-                    amforth does not currently support block related
-                    words. Implementing them is on the roadmap.
+                    amforth has limited block support with I2C/TWI
+                    serial eeprom chips with 2 byte addresses.
                 </para>
             </sect2>
             <sect2 id="ANS_DOUBLENUMBER">
                 <title>Double Number</title>
                 <para>
-                    Double cell numbers do work as expected. Not all
-                    words are implemented. Entering them directly using
-                    the dot- notation does not work currently.
+                    Double cell numbers work as expected. Not all words
+                    are implemented. Entering them directly using the
+                    dot- notation does not work however.
                 </para>
             </sect2>
             <sect2 id="ANS_EXCEPTION">
                 <title>Exception</title>
                 <para>
-                    Exceptions are fully supported. The words ABORT and
-                    ABORT" use them internally.
+                    Exceptions are fully supported. The words
+                    <command>ABORT</command>
+                    and
+                    <command>ABORT"</command>
+                    use them internally.
                 </para>
                 <para>
-                    The THROW codes -1, -2 and -13 work as specified.
+                    The
+                    <command>THROW</command>
+                    codes -1, -2 and -13 work as specified.
                 </para>
                 <para>
                     The implementation is based upon a variable HANDLER
@@ -816,21 +841,35 @@
             <sect2 id="ANS_FACILITY">
                 <title>Facility</title>
                 <para>
-                    The basic system uses the KEY? and EMIT? words as
-                    deferred words.
+                    The basic system uses the
+                    <command>KEY?</command>
+                    and
+                    <command>EMIT?</command>
+                    words as deferred words in the USER area.
                 </para>
                 <para>
-                    The word MS is implemented as the word 1MS which
-                    busy waits almost exactly 1 millisecond. The
+                    The word
+                    <command>MS</command>
+                    can implemented with the word
+                    <command>1MS</command>
+                    which busy waits almost exactly 1 millisecond. The
                     calculation is based upon the frequency specified at
                     compile time.
                 </para>
                 <para>
-                    The words TIME&amp;DATE, EKEY, EKEY>CHAR are not
-                    implemented.
+                    The words
+                    <command>TIME&amp;DATE</command>
+                    ,
+                    <command>EKEY</command>
+                    ,
+                    <command>EKEY>CHAR</command>
+                    are not implemented.
                 </para>
                 <para>
-                    To control a VT100 terminal the words AT-XY and PAGE
+                    To control a VT100 terminal the words
+                    <command>AT-XY</command>
+                    and
+                    <command>PAGE</command>
                     are written in forth code. They emit the ANSI
                     control codes according to the VT100 terminal codes.
                 </para>
@@ -839,7 +878,7 @@
                 <title>File Access</title>
                 <para>
                     amforth does not have filesystem support. It does
-                    not support any words from this word set.
+                    not contain any words from this word set.
                 </para>
             </sect2>
             <sect2 id="ANS_FLOATINGPOINT">
@@ -863,14 +902,21 @@
             <sect2 id="ANS_PROGRAMMING">
                 <title>Programming Tools</title>
                 <para>
-                    Variants of the words .S ? and DUMP are implemented
-                    or can easily be done. The word SEE won't be
-                    supported since amforth highly uses an optimization
-                    strategy to strip forth headers whenever possible.
-                    The other reason for dropping SEE is that amforth is
-                    OpenSource software. If your vendor does not
-                    disclose the full source, let me know. He violates
-                    the GPL.
+                    Variants of the words
+                    <command>.S</command>
+                    ,
+                    <command>?</command>
+                    and
+                    <command>DUMP</command>
+                    are implemented or can easily be done. The word
+                    <command>SEE</command>
+                    won't be supported since amforth highly uses the
+                    optimization strategy to strip forth headers
+                    whenever possible. The other reason for dropping
+                    <command>SEE</command>
+                    is that amforth is OpenSource software. If your
+                    vendor does not disclose the full source, let me
+                    know. He violates the GPL.
                 </para>
                 <para>
                     <command>STATE</command>
@@ -884,12 +930,15 @@
                 </para>
                 <para>
                     The words
-                    <command>CODE</command>
                     <command>;CODE</command>
                     and
                     <command>ASSEMBLER</command>
-                    are not supported, amforth does not have an
-                    assembler.
+                    are not supported. amforth has a loadable assembler
+                    which is supported with the words
+                    <command>CODE</command>
+                    and
+                    <command>END-CODE</command>
+                    .
                 </para>
                 <para>
                     <command>CS-ROLL</command>
@@ -909,7 +958,7 @@
                     is implemented but does not fully reset the
                     dictionary state. The better way is using
                     <command>MARKER</command>
-                    .
+                    from the library.
                 </para>
                 <para>An EDITOR is not implemented.</para>
                 <para>
@@ -959,9 +1008,9 @@
                 <para>
                     amforth provides wrapper words for the
                     microcontroller words
-                    <command>sleep</command>
+                    <command>SLEEP</command>
                     and
-                    <command>wdr</command>
+                    <command>WDR</command>
                     (watch dog reset). To work properly, the MCU needs
                     more configuration. amforth itself does not call
                     these words.
@@ -972,9 +1021,9 @@
                     the watch dog timer can be disabled. Since both
                     actions require strict timing they need to be
                     implemented as primitives:
-                    <command>-jtag</command>
+                    <command>-JTAG</command>
                     and
-                    <command>-wdt</command>
+                    <command>-WDT</command>
                     .
                 </para>
             </sect2>
@@ -998,8 +1047,8 @@
                     deal with the flash memory. All these words transfer
                     one cell (2 bytes) between the memory and the data
                     stack. The address is always the native address of
-                    the target storage: byte-level for EEPROM and RAM,
-                    word-level for flash. Therefore the flash addresses
+                    the target storage: byte-based for EEPROM and RAM,
+                    word-based for flash. Therefore the flash addresses
                     64KWords or 128 KBytes address space.
                 </para>
                 <para>
@@ -1026,7 +1075,7 @@
             <sect2 id="AMFORTH_IO">
                 <title>Input Output</title>
                 <para>
-                    amforth uses simple terminal io. A serial console is
+                    amforth uses simple terminal IO. A serial console is
                     used. All IO is based upon the standard words
                     <command>EMIT</command>
                     /
@@ -1051,7 +1100,7 @@
                     more than one USART port is available).
                 </para>
                 <para>
-                    The basic words include a call of the
+                    These basic words include a call to the
                     <command>PAUSE</command>
                     command to enable the use of multitasking.
                 </para>
@@ -1106,7 +1155,7 @@
                 definitions. They are taken directly from the appnotes
                 from atmel. The register names are all uppercase. It is
                 recommended to extract only the needed definitions since
-                the whole list occupy flash space.
+                the whole list occupy a lot of flash memory.
             </para>
         </sect1>
         <sect1 id="Modules">
@@ -1121,7 +1170,8 @@
                     <command>multitaskpause</command>
                     which can assigned to
                     <command>pause</command>
-                    .
+                    :
+                    <code>' multitaskpause is pause</code>
                 </para>
                 <para>
                     The multitasker has the following commands
@@ -1192,7 +1242,8 @@
                                     round. When a task executes this
                                     command for itself, the task
                                     continues until the next call of
-                                    pause.
+                                    <command>pause</command>
+                                    .
                                 </para>
                             </listitem>
                         </varlistentry>
@@ -1221,7 +1272,9 @@
                                 <para>
                                     Skip all of the remaining code in
                                     the current colon word and continue
-                                    the skipped code as a task.
+                                    the skipped code as task when the
+                                    task list entry is reached by the
+                                    multitasker.
                                 </para>
                             </listitem>
                         </varlistentry>
@@ -1251,7 +1304,7 @@
         <sect1 id="Tools_host">
             <title>Host</title>
             <para>
-                There a few number of tools on the hostside (PC) that
+                There a few number of tools on the host side (PC) that
                 are specifically written to support amforth. They are
                 written in script languages like perl and python and
                 should work on all major operating systems.
@@ -1265,8 +1318,9 @@
                     <filename>words</filename>
                     subdirectory and creates a reference card. The
                     resulting LaTeX file needs to be processed with
-                    latex to generate a nice looking overview of all
-                    words available in the amforth core system.
+                    <command>latex</command>
+                    to generate a nice looking overview of all words
+                    available in the amforth core system.
                 </para>
                 <para>
                     The command
@@ -1295,7 +1349,8 @@
                         <arg choice="plain">> $tty</arg>
                     </cmdsynopsis>
                     This works but the upload of longer files needs a
-                    very long time.
+                    very long time: $delay_char can be 1 or 2 ms,
+                    $delay_line around 800 ms.
                 </para>
                 <para>
                     Another solution is
@@ -1337,9 +1392,9 @@
                 There are a few missing words from the standard CORE
                 word set. Many of them are related with string
                 parameters, like
-                <code>evaluate</code>
+                <command>evaluate</command>
                 and
-                <code>environment?</code>
+                <command>environment?</command>
                 . The difficulty arises from the fact, that the storage
                 location of a string cannot be determined by simply
                 lookaing at the address. A solution may be a state smart
@@ -1363,13 +1418,12 @@
             <title>More Controller Types</title>
             <para>
                 amforth can run on the whole range of Atmegas. The only
-                limiting factor is the flash size: amforth needs 7 KB
+                limiting factor is the flash size: amforth needs ca 7 KB
                 for itself and can address 128 KB. The ATmega256x may be
                 supported with a change in the cell size from 2 to 3
-                bytes. The other possible devices are the XMega MCU,
-                that Atmel may publish in the near future. ATtiny
-                devices are not supported since they lack both flash
-                size and a few instructions that amforth uses.
+                bytes. The other possible devices are the XMega MCU.
+                ATtiny devices are not supported since they lack both
+                flash size and a few instructions that amforth uses.
             </para>
         </sect1>
         <sect1 id="Contributors">
@@ -1380,24 +1434,25 @@
                 all of them. The following people made an outstanding
                 work to improve amforth (in no particular order): Milan
                 Horkel, Ullrich Hoffmann, Michael Kalus, Karl Lunt,
-                Bruce Wolk. But there are many more that helped by
-                simply asking how to do some tasks.
+                Bruce Wolk, Lubos Pekny. But there are many more that
+                helped by simply asking how to do some tasks.
             </para>
         </sect1>
         <sect1 id="SUPPORT">
             <title>Support</title>
             <para>
-                Amforth is not a commercial grade software. I hesitate
-                to call it a product. Since you get all the source code
-                for system, you should be able to solve all problems
-                youself. On the other hand I'm interested in any use of
-                amforth and want to know what you're doing with it. If
-                you find anything strange or faulty don't hesitate to
-                mail it to the
+                Amforth is not a commercial software. I hesitate to call
+                it a product. Since you get all the source code for the
+                system, you should be able to solve all problems
+                yourself. On the other side I'm more than interested in
+                any use of amforth and want to know what you're doing
+                with it. If you find anything strange or faulty don't
+                hesitate to mail it to the
                 <ulink
                     url="mailto:amforth-devel@lists.sourceforge.net">
                     mailing list
-                </ulink>.
+                </ulink>
+                .
             </para>
         </sect1>
     </chapter>
