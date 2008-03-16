@@ -9,4 +9,4 @@ XT_SLEEP:
     .dw PFA_SLEEP
 PFA_SLEEP:
     sleep
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

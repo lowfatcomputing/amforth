@@ -14,4 +14,4 @@ PFA_NOJTAG:
     out_ MCUCR, temp0
     out_ MCUCR, temp0     ; needs to be done twice within 4 cycles
     sei
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

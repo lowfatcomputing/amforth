@@ -9,4 +9,4 @@ XT_WDR:
     .dw PFA_WDR
 PFA_WDR:
     wdr
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

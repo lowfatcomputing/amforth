@@ -16,4 +16,4 @@ PFA_NOWDT:
     ldi temp0, 0<<WDE
     out_ WDTCR, temp0
     sei
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
