@@ -29,7 +29,7 @@
             depend on any additional hard- or software. It places no
             restrictions on using external hardware.
         </para>
-        <para>This document covers version 2.6</para>
+        <para>This document covers version 2.7</para>
         <para>
             amforth implements a large subset of the Forth standard
             ANS94. Most of the CORE and CORE EXT words and a varying
