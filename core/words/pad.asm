@@ -10,7 +10,4 @@ XT_PAD:
 PFA_PAD:
     .dw XT_HEAP
     .dw XT_EFETCH
-    .dw XT_DOLITERAL
-    .dw 9
-    .dw XT_PLUS
     .dw XT_EXIT
