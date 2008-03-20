@@ -48,21 +48,6 @@ C constant SPI3
     0 SPCR c!
 ;
 
-\ wait for current spi transaction
-: waitspi
-    begin
-	SPSR c@
- 	[ 1 7 lshift ] literal and
-    until
-;
-
-\ transfer 1 byte via spi
-: spirw ( tx -- rx )
-    SPDR c! ( -- )
-    waitspi
-    SPDR c@ ( -- rx )
-;
-
 \ send 1 byte byte
 : spitx ( tx -- ) 
     spirw drop
@@ -83,16 +68,16 @@ C constant SPI3
 : df-cmd ( adrH adrL op -- ) 
   df-cstoggle
   spirw drop           \ send opcode
-  df-adr                \ pack addresses into 24 bits
-  swap spirw drop      \ send adrH LO byte, HI byte = dont care
-  dup >< spirw drop    \ send adrL HI byte
+  df-adr               \ pack addresses into 24 bits
+  swap spitx           \ send adrH LO byte, HI byte = dont care
+  dup >< spitx         \ send adrL HI byte
   spirw drop ;         \ send adrL LO byte
     
 : df-(32x) ( -- )  \ send 32 dont care bits
   0 spirw spirw spirw spirw drop ;
 
 : df-(8x) ( -- )   \ send 8 dont care bits
-  0 spirw drop ;
+  0 spitx  ;
 
 : df-() ( -- ) ;  \ send no dont care bits
 
@@ -100,7 +85,9 @@ hex
 
 \ **read
 
-\ Continuous Array Read, bypass buffers
+\ Continuous Array Read, bypass buffers, 
+\ after that 264 bytes want to be transferred from
+\ the eeprom to the uC
 : df-car ( 24:4r,11P,9B -- ) E8 df-cmd df-(32x) ;
 
 \ Main memory page read, bypass buffers
