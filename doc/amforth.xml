@@ -113,7 +113,7 @@
                 Flash and EEPROM. That does not mean that every word is
                 actually written in assembly language however. Most of
                 the words are written in forth itself, but are
-                precompiled into assembly syntax. This solves btw the
+                precompiled into assembly syntax. This solves the
                 chicken-and-egg problem too: how to compile the compiler
                 words.
             </para>
@@ -236,7 +236,7 @@
                 For a comfortable development cycle the use of a make
                 utility such as
                 <command>make</command>
-                itself is recommended. The assembler needs quite a few
+                itself is recommended. The assembler needs a few
                 settings and the proper order of the include
                 directories. The sample applications use the standard
                 make, but others such as
@@ -456,8 +456,8 @@
                     <para>
                         The Return Stack is the hardware stack of the
                         controller. It is managed with push/pop
-                        assembler instructions. The return stack starts
-                        at RAMEND und grows downward.
+                        assembler instructions. The default return stack
+                        starts at RAMEND und grows downward.
                     </para>
                 </sect3>
             </sect2>
@@ -609,7 +609,7 @@
                     The last section is identical to the boot loader
                     section of the ATmegas. It is also known as the NRWW
                     area. Here is the heart of amforth: The inner
-                    interpreter and most of the words coded in Assembly
+                    interpreter and most of the words coded in assembly
                     language.
                 </para>
                 <para>
@@ -934,7 +934,7 @@
                     and
                     <command>ASSEMBLER</command>
                     are not supported. amforth has a loadable assembler
-                    which is supported with the words
+                    which can be used with the words
                     <command>CODE</command>
                     and
                     <command>END-CODE</command>
@@ -1007,7 +1007,7 @@
                 <title>MCU Access</title>
                 <para>
                     amforth provides wrapper words for the
-                    microcontroller words
+                    microcontroller instructions
                     <command>SLEEP</command>
                     and
                     <command>WDR</command>
@@ -1017,7 +1017,7 @@
                 </para>
                 <para>
                     Microcontrollers supporting the JTAG interface can
-                    be programmed to turn JTAG off at runtime. Similiar
+                    be programmed to turn off JTAG at runtime. Similiar
                     the watch dog timer can be disabled. Since both
                     actions require strict timing they need to be
                     implemented as primitives:
@@ -1053,18 +1053,17 @@
                 </para>
                 <para>
                     External RAM shares the normal RAM address space
-                    after initialization (which needs to be done within
-                    the turnkey action). It is accessible without
-                    further action.
+                    after initialization (which can be done in the
+                    turnkey action). It is accessible without further
+                    action.
                 </para>
                 <para>
                     For RAM only there is the special word pair
                     <command>c@</command>
                     /
                     <command>c!</command>
-                    which uses the lower byte of the Top-Of-Stack at
-                    transfer. The upper byte is either ignored or set to
-                    0 (zero).
+                    which operate with the lower half of a stack cell.
+                    The upper byte is either ignored or set to 0 (zero).
                 </para>
                 <para>
                     All other types of external memory need special
@@ -1094,10 +1093,10 @@
                 </para>
                 <para>
                     The predefined words use an interrupt driven IO with
-                    an buffer for input and output. They do not
-                    implement a handshake procedure (XON/XOFF or
-                    CTS/RTS). The default terminal device is USART0 (if
-                    more than one USART port is available).
+                    a buffer for input and output. They do not implement
+                    a handshake procedure (XON/XOFF or CTS/RTS). The
+                    default terminal device is USART0 (if more than one
+                    USART port is available).
                 </para>
                 <para>
                     These basic words include a call to the
@@ -1114,7 +1113,7 @@
                     <command>KEY</command>
                     and
                     <command>KEY?</command>
-                    are redirected to fetch the data from them.
+                    can be redirected to fetch the data from them.
                 </para>
             </sect2>
             <sect2 id="AMFORTH_STRING">
@@ -1153,9 +1152,15 @@
                 <filename>device/</filename>
                 subdirectory are the controller specific register
                 definitions. They are taken directly from the appnotes
-                from atmel. The register names are all uppercase. It is
+                from Atmel. The register names are all uppercase. It is
                 recommended to extract only the needed definitions since
                 the whole list occupy a lot of flash memory.
+            </para>
+            <para>
+                Some commonly used lowlevel words can be included with
+                the
+                <filename>dict_mcu.inc</filename>
+                include file at compile time.
             </para>
         </sect1>
         <sect1 id="Modules">
@@ -1295,6 +1300,90 @@
                     <command>i!</command>
                     . For a preemptive task switcher a lot more tools
                     like semaphores may be needed.
+                </para>
+            </sect2>
+            <sect2 id="TWI_I2C">
+                <title>TWI / I2C</title>
+                <para>
+                    The file
+                    <filename>twi.frt</filename>
+                    contains the basic words to operate with the
+                    hardware TWI module of the microcontroller. The file
+                    <filename>twi-eeprom.frt</filename>
+                    uses these words to implement a native block buffer
+                    access for I2C EEPROMs with 2byte addresses.
+                </para>
+                <para>
+                    The word
+                    <command>+twi</command>
+                    initializes the TWI hardware module with the
+                    supplied parameters.
+                    <command>-twi</command>
+                    turns the module off. The start-stop conditions are
+                    sent with the
+                    <command>twi.start</command>
+                    and
+                    <command>twi.stop</command>
+                    words. Data is transferred with the three words
+                    <command>twi.tx</command>
+                    for transmitting (sending) a byte,
+                    <command>twi.rx</command>
+                    for reading a byte (and sending an ACK signal) and
+                    <command>twi.rxn</command>
+                    for reading a byte and sending a NACK signal.
+                </para>
+                <para>
+                    The command
+                    <command>twi.status</command>
+                    fetches the TWI status register, the command
+                    <command>twi.status?</command>
+                    compares the status with a predefined value and
+                    throws the exception -14 if they do not match.
+                </para>
+                <para>
+                    The command
+                    <command>twi.scan</command>
+                    scans the whole (7 bit) address range and prints the
+                    address of any device found.
+                </para>
+            </sect2>
+            <sect2 id="I2CEEPROM">
+                <title>I2C EEPROM</title>
+                <para>
+                    I2C EEPROMs can be used in varios ways. The file
+                    <filename>twi-eeprom.frt</filename>
+                    defines words to access the EEPROM at byte address
+                    level and at block level. A page is the native block
+                    size of the eeprom device, that is stored in the
+                    <command>VALUE</command>
+                    <command>twi.ee-b/blk</command>
+                    . The hardware (i2c-) device address is stored in
+                    the value
+                    <command>twi.ee-addr</command>
+                    . Currently EEPROM devices with 2byte addresses
+                    are supported.
+                </para>
+                <para>
+                    Byte level access is done with the words
+                    <command>twi.ee-c!</command>
+                    and
+                    <command>twi.ee-c@</command>
+                    . They transfer one byte from/to the eeprom address
+                    given. The stack diagram is exactly the same as for
+                    the RAM
+                    <command>c@</command>
+                    /
+                    <command>c!</command>
+                    . Every store operation performes an full EEPROM
+                    erase/write cycle.
+                </para>
+                <para>
+                    To transfer more bytes the block level words can be
+                    used. The transfer a whole EEPROM page to/from RAM.
+                    The first page is at address 0, page 1 starts at
+                    address
+                    <command>twi.ee-b/blk</command>
+                    .
                 </para>
             </sect2>
         </sect1>
