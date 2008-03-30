@@ -51,6 +51,7 @@
 .include "words/plus.asm"
 .include "words/mstar.asm"
 .include "words/umslashmod.asm"
+.include "words/umstar.asm"
 
 .include "words/invert.asm"
 .include "words/2slash.asm"
@@ -89,6 +90,4 @@
 .include "words/up.asm"
 
 .include "words/s_to_d.asm"
-.include "words/d_to_s.asm"
 .include "words/d-2slash.asm"
-
