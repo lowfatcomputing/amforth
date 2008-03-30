@@ -9,7 +9,7 @@
 \ helper word
 \ print a number in a field with 0 filled 
 : u0.r ( u w -- )
-      >r 0 swap \ see u.
+      >r 0 \ see u.
       <# 
       r> 0 ?do # loop 
       #>  
@@ -18,8 +18,8 @@
 
 hex
 
-\ dump len bytes of RAM addressable memory starting at or below
-\ addr upward. Align dump range to 8 byte blocks
+\ dump len cells of RAM addressable memory starting at or below
+\ addr upward. Align dump range to 8 cell blocks
 : dump ( addr len -- )
     \ xxx0 cc cc cc cc cc cc cc cc 
     \ xxx8 cc cc cc cc cc cc cc cc
@@ -32,8 +32,8 @@ hex
 	( -- addr )
 	dup 4 u0.r space
 	8 0 do 
-	    dup c@ 2 u0.r space
-	    1+
+	    dup @ 4 u0.r space
+	    cell+
 	loop
 	cr
 	8 ( -- we always have this many bytes )
