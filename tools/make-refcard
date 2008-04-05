@@ -1,8 +1,6 @@
 #!/usr/bin/perl
 use strict;
 
-my $version = "2.7";
-
 my %XT;
 my %VOC;
 my %ASM;
@@ -114,7 +112,7 @@ sub latex_head {
     return "
 \\documentclass[a4paper,10pt]{article}
 \\usepackage{a4wide}
-\\usepackage[utf-8]{inputenc}
+\\usepackage[latin1]{inputenc}
 \\usepackage{url}
 \\usepackage{multicol}
 \\usepackage{supertabular}
@@ -147,7 +145,7 @@ sub latex_foot {
 
 sub printLaTeX {
     my ($title) = @_;
-    open(LATEX, ">$texdir/refcard-${version}.tex") or die "$!\n";;
+    open(LATEX, ">$texdir/refcard.tex") or die "$!\n";;
     print LATEX latex_head($title);
     foreach my $category (sort keys %CATEGORY) {
 	print "$category\n";
