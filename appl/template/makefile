@@ -12,9 +12,11 @@ AMFORTH=../../core
 # setting in template.asm
 MCU=atmega16
 
-# internal rc oszi and 8 MHz
-LFUSE=0xe4 
-HFUSE=0x99
+# set the fuses according to your MCU
+LFUSE=0xnn
+HFUSE=0xnn
+# some MCU have this one, see write-fuses target below
+EFUSE=0xnn
 
 # some programs
 AVRDUDE=avrdude
@@ -40,3 +42,4 @@ clean:
 
 write-fuse:
 	$(AVRDUDE) $(USB) -p $(MCU) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
+	# $(AVRDUDE) $(USB) -p $(MCU) -U efuse:w:$(EFUSE):m -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
