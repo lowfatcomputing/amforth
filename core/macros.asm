@@ -16,8 +16,8 @@
   .def temp3 = r19
   .def temp4 = r20
   .def temp5 = r21
-  .def temp6 = r30
-  .def temp7 = r31
+  .def temp6 = r30 ; the same as zl, may produce warnings
+  .def temp7 = r31 ; the same as zh, may produce warnings
 
   .def wl = r24
   .def wh = r25
