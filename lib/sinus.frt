@@ -1,4 +1,5 @@
 \ Sinus table                        21feb88 ck
+\ full circle is 360 (degrees)
 decimal
 create sintab
    0 ,  349 ,  698 , 1045 , 1392 , 1736 , 2079 , 2419 ,
@@ -9,7 +10,7 @@ create sintab
 9848 , 9903 , 9945 , 9976 , 9994 , 10000 ,
 
 \ interpolate sintab
-: sin0-90 ( n1 - n2 )
+: sin0-90 ( n1 -- n2 )
     dup dup 2/ 2* =
     if
         2/ sintab + i@
@@ -18,21 +19,20 @@ create sintab
     then 
 ;
 
-: sin0-360 ( n 1 -- n 2 )
+: sin0-360 ( n1 -- n2 )
     dup 180 > if 180 - -1 else 0 then
     swap dup 90 > if negate 180 + then
     sin0-90
     swap 
     if negate then ;
 
-\ Sinus, Cosinus                     21feb88 ck
-: sin ( n l - - n 2 )
+: sin ( n1 -- n2 )
     dup 0<    if begin 360 + dup   0>  until then
     dup 360 > if begin 360 - dup 360 < until then
     sin0-360 
 ;
 
-: cos ( n 1 - n 2 )
+: cos ( n1 -- n2 )
     90 + sin 
 ;
 
