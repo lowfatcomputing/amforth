@@ -3,6 +3,7 @@
 
 .include "dict_compiler.inc"
 
+
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
@@ -19,9 +20,13 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
+.include "words/rx0.asm"
+.include "words/tx0.asm"
+.include "words/usart.asm"
+
 .include "words/applturnkey.asm"
 .include "words/int-store.asm"
 .include "words/int-fetch.asm"
 
 .include "words/fill.asm"
-
+.include "words/spirw.asm"

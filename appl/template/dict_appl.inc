@@ -17,6 +17,10 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
+.include "words/rx0.asm"
+.include "words/tx0.asm"
+.include "words/usart.asm"
+
 .include "words/applturnkey.asm"
 .include "words/int-store.asm"
 

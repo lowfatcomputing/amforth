@@ -4,7 +4,7 @@
 
 .set pc_ = pc
 .org URXCaddr
-  rjmp usart0_rx_isr
+  jmp_ usart0_rx_isr
 .org pc_
 
 ; sizes have to be powers of 2!
