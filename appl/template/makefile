@@ -20,8 +20,10 @@ EFUSE=0xnn
 
 # some programs
 AVRDUDE=avrdude
-AVRA=avra
-INCLUDE=-I ~/lib/avra -I $(AMFORTH)
+AVRA=avra -I ~/lib/avra
+INCLUDE=-I $(AMFORTH)
+
+AVRASM=wine ~/lib/AvrAssembler2/avrasm2.exe -I ~/lib/AvrAssembler2/AppNotes
 
 # some settings
 USB=-c avr911  -P /dev/ttyUSB3

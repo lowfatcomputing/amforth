@@ -3,19 +3,21 @@
 MCU=atmega169
 
 AMFORTH=../../core
-AVRDUDE=avrdude
-AVRA=avra
-INCLUDE=-I ~/lib/avra -I $(AMFORTH)
 
-AVRASM=wine ~/Projekte/avr/AvrAssembler2/avrasm2.exe -I ~/Projekte/avr/AvrAssembler2/Appnotes
+# some programs
+AVRDUDE=avrdude
+AVRA=avra -I ~/lib/avra
+INCLUDE=-I $(AMFORTH)
+
+AVRASM=wine ~/lib/AvrAssembler2/avrasm2.exe -I ~/lib/AvrAssembler2/AppNotes
 
 USB=-c avr911  -P /dev/ttyUSB1
 PP=-c stk200  -P /dev/parport0
 JTAG=-c jtag2 -P /dev/ttyUSB2
-
+ISP=-c avrisp2 -P usb
 
 bf: bf.hex
-	$(AVRDUDE) $(USB) -p $(MCU) -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
+	$(AVRDUDE) $(ISP) -p $(MCU) -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
 
 bf.hex: bf.asm $(AMFORTH)/*.asm $(AMFORTH)/*.inc $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
 #	$(AVRA) $(INCLUDE) --listmac -l bf.lst -m bf.map bf.asm
