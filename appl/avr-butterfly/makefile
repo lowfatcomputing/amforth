@@ -6,10 +6,11 @@ AMFORTH=../../core
 
 # some programs
 AVRDUDE=avrdude
-AVRA=avra -I ~/lib/avra
-INCLUDE=-I $(AMFORTH)
 
+AVRA=avra -I ~/lib/avra
 AVRASM=wine ~/lib/AvrAssembler2/avrasm2.exe -I ~/lib/AvrAssembler2/AppNotes
+
+INCLUDE=-I $(AMFORTH)
 
 USB=-c avr911  -P /dev/ttyUSB1
 PP=-c stk200  -P /dev/parport0
