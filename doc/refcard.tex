@@ -1,5 +1,5 @@
 
-\documentclass[a4paper,9pt]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage{a4wide}
 \usepackage[latin1]{inputenc}
 \usepackage{url}
@@ -20,7 +20,7 @@
 \pagestyle{empty}
 
 \begin{footnotesize}
-\section*{\Large amforth 2.7 Reference Card}
+\section*{\Large amforth 2.8 Reference Card}
 \begin{multicols}{3}
 
 \subsection*{Arithmetics}
@@ -331,19 +331,15 @@
 \subsection*{MCU}
 \begin{tabular}{\colsa}
 % XT_NOJTAG
-\verb|-jtag|  & \verb/( n1 -- n2 )/\\
+\verb|-jtag|  & \verb/( -- )/\\
 % XT_NOWDT
-\verb|-wdt|  & \verb/( n1 -- n2 )/\\
+\verb|-wdt|  & \verb/( -- )/\\
 % XT_SLEEP
 \verb|sleep|  & \verb/( -- )/\\
-% XT_WDR
-\verb|wdr|  & \verb/( -- )/\\
-\end{tabular}
-
-\subsection*{MCU }
-\begin{tabular}{\colsa}
 % XT_SPIRW
 \verb|spirw|  & \verb/( txbyte -- rxbyte)/\\
+% XT_WDR
+\verb|wdr|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{Memory}
@@ -549,6 +545,8 @@
 \verb|.s|  & \verb/( -- )/\\
 % XT_FIND
 \verb|find|  & \verb/( addr -- [ addr 0 ] | [ xt [-1|1]] )/\\
+% XT_ICOMPARE
+\verb|icompare|  & \verb/( addr-ram addr-flash  --  f)/\\
 % XT_ICOUNT
 \verb|icount|  & \verb/( adr -- adr n )/\\
 % XT_ITYPE
@@ -647,12 +645,6 @@
 \verb|Udefer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_UDEFERSTORE
 \verb|Udefer!|  & \verb/( xt1 xt2 -- )/\\
-\end{tabular}
-
-\subsection*{unclassified}
-\begin{tabular}{\colsa}
-% XT_ICOMPARE
-\verb|icompare|  & \verb/; ( addr-ram addr-flash  --  f)/\\
 \end{tabular}
 
 \end{multicols}

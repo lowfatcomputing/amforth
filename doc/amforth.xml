@@ -29,7 +29,7 @@
             depend on any additional hard- or software. It places no
             restrictions on using external hardware.
         </para>
-        <para>This document covers version 2.7.</para>
+        <para>This document covers version 2.8.</para>
         <para>
             amforth implements a large subset of the Forth standard
             ANS94. Most of the CORE and CORE EXT words and a varying
@@ -109,12 +109,13 @@
         <sect1 id="src_overview">
             <title>Overview</title>
             <para>
-                amforth needs an assembler to generate the hex files for
-                Flash and EEPROM. That does not mean that every word is
+                amforth is written using the standard Atmel AVR 8 bit 
+		assembly language.
+		 That does not mean that every word is
                 actually written in assembly language however. Most of
                 the words are written in forth itself, but are
-                precompiled into assembly syntax. This solves the
-                chicken-and-egg problem too: how to compile the compiler
+                precompiled into the assembler syntax. This solves the
+                chicken-and-egg problem: how to compile the compiler
                 words.
             </para>
             <para>
@@ -254,7 +255,7 @@
             <para>
                 amforth is a 16 bit Forth implementing the indirect
                 threading model. The flash memory contains the whole
-                dictionary. Some EEPROM cells are used to hold initial
+                dictionary. A few EEPROM cells are used to hold initial
                 values and the dictionary pointers. The RAM contains
                 buffers, variables and the stacks.
             </para>
@@ -264,9 +265,9 @@
             </para>
             <para>
                 amforth uses most of the CPU registers to hold vital
-                data structures: The data stack pointer, the instruction
-                pointer, the user pointer, and the Top-Of-Stack cell.
-                The hardware stack is used as the return stack. Some
+                data: The data stack pointer, the instruction pointer,
+                the user pointer, and the Top-Of-Stack cell. The
+                hardware stack is used as the return stack. Some
                 registers are used for temporary data in primitives.
             </para>
         </sect1>
@@ -286,11 +287,11 @@
                         <tbody>
                             <row>
                                 <entry>W: Working Register</entry>
-                                <entry>R26:R27</entry>
+                                <entry>R24:R25</entry>
                             </row>
                             <row>
                                 <entry>IP: Instruction Pointer</entry>
-                                <entry>XH:XL</entry>
+                                <entry>XH:XL (R27:R26)</entry>
                             </row>
                             <row>
                                 <entry>RSP: Return Stack Pointer</entry>
@@ -300,7 +301,7 @@
                                 <entry>
                                     PSP: Parameter Stack Pointer
                                 </entry>
-                                <entry>YH:YL</entry>
+                                <entry>YH:YL (R29:R28)</entry>
                             </row>
                             <row>
                                 <entry>UP: User Pointer</entry>
@@ -308,11 +309,11 @@
                             </row>
                             <row>
                                 <entry>TOS: Top Of Stack</entry>
-                                <entry>R6:R7</entry>
+                                <entry>R22:R23</entry>
                             </row>
                             <row>
                                 <entry>X: temporary register</entry>
-                                <entry>ZH:ZL</entry>
+                                <entry>ZH:ZL (R31:R30)</entry>
                             </row>
                         </tbody>
                     </tgroup>
@@ -325,10 +326,9 @@
                 words. These registers must never be changed.
             </para>
             <para>
-                The registers from R8 to R15 are currently unused. The
-                registers R16 to R25 used as temporary registers and can
-                be used freely within one module. They are overwritten
-                by the primitives.
+                The registers from R6 to R13 are currently unused. The
+                registers R14 to R21 are used as temporary registers and
+                can be used freely within one module as temp0 to temp7.
             </para>
             <para>
                 The forth core uses the
@@ -350,23 +350,25 @@
                 <title>Inner Interpreter</title>
                 <para>
                     For the indirect threading model an inner
-                    interpreter will be needed. The interpreter core is
-                    responsible for the interrupt handling too.
+                    interpreter will be needed. The inner interpreter
+                    does the interrupt handling too.
                 </para>
                 <sect3 id="II_EXECUTE">
                     <title>EXECUTE</title>
                     <para>
                         This operation reads the cell the IP currently
-                        points to and uses the value as the destination
-                        of a jump.
+                        points to and uses the value read as the
+                        destination of a jump. This EXECUTE is not the
+                        forth word EXECUTE. The forth EXECUTE sets the
+                        IP from the data stack.
                     </para>
                 </sect3>
                 <sect3 id="II_NEXT">
                     <title>NEXT</title>
                     <para>
                         The NEXT routine is the core of the inner
-                        interpreter. It performs two flash accesses, the
-                        second one is accessed as EXECUTE.
+                        interpreter. It consists of 4 steps which are
+                        executed for every forth word.
                     </para>
                     <para>
                         The very first step in NEXT is to check whether
@@ -379,16 +381,25 @@
                         normal NEXT routine runs.
                     </para>
                     <para>
-                        <!-- 
-                            (IP) -> W fetch memory pointed by IP into "W" register
-                            ...W now holds address of the Code Field
-                            
-                            IP+cell -> IP advance IP, just like a program counter
-                            
-                            (W) -> X fetch memory pointed by W into "X" register
-                            ...X now holds address of the machine code
-                            
-                            JP (X) jump to the address in the X register -->
+                        The next step is to read the cell the IP points
+                        to and stores this value in the W register. For
+                        a COLON word W contains the address of the code
+                        field.
+                    </para>
+                    <para>
+                        The 3rd step is to increase the IP register by
+                        1.
+                    </para>
+                    <para>
+                        The 4th step is to read the cell that the W
+                        register points to. The value is stored in the
+                        scratch pad register X. The data in X is the
+                        address of the machine code to be executed in
+                        the last step.
+                    </para>
+                    <para>
+                        This last step finally jumps to the machine code
+                        pointed to by the X scratch pad register.
                     </para>
                 </sect3>
                 <sect3 id="II_NEST">
@@ -399,34 +410,32 @@
                         current word is done) to the return stack. It
                         then increments W by one flash cell, so that it
                         points to the body of the (colon) word, and sets
-                        IP to point to same location. Then it continues
+                        IP to point to that value. Then it continues
                         with NEXT, which begins executing the words in
-                        the body of the colon word.
+                        the body of the (parent) colon word.
                     </para>
                 </sect3>
                 <sect3 id="II_UNNEST">
                     <title>UNNEST</title>
                     <para>
-                        The code for UNNEST is the word
+                        The code for UNNEST is the forth word
                         <command>EXIT</command>
                         in the dictionary. It reads the IP from the
                         return stack and jumps to NEXT. The return stack
-                        pointer is incremented by 2.
+                        pointer is incremented by 2 (1 flash cell).
                     </para>
                 </sect3>
                 <sect3 id="II_DODOES">
                     <title>DO_DOES</title>
                     <para>
-                        This code is the runtime that is used by the
-                        code compiled by the forth word
+                        This code is the runtime part of the forth word
                         <command>DOES</command>
-                        . It it closely tied to the action performed by
-                        the code compiled by DOES. That code pushed the
-                        current address in the data field to the
-                        returnstack and jumps to DO_DOES. DO_DOES gets
-                        that address back, saves the current IP and sets
-                        the forth IP to the address it got from the
-                        stack. Finally it continues with NEXT.
+                        . It pushes the current address of the MCU IP
+                        register onto the returnstack and jumps to
+                        DO_DOES. DO_DOES gets that address back, saves
+                        the current IP and sets the forth IP to the
+                        address it got from the stack. Finally it
+                        continues with NEXT.
                     </para>
                 </sect3>
             </sect2>
@@ -439,7 +448,7 @@
                         as its data pointer. The Top-Of-Stack element
                         (TOS) is in a register pair. Compared to a
                         straight forward implementation this approach
-                        saves both code space and gives higher execution
+                        saves code space and gives higher execution
                         speed (approx 10-20 %). Saving even more stack
                         elements does not really provide a greater
                         benefit (much more code and only little speed
@@ -1027,6 +1036,17 @@
                     .
                 </para>
             </sect2>
+	    
+	    <sect2 id="AMFORTH_ASSEMBLER">
+	       <title>Assembler</title>
+	       <para>Lubos Pekny has written an assembler for amforth. To support it, amforth
+	       provides the two words <code>CODE</code> and <code>END-CODE</code>. The first
+	       creates a dictionary entry and sets the code field to the data filed address. The
+	       interpreter will thus jump directly into the data field assuming some machine
+	       code there. The word <code>END-CODE</code> places a <code>JUMP NEXT</code> into
+	       the data field. This finishes the machine instruction execution and jumps back
+	       to the forth interpreter.</para>
+	    </sect2>
             <sect2 id="AMFORTH_MEMORY">
                 <title>Memory</title>
                 <para>
@@ -1360,8 +1380,8 @@
                     . The hardware (i2c-) device address is stored in
                     the value
                     <command>twi.ee-addr</command>
-                    . Currently EEPROM devices with 2byte addresses
-                    are supported.
+                    . Currently EEPROM devices with 2byte addresses are
+                    supported.
                 </para>
                 <para>
                     Byte level access is done with the words
