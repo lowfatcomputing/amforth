@@ -1,6 +1,6 @@
-; ( -- c) Character IO
+; ( -- f ) Character IO
 ; R( -- )
-; fetch emit? vector and execute it
+; fetch emit? vector and execute it. should check and return the ready-to-send condition
 VE_EMITQ:
     .db $05, "emit?"
     .dw VE_HEAD

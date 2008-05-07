@@ -1,6 +1,6 @@
 ; ( -- f) Character IO
 ; R( -- )
-; fetch key? vector and execute it. 
+; fetch key? vector and execute it. should turn on key sender, if it is disabled/stopped
 VE_KEYQ:
     .db $04, "key?",0
     .dw VE_HEAD

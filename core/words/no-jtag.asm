@@ -1,4 +1,4 @@
-; ( n1 -- n2 ) MCU
+; ( -- ) MCU
 ; R( -- )
 ; disable jtag at runtime
 VE_NOJTAG:

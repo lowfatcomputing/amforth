@@ -1,4 +1,4 @@
-; ( txbyte -- rxbyte) MCU 
+; ( txbyte -- rxbyte) MCU
 ; R( -- )
 ; SPI exchange of 1 byte
 VE_SPIRW:

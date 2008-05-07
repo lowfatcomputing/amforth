@@ -1,6 +1,6 @@
-; ( -- f) Character IO
+; ( -- ) Character IO
 ; R( -- )
-; fetch /key vector and execute it
+; fetch /key vector and execute it, should turn off the sender of key events
 VE_SLASHKEY:
     .db $04, "/key",0
     .dw VE_HEAD

@@ -1,4 +1,4 @@
-; ( addr-ram addr-flash  --  f)
+; ( addr-ram addr-flash  --  f) Tools
 ; R( -- )
 ; compares counted string in RAM with counted string in flash
 VE_ICOMPARE:

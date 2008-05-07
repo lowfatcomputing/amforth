@@ -1,6 +1,6 @@
-; ( -- eaddr) Character IO
+; ( c -- ) Character IO
 ; R( -- )
-; fetch the emit vector and execute it
+; fetch the emit vector and execute it. should emit a character from TOS
 VE_EMIT:
     .db $04, "emit",0
     .dw VE_HEAD

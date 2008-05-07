@@ -1,4 +1,4 @@
-; ( n1 -- n2 ) MCU
+; ( -- ) MCU
 ; R( -- )
 ; disable watch dog timer at runtime
 VE_NOWDT:
