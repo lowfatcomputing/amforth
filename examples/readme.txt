@@ -7,3 +7,5 @@ adc-pwm-demo.frt: control a servo via PWM using a poti on the adc
 fib.frt: simple benchmark. calculate a fibonacci number using
     different algorithm.
 
+sieve.frt: not-so simple benchmark modelled after the sieve code
+    of Marcel Hendrix. Uses single bits to store the is-prim flag.
