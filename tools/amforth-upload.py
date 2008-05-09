@@ -29,6 +29,7 @@ import sys
 import getopt
 import os
 import re
+import time
 
 def merge(seq):
     merged = []
@@ -41,7 +42,7 @@ def merge(seq):
 def search_and_open_file(filename):
     directorylist=["."]
     if os.environ.has_key("AMFORTH_LIB"):
-	directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
+        directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
 	if debug:
 	    print >>sys.stderr, "Directorylist  "+str(directorylist)
 	
@@ -51,7 +52,7 @@ def search_and_open_file(filename):
 	try:
 	    filehandle = file(filename,"r")
 	    if debug:
-		print >>sys.stderr, "Found! in "+directory	    
+		   print >>sys.stderr, "Found! in "+directory	    
 	    if verbose:
         	print >>sys.stderr, "\nincluding file: '"+filename+"'"
 	    return filehandle
@@ -229,4 +230,8 @@ def main(argv):
 			in_file.close()
 
 if __name__ == "__main__":
-	main(sys.argv[1:])
+	starttime = time.time()
+	main(sys.argv[1:])	
+	endtime = time.time()
+	runtime = endtime - starttime
+	print "\ntime: ", runtime, " seconds"
