@@ -32,7 +32,7 @@
     clr temp7
     lsl zl
     rol zh
-    rol temp5
+    rol temp7
     out_ RAMPZ, temp7
 .endmacro
 
