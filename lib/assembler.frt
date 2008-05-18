@@ -1,6 +1,12 @@
-\ AvrAsm - assembler Atmega chips
-\ Library for amforth 2.6
-\ V.1.0, 07.02.2008, Lubos Pekny, www.forth.cz
+\ AvrAsm - assembler Atmega chips, Lubos Pekny, www.forth.cz
+\ Library for amforth 2.7
+
+\ V.1.1, 15.05.2008, tested on atmega32, amforth 2.7
+\ - change reg tosl,tosh in Test AvrAsm (loadtos, savetos)
+\ - change <label to <labelr
+\ - vector of labels, 20 bytes in RAM, example
+
+\ V.1.0, 07.02.2008, tested on atmega168, amforth 2.6
 \ Size 3554B (opcode: 2980B, labels: 158B, constants Rx: 416B)
 
 hex
@@ -118,7 +124,7 @@ hex
  
 : ldd,    8000 D200  Rd,Rr+q, ; ( Rd Rr q -- ) \ Rr={Z+,Y+}, 2 Y+ 3F ldd,
 : std,    rot rot
-          8200 D200  Rd,Rr+q, ; ( Rd q Rr -- ) \ Rd={Z+,Y+}, Y+ 3F 2 ldd,
+          8200 D200  Rd,Rr+q, ; ( Rd q Rr -- ) \ Rd={Z+,Y+}, Y+ 3F 2 std,
 
 : ld,     9000 FE00  Rd,Rr, ;  ( Rd Rr -- ) \ Rr={Z+,-Z,Y+,-Y,X+,-X,X,Y,Z}
 : lds,    swap
@@ -246,8 +252,8 @@ hex
     swap i! ;                  \ overwrite branch
 
 
-  \ Label for jump forward,    adr> rjmp, ......... <label
-: <label    ( adr -- )
+  \ Label for jump forward,    adr> rjmp, ......... <labelr
+: <labelr   ( adr -- )
     dup 1+ here swap -
     0FFF and                   \ -- adr k12
     over i@ or                 \ -- adr opcode
@@ -301,11 +307,20 @@ hex
 02  constant YH:YL
 03  constant ZH:ZL
 
+variable (lbl) 20 allot  \ RAM for 10 labels
+
+  \ store addr to vector of labels
+: >lbl ( addr c -- )  \ index c=0..9
+    2* (lbl) + ! ;
+
+  \ read addr from vector of labels
+: <lbl ( c -- addr )  \ index c=0..9
+    2* (lbl) + @ ;
 
 \ ----- Test AvrAsm -----
 
-: loadtos, 6 Y+ ld, 7 Y+ ld, ; \ define macro
-: savetos, -Y 7 st, -Y 6 st, ; 
+: loadtos, 16 Y+ ld, 17 Y+ ld, ; \ define macro
+: savetos, -Y 17 st, -Y 16 st, ; \ tosl=r22, tosh=r23
 
 code dup_  savetos, end-code   \ insert asm code
 code drop_ loadtos, end-code
@@ -316,27 +331,43 @@ code ++_      \ ( x1 x2 x3 -- x4 )
  label>
   R16 Y+ ld,
   R17 Y+ ld,
-  R6 R16 add,
-  R7 R17 adc,
+  R22 R16 add,
+  R23 R17 adc,
   R8 1 subi,
  <radr brne,
   R8 pop,
 end-code
 
-code demojmp \ demo jump + dup
- adr> 0 jmp,       \ -+
-  label>           \  |  +>-+
-        clc,       \  |  |  |
-   adr> rjmp,      \  |  |  +-+
-        nop,       \  |  |    |
-   <label          \  |  |  +<+
-   adr> brcc,      \  |  |  +-+
-        nop,       \  |  |    |
- rot <labell       \  +> |    |
-  swap <radr rjmp, \   '-+    |
-   <labelb         \        <-+
-        savetos,
-end-code
+\ code demojmp \ demo jump + dup
+\  adr> 0 jmp,       \ -+
+\   label>           \  |  +>-+
+\         clc,       \  |  |  |
+\    adr> rjmp,      \  |  |  +-+
+\         nop,       \  |  |    |
+\    <labelr         \  |  |  +<+
+\    adr> brcc,      \  |  |  +-+
+\         nop,       \  |  |    |
+\  rot <labell       \  +> |    |
+\   swap <radr rjmp, \   '-+    |
+\    <labelb         \        <-+
+\         savetos,
+\ end-code
+
+\ code demojmp \ version with vector
+\  adr> 0 jmp,   0 >lbl \ addr->lbl[0]
+\   label>       1 >lbl
+\         clc,
+\    adr> rjmp,  2 >lbl
+\         nop,
+\    2 <lbl <labelr
+\    adr> brcc,  3 >lbl
+\         nop,
+\  0 <lbl <labell       \ lbl[0]->tos
+\   1 <lbl <radr rjmp,
+\    3 <lbl <labelb
+\         savetos,
+\ end-code
+
 
 2 3 4 ++_ .        \ 9
 5 6 drop_ dup_ . . \ 5 5
