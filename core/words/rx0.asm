@@ -40,8 +40,8 @@ usart0_rx_isr:
   adc zh, zeroh
   in_ xh, UCSR0A ; read status 
   andi xh, (1<<FE0) | (1<<DOR0) | (1<<PE0)
-  brne usart0_rx_isr_error
   in_ xh, UDR0
+  brne usart0_rx_isr_error
   st Z, xh
   sts usart0_rx_in, xl
 
