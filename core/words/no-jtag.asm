@@ -9,9 +9,9 @@ XT_NOJTAG:
     .dw PFA_NOJTAG
 PFA_NOJTAG:
     cli
-    in_ temp0, MCUCR
+    in_ temp0, MCUCSR
     ori temp0, ( 1<<JTD)
-    out_ MCUCR, temp0
-    out_ MCUCR, temp0     ; needs to be done twice within 4 cycles
+    out_ MCUCSR, temp0
+    out_ MCUCSR, temp0     ; needs to be done twice within 4 cycles
     sei
     jmp_ DO_NEXT
