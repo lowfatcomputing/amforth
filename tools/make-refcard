@@ -117,7 +117,7 @@ sub latex_head {
 \\usepackage[latin1]{inputenc}
 \\usepackage{url}
 \\usepackage{multicol}
-\\usepackage{supertabular}
+%\\usepackage{supertabular}
 
 \\setlength{\\parindent}{0cm}
 \\setlength{\\oddsidemargin}{0cm}
