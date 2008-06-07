@@ -342,7 +342,7 @@
             <sect2 id="THREADMODEL">
                 <title>Threading Model</title>
                 <para>
-                    amforth uses the classic indirect threaded variant
+                    amforth implements the classic indirect threaded variant
                     of forth.
                 </para>
             </sect2>
