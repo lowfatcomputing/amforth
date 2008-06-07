@@ -1,6 +1,6 @@
 ; ( c-addr u c -- ) Memory
 ; R( -- )
-; Fill memory beginning at a-addr with character u
+; Fill u bytes memory beginning at a-addr with character c
 VE_FILL:
     .db $04, "fill",0
     .dw VE_HEAD
