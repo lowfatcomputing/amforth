@@ -10,7 +10,7 @@ my %STACK;
 my %DSTACK;
 my %RSTACK;
 
-my $htmldir="../doc/html/words";
+my $htmldir="../doc/website/htdocs/words";
 my $asmdir="../core/words";
 
 sub readASM {
@@ -145,28 +145,105 @@ sub format_xt {
 	$voc = $VOC{$xt};
 	$voc =~ s/>/&gt;/g;
 	$voc =~ s/</&lt;/g;
-	$voc =  "&nbsp;" x $indent . " <a href=\"$xt.php\">$voc</a> ";
+	$voc =  "&nbsp;" x $indent . " <a href=\"$xt.html\">$voc</a> ";
     }
     return $voc;
 }
 
 sub html_head {
     my ($title) = @_;
-    return "<html><title>amforth: $title</title>
-    <link rel=\"stylesheet\" type=\"text/css\" href=\"../amforth.css\">
-</head>\n<body><?php include \"../menu.inc\"?>";
+    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
+   \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
+<head>
+<title>amforth: Words $title</title>
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>
+
+<!-- (en) Add your meta data here -->
+<!-- (de) Fuegen Sie hier ihre Meta-Daten ein -->
+<link href=\"/css/amforth.css\" rel=\"stylesheet\" type=\"text/css\"/>
+<!--[if lte IE 7]>
+<link href=\"/css/patches/patch_3col_fixed_seo.css\" rel=\"stylesheet\" type=\"text/css\" />
+<![endif]-->
+
+</head>
+<body>
+
+<div id=\"page_margins\">
+	<div id=\"page\">
+		<div id=\"header\">
+			<h1>amforth word $title</h1>
+		</div>
+		<!-- begin: main navigation #nav -->
+		<div id=\"nav\"> <a id=\"navigation\" name=\"navigation\"></a>
+			<!-- skiplink anchor: navigation -->
+			<div id=\"nav_main\">
+				<ul>
+					<li><a href=\"/\">Home</a></li>
+					<li><a href=\"/faq.html\">FAQ</a></li>
+					<li><a href=\"/howto.html\">Howto</a></li>
+					<li><a href=\"/links.html\">Links</a></li>
+					<li id=\"current\"><a href=\"/words/index.html\">Words</a></li>
+					<li><a href=\"/samples.html\">Samples</a></li>
+					<li><a href=\"/butterfly.html\">Butterfly</a></li>
+
+				</ul>
+			</div>
+		</div>
+		<!-- end: main navigation -->
+		<!-- begin: main content area #main -->
+		<div id=\"main\">
+			<!-- begin: #col1 static column -->
+			<div id=\"col1\">
+				<div id=\"col1_content\" class=\"clearfix\">
+				</div>
+				<div id=\"ie_clearing\">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+			</div>
+			<!-- end: #col1 -->
+
+			<!-- begin: #col2 static column -->
+			<div id=\"col2\">
+				<div id=\"col2_content\" class=\"clearfix\">
+				    <p></p>
+				</div>
+				<div id=\"ie_clearing\">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+			</div>
+			<!-- end: #col2 -->
+
+			<!-- begin: #col1 - first float column -->
+			<div id=\"col3\">
+				<div id=\"col3_content\" class=\"clearfix\"> <a id=\"content\" name=\"content\"></a>
+					<!-- skiplink anchor: Content -->
+
+    ";
 }
 
 sub html_foot {
-    return "<hr/>
+    return "
+
+				<div id=\"ie_clearing\">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+				</div>
+			</div>
+			<!-- end: #col3 -->
+		</div>
+		<!-- end: #main -->
+		<!-- begin: #footer -->
+		<div id=\"footer\">
  <p>Hosted by <a href=\"http://sourceforge.net\"> <IMG
                 src=\"http://sourceforge.net/sflogo.php?group_id=29376\"
                 width=\"88\" height=\"31\" border=\"0\" alt=\"SourceForge
-                Logo\"></a></p>
-
-<p class=notebox>
-<a href=\"mailto:amforth-devel\@lists.sourceforge.net\">amforth-devel\@lists.sourceforge.net</a></p>
-</body>\n</html>\n";
+                Logo\"></a><a href=\"mailto:amforth-devel\@lists.sourceforge.net\">amforth-devel\@lists.sourceforge.net</a></p>
+<br />
+Layout based on <a href=\"http://www.yaml.de/\">YAML</a></div>
+		<!-- end: #footer -->
+	</div>
+</div>
+</body>
+</html>
+    "
 }
 
 
@@ -185,7 +262,7 @@ sub printHTML {
 	my $ASM = $ASM{$lbl};
 	my $shortlbl = substr($lbl, 3);
 	#print "$lbl $voc $xt $shortlbl";
-	open(HTML, ">$htmldir/$lbl.php");
+	open(HTML, ">$htmldir/$lbl.html");
 	print HTML html_head($voc);
 	print HTML "<h1>$voc</h1>\n";
         print HTML "<p>$DESCRIPTION{$lbl}</p>\n";
@@ -308,11 +385,11 @@ sub printHTML {
 	# print "\n";
     }
 
-    open(INDEX, ">$htmldir/index.php");
+    open(INDEX, ">$htmldir/index.html");
     print INDEX html_head("Words");
 
     print INDEX "<h1>Colon words</h1>";
-    open(HTML, ">$htmldir/colons.php");
+    open(HTML, ">$htmldir/colons.html");
     print HTML html_head("Colon Words");
     foreach my $variable (sort @COLONS) {
 	print HTML format_xt($variable)."\n";
@@ -322,7 +399,7 @@ sub printHTML {
     close(HTML);
 
     print INDEX "<h1>Variables or Constants</h1>";
-    open(HTML, ">$htmldir/variables.php");
+    open(HTML, ">$htmldir/variables.html");
     print HTML html_head("Variables");
     foreach my $variable (sort @VARIABLES) {
 	print HTML format_xt($variable)."\n";
@@ -330,7 +407,7 @@ sub printHTML {
     }
 
     print INDEX "<h1>Values</h1>";
-    open(HTML, ">$htmldir/values.php");
+    open(HTML, ">$htmldir/values.html");
     print HTML html_head("Values");
     foreach my $value (sort @VALUES) {
 	print HTML format_xt($value)."\n";
@@ -341,7 +418,7 @@ sub printHTML {
     close(HTML);
 
     print INDEX "<h1>User Variables</h1>";
-    open(HTML, ">$htmldir/uservariables.php");
+    open(HTML, ">$htmldir/uservariables.html");
     print HTML html_head("User Variables");
     foreach my $variable (sort @USERVARS) {
 	print HTML format_xt($variable)."\n";
@@ -351,7 +428,7 @@ sub printHTML {
     close(HTML);
 
     print INDEX "<h1>Defered Words</h1>";
-    open(HTML, ">$htmldir/defer.php");
+    open(HTML, ">$htmldir/defer.html");
     print HTML html_head("Defered Words");
     foreach my $variable (sort @DEFERS) {
 	print HTML format_xt($variable)."\n";
@@ -361,7 +438,7 @@ sub printHTML {
     close(HTML);
 
     print INDEX "<h1>Primitivs</h1>";
-    open(HTML, ">$htmldir/primitives.php");
+    open(HTML, ">$htmldir/primitives.html");
     print HTML html_head("Primitives");
     foreach my $variable (sort @PRIMITIVES) {
 	print HTML format_xt($variable)."\n";
