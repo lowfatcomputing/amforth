@@ -57,11 +57,6 @@
             assembly language and forth itself. It does not have a
             direct relationship to any other forth system.
         </para>
-        <para>
-            The first lines of code were written with the AVR Studio and
-            its simulator. Soon the switch to real hardware (an
-            evaluation board) and to Linux based development was done.
-        </para>
     </preface>
     <chapter id="FIRST_STEPS">
         <title>First Steps</title>
@@ -81,7 +76,7 @@
                 <prompt>></prompt>
                 .
                 <screen>
-                    amforth 2.7 ATmega32
+                    amforth 2.8 ATmega32
                     <prompt>></prompt>
                     <command>words</command>
                     cell+ cells abort abort" [char] ...
@@ -95,9 +90,10 @@
         <sect1 id="HW_FUSES">
             <title>Fuses</title>
             <para>
-                Amforth uses the self programming features of the
-                ATmegas to extend the dictionary. It is ok to use the
-                factory default settings plus changes for the oscillator
+                Amforth uses the self programming feature of the
+                ATmega microcontrollers to work with the dictionary. 
+		It is ok to use the
+                factory default settings plus the changes for the oscillator
                 settings. It is recommended to use a higher CPU
                 frequency to meet the timing requirements of the serial
                 terminal.
@@ -125,17 +121,19 @@
             <para>
                 amforth consists of a great number of small source
                 files. Nearly all words are coded in their own source
-                file. A number of files are organized with include
+                files. A number of files are organized with include
                 files, named after the pattern
                 <filename>dict*.inc</filename>
-                . Currently 3 such files exists:
+                . Currently 4 such files exists:
                 <filename>dict_minimum</filename>
+                ,
+                <filename>dict_mcu</filename>
                 ,
                 <filename>dict_high.inc</filename>
                 and
                 <filename>dict_compiler.inc</filename>
                 . The order in which the files are included defines the
-                search order only. Most words can be moved from one
+                search order. Most words can be moved from one
                 include file to another to optimize the flash usage.
             </para>
             <para>
@@ -181,7 +179,7 @@
                 <para>
                     A useful forth system needs at least the file
                     <filename>dict_minimum.inc</filename>
-                    , which includes the serial IO and the forth
+                    , which includes the forth
                     interpreter words.
                 </para>
                 <para>
@@ -190,6 +188,14 @@
                     <filename>dict_compiler.inc</filename>
                     .
                 </para>
+		<para>
+		    Some words have there source files
+		    within the <filename>core/words</filename> directory but have 
+		    to be included via the <filename>dict_appl.inc</filename> file. These
+		    words define the hardware dependecies to access the
+		    amforth system. The serial line terminal can be used
+		    as an example.
+		</para>
                 <para>
                     There are a few words left out from the dictionary
                     lists. These words are either not always needed or
@@ -203,14 +209,14 @@
             <sect2>
                 <title>Device Settings</title>
                 <para>
-                    Every Atmega has it's own specific settings. They
+                    Every Atmega has its own specific settings. They
                     are based on the official include files provided by
-                    Atmel and define the most important settings for the
+                    Atmel and define the important settings for the
                     serial IO port (which port and which parameters),
                     the interrupt vectors and some macros.
                 </para>
                 <para>
-                    The last setting is a string with the device name in
+                    The last definition is a string with the device name in
                     clear text. This string is used within the word
                     <command>VER</command>
                     .
@@ -227,7 +233,7 @@
             </para>
             <para>
                 The structure is basically always the same. First the
-                file macros.asm has to be included. After that some
+                file <filename>macros.asm</filename> has to be included. After that some
                 definitions need to done: The size of the Forth buffers,
                 the CPU frequency, initial terminal settings etc. Then
                 the device specific part needs to be included and as the
@@ -312,7 +318,7 @@
                                 <entry>R22:R23</entry>
                             </row>
                             <row>
-                                <entry>X: temporary register</entry>
+                                <entry>X: temporary (scratch pad) register</entry>
                                 <entry>ZH:ZL (R31:R30)</entry>
                             </row>
                         </tbody>
@@ -333,7 +339,7 @@
             <para>
                 The forth core uses the
                 <code>T</code>
-                bit in the machine status register SREG for signaling an
+                bit in the machine status register SREG for signalling an
                 interrupt.
             </para>
         </sect1>
@@ -350,7 +356,7 @@
                 <title>Inner Interpreter</title>
                 <para>
                     For the indirect threading model an inner
-                    interpreter will be needed. The inner interpreter
+                    interpreter is needed. The inner interpreter
                     does the interrupt handling too.
                 </para>
                 <sect3 id="II_EXECUTE">
@@ -358,9 +364,9 @@
                     <para>
                         This operation reads the cell the IP currently
                         points to and uses the value read as the
-                        destination of a jump. This EXECUTE is not the
+                        destination of a branch. This EXECUTE is not the
                         forth word EXECUTE. The forth EXECUTE sets the
-                        IP from the data stack.
+                        IP from the data stack TOS element.
                     </para>
                 </sect3>
                 <sect3 id="II_NEXT">
@@ -371,8 +377,8 @@
                         executed for every forth word.
                     </para>
                     <para>
-                        The very first step in NEXT is to check whether
-                        an interrupt needs to handled. It is done by
+                        The first step in NEXT is to check whether
+                        an interrupt needs to be handled. It is done by
                         looking at the
                         <command>T</command>
                         flag in the machine status register. If it is
@@ -391,7 +397,7 @@
                         1.
                     </para>
                     <para>
-                        The 4th step is to read the cell that the W
+                        The 4th step is to read the content of the cell the W
                         register points to. The value is stored in the
                         scratch pad register X. The data in X is the
                         address of the machine code to be executed in
