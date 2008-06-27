@@ -18,7 +18,7 @@ JTAG=-c jtag2 -P /dev/ttyUSB2
 ISP=-c avrisp2 -P usb
 
 bf: bf.hex
-	$(AVRDUDE) $(ISP) -p $(MCU) -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
+	$(AVRDUDE) $(USB) -p $(MCU) -e -U flash:w:bf.hex:i -U eeprom:w:bf.eep.hex:i
 
 bf.hex: bf.asm $(AMFORTH)/*.asm $(AMFORTH)/*.inc $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
 #	$(AVRA) $(INCLUDE) --listmac -l bf.lst -m bf.map bf.asm

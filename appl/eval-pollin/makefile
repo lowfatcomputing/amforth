@@ -7,7 +7,7 @@ AVRA=avra -I ~/lib/avra
 MCU=atmega644
 INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
 
-AVRASM=wine ~/projekte/avr/AvrAssembler2/avrasm2.exe -I ~/projekte/avr/AvrAssembler2/Appnotes
+AVRASM=wine ~/lib/AvrAssembler2/avrasm2.exe -I ~/lib/avr/AvrAssembler2/Appnotes
 
 USB=-c avr911  -P /dev/ttyUSB1
 PP=-c stk200  -P /dev/parport0

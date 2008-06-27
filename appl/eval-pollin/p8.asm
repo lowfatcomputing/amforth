@@ -16,7 +16,7 @@
 ; size of return stack in bytes
 .equ rstacksize = 80
 
-.include "devices/atmega168.asm"
+.include "devices/atmega16.asm"
 
   .set heap = ramstart
   .set VE_HEAD = $0000
