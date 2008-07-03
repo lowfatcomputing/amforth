@@ -1,0 +1,52 @@
+<!-- make multiple targets with antelope -->
+<project name="pollins" basedir="." default="Help">
+    <import file="../avr-build.xml"/>
+
+    <target name="p32-16.hex" description="Hexfiles for p32-16">
+		<echo>Producing Hexfiles</echo>
+		<avra projectname="p32-16"/>
+    </target>
+
+    <target name="p32-16" depends="p32-16.hex" description="Atmega32 @ 16 MHz">
+	        <echo>Uploading Hexfiles for p32-16</echo>
+		<avrdude 
+		    type="${avr.programmer.stk200}"
+		    port="${avr.programmer.stk200port}"
+		    mcu="m32"
+		    flashfile="p16.hex"
+		    eepromfile="p16.eep.hex"
+		/>
+    </target>
+
+    <target name="p16-8.hex" description="Hexfiles for p16-8">
+		<echo>Producing Hexfiles</echo>
+		<avra projectname="p16-8"/>
+    </target>
+
+    <target name="p16-8" depends="p16-8.hex" description="Atmega16 @ 8 MHz">
+	        <echo>Uploading Hexfiles for p16-8</echo>
+		<avrdude 
+		    type="${avr.programmer.stk200}"
+		    port="${avr.programmer.stk200port}"
+		    mcu="m16"
+		    flashfile="p16-8.hex"
+		    eepromfile="p16-8.eep.hex"
+		/>
+    </target>
+
+    <target name="p644-16.hex" description="Hexfiles for p644-16">
+		<echo>Producing Hexfiles</echo>
+		<avrasm2 projectname="p644-16"/>
+    </target>
+
+    <target name="p644-16" depends="p644-16.hex" description="Atmega644 @ 16 MHz">
+	        <echo>Uploading Hexfiles for p644 - 16</echo>
+		<avrdude 
+		    type="${avr.programmer.stk200}"
+		    port="${avr.programmer.stk200port}"
+		    mcu="m644"
+		    flashfile="p644-16.hex"
+		    eepromfile="p644-16.eep.hex"
+		/>
+    </target>
+</project>

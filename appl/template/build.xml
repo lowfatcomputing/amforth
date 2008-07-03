@@ -1,0 +1,20 @@
+<!-- make multiple targets with antelope -->
+<project name="pollins" basedir="." default="Help">
+        <import file="../avr-build.xml"/>
+
+	<target name="template.hex" description="Hexfiles for Template">
+		<echo>Producing Hexfiles</echo>
+		<avra projectname="template"/>
+	</target>
+
+	<target name="template" depends="template.hex" description="Template @ Template mHz">
+	        <echo>Uploading Hexfiles for Template</echo>
+		<avrdude 
+		    type="${avr.programmer.dragon}"
+		    port="${avr.programmer.dragonport}"
+		    mcu="template"
+		    flashfile="template.hex"
+		    eepromfile="template.eep.hex"
+		/>
+	</target>
+</project>
