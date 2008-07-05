@@ -29,7 +29,7 @@
             depend on any additional hard- or software. It places no
             restrictions on using external hardware.
         </para>
-        <para>This document covers version 2.8.</para>
+        <para>This document covers version 2.9.</para>
         <para>
             amforth implements a large subset of the Forth standard
             ANS94. Most of the CORE and CORE EXT words and a varying
@@ -76,7 +76,7 @@
                 <prompt>></prompt>
                 .
                 <screen>
-                    amforth 2.8 ATmega32
+                    amforth 2.9 ATmega644
                     <prompt>></prompt>
                     <command>words</command>
                     cell+ cells abort abort" [char] ...
