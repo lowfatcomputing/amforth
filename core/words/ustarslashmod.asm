@@ -9,7 +9,7 @@ XT_USTARSLASHMOD:
     .dw DO_COLON
 PFA_USTARSLASHMOD:
     .dw XT_TO_R
-    .dw XT_MSTAR
+    .dw XT_UMSTAR
     .dw XT_R_FROM
     .dw XT_UMSLASHMOD
     .dw XT_EXIT
