@@ -60,7 +60,6 @@
 .include "words/slashmod.asm"
 .include "words/starslash.asm"
 .include "words/uslashmod.asm"
-.include "words/ustarslashmod.asm"
 
 .include "words/negate.asm"
 .include "words/slash.asm"
