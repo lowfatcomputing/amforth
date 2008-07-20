@@ -24,6 +24,6 @@
     drop drop 0 ;
 
 \ we do not evaluate strings
-: evaluate? ( *ix uaddr n -- *jx )
+: evaluate ( *ix uaddr n -- *jx )
     drop drop
 ;
