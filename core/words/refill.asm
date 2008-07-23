@@ -10,7 +10,7 @@ XT_REFILL:
 PFA_REFILL:
     .dw XT_TIB
     .dw XT_DOLITERAL
-    .dw 80
+    .dw TIBSIZE
     .dw XT_ACCEPT
     .dw XT_NUMBERTIB
     .dw XT_STORE

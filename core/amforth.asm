@@ -137,6 +137,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     .dw edp          ; EDP
     .dw XT_APPLTURNKEY  ; TURNKEY
     .dw (cpu_frequency/(baud_rate * 16))-1    ; BAUDRATE
+    .dw TIB          ; terminal input buffer
 ; 1st free address in EEPROM, see above
 edp:
 .cseg
