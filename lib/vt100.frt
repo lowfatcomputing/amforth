@@ -1,6 +1,6 @@
 \ ansi terminal codes
 
-\ needds ans94/ans.frt (u.r)
+\ needds misc.frt (u.r)
 
 decimal
 
@@ -12,16 +12,42 @@ decimal
 : .;n   [char] ; emit .n ;
 : ESC[  27 emit [char] [ emit ;
 
-\ facility word set: make them ram based deferred
-Rdefer at-xy
-Rdefer page
-
 \  position curser on terminal
-:noname ( u1 u2 -- ) 
+: at-xy ( u1 u2 -- ) 
   1+ swap 1+ swap ESC[ .n .;n [char] H emit
-; is at-xy
+;
 
 \ clear page
-:noname ( -- ) 
+: page ( -- ) 
   ESC[ ." 2J" 0 0 at-xy 
-; is page
+;
+
+\ more definitions based on gforth' ansi.fs
+
+: foreground ( n -- | set foreground color to n )
+  ESC[ 30 + .n [char] m emit 
+;
+
+: background ( n -- | set background color to n )
+  ESC[ 40 + .n [char] m emit 
+;
+
+: text_normal ( -- | set normal text display )
+  ESC[ [char] 0 emit [char] m emit 
+;
+
+: text_bold ( -- | set bold text )
+  ESC[ [char] 1 emit [char] m emit 
+;
+
+: text_underline ( -- | set underlined text )
+  ESC[ [char] 4 emit [char] m emit
+;
+
+: text_blink ( -- | set blinking text )
+  ESC[ [char] 5 emit [char] m emit
+;
+
+: text_reverse ( -- | set reverse video text )
+  ESC[ [char] 7 emit [char] m emit
+;
