@@ -6,7 +6,10 @@ VE_TIB:
     .dw VE_HEAD
     .set VE_HEAD = VE_TIB
 XT_TIB:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOVALUE
 PFA_TIB:
-    .dw heap
+    .set TIB = heap
     .set heap = heap + TIBSIZE
+    .dw $0C
+    .dw XT_EDEFERFETCH
+    .dw XT_EDEFERSTORE
