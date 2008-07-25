@@ -1,6 +1,6 @@
 ; ( -- eaddr) System Pointer
 ; R( -- )
-;  address of first unallocated RAM
+; Address of the EEPROM cell that holds the first unallocated RAM address
 VE_HEAP:
     .db $04, "heap",0
     .dw VE_HEAD
