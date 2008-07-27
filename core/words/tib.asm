@@ -11,5 +11,3 @@ PFA_TIB:
     .set TIB = heap
     .set heap = heap + TIBSIZE
     .dw $0C
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE

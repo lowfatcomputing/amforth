@@ -9,5 +9,3 @@ XT_HERE:
     .dw PFA_DOVALUE
 PFA_HERE:
     .dw 0
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE

@@ -9,5 +9,3 @@ XT_EDP:
     .dw PFA_DOVALUE
 PFA_EDP:
     .dw $06
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE

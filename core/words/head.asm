@@ -9,5 +9,3 @@ XT_HEAD:
     .dw PFA_DOVALUE
 PFA_HEAD:
     .dw $02
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE

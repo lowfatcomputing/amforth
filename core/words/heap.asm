@@ -9,5 +9,3 @@ XT_HEAP:
     .dw PFA_DOVALUE
 PFA_HEAP:
     .dw $04
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE

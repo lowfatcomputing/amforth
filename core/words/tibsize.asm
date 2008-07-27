@@ -9,5 +9,3 @@ XT_TIBSIZE:
     .dw PFA_DOVALUE
 PFA_TIBSIZE:
     .dw $0E
-    .dw XT_EDEFERFETCH
-    .dw XT_EDEFERSTORE
