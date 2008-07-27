@@ -2,15 +2,15 @@
 \ better then forget but has still limitations
 
 : marker ( c<chars> -- )
-    head e@
-    dp   e@
-    edp  e@
-    heap e@
+    head 
+    here 
+    edp  
+    heap 
     \ maybe save turnkey as well
     create , , , ,
     does>
-       dup i@ heap e!
-    1+ dup i@ edp  e!
-    1+ dup i@ dp   e!
-    1+     i@ head e!
+       dup i@ is heap
+    1+ dup i@ is edp 
+    1+ dup i@ is here
+    1+     i@ is head 
 ;
