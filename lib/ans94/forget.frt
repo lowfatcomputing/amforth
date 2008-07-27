@@ -5,8 +5,8 @@
     bl word find if
 	1-
 	dup 
-	i@ head e!
-	dp e!
+	  i@ is head
+	  is dp
     else
         drop
     then
