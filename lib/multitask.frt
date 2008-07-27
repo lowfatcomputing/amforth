@@ -60,11 +60,11 @@ decimal
 
 : task ( rs-size ds-size -- tid )
 	\ allocate stack memory
-	heap e@ >r   \ allocate user area
+	heap >r   \ allocate user area
 	24 allot     \ default user size
-	allot heap e@  ( -- rs-size sp0 )
+	allot heap     ( -- rs-size sp0 )
 	    r@ 6 + !   (  ... place sp0 in tcb )
-	allot heap e@  ( -- rp0 )
+	allot heap     ( -- rp0 )
 	    r@ 4 + !   (  ... place it in tcb )
 	r>
 	     0   over 10 + ! \ handler
