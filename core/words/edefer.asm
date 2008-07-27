@@ -13,7 +13,6 @@ PFA_EDEFER:
     .dw PFA_DODEFER
 
     .dw XT_EDP
-    .dw XT_EFETCH
     .dw XT_DUP
     .dw XT_COMMA
     .dw XT_COMPILE
@@ -21,6 +20,6 @@ PFA_EDEFER:
     .dw XT_COMPILE
     .dw XT_EDEFERSTORE
     .dw XT_CELLPLUS
-    .dw XT_EDP
-    .dw XT_ESTORE
+    .dw XT_DOTO
+    .dw PFA_EDP
     .dw XT_EXIT

@@ -33,12 +33,10 @@ PFA_WORD:
 
     ; move to heap
     .dw XT_HEAP
-    .dw XT_EFETCH      ; ( -- addr''' len''' heap)
     .dw XT_PLACE
     ; append a zero byte. find/icompare _does_ need it
     .dw XT_ZERO	       
     .dw XT_HEAP
-    .dw XT_EFETCH         
     .dw XT_DUP
     .dw XT_CFETCH
     .dw XT_PLUS        ; ( -- addr addr+len )
@@ -46,5 +44,4 @@ PFA_WORD:
     .dw XT_CSTORE
     ; leave result
     .dw XT_HEAP
-    .dw XT_EFETCH
     .dw XT_EXIT

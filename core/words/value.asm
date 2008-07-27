@@ -12,14 +12,13 @@ PFA_VALUE:
     .dw XT_COMPILE
     .dw PFA_DOVALUE
     .dw XT_EDP
-    .dw XT_EFETCH
     .dw XT_DUP
     .dw XT_COMMA
     .dw XT_DUP
     .dw XT_1PLUS
     .dw XT_1PLUS
-    .dw XT_EDP
-    .dw XT_ESTORE
+    .dw XT_DOTO
+    .dw PFA_EDP
     .dw XT_ESTORE
     .dw XT_EXIT
 

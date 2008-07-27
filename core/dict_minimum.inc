@@ -29,6 +29,7 @@
 .include "words/g_in.asm"
 .include "words/sharptib.asm"
 .include "words/tib.asm"
+.include "words/tibsize.asm"
 .include "words/pad.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"
@@ -36,7 +37,6 @@
 .include "words/keyq.asm"
 .include "words/slashkey.asm"
 
-.include "words/dp.asm"
 .include "words/head.asm"
 .include "words/here.asm"
 .include "words/allot.asm"

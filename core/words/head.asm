@@ -6,6 +6,8 @@ _VE_HEAD:
     .dw VE_HEAD
     .set VE_HEAD = _VE_HEAD
 XT_HEAD:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOVALUE
 PFA_HEAD:
     .dw $02
+    .dw XT_EDEFERFETCH
+    .dw XT_EDEFERSTORE

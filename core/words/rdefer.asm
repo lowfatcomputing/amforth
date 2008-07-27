@@ -13,7 +13,6 @@ PFA_RDEFER:
     .dw PFA_DODEFER
 
     .dw XT_HEAP
-    .dw XT_EFETCH
     .dw XT_COMMA
     .dw XT_DOLITERAL
     .dw 2

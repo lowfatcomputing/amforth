@@ -19,10 +19,9 @@ PFA_DOCREATE:
     .dw XT_SCOMMA
     ; make voc link
     .dw XT_HEAD       ; ( -- here head )
-    .dw XT_EFETCH
     .dw XT_COMMA      ; ( -- here)
-    .dw XT_HEAD       ; ( -- here head )
-    .dw XT_ESTORE     ; ( -- )
+    .dw XT_DOTO
+    .dw PFA_HEAD
     .dw XT_EXIT
 
 PFA_DOCREATE4:

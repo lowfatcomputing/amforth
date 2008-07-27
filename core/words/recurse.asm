@@ -9,7 +9,6 @@ XT_RECURSE:
     .dw DO_COLON
 PFA_RECURSE:
     .dw XT_HEAD
-    .dw XT_EFETCH
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL

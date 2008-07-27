@@ -6,8 +6,8 @@ VE_HERE:
     .dw VE_HEAD
     .set VE_HEAD = VE_HERE
 XT_HERE:
-    .dw DO_COLON
+    .dw PFA_DOVALUE
 PFA_HERE:
-    .dw XT_DP
-    .dw XT_EFETCH
-    .dw XT_EXIT
+    .dw 0
+    .dw XT_EDEFERFETCH
+    .dw XT_EDEFERSTORE

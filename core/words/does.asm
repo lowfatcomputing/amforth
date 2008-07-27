@@ -28,7 +28,6 @@ XT_DODOES:
 PFA_DODOES:
     .dw XT_R_FROM
     .dw XT_HEAD
-    .dw XT_EFETCH
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL

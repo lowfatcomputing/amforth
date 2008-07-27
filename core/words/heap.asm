@@ -6,6 +6,8 @@ VE_HEAP:
     .dw VE_HEAD
     .set VE_HEAD = VE_HEAP
 XT_HEAP:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOVALUE
 PFA_HEAP:
     .dw $04
+    .dw XT_EDEFERFETCH
+    .dw XT_EDEFERSTORE

@@ -9,5 +9,4 @@ XT_PAD:
     .dw DO_COLON
 PFA_PAD:
     .dw XT_HEAP
-    .dw XT_EFETCH
     .dw XT_EXIT

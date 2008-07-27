@@ -12,7 +12,6 @@ PFA_VARIABLE:
     .dw XT_COMPILE
     .dw PFA_DOVARIABLE
     .dw XT_HEAP
-    .dw XT_EFETCH
     .dw XT_COMMA
     .dw XT_DOLITERAL
     .dw 2

@@ -9,7 +9,6 @@ XT_WORDS:
     .dw DO_COLON
 PFA_WORDS:
     .dw XT_HEAD
-    .dw XT_EFETCH
 PFA_WORDS1:
     .dw XT_QDUP           ; ( -- addr addr ) 
     .dw XT_DOCONDBRANCH  ; ( -- addr ) is nfa = counted string

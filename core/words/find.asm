@@ -10,8 +10,7 @@ XT_FIND:
 PFA_FIND:
     .dw XT_DUP
     .dw XT_TO_R
-    .dw XT_HEAD
-    .dw XT_EFETCH  ; ( -- addr ve-start )
+    .dw XT_HEAD  ; ( -- addr ve-start )
 PFA_FIND1:
     ; ( addr-ram addr-flash )
     .dw XT_QDUP     
