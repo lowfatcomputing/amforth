@@ -9,8 +9,7 @@ XT_REFILL:
     .dw DO_COLON
 PFA_REFILL:
     .dw XT_TIB
-    .dw XT_DOLITERAL
-    .dw TIBSIZE
+    .dw XT_TIBSIZE
     .dw XT_ACCEPT
     .dw XT_NUMBERTIB
     .dw XT_STORE
