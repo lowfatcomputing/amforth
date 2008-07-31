@@ -60,7 +60,7 @@
 
 : Edefer ( "name" -- )
       create  
-      edp e@ 
+      edp  
       dup ,             \ save in dictionary
       ['] Edefer@ ,
       ['] Edefer! ,
