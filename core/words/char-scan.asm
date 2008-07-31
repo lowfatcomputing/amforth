@@ -1,6 +1,6 @@
 ; ( addr1 n1 c -- addr1 n2 ) String
 ; R( -- )
-; Scan string at addr1/n1 until first c, leaving addr1/n2, char at n2 is last non-c character
+; Scan string at addr1/n1 for the first c, leaving addr1/n2, char at n2 is first non-c character
 VE_CSCAN:
     .db $05, "cscan"
     .dw VE_HEAD
