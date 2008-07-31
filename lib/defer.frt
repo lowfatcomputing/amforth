@@ -64,7 +64,7 @@
       dup ,             \ save in dictionary
       ['] Edefer@ ,
       ['] Edefer! ,
-      dup 1+ 1+ edp e!  \ allot 1 cell in EEPROM
+      dup 1+ 1+ to edp  \ allot 1 cell in EEPROM
       ['] abort swap e! \ default action is abort
    does> ( i*x -- j*x ) 
       i@ e@ execute

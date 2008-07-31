@@ -9,8 +9,8 @@
     \ maybe save turnkey as well
     create , , , ,
     does>
-       dup i@ is heap
-    1+ dup i@ is edp 
-    1+ dup i@ is here
-    1+     i@ is head 
+       dup i@ to heap
+    1+ dup i@ to edp 
+    1+ dup i@ to here
+    1+     i@ to head 
 ;
