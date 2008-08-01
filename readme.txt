@@ -1,4 +1,4 @@
-Date: 1.7.2008
+Date: 1.8.2008
 
 Author: 
     Matthias Trute <mtrute@users.sourceforge.net> 

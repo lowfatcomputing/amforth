@@ -23,7 +23,7 @@ AVRDUDE=avrdude
 AVRA=avra -I ~/lib/avra
 INCLUDE=-I $(AMFORTH)
 
-AVRASM=wine ~/lib/AvrAssembler2/avrasm2.exe -I ~/lib/AvrAssembler2/AppNotes
+AVRASM=wine ~/lib/avr/avrasm2.exe -I ~/lib/avr/include
 
 # some settings
 USB=-c avr911  -P /dev/ttyUSB3
