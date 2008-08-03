@@ -1,6 +1,6 @@
-; ( -- eaddr) System Pointer
+; ( -- addr) System Pointer
 ; R( -- )
-; address of EEPROM cell that holds the first unallocated flash address (below NRWW)
+; address of the first unallocated flash address (below NRWW)
 _VE_HEAD:
     .db $04, "head",0
     .dw VE_HEAD
