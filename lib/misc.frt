@@ -4,23 +4,8 @@
     >r 1- over < swap r> 1+ < and 
 ;
 
-: tuck ( n1 n2 -- n2 n1 n2 )
-  swap over 
-;
-
-: nip ( n1 n2 -- n2 )
-  swap drop
-;
-
-: [undefined] bl word find swap drop 0= ; immediate
-
-
 : erase  ( addr n -- )
   0 fill
-;
-
-: blanks  ( addr n -- )
-  bl fill
 ;
 
 : .(  \ (s -- )
