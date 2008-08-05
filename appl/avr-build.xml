@@ -66,8 +66,9 @@
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
 		<arg line="-e"/>
-		<arg line="-U flash:w:@{flashfile}"/>
 		<arg line="-U eeprom:w:@{eepromfile}"/>
+		<arg line="-U flash:w:@{flashfile}"/>
+		<arg line="-v"/>
 	    </exec>
 	</sequential>
     </macrodef>
