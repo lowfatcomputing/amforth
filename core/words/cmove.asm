@@ -18,10 +18,6 @@ PFA_CMOVE:
     mov temp0, wh
     or temp0, wl
     brbs 1, PFA_CMOVE1
-    add zl, wl
-    adc zh, wh
-    add xl, wl
-    adc xh, wh
 PFA_CMOVE2:
     ld temp1, X+
     st Z+, temp1
