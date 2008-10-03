@@ -14,6 +14,23 @@ PFA_AFETCH:
     ld tosh, Z+
     rjmp DO_NEXT
 
+; ( n1 -- n2 ) Extended VM
+; R( -- )
+; Read memory pointed to by register A plus offset (Extended VM)
+VE_NAFETCH:
+    .db $03, "na@"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NAFETCH
+XT_NAFETCH:
+    .dw PFA_NAFETCH
+PFA_NAFETCH:
+    movw zl, al
+    add zl, tosl
+    adc zh, ah
+    ld tosl, Z+
+    ld tosh, Z+
+    rjmp DO_NEXT
+
 ; ( -- n ) Extended VM
 ; R( -- )
 ; Read memory pointed to by register A, increment A by 1 cell (Extended VM)
@@ -64,6 +81,25 @@ PFA_ASTORE:
     loadtos
     rjmp DO_NEXT
 
+; ( n offs -- ) Extended VM
+; R( -- )
+; Write memory pointed to by register A plus offset (Extended VM)
+VE_NASTORE:
+    .db $03, "na!"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NASTORE
+XT_NASTORE:
+    .dw PFA_NASTORE
+PFA_NASTORE:
+    movw zl, al
+    add zl, tosl
+    adc zh, tosh
+    loadtos
+    st Z+, tosl
+    st Z+, tosh
+    loadtos
+    rjmp DO_NEXT
+
 ; ( -- n2 ) Extended VM
 ; R( -- )
 ; Write memory pointed to by register A, increment A by 1 cell (Extended VM)
@@ -98,6 +134,8 @@ PFA_ASTOREMINUS:
     movw al, zl
     rjmp DO_NEXT
 
+
+
 ; ( n -- ) Extended VM
 ; R( -- )
 ; Write to A register (Extended VM)
@@ -128,4 +166,5 @@ PFA_A_FROM:
 
 ; for more information read
 ; http://www.complang.tuwien.ac.at/anton/euroforth/ef08/papers/pelc.pdf
-;
+;  adapted index based access from X/Y registers
+;    note: offset is byte address, not cell!
