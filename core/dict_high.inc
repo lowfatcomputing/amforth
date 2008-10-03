@@ -92,3 +92,5 @@
 
 .include "words/s_to_d.asm"
 .include "words/d-2slash.asm"
+
+.include "words/reg-a.asm"

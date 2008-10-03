@@ -4,7 +4,9 @@
   .def upl = r4
   .def uph = r5
 
-  
+  .def al  = r6
+  .def ah  = r7
+
   .def temp4 = r14
   .def temp5 = r15
 
@@ -12,7 +14,7 @@
   .def temp1 = r17
   .def temp2 = r18
   .def temp3 = r19
-  
+
   .def temp6 = r20
   .def temp7 = r21
 
