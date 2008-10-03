@@ -6,6 +6,8 @@
 
   .def al  = r6
   .def ah  = r7
+  .def bl  = r8
+  .def bh  = r9
 
   .def temp4 = r14
   .def temp5 = r15
