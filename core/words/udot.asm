@@ -1,6 +1,6 @@
-; ( n -- ) Numeric IO
-; R( -- )
-; unsigned numeric output
+; : u.        ( us -- )    0 ud. ;
+
+
 VE_UDOT:
     .db $02, "u.",0
     .dw VE_HEAD
@@ -9,10 +9,5 @@ XT_UDOT:
     .dw DO_COLON
 PFA_UDOT:
     .dw XT_ZERO
-    .dw XT_L_SHARP
-    .dw XT_SHARP_S
-    .dw XT_BL
-    .dw XT_HOLD
-    .dw XT_SHARP_G
-    .dw XT_TYPE
+    .dw XT_UDDOT
     .dw XT_EXIT

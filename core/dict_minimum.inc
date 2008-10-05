@@ -69,13 +69,20 @@
 .include "words/max.asm"
 ;;;;;;;;;;;;;;;;;;;;;;
 .include "words/hld.asm"
+
 .include "words/hold.asm"
 .include "words/l_sharp.asm" ; <#
 .include "words/sharp.asm"
 .include "words/sharp_s.asm"
 .include "words/sharp_g.asm" ; #>
 .include "words/sign.asm"
+.include "words/ddotr.asm"
+.include "words/dotr.asm"
+.include "words/ddot.asm"
 .include "words/dot.asm"
+.include "words/uddot.asm"
+.include "words/uddotr.asm"
+.include "words/udslashmod.asm"
 .include "words/digit.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sliteral.asm"
@@ -139,3 +146,6 @@
 .include "words/j.asm"
 
 .include "words/d_to_s.asm"
+.include "words/dabs.asm"
+.include "words/dnegate.asm"
+    
