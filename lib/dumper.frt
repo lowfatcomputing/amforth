@@ -1,14 +1,21 @@
+\ dump cells from addr upward for len.                mk03.10.2008
 
-\ dumper.frt
-\  all words have the notation ( addr len -- ). 
-\  addr and len are adjusted to meet the next
-\  nice block boundaries. Every dump is specific
-\  for it's memory type, please note the subtle
-\  differences.
+\ We want xdump ( addr len -- ) doing output like this: 
+\ xxx0 cccc cccc cccc cccc cccc cccc cccc cccc 
+\ xxx8 cccc cccc cccc cccc cccc cccc cccc cccc
+\ ...
+
+\ That is, we alway print 8 cells. And want to see them in segments of 8 cells,
+\ all starting at xxx0 or xxx8 addresses. 
+\ So we have to trimm addr and len first:
+\ Clear lower 3 bits of addr, then set lower 3 bits of len
+\ The rest shoud be obvious.
+
+hex
 
 \ helper word
 \ print a number in a field with 0 filled 
-: u0.r ( u w -- )
+: u.r ( u w -- )
       >r 0 \ see u.
       <# 
       r> 0 ?do # loop 
@@ -16,72 +23,35 @@
       type
 ;
 
-hex
+( item -- )
+: .item     4 u.r space ; 
 
-\ dump len cells of RAM addressable memory starting at or below
-\ addr upward. Align dump range to 8 cell blocks
-: dump ( addr len -- )
-    \ xxx0 cc cc cc cc cc cc cc cc 
-    \ xxx8 cc cc cc cc cc cc cc cc
-    \ ...
-    \ clear lower 3 bits of addr
-    swap fff8 and swap
-    \ set lower 3 bits of len
-    7 or 
-    0 ?do
-	( -- addr )
-	dup 4 u0.r space
-	8 0 do 
-	    dup @ 4 u0.r space
-	    cell+
-	loop
-	cr
-	8 ( -- we always have this many bytes )
-    +loop
-    drop
-;
+( addr -- )
+: i?     i@ .item ;
+: e?     e@ .item ;
+: ?       @ .item ;
 
-\ dump len cells of EEPROM from addr upward
-: edump ( addr len -- )
-    \ xxx0 cccc cccc cccc cccc cccc cccc cccc cccc 
-    \ xxx0 cccc cccc cccc cccc cccc cccc cccc cccc
-    \ ...
-    \ clear lower 3 bits of addr
-    swap fff8 and swap
-    \ set lower 3 bits of len
-    7 or 
-    0 ?do
-	( -- addr )
-	dup 4 u0.r space
-	8 0 do 
-	    dup e@ 4 u0.r space
-	    cell+
-	loop
-	cr
-	10 ( -- we always have this many bytes )
-    +loop
-    drop
-;
+( addr n -- addr+n )
+: .icells   0 do  dup i?    1+ loop ; \ flash
+: .ecells   0 do  dup e? cell+ loop ; \ eeprom
+: .rcells   0 do  dup  ? cell+ loop ; \ ram
 
-\ dump len flash cells from addr upward
-: idump ( addr len -- )    
-    \ xxx0 cccc cccc cccc cccc cccc cccc cccc cccc 
-    \ xxx8 cccc cccc cccc cccc cccc cccc cccc cccc
-    \ ...
-    \ clear lower 3 bits of addr
-    swap fff8 and swap
-    \ set lower 3 bits of len
-    7 or 
-    0 ?do
-	( -- addr )
-	dup 4 u0.r space
-	8 0 do 
-	    dup i@ 4 u0.r space
-	    1+
-	loop
-	cr
-	8 ( -- we always have this many cells )
-    +loop
-    drop
-;
+( addr -- )
+: .addr     cr .item space ;
 
+( addr1 len1 -- addr2 len2 )
+: trimm     swap fff8 and swap 7 or ; 
+
+( adr len -- )
+: <dump     postpone trimm postpone 0 postpone ?do postpone dup 
+            postpone .addr  8 postpone literal ; immediate
+
+( n -- )
+: dump>     postpone +loop postpone drop ; immediate
+
+( addr len -- )
+: idump     <dump .icells   8 dump> ; 
+: edump     <dump .ecells  10 dump> ; 
+:  dump     <dump .rcells  10 dump> ; 
+
+\ finis   tested ok on amforth-2.9 05.10.2008 mk
