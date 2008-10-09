@@ -8,4 +8,4 @@ VE_TIBSIZE:
 XT_TIBSIZE:
     .dw PFA_DOVALUE
 PFA_TIBSIZE:
-    .dw $0E
+    .dw 16

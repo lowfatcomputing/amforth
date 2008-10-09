@@ -4,7 +4,6 @@
 
   ; first address of RAM 
   .equ ramstart = $60
-  .equ stackstart = RAMEND - rstacksize
 
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2

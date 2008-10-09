@@ -4,7 +4,6 @@
 
   ; first address of RAM 
   .equ ramstart = $100
-  .equ stackstart = RAMEND - rstacksize
 
   .equ amforth_interpreter = $1c00
 

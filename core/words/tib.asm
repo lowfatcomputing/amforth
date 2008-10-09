@@ -1,4 +1,4 @@
-; ( -- addr ) System Pointer
+; ( -- addr ) System Value
 ; R( -- )
 ; terminal input buffer address
 VE_TIB:
@@ -10,4 +10,4 @@ XT_TIB:
 PFA_TIB:
     .set TIB = heap
     .set heap = heap + TIBSIZE
-    .dw $0C
+    .dw 14

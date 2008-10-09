@@ -4,7 +4,6 @@
 
 ; ************ This file is a hacked version of can128def.inc BRM ******************
   .equ ramstart = $100 ; first address of RAM
-  .equ stackstart = RAMEND - rstacksize
 
   .equ INTVECTORS = 35 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2

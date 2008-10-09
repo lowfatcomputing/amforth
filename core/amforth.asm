@@ -17,10 +17,10 @@ amforthstart:
     ldi zh, high(heap)
     movw upl, zl
     ; init return stack pointer
-    ldi temp0,low(ramend)
+    ldi temp0,low(rstackstart)
     out SPL,temp0
     std Z+4, temp0
-    ldi temp1,high(ramend)
+    ldi temp1,high(rstackstart)
     out SPH,temp1
     std Z+5, temp1
 
@@ -40,9 +40,11 @@ amforthstart:
     jmp_ DO_NEXT
 
 ; ISR routines
-
+.set intbuflen = 4
 .set intcur   = heap ; current interrupt
 .set heap     = heap + 1
+.set intbuf   = heap ; interrupt ring buffer
+.set heap     = heap + intbuflen ; ring buffer length
 .set intvec   = heap ; forth interrupt vector (contains the XT)
 .set heap     = heap + INTVECTORS * CELLSIZE
 
@@ -58,7 +60,24 @@ isr:
 .if intvecsize == 1 ;
     lsl r0
 .endif
-    sts intcur, r0
+    push zh
+    push zl
+    push r16
+    lds  r16, intcur
+    inc r16
+    cpi r16, intbuflen
+    brne isr1
+    clr r16
+isr1:
+    sts intcur, r16
+    ldi  zl, LOW(intbuf)
+    ldi  zh, HIGH(intbuf)
+    add zl, r16
+    adc zh, zeroh
+    st   Z, r0
+    pop r16
+    pop zl
+    pop zh
     ld r0, Y+
     out SREG, r0
     ld r0, Y+
@@ -66,6 +85,7 @@ isr:
     reti ; returns the interrupt, the rcall stack frame is removed!
 
 ; lower part of the dictionary
+.set VE_HEAD = $0000
 .include "dict_minimum.inc"
 .if dict_appl==1
  .include "dict_appl.inc"
@@ -122,7 +142,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     clt ; clear the t flag to indicate that the interrupt is handled
     rjmp DO_EXECUTE
 
-.include "dict_high.inc"
+.include "dict_core.inc"
 
 .if dict_appl==2
  .include "dict_appl.inc"
@@ -131,6 +151,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
 .set flashlast = pc
 
 .eseg
+    .dw -1           ; EEPROM Address 0 should not be used
     .dw lowflashlast ; DP
     .dw VE_HEAD      ; HEAD
     .dw heap         ; HEAP
@@ -139,6 +160,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     .dw (cpu_frequency/(baud_rate * 16))-1    ; BAUDRATE
     .dw TIB          ; terminal input buffer
     .dw TIBSIZE      ; and its maximum length
+ ;   .dw XT_DEFAULTNOTFOUND  ; notfound vector
 ; 1st free address in EEPROM, see above
 edp:
 .cseg

@@ -10,7 +10,7 @@ VE_BAUD0:
 XT_BAUD0:
   .dw PFA_DOVALUE
 PFA_BAUD00:          ; ( -- )
-  .dw 10
+  .dw 12
 
 ; ( -- ) Hardware Access
 ; R( --)
@@ -22,14 +22,6 @@ VE_USART0:
 XT_USART0:
   .dw DO_COLON
 PFA_USART0:          ; ( -- )
-  .dw XT_DUP
-  .dw XT_BYTESWAP
-  .dw XT_DOLITERAL
-  .dw BAUDRATE0_HIGH
-  .dw XT_CSTORE
-  .dw XT_DOLITERAL
-  .dw BAUDRATE0_LOW
-  .dw XT_CSTORE
 
   .dw XT_DOLITERAL
   .dw USART0_B_VALUE
@@ -42,6 +34,16 @@ PFA_USART0:          ; ( -- )
   .dw XT_DOLITERAL
   .dw USART0_C
   .dw XT_CSTORE
+
+  .dw XT_DUP
+  .dw XT_BYTESWAP
+  .dw XT_DOLITERAL
+  .dw BAUDRATE0_HIGH
+  .dw XT_CSTORE
+  .dw XT_DOLITERAL
+  .dw BAUDRATE0_LOW
+  .dw XT_CSTORE
+
 
   .dw XT_ZERO
   .dw XT_DOLITERAL

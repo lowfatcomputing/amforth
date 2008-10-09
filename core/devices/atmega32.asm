@@ -3,7 +3,6 @@
 .list
 
   .equ ramstart = $60 ; first address of RAM
-  .equ stackstart = RAMEND - rstacksize
 
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
@@ -38,7 +37,9 @@
 
   .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
   .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
-
+  
+  .equ ISR_UDR0 = 14
+  
 ; some hacks
 .if defined(UDRE0)
     ;

@@ -1,4 +1,4 @@
-; ( -- eaddr) System Pointer
+; ( -- edp) System Value
 ; R( -- )
 ; first unused address in eeprom
 VE_EDP:
@@ -8,4 +8,4 @@ VE_EDP:
 XT_EDP:
     .dw PFA_DOVALUE
 PFA_EDP:
-    .dw $06
+    .dw $08

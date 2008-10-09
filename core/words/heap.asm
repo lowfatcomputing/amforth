@@ -1,6 +1,6 @@
-; ( -- addr) System Pointer
+; ( -- addr) System Value
 ; R( -- )
-; Address of the first unallocated RAM address
+; Address of the first unallocated RAM cell
 VE_HEAP:
     .db $04, "heap",0
     .dw VE_HEAD
@@ -8,4 +8,4 @@ VE_HEAP:
 XT_HEAP:
     .dw PFA_DOVALUE
 PFA_HEAP:
-    .dw $04
+    .dw 6

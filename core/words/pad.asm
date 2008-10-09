@@ -1,6 +1,6 @@
-; ( -- addr ) System Pointer
+; ( -- addr ) System Value
 ; R( -- )
-; scratch buffer. 
+; Address of the temporary scratch buffer. 
 VE_PAD:
     .db $03, "pad"
     .dw VE_HEAD

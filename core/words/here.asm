@@ -1,4 +1,4 @@
-; ( -- addr ) System Pointer
+; ( -- faddr ) System Value
 ; R( -- )
 ; address of the next free dictionary cell
 VE_HERE:
@@ -8,4 +8,4 @@ VE_HERE:
 XT_HERE:
     .dw PFA_DOVALUE
 PFA_HERE:
-    .dw 0
+    .dw 2
