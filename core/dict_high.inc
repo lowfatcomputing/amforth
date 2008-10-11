@@ -84,7 +84,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
-.include "words/cmove.asm"
 .include "words/byteswap.asm"
 .include "words/1ms.asm"
 .include "words/zero.asm"
@@ -92,6 +91,3 @@
 
 .include "words/s_to_d.asm"
 .include "words/d-2slash.asm"
-
-.include "words/reg-a.asm"
-.include "words/reg-b.asm"

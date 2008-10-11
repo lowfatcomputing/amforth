@@ -22,7 +22,6 @@
 .include "words/int-fetch.asm"
 
 .include "dict_compiler.inc"
-.include "dict_mcu.inc"
 .include "words/d-invert.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
