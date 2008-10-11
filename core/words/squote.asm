@@ -11,7 +11,12 @@ PFA_SQUOTE:
     .dw XT_DOLITERAL
     .dw $22
     .dw XT_PARSE       ; ( -- addr n)
-    .dw XT_COMPILE
-    .dw XT_SLITERAL    ; ( -- addr n)
-    .dw XT_SCOMMA
+    .dw XT_STATE
+    .dw XT_FETCH
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SQUOTE1
+      .dw XT_COMPILE
+      .dw XT_SLITERAL    ; ( -- addr n)
+      .dw XT_SCOMMA
+PFA_SQUOTE1:
     .dw XT_EXIT
