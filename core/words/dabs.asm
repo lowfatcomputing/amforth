@@ -1,6 +1,6 @@
-; : dabs      ( ud1 -- +d2 ) dup 0< if dnegate then ; 
-
-
+; ( d -- ud ) Arithmetics
+; R( -- )
+; double cell absolute value
 VE_DABS:
     .db $04, "dabs",0
     .dw VE_HEAD
@@ -15,3 +15,4 @@ PFA_DABS:
     .dw XT_DNEGATE
 PFA_DABS1:
     .dw XT_EXIT
+; : dabs      ( ud1 -- +d2 ) dup 0< if dnegate then ;

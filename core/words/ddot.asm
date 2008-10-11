@@ -1,6 +1,6 @@
-; : d.        ( d -- )    0 d.r space ; 
-
-
+; ( d1 -- ) Arithmetics
+; R( -- )
+; double cell output
 VE_DDOT:
     .db $02, "d.",0
     .dw VE_HEAD
@@ -12,3 +12,4 @@ PFA_DDOT:
     .dw XT_DDOTR
     .dw XT_SPACE
     .dw XT_EXIT
+; : d.        ( d -- )    0 d.r space ;
