@@ -9,14 +9,22 @@ hex
 11 constant XON
 13 constant XOFF
 
+\ state of communication flow
 variable xonxoff
 
-0 xonxoff !
+\ store the XT of the underlying IO words
+variable o-key 
+variable o-key?
+variable o-/key
+
+variable o-emit
+variable o-emit?
+ 
 
 \ when asking for a character we want them.
 : x-key?
     XON emit
-    rx0?
+    o-key? @ execute
 ;
 
 \ we no longer want characters. Stop remote sender.
@@ -27,7 +35,7 @@ variable xonxoff
 
 \ fetch character, check if we receive a XON/XOFF and set state for x-emit
 : x-key
-    rx0
+    o-key @ execute
     dup XOFF = if
 	\ set flag to stop emits
 	1 xonxoff !
@@ -46,33 +54,36 @@ variable xonxoff
     begin
         xonxoff @ 0= 
 	if 
-	    tx0 exit
+	    o-emit @ execute exit
+	else
+	    pause
 	then
     again
 ;
 
 : x-emit?
-    tx0? 
+    o-emit? @ execute
     xonxoff @ 0=
     and
 ;
 
-\ activate xonxoff 
+\ activate xonxoff mode
 : +xonxoff
-    ['] x-key? is key?
-    ['] x-key  is key 
-    ['] x-/key is /key
+    0 xonxoff !
+    key? defer@ o-key? ! ['] x-key? is key?
+    key  defer@ o-key  ! ['] x-key  is key 
+    /key defer@ o-/key ! ['] x-/key is /key
     
-    ['] x-emit? is emit?
-    ['] x-emit  is emit 
+    emit? defer@ o-emit? ! ['] x-emit? is emit?
+    emit  defer@ o-emit  ! ['] x-emit  is emit 
 ;
 
 \ restore default settings
 : -xonxoff
-    ['] rx0? is key?
-    ['] rx0  is key 
-    ['] noop is /key
+    o-key? @ is key?
+    o-key  @ is key 
+    o-/key @ is /key
     
-    ['] tx0? is emit?
-    ['] tx0  is emit !
+    o-emit? @ is emit?
+    o-emit  @ is emit
 ;
