@@ -5,455 +5,398 @@
 
 ]>
 <book>
-    <bookinfo>
-        <title>amforth: Forth for AVR ATmega microcontroller</title>
-        <author>
-            <personname>
-                <firstname>Matthias</firstname>
-                <surname>Trute</surname>
-            </personname>
-            <email>mtrute@users.sourceforge.net</email>
-        </author>
-        <pubdate>2008</pubdate>
-        <copyright>
-            <year>2007, 2008</year>
-            <holder>Matthias Trute</holder>
-        </copyright>
-    </bookinfo>
-    <toc />
-    <preface>
-        <title>Overview</title>
-        <para>
-            amforth is a Forth system for the AVR ATmega microcontroller
-            family. It works on the controller itself and does not
-            depend on any additional hard- or software. It places no
-            restrictions on using external hardware.
-        </para>
-        <para>This document covers version 2.9.</para>
-        <para>
-            amforth implements a large subset of the Forth standard
-            ANS94. Most of the CORE and CORE EXT words and a varying
-            number of words from the other word sets are implemented. It
-            is very easy to extend or shrink the actual word list for a
-            specific application by just editing the dictionary include
-            files.
-        </para>
-        <para>
-            The dictionary is located in the flash memory. The built-in
-            compiler extends it directly.
-        </para>
-        <para>
-            amforth provides full access to all interrupts. The
-            interrupt handler routines can be code or forth words.
-        </para>
-        <para>
-            amforth is published under the GNU General Public License
-            version 2.
-        </para>
-        <para>The name amforth has no special meaning.</para>
-        <para>
-            amforth is a new implementation. The first code was written
-            in the summer of 2006. It is written "from scratch" using
-            assembly language and forth itself. It does not have a
-            direct relationship to any other forth system.
-        </para>
-    </preface>
-    <chapter id="FIRST_STEPS">
-        <title>First Steps</title>
-        <para>
-            The first steps require a working ATmega microcontroller
-            with an RS232 connection to an PC or a terminal like the
-            <productname class="trade">VT100</productname>
-            or similar hardware. A customization may change these
-            requirements.
-        </para>
-        <sect1 id="UserInterface">
-            <title>User Interface</title>
-            <para>
-                amforth has a simple user interface. Connect your system
-                to a serial terminal (or a PC) and you get the forth
-                prompt
-                <prompt>></prompt>
-                .
-                <screen>
-                    amforth 2.9 ATmega32
-                    <prompt>></prompt>
-                    <command>words</command>
-                    cell+ cells abort abort" [char] ...
-                    <prompt>></prompt>
-                </screen>
-            </para>
-        </sect1>
-    </chapter>
-    <chapter id="HARDWARE">
-        <title>Hardware</title>
-        <sect1 id="HW_FUSES">
-            <title>Fuses</title>
-            <para>
-                Amforth uses the self programming feature of the
-                ATmega microcontrollers to work with the dictionary. 
-		It is ok to use the
-                factory default settings plus the changes for the oscillator
-                settings. It is recommended to use a higher CPU
-                frequency to meet the timing requirements of the serial
-                terminal.
-            </para>
-        </sect1>
-    </chapter>
-    <chapter id="Sources">
-        <title>Source Organisation</title>
-        <sect1 id="src_overview">
-            <title>Overview</title>
-            <para>
-                amforth is written using the standard Atmel AVR 8 bit 
-		assembly language.
-		 That does not mean that every word is
-                actually written in assembly language however. Most of
-                the words are written in forth itself, but are
-                precompiled into the assembler syntax. This solves the
-                chicken-and-egg problem: how to compile the compiler
-                words.
-            </para>
-            <para>
-                The source code can be processed with both the AVR
-                Studio and the linux avr assembler avra.
-            </para>
-            <para>
-                amforth consists of a great number of small source
-                files. Nearly all words are coded in their own source
-                files. These files are organized with include
-                files, named after the pattern
-                <filename>dict*.inc</filename>
-                . Currently 4 such files exists:
-                <filename>dict_minimum</filename>
-                ,
-                <filename>dict_mcu</filename>
-                ,
-                <filename>dict_high.inc</filename>
-                and
-                <filename>dict_compiler.inc</filename>
-                . The order in which the files are included defines the
-                search order and there location within the flash memory. 
-                Most words can be moved from one
-                include file to another to optimize the flash usage.
-            </para>
-            <para>
-                There are two additional files:
-                <filename>amforth.asm</filename>
-                and
-                <filename>macros.asm</filename>
-                . The first one is the master file and the only one the
-                application needs to include. The file
-                <filename>macros.asm</filename>
-                contains some useful assembler macros that make the
-                source code easier to read.
-            </para>
-        </sect1>
-        <sect1 id="src_core_entry">
-            <title>Core system</title>
-            <para>
-                The file
-                <filename>amforth.asm</filename>
-                is the core of amforth. Here is the startup code for the
-                microcontroller, and the forth inner interpreter with
-                the interrupt service routine. It includes the
-                dictionary files.
-            </para>
-            <sect2 id="src_core_dict">
-                <title>Dictionary files</title>
-                <para>
-                    The dictionary files have two tasks: First they
-                    include the word definition files. Second, they
-                    determine each word's location in the resulting
-                    flash layout. The file
-                    <filename>dict_high.inc</filename>
-                    contains all words for the NRWW flash section, Since
-                    the word
-                    <command>I!</command>
-                    cannot write to this address range, no new words can
-                    be compiled to this section at runtime. Thus it is
-                    advisable to include as many words as possible in
-                    <filename>dict_high.inc</filename>
-                    if the amount of writable dictionary space is an
-                    issue.
-                </para>
-                <para>
-                    A useful forth system needs in addition to the above 
-                    at least the file
-                    <filename>dict_minimum.inc</filename>
-                    , which includes the forth
-                    interpreter words.
-                </para>
-                <para>
-                    An almost complete forth system with a compiler
-                    gives the third include file:
-                    <filename>dict_compiler.inc</filename>
-                    .
-                </para>
+	<bookinfo>
+		<title>amforth</title>
+		<subtitle>Technical Documentation</subtitle>
+		<author>
+			<personname>
+				<firstname>Matthias</firstname>
+				<surname>Trute</surname>
+			</personname>
+			<email>mtrute@users.sourceforge.net
+			</email>
+		</author>
+		<pubdate>2008</pubdate>
+		<copyright>
+			<year>2007, 2008</year>
+			<holder>Matthias Trute</holder>
+		</copyright>
+	</bookinfo>
+	<toc />
+	<preface>
+		<title>Overview</title>
+		<para> amforth is a Forth system for the AVR ATmega microcontroller
+			family. It works on the controller itself and does not depend on any
+			additional hard- or software. It places no restrictions on using
+			external hardware.</para>
+		<para>This document covers version 2.9.</para>
+		<para> amforth implements a large subset of the Forth standard ANS94.
+			Most of the CORE and CORE EXT words and a varying number of words
+			from the other word sets are implemented. It is very easy to extend
+			or shrink the actual word list for a specific application by just
+			editing the dictionary include files.</para>
+		<para> The dictionary is located in the flash memory. The built-in
+			compiler extends it directly.</para>
+		<para> amforth provides full access to all interrupts. The interrupt
+			handler routines can be code or forth words.</para>
+		<para> amforth is published under the GNU General Public License
+			version 2.</para>
+		<para>The name amforth has no special meaning.</para>
+		<para> amforth is a new implementation. The first code was written in
+			the summer of 2006. It is written "from scratch" using assembly
+			language and forth itself. It does not have a direct relationship to
+			any other forth system.</para>
+	</preface>
+	<chapter id="FIRST_STEPS">
+		<title>First Steps</title>
 		<para>
-		    Some words have their source files
-		    within the <filename>core/words</filename> directory but have 
-		    to be included via the <filename>dict_appl.inc</filename> file. These
-		    words define the hardware dependecies to access the
-		    amforth system. The serial line terminal is an example.
+			The first steps require a working ATmega microcontroller with an
+			RS232 connection to an PC or a terminal like the
+			<productname class="trade">VT100</productname>
+			or similar hardware. A customization may change these requirements.
 		</para>
-                <para>
-                    There are a few words left out from the dictionary
-                    lists. These words are either not always needed or
-                    are some variants of existing words or simply cannot
-                    be included in the core system due to size
-                    limitations in the NRWW section with smaller
-                    atmegas. They are usually included by the
-                    application specific include file(s).
-                </para>
-            </sect2>
-            <sect2>
-                <title>Device Settings</title>
-                <para>
-                    Every Atmega has its own specific settings. They
-                    are based on the official include files provided by
-                    Atmel and define the important settings for the
-                    serial IO port (which port and which parameters),
-                    the interrupt vectors and some macros.
-                </para>
-                <para>Adapting another ATmega microcontroller is as easy
-                as copy and edit an existing file from a similiar type.
-                </para>
-                <para>
-                    The last definition is a string with the device name in
-                    clear text. This string is used within the word
-                    <command>VER</command>
-                    .
-                </para>
-            </sect2>
-        </sect1>
-        <sect1>
-            <title>Application Code</title>
-            <para>
-                Every build of amforth needs an application. There are a
-                few sample applications, which can be used either
-                directly (AVR Butterfly) or serve as a source for
-                inspiration (template application).
-            </para>
-            <para>
-                The structure is basically always the same. First the
-                file <filename>macros.asm</filename> has to be included. After that some
-                definitions need to done: The size of the Forth buffers,
-                the CPU frequency, initial terminal settings etc. Then
-                the device specific part needs to be included and as the
-                last step the amforth core is included.
-            </para>
-            <para>
-                For a comfortable development cycle the use of a build
-                utility such as <command>make</command>
-                or <command>ant</command> is recommended. The assembler 
-                needs a few settings and the proper order of the include
-                directories. 
-            </para>
-        </sect1>
-    </chapter>
-    <chapter id="Architecture">
-        <title>Architecture</title>
-        <sect1 id="Architectur_Overview">
-            <title>Overview</title>
-            <para>
-                amforth is a 16 bit Forth implementing the indirect
-                threading model. The flash memory contains the whole
-                dictionary. A few EEPROM cells are used to hold initial
-                values and the dictionary pointers. The RAM contains
-                buffers, variables and the stacks.
-            </para>
-            <para>
-                The compiler is a classic compiler without any
-                optimization support.
-            </para>
-            <para>
-                amforth uses most of the CPU registers to hold vital
-                data: The data stack pointer, the instruction pointer,
-                the user pointer, and the Top-Of-Stack cell. The
-                hardware stack is used as the return stack. Some
-                registers are used for temporary data in primitives.
-            </para>
-        </sect1>
-        <sect1 id="Architecture_VM">
-            <title>CPU -- Forth VM Mapping</title>
-            <para>
-                The default Forth registers are mapped as follows
-                <table>
-                    <title>Register Mapping</title>
-                    <tgroup cols="2">
-                        <thead>
-                            <row>
-                                <entry>Forth Register</entry>
-                                <entry>ATmega Register(s)</entry>
-                            </row>
-                        </thead>
-                        <tbody>
-                            <row>
-                                <entry>W: Working Register</entry>
-                                <entry>R24:R25</entry>
-                            </row>
-                            <row>
-                                <entry>IP: Instruction Pointer</entry>
-                                <entry>XH:XL (R27:R26)</entry>
-                            </row>
-                            <row>
-                                <entry>RSP: Return Stack Pointer</entry>
-                                <entry>SPH:SPL</entry>
-                            </row>
-                            <row>
-                                <entry>
-                                    PSP: Parameter Stack Pointer
-                                </entry>
-                                <entry>YH:YL (R29:R28)</entry>
-                            </row>
-                            <row>
-                                <entry>UP: User Pointer</entry>
-                                <entry>R4:R5</entry>
-                            </row>
-                            <row>
-                                <entry>TOS: Top Of Stack</entry>
-                                <entry>R22:R23</entry>
-                            </row>
-                            <row>
-                                <entry>X: temporary (scratch pad) register</entry>
-                                <entry>ZH:ZL (R31:R30)</entry>
-                            </row>
-                        </tbody>
-                    </tgroup>
-                </table>
-            </para>
-            <para>
-                In addition the register pair R0:R1 is used internally
-                e.g. to hold the the result of multiply operations. The
-                register pair R2:R3 is used as the zero value in many
-                words. These registers must never be changed.
-            </para>
-            <para>
-                The registers from R6 to R13 are currently unused. The
-                registers R14 to R21 are used as temporary registers and
-                can be used freely within one module as temp0 to temp7.
-            </para>
-            <para>
-                The forth core uses the
-                <code>T</code>
-                bit in the machine status register SREG for signalling an
-                interrupt.
-            </para>
-        </sect1>
-        <sect1 id="Core_System">
-            <title>Core System</title>
-            <sect2 id="THREADMODEL">
-                <title>Threading Model</title>
-                <para>
-                    amforth implements the classic indirect threaded variant
-                    of forth.
-                </para>
-            </sect2>
-            <sect2 id="INNER_INTERPRETER">
-                <title>Inner Interpreter</title>
-                <para>
-                    For the indirect threading model an inner
-                    interpreter is needed. The inner interpreter
-                    does the interrupt handling too.
-                </para>
-                <sect3 id="II_EXECUTE">
-                    <title>EXECUTE</title>
-                    <para>
-                        This operation reads the cell the IP currently
-                        points to and uses the value read as the
-                        destination of a branch. This EXECUTE is not the
-                        forth word EXECUTE. The forth EXECUTE sets the
-                        IP from the data stack TOS element.
-                    </para>
-                </sect3>
-                <sect3 id="II_NEXT">
-                    <title>NEXT</title>
-                    <para>
-                        The NEXT routine is the core of the inner
-                        interpreter. It consists of 4 steps which are
-                        executed for every forth word.
-                    </para>
-                    <para>
-                        The first step in NEXT is to check whether
-                        an interrupt needs to be handled. It is done by
-                        looking at the
-                        <command>T</command>
-                        flag in the machine status register. If it is
-                        set, the code jumps to the interrupt handling
-                        part. If the flag is cleared the following
-                        normal NEXT routine runs.
-                    </para>
-                    <para>
-                        The next step is to read the cell the IP points
-                        to and stores this value in the W register. For
-                        a COLON word W contains the address of the code
-                        field.
-                    </para>
-                    <para>
-                        The 3rd step is to increase the IP register by
-                        1.
-                    </para>
-                    <para>
-                        The 4th step is to read the content of the cell the W
-                        register points to. The value is stored in the
-                        scratch pad register X. The data in X is the
-                        address of the machine code to be executed in
-                        the last step.
-                    </para>
-                    <para>
-                        This last step finally jumps to the machine code
-                        pointed to by the X scratch pad register.
-                    </para>
-                </sect3>
-                <sect3 id="II_NEST">
-                    <title>NEST</title>
-                    <para>
-                        NEST (aka DO_COLON) first pushes the IP (which
-                        points to the next word to be executed when the
-                        current word is done) to the return stack. It
-                        then increments W by one flash cell, so that it
-                        points to the body of the (colon) word, and sets
-                        IP to point to that value. Then it continues
-                        with NEXT, which begins executing the words in
-                        the body of the (parent) colon word.
-                    </para>
-                </sect3>
-                <sect3 id="II_UNNEST">
-                    <title>UNNEST</title>
-                    <para>
-                        The code for UNNEST is the forth word
-                        <command>EXIT</command>
-                        in the dictionary. It reads the IP from the
-                        return stack and jumps to NEXT. The return stack
-                        pointer is incremented by 2 (1 flash cell).
-                    </para>
-                </sect3>
-                <sect3 id="II_DODOES">
-                    <title>DO_DOES</title>
-                    <para>
-                        This code is the runtime part of the forth word
-                        <command>DOES</command>
-                        . It pushes the current address of the MCU IP
-                        register onto the returnstack and jumps to
-                        DO_DOES. DO_DOES gets that address back, saves
-                        the current IP and sets the forth IP to the
-                        address it got from the stack. Finally it
-                        continues with NEXT.
-                    </para>
-                </sect3>
-            </sect2>
-            <sect2 id="STACKS">
-                <title>Stacks</title>
-                <sect3 id="DATASTACK">
-                    <title>Data Stack</title>
-                    <para>
-                        The data stack uses the CPU register pair YH:YL
-                        as its data pointer. The Top-Of-Stack element
-                        (TOS) is in a register pair. Compared to a
-                        straight forward implementation this approach
-                        saves code space and gives higher execution
-                        speed (approx 10-20 %). Saving even more stack
+		<sect1 id="UserInterface">
+			<title>User Interface</title>
+			<para>
+				amforth has a simple user interface. Connect your system to a serial
+				terminal (or a PC) and you get the forth prompt
+				<prompt>></prompt>
+				.
+				<screen>
+					amforth 3.0 ATmega32
+					<prompt>></prompt>
+					<command>words</command>
+					cell+ cells abort abort" [char] ...
+					<prompt>></prompt>
+				</screen>
+			</para>
+		</sect1>
+	</chapter>
+	<chapter id="HARDWARE">
+		<title>Hardware</title>
+		<sect1 id="HW_FUSES">
+			<title>Fuses</title>
+			<para> Amforth uses the self programming feature of the ATmega
+				microcontrollers to work with the dictionary. It is ok to use the
+				factory default settings plus the changes for the oscillator
+				settings. It is recommended to use a higher CPU frequency to meet
+				the timing requirements of the serial terminal.</para>
+		</sect1>
+	</chapter>
+	<chapter id="Sources">
+		<title>Source Organisation</title>
+		<sect1 id="src_overview">
+			<title>Overview</title>
+			<para> amforth is written using the standard Atmel AVR 8 bit assembly
+				language. That does not mean that every word is actually written in
+				assembly language however. Most of the words are written in forth
+				itself, but are precompiled into the assembler syntax. This solves
+				the chicken-and-egg problem: how to compile the compiler words.
+			</para>
+			<para> The source code can be processed with both the AVR Studio and
+				the linux avr assembler avra.</para>
+			<para>
+				amforth consists of a great number of small source files. Nearly all
+				words are coded in their own source files. These files are organized
+				with include files, named after the pattern
+				<filename>dict*.inc</filename>
+				. Currently 4 such files exists:
+				<filename>dict_minimum</filename>
+				,
+				<filename>dict_mcu</filename>
+				,
+				<filename>dict_high.inc</filename>
+				and
+				<filename>dict_compiler.inc</filename>
+				. The order in which the files are included defines the search order
+				and there location within the flash memory. Most words can be moved
+				from one include file to another to optimize the flash usage.
+			</para>
+			<para>
+				There are two additional files:
+				<filename>amforth.asm</filename>
+				and
+				<filename>macros.asm</filename>
+				. The first one is the master file and the only one the application
+				needs to include. The file
+				<filename>macros.asm</filename>
+				contains some useful assembler macros that make the source code
+				easier to read.
+			</para>
+		</sect1>
+		<sect1 id="src_core_entry">
+			<title>Core system</title>
+			<para>
+				The file
+				<filename>amforth.asm</filename>
+				is the core of amforth. Here is the startup code for the
+				microcontroller, and the forth inner interpreter with the interrupt
+				service routine. It includes the dictionary files.
+			</para>
+			<sect2 id="src_core_dict">
+				<title>Dictionary files</title>
+				<para>
+					The dictionary files have two tasks: First they include the word
+					definition files. Second, they determine each word's location in
+					the resulting flash layout. The file
+					<filename>dict_high.inc</filename>
+					contains all words for the NRWW flash section, Since the word
+					<command>I!</command>
+					cannot write to this address range, no new words can be compiled to
+					this section at runtime. Thus it is advisable to include as many
+					words as possible in
+					<filename>dict_high.inc</filename>
+					if the amount of writable dictionary space is an issue.
+				</para>
+				<para>
+					A useful forth system needs in addition to the above at least the
+					file
+					<filename>dict_minimum.inc</filename>
+					, which includes the forth interpreter words.
+				</para>
+				<para>
+					An almost complete forth system with a compiler gives the third
+					include file:
+					<filename>dict_compiler.inc</filename>
+					.
+				</para>
+				<para>
+					Some words have their source files within the
+					<filename>core/words</filename>
+					directory but have to be included via the
+					<filename>dict_appl.inc</filename>
+					file. These words define the hardware dependecies to access the
+					amforth system. The serial line terminal is an example.
+				</para>
+				<para> There are a few words left out from the dictionary lists.
+					These words are either not always needed or are some variants of
+					existing words or simply cannot be included in the core system due
+					to size limitations in the NRWW section with smaller atmegas. They
+					are usually included by the application specific include file(s).
+				</para>
+			</sect2>
+			<sect2>
+				<title>Device Settings</title>
+				<para> Every Atmega has its own specific settings. They are based on
+					the official include files provided by Atmel and define the
+					important settings for the serial IO port (which port and which
+					parameters), the interrupt vectors and some macros.</para>
+				<para>Adapting another ATmega microcontroller is as easy as
+					copy and edit an existing file from a similiar type.</para>
+				<para>
+					The last definition is a string with the device name in clear text.
+					This string is used within the word
+					<command>VER</command>
+					.
+				</para>
+			</sect2>
+		</sect1>
+		<sect1>
+			<title>Application Code</title>
+			<para> Every build of amforth needs an application. There are a few
+				sample applications, which can be used either directly (AVR
+				Butterfly) or serve as a source for inspiration (template
+				application).</para>
+			<para>
+				The structure is basically always the same. First the file
+				<filename>macros.asm</filename>
+				has to be included. After that some definitions need to done: The
+				size of the Forth buffers, the CPU frequency, initial terminal
+				settings etc. Then the device specific part needs to be included and
+				as the last step the amforth core is included.
+			</para>
+			<para>
+				For a comfortable development cycle the use of a build utility such
+				as
+				<command>make</command>
+				or
+				<command>ant</command>
+				is recommended. The assembler needs a few settings and the proper
+				order of the include directories.
+			</para>
+		</sect1>
+	</chapter>
+	<chapter id="Architecture">
+		<title>Architecture</title>
+		<sect1 id="Architectur_Overview">
+			<title>Overview</title>
+			<para> amforth is a 16 bit Forth implementing the indirect threading
+				model. The flash memory contains the whole dictionary. A few EEPROM
+				cells are used to hold initial values and the dictionary pointers.
+				The RAM contains buffers, variables and the stacks.</para>
+			<para> The compiler is a classic compiler without any optimization
+				support.</para>
+			<para> amforth uses most of the CPU registers to hold vital data: The
+				data stack pointer, the instruction pointer, the user pointer, and
+				the Top-Of-Stack cell. The hardware stack is used as the return
+				stack. Some registers are used for temporary data in primitives.
+			</para>
+		</sect1>
+		<sect1 id="Architecture_VM">
+			<title>CPU -- Forth VM Mapping</title>
+			<para>
+				The default Forth registers are mapped as follows
+				<table>
+					<title>Register Mapping</title>
+					<tgroup cols="2">
+						<thead>
+							<row>
+								<entry>Forth Register</entry>
+								<entry>ATmega Register(s)</entry>
+							</row>
+						</thead>
+						<tbody>
+							<row>
+								<entry>W: Working Register</entry>
+								<entry>R24:R25</entry>
+							</row>
+							<row>
+								<entry>IP: Instruction Pointer</entry>
+								<entry>XH:XL (R27:R26)</entry>
+							</row>
+							<row>
+								<entry>RSP: Return Stack Pointer</entry>
+								<entry>SPH:SPL</entry>
+							</row>
+							<row>
+								<entry> PSP: Parameter Stack Pointer</entry>
+								<entry>YH:YL (R29:R28)</entry>
+							</row>
+							<row>
+								<entry>UP: User Pointer</entry>
+								<entry>R4:R5</entry>
+							</row>
+							<row>
+								<entry>TOS: Top Of Stack</entry>
+								<entry>R22:R23</entry>
+							</row>
+							<row>
+								<entry>X: temporary (scratch pad) register</entry>
+								<entry>ZH:ZL (R31:R30)</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+				<table>
+					<title>Extended Forth VM Register Mapping</title>
+					<tgroup cols="2">
+						<thead>
+							<row>
+								<entry>Forth Register</entry>
+								<entry>ATmega Register(s)</entry>
+							</row>
+						</thead>
+						<tbody>
+							<row>
+								<entry>A: Index and Scratch Register</entry>
+								<entry>R6:R7</entry>
+							</row>
+							<row>
+								<entry>B: Index and Scratch Register</entry>
+								<entry>R8:R9</entry>
+							</row>
+						</tbody>
+					</tgroup>
+				</table>
+			</para>
+			<para> In addition the register pair R0:R1 is used internally e.g. to
+				hold the the result of multiply operations. The register pair R2:R3
+				is used as the zero value in many words. These registers must never
+				be changed.</para>
+			<para> The registers from R10 to R13 are currently unused, but may be
+				used for the VM extended registers X and Y sometimes. The
+				registers R14 to R21
+				are used as temporary registers and can be used
+				freely within one
+				module as temp0 to temp7.</para>
+			<para>
+				The forth core uses the
+				<code>T</code>
+				bit in the machine status register SREG for signalling an interrupt.
+			</para>
+		</sect1>
+		<sect1 id="Core_System">
+			<title>Core System</title>
+			<sect2 id="THREADMODEL">
+				<title>Threading Model</title>
+				<para> amforth implements the classic indirect threaded variant of
+					forth.</para>
+			</sect2>
+			<sect2 id="INNER_INTERPRETER">
+				<title>Inner Interpreter</title>
+				<para> For the indirect threading model an inner interpreter is
+					needed. The inner interpreter does the interrupt handling too.
+				</para>
+				<sect3 id="II_EXECUTE">
+					<title>EXECUTE</title>
+					<para> This operation reads the cell the IP currently points to and
+						uses the value read as the destination of a branch. This EXECUTE
+						is not the forth word EXECUTE. The forth EXECUTE sets the IP from
+						the data stack TOS element.</para>
+				</sect3>
+				<sect3 id="II_NEXT">
+					<title>NEXT</title>
+					<para> The NEXT routine is the core of the inner interpreter. It
+						consists of 4 steps which are executed for every forth word.
+					</para>
+					<para>
+						The first step in NEXT is to check whether an interrupt needs to
+						be handled. It is done by looking at the
+						<command>T</command>
+						flag in the machine status register. If it is set, the code jumps
+						to the interrupt handling part. If the flag is cleared the
+						following normal NEXT routine runs.
+					</para>
+					<para> The next step is to read the cell the IP points to and
+						stores this value in the W register. For a COLON word W contains
+						the address of the code field.</para>
+					<para> The 3rd step is to increase the IP register by 1.</para>
+					<para> The 4th step is to read the content of the cell the W
+						register points to. The value is stored in the scratch pad
+						register X. The data in X is the address of the machine code to be
+						executed in the last step.</para>
+					<para> This last step finally jumps to the machine code pointed to
+						by the X scratch pad register.</para>
+				</sect3>
+				<sect3 id="II_NEST">
+					<title>NEST</title>
+					<para> NEST (aka DO_COLON) first pushes the IP (which points to the
+						next word to be executed when the current word is done) to the
+						return stack. It then increments W by one flash cell, so that it
+						points to the body of the (colon) word, and sets IP to point to
+						that value. Then it continues with NEXT, which begins executing
+						the words in the body of the (parent) colon word.</para>
+				</sect3>
+				<sect3 id="II_UNNEST">
+					<title>UNNEST</title>
+					<para>
+						The code for UNNEST is the forth word
+						<command>EXIT</command>
+						in the dictionary. It reads the IP from the return stack and jumps
+						to NEXT. The return stack pointer is incremented by 2 (1 flash
+						cell).
+					</para>
+				</sect3>
+				<sect3 id="II_DODOES">
+					<title>DO_DOES</title>
+					<para>
+						This code is the runtime part of the forth word
+						<command>DOES</command>
+						. It pushes the current address of the MCU IP register onto the
+						returnstack and jumps to DO_DOES. DO_DOES gets that address back,
+						saves the current IP and sets the forth IP to the address it got
+						from the stack. Finally it continues with NEXT.
+					</para>
+				</sect3>
+			</sect2>
+			<sect2 id="STACKS">
+				<title>Stacks</title>
+				<sect3 id="DATASTACK">
+					<title>Data Stack</title>
+					<para> The data stack uses the CPU register pair YH:YL as its data
+						pointer. The Top-Of-Stack element (TOS) is in a register pair.
+						Compared to a straight forward implementation this approach saves
+						code space and gives higher execution speed (approx 10-20%). Saving even more stack
                         elements does not really provide a greater
                         benefit (much more code and only little speed
                         enhancements).
@@ -625,6 +568,27 @@
                     interpreter and most of the words coded in assembly
                     language.
                 </para>
+            <para>
+            
+            <literallayout>
+
++------------------ 0000 --------------+
+|   Interrupt vectors                  |
+|                                      |
++------------ int vector size ---------+
+| initialization code                  |
+| interrupt routines                   |
+|    "colon" dictionary                |
+|                                      |
+|LATEST:                               |
+|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
++------------- nrww section -----------+
+|   inner interpreter (docol, next)    |
+| "primitive" dictionary               |
+| Link to "colon" dictionary           |
++----------- flashend -----------------+
+            </literallayout>
+                </para>
                 <para>
                     The reason for this split is a technical one: to
                     work with a dictionary in flash the controller needs
@@ -752,6 +716,19 @@
                     and
                     <command>ALLOT</command>
                     .
+                </para>
+                <para>
+                <figure>
+                <title>RAM Structure Overview</title>
+                <mediaobject>
+                    <imageobject>
+                    <imagedata fileref="ram-structure.png" format="PNG" width="5cm"/>
+                    </imageobject>
+                    <imageobject>
+                    <imagedata fileref="ram-structure.eps" format="EPS" width="5cm"/>
+                    </imageobject>
+                </mediaobject>
+                </figure>
                 </para>
                 <para>
                     With amforth all three sections can be accessed
