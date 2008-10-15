@@ -1,6 +1,6 @@
-; ( d1 -- ) Arithmetics
+; ( d1 -- ) Numeric IO
 ; R( -- )
-; double cell output
+; signed double cell output 
 VE_DDOT:
     .db $02, "d.",0
     .dw VE_HEAD

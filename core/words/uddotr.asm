@@ -1,6 +1,6 @@
-; : ud.r      ( ud n -- )  >r <# #s #> r> over - spaces type ;
-
-
+; ( ud n -- ) Numeric IO
+; R( -- )
+; unsigned right padded double cell output 
 VE_UDDOTR:
     .db $04, "ud.r",0
     .dw VE_HEAD
@@ -18,3 +18,4 @@ PFA_UDDOTR:
     .dw XT_SPACES
     .dw XT_TYPE
     .dw XT_EXIT
+; : ud.r      ( ud n -- )  >r <# #s #> r> over - spaces type ;

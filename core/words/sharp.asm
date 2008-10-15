@@ -1,7 +1,6 @@
-; : #    ( ud1 -- ud2 ) 
-;        base @ ud/mod rot 9 over < if 7 + then 30 + hold ; 
-
-
+; ( d1 -- d2 ) Numeric IO
+; R( -- )
+; convert a single number an place it in the HOLD buffer
 VE_SHARP:
     .db $01, "#"
     .dw VE_HEAD
@@ -28,3 +27,5 @@ PFA_SHARP1:
     .dw XT_PLUS
     .dw XT_HOLD
     .dw XT_EXIT
+; : #    ( ud1 -- ud2 ) 
+;        base @ ud/mod rot 9 over < if 7 + then 30 + hold ; 

@@ -12,7 +12,7 @@ PFA_FIND:
     .dw XT_DOFIND
     .dw XT_EXIT
 
-; ( addr searchstart -- [ addr 0 ] | [ xt [-1|1]] ) Tools
+; ( c-addr searchstart -- [ addr 0 ] | [ xt [-1|1]] ) Tools
 ; R( -- )
 ; search dictionary
 VE_DOFIND:

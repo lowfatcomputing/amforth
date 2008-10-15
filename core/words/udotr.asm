@@ -1,6 +1,6 @@
-; : u.r       ( s n -- )   0 swap ud.r ;
-
-
+; ( d n -- ) Numeric IO
+; R( -- )
+; unsigned double cell output 
 VE_UDOTR:
     .db $03, "u.r"
     .dw VE_HEAD
@@ -12,3 +12,4 @@ PFA_UDOTR:
     .dw XT_SWAP
     .dw XT_UDDOTR
     .dw XT_EXIT
+; : u.r       ( s n -- )   0 swap ud.r ;

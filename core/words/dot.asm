@@ -1,6 +1,6 @@
-; : .         ( s -- )    s>d d. ; 
-
-
+; ( n -- ) Numeric IO
+; R( -- )
+; signed cell output 
 VE_DOT:
     .db $01, "."
     .dw VE_HEAD
@@ -11,3 +11,4 @@ PFA_DOT:
     .dw XT_S2D
     .dw XT_DDOT
     .dw XT_EXIT
+; : .         ( s -- )    s>d d. ; 

@@ -1,6 +1,6 @@
-; ( -- n2 ) Extended VM
+; ( -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register A (Extended VM)
+; Read memory pointed to by register A  
 VE_AFETCH:
     .db $02, "a@",0
     .dw VE_HEAD
@@ -12,11 +12,11 @@ PFA_AFETCH:
     movw zl, al
     ld tosl, Z+
     ld tosh, Z+
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
-; ( n1 -- n2 ) Extended VM
+; ( offs -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register A plus offset (Extended VM)
+; Read memory pointed to by register A plus offset  
 VE_NAFETCH:
     .db $03, "na@"
     .dw VE_HEAD
@@ -29,11 +29,11 @@ PFA_NAFETCH:
     adc zh, ah
     ld tosl, Z+
     ld tosh, Z+
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
 ; ( -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register A, increment A by 1 cell (Extended VM)
+; Read memory pointed to by register A, increment A by 1 cell  
 VE_AFETCHPLUS:
     .db $03, "a@+"
     .dw VE_HEAD
@@ -46,11 +46,11 @@ PFA_AFETCHPLUS:
     ld tosl, Z+
     ld tosh, Z+
     movw al, zl
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
 ; ( -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register A, decrement A by 1 cell (Extended VM)
+; Read memory pointed to by register A, decrement A by 1 cell  
 VE_AFETCHMINUS:
     .db $03, "a@-"
     .dw VE_HEAD
@@ -63,11 +63,11 @@ PFA_AFETCHMINUS:
     ld tosl, -Z
     ld tosh, -Z
     movw al, zl
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
 ; ( n -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register A (Extended VM)
+; Write memory pointed to by register A  
 VE_ASTORE:
     .db $02, "a!",0
     .dw VE_HEAD
@@ -79,11 +79,11 @@ PFA_ASTORE:
     st Z+, tosl
     st Z+, tosh
     loadtos
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
 ; ( n offs -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register A plus offset (Extended VM)
+; Write memory pointed to by register A plus offset  
 VE_NASTORE:
     .db $03, "na!"
     .dw VE_HEAD
@@ -98,11 +98,11 @@ PFA_NASTORE:
     st Z+, tosl
     st Z+, tosh
     loadtos
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
-; ( -- n2 ) Extended VM
+; ( n -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register A, increment A by 1 cell (Extended VM)
+; Write memory pointed to by register A, increment A by 1 cell  
 VE_ASTOREPLUS:
     .db $03, "a!+"
     .dw VE_HEAD
@@ -115,11 +115,11 @@ PFA_ASTOREPLUS:
     st Z+, tosh
     loadtos
     movw al, zl
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
-; ( -- n2 ) Extended VM
+; ( n -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register A, decrement A by 1 cell (Extended VM)
+; Write memory pointed to by register A, decrement A by 1 cell  
 VE_ASTOREMINUS:
     .db $03, "a!-"
     .dw VE_HEAD
@@ -132,13 +132,11 @@ PFA_ASTOREMINUS:
     st -Z, tosh
     loadtos
     movw al, zl
-    jmp_ DO_NEXT
-
-
+    rjmp DO_NEXT
 
 ; ( n -- ) Extended VM
 ; R( -- )
-; Write to A register (Extended VM)
+; Write to A register  
 VE_TO_A:
     .db $02, ">a",0
     .dw VE_HEAD
@@ -148,11 +146,11 @@ XT_TO_A:
 PFA_TO_A:
     movw al, tosl
     loadtos
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
-; ( n1 -- n2 ) Extended VM
+; ( -- n ) Extended VM
 ; R( -- )
-; read the A register (Extended VM)
+; read the A register  
 VE_A_FROM:
     .db $02, "a>",0
     .dw VE_HEAD
@@ -162,7 +160,7 @@ XT_A_FROM:
 PFA_A_FROM:
     savetos
     movw tosl, al
-    jmp_ DO_NEXT
+    rjmp DO_NEXT
 
 ; for more information read
 ; http://www.complang.tuwien.ac.at/anton/euroforth/ef08/papers/pelc.pdf

@@ -12,6 +12,9 @@ PFA_RP0:
     .dw XT_FETCH
     .dw XT_EXIT
 
+; ( -- addr) Stackpointer
+; R( -- )
+; user value: start value of return stack
 ;VE_DORP0:
 ;    .db $05, "(rp0)"
 ;    .dw VE_HEAD

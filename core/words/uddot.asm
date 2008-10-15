@@ -1,6 +1,6 @@
-; : ud.       ( ud -- )    0 ud.r space ;
-
-
+; ( ud -- ) Numeric IO
+; R( -- )
+; unsigned double cell output 
 VE_UDDOT:
     .db $03, "ud."
     .dw VE_HEAD
@@ -12,3 +12,4 @@ PFA_UDDOT:
     .dw XT_UDDOTR
     .dw XT_SPACE
     .dw XT_EXIT
+; : ud.       ( ud -- )    0 ud.r space ;

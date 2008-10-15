@@ -1,6 +1,6 @@
-; : u.        ( us -- )    0 ud. ;
-
-
+; ( d1 -- ) Numeric IO
+; R( -- )
+; unsigned double cell output 
 VE_UDOT:
     .db $02, "u.",0
     .dw VE_HEAD
@@ -11,3 +11,4 @@ PFA_UDOT:
     .dw XT_ZERO
     .dw XT_UDDOT
     .dw XT_EXIT
+; : u.        ( us -- )    0 ud. ;

@@ -1,7 +1,6 @@
-; \ Print n digits, fill in preceeding zeros if any.  ( see: dumper.frt)
-; : u0.r      ( u n -- )   >r 0 <# r> 0 ?do # loop #> type ;
-
-
+; ( u n -- ) Numeric IO
+; R( -- )
+;  Print n digits, fill in preceeding zeros if any.
 VE_UZERODOTR:
     .db $04, "u0.r",0
     .dw VE_HEAD
@@ -24,3 +23,4 @@ PFA_UZERODOTR2:
     .dw XT_SHARP_G
     .dw XT_TYPE
     .dw XT_EXIT
+; : u0.r      ( u n -- )   >r 0 <# r> 0 ?do # loop #> type ;

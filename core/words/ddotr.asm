@@ -1,7 +1,6 @@
-; : d.r       ( d n -- )
-;             >r swap over dabs <# #s rot sign #> r> over - spaces type ;
-
-
+; ( d1 n -- ) Numeric IO
+; R( -- )
+; right padded signed double cell output 
 VE_DDOTR:
     .db $03, "d.r"
     .dw VE_HEAD
@@ -24,3 +23,4 @@ PFA_DDOTR:
     .dw XT_SPACES
     .dw XT_TYPE
     .dw XT_EXIT
+;             >r swap over dabs <# #s rot sign #> r> over - spaces type ;
