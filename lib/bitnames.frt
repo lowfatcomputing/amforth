@@ -123,6 +123,14 @@ hex
     1- 1- c@ and
 ;
 
+\ toggle the pin
+: toggle ( pinmask portaddr -- )
+  over over pin_high? if
+    low
+  else
+    high
+  then
+; 
 
 
 \ finis
