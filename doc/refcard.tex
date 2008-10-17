@@ -20,7 +20,7 @@
 \pagestyle{empty}
 
 \begin{footnotesize}
-\section*{\Large amforth 2.8 Reference Card}
+\section*{\Large amforth 3.0 Reference Card}
 \begin{multicols}{3}
 
 \subsection*{Arithmetics}
@@ -47,8 +47,12 @@
 \verb|d2*|  & \verb/( d1 -- d2 )/\\
 % XT_DINVERT
 \verb|dinvert|  & \verb/( d1 -- d2)/\\
+% XT_DINVERT
+\verb|dinvert|  & \verb/( d1 -- d2)/\\
 % XT_DMINUS
 \verb|d-|  & \verb/( d1 d2 -- d3 )/\\
+% XT_DNEGATE
+\verb|dnegate|  & \verb/( d1 -- d2 )/\\
 % XT_DPLUS
 \verb|d+|  & \verb/( d1 d2 -- d3)/\\
 % XT_INVERT
@@ -79,6 +83,8 @@
 \verb|*/|  & \verb/(n1 n2 n3 -- n4)/\\
 % XT_STARSLASHMOD
 \verb|*/mod|  & \verb/( n1 n2 n3 -- rem quot)/\\
+% XT_UDSLASHMOD
+\verb|ud/mod|  & \verb/( ud1 n -- rem ud2 )/\\
 % XT_UMSLASHMOD
 \verb|um/mod|  & \verb/( ud u2 -- rem quot)/\\
 % XT_UMSTAR
@@ -87,6 +93,12 @@
 \verb|u/mod|  & \verb/(u1 u2 -- rem quot)/\\
 % XT_ZERO
 \verb|0|  & \verb/( -- 0 )/\\
+\end{tabular}
+
+\subsection*{Arithmetics}
+\begin{tabular}{\colsa}
+% XT_DABS
+\verb|dabs|  & \verb/( d -- ud )/\\
 \end{tabular}
 
 \subsection*{Character IO}
@@ -227,7 +239,7 @@
               & \verb/R(loop-sys --)/\\
 % XT_LOOP
 \verb|loop|  & \verb/( addr -- )/\\
-% XT_PLOOP
+% XT_PLUSLOOP
 \verb|+loop|  & \verb/( addr -- )/\\
 % XT_QDO
 \verb|?do|  & \verb/( -- addr )/\\
@@ -274,6 +286,50 @@
 \verb|handler|  & \verb/( -- addr )/\\
 % XT_THROW
 \verb|throw|  & \verb/( n -- )/\\
+\end{tabular}
+
+\subsection*{Extended VM}
+\begin{tabular}{\colsa}
+% XT_AFETCH
+\verb|a@|  & \verb/( -- n )/\\
+% XT_AFETCHMINUS
+\verb|a@-|  & \verb/( -- n )/\\
+% XT_AFETCHPLUS
+\verb|a@+|  & \verb/( -- n )/\\
+% XT_ASTORE
+\verb|a!|  & \verb/( n -- )/\\
+% XT_ASTOREMINUS
+\verb|a!-|  & \verb/( n -- )/\\
+% XT_ASTOREPLUS
+\verb|a!+|  & \verb/( n -- )/\\
+% XT_A_FROM
+\verb|a>|  & \verb/( -- n )/\\
+% XT_BFETCH
+\verb|b@|  & \verb/( -- n )/\\
+% XT_BFETCHMINUS
+\verb|b@-|  & \verb/( -- n )/\\
+% XT_BFETCHPLUS
+\verb|b@+|  & \verb/( -- n )/\\
+% XT_BSTORE
+\verb|b!|  & \verb/( n -- )/\\
+% XT_BSTOREMINUS
+\verb|b!-|  & \verb/( n -- )/\\
+% XT_BSTOREPLUS
+\verb|b!+|  & \verb/( n -- )/\\
+% XT_B_FROM
+\verb|b>|  & \verb/( -- n )/\\
+% XT_NAFETCH
+\verb|na@|  & \verb/( offs -- n )/\\
+% XT_NASTORE
+\verb|na!|  & \verb/( n offs -- )/\\
+% XT_NBFETCH
+\verb|nb@|  & \verb/( offs -- n )/\\
+% XT_NBSTORE
+\verb|nb!|  & \verb/( n offs -- )/\\
+% XT_TO_A
+\verb|>a|  & \verb/( n -- )/\\
+% XT_TO_B
+\verb|>b|  & \verb/( n -- )/\\
 \end{tabular}
 
 \subsection*{Hardware Access}
@@ -344,6 +400,8 @@
 \begin{tabular}{\colsa}
 % XT_CFETCH
 \verb|c@|  & \verb/( addr - c1 )/\\
+% XT_CMOVE
+\verb|cmove|  & \verb/(addr-from addr-to n -- )/\\
 % XT_CMOVE_G
 \verb|cmove>|  & \verb/(addr-from addr-to n -- )/\\
 % XT_CSTORE
@@ -374,12 +432,18 @@
 \begin{tabular}{\colsa}
 % XT_BASE
 \verb|base|  & \verb/( -- addr )/\\
+% XT_DDOT
+\verb|d.|  & \verb/( d1 -- )/\\
+% XT_DDOTR
+\verb|d.r|  & \verb/( d1 n -- )/\\
 % XT_DECIMAL
 \verb|decimal|  & \verb/( -- )/\\
 % XT_DIGIT
 \verb|digit|  & \verb/( c base -- number flag )/\\
 % XT_DOT
 \verb|.|  & \verb/( n -- )/\\
+% XT_DOTR
+\verb|.r|  & \verb/( n1 n2 -- )/\\
 % XT_HEX
 \verb|hex|  & \verb/( -- )/\\
 % XT_HLD
@@ -391,15 +455,23 @@
 % XT_NUMBER
 \verb|number|  & \verb/(addr -- n )/\\
 % XT_SHARP
-\verb|#|  & \verb/( d1 -- d2)/\\
+\verb|#|  & \verb/( d1 -- d2 )/\\
 % XT_SHARP_G
 \verb|#>|  & \verb/( d1 -- addr count )/\\
 % XT_SHARP_S
 \verb|#s|  & \verb/( d1 -- 0)/\\
 % XT_SIGN
 \verb|sign|  & \verb/( n -- )/\\
+% XT_UDDOT
+\verb|ud.|  & \verb/( ud -- )/\\
+% XT_UDDOTR
+\verb|ud.r|  & \verb/( ud n -- )/\\
 % XT_UDOT
-\verb|u.|  & \verb/( n -- )/\\
+\verb|u.|  & \verb/( d1 -- )/\\
+% XT_UDOTR
+\verb|u.r|  & \verb/( d n -- )/\\
+% XT_UZERODOTR
+\verb|u0.r|  & \verb/( u n -- )/\\
 \end{tabular}
 
 \subsection*{Stack}
@@ -501,30 +573,26 @@
 \verb|up!|  & \verb/( addr -- )/\\
 \end{tabular}
 
-\subsection*{System Pointer}
-\begin{tabular}{\colsa}
-% XT_EDP
-\verb|edp|  & \verb/( -- eaddr)/\\
-% XT_HEAD
-\verb|head|  & \verb/( -- eaddr)/\\
-% XT_HEAP
-\verb|heap|  & \verb/( -- eaddr)/\\
-% XT_HERE
-\verb|here|  & \verb/( -- addr )/\\
-% XT_PAD
-\verb|pad|  & \verb/( -- addr )/\\
-% XT_TIB
-\verb|tib|  & \verb/( -- addr )/\\
-% XT_TURNKEY
-\verb|turnkey|  & \verb/( -- eaddr)/\\
-\end{tabular}
-
 \subsection*{System Value}
 \begin{tabular}{\colsa}
 % XT_BAUD0
 \verb|baud0|  & \verb/( -- v)/\\
+% XT_EDP
+\verb|edp|  & \verb/( -- edp)/\\
+% XT_HEAD
+\verb|head|  & \verb/( -- faddr)/\\
+% XT_HEAP
+\verb|heap|  & \verb/( -- addr)/\\
+% XT_HERE
+\verb|here|  & \verb/( -- faddr )/\\
+% XT_PAD
+\verb|pad|  & \verb/( -- addr )/\\
+% XT_TIB
+\verb|tib|  & \verb/( -- addr )/\\
 % XT_TIBSIZE
 \verb|tibsize|  & \verb/( -- n )/\\
+% XT_TURNKEY
+\verb|turnkey|  & \verb/( -- n*y )/\\
 \end{tabular}
 
 \subsection*{Time}
@@ -539,6 +607,8 @@
 \verb|[char]|  & \verb/( -- c )/\\
 % XT_CHAR
 \verb|char|  & \verb/( -- c )/\\
+% XT_DOFIND
+\verb|(find)|  & \verb/( c-addr searchstart -- [ addr 0 ] | [ xt [-1|1]] )/\\
 % XT_DOTS
 \verb|.s|  & \verb/( -- )/\\
 % XT_FIND
@@ -592,8 +662,7 @@
 \verb|(?do)|  & \verb/(limit counter -- )/\\
               & \verb/R(-- limit counter| )/\\
 % XT_DORP0
-\verb|(rp0)|  & \verb/    .dw XT_FETCH/\\
-              & \verb/    .dw XT_EXIT/\\
+\verb|(rp0)|  & \verb/( -- addr)/\\
 % XT_DOSP0
 \verb|(sp0)|  & \verb/( -- addr)/\\
 % XT_DOSPM
