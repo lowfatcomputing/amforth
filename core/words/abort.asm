@@ -2,7 +2,8 @@
 ; R( n*y -- )
 ; send an exception -1
 VE_ABORT:
-    .db $05, "abort"
+    .dw $ff05
+    .db "abort",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ABORT
 XT_ABORT:

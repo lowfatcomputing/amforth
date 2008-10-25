@@ -2,7 +2,8 @@
 ; R(loop-sys -- )
 ; remove loop-sys
 VE_UNLOOP:
-    .db 6, "unloop", 0
+    .dw $ff06
+    .db "unloop"
     .dw VE_HEAD
     .set VE_HEAD = VE_UNLOOP
 XT_UNLOOP:

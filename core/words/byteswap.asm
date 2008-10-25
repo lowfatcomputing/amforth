@@ -2,7 +2,8 @@
 ; R( -- )
 ; swap the bytes of the TOS
 VE_BYTESWAP:
-    .db $02, "><",0
+    .dw $ff02
+    .db "><"
     .dw VE_HEAD
     .set VE_HEAD = VE_BYTESWAP
 XT_BYTESWAP:

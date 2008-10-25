@@ -2,7 +2,8 @@
 ; R( -- )
 ; calls the MCU wdr instruction
 VE_WDR:
-    .db $03, "wdr"
+    .dw $ff03
+    .db "wdr",0
     .dw VE_HEAD
     .set VE_HEAD = VE_WDR
 XT_WDR:

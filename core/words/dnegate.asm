@@ -1,8 +1,9 @@
 ; ( d1 -- d2 ) Arithmetics
 ; R( -- )
-; double cell negation
+; double cell negate
 VE_DNEGATE:
-    .db $07, "dnegate"
+    .dw $ff07
+    .db "dnegate",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DNEGATE
 XT_DNEGATE:
@@ -14,4 +15,4 @@ PFA_DNEGATE:
     .dw XT_ZERO
     .dw XT_DPLUS
     .dw XT_EXIT
-; : dnegate   ( ud1 -- ud2 ) dinvert 1 0 d+ ; 
+; : dnegate   ( ud1 -- ud2 ) dinvert 1 0 d+ ; 

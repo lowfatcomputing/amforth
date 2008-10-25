@@ -1,8 +1,9 @@
-; ( n1 n2 -- ) Numeric IO
+; ( n w -- ) Numeric IO
 ; R( -- )
-; signed right padded cell output 
+; single cell output
 VE_DOTR:
-    .db $02, ".r",0
+    .dw $ff02
+    .db ".r"
     .dw VE_HEAD
     .set VE_HEAD = VE_DOTR
 XT_DOTR:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; write 16bit to RAM memory (or IO or CPU registers)
 VE_STORE:
-    .db $01, "!"
+    .dw $ff01
+    .db "!",0
     .dw VE_HEAD
     .set VE_HEAD = VE_STORE
 XT_STORE:

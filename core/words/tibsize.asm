@@ -2,7 +2,8 @@
 ; R( -- )
 ; terminal input buffer size
 VE_TIBSIZE:
-    .db $07, "tibsize"
+    .dw $ff07
+    .db "tibsize",0
     .dw VE_HEAD
     .set VE_HEAD = VE_TIBSIZE
 XT_TIBSIZE:

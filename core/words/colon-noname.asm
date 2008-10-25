@@ -2,7 +2,8 @@
 ; R( -- )
 ; create unnamed entry in the dictionary
 VE_COLONNONAME:
-    .db $7, ":noname"
+    .dw $ff07
+    .db ":noname",0
     .dw VE_HEAD
     .set VE_HEAD = VE_COLONNONAME
 XT_COLONNONAME:

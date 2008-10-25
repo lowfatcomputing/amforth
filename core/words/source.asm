@@ -2,7 +2,8 @@
 ; R( -- )
 ; address and current length of the input buffer
 VE_SOURCE:
-    .db 6, "source",0
+    .dw $FF06
+    .db "source"
     .dw VE_HEAD
     .set VE_HEAD = VE_SOURCE
 XT_SOURCE:

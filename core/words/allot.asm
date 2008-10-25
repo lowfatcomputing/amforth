@@ -2,7 +2,8 @@
 ; R( -- )
 ; allocate memory in RAM
 VE_ALLOT:
-    .db $05, "allot"
+    .dw $ff05
+    .db "allot",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ALLOT
 XT_ALLOT:

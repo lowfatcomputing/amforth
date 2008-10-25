@@ -2,7 +2,8 @@
 ; R( -- )
 ; convert a counted string at addr to a number, throw exception -13 on error
 VE_NUMBER:
-    .db $06, "number",0
+    .dw $ff06
+    .db "number"
     .dw VE_HEAD
     .set VE_HEAD = VE_NUMBER
 XT_NUMBER:

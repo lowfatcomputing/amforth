@@ -2,7 +2,8 @@
 ; R( -- )
 ; start conditional branch
 VE_IF:
-    .db $82, "if",0
+    .dw $0002
+    .db "if"
     .dw VE_HEAD
     .set VE_HEAD = VE_IF
 XT_IF:

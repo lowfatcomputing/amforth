@@ -2,7 +2,8 @@
 ; R( -- )
 ; current return stack pointer address
 VE_RP_FETCH:
-    .db $03, "rp@"
+    .dw $ff03
+    .db "rp@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_RP_FETCH
 XT_RP_FETCH:

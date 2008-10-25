@@ -2,7 +2,8 @@
 ; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
 ; loop counter of outer loop
 VE_J:
-    .db 1, "j"
+    .dw $FF01
+    .db "j",0
     .dw VE_HEAD
     .set VE_HEAD = VE_J
 XT_J:

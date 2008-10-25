@@ -2,7 +2,8 @@
 ; R( -- )
 ; reads a line with with KEY into addr until n2 characters are reveived or cr/lf detected.
 VE_ACCEPT:
-    .db $06, "accept",0
+    .dw $ff06
+    .db "accept"
     .dw VE_HEAD
     .set VE_HEAD = VE_ACCEPT
 XT_ACCEPT:

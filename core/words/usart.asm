@@ -4,7 +4,8 @@
 ; R( -- )
 ; returns usart0 baudrate
 VE_BAUD0:
-  .db 05,"baud0"
+  .dw $ff05
+  .db "baud0",0
   .dw VE_HEAD
   .set VE_HEAD = VE_BAUD0
 XT_BAUD0:
@@ -16,7 +17,8 @@ PFA_BAUD00:          ; ( -- )
 ; R( --)
 ; initialize usart0
 VE_USART0:
-  .db 7, "+usart0"
+  .dw $ff07
+  .db "+usart0",0
   .dw VE_HEAD
   .set VE_HEAD = VE_USART0
 XT_USART0:
@@ -61,13 +63,14 @@ PFA_USART0:          ; ( -- )
 ; R( --)
 ; calculate the baudrate register value
 VE_TOUSART0:
-  .db 7, ">usart0"
+  .dw $ff07
+  .db ">usart0",0
   .dw VE_HEAD
   .set VE_HEAD = VE_TOUSART0
 XT_TOUSART0:
   .dw DO_COLON
 PFA_TOUSART0:          ; ( -- )
-  
+
   .dw XT_DOLITERAL
   .dw XT_TX0
   .dw XT_DOLITERAL

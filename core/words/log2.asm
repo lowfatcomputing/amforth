@@ -2,7 +2,8 @@
 ; R( -- )
 ; logarithm base 2 or highest set bitnumber
 VE_LOG2:
-    .db $04, "log2",0
+    .dw $ff04
+    .db "log2"
     .dw VE_HEAD
     .set VE_HEAD = VE_LOG2
 XT_LOG2:

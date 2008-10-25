@@ -2,7 +2,8 @@
 ; R( -- )
 ; disable jtag at runtime
 VE_NOJTAG:
-    .db 5, "-jtag"
+    .dw $FF05
+    .db "-jtag",0
     .dw VE_HEAD
     .set VE_HEAD = VE_NOJTAG
 XT_NOJTAG:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; remainder of division
 VE_MOD:
-    .db $03, "mod"
+    .dw $ff03
+    .db "mod",0
     .dw VE_HEAD
     .set VE_HEAD = VE_MOD
 XT_MOD:

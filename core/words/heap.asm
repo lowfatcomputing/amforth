@@ -2,7 +2,8 @@
 ; R( -- )
 ; Address of the first unallocated RAM cell
 VE_HEAP:
-    .db $04, "heap",0
+    .dw $ff04
+    .db "heap"
     .dw VE_HEAD
     .set VE_HEAD = VE_HEAP
 XT_HEAP:

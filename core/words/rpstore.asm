@@ -2,7 +2,8 @@
 ; R( -- xy) 
 ; set return stack pointer
 VE_RP_STORE:
-    .db $03, "rp!"
+    .dw $ff03
+    .db "rp!",0
     .dw VE_HEAD
     .set VE_HEAD = VE_RP_STORE
 XT_RP_STORE:

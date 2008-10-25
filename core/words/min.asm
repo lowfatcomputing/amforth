@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare two values leave the smaller one
 VE_MIN:
-    .db $03, "min"
+    .dw $ff03
+    .db "min",0
     .dw VE_HEAD
     .set VE_HEAD = VE_MIN
 XT_MIN:

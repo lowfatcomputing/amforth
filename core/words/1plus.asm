@@ -2,7 +2,8 @@
 ; R( -- )
 ; optimized increment
 VE_1PLUS:
-    .db $02, "1+",0
+    .dw $ff02
+    .db "1+"
     .dw VE_HEAD
     .set VE_HEAD = VE_1PLUS
 XT_1PLUS:

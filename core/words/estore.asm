@@ -2,7 +2,8 @@
 ; R( -- )
 ; write to eeprom address
 VE_ESTORE:
-    .db $02, "e!",0
+    .dw $ff02
+    .db "e!"
     .dw VE_HEAD
     .set VE_HEAD = VE_ESTORE
 XT_ESTORE:

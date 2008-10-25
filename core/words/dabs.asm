@@ -2,7 +2,8 @@
 ; R( -- )
 ; double cell absolute value
 VE_DABS:
-    .db $04, "dabs",0
+    .dw $ff04
+    .db "dabs"
     .dw VE_HEAD
     .set VE_HEAD = VE_DABS
 XT_DABS:

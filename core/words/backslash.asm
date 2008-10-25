@@ -2,7 +2,8 @@
 ; R( -- )
 ; everything up to the end of the current line is a comment
 VE_BACKSLASH:
-    .db $81, "\"
+    .dw $0001
+    .db "\",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BACKSLASH
 XT_BACKSLASH:

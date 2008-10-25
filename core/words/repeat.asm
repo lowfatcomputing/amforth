@@ -2,7 +2,8 @@
 ; R( -- )
 ; go back to begin
 VE_REPEAT:
-    .db $86, "repeat",0
+    .dw $0006
+    .db "repeat"
     .dw VE_HEAD
     .set VE_HEAD = VE_REPEAT
 XT_REPEAT:

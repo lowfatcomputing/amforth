@@ -2,7 +2,8 @@
 ; R( -- )
 ; formal finish of a code definition
 VE_ENDCODE:
-    .db $8, "end-code",0
+    .dw $ff08
+    .db "end-code"
     .dw VE_HEAD
     .set VE_HEAD = VE_ENDCODE
 XT_ENDCODE:

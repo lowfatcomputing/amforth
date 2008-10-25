@@ -2,7 +2,8 @@
 ; R( -- )
 ; base fo numeric IO
 VE_BASE:
-    .db $04, "base",0
+    .dw $ff04
+    .db "base"
     .dw VE_HEAD
     .set VE_HEAD = VE_BASE
 XT_BASE:

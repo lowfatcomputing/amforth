@@ -2,7 +2,8 @@
 ; R( -- )
 ; stack manipulation
 VE_SWAP:
-    .db $04, "swap",0
+    .dw $ff04
+    .db "swap"
     .dw VE_HEAD
     .set VE_HEAD = VE_SWAP
 XT_SWAP:

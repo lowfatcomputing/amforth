@@ -2,7 +2,8 @@
 ; R( -- )
 ; throw an exception
 VE_THROW:
-    .db $05, "throw"
+    .dw $ff05
+    .db "throw",0
     .dw VE_HEAD
     .set VE_HEAD = VE_THROW
 XT_THROW:

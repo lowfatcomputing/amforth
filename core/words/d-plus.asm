@@ -2,7 +2,8 @@
 ; R( -- )
 ; add double cell values
 VE_DPLUS:
-    .db $02, "d+",0
+    .dw $ff02
+    .db "d+"
     .dw VE_HEAD
     .set VE_HEAD = VE_DPLUS
 XT_DPLUS:

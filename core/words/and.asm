@@ -2,7 +2,8 @@
 ; R( -- )
 ; bitwise and
 VE_AND:
-    .db $03, "and"
+    .dw $ff03
+    .db "and",0
     .dw VE_HEAD
     .set VE_HEAD = VE_AND
 XT_AND:

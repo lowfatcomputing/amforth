@@ -2,7 +2,8 @@
 ; R( xt -- )
 ; end of current colon word
 VE_EXIT:
-    .db $04, "exit",0
+    .dw $ff04
+    .db "exit"
     .dw VE_HEAD
     .set VE_HEAD = VE_EXIT
 XT_EXIT:

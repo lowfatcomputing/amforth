@@ -2,7 +2,8 @@
 ; R( -- )
 ; store a byte to RAM address
 VE_CSTORE:
-    .db $02, "c!",0
+    .dw $ff02
+    .db "c!"
     .dw VE_HEAD
     .set VE_HEAD = VE_CSTORE
 XT_CSTORE:

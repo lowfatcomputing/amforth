@@ -10,11 +10,16 @@ XT_SLITERAL:
 PFA_SLITERAL:
   .dw XT_R_FROM   ; ( -- addr )
   .dw XT_DUP      ; ( -- addr addr )
-  .dw XT_ICOUNT   ; ( -- addr addr' n )
+  .dw XT_DUP
+  .dw XT_IFETCH   ; ( -- addr addr n )
+  .dw XT_SWAP
+  .dw XT_1PLUS
+  .dw XT_SWAP
   .dw XT_ROT      ; ( -- addr' n addr )
   .dw XT_OVER     ; ( -- addr' n addr n)
+  .dw XT_1PLUS
   .dw XT_2SLASH   ; ( -- addr' n addr k )
-  .dw XT_1PLUS    ; ( -- addr' n addr k+1 )
   .dw XT_PLUS     ; ( -- addr' n addr'' )
+  .dw XT_1PLUS
   .dw XT_TO_R     ; ( -- )
   .dw XT_EXIT

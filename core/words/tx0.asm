@@ -68,7 +68,8 @@ usart0_udre_done:
 ; R( --)
 ; put 1 character into output queue, wait if needed, enable UDRIE0 interrupt
 VE_TX0:
-    .db $03, "tx0"
+    .dw $ff03
+    .db "tx0",0
     .dw VE_HEAD
     .set VE_HEAD = VE_TX0
 XT_TX0:
@@ -112,7 +113,8 @@ PFA_TX0:
 ; R( --)
 ; check if a character can be appended to output queue.
 VE_TX0Q:
-    .db $04, "tx0?",0
+    .dw $ff04
+    .db "tx0?"
     .dw VE_HEAD
     .set VE_HEAD = VE_TX0Q
 XT_TX0Q:

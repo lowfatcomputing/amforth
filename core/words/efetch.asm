@@ -2,7 +2,8 @@
 ; R( -- )
 ; read 2 bytes from eeprom
 VE_EFETCH:
-    .db $02, "e@",0
+    .dw $ff02
+    .db "e@"
     .dw VE_HEAD
     .set VE_HEAD = VE_EFETCH
 XT_EFETCH:

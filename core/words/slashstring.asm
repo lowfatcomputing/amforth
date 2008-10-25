@@ -2,7 +2,8 @@
 ; R( -- )
 ; adjust string from addr1 to addr1+n, reduce length from u1 to u2 by n
 VE_SLASHSTRING:
-    .db $7, "/string"
+    .dw $ff07
+    .db "/string",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SLASHSTRING
 XT_SLASHSTRING:

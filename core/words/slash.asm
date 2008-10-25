@@ -2,7 +2,8 @@
 ; R( -- )
 ; diviion
 VE_SLASH:
-    .db $01, "/"
+    .dw $ff01
+    .db "/",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SLASH
 XT_SLASH:

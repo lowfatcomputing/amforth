@@ -2,7 +2,8 @@
 ; R( -- )
 ; duplicate TOS
 VE_DUP:
-    .db $03, "dup"
+    .dw $ff03
+    .db "dup",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DUP
 XT_DUP:

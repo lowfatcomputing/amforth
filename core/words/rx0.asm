@@ -58,7 +58,8 @@ usart0_rx_isr_error:
 ; R( --)
 ; get 1 character from input queue, wait if needed
 VE_RX0:
-    .db $03, "rx0"
+    .dw $ff03
+    .db "rx0",0
     .dw VE_HEAD
     .set VE_HEAD = VE_RX0
 XT_RX0:
@@ -88,7 +89,8 @@ PFA_RX0:
 ; R( --)
 ; check if unread characters are in the input queue.
 VE_RX0Q:
-    .db $04, "rx0?",0
+    .dw $ff04
+    .db "rx0?"
     .dw VE_HEAD
     .set VE_HEAD = VE_RX0Q
 XT_RX0Q:

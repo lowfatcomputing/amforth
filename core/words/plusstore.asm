@@ -2,7 +2,8 @@
 ; R( -- )
 ; add value to content of RAM address
 VE_PLUSSTORE:
-    .db $02, "+!",0
+    .dw $ff02
+    .db "+!"
     .dw VE_HEAD
     .set VE_HEAD = VE_PLUSSTORE
 XT_PLUSSTORE:

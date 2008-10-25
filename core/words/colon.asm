@@ -2,7 +2,8 @@
 ; R( -- )
 ; create named entry in the dictionary
 VE_COLON:
-    .db $1, ":"
+    .dw $ff01
+    .db ":",0
     .dw VE_HEAD
     .set VE_HEAD = VE_COLON
 XT_COLON:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; prepend character to pictured numeric output buffer
 VE_HOLD:
-    .db $04, "hold",0
+    .dw $ff04
+    .db "hold"
     .dw VE_HEAD
     .set VE_HEAD = VE_HOLD
 XT_HOLD:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; duplicate TOS if non-zero
 VE_QDUP:
-    .db $04, "?dup",0
+    .dw $ff04
+    .db "?dup"
     .dw VE_HEAD
     .set VE_HEAD = VE_QDUP
 XT_QDUP:

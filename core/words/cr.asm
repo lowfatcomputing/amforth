@@ -2,7 +2,8 @@
 ; R( -- )
 ; emits CR/LF
 VE_CR:
-    .db $02, "cr", 0
+    .dw $ff02
+    .db "cr"
     .dw VE_HEAD
     .set VE_HEAD = VE_CR
 XT_CR:

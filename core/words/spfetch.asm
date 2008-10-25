@@ -2,7 +2,8 @@
 ; R( -- )
 ; current data stack pointer
 VE_SP_FETCH:
-    .db $03, "sp@"
+    .dw $ff03
+    .db "sp@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SP_FETCH
 XT_SP_FETCH:

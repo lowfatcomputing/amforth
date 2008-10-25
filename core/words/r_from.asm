@@ -2,7 +2,8 @@
 ; R( n --)
 ; move TOR to TOS
 VE_R_FROM:
-    .db $02, "r>", 0
+    .dw $ff02
+    .db "r>"
     .dw VE_HEAD
     .set VE_HEAD = VE_R_FROM
 XT_R_FROM:

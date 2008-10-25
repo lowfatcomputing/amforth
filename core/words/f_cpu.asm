@@ -2,7 +2,8 @@
 ; R( -- )
 ; put the cpu frequency on stack
 VE_F_CPU:
-    .db $05, "f_cpu"
+    .dw $ff05
+    .db "f_cpu",0
     .dw VE_HEAD
     .set VE_HEAD = VE_F_CPU
 XT_F_CPU:

@@ -1,64 +1,70 @@
-; ( addr-ram addr-flash  --  f) Tools
+; ( r-addr r-len f-addr f-len --  f) Tools
 ; R( -- )
-; compares counted string in RAM with counted string in flash
+; compares string in RAM with string in flash
 VE_ICOMPARE:
-    .db $08, "icompare", 0
+    .dw $ff08
+    .db "icompare"
     .dw VE_HEAD
     .set VE_HEAD = VE_ICOMPARE
 XT_ICOMPARE:
     .dw DO_COLON
 PFA_ICOMPARE:
-    ; a string has at least 1 character, length 0 is not possible
-    .dw XT_OVER     ; ( -- a-r a-f a-r)
-    .dw XT_FETCH    ; ( -- a-r a-f c-r)
-    .dw XT_OVER     ; ( -- a-r a-f c-r a-f)
-    .dw XT_IFETCH   ; ( -- a-r a-f c-r c-f)
-    .dw XT_DOLITERAL
-    .dw $ff7f       ; mask out immediate bit
-    .dw XT_AND
-    .dw XT_NOTEQUAL ; ( -- a-r a-f f)
+    .dw XT_OVER
+    .dw XT_OVER
+    .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
-    .dw PFA_ICOMPARE1
+    .dw PFA_ICOMPARE_SAMELEN
+      .dw XT_DROP
+      .dw XT_DROP
+      .dw XT_ZERO
+      .dw XT_EXIT
+PFA_ICOMPARE_SAMELEN:
+    .dw XT_DROP
+    .dw XT_SWAP ; ( r-addr f-addr len )
+    .dw XT_ZERO
+    .dw XT_DOQDO
+    .dw PFA_ICOMPARE_DONE
+PFA_ICOMPARE_LOOP:
+    ; ( r-addr f-addr --)
+    .dw XT_OVER
+    .dw XT_FETCH
+    .dw XT_OVER
+    .dw XT_IFETCH ; ( -- r-addr f-addr r-cc f- cc)
+    ; flash strings are zero-padded at the last cell
+    ; that means: if the flash cell is less $0100, than mask the
+    ; high byte in the ram cell
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw $100
+    .dw XT_LESS
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ICOMPARE_LASTCELL
+    .dw XT_SWAP
+    .dw XT_DOLITERAL
+    .dw $00FF
+    .dw XT_AND  ; the final swap can be omitted
+PFA_ICOMPARE_LASTCELL:
+    .dw XT_NOTEQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ICOMPARE_NEXTLOOP
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_ZERO
+    .dw XT_UNLOOP
     .dw XT_EXIT
-
-PFA_ICOMPARE1:
-    ; the two strings have the same length an the same first character
-    ; ( addr-ram addr-flash -- )
-    .dw XT_OVER   ; ( -- addr-ram addr-flash addr-ram )
-    .dw XT_CFETCH ; ( -- addr-ram addr-flash char-len )
-    .dw XT_2SLASH ; ( -- addr-ram addr-flash cell-len' )
-    .dw XT_ZERO   ; ( -- addr-ram addr-flash cell-len' 0 )
-    .dw XT_DOQDO
-    .dw PFA_ICOMPARE3
-PFA_ICOMPARE2:
-    ; ( addr-ram addr-flash -- )
+PFA_ICOMPARE_NEXTLOOP:
     .dw XT_1PLUS
     .dw XT_SWAP
     .dw XT_CELLPLUS
-    .dw XT_OVER   ; ( -- addr-flash addr-ram addr-flash)
-    .dw XT_IFETCH
-    .dw XT_OVER   
-    .dw XT_FETCH  ; ( -- addr-flash addr-ram data-flash data-ram)
-    .dw XT_NOTEQUAL
-    .dw XT_DOCONDBRANCH
-    .dw PFA_ICOMPARE4
-    ; the strings are different -> leave the loop
-    .dw XT_UNLOOP
-    .dw XT_DROP
-    .dw XT_DROP
-    .dw XT_ZERO
-    .dw XT_EXIT
-PFA_ICOMPARE4:
-    .dw XT_SWAP  ; ( -- addr-ram addr-flash )
-    .dw XT_DOLOOP
-    .dw PFA_ICOMPARE2
-PFA_ICOMPARE3:
+    .dw XT_SWAP
+    .dw XT_DOLITERAL
+    .dw 2
+    .dw XT_DOPLUSLOOP
+    .dw PFA_ICOMPARE_LOOP
+PFA_ICOMPARE_DONE:
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_DOLITERAL
     .dw -1
     .dw XT_EXIT
-    
+

@@ -2,7 +2,8 @@
 ; R( -- )
 ; copy string as counted string, does not check overflows
 VE_PLACE:
-    .db $05, "place"
+    .dw $ff05
+    .db "place",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PLACE
 XT_PLACE:

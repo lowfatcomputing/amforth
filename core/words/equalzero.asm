@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare with 0 (zero)
 VE_EQUALZERO:
-    .db $02, "0=",0
+    .dw $ff02
+    .db "0="
     .dw VE_HEAD
     .set VE_HEAD = VE_EQUALZERO
 XT_EQUALZERO:

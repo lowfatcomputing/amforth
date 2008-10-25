@@ -1,8 +1,9 @@
-; ( d1 -- ) Numeric IO
+; ( ud1 -- ) Numeric IO
 ; R( -- )
-; unsigned double cell output 
+; double cell output
 VE_UDOT:
-    .db $02, "u.",0
+    .dw $ff02
+    .db "u."
     .dw VE_HEAD
     .set VE_HEAD = VE_UDOT
 XT_UDOT:

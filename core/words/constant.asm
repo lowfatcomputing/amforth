@@ -2,7 +2,8 @@
 ; R( -- )
 ; create a named constant
 VE_CONSTANT:
-    .db $08, "constant",0
+    .dw $ff08
+    .db "constant"
     .dw VE_HEAD
     .set VE_HEAD = VE_CONSTANT
 XT_CONSTANT:

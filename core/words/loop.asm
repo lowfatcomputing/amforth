@@ -2,7 +2,8 @@
 ; R( -- )
 ; cpmpile (loop) and resolve branch
 VE_LOOP:
-    .db $84, "loop",0
+    .dw $0004 
+    .db "loop"
     .dw VE_HEAD
     .set VE_HEAD = VE_LOOP
 XT_LOOP:

@@ -1,8 +1,9 @@
-; ( -- n ) Extended VM
+; ( -- n2 ) Extended VM
 ; R( -- )
-; Read memory pointed to by register B  
+; Read memory pointed to by register B (Extended VM)
 VE_BFETCH:
-    .db $02, "b@",0
+    .dw $ff02
+    .db "b@"
     .dw VE_HEAD
     .set VE_HEAD = VE_BFETCH
 XT_BFETCH:
@@ -14,11 +15,12 @@ PFA_BFETCH:
     ld tosh, Z+
     rjmp DO_NEXT
 
-; ( offs -- n ) Extended VM
+; ( n1 -- n2 ) Extended VM
 ; R( -- )
-; Read memory pointed to by register B plus offset  
+; Read memory pointed to by register B plus offset (Extended VM)
 VE_NBFETCH:
-    .db $03, "nb@"
+    .dw $ff03
+    .db "nb@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_NBFETCH
 XT_NBFETCH:
@@ -33,9 +35,10 @@ PFA_NBFETCH:
 
 ; ( -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register B, increment B by 1 cell  
+; Read memory pointed to by register B, increment B by 1 cell (Extended VM)
 VE_BFETCHPLUS:
-    .db $03, "b@+"
+    .dw $ff03
+    .db "b@+",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BFETCHPLUS
 XT_BFETCHPLUS:
@@ -50,9 +53,10 @@ PFA_BFETCHPLUS:
 
 ; ( -- n ) Extended VM
 ; R( -- )
-; Read memory pointed to by register B, decrement B by 1 cell  
+; Read memory pointed to by register B, decrement B by 1 cell (Extended VM)
 VE_BFETCHMINUS:
-    .db $03, "b@-"
+    .dw $ff03
+    .db "b@-",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BFETCHMINUS
 XT_BFETCHMINUS:
@@ -67,9 +71,10 @@ PFA_BFETCHMINUS:
 
 ; ( n -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register B  
+; Write memory pointed to by register B (Extended VM)
 VE_BSTORE:
-    .db $02, "b!",0
+    .dw $ff02
+    .db "b!"
     .dw VE_HEAD
     .set VE_HEAD = VE_BSTORE
 XT_BSTORE:
@@ -83,9 +88,10 @@ PFA_BSTORE:
 
 ; ( n offs -- ) Extended VM
 ; R( -- )
-; Write memory pointed to by register B plus offset  
+; Write memory pointed to by register B plus offset (Extended VM)
 VE_NBSTORE:
-    .db $03, "nb!"
+    .dw $ff03
+    .db "nb!",0
     .dw VE_HEAD
     .set VE_HEAD = VE_NBSTORE
 XT_NBSTORE:
@@ -100,11 +106,12 @@ PFA_NBSTORE:
     loadtos
     rjmp DO_NEXT
 
-; ( n -- ) Extended VM
+; ( -- n2 ) Extended VM
 ; R( -- )
-; Write memory pointed to by register B, increment B by 1 cell  
+; Write memory pointed to by register B, increment B by 1 cell (Extended VM)
 VE_BSTOREPLUS:
-    .db $03, "b!+"
+    .dw $ff03
+    .db  "b!+",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BSTOREPLUS
 XT_BSTOREPLUS:
@@ -117,11 +124,12 @@ PFA_BSTOREPLUS:
     movw bl, zl
     rjmp DO_NEXT
 
-; ( n -- ) Extended VM
+; ( -- n2 ) Extended VM
 ; R( -- )
-; Write memory pointed to by register B, decrement B by 1 cell  
+; Write memory pointed to by register B, decrement B by 1 cell (Extended VM)
 VE_BSTOREMINUS:
-    .db $03, "b!-"
+    .dw $ff03
+    .db "b!-",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BSTOREMINUS
 XT_BSTOREMINUS:
@@ -138,9 +146,10 @@ PFA_BSTOREMINUS:
 
 ; ( n -- ) Extended VM
 ; R( -- )
-; Write to B register  
+; Write to B register (Extended VM)
 VE_TO_B:
-    .db $02, ">b",0
+    .dw $ff02
+    .db ">b"
     .dw VE_HEAD
     .set VE_HEAD = VE_TO_B
 XT_TO_B:
@@ -150,11 +159,12 @@ PFA_TO_B:
     loadtos
     rjmp DO_NEXT
 
-; ( -- n ) Extended VM
+; ( n1 -- n2 ) Extended VM
 ; R( -- )
-; read the B register  
+; read the B register (Extended VM)
 VE_B_FROM:
-    .db $02, "b>",0
+    .dw $ff02
+    .db "b>"
     .dw VE_HEAD
     .set VE_HEAD = VE_B_FROM
 XT_B_FROM:

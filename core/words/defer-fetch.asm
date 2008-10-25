@@ -2,7 +2,8 @@
 ; R( -- )
 ; returns the XT assoziates with the given XT
 VE_DEFERFETCH:
-    .db $06, "defer@",0
+    .dw $ff06
+    .db "defer@"
     .dw VE_HEAD
     .set VE_HEAD = VE_DEFERFETCH
 XT_DEFERFETCH:

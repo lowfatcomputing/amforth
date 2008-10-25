@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare two values
 VE_LESS:
-    .db $01, "<"
+    .dw $ff01
+    .db "<",0
     .dw VE_HEAD
     .set VE_HEAD = VE_LESS
 XT_LESS:

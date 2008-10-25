@@ -2,7 +2,8 @@
 ; R( -- )
 ; emits a space (bl)
 VE_SPACE:
-    .db $05, "space"
+    .dw $ff05
+    .db "space",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SPACE
 XT_SPACE:

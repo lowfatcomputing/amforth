@@ -2,14 +2,16 @@
 ; R( -- )
 ; emits the version string
 VE_VER:
-    .db $03, "ver"
+    .dw $ff03
+    .db "ver",0
     .dw VE_HEAD
     .set VE_HEAD = VE_VER
 XT_VER:
     .dw DO_COLON
 PFA_VER:
     .dw XT_SLITERAL
-    .db 11,"amforth 3.0"
+    .dw 12
+    .db "amforth 3.1 "
     .dw XT_ITYPE
     .dw XT_SPACE
     .dw XT_DOLITERAL

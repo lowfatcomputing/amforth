@@ -2,7 +2,8 @@
 ; R( -- )
 ; put system to interpreter state
 VE_LBRACKET:
-    .db $81, "["
+    .dw $0001
+    .db "[",0
     .dw VE_HEAD
     .set VE_HEAD = VE_LBRACKET
 XT_LBRACKET:

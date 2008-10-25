@@ -2,7 +2,8 @@
 ; R( n*y -- )
 ; check flag. If true emit some text and throw  exception -2 
 VE_ABORTSTRING:
-    .db $86, "abort", $22,0
+    .dw $0006
+    .db "abort", $22
     .dw VE_HEAD
     .set VE_HEAD = VE_ABORTSTRING
 XT_ABORTSTRING:

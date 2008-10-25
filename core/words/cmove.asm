@@ -2,7 +2,8 @@
 ; R( -- )
 ; copy data in RAM
 VE_CMOVE:
-    .db $05, "cmove"
+    .dw $ff05
+    .db "cmove",0
     .dw VE_HEAD
     .set VE_HEAD  = VE_CMOVE
 XT_CMOVE:
@@ -27,4 +28,4 @@ PFA_CMOVE1:
     pop xl
     pop xh
     loadtos
-    jmp_ DO_NEXT
+    rjmp DO_NEXT

@@ -2,7 +2,8 @@
 ; R( -- )
 ; turns on all interrupts
 VE_INTON:
-    .db $04, "+int",0
+    .dw $ff04
+    .db "+int"
     .dw VE_HEAD
     .set VE_HEAD = VE_INTON
 XT_INTON:

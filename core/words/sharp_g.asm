@@ -2,7 +2,8 @@
 ; R( -- )
 ; convert HLD buffer to a usable string
 VE_SHARP_G:
-    .db $02, "#>",0
+    .dw $ff02
+    .db "#>"
     .dw VE_HEAD
     .set VE_HEAD = VE_SHARP_G
 XT_SHARP_G:

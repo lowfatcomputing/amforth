@@ -2,7 +2,8 @@
 ; R( -- )
 ; stack dump
 VE_DOTS:
-    .db $02, ".s",0
+    .dw $ff02
+    .db ".s"
     .dw VE_HEAD
     .set VE_HEAD = VE_DOTS
 XT_DOTS:

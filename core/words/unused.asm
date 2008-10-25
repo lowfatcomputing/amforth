@@ -2,7 +2,8 @@
 ; R( -- )
 ; number of unused flash cells
 VE_UNUSED:
-    .db $6, "unused",0
+    .dw $ff06
+    .db "unused"
     .dw VE_HEAD
     .set VE_HEAD = VE_UNUSED
 XT_UNUSED:

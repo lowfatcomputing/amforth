@@ -2,7 +2,8 @@
 ; R( -- )
 ; emits a string
 VE_TYPE:
-    .db $04, "type",0
+    .dw $ff04
+    .db "type"
     .dw VE_HEAD
     .set VE_HEAD = VE_TYPE
 XT_TYPE:

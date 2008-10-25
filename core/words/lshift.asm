@@ -2,7 +2,8 @@
 ; R( -- )
 ; logical shift left 
 VE_LSHIFT:
-    .db $06, "lshift",0
+    .dw $ff06
+    .db "lshift"
     .dw VE_HEAD
     .set VE_HEAD = VE_LSHIFT
 XT_LSHIFT:

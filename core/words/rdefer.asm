@@ -2,7 +2,8 @@
 ; R( -- )
 ; creates a RAM based defer vector
 VE_RDEFER:
-    .db $06, "Rdefer",0
+    .dw $ff06
+    .db "Rdefer"
     .dw VE_HEAD
     .set VE_HEAD = VE_RDEFER
 XT_RDEFER:

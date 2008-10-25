@@ -2,7 +2,8 @@
 ; R( -- )
 ; call # until a value of zero is reached
 VE_SHARP_S:
-    .db $02, "#s",0
+    .dw $ff02
+    .db "#s"
     .dw VE_HEAD
     .set VE_HEAD = VE_SHARP_S
 XT_SHARP_S:

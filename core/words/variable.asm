@@ -2,7 +2,8 @@
 ; R( -- )
 ; create a variable entry and allocate RAM space for it
 VE_VARIABLE:
-    .db $08, "variable",0
+    .dw $ff08
+    .db "variable"
     .dw VE_HEAD
     .set VE_HEAD = VE_VARIABLE
 XT_VARIABLE:

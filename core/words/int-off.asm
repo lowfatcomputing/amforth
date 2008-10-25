@@ -2,7 +2,8 @@
 ; R( -- )
 ; turns off all interrupts and leaves SREG in TOS
 VE_INTOFF:
-    .db $04, "-int",0
+    .dw $ff04
+    .db "-int"
     .dw VE_HEAD
     .set VE_HEAD = VE_INTOFF
 XT_INTOFF:

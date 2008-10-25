@@ -2,7 +2,8 @@
 ; R( -- )
 ; stack manupulation
 VE_ROT:
-    .db $03, "rot"
+    .dw $ff03
+    .db "rot",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ROT
 XT_ROT:

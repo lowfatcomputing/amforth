@@ -2,7 +2,8 @@
 ; R( -- )
 ; go back to begin
 VE_AGAIN:
-    .db $85, "again"
+    .dw $0005
+    .db "again",0
     .dw VE_HEAD
     .set VE_HEAD = VE_AGAIN
 XT_AGAIN:

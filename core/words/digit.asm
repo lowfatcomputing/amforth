@@ -2,7 +2,8 @@
 ; R( -- )
 ; convert character to number, set flag if successful
 VE_DIGIT:
-    .db $05, "digit"
+    .dw $ff05
+    .db "digit",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DIGIT
 XT_DIGIT:

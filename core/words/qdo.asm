@@ -2,7 +2,8 @@
 ; R( -- )
 ; start do .. [+]loop
 VE_QDO:
-    .db $83, "?do"
+    .dw $0003
+    .db "?do",0
     .dw VE_HEAD
     .set VE_HEAD = VE_QDO
 XT_QDO:

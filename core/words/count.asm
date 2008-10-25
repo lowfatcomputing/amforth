@@ -2,7 +2,8 @@
 ; R( -- )
 ; addr is the address of a counted string in RAM
 VE_COUNT:
-    .db $05, "count"
+    .dw $ff05
+    .db "count",0
     .dw VE_HEAD
     .set VE_HEAD = VE_COUNT
 XT_COUNT:

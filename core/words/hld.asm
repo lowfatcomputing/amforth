@@ -2,7 +2,8 @@
 ; R( -- )
 ; address of buffer for pictured numeric output
 VE_HLD:
-    .db $03, "hld"
+    .dw $ff03
+    .db "hld",0
     .dw VE_HEAD
     .set VE_HEAD = VE_HLD
 XT_HLD:

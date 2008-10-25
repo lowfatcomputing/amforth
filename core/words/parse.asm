@@ -2,7 +2,8 @@
 ; R( -- )
 ; in input buffer parse ccc delimited string by the delimiter char.
 VE_PARSE:
-    .db $5, "parse"
+    .dw $ff05
+    .db "parse",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PARSE
 XT_PARSE:

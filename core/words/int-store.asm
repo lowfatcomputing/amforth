@@ -2,7 +2,8 @@
 ; R( -- )
 ; stores XT as interrupt vector i
 VE_INTSTORE:
-    .db $04, "int!",0
+    .dw $ff04
+    .db "int!"
     .dw VE_HEAD
     .set VE_HEAD = VE_INTSTORE
 XT_INTSTORE:

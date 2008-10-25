@@ -2,7 +2,8 @@
 ; R( -- )
 ; start address of the data stack
 VE_SP0:
-    .db $03, "sp0"
+    .dw $ff03
+    .db "sp0",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SP0
 XT_SP0:
@@ -28,7 +29,8 @@ PFA_DOSP0:
 ; R( -- )
 ; address of user variable to store top-of-stack for inactive tasks
 VE_SP:
-    .db $02, "sp",0
+    .dw $ff02
+    .db "sp"
     .dw VE_HEAD
     .set VE_HEAD = VE_SP
 XT_SP:

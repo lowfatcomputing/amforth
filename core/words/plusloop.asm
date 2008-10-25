@@ -2,7 +2,8 @@
 ; R( -- )
 ; compile +loop and resolve branch
 VE_PLUSLOOP:
-    .db $85, "+loop"
+    .dw $0005
+    .db "+loop",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PLUSLOOP
 XT_PLUSLOOP:

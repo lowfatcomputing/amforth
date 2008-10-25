@@ -2,7 +2,8 @@
 ; R( -- )
 ; 
 VE_DOES:
-    .db $85, "does>"
+    .dw $0005
+    .db "does>",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DOES
 XT_DOES:

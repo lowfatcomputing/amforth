@@ -2,35 +2,26 @@
 ; R( -- )
 ; compiles a string from RAM to Flash
 VE_SCOMMA:
-  .db $02,"s",$2c,0
+  .dw $ff02
+  .db "s",$2c
   .dw VE_HEAD
   .set VE_HEAD = VE_SCOMMA
 XT_SCOMMA:
     .dw DO_COLON
 PFA_SCOMMA:
     .dw XT_DUP
-    .dw XT_2SLASH      ; ( -- addr n k )
-    .dw XT_1PLUS       ; ( -- addr n k+1)
-    .dw XT_TO_R
-    .dw XT_OVER        ; ( -- addr n addr)
-    .dw XT_CFETCH      ; ( -- addr n c )
-    .dw XT_DOLITERAL
-    .dw 8
-    .dw XT_LSHIFT
-    .dw XT_OR
-    .dw XT_COMMA       ; ( -- addr )
-    .dw XT_1PLUS       ; ( -- addr+1)
-    .dw XT_R_FROM      ; ( -- addr+1 k+1)
-    .dw XT_1MINUS      ; ( -- addr+1 k)
-    .dw XT_ZERO        ; ( -- addr+1 k 0)
-    .dw XT_DOQDO        ; ( -- addr)
+    .dw XT_COMMA
+    .dw XT_ZERO
+    .dw XT_DOQDO
     .dw PFA_SCOMMA2
 PFA_SCOMMA1:
     .dw XT_DUP         ; ( -- addr addr )
     .dw XT_FETCH       ; ( -- addr c1c2 )
     .dw XT_COMMA       ; ( -- addr )
     .dw XT_CELLPLUS    ; ( -- addr+cell )
-    .dw XT_DOLOOP
+    .dw XT_DOLITERAL
+    .dw 2
+    .dw XT_DOPLUSLOOP
     .dw PFA_SCOMMA1
 PFA_SCOMMA2:
     .dw XT_DROP        ; ( -- )

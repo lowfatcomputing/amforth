@@ -2,7 +2,8 @@
 ; R( -- )
 ; read 1 cell from RAM (or IO or CPU register)
 VE_FETCH:
-    .db $01, "@"
+    .dw $ff01
+    .db "@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_FETCH
 XT_FETCH:

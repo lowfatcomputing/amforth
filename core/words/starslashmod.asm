@@ -2,7 +2,8 @@
 ; R( -- )
 ; signed multiply n1 * n2 and division  with n3 with double precision intermediate and remainder
 VE_STARSLASHMOD:
-    .db $05, "*/mod"
+    .dw $ff05
+    .db "*/mod",0
     .dw VE_HEAD
     .set VE_HEAD = VE_STARSLASHMOD
 XT_STARSLASHMOD:

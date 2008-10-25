@@ -2,7 +2,8 @@
 ; R( -- )
 ; multiply 2 unsigned cells to a double cell
 VE_UMSTAR:
-    .db $03, "um*"
+    .dw $ff03
+    .db "um*",0
     .dw VE_HEAD
     .set VE_HEAD = VE_UMSTAR
 XT_UMSTAR:

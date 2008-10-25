@@ -2,7 +2,8 @@
 ; R( -- )
 ; compile  XT of the word beeing currently defined into dictionary (! not conforming to ANS!)
 VE_RECURSE:
-    .db $87, "recurse"
+    .dw $0007
+    .db "recurse",0
     .dw VE_HEAD
     .set VE_HEAD = VE_RECURSE
 XT_RECURSE:

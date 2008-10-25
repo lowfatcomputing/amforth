@@ -2,7 +2,8 @@
 ; R( -- )
 ; put ascii code of the blank to the stack
 VE_BL:
-    .db $02, "bl", 0
+    .dw $ff02
+    .db "bl"
     .dw VE_HEAD
     .set VE_HEAD = VE_BL
 XT_BL:

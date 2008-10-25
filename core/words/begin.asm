@@ -2,7 +2,8 @@
 ; R( -- )
 ; start a control structture
 VE_BEGIN:
-    .db $85, "begin"
+    .dw $0005
+    .db "begin",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BEGIN
 XT_BEGIN:

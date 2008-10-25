@@ -1,8 +1,9 @@
-; ( u n -- ) Numeric IO
+; ( ud n -- ) Numeric IO
 ; R( -- )
-;  Print n digits, fill in preceeding zeros if any.
+; Print n digits, fill in preceeding zeros if needed
 VE_UZERODOTR:
-    .db $04, "u0.r",0
+    .dw $ff04
+    .db "u0.r"
     .dw VE_HEAD
     .set VE_HEAD = VE_UZERODOTR
 XT_UZERODOTR:

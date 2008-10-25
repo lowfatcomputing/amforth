@@ -2,7 +2,8 @@
 ; R( -- )
 ; compares u1 > u2 (unsigned)
 VE_UGREATER:
-    .db $02, "u>",0
+    .dw $ff02
+    .db "u>"
     .dw VE_HEAD
     .set VE_HEAD = VE_UGREATER
 XT_UGREATER:

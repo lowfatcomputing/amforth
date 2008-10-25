@@ -2,7 +2,8 @@
 ; R( -- )
 ; writes a cell in flash
 VE_ISTORE:
-    .db $02, "i!",0
+    .dw $ff02
+    .db "i!"
     .dw VE_HEAD
     .set VE_HEAD = VE_ISTORE
 XT_ISTORE:

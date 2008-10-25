@@ -2,7 +2,8 @@
 ; R( -- )
 ; set base to 16 (decimal)
 VE_HEX:
-    .db $03, "hex"
+    .dw $ff03
+    .db "hex",0
     .dw VE_HEAD
     .set VE_HEAD = VE_HEX
 XT_HEX:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; shift a double cell value right
 VE_D2SLASH:
-    .db $03, "d2/"
+    .dw $ff03
+    .db "d2/",0
     .dw VE_HEAD
     .set VE_HEAD = VE_D2SLASH
 XT_D2SLASH:

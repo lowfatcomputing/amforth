@@ -2,7 +2,8 @@
 ; R( -- )
 ; logical or
 VE_OR:
-    .db $02, "or",0
+    .dw $ff02
+    .db "or"
     .dw VE_HEAD
     .set VE_HEAD = VE_OR
 XT_OR:

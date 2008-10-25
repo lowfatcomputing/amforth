@@ -2,7 +2,8 @@
 ; R( -- )
 ; signed division n1/n2 with remainder
 VE_SLASHMOD:
-    .db $04, "/mod",0
+    .dw $ff04
+    .db "/mod"
     .dw VE_HEAD
     .set VE_HEAD = VE_SLASHMOD
 XT_SLASHMOD:

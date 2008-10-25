@@ -2,7 +2,8 @@
 ; R( -- )
 ; stack manipulation
 VE_OVER:
-    .db $04, "over",0
+    .dw $ff04
+    .db "over"
     .dw VE_HEAD
     .set VE_HEAD = VE_OVER
 XT_OVER:

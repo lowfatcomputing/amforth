@@ -2,7 +2,8 @@
 ; R( -- )
 ; set immediate flag
 VE_IMMEDIATE:
-    .db $09, "immediate"
+    .dw $ff09
+    .db "immediate",0
     .dw VE_HEAD
     .set VE_HEAD = VE_IMMEDIATE
 XT_IMMEDIATE:

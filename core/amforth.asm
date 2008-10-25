@@ -123,7 +123,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     clt ; clear the t flag to indicate that the interrupt is handled
     rjmp DO_EXECUTE
 
-.include "dict_high.inc"
+.include "dict_core.inc"
 
 .if dict_appl==2
  .include "dict_appl.inc"

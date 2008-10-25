@@ -2,7 +2,8 @@
 ; R( -- )
 ; extend (signed) single cell value to double cell
 VE_S2D:
-    .db $03, "s>d"
+    .dw $ff03
+    .db "s>d",0
     .dw VE_HEAD
     .set VE_HEAD = VE_S2D
 XT_S2D:

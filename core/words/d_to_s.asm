@@ -2,7 +2,8 @@
 ; R( -- )
 ; shrink double cell value to single cell. 
 VE_D2S:
-    .db $03, "d>s"
+    .dw $ff03
+    .db "d>s",0
     .dw VE_HEAD
     .set VE_HEAD = VE_D2S
 XT_D2S:

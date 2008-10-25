@@ -2,7 +2,8 @@
 ; R( -- )
 ; 
 VE_ELSE:
-    .db $84, "else",0
+    .dw $0004
+    .db "else"
     .dw VE_HEAD
     .set VE_HEAD = VE_ELSE
 XT_ELSE:

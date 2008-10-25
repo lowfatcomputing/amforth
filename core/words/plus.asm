@@ -2,7 +2,8 @@
 ; R( -- )
 ; addition
 VE_PLUS:
-    .db $01, "+"
+    .dw $ff01
+    .db "+",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PLUS
 XT_PLUS:

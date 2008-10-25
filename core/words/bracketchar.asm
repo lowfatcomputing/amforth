@@ -2,7 +2,8 @@
 ; R( -- )
 ; first character of the next word
 VE_BRACKETCHAR:
-    .db $86, "[char]",0
+    .dw $0006
+    .db "[char]"
     .dw VE_HEAD
     .set VE_HEAD = VE_BRACKETCHAR
 XT_BRACKETCHAR:

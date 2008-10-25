@@ -2,7 +2,8 @@
 ; R( n -- n )
 ; fetch content of TOR
 VE_R_FETCH:
-    .db $02, "r@",0
+    .dw $ff02
+    .db "r@"
     .dw VE_HEAD
     .set VE_HEAD = VE_R_FETCH
 XT_R_FETCH:

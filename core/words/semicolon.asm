@@ -2,7 +2,8 @@
 ; R( -- )
 ; finish colon defintion, compiles (exit) and returns to interpreter state 
 VE_SEMICOLON:
-    .db $81, $3b
+    .dw $0001
+    .db $3b,0
     .dw VE_HEAD
     .set VE_HEAD = VE_SEMICOLON
 XT_SEMICOLON:

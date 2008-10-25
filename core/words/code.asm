@@ -2,7 +2,8 @@
 ; R( -- )
 ; create named entry in the dictionary
 VE_CODE:
-    .db $4, "code",0
+    .dw $ff04
+    .db "code"
     .dw VE_HEAD
     .set VE_HEAD = VE_CODE
 XT_CODE:

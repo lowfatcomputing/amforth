@@ -2,7 +2,8 @@
 ; R( -- )
 ; skips leading occurancies in string at addr1/n1 leaving addr2/n2 pointing to the 1st non-c character
 VE_CSKIP:
-    .db $05, "cskip"
+    .dw $ff05
+    .db "cskip",0
     .dw VE_HEAD
     .set VE_HEAD = VE_CSKIP
 XT_CSKIP:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; do nothing
 VE_NOOP:
-    .db $04, "noop",0
+    .dw $ff04
+    .db "noop"
     .dw VE_HEAD
     .set VE_HEAD = VE_NOOP
 XT_NOOP:

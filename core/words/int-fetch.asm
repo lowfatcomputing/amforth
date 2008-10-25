@@ -2,7 +2,8 @@
 ; R( -- )
 ; fetches XT from interrupt vector i
 VE_INTFETCH:
-    .db $04, "int@",0
+    .dw $ff04
+    .db "int@"
     .dw VE_HEAD
     .set VE_HEAD = VE_INTFETCH
 XT_INTFETCH:

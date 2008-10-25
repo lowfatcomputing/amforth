@@ -2,7 +2,8 @@
 ; R( -- )
 ; 2-complement
 VE_NEGATE:
-    .db $06, "negate",0
+    .dw $ff06
+    .db "negate"
     .dw VE_HEAD
     .set VE_HEAD = VE_NEGATE
 XT_NEGATE:

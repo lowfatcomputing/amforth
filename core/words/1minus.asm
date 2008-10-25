@@ -2,7 +2,8 @@
 ; R( -- )
 ; optimized decrement (CORE)
 VE_1MINUS:
-    .db $02, "1-",0
+    .dw $ff02 
+    .db "1-"
     .dw VE_HEAD
     .set VE_HEAD = VE_1MINUS
 XT_1MINUS:

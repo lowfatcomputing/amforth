@@ -2,7 +2,8 @@
 ; R( -- )
 ; shift a double cell left
 VE_D2STAR:
-    .db $03, "d2*"
+    .dw $ff03
+    .db "d2*",0
     .dw VE_HEAD
     .set VE_HEAD = VE_D2STAR
 XT_D2STAR:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; copy data in RAM
 VE_CMOVE_G:
-    .db $06, "cmove>",0
+    .dw $ff06
+    .db "cmove>"
     .dw VE_HEAD
     .set VE_HEAD  = VE_CMOVE_G
 XT_CMOVE_G:

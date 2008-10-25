@@ -2,7 +2,8 @@
 ; R( --)
 ; stores xt into defer or compiles code to do so at runtime
 VE_IS:
-    .db $82, "is", 0
+    .dw $0002
+    .db "is"
     .dw VE_HEAD
     .set VE_HEAD = VE_IS
 XT_IS:

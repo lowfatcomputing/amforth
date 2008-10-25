@@ -2,7 +2,8 @@
 ; R(--)
 ; busy waits (almost) exactly 1 millisecond
 VE_1MS:
-    .db $03, "1ms"
+    .dw $ff03
+    .db "1ms",0
     .dw VE_HEAD
     .set VE_HEAD = VE_1MS
 XT_1MS:

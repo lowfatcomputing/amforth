@@ -2,7 +2,8 @@
 ; R( -- )
 ; compiles a string to flash, at runtime leaves ( -- addr count) on stack
 VE_SQUOTE:
-  .db $82,"s",$22,0
+  .dw $0002
+  .db "s",$22
   .dw VE_HEAD
   .set VE_HEAD = VE_SQUOTE
 XT_SQUOTE:

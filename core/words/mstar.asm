@@ -2,7 +2,8 @@
 ; R( -- )
 ; multiply 2 cells to a double cell
 VE_MSTAR:
-    .db $02, "m*",0
+    .dw $ff02
+    .db "m*"
     .dw VE_HEAD
     .set VE_HEAD = VE_MSTAR
 XT_MSTAR:

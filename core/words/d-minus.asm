@@ -2,7 +2,8 @@
 ; R( -- )
 ; subtract double cell values
 VE_DMINUS:
-    .db $02, "d-",0
+    .dw $ff02
+    .db "d-"
     .dw VE_HEAD
     .set VE_HEAD = VE_DMINUS
 XT_DMINUS:

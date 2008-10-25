@@ -2,7 +2,8 @@
 ; R( -- )
 ; system state
 VE_STATE:
-    .db $05, "state"
+    .dw $ff05
+    .db "state",0
     .dw VE_HEAD
     .set VE_HEAD = VE_STATE
 XT_STATE:

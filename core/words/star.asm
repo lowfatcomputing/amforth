@@ -2,7 +2,8 @@
 ; R( -- )
 ; multiply routine
 VE_MUL:
-    .db $01, "*"
+    .dw $ff01
+    .db "*",0
     .dw VE_HEAD
     .set VE_HEAD = VE_MUL
 XT_MUL:

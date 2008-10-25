@@ -2,7 +2,8 @@
 ; R( -- )
 ; turn on compiler
 VE_RBRACKET:
-    .db $01, "]"
+    .dw $ff01
+    .db "]",0
     .dw VE_HEAD
     .set VE_HEAD = VE_RBRACKET
 XT_RBRACKET:

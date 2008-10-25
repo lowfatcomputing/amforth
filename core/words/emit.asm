@@ -2,7 +2,8 @@
 ; R( -- )
 ; fetch the emit vector and execute it. should emit a character from TOS
 VE_EMIT:
-    .db $04, "emit",0
+    .dw $ff04
+    .db "emit"
     .dw VE_HEAD
     .set VE_HEAD = VE_EMIT
 XT_EMIT:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; execute XT
 VE_EXECUTE:
-    .db $07, "execute"
+    .dw $ff07
+    .db "execute",0
     .dw VE_HEAD
     .set VE_HEAD = VE_EXECUTE
 XT_EXECUTE:

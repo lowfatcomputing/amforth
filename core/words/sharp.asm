@@ -1,8 +1,9 @@
-; ( d1 -- d2 ) Numeric IO
+; ( d1 -- ) Numeric IO
 ; R( -- )
-; convert a single number an place it in the HOLD buffer
+; double cell output
 VE_SHARP:
-    .db $01, "#"
+    .dw $ff01
+    .db "#",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SHARP
 XT_SHARP:

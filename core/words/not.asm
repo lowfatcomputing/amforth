@@ -2,7 +2,8 @@
 ; R( -- )
 ; identical to 0=
 VE_NOT:
-    .db $03, "not"
+    .dw $ff03
+    .db "not",0
     .dw VE_HEAD
     .set VE_HEAD = VE_NOT
 XT_NOT:

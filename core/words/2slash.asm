@@ -2,7 +2,8 @@
 ; R( -- )
 ; arithmetic shift right
 VE_2SLASH:
-    .db $02, "2/", 0
+    .dw $ff02
+    .db "2/"
     .dw VE_HEAD
     .set VE_HEAD = VE_2SLASH
 XT_2SLASH:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; used by catch/throw
 VE_HANDLER:
-    .db $07, "handler"
+    .dw $ff07
+    .db "handler",0
     .dw VE_HEAD
     .set VE_HEAD = VE_HANDLER
 XT_HANDLER:

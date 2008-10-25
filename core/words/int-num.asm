@@ -2,7 +2,8 @@
 ; R( -- )
 ; number of interrupt vectors (0 based)
 VE_NUMINT:
-    .db $04, "#int",0
+    .dw $ff04
+    .db "#int"
     .dw VE_HEAD
     .set VE_HEAD = VE_NUMINT
 XT_NUMINT:

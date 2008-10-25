@@ -2,7 +2,8 @@
 ; R( -- )
 ; allocate space for 1 cell in EEPROM. used in conjunction with TO
 VE_VALUE:
-    .db $05, "value"
+    .dw $ff05
+    .db "value",0
     .dw VE_HEAD
     .set VE_HEAD = VE_VALUE
 XT_VALUE:

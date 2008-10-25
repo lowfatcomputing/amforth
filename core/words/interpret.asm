@@ -2,7 +2,8 @@
 ; R(i*x - j*x )
 ; interpret input word by word. may throw exceptions
 VE_INTERPRET:
-    .db $09, "interpret"
+    .dw $ff09
+    .db "interpret",0
     .dw VE_HEAD
     .set VE_HEAD = VE_INTERPRET
 XT_INTERPRET:

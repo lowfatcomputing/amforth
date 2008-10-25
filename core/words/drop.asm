@@ -2,7 +2,8 @@
 ; R( -- )
 ; drop TOS
 VE_DROP:
-    .db $04, "drop", 0
+    .dw $ff04
+    .db "drop"
     .dw VE_HEAD
     .set VE_HEAD = VE_DROP
 XT_DROP:

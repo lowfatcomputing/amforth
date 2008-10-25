@@ -2,7 +2,8 @@
 ; R( -- ) 
 ; fetch pause vector and execute it. may make a context/task switch
 VE_PAUSE:
-    .db $05, "pause"
+    .dw $ff05
+    .db "pause",0
     .dw VE_HEAD
     .set VE_HEAD = VE_PAUSE
 XT_PAUSE:

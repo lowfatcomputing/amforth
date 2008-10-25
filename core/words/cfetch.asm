@@ -2,7 +2,8 @@
 ; R( -- )
 ; fetch a single byte from RAM (or IO or CPU register)
 VE_CFETCH:
-    .db $02, "c@",0
+    .dw $ff02
+    .db "c@"
     .dw VE_HEAD
     .set VE_HEAD  = VE_CFETCH
 XT_CFETCH:

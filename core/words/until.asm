@@ -2,7 +2,8 @@
 ; R( -- )
 ; finish begin with conditional branch
 VE_UNTIL:
-    .db $85, "until"
+    .dw $0005
+    .db "until",0
     .dw VE_HEAD
     .set VE_HEAD = VE_UNTIL
 XT_UNTIL:

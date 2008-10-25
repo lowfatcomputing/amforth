@@ -2,7 +2,8 @@
 ; R( -- )
 ; get user pointer
 VE_UP_FETCH:
-    .db $03, "up@"
+    .dw $ff03
+    .db "up@",0
     .dw VE_HEAD
     .set VE_HEAD = VE_UP_FETCH
 XT_UP_FETCH:
@@ -16,7 +17,8 @@ PFA_UP_FETCH:
 ; R( -- )
 ; set user pointer
 VE_UP_STORE:
-    .db $03, "up!"
+    .dw $ff03
+    .db "up!",0
     .dw VE_HEAD
     .set VE_HEAD = VE_UP_STORE
 XT_UP_STORE:

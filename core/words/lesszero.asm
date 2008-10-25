@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare with zero
 VE_LESSZERO:
-    .db $02, "0<",0
+    .dw $ff02
+    .db "0<"
     .dw VE_HEAD
     .set VE_HEAD = VE_LESSZERO
 XT_LESSZERO:

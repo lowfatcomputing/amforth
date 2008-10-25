@@ -2,7 +2,8 @@
 ; R( --)
 ; store the TOS to value (an EEPROM 16bit cell)
 VE_TO:
-    .db $82, "to", 0
+    .dw $0002
+    .db "to"
     .dw VE_HEAD
     .set VE_HEAD = VE_TO
 XT_TO:

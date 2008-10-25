@@ -2,7 +2,8 @@
 ; R( -- )
 ; flip all bits in the double cell value
 VE_DINVERT:
-    .db $07, "dinvert"
+    .dw $ff07
+    .db "dinvert",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DINVERT
 XT_DINVERT:

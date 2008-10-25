@@ -2,7 +2,8 @@
 ; R( -- )
 ; get the absolute value
 VE_ABS:
-    .db $03, "abs"
+    .dw $ff03
+    .db "abs",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ABS
 XT_ABS:

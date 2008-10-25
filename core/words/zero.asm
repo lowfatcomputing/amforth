@@ -2,7 +2,8 @@
 ; R( -- )
 ; leaves the value 0 on TOS
 VE_ZERO:
-    .db $01, "0"
+    .dw $ff01
+    .db "0",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ZERO
 XT_ZERO:

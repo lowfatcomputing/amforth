@@ -2,7 +2,8 @@
 ; R( -- )
 ; Deferred action during startup/reset
 VE_TURNKEY:
-    .db $07, "turnkey"
+    .dw $ff07
+    .db "turnkey",0
     .dw VE_HEAD
     .set VE_HEAD = VE_TURNKEY
 XT_TURNKEY:

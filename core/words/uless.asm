@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare values u1 < u2 (unsigned)
 VE_ULESS:
-    .db $02, "u<",0
+    .dw $ff02
+    .db "u<"
     .dw VE_HEAD
     .set VE_HEAD = VE_ULESS
 XT_ULESS:

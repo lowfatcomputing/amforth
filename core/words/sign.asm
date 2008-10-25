@@ -2,7 +2,8 @@
 ; R( -- )
 ; place a - in HLD if value is negative
 VE_SIGN:
-    .db $04, "sign",0
+    .dw $ff04
+    .db "sign"
     .dw VE_HEAD
     .set VE_HEAD = VE_SIGN
 XT_SIGN:

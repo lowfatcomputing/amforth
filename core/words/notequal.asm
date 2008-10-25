@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare two values
 VE_NOTEQUAL:
-    .db $02, "<>", 0
+    .dw $ff02
+    .db "<>"
     .dw VE_HEAD
     .set VE_HEAD = VE_NOTEQUAL
 XT_NOTEQUAL:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; set base to 10 (decimal)
 VE_DECIMAL:
-    .db $07, "decimal"
+    .dw $ff07
+    .db "decimal",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DECIMAL
 XT_DECIMAL:

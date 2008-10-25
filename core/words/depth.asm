@@ -2,7 +2,8 @@
 ; R( -- )
 ; currently used data stack size in cells
 VE_DEPTH:
-    .db $05, "depth"
+    .dw $ff05
+    .db "depth",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DEPTH
 XT_DEPTH:

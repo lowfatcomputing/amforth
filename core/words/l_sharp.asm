@@ -2,7 +2,8 @@
 ; R( -- )
 ; emties counted string at address from hld
 VE_L_SHARP:
-    .db $02, "<#",0
+    .dw $ff02
+    .db "<#"
     .dw VE_HEAD
     .set VE_HEAD = VE_L_SHARP
 XT_L_SHARP:

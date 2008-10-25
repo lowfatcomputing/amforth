@@ -2,7 +2,8 @@
 ; R( -- )
 ; data stack pointer changed to addr
 VE_SP_STORE:
-    .db $03, "sp!"
+    .dw $ff03
+    .db "sp!",0
     .dw VE_HEAD
     .set VE_HEAD = VE_SP_STORE
 XT_SP_STORE:

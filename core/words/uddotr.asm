@@ -1,8 +1,9 @@
-; ( ud n -- ) Numeric IO
+; ( ud w -- ) Numeric IO
 ; R( -- )
-; unsigned right padded double cell output 
+; double cell output
 VE_UDDOTR:
-    .db $04, "ud.r",0
+    .dw $ff04
+    .db "ud.r"
     .dw VE_HEAD
     .set VE_HEAD = VE_UDDOTR
 XT_UDDOTR:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; compares two values (signed)
 VE_DGREATER:
-    .db $02, "d>",0
+    .dw $ff02
+    .db "d>"
     .dw VE_HEAD
     .set VE_HEAD = VE_DGREATER
 XT_DGREATER:

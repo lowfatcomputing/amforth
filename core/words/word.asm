@@ -2,7 +2,8 @@
 ; R( -- )
 ; skip leading delimiter characters and parses SOURCE to the next delimiter. copy the word to PAD
 VE_WORD:
-    .db $04, "word",0
+    .dw $ff04
+    .db "word"
     .dw VE_HEAD
     .set VE_HEAD = VE_WORD
 XT_WORD:

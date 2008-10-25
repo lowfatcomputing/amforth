@@ -2,7 +2,8 @@
 ; R( -- )
 ; control structure
 VE_WHILE:
-    .db $85, "while"
+    .dw $0005
+    .db "while",0
     .dw VE_HEAD
     .set VE_HEAD = VE_WHILE
 XT_WHILE:

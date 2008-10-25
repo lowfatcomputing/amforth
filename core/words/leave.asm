@@ -2,7 +2,8 @@
 ; R( loop-sys -- )
 ; immediatly leave the current DO..LOOP
 VE_LEAVE:
-   .db 5, "leave"
+   .dw $FF05
+   .db "leave",0
    .dw VE_HEAD
    .set VE_HEAD = VE_LEAVE
 XT_LEAVE:

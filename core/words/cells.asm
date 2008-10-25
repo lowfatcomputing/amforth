@@ -2,7 +2,8 @@
 ; R( -- )
 ; cells (CORE)
 VE_CELLS:
-    .db 5, "cells"
+    .dw $ff05
+    .db "cells",0
     .dw VE_HEAD
     .set VE_HEAD = VE_CELLS
 XT_CELLS:

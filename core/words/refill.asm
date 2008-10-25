@@ -2,7 +2,8 @@
 ; R( -- )
 ; refills the input buffer
 VE_REFILL:
-    .db $06, "refill",0
+    .dw $ff06
+    .db "refill"
     .dw VE_HEAD
     .set VE_HEAD = VE_REFILL
 XT_REFILL:

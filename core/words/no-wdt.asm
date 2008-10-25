@@ -2,7 +2,8 @@
 ; R( -- )
 ; disable watch dog timer at runtime
 VE_NOWDT:
-    .db 4, "-wdt",0
+    .dw $ff04
+    .db "-wdt"
     .dw VE_HEAD
     .set VE_HEAD = VE_NOWDT
 XT_NOWDT:

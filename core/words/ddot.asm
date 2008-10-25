@@ -1,8 +1,9 @@
 ; ( d1 -- ) Numeric IO
 ; R( -- )
-; signed double cell output 
+; double cell output
 VE_DDOT:
-    .db $02, "d.",0
+    .dw $ff02
+    .db "d."
     .dw VE_HEAD
     .set VE_HEAD = VE_DDOT
 XT_DDOT:

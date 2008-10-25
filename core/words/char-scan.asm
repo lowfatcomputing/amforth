@@ -2,7 +2,8 @@
 ; R( -- )
 ; Scan string at addr1/n1 for the first c, leaving addr1/n2, char at n2 is first non-c character
 VE_CSCAN:
-    .db $05, "cscan"
+    .dw $ff05
+    .db "cscan",0
     .dw VE_HEAD
     .set VE_HEAD = VE_CSCAN
 XT_CSCAN:

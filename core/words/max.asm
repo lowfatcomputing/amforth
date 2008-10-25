@@ -2,7 +2,8 @@
 ; R( -- )
 ; compare two values, leave the bigger one
 VE_MAX:
-    .db $03, "max"
+    .dw $ff03
+    .db "max",0
     .dw VE_HEAD
     .set VE_HEAD = VE_MAX
 XT_MAX:

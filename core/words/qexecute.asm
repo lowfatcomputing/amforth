@@ -2,7 +2,8 @@
 ; R( -- )
 ; execute XT if non-zero
 VE_QEXECUTE:
-    .db $08, "?execute",0
+    .dw $ff08
+    .db "?execute"
     .dw VE_HEAD
     .set VE_HEAD = VE_QEXECUTE
 XT_QEXECUTE:

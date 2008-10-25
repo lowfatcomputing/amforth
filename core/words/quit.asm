@@ -2,7 +2,8 @@
 ; R( -- )
 ; main loop of amforth. accept - interpret in an endless loop
 VE_QUIT:
-    .db $04, "quit", 0
+    .dw $ff04
+    .db "quit"
     .dw VE_HEAD
     .set VE_HEAD = VE_QUIT
 XT_QUIT:
@@ -22,7 +23,8 @@ PFA_QUIT2:
     .dw PFA_QUIT4
     .dw XT_CR
     .dw XT_SLITERAL
-    .db 2, "> ",0
+    .dw 2
+    .db "> "
     .dw XT_ITYPE
 PFA_QUIT4:
     .dw XT_REFILL
@@ -41,7 +43,8 @@ PFA_QUIT4:
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
     	    .dw XT_SLITERAL
-	    .db 3, " ??"
+	    .dw 3
+	    .db  " ??",00
             .dw XT_ITYPE
 	    .dw XT_BASE
 	    .dw XT_FETCH
@@ -60,7 +63,8 @@ PFA_QUIT5:
 	.dw PFA_QUIT
 PFA_QUIT3:
     .dw XT_SLITERAL
-    .db 3, " ok"
+    .dw 3
+    .db " ok",0
     .dw XT_ITYPE
     .dw XT_DOBRANCH
     .dw PFA_QUIT2

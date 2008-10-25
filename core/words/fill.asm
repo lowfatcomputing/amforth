@@ -2,7 +2,8 @@
 ; R( -- )
 ; Fill u bytes memory beginning at a-addr with character c
 VE_FILL:
-    .db $04, "fill",0
+    .dw $ff04
+    .db "fill"
     .dw VE_HEAD
     .set VE_HEAD = VE_FILL
 XT_FILL:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; creates a defer vector which is kept in eeprom.
 VE_EDEFER:
-    .db $06, "Edefer",0
+    .dw $ff06
+    .db "Edefer"
     .dw VE_HEAD
     .set VE_HEAD = VE_EDEFER
 XT_EDEFER:

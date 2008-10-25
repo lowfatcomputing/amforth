@@ -2,7 +2,8 @@
 ; R( -- )
 ; unsigned division ud / u2 with remainder
 VE_UMSLASHMOD:
-    .db $06, "um/mod",0
+    .dw $ff06
+    .db "um/mod"
     .dw VE_HEAD
     .set VE_HEAD = VE_UMSLASHMOD
 XT_UMSLASHMOD:

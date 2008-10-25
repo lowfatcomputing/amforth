@@ -2,7 +2,8 @@
 ; R( -- )
 ; compile 16 bit into flash at here.
 VE_COMMA:
-    .db $01, $2c ; ,
+    .dw $ff01
+    .db $2c,0 ; ,
     .dw VE_HEAD
     .set VE_HEAD = VE_COMMA
 XT_COMMA:

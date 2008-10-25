@@ -2,7 +2,8 @@
 ; R( -- )
 ; add cell size (CORE)
 VE_CELLPLUS:
-    .db 5, "cell+"
+    .dw $ff05
+    .db "cell+",0
     .dw VE_HEAD
     .set VE_HEAD = VE_CELLPLUS
 XT_CELLPLUS:

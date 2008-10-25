@@ -2,7 +2,8 @@
 ; R( -- )
 ; compile a literal in colon defintions
 VE_LITERAL:
-    .db $87, "literal"
+    .dw $0007
+    .db "literal",0
     .dw VE_HEAD
     .set VE_HEAD = VE_LITERAL
 XT_LITERAL:
