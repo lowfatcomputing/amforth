@@ -2,7 +2,8 @@
 ; R(llimit counter -- limit counter+n1|)
 ; runtime of +loop
 ;VE_DOPLUSLOOP:
-;    .db 7, "(+loop)"
+;    .dw $ff07
+;    .db "(+loop)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOPLUSLOOP
 XT_DOPLUSLOOP:

@@ -17,7 +17,8 @@ PFA_SP0:
 ; R( -- )
 ; start address of the data stack
 ;VE_DOSP0:
-;    .db $05, "(sp0)"
+;    .dw $ff05
+;    .db "(sp0)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOSP0
 XT_DOSP0:

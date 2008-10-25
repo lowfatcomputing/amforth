@@ -2,7 +2,8 @@
 ; R( -- )
 ; runtime portion of branch
 ;VE_DOBRANCH:
-;    .db $08, "(branch)",0
+;    .dw $ff08
+;    .db "(branch)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOBRANCH
 XT_DOBRANCH:

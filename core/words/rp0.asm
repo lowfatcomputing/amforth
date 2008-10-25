@@ -14,7 +14,8 @@ PFA_RP0:
     .dw XT_EXIT
 
 ;VE_DORP0:
-;    .db $05, "(rp0)"
+;    .dw $ff05
+;    .db "(rp0)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DORP0
 XT_DORP0:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; does the real defer! for ram defers
 ;VE_RDEFERSTORE:
-;    .db $07, "Rdefer!"
+;    .dw $ff07
+;    .db "Rdefer!"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_RDEFERSTORE
 XT_RDEFERSTORE:

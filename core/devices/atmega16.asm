@@ -109,6 +109,6 @@
     rcall isr	; SPM complete Interrupt Vector Address
 
 mcustring:
-  .db 8,"ATmega16",0
-
+  .dw 8
+  .db "ATmega16"
 .set codestart = pc

@@ -2,7 +2,8 @@
 ; R( -- )
 ; runtime portion of ?branch
 ;VE_DOCONDBRANCH:
-;    .db $09, "(?branch)"
+;    .dw $ff09
+;    .db "(?branch)"
 ;    .dw  VE_HEAD
 ;    .set VE_HEAD = VE_DOCONDBRANCH
 XT_DOCONDBRANCH:

@@ -43,7 +43,8 @@ PFA_ISTORE_WRITE:
 ; R( -- )
 ; load the flash page of cell addr into write buffer, omitting addr itself
 ;VE_SPMPAGELOAD:
-;    .db 11, "spmpageload"
+;    .dw $ff0b
+;    .db "spmpageload"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_INTSPMPAGELOAD
 XT_SPMPAGELOAD:
@@ -92,7 +93,8 @@ PFA_SPMPAGELOADDONE:
 ; R( -- )
 ; execute spm instruction
 ;VE_DOSPM:
-;    .db $03, "(spm)"
+;    .dw $ff03
+;    .db "(spm)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOSPM
 XT_DOSPM:
@@ -127,7 +129,8 @@ PFA_DOSPM2:
 ; R( -- )
 ; execute spm buf instruction
 ;VE_SPMBUF:
-;    .db $06, "spmbuf",0
+;    .dw $ff06
+;    .db "spmbuf"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_SPMBUF
 XT_SPMBUF:
@@ -146,7 +149,8 @@ PFA_SPMBUF:
 ; R( -- )
 ; execute spm erase instruction
 ;VE_SPMERASE:
-;    .db $08, "spmerase",0
+;    .dw $ff08
+;    .db "spmerase"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_SPMERASE
 XT_SPMERASE:
@@ -167,7 +171,8 @@ PFA_SPMERASE:
 ; R( -- )
 ; execute spm write instruction
 ;VE_SPMWRITE:
-;    .db $08, "spmwrite",0
+;    .dw $ff08
+;    .db "spmwrite"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_WPMWRITE
 XT_SPMWRITE:
@@ -188,7 +193,8 @@ PFA_SPMWRITE:
 ; R( -- )
 ; checks the rww enable flag
 ;VE_SPMRWWQ:
-;    .db 7, "spmrww?"
+;    .dw $ff07
+;    .db "spmrww?"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_SPMRWWQ
 XT_SPMRWWQ:
@@ -206,7 +212,8 @@ PFA_SPMRWWQ:
 ; R( -- )
 ; re-enables rww section execute spm rww instruction
 ;VE_SPMRWW:
-;    .db $05, "spmrww"
+;    .dw $ff05
+;    .db "spmrww"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_SPMRWW
 XT_SPMRWW:

@@ -2,7 +2,8 @@
 ; R( -- )
 ; runtime portion of s" 
 ;VE_SLITERAL:
-;  .db 10,"(sliteral)",0
+;  .dw $ff0a
+;  .db "(sliteral)"
 ;  .dw VE_HEAD
 ;  .set VE_HEAD = VE_SLITERAL
 XT_SLITERAL:

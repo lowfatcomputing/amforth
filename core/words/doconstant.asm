@@ -2,7 +2,8 @@
 ; R( -- )
 ; place PFA on TOS
 ;VE_DOCONSTANT:
-;    .db $0a, "(constant)", 0
+;    .dw $ff0a
+;    .db "(constant)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOCONSTANT
 XT_DOCONSTANT:

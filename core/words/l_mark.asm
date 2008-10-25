@@ -2,7 +2,8 @@
 ; R( -- )
 ; place destination for backward branch
 ;VE_LMARK:
-;    .db 5, "<mark"
+;    .dw $ff05
+;    .db "<mark"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_LMARK
 XT_LMARK:

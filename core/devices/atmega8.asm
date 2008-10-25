@@ -97,5 +97,6 @@
     rcall isr   ; Irq. vector address for Two-Wire Interface
 
 mcustring:
-  .db 7,"ATmega8"
+  .dw 7
+  .db "ATmega8 "
 .set codestart = pc

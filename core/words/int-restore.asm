@@ -2,7 +2,8 @@
 ; R( -- )
 ; restores SREG from TOS (
 ;VE_INTRESTORE:
-;    .db $0B, "int_restore"
+;    .dw $ff0B
+;    .db "int_restore"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_INTRESTORE
 XT_INTRESTORE:

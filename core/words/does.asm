@@ -22,7 +22,8 @@ PFA_DOES:
 ;R( -- )
 ; runtime of does>
 ;VE_DODOES:
-;   .db $07, "(does>)"
+;   .dw $ff07
+;   .db "(does>)"
 ;   .set VE_HEAD = VE_DODOES
 XT_DODOES:
     .dw DO_COLON

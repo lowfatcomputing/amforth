@@ -80,5 +80,6 @@
     rcall isr
 
 mcustring:
-  .db 9,"ATmega644"
+  .dw 9
+  .db "ATmega644 "
 .set codestart = pc

@@ -32,7 +32,8 @@ PFA_ITYPE_DONE:
 ; R( -- )
 ; content of cell fetched on stack.
 ;VE_HIEMIT:
-;    .db $06, "hiemit"
+;    .dw $ff06
+;    .db "hiemit"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_HIEMIT
 XT_HIEMIT:

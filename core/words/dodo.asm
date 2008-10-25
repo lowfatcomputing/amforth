@@ -2,7 +2,8 @@
 ; R( -- limit counter )
 ; runtime of do
 ;VE_DODO:
-;    .db 4, "(do)", 0
+;    .dw $ff04
+;    .db "(do)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DODO
 XT_DODO:

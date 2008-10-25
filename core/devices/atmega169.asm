@@ -102,6 +102,6 @@
     rcall isr   ;LCD Start of Frame Interrupt Vector
 
 mcustring:
-  .db 9,"ATmega169"
-
+  .dw 9
+  .db "ATmega169 "
 .set codestart = pc

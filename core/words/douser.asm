@@ -2,7 +2,8 @@
 ; R( -- )
 ; runtime part of user
 ;VE_DOUSER:
-;    .db $06, "(user)", 0
+;    .dw $ff06
+;    .db "(user)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOUSER
 XT_DOUSER:

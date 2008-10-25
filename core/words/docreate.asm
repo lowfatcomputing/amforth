@@ -2,7 +2,8 @@
 ; R( -- )
 ; creates the vocabulary header without XT and data field (PF)
 ;VE_DOCREATE:
-;    .db $08, "(create)",0
+;    .dw $ff08
+;    .db "(create)",0
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOCREATE
 XT_DOCREATE:

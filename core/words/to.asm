@@ -28,7 +28,8 @@ PFA_TO1:
 ; R( IP -- IP+1)
 ; runtime portion of to
 ;VE_DOTO:
-;    .db $04, "(to)", 0
+;    .dw $ff04
+;    .db "(to)"
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_VALUE
 XT_DOTO:

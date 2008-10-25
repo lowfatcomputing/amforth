@@ -118,5 +118,6 @@
     rcall isr ; Store Program Memory Ready Interrupt Address
 
 mcustring:
-  .db 9,"atmega128"
+  .dw 9
+  .db "ATmega128 "
 .set codestart = pc

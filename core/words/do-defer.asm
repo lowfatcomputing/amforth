@@ -2,7 +2,8 @@
 ; R( -- )
 ; runtime of defer
 ;VE_DOEDEFER:
-;    .db $0a, "(defer)", 0
+;    .dw $ff0a
+;    .db "(defer)", 0
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOEDEFER
 XT_DODEFER:

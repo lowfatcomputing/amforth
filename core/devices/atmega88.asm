@@ -98,5 +98,6 @@
     rcall isr ; Store Program Memory Read
 
 mcustring:
-  .db 8,"ATmega88",0
+  .dw 8
+  .db "ATmega88"
 .set codestart = pc
