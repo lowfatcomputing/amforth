@@ -20,8 +20,6 @@ PFA_FIND:
       .dw XT_DROP
       .dw XT_EXIT
 PFA_FIND1:
-    .dw XT_SWAP
-    .dw XT_DROP
     .dw XT_EXIT
 
 ; ( c-addr len searchstart -- [ 0 ] | [ xt [-1|1]] ) Tools
@@ -40,6 +38,7 @@ PFA_DOFIND:
     .dw XT_DOCONDBRANCH
     .dw PFA_DOFIND1
       ; terminating 0 found
+      .dw XT_DROP
       .dw XT_DROP
       .dw XT_DROP
       .dw XT_ZERO
