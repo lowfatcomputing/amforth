@@ -66,6 +66,7 @@ isr:
 
 ; lower part of the dictionary
 .set VE_HEAD = $0000
+.set VE_ENVHEAD = $0000
 
 .include "dict_minimum.inc"
 .if dict_appl==1
@@ -141,6 +142,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     .dw (cpu_frequency/(baud_rate * 16))-1    ; BAUDRATE
     .dw TIB          ; terminal input buffer
     .dw TIBSIZE      ; and its maximum length
+    .dw VE_ENVHEAD   ; environmental queries
 ; 1st free address in EEPROM, see above
 edp:
 .cseg

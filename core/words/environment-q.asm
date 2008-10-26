@@ -1,0 +1,35 @@
+; ( -- faddr) System Value
+; R( -- )
+; address of the first unallocated flash cell (below NRWW)
+_VE_ENVHEAD:
+    .dw $ff08
+    .db "env-head"
+    .dw VE_HEAD
+    .set VE_HEAD = _VE_ENVHEAD
+XT_ENVHEAD:
+    .dw PFA_DOVALUE
+PFA_ENVHEAD:
+    .dw 18
+
+; ( addr len -- [ 0 ] | [i*x -1 ) Tools
+; R( -- )
+; search dictionary
+VE_ENVIRONMENTQ:
+    .dw $FF0C
+    .db "environment?"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_ENVIRONMENTQ
+XT_ENVIRONMENTQ:
+    .dw DO_COLON
+PFA_ENVIRONMENTQ:
+    .dw XT_ENVHEAD
+    .dw XT_DOFIND ; ( -- [ 0 | xt +/-1 ] )
+    .dw XT_DUP
+    .dw XT_DOCONDBRANCH
+    .dw PFA_ENVIRONMENTQ1
+    .dw XT_TO_R
+    .dw XT_EXECUTE
+    .dw XT_R_FROM
+PFA_ENVIRONMENTQ1:
+    .dw XT_EXIT
+

@@ -40,4 +40,4 @@
 .include "words/end-code.asm"
 
 .include "words/env-slashhold.asm"
-.include "words/q-environment.asm"
+.include "words/environment-q.asm"
