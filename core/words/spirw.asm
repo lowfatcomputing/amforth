@@ -26,7 +26,8 @@ do_spirw1:
 ; R( -- )
 ; transfer many bytes via spi.
 VE_SPIRWN:
-    .db $05, "spirwn"
+    .dw $ff05
+    .db "spirwn",0
     .dw VE_HEAD
     .set VE_HEAD  = VE_SPIRWN
 XT_SPIRWN:
