@@ -18,7 +18,6 @@ PFA_FIND:
     .dw PFA_FIND1
       .dw XT_ROT
       .dw XT_DROP
-      .dw XT_EXIT
 PFA_FIND1:
     .dw XT_EXIT
 
