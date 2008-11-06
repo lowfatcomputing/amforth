@@ -15,14 +15,14 @@ PFA_NUMBER:
     .dw XT_ZERO       ; ( -- addr 1 0)
     .dw XT_ROT        ; ( -- 1 0 addr)
     .dw XT_COUNT      ; ( -- 1 0 addr' len)
-    .dw XT_ZERO
+    .dw XT_ZERO       ; ( -- 1 0 addr' len 0)
     .dw XT_DODO
     .dw PFA_NUMBER6
-PFA_NUMBER1: ; ( n addr -- )
+PFA_NUMBER1: ; ( -- sign n addr )
     .dw XT_DUP
     .dw XT_I
     .dw XT_PLUS
-    .dw XT_CFETCH
+    .dw XT_CFETCH  ; ( -- sign n addr char )
     ; now check for +/- signs
     .dw XT_DUP
     .dw XT_DOLITERAL
@@ -30,7 +30,7 @@ PFA_NUMBER1: ; ( n addr -- )
     .dw XT_EQUAL
     .dw XT_DOCONDBRANCH
     .dw PFA_NUMBER2
-    .dw XT_DROP
+    .dw XT_DROP    ; ( -- sign n addr )
     ; replace the sign flag
     .dw XT_ROT
     .dw XT_DROP
@@ -55,7 +55,7 @@ PFA_NUMBER3:
     .dw XT_ROT
     .dw XT_BASE
     .dw XT_FETCH
-    .dw XT_MUL
+    .dw XT_STAR
     .dw XT_PLUS
     .dw XT_SWAP
 PFA_NUMBER4:
