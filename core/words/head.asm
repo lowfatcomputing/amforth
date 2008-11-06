@@ -1,6 +1,6 @@
 ; ( -- faddr) System Value
 ; R( -- )
-; address of the first unallocated flash cell (below NRWW)
+; start address of the dictionary search
 _VE_HEAD:
     .dw $ff04
     .db "head"
