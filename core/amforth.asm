@@ -134,7 +134,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
 
 .eseg
     .dw -1           ; EEPROM Address 0 should not be used
-    .dw lowflashlast ; DP
+    .dw lowflashlast ; HERE
     .dw VE_HEAD      ; HEAD
     .dw heap         ; HEAP
     .dw edp          ; EDP
