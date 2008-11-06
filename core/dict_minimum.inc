@@ -1,24 +1,4 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; header
-;  +--1+x--++--2--+--2----0+x...--
-;  | VOC   |  L  | XT  | PF
-;  +-------#-----+-----+----....--
-; VOC (flags may be inverted to be flash friendly)
-;       Bit
-;         7 6 5 4-0
-;         I U U Length
-;    I = Immediate
-;    U = Unused
-;    Length = length of word name (1..31)
-;      Length number of bytes, filled to next cell
-;  L
-;    Link to previous Dictionary entry or zero for first entry
-;  XT
-;    Address of Executable Code
-;  PF
-;    Parameter Field (List of XT, Constant Value etc)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/f_cpu.asm"
 .include "words/state.asm"
 .include "words/base.asm"
