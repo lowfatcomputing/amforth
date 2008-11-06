@@ -42,18 +42,18 @@ PFA_QUIT4:
 	.dw XT_LESS
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
-    	    .dw XT_SLITERAL
+    	.dw XT_SLITERAL
 	    .dw 3
 	    .db  " ??",00
-            .dw XT_ITYPE
+        .dw XT_ITYPE
 	    .dw XT_BASE
 	    .dw XT_FETCH
 	    .dw XT_TO_R
 	    .dw XT_DECIMAL
-    	    .dw XT_DOT
-    	    .dw XT_G_IN
-    	    .dw XT_FETCH
-    	    .dw XT_DOT
+    	.dw XT_DOT
+    	.dw XT_G_IN
+    	.dw XT_FETCH
+    	.dw XT_DOT
 	    .dw XT_R_FROM
 	    .dw XT_BASE
 	    .dw XT_STORE
