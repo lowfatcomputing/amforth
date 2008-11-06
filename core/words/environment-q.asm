@@ -1,6 +1,6 @@
 ; ( -- faddr) System Value
 ; R( -- )
-; address of the first unallocated flash cell (below NRWW)
+; start address of the environmental search
 _VE_ENVHEAD:
     .dw $ff08
     .db "env-head"
