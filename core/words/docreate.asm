@@ -17,7 +17,11 @@ PFA_DOCREATE:
     .dw XT_GREATERZERO ;( -- here addr' n f )
     .dw XT_DOCONDBRANCH
     .dw PFA_DOCREATE4 ; ( -- here addr' n )
-    .dw XT_SCOMMA
+    .dw XT_DUP
+    .dw XT_DOLITERAL
+    .dw $ff00
+    .dw XT_OR
+    .dw XT_DOSCOMMA
     ; make voc link
     .dw XT_HEAD       ; ( -- here head )
     .dw XT_COMMA      ; ( -- here)
