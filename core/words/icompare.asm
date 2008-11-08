@@ -9,17 +9,18 @@ VE_ICOMPARE:
 XT_ICOMPARE:
     .dw DO_COLON
 PFA_ICOMPARE:
-    .dw XT_OVER
-    .dw XT_OVER
-    .dw XT_EQUAL
+    .dw XT_TO_R    ; ( -- r-addr r-len f-addr)
+    .dw XT_OVER    ; ( -- r-addr r-len f-addr r-len)
+    .dw XT_R_FROM  ; ( -- r-addr r-len f-addr r-len f-len )
+    .dw XT_NOTEQUAL ; ( -- r-addr r-len f-addr flag )
     .dw XT_DOCONDBRANCH
     .dw PFA_ICOMPARE_SAMELEN
+      .dw XT_DROP
       .dw XT_DROP
       .dw XT_DROP
       .dw XT_ZERO
       .dw XT_EXIT
 PFA_ICOMPARE_SAMELEN:
-    .dw XT_DROP
     .dw XT_SWAP ; ( r-addr f-addr len )
     .dw XT_ZERO
     .dw XT_DOQDO
@@ -30,6 +31,7 @@ PFA_ICOMPARE_LOOP:
     .dw XT_FETCH
     .dw XT_OVER
     .dw XT_IFETCH ; ( -- r-addr f-addr r-cc f- cc)
+
     ; flash strings are zero-padded at the last cell
     ; that means: if the flash cell is less $0100, than mask the
     ; high byte in the ram cell
