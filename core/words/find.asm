@@ -43,11 +43,15 @@ PFA_DOFIND:
       .dw XT_ZERO
       .dw XT_EXIT
 PFA_DOFIND1:
+    ; ( c-addr len searchstart )
     .dw XT_TO_R
     .dw XT_OVER
     .dw XT_OVER
     .dw XT_R_FETCH
     .dw XT_ICOUNT
+    .dw XT_DOLITERAL
+    .dw $00ff
+    .dw XT_AND
     .dw XT_ICOMPARE
     .dw XT_DOCONDBRANCH
     .dw PFA_DOFINDNEXT
