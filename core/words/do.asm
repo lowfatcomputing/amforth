@@ -1,6 +1,6 @@
-; ( -- addr ) Control Structure
+; ( -- loop-sys ) Control Structure
 ; R( -- )
-; start do .. [+]loop 
+; start do .. [+]loop
 VE_DO:
     .dw $0002
     .db "do"

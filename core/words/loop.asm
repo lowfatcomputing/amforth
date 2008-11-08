@@ -1,8 +1,8 @@
-; ( addr -- ) Control Structure
+; ( loop-sys -- ) Control Structure
 ; R( -- )
 ; cpmpile (loop) and resolve branch
 VE_LOOP:
-    .dw $0004 
+    .dw $0004
     .db "loop"
     .dw VE_HEAD
     .set VE_HEAD = VE_LOOP
