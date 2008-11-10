@@ -4,7 +4,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{url}
 \usepackage{multicol}
-\usepackage{supertabular}
+%\usepackage{supertabular}
 
 \setlength{\parindent}{0cm}
 \setlength{\oddsidemargin}{0cm}
@@ -20,7 +20,7 @@
 \pagestyle{empty}
 
 \begin{footnotesize}
-\section*{\Large amforth 3.0 Reference Card}
+\section*{\Large amforth 3.1 Reference Card}
 \begin{multicols}{3}
 
 \subsection*{}
@@ -76,8 +76,6 @@
 \verb||  & \verb/( n1 n2 -- n3)/\\
 % XT_MSTAR
 \verb||  & \verb/( n1 n2 -- d)/\\
-% XT_MUSTAR
-\verb||  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUS
 \verb||  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUSSTORE
@@ -102,8 +100,6 @@
 \verb||  & \verb/( u1 u2 -- d)/\\
 % XT_USLASHMOD
 \verb||  & \verb/(u1 u2 -- rem quot)/\\
-% XT_WITHIN
-\verb||  & \verb/( n1 n2 -- n3 )/\\
 % XT_ZERO
 \verb||  & \verb/( -- 0 )/\\
 \end{tabular}
@@ -254,7 +250,7 @@
 \verb||  & \verb/(addr1 -- addr2 )/\\
 % XT_UNLOOP
 \verb||  & \verb/( -- )/\\
-              & \verb/R(loop-sys --)/\\
+              & \verb/; R(loop-sys -- )/\\
 % XT_WHILE
 \verb||  & \verb/( dest -- orig dest )/\\
 \end{tabular}
@@ -344,28 +340,16 @@
 
 \subsection*{Hardware Access}
 \begin{tabular}{\colsa}
-% XT_RX
-\verb||  & \verb/( -- c)/\\
 % XT_RX0
 \verb||  & \verb/( -- c)/\\
 % XT_RX0Q
 \verb||  & \verb/( -- f)/\\
-% XT_RXQ
-\verb||  & \verb/( -- f)/\\
-% XT_TOUSART
-\verb||  & \verb/( -- )/\\
 % XT_TOUSART0
 \verb||  & \verb/( -- )/\\
-% XT_TX
-\verb||  & \verb/(c -- )/\\
 % XT_TX0
 \verb||  & \verb/(c -- )/\\
 % XT_TX0Q
 \verb||  & \verb/( -- f)/\\
-% XT_TXQ
-\verb||  & \verb/( -- f)/\\
-% XT_USART
-\verb||  & \verb/( -- )/\\
 % XT_USART0
 \verb||  & \verb/( -- )/\\
 \end{tabular}
@@ -442,16 +426,6 @@
 \verb||  & \verb/( addr -- n1 )/\\
 % XT_ISTORE
 \verb||  & \verb/( n addr -- )/\\
-% XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
-% XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
-% XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
-% XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
-% XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
 % XT_STORE
 \verb||  & \verb/( n addr -- )/\\
 \end{tabular}
@@ -474,8 +448,6 @@
 \verb||  & \verb/( -- )/\\
 % XT_DIGIT
 \verb||  & \verb/( c base -- number flag )/\\
-% XT_DIGITQ
-\verb||  & \verb/( c -- number flag )/\\
 % XT_DOT
 \verb||  & \verb/( n -- )/\\
 % XT_DOTR
@@ -498,8 +470,6 @@
 \verb||  & \verb/( d1 -- 0)/\\
 % XT_SIGN
 \verb||  & \verb/( n -- )/\\
-% XT_TO_NUMBER
-\verb||  & \verb/( ud1 c-addr1 u1 -- ud2 c-addr2 u2 )/\\
 % XT_UDDOT
 \verb||  & \verb/( ud1 w -- )/\\
 % XT_UDDOTR
@@ -586,9 +556,6 @@
 \verb||  & \verb/( xt1 -- xt2 )/\\
 % XT_DEFERSTORE
 \verb||  & \verb/( xt1 xt2 -- )/\\
-% XT_EVALUATE
-\verb||  & \verb/( c-addr len -- )/\\
-              & \verb/R(i*x - j*x)/\\
 % XT_EXECUTE
 \verb||  & \verb/( xt -- )/\\
 % XT_F_CPU
@@ -597,7 +564,7 @@
 \verb||  & \verb/( -- addr )/\\
 % XT_INTERPRET
 \verb||  & \verb/( -- )/\\
-              & \verb/R(i*x - j*x)/\\
+              & \verb/; R(i*x - j*x )/\\
 % XT_IS
 \verb||  & \verb/( xt1 c<char> -- )/\\
 % XT_NUMBERTIB
@@ -616,8 +583,6 @@
 
 \subsection*{System Value}
 \begin{tabular}{\colsa}
-% XT_BAUD
-\verb||  & \verb/( -- v)/\\
 % XT_BAUD0
 \verb||  & \verb/( -- v)/\\
 % XT_EDP
@@ -760,13 +725,6 @@
 \verb||  & \verb/( xt1 -- xt2 )/\\
 % XT_UDEFERSTORE
 \verb||  & \verb/( xt1 xt2 -- )/\\
-\end{tabular}
-
-\subsection*{unclassified}
-\begin{tabular}{\colsa}
-% XT_IDUMP
-\verb||  & \verb/; dumps flash memory beginning with address addr and len cells long/\\
-              & \verb/;    aaaa    0  1  2  3/\\
 \end{tabular}
 
 \end{multicols}
