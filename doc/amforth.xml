@@ -6,7 +6,7 @@
 ]>
 <book>
 	<bookinfo>
-		<title>amforth 3.0</title>
+		<title>amforth 3.1</title>
 		<subtitle>Technical Documentation</subtitle>
 		<author>
 			<personname>
@@ -62,10 +62,10 @@
 				<prompt>></prompt>
 				.
 				<screen>
-					amforth 3.0 ATmega32
+					amforth 3.1 ATmega32
 					<prompt>></prompt>
 					<command>words</command>
-					cell+ cells abort abort" [char] ...
+					d2/ s>d up! up@ 0 1ms >< cmove cmove> i! i@ unloop i sp! ...
 					<prompt>></prompt>
 				</screen>
 			</para>
@@ -104,7 +104,7 @@
 				,
 				<filename>dict_mcu</filename>
 				,
-				<filename>dict_high.inc</filename>
+				<filename>dict_core.inc</filename>
 				and
 				<filename>dict_compiler.inc</filename>
 				. The order in which the files are included defines the search order
@@ -138,13 +138,13 @@
 					The dictionary files have two tasks: First they include the word
 					definition files. Second, they determine each word's location in
 					the resulting flash layout. The file
-					<filename>dict_high.inc</filename>
+					<filename>dict_core.inc</filename>
 					contains all words for the NRWW flash section, Since the word
 					<command>I!</command>
 					cannot write to this address range, no new words can be compiled to
 					this section at runtime. Thus it is advisable to include as many
 					words as possible in
-					<filename>dict_high.inc</filename>
+					<filename>dict_core.inc</filename>
 					if the amount of writable dictionary space is an issue.
 				</para>
 				<para>
@@ -1131,7 +1131,8 @@
                     data stack, it's up to the developer to keep track.
                 </para>
                 <para>
-                    Strings are usually stored as counted strings.
+                    Strings are stored as counted strings with a 16 bit
+		    counter value (1 flash cell)
                     Strings in flash are compressed: two consecutive
                     bytes are placed into one flash cell. The standard
                     word
