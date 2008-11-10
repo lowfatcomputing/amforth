@@ -40,7 +40,6 @@
 .include "words/slashmod.asm"
 .include "words/starslash.asm"
 .include "words/uslashmod.asm"
-
 .include "words/negate.asm"
 .include "words/slash.asm"
 .include "words/mod.asm"
@@ -49,7 +48,6 @@
 .include "words/max.asm"
 ;;;;;;;;;;;;;;;;;;;;;;
 .include "words/hld.asm"
-
 .include "words/hold.asm"
 .include "words/l_sharp.asm" ; <#
 .include "words/sharp.asm"
@@ -128,4 +126,6 @@
 .include "words/d_to_s.asm"
 .include "words/dabs.asm"
 .include "words/dnegate.asm"
-    
+.include "words/cmove.asm"
+.include "words/d-2slash.asm"
+.include "words/1ms.asm"

@@ -46,7 +46,7 @@
 .include "words/d-greater.asm"
 .include "words/d-less.asm"
 
-;.include "words/log2.asm"
+.include "words/log2.asm"
 .include "words/minus.asm"
 .include "words/plus.asm"
 .include "words/mstar.asm"
@@ -84,14 +84,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
-;.include "words/cmove.asm"
+
 .include "words/byteswap.asm"
-;.include "words/1ms.asm"
+
 .include "words/zero.asm"
 .include "words/up.asm"
 
 .include "words/s_to_d.asm"
-.include "words/d-2slash.asm"
 
-;.include "words/reg-a.asm"
-;.include "words/reg-b.asm"
