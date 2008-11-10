@@ -18,6 +18,6 @@ PFA_1MS:
 PFA_1MS1:
     sbiw zl, 1
     brne PFA_1MS1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; : ms 0 ?do 1ms loop ;

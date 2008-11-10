@@ -13,7 +13,7 @@ PFA_AFETCH:
     movw zl, al
     ld tosl, Z+
     ld tosh, Z+
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( n1 -- n2 ) Extended VM
 ; R( -- )
@@ -31,7 +31,7 @@ PFA_NAFETCH:
     adc zh, ah
     ld tosl, Z+
     ld tosh, Z+
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( -- n ) Extended VM
 ; R( -- )
@@ -49,7 +49,7 @@ PFA_AFETCHPLUS:
     ld tosl, Z+
     ld tosh, Z+
     movw al, zl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( -- n ) Extended VM
 ; R( -- )
@@ -67,7 +67,7 @@ PFA_AFETCHMINUS:
     ld tosl, -Z
     ld tosh, -Z
     movw al, zl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( n -- ) Extended VM
 ; R( -- )
@@ -84,7 +84,7 @@ PFA_ASTORE:
     st Z+, tosl
     st Z+, tosh
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( n offs -- ) Extended VM
 ; R( -- )
@@ -104,7 +104,7 @@ PFA_NASTORE:
     st Z+, tosl
     st Z+, tosh
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( -- n2 ) Extended VM
 ; R( -- )
@@ -122,7 +122,7 @@ PFA_ASTOREPLUS:
     st Z+, tosh
     loadtos
     movw al, zl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( -- n2 ) Extended VM
 ; R( -- )
@@ -140,7 +140,7 @@ PFA_ASTOREMINUS:
     st -Z, tosh
     loadtos
     movw al, zl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 
 
@@ -157,7 +157,7 @@ XT_TO_A:
 PFA_TO_A:
     movw al, tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( n1 -- n2 ) Extended VM
 ; R( -- )
@@ -172,7 +172,7 @@ XT_A_FROM:
 PFA_A_FROM:
     savetos
     movw tosl, al
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; for more information read
 ; http://www.complang.tuwien.ac.at/anton/euroforth/ef08/papers/pelc.pdf
