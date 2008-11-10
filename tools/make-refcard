@@ -10,7 +10,7 @@ my %DSTACK;
 my %RSTACK;
 my %CATEGORY;
 
-my $version = "3.0";
+my $version = "3.1";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
