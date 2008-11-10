@@ -2,7 +2,8 @@
 ; R( -- )
 ; application specific turnkey action
 VE_APPLTURNKEY:
-    .db 11, "applturnkey"
+    .dw $ff0b
+    .db "applturnkey",0
     .dw VE_HEAD
     .set VE_HEAD = VE_APPLTURNKEY
 XT_APPLTURNKEY:
