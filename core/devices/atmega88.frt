@@ -1,89 +1,119 @@
-decimal
-198 constant UDR0
-197 constant UBRR0H
-196 constant UBRR0L
-194 constant UCSR0C
-193 constant UCSR0B
-192 constant UCSR0A
-189 constant TWAMR
-188 constant TWCR
-187 constant TWDR
-186 constant TWAR
-185 constant TWSR
-184 constant TWBR
-182 constant ASSR
-180 constant OCR2B
-179 constant OCR2A
-178 constant TCNT2
-177 constant TCCR2B
-176 constant TCCR2A
-139 constant OCR1BH
-138 constant OCR1BL
-137 constant OCR1AH
-136 constant OCR1AL
-135 constant ICR1H
-134 constant ICR1L
-133 constant TCNT1H
-132 constant TCNT1L
-130 constant TCCR1C
-129 constant TCCR1B
-128 constant TCCR1A
-127 constant DIDR1
-126 constant DIDR0
-124 constant ADMUX
-123 constant ADCSRB
-122 constant ADCSRA
-121 constant ADCH
-120 constant ADCL
-112 constant TIMSK2
-111 constant TIMSK1
-110 constant TIMSK0
-109 constant PCMSK2
-108 constant PCMSK1
-107 constant PCMSK0
-105 constant EICRA
-104 constant PCICR
-102 constant OSCCAL
-100 constant PRR
-97 constant CLKPR
-96 constant WDTCSR
-95 constant SREG
-94 constant SPH
-93 constant SPL
-87 constant SPMCSR
-85 constant MCUCR
-84 constant MCUSR
-83 constant SMCR
-81 constant MONDR
-80 constant ACSR
-78 constant SPDR
-77 constant SPSR
-76 constant SPCR
-75 constant GPIOR2
-74 constant GPIOR1
-72 constant OCR0B
-71 constant OCR0A
-70 constant TCNT0
-69 constant TCCR0B
-68 constant TCCR0A
-67 constant GTCCR
-66 constant EEARH
-65 constant EEARL
-64 constant EEDR
-63 constant EECR
-62 constant GPIOR0
-61 constant EIMSK
-60 constant EIFR
-59 constant PCIFR
-55 constant TIFR2
-54 constant TIFR1
-53 constant TIFR0
-43 constant PORTD
-42 constant DDRD
-41 constant PIND
-40 constant PORTC
-39 constant DDRC
-38 constant PINC
-37 constant PORTB
-36 constant DDRB
-35 constant PINB
+\ generated automatically
+hex
+
+\ AD_CONVERTER
+79 constant ADCH	\ ADC Data Register High Byte
+78 constant ADCL	\ ADC Data Register Low Byte
+7A constant ADCSRA	\ The ADC Control and Status register A
+7B constant ADCSRB	\ The ADC Control and Status register B
+7C constant ADMUX	\ The ADC multiplexer Selection Register
+7E constant DIDR0	\ Digital Input Disable Register
+
+\ ANALOG_COMPARATOR
+50 constant ACSR	\ Analog Comparator Control And Status Register
+7F constant DIDR1	\ Digital Input Disable Register 1
+
+\ CPU
+61 constant CLKPR	\ Clock Prescale Register
+3E constant GPIOR0	\ General Purpose I/O Register 0
+4A constant GPIOR1	\ General Purpose I/O Register 1
+4B constant GPIOR2	\ General Purpose I/O Register 2
+55 constant MCUCR	\ MCU Control Register
+54 constant MCUSR	\ MCU Status Register
+66 constant OSCCAL	\ Oscillator Calibration Value
+64 constant PRR	\ Power Reduction Register
+53 constant SMCR	\ 
+5E constant SPH	\ Stack Pointer High
+5D constant SPL	\ Stack Pointer Low
+57 constant SPMCSR	\ Store Program Memory Control and Status Register
+5F constant SREG	\ Status Register
+
+\ EEPROM
+42 constant EEARH	\ EEPROM Address Register High Byte
+41 constant EEARL	\ EEPROM Address Register Low Byte
+3F constant EECR	\ EEPROM Control Register
+40 constant EEDR	\ EEPROM Data Register
+
+\ EXTERNAL_INTERRUPT
+69 constant EICRA	\ External Interrupt Control Register 
+3C constant EIFR	\ External Interrupt Flag Register
+3D constant EIMSK	\ External Interrupt Mask Register
+68 constant PCICR	\ Pin Change Interrupt Control Register
+3B constant PCIFR	\ Pin Change Interrupt Flag Register
+6B constant PCMSK0	\ Pin Change Mask Register 0
+6C constant PCMSK1	\ Pin Change Mask Register 1
+6D constant PCMSK2	\ Pin Change Mask Register 2
+
+\ PORTB
+24 constant DDRB	\ Port B Data Direction Register
+23 constant PINB	\ Port B Input Pins
+25 constant PORTB	\ Port B Data Register
+
+\ PORTC
+27 constant DDRC	\ Port C Data Direction Register
+26 constant PINC	\ Port C Input Pins
+28 constant PORTC	\ Port C Data Register
+
+\ PORTD
+2A constant DDRD	\ Port D Data Direction Register
+29 constant PIND	\ Port D Input Pins
+2B constant PORTD	\ Port D Data Register
+
+\ SPI
+4C constant SPCR	\ SPI Control Register
+4E constant SPDR	\ SPI Data Register
+4D constant SPSR	\ SPI Status Register
+
+\ TIMER_COUNTER_0
+43 constant GTCCR	\ General Timer/Counter Control Register
+47 constant OCR0A	\ Timer/Counter0 Output Compare Register
+48 constant OCR0B	\ Timer/Counter0 Output Compare Register
+44 constant TCCR0A	\ Timer/Counter  Control Register A
+45 constant TCCR0B	\ Timer/Counter Control Register B
+46 constant TCNT0	\ Timer/Counter0
+35 constant TIFR0	\ Timer/Counter0 Interrupt Flag register
+6E constant TIMSK0	\ Timer/Counter0 Interrupt Mask Register
+
+\ TIMER_COUNTER_1
+87 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
+86 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
+89 constant OCR1AH	\ Timer/Counter1 Output Compare Register High Byte
+88 constant OCR1AL	\ Timer/Counter1 Output Compare Register Low Byte
+8B constant OCR1BH	\ Timer/Counter1 Output Compare Register High Byte
+8A constant OCR1BL	\ Timer/Counter1 Output Compare Register Low Byte
+80 constant TCCR1A	\ Timer/Counter1 Control Register A
+81 constant TCCR1B	\ Timer/Counter1 Control Register B
+82 constant TCCR1C	\ Timer/Counter1 Control Register C
+85 constant TCNT1H	\ Timer/Counter1 High Byte
+84 constant TCNT1L	\ Timer/Counter1 Low Byte
+36 constant TIFR1	\ Timer/Counter Interrupt Flag register
+6F constant TIMSK1	\ Timer/Counter Interrupt Mask Register
+
+\ TIMER_COUNTER_2
+B6 constant ASSR	\ Asynchronous Status Register
+B3 constant OCR2A	\ Timer/Counter2 Output Compare Register A
+B4 constant OCR2B	\ Timer/Counter2 Output Compare Register B
+B0 constant TCCR2A	\ Timer/Counter2 Control Register A
+B1 constant TCCR2B	\ Timer/Counter2 Control Register B
+B2 constant TCNT2	\ Timer/Counter2
+37 constant TIFR2	\ Timer/Counter Interrupt Flag Register
+70 constant TIMSK2	\ Timer/Counter Interrupt Mask register
+
+\ TWI
+BD constant TWAMR	\ TWI (Slave) Address Mask Register
+BA constant TWAR	\ TWI (Slave) Address register
+B8 constant TWBR	\ TWI Bit Rate register
+BC constant TWCR	\ TWI Control Register
+BB constant TWDR	\ TWI Data register
+B9 constant TWSR	\ TWI Status Register
+
+\ USART0
+C5 constant UBRR0H	\ USART Baud Rate Register High Byte
+C4 constant UBRR0L	\ USART Baud Rate Register Low Byte
+C0 constant UCSR0A	\ USART Control and Status Register A
+C1 constant UCSR0B	\ USART Control and Status Register B
+C2 constant UCSR0C	\ USART Control and Status Register C
+C6 constant UDR0	\ USART I/O Data Register
+
+\ WATCHDOG
+60 constant WDTCSR	\ Watchdog Timer Control Register

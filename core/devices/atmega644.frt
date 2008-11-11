@@ -13,29 +13,32 @@ hex
 50 constant ACSR	\ Analog Comparator Control And Status Register
 7F constant DIDR1	\ Digital Input Disable Register 1
 
+\ BOOT_LOAD
+57 constant SPMCSR	\ Store Program Memory Control Register
+
 \ CPU
-61 constant CLKPR	\ Clock Prescale Register
-3E constant GPIOR0	\ General Purpose I/O Register 0
-4A constant GPIOR1	\ General Purpose I/O Register 1
-4B constant GPIOR2	\ General Purpose I/O Register 2
+61 constant CLKPR	\ 
+3E constant GPIOR0	\ General Purpose IO Register 0
+4A constant GPIOR1	\ General Purpose IO Register 1
+4B constant GPIOR2	\ General Purpose IO Register 2
 55 constant MCUCR	\ MCU Control Register
 54 constant MCUSR	\ MCU Status Register
 66 constant OSCCAL	\ Oscillator Calibration Value
 64 constant PRR	\ Power Reduction Register
-53 constant SMCR	\ 
+5B constant RAMPZ	\ RAM Page Z Select Register
+53 constant SMCR	\ Sleep Mode Control Register
 5E constant SPH	\ Stack Pointer High
 5D constant SPL	\ Stack Pointer Low
-57 constant SPMCSR	\ Store Program Memory Control and Status Register
 5F constant SREG	\ Status Register
 
 \ EEPROM
-42 constant EEARH	\ EEPROM Address Register High Byte
+42 constant EEARH	\ EEPROM Address Register Low Byte
 41 constant EEARL	\ EEPROM Address Register Low Byte
 3F constant EECR	\ EEPROM Control Register
 40 constant EEDR	\ EEPROM Data Register
 
 \ EXTERNAL_INTERRUPT
-69 constant EICRA	\ External Interrupt Control Register 
+69 constant EICRA	\ External Interrupt Control Register A
 3C constant EIFR	\ External Interrupt Flag Register
 3D constant EIMSK	\ External Interrupt Mask Register
 68 constant PCICR	\ Pin Change Interrupt Control Register
@@ -43,6 +46,15 @@ hex
 6B constant PCMSK0	\ Pin Change Mask Register 0
 6C constant PCMSK1	\ Pin Change Mask Register 1
 6D constant PCMSK2	\ Pin Change Mask Register 2
+73 constant PCMSK3	\ Pin Change Mask Register 3
+
+\ JTAG
+51 constant OCDR	\ On-Chip Debug Related Register in I/O Memory
+
+\ PORTA
+21 constant DDRA	\ Port A Data Direction Register
+20 constant PINA	\ Port A Input Pins
+22 constant PORTA	\ Port A Data Register
 
 \ PORTB
 24 constant DDRB	\ Port B Data Direction Register
@@ -77,17 +89,17 @@ hex
 \ TIMER_COUNTER_1
 87 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
 86 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
-89 constant OCR1AH	\ Timer/Counter1 Output Compare Register High Byte
-88 constant OCR1AL	\ Timer/Counter1 Output Compare Register Low Byte
-8B constant OCR1BH	\ Timer/Counter1 Output Compare Register High Byte
-8A constant OCR1BL	\ Timer/Counter1 Output Compare Register Low Byte
+89 constant OCR1AH	\ Timer/Counter1 Output Compare Register A High Byte
+88 constant OCR1AL	\ Timer/Counter1 Output Compare Register A Low Byte
+8B constant OCR1BH	\ Timer/Counter1 Output Compare Register B High Byte
+8A constant OCR1BL	\ Timer/Counter1 Output Compare Register B Low Byte
 80 constant TCCR1A	\ Timer/Counter1 Control Register A
 81 constant TCCR1B	\ Timer/Counter1 Control Register B
 82 constant TCCR1C	\ Timer/Counter1 Control Register C
 85 constant TCNT1H	\ Timer/Counter1 High Byte
 84 constant TCNT1L	\ Timer/Counter1 Low Byte
 36 constant TIFR1	\ Timer/Counter Interrupt Flag register
-6F constant TIMSK1	\ Timer/Counter Interrupt Mask Register
+6F constant TIMSK1	\ Timer/Counter1 Interrupt Mask Register
 
 \ TIMER_COUNTER_2
 B6 constant ASSR	\ Asynchronous Status Register
