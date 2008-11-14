@@ -1,3 +1,5 @@
+\ Partname: ATmega88
+\ Built using part description XML file version 232
 \ generated automatically
 hex
 000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset and Watchdog Reset

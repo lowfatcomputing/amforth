@@ -1,3 +1,5 @@
+\ Partname: AT90CAN128
+\ Built using part description XML file version 170
 \ generated automatically
 hex
 0000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset, Watchdog Reset and JTAG AVR Reset

@@ -1,3 +1,5 @@
+\ Partname: ATmega16
+\ Built using part description XML file version 247
 \ generated automatically
 hex
 000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset, Watchdog Reset and JTAG AVR Reset
