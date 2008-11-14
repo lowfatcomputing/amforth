@@ -1,5 +1,31 @@
 \ generated automatically
 hex
+000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset and Watchdog Reset
+001  constant INT0Addr \ External Interrupt Request 0
+002  constant INT1Addr \ External Interrupt Request 1
+003  constant PCINT0Addr \ Pin Change Interrupt Request 0
+004  constant PCINT1Addr \ Pin Change Interrupt Request 0
+005  constant PCINT2Addr \ Pin Change Interrupt Request 1
+006  constant WDTAddr \ Watchdog Time-out Interrupt
+007  constant TIMER2_COMPAAddr \ Timer/Counter2 Compare Match A
+008  constant TIMER2_COMPBAddr \ Timer/Counter2 Compare Match A
+009  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
+00A  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
+00B  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
+00C  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
+00D  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
+00E  constant TIMER0_COMPAAddr \ TimerCounter0 Compare Match A
+00F  constant TIMER0_COMPBAddr \ TimerCounter0 Compare Match B
+010  constant TIMER0_OVFAddr \ Timer/Couner0 Overflow
+011  constant SPI_STCAddr \ SPI Serial Transfer Complete
+012  constant USART_RXAddr \ USART Rx Complete
+013  constant USART_UDREAddr \ USART, Data Register Empty
+014  constant USART_TXAddr \ USART Tx Complete
+015  constant ADCAddr \ ADC Conversion Complete
+016  constant EE_READYAddr \ EEPROM Ready
+017  constant ANALOG_COMPAddr \ Analog Comparator
+018  constant TWIAddr \ Two-wire Serial Interface
+019  constant SPM_ReadyAddr \ Store Program Memory Read
 
 \ AD_CONVERTER
 79 constant ADCH	\ ADC Data Register High Byte

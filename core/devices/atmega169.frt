@@ -1,5 +1,28 @@
 \ generated automatically
 hex
+000  constant RESETAddr \ External Pin,Power-on Reset,Brown-out Reset,Watchdog Reset,and JTAG AVR Reset. See Datasheet.     
+002  constant INT0Addr \ External Interrupt Request 0
+004  constant PCINT0Addr \ Pin Change Interrupt Request 0
+006  constant PCINT1Addr \ Pin Change Interrupt Request 1
+008  constant TIMER2_COMPAddr \ Timer/Counter2 Compare Match
+00A  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
+00C  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
+00E  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
+010  constant TIMER1_COMPBAddr \ Timer/Counter Compare Match B
+012  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
+014  constant TIMER0_COMPAddr \ Timer/Counter0 Compare Match
+016  constant TIMER0_OVFAddr \ Timer/Counter0 Overflow
+018  constant SPI_STCAddr \ SPI Serial Transfer Complete
+01A  constant USART0_RXAddr \ USART0, Rx Complete
+01C  constant USART0_UDREAddr \ USART0 Data register Empty
+01E  constant USART0_TXAddr \ USART0, Tx Complete
+020  constant USI_STARTAddr \ USI Start Condition
+022  constant USI_OVERFLOWAddr \ USI Overflow
+024  constant ANALOG_COMPAddr \ Analog Comparator
+026  constant ADCAddr \ ADC Conversion Complete
+028  constant EE_READYAddr \ EEPROM Ready
+02A  constant SPM_READYAddr \ Store Program Memory Read
+02C  constant LCDAddr \ LCD Start of Frame
 
 \ AD_CONVERTER
 79 constant ADCH	\ ADC Data Register High Byte
