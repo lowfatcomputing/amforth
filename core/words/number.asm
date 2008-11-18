@@ -41,9 +41,7 @@ PFA_NUMBER1: ; ( -- sign n addr )
     .dw XT_DOBRANCH
     .dw PFA_NUMBER4
 PFA_NUMBER2:
-    .dw XT_BASE
-    .dw XT_FETCH
-    .dw XT_DIGIT
+    .dw XT_DIGITQ
     .dw XT_EQUALZERO
     ; check for non number characters and stop converting if found
     .dw XT_DOCONDBRANCH

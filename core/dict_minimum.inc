@@ -46,6 +46,7 @@
 .include "words/abs.asm"
 .include "words/min.asm"
 .include "words/max.asm"
+.include "words/within.asm"
 ;;;;;;;;;;;;;;;;;;;;;;
 .include "words/hld.asm"
 .include "words/hold.asm"
@@ -61,7 +62,7 @@
 .include "words/uddot.asm"
 .include "words/uddotr.asm"
 .include "words/udslashmod.asm"
-.include "words/digit.asm"
+.include "words/digitq.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sliteral.asm"
 .include "words/scomma.asm"
