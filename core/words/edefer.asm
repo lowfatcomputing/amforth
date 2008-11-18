@@ -1,4 +1,4 @@
-; ( n <name> -- ) Compiler
+; ( c<name> -- ) Compiler
 ; R( -- )
 ; creates a defer vector which is kept in eeprom.
 VE_EDEFER:

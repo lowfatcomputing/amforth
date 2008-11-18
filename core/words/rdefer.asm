@@ -1,4 +1,4 @@
-; ( n <name> -- ) Compiler
+; ( c<name> -- ) Compiler
 ; R( -- )
 ; creates a RAM based defer vector
 VE_RDEFER:
