@@ -2,7 +2,7 @@
 ; they may be moved to the core dictionary if needed
 
 .include "dict_compiler.inc"
-;.include "dict_vm.inc"
+.include "dict_mcu.inc"
 
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
@@ -20,6 +20,7 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
+.include "drivers/usart0.asm"
 .include "words/tx0.asm"
 .include "words/rx0.asm"
 .include "words/usart0.asm"
