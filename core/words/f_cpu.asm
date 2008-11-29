@@ -10,7 +10,7 @@ XT_F_CPU:
     .dw DO_COLON
 PFA_F_CPU:
     .dw XT_DOLITERAL
-    .dw (cpu_frequency % 65536)
+    .dw (F_CPU % 65536)
     .dw XT_DOLITERAL
-    .dw (cpu_frequency / 65536)
+    .dw (F_CPU / 65536)
     .dw XT_EXIT

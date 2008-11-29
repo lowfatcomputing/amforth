@@ -21,29 +21,3 @@ do_spirw1:
     rjmp do_spirw1   ; wait until complete
     in_ tosl, SPDR
     ret
-
-; (  addr len -- ) MCU
-; R( -- )
-; transfer many bytes via spi.
-VE_SPIRWN:
-    .dw $ff05
-    .db "spirwn",0
-    .dw VE_HEAD
-    .set VE_HEAD  = VE_SPIRWN
-XT_SPIRWN:
-    .dw PFA_SPIRWN
-PFA_SPIRWM:
-    movw temp0, tosl
-    loadtos
-    movw zl, tosl
-spirwn_loop:
-    or temp0, temp1
-    brz spirwn_done
-    ld tosl, Z
-    rcall do_spirw
-    st Z+, tosl
-    sbiw temp0, 1
-    rjmp spirwn_loop
-spirwn_done:
-    loadtos
-    jmp_ DO_NEXT

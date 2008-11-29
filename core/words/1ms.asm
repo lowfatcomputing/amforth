@@ -11,7 +11,7 @@ XT_1MS:
     ; error: the additional instructions need appr.
     ;        4 cpu cycles, Z should be decreased by 1 or 2
 PFA_1MS:
-    .set delay_cycles = cpu_frequency / 1000
+    .set delay_cycles = F_CPU / 1000
     ldi zl, LOW( delay_cycles / 4 )
     ldi zh, HIGH(delay_cycles / 4 )
     sbiw zl, 42 ; internal plus forth kernel overhead

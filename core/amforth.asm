@@ -39,46 +39,17 @@ amforthstart:
     ; its a far jump...
     jmp_ DO_NEXT
 
-; ISR routines
-.set intcur   = heap ; current interrupt
-.set heap     = heap + 1
-.set intvec   = heap ; forth interrupt vector (contains the XT)
-.set heap     = heap + INTVECTORS * CELLSIZE
-
-; interrupt routine gets called (again) by rcall! This gives the
-; address of the int-vector on the stack.
-isr:
-    st -Y, r0
-    in r0, SREG
-    st -Y, r0
-    pop r0
-    pop r0          ; = intnum * intvectorsize + 1 (address following the rcall)
-    dec r0
-.if intvecsize == 1 ;
-    lsl r0
-.endif
-    sts intcur, r0
-    ld r0, Y+
-    out SREG, r0
-    ld r0, Y+
-    set ; set the interrupt flag for the inner interpreter
-    reti ; returns the interrupt, the rcall stack frame is removed!
-
+.include "drivers/generic-isr.asm"
 ; lower part of the dictionary
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
 
 .include "dict_minimum.inc"
-.if dict_appl==1
- .include "dict_appl.inc"
-.endif
+.include "dict_appl.inc"
 
 .set lowflashlast = pc
 
-; high part of the dictionary (primitives and words for self programming)
 .org amforth_interpreter
-; some helper functions
-
 ; the inner interpreter.
 DO_DODOES:
     adiw wl, 1
@@ -125,10 +96,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     rjmp DO_EXECUTE
 
 .include "dict_core.inc"
-
-.if dict_appl==2
- .include "dict_appl.inc"
-.endif
+.include "dict_appl_core.inc"
 
 .set flashlast = pc
 
@@ -139,7 +107,17 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
     .dw heap         ; HEAP
     .dw edp          ; EDP
     .dw XT_APPLTURNKEY  ; TURNKEY
-    .dw (cpu_frequency/(baud_rate * 16))-1    ; BAUDRATE
+
+; calculate baud rate error
+.equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round
+.equ BAUD_REAL  = (F_CPU/(16*(UBRR_VAL+1)))     ; effective baud rate
+.equ BAUD_ERROR = ((BAUD_REAL*1000)/BAUD-1000)  ; error in pro mille
+
+.if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
+  .error "Serial line cannot be set up properly (systematic baud error too high)"
+.endif
+
+    .dw (F_CPU/(BAUD * 16))-1    ; BAUDRATE
     .dw TIB          ; terminal input buffer
     .dw TIBSIZE      ; and its maximum length
     .dw VE_ENVHEAD   ; environmental queries

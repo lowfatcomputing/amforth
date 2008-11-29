@@ -10,7 +10,7 @@ XT_NOJTAG:
     .dw PFA_NOJTAG
 PFA_NOJTAG:
     cli
-    .if defined MCUCSR
+    .ifdef MCUCSR
     in_ temp0, MCUCSR
     .else
     in_ temp0, MCUCR
@@ -18,7 +18,7 @@ PFA_NOJTAG:
 
     ori temp0, ( 1<<JTD)
 
-    .if defined MCUCSR
+    .ifdef MCUCSR
     out_ MCUCSR, temp0
     out_ MCUCSR, temp0     ; needs to be done twice within 4 cycles
     .else
