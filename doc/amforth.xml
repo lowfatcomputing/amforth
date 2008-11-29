@@ -6,7 +6,7 @@
 ]>
 <book>
 	<bookinfo>
-		<title>amforth 3.1</title>
+		<title>amforth 3.2</title>
 		<subtitle>Technical Documentation</subtitle>
 		<author>
 			<personname>
@@ -62,7 +62,7 @@
 				<prompt>></prompt>
 				.
 				<screen>
-					amforth 3.1 ATmega32
+					amforth 3.2 ATmega32
 					<prompt>></prompt>
 					<command>words</command>
 					d2/ s>d up! up@ 0 1ms >< cmove cmove> i! i@ unloop i sp! ...
@@ -568,25 +568,21 @@
                     language.
                 </para>
             <para>
-            
-            <literallayout>
-
-+------------------ 0000 --------------+
-|   Interrupt vectors                  |
-|                                      |
-+------------ int vector size ---------+
-| initialization code                  |
-| interrupt routines                   |
-|    "colon" dictionary                |
-|                                      |
-|LATEST:                               |
-|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-+------------- nrww section -----------+
-|   inner interpreter (docol, next)    |
-| "primitive" dictionary               |
-| Link to "colon" dictionary           |
-+----------- flashend -----------------+
-            </literallayout>
+                <figure>
+                <title>FLASH Structure Overview</title>
+                <mediaobject>
+                    <imageobject>
+                    <imagedata fileref="flash-structure.png" format="PNG" scale="33"/>
+                    </imageobject>
+                    <imageobject>
+                    <imagedata fileref="flash-structure.eps" format="EPS" scale="33"/>
+                    </imageobject>
+                </mediaobject><!--  <mediaobject>
+                    <imageobject>                    
+                    <imagedata fileref="flash2-structure.eps" format="EPS" scale="33"/>
+                    </imageobject>
+                </mediaobject> -->
+                </figure>
                 </para>
                 <para>
                     The reason for this split is a technical one: to
@@ -624,11 +620,26 @@
                     assembly macros to hide the differences.
                 </para>
                 <para>
-                    The technique described above does not work for the
-                    Atmega256x. These controllers definitely need a
-                    bigger cell size: 17 bits (or more) that amforth
-                    does not support.
+                An alternative approach to place the elements in the flash shows picture
+                . Here all code goes into the RWW section. This layout definitly needs a
+                routine in the NRWW section that provides a cell level flash write functionality.
+                The usual bootloaders do not have such an runtime accessible API, only the 
+                DFU bootloader from atmel found on some USB enabled controllers does.
+                <figure>
+                <title>Alternative FLASH Structure</title>
+                <mediaobject>
+                    <imageobject>
+                    <imagedata fileref="flash2-structure.png" format="PNG" scale="33"/>
+                    </imageobject>
+                    <imageobject>
+                    <imagedata fileref="flash2-structure.eps" format="EPS" scale="33"/>
+                    </imageobject>
+                </mediaobject>
+                </figure>
+                The unused flash area beyond 0x1FFFF is not directly accessible for amforth.
+                It could be used as a block device. 
                 </para>
+                
                 <sect3>
                     <title>Flash Write</title>
                     <para>
@@ -721,10 +732,10 @@
                 <title>RAM Structure Overview</title>
                 <mediaobject>
                     <imageobject>
-                    <imagedata fileref="ram-structure.png" format="PNG" width="5cm"/>
+                    <imagedata fileref="ram-structure.png" format="PNG" scale="33"/>
                     </imageobject>
                     <imageobject>
-                    <imagedata fileref="ram-structure.eps" format="EPS" width="5cm"/>
+                    <imagedata fileref="ram-structure.eps" format="EPS" scale="33"/>
                     </imageobject>
                 </mediaobject>
                 </figure>
