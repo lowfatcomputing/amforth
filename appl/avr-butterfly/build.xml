@@ -1,26 +1,26 @@
 <!-- make multiple targets with antelope -->
 <project name="AVRButterfly" basedir="." default="Help">
-        <import file="../avr-build.xml"/>
 
-	<target name="bf.hex" description="Hexfiles for AVR Butterfly">
-		<echo>Producing Hexfiles</echo>
-		<avrasm2 projectname="bf"/>
-	</target>
+    <import file="../avr-build.xml"/>
+    <target name="bf.hex" description="Hexfiles for AVR Butterfly">
+        <echo>Producing Hexfiles</echo>
+        <avrasm2 projectname="bf"/>
+    </target>
 
-	<target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">
-	        <echo>Uploading Hexfiles for AVR Butterfly</echo>
-		<avrdude 
+    <target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">
+        <echo>Uploading Hexfiles for AVR Butterfly</echo>
+        <avrdude 
 		    type="${avr.programmer.mysmartusb}"
 		    port="${avr.programmer.mysmartusbport}"
 		    mcu="m169"
 		    flashfile="bf.hex"
 		    eepromfile="bf.eep.hex"
 		/>
-	</target>
+    </target>
 
-        <target name="bf.back" description="AVR Butterfly Backup">
-	        <echo>Download Hexfiles from AVR Butterfly</echo>
-		<avrdude 
+    <target name="bf.back" description="AVR Butterfly Backup">
+        <echo>Download Hexfiles from AVR Butterfly</echo>
+        <avrdude 
 		    type="${avr.programmer.mysmartusb}"
 		    port="${avr.programmer.mysmartusbport}"
 		    mode="r"
@@ -28,7 +28,5 @@
 		    flashfile="bf.hex"
 		    eepromfile="bf.eep.hex"
 		/>
-	</target>
-	 
-    <loadproperties srcfile="../programmer.properties"/>
+    </target>
 </project>

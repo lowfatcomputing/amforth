@@ -8,9 +8,9 @@
   .equ USERSIZE = 24  ; size of user area
 
 ; cpu clock in hertz
-.equ cpu_frequency = 8000000
+.equ F_CPU = 8000000
 ; baud rate of terminal
-.equ baud_rate = 9600
+.equ BAUD = 9600
 
 .set dict_appl=1
 .set istore_nrww=1
