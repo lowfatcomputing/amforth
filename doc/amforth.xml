@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 
 <!ENTITY REFCARD SYSTEM "refcard.xml">
 
@@ -65,7 +65,7 @@
 					amforth 3.2 ATmega32
 					<prompt>></prompt>
 					<command>words</command>
-					d2/ s>d up! up@ 0 1ms >< cmove cmove> i! i@ unloop i sp! ...
+					d2/ s>d up! up@ 0 1ms cmove cmove> i! i@ unloop i sp! ...
 					<prompt>></prompt>
 				</screen>
 			</para>
@@ -304,9 +304,11 @@
 				be changed.</para>
 			<para> The registers from R10 to R13 are currently unused, but may be
 				used for the VM extended registers X and Y sometimes. The
-				registers R14 to R21
+				registers
+				R14 to R21
 				are used as temporary registers and can be used
-				freely within one
+				freely
+				within one
 				module as temp0 to temp7.</para>
 			<para>
 				The forth core uses the
@@ -718,17 +720,17 @@
                     IO registers and finally the RAM itself.
                 </para>
                 <para>
-                    amforth needs very little (real) RAM space for its
+                    amforth needs very little RAM space for its
                     internal data structures. The biggest part are the
-                    buffers for the terminal IO. RAM Memory is managed
-                    by the words
-                    <command>VARIABLE</command>
-                    and
-                    <command>ALLOT</command>
-                    .
+                    buffers for the terminal IO. In general RAM is managed
+                    with the words <command>VARIABLE</command> and
+                    <command>ALLOT</command>. 
                 </para>
                 <para>
-                <figure>
+                <xref linkend="RAM_FIGURE"/> shows an ram layout that can be used on systems
+                without external RAM. All elements are located within the internal
+                memory pool.
+                <figure id="RAM_FIGURE">
                 <title>RAM Structure Overview</title>
                 <mediaobject>
                     <imageobject>
@@ -739,6 +741,23 @@
                     </imageobject>
                 </mediaobject>
                 </figure>
+                Another layout, that makes the external RAM easily available is shown in
+                <xref linkend="RAM2_FIGURE"/>. Here are the stacks at the beginning of the internal RAM and the
+                heap and all other buffers grow directly into the external data space. From
+                an application point of view there is not difference but a speed penalty when
+                working with external RAM instead of internal.
+                <figure id="RAM2_FIGURE">
+                <title>RAM Structure Overview</title>
+                <mediaobject>
+                    <imageobject>
+                    <imagedata fileref="ram2-structure.png" format="PNG" scale="33"/>
+                    </imageobject>
+                    <imageobject>
+                    <imagedata fileref="ram2-structure.eps" format="EPS" scale="33"/>
+                    </imageobject>
+                </mediaobject>
+                </figure>
+                
                 </para>
                 <para>
                     With amforth all three sections can be accessed
