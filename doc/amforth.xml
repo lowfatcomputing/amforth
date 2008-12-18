@@ -513,6 +513,77 @@
                     in the device definition section. This may change in
                     future versions.
                 </para>
+		
+		<para>
+		    The first USER area is located at the first heap address
+		    (usually RAMSTART).
+		</para>
+				<table>
+					<title>USER Area</title>
+					<tgroup cols="2">
+						<thead>
+							<row>
+								<entry>Addressoffset (bytes)</entry>
+								<entry>Purpose</entry>
+							</row>
+						</thead>
+						<tbody>
+							<row>
+								<entry>0</entry>
+								<entry>Multitasker Status</entry>
+							</row>
+							<row>
+								<entry>2</entry>
+								<entry>Multitasker Follower</entry>
+							</row>
+							<row>
+								<entry>4</entry>
+								<entry>RP0</entry>
+							</row>
+							<row>
+								<entry>6</entry>
+								<entry>SP0</entry>
+							</row>
+							<row>
+								<entry>8</entry>
+								<entry>SP</entry>
+							</row>
+							<row>
+								<entry>10</entry>
+								<entry>HANDLER (exception handling)</entry>
+							</row>
+							<row>
+								<entry>12</entry>
+								<entry>BASE (number conversion)</entry>
+							</row>
+							<row>
+								<entry>14</entry>
+								<entry>EMIT (character IO)</entry>
+							</row>
+
+							<row>
+								<entry>16</entry>
+								<entry>EMIT? (character IO)</entry>
+							</row>
+							<row>
+								<entry>18</entry>
+								<entry>KEY</entry>
+							</row>
+							<row>
+								<entry>20</entry>
+								<entry>KEY?</entry>
+							</row>
+							<row>
+								<entry>22</entry>
+								<entry>/KEY</entry>
+							</row>
+
+						</tbody>
+					</tgroup>
+				</table>
+		<para>
+		
+		</para>
                 <para>
                     The User Area is used to provide task local
                     information. Without an active multitasker it
@@ -804,8 +875,7 @@
             <sect2 id="ANS_CORE">
                 <title>Core and Core EXT</title>
                 <para>
-                    From the CORE word set only the words >NUMBER, C,
-                    CHAR+, CHAR, ENVIRONMENT?, EVALUATE, MOVE are
+                    From the CORE word set only the words >NUMBER, and EVALUATE are
                     missing. From the CORE EXT the words C", COMPILE, ,
                     CONVERT, EXPECT, SPAN, PICK, RESTORE-INPUT, ROLL are
                     not implemented.
