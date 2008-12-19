@@ -1,4 +1,7 @@
+\ Partname: ATmega8
+\ Built using part description XML file version 232
 \ generated automatically
+
 hex
 
 \ AD_CONVERTER
@@ -90,3 +93,23 @@ hex
 
 \ WATCHDOG
 41 constant WDTCR	\ Watchdog Timer Control Register
+
+\ Interrupts
+001  constant INT0Addr \ External Interrupt Request 0
+002  constant INT1Addr \ External Interrupt Request 1
+003  constant TIMER2_COMPAddr \ Timer/Counter2 Compare Match
+004  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
+005  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
+006  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
+007  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
+008  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
+009  constant TIMER0_OVFAddr \ Timer/Counter0 Overflow
+00A  constant SPI_STCAddr \ Serial Transfer Complete
+00B  constant USART_RXCAddr \ USART, Rx Complete
+00C  constant USART_UDREAddr \ USART Data Register Empty
+00D  constant USART_TXCAddr \ USART, Tx Complete
+00E  constant ADCAddr \ ADC Conversion Complete
+00F  constant EE_RDYAddr \ EEPROM Ready
+010  constant ANA_COMPAddr \ Analog Comparator
+011  constant TWIAddr \ 2-wire Serial Interface
+012  constant SPM_RDYAddr \ Store Program Memory Ready

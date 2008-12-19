@@ -1,28 +1,8 @@
 \ Partname: ATmega16
 \ Built using part description XML file version 247
 \ generated automatically
+
 hex
-000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset, Watchdog Reset and JTAG AVR Reset
-002  constant INT0Addr \ External Interrupt Request 0
-004  constant INT1Addr \ External Interrupt Request 1
-006  constant TIMER2_COMPAddr \ Timer/Counter2 Compare Match
-008  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
-00A  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
-00C  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
-00E  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
-010  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
-012  constant TIMER0_OVFAddr \ Timer/Counter0 Overflow
-014  constant SPISTCAddr \ Serial Transfer Complete
-016  constant USARTRXCAddr \ USART, Rx Complete
-018  constant USARTUDREAddr \ USART Data Register Empty
-01A  constant USARTTXCAddr \ USART, Tx Complete
-01C  constant ADCAddr \ ADC Conversion Complete
-01E  constant EE_RDYAddr \ EEPROM Ready
-020  constant ANA_COMPAddr \ Analog Comparator
-022  constant TWIAddr \ 2-wire Serial Interface
-024  constant INT2Addr \ External Interrupt Request 2
-026  constant TIMER0_COMPAddr \ Timer/Counter0 Compare Match
-028  constant SPM_RDYAddr \ Store Program Memory Ready
 
 \ AD_CONVERTER
 25 constant ADCH	\ ADC Data Register High Byte
@@ -123,3 +103,25 @@ hex
 
 \ WATCHDOG
 41 constant WDTCR	\ Watchdog Timer Control Register
+
+\ Interrupts
+002  constant INT0Addr \ External Interrupt Request 0
+004  constant INT1Addr \ External Interrupt Request 1
+006  constant TIMER2_COMPAddr \ Timer/Counter2 Compare Match
+008  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
+00A  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
+00C  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
+00E  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
+010  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
+012  constant TIMER0_OVFAddr \ Timer/Counter0 Overflow
+014  constant SPISTCAddr \ Serial Transfer Complete
+016  constant USARTRXCAddr \ USART, Rx Complete
+018  constant USARTUDREAddr \ USART Data Register Empty
+01A  constant USARTTXCAddr \ USART, Tx Complete
+01C  constant ADCAddr \ ADC Conversion Complete
+01E  constant EE_RDYAddr \ EEPROM Ready
+020  constant ANA_COMPAddr \ Analog Comparator
+022  constant TWIAddr \ 2-wire Serial Interface
+024  constant INT2Addr \ External Interrupt Request 2
+026  constant TIMER0_COMPAddr \ Timer/Counter0 Compare Match
+028  constant SPM_RDYAddr \ Store Program Memory Ready

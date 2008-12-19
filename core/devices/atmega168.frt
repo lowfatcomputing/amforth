@@ -1,33 +1,8 @@
 \ Partname: ATmega168
 \ Built using part description XML file version 201
 \ generated automatically
+
 hex
-000  constant RESETAddr \ External Pin, Power-on Reset, Brown-out Reset and Watchdog Reset
-002  constant INT0Addr \ External Interrupt Request 0
-004  constant INT1Addr \ External Interrupt Request 1
-006  constant PCINT0Addr \ Pin Change Interrupt Request 0
-008  constant PCINT1Addr \ Pin Change Interrupt Request 0
-00A  constant PCINT2Addr \ Pin Change Interrupt Request 1
-00C  constant WDTAddr \ Watchdog Time-out Interrupt
-00E  constant TIMER2_COMPAAddr \ Timer/Counter2 Compare Match A
-0010  constant TIMER2_COMPBAddr \ Timer/Counter2 Compare Match A
-0012  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
-0014  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
-0016  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
-0018  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
-001A  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
-001C  constant TIMER0_COMPAAddr \ TimerCounter0 Compare Match A
-001E  constant TIMER0_COMPBAddr \ TimerCounter0 Compare Match B
-020  constant TIMER0_OVFAddr \ Timer/Couner0 Overflow
-022  constant SPI_STCAddr \ SPI Serial Transfer Complete
-024  constant USART_RXAddr \ USART Rx Complete
-026  constant USART_UDREAddr \ USART, Data Register Empty
-028  constant USART_TXAddr \ USART Tx Complete
-02A  constant ADCAddr \ ADC Conversion Complete
-02C  constant EE_READYAddr \ EEPROM Ready
-02E  constant ANALOG_COMPAddr \ Analog Comparator
-030  constant TWIAddr \ Two-wire Serial Interface
-032  constant SPM_ReadyAddr \ Store Program Memory Read
 
 \ AD_CONVERTER
 79 constant ADCH	\ ADC Data Register High Byte
@@ -145,3 +120,30 @@ C6 constant UDR0	\ USART I/O Data Register
 
 \ WATCHDOG
 60 constant WDTCSR	\ Watchdog Timer Control Register
+
+\ Interrupts
+002  constant INT0Addr \ External Interrupt Request 0
+004  constant INT1Addr \ External Interrupt Request 1
+006  constant PCINT0Addr \ Pin Change Interrupt Request 0
+008  constant PCINT1Addr \ Pin Change Interrupt Request 0
+00A  constant PCINT2Addr \ Pin Change Interrupt Request 1
+00C  constant WDTAddr \ Watchdog Time-out Interrupt
+00E  constant TIMER2_COMPAAddr \ Timer/Counter2 Compare Match A
+0010  constant TIMER2_COMPBAddr \ Timer/Counter2 Compare Match A
+0012  constant TIMER2_OVFAddr \ Timer/Counter2 Overflow
+0014  constant TIMER1_CAPTAddr \ Timer/Counter1 Capture Event
+0016  constant TIMER1_COMPAAddr \ Timer/Counter1 Compare Match A
+0018  constant TIMER1_COMPBAddr \ Timer/Counter1 Compare Match B
+001A  constant TIMER1_OVFAddr \ Timer/Counter1 Overflow
+001C  constant TIMER0_COMPAAddr \ TimerCounter0 Compare Match A
+001E  constant TIMER0_COMPBAddr \ TimerCounter0 Compare Match B
+020  constant TIMER0_OVFAddr \ Timer/Couner0 Overflow
+022  constant SPI_STCAddr \ SPI Serial Transfer Complete
+024  constant USART_RXAddr \ USART Rx Complete
+026  constant USART_UDREAddr \ USART, Data Register Empty
+028  constant USART_TXAddr \ USART Tx Complete
+02A  constant ADCAddr \ ADC Conversion Complete
+02C  constant EE_READYAddr \ EEPROM Ready
+02E  constant ANALOG_COMPAddr \ Analog Comparator
+030  constant TWIAddr \ Two-wire Serial Interface
+032  constant SPM_ReadyAddr \ Store Program Memory Read
