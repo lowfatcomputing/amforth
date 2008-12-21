@@ -25,11 +25,11 @@
 	<toc />
 	<preface>
 		<title>Overview</title>
-		<para> amforth is a Forth system for the AVR ATmega microcontroller
+		<para>Amforth is a Forth system for the AVR ATmega microcontroller
 			family. It works on the controller itself and does not depend on any
 			additional hard- or software. It places no restrictions on using
 			external hardware.</para>
-		<para> amforth implements a large subset of the Forth standard ANS94.
+		<para>Amforth implements a large subset of the Forth standard ANS94.
 			Most of the CORE and CORE EXT words and a varying number of words
 			from the other word sets are implemented. It is very easy to extend
 			or shrink the actual word list for a specific application by just
@@ -38,10 +38,10 @@
 			compiler extends it directly.</para>
 		<para> amforth provides full access to all interrupts. The interrupt
 			handler routines can be code or forth words.</para>
-		<para> amforth is published under the GNU General Public License
+		<para>Amforth is published under the GNU General Public License
 			version 2.</para>
 		<para>The name amforth has no special meaning.</para>
-		<para> amforth is a new implementation. The first code was written in
+		<para>Amforth is a new implementation. The first code was written in
 			the summer of 2006. It is written "from scratch" using assembly
 			language and forth itself. It does not have a direct relationship to
 			any other forth system.</para>
@@ -49,7 +49,7 @@
 	<chapter id="FIRST_STEPS">
 		<title>First Steps</title>
 		<para>
-			The first steps require a working ATmega microcontroller with an
+			The first steps require an ATmega microcontroller with an
 			RS232 connection to an PC or a terminal like the
 			<productname class="trade">VT100</productname>
 			or similar hardware. A customization may change these requirements.
@@ -71,9 +71,43 @@
 			</para>
 		</sect1>
 	</chapter>
-	<chapter id="HARDWARE">
+	<chapter id="Hardware">
 		<title>Hardware</title>
-		<sect1 id="HW_FUSES">
+		<sect1 id="Controller">
+			<title>Controller</title>
+			<para>amforth is designed to run on AVR Atmega
+				microcontrollers. It requires
+				ca 7KB flash memory for the basic
+				system and can address 128KB of
+				flash memory.
+		</para>
+			<para>The ATtiny microcontrollers and a a few ATmega types lack
+				the minimum
+				flash capacity. The ATtiny's some machine instructions as
+				well. </para>
+
+			<para>Microcontrollers with more than 128KB flash
+				memory are currently not
+				usable.</para>
+
+		</sect1>
+		<sect1 id="Bootloader">
+			<title>Bootloader Support</title>
+			<para>Most bootloaders will not work with amforth since they do
+				not provide an
+				application programming interface to rewrite a single
+				flash cell. The default
+				setup will thus replace any bootloader found
+				with some core
+				routines.</para>
+			<para>
+				It is possible to change the word
+				<code>i!</code>
+				to use an API and work
+				with existing bootloaders.
+			</para>
+		</sect1>
+		<sect1 id="Fuses">
 			<title>Fuses</title>
 			<para> Amforth uses the self programming feature of the ATmega
 				microcontrollers to work with the dictionary. It is ok to use the
@@ -855,8 +889,8 @@
             </sect2>
         </sect1>
     </chapter>
-    <chapter id="ForthWords">
-        <title>Forth Words</title>
+    <chapter id="Implementation">
+        <title>Implementation</title>
         <sect1 id="ANS">
             <title>ANS Words</title>
             <para>
@@ -1097,7 +1131,33 @@
             </sect2>
         </sect1>
         <sect1 id="AMFORTH">
-            <title>amforth extensions</title>
+            <title>Amforth</title>
+            <sect2 id="Startup"><title>Startup</title>
+            <para>The startup code is in the file <filename>amforth.asm</filename>-
+            The program execution starts at address 0. Since there is
+            the interrupt service address table, the first instruction is a 
+            jump to the startup code which is located right after the ISR table. 
+            </para>
+            <para>The assembly part of the startup code creates the basic runtime environment
+            to start the virtual forth machine. It sets up the stack pointers,
+            the user pointer and sets the forth instruction pointer to the word <code>cold</code>.
+            </para>
+            <sect3 id="COLD"><title>COLD</title>
+            <para>The word COLD is the high level part of the forth VM initialization. When called from
+            within forth it is the equivalent to a RESET. COLD does initialize the PAUSE deferred word
+            (to do nothing), sets the number base to HEX, calls the application defined TURNKEY action and
+            finally calls QUIT, which is the traditional ACCEPT / INTERPRET loop.</para>
+            </sect3>
+            <sect3 id="TURNKEY"><title>TURNKEY</title>
+            <para>The <code>turnkey</code> is a EEPROM deferred word that contains an application specific
+            startup action.
+            </para>
+            <para>Its main task is to initialize the character IO to enable the forth interpreter to
+            interact with the command prompt. The examples shipped with amforth do this by "opening"
+            the serial port and setting up the character IO deferred words (KEY, EMIT etc).
+            </para>
+            </sect3>
+            </sect2>
             <sect2 id="AMFORTH_MCU">
                 <title>MCU Access</title>
                 <para>
@@ -1252,7 +1312,7 @@
             a lot of forth code that can be seen as a library of words
             and commands.
         </para>
-        <sect1 id="Hardware">
+        <sect1 id="Hardware_Access">
             <title>Hardware Access</title>
             <para>
                 In the
@@ -1587,15 +1647,12 @@
             <para>
                 There are a few missing words from the standard CORE
                 word set. Many of them are related with string
-                parameters, like
-                <command>evaluate</command>
-                and
-                <command>environment?</command>
-                . The difficulty arises from the fact, that the storage
+                parameters, like <command>evaluate</command>.
+                The difficulty arises from the fact, that the storage
                 location of a string cannot be determined by simply
-                lookaing at the address. A solution may be a state smart
+                looking at the address. A solution may be a state smart
                 implementation with some helper words. If running
-                interactivly, these words may use RAM addresses, if
+                interactively, these words may use RAM addresses, if
                 called within a compiled word they use flash addresses.
                 Not really smart however..
             </para>
@@ -1613,7 +1670,7 @@
         <sect1 id="MoreController">
             <title>More Controller Types</title>
             <para>
-                amforth can run on the whole range of Atmegas. The only
+                amforth can run on nearly the whole range of Atmegas. The only
                 limiting factor is the flash size: amforth needs ca 7 KB
                 for itself and can address 128 KB. The ATmega256x may be
                 supported with a change in the cell size from 2 to 3
