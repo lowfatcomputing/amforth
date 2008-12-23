@@ -10,8 +10,8 @@ XT_VER:
     .dw DO_COLON
 PFA_VER:
     .dw XT_SLITERAL
-    .dw 12
-    .db "amforth 3.1 "
+    .dw 11
+    .db "amforth 3.2",0
     .dw XT_ITYPE
     .dw XT_SPACE
     .dw XT_DOLITERAL
