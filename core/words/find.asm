@@ -24,11 +24,11 @@ PFA_FIND1:
 ; ( c-addr len searchstart -- [ 0 ] | [ xt [-1|1]] ) Tools
 ; R( -- )
 ; search a dictionary in flash
-VE_DOFIND:
-    .dw $ff06
-    .db "(find)"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DOFIND
+;VE_DOFIND:
+;    .dw $ff06
+;    .db "(find)"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOFIND
 XT_DOFIND:
     .dw DO_COLON
 PFA_DOFIND:
