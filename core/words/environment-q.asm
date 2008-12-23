@@ -1,11 +1,11 @@
 ; ( -- faddr) System Value
 ; R( -- )
 ; start address of the environmental search
-_VE_ENVHEAD:
-    .dw $ff08
-    .db "env-head"
-    .dw VE_HEAD
-    .set VE_HEAD = _VE_ENVHEAD
+;_VE_ENVHEAD:
+;    .dw $ff08
+;    .db "env-head"
+;    .dw VE_HEAD
+;    .set VE_HEAD = _VE_ENVHEAD
 XT_ENVHEAD:
     .dw PFA_DOVALUE
 PFA_ENVHEAD:
