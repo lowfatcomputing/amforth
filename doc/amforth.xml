@@ -1133,29 +1133,44 @@
         <sect1 id="AMFORTH">
             <title>Amforth</title>
             <sect2 id="Startup"><title>Startup</title>
-            <para>The startup code is in the file <filename>amforth.asm</filename>-
+            <para>The startup code is in the file <filename>amforth.asm</filename>.
             The program execution starts at address 0. Since there is
             the interrupt service address table, the first instruction is a 
             jump to the startup code which is located right after the ISR table. 
             </para>
             <para>The assembly part of the startup code creates the basic runtime environment
-            to start the virtual forth machine. It sets up the stack pointers,
-            the user pointer and sets the forth instruction pointer to the word <code>cold</code>.
+            to start the virtual forth machine. It sets up the stack pointers (and
+            the user pointer and places the forth instruction pointer on the 
+            word <code>cold</code>. Then it activates the forth virtual machine 
+            by jumping to the inner interpreter.
             </para>
+            <para>The start addresses of the stacks are placed to the user area 
+            for later use as well.</para>
             <sect3 id="COLD"><title>COLD</title>
-            <para>The word COLD is the high level part of the forth VM initialization. When called from
-            within forth it is the equivalent to a RESET. COLD does initialize the PAUSE deferred word
-            (to do nothing), sets the number base to HEX, calls the application defined TURNKEY action and
-            finally calls QUIT, which is the traditional ACCEPT / INTERPRET loop.</para>
+            <para>The word <code>COLD</code> is the high level part of the 
+            forth VM initialization. When called from
+            within forth it is the equivalent to a RESET. 
+            <code>COLD</code> initializes the <code>PAUSE</code> 
+            deferred word to do nothing, sets the number base to hexadecimal, 
+            calls the application defined <code>TURNKEY</code> action and
+            finally calls <code>QUIT</code>.
+            </para>
             </sect3>
             <sect3 id="TURNKEY"><title>TURNKEY</title>
-            <para>The <code>turnkey</code> is a EEPROM deferred word that contains an application specific
-            startup action.
+            <para>The <code>turnkey</code> is a EEPROM deferred word that 
+            points to an application specific startup action.
             </para>
-            <para>Its main task is to initialize the character IO to enable the forth interpreter to
-            interact with the command prompt. The examples shipped with amforth do this by "opening"
-            the serial port and setting up the character IO deferred words (KEY, EMIT etc).
+            <para>Its main task is to initialize the character IO to enable 
+            the forth interpreter to interact with the command prompt. The 
+            examples shipped with amforth do this by "opening" the serial 
+            port and setting up the character IO deferred words 
+            (KEY, EMIT etc).
             </para>
+            </sect3>
+            <sect3 id="QUIT"><title>QUIT</title>
+            <para>QUIT repeats the initialization of the stack pointers by reading
+            them from the user area and enters the traditional ACCEPT -- INTERPRET 
+            loop that never ends. </para>
             </sect3>
             </sect2>
             <sect2 id="AMFORTH_MCU">
