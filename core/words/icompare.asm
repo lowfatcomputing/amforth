@@ -21,7 +21,7 @@ PFA_ICOMPARE:
       .dw XT_ZERO
       .dw XT_EXIT
 PFA_ICOMPARE_SAMELEN:
-    .dw XT_SWAP ; ( r-addr f-addr len )
+    .dw XT_SWAP ; ( -- r-addr f-addr len )
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_ICOMPARE_DONE
@@ -70,4 +70,3 @@ PFA_ICOMPARE_DONE:
     .dw XT_DOLITERAL
     .dw -1
     .dw XT_EXIT
-
