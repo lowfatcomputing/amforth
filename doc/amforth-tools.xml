@@ -1,0 +1,85 @@
+    <chapter id="Tools">
+        <title>Tools</title>
+        <sect1 id="Tools_host">
+            <title>Host</title>
+            <para>
+                There a few number of tools on the host side (PC) that
+                are specifically written to support amforth. They are
+                written in script languages like perl and python and
+                should work on all major operating systems.
+            </para>
+            <sect2>
+                <title>Documentation</title>
+                <para>
+                    The tool
+                    <command>makerefcard</command>
+                    reads the assembly files from the
+                    <filename>words</filename>
+                    subdirectory and creates a reference card. The
+                    resulting LaTeX file needs to be processed with
+                    <command>latex</command>
+                    to generate a nice looking overview of all words
+                    available in the amforth core system.
+                </para>
+                <para>
+                    The command
+                    <command>make-htmlwords</command>
+                    creates the linked overview of all words on the
+                    amforth homepage.
+                </para>
+            </sect2>
+            <sect2 id="TOOLS_UPLOAD">
+                <title>Uploader</title>
+                <para>
+                    To transfer forth code to the microcontroller some
+                    precautions need to taken. During a flash write
+                    operation all interrupts are turned off. This may
+                    lead to lost characters on the serial line. One
+                    solution is to send very slowly and hope that the
+                    receiver gets all characters. The program
+                    <command>ascii-xfer</command>
+                    can do the job:
+                    <cmdsynopsis>
+                        <command>ascii-xfr</command>
+                        <arg choice="plain">-s</arg>
+                        <arg choice="plain">-c $delay_char</arg>
+                        <arg choice="plain">-l $delay_line</arg>
+                        <arg choice="plain">$file</arg>
+                        <arg choice="plain">> $tty</arg>
+                    </cmdsynopsis>
+                    This works but the upload of longer files needs a
+                    very long time: $delay_char can be 1 or 2 ms,
+                    $delay_line around 800 ms.
+                </para>
+                <para>
+                    Another solution is
+                    <command>amforth-upload.py</command>
+                    . It was initially created by user
+                    <ulink url="http://pix.test.at/">
+                        <citetitle>pix</citetitle>
+                    </ulink>
+                    . His algorithm checks for the echo of every
+                    character sent to the controller. At line ends the
+                    uploader waits for the ok prompt to continue with
+                    the next line.
+                </para>
+                <para>
+                    This algorithm works very fast without the risk of
+                    lost characters. An extension of this script
+                    provides limited library support. In the source
+                    files a command
+                    <cmdsynopsis>
+                        <command>#include</command>
+                        <arg choice="plain">filename</arg>
+                    </cmdsynopsis>
+                    is used to upload the content of
+                    <filename>filename</filename>
+                    instead of the two words. The sources will only work
+                    with this uploader utility, others will trigger the
+                    "word-not-found" exception on the microcontroller
+                    unless they recognize the #include syntax (similar
+                    to the c preprocessor).
+                </para>
+            </sect2>
+        </sect1>
+    </chapter>

@@ -4,7 +4,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage{url}
 \usepackage{multicol}
-%\usepackage{supertabular}
+\usepackage{supertabular}
 
 \setlength{\parindent}{0cm}
 \setlength{\oddsidemargin}{0cm}
@@ -20,7 +20,7 @@
 \pagestyle{empty}
 
 \begin{footnotesize}
-\section*{\Large amforth 3.1 Reference Card}
+\section*{\Large amforth 3.2 Reference Card}
 \begin{multicols}{3}
 
 \subsection*{}
@@ -33,698 +33,717 @@
 \subsection*{Arithmetics}
 \begin{tabular}{\colsa}
 % XT_1MINUS
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|1-|  & \verb/( n1 -- n2 )/\\
 % XT_1PLUS
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|1+|  & \verb/( n1 -- n2 )/\\
 % XT_2SLASH
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|2/|  & \verb/( n1 -- n2 )/\\
 % XT_2STAR
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|2*|  & \verb/( n1 -- n2 )/\\
 % XT_ABS
-\verb||  & \verb/( n1 -- u1 )/\\
+\verb|abs|  & \verb/( n1 -- u1 )/\\
 % XT_BYTESWAP
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|><|  & \verb/( n1 -- n2 )/\\
 % XT_CELLPLUS
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|cell+|  & \verb/( n1 -- n2 )/\\
 % XT_CELLS
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|cells|  & \verb/( n1 -- n2 )/\\
 % XT_D2SLASH
-\verb||  & \verb/( d1 -- d2 )/\\
+\verb|d2/|  & \verb/( d1 -- d2 )/\\
 % XT_D2STAR
-\verb||  & \verb/( d1 -- d2 )/\\
+\verb|d2*|  & \verb/( d1 -- d2 )/\\
 % XT_DABS
-\verb||  & \verb/( d -- ud )/\\
+\verb|dabs|  & \verb/( d -- ud )/\\
 % XT_DINVERT
-\verb||  & \verb/( d1 -- d2)/\\
-% XT_DINVERT
-\verb||  & \verb/( d1 -- d2)/\\
+\verb|dinvert|  & \verb/( d1 -- d2)/\\
 % XT_DMINUS
-\verb||  & \verb/( d1 d2 -- d3 )/\\
+\verb|d-|  & \verb/( d1 d2 -- d3 )/\\
 % XT_DNEGATE
-\verb||  & \verb/( d1 -- d2 )/\\
+\verb|dnegate|  & \verb/( d1 -- d2 )/\\
 % XT_DPLUS
-\verb||  & \verb/( d1 d2 -- d3)/\\
+\verb|d+|  & \verb/( d1 d2 -- d3)/\\
 % XT_INVERT
-\verb||  & \verb/( n1 -- n2)/\\
+\verb|invert|  & \verb/( n1 -- n2)/\\
 % XT_LOG2
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|log2|  & \verb/( n1 -- n2 )/\\
 % XT_LSHIFT
-\verb||  & \verb/( n1 n2 -- n3)/\\
+\verb|lshift|  & \verb/( n1 n2 -- n3)/\\
 % XT_MINUS
-\verb||  & \verb/( n1 n2 -- n3 )/\\
+\verb|-|  & \verb/( n1 n2 -- n3 )/\\
 % XT_MOD
-\verb||  & \verb/( n1 n2 -- n3)/\\
+\verb|mod|  & \verb/( n1 n2 -- n3)/\\
 % XT_MSTAR
-\verb||  & \verb/( n1 n2 -- d)/\\
+\verb|m*|  & \verb/( n1 n2 -- d)/\\
+% XT_MUSTAR
+\verb|mu*|  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUS
-\verb||  & \verb/( n1 n2 -- n3)/\\
+\verb|+|  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUSSTORE
-\verb||  & \verb/( n addr -- )/\\
+\verb|+!|  & \verb/( n addr -- )/\\
 % XT_RSHIFT
-\verb||  & \verb/( n1 n2 -- n3 )/\\
+\verb|rshift|  & \verb/( n1 n2 -- n3 )/\\
 % XT_SLASH
-\verb||  & \verb/( n1 n2 -- n3)/\\
+\verb|/|  & \verb/( n1 n2 -- n3)/\\
 % XT_SLASHMOD
-\verb||  & \verb/( n1 n2 -- rem quot)/\\
+\verb|/mod|  & \verb/( n1 n2 -- rem quot)/\\
 % XT_STAR
-\verb||  & \verb/( n1 n2 -- n3 )/\\
+\verb|*|  & \verb/( n1 n2 -- n3 )/\\
 % XT_STARSLASH
-\verb||  & \verb/(n1 n2 n3 -- n4)/\\
+\verb|*/|  & \verb/(n1 n2 n3 -- n4)/\\
 % XT_STARSLASHMOD
-\verb||  & \verb/( n1 n2 n3 -- rem quot)/\\
+\verb|*/mod|  & \verb/( n1 n2 n3 -- rem quot)/\\
 % XT_UDSLASHMOD
-\verb||  & \verb/( d1 n -- rem ud2 )/\\
+\verb|ud/mod|  & \verb/( d1 n -- rem ud2 )/\\
 % XT_UMSLASHMOD
-\verb||  & \verb/( ud u2 -- rem quot)/\\
+\verb|um/mod|  & \verb/( ud u2 -- rem quot)/\\
 % XT_UMSTAR
-\verb||  & \verb/( u1 u2 -- d)/\\
+\verb|um*|  & \verb/( u1 u2 -- d)/\\
 % XT_USLASHMOD
-\verb||  & \verb/(u1 u2 -- rem quot)/\\
+\verb|u/mod|  & \verb/(u1 u2 -- rem quot)/\\
+% XT_WITHIN
+\verb|within|  & \verb/( n1 n2 -- n3 )/\\
 % XT_ZERO
-\verb||  & \verb/( -- 0 )/\\
+\verb|0|  & \verb/( -- 0 )/\\
 \end{tabular}
 
 \subsection*{Character IO}
 \begin{tabular}{\colsa}
 % XT_BL
-\verb||  & \verb/( -- 32 )/\\
+\verb|bl|  & \verb/( -- 32 )/\\
 % XT_CR
-\verb||  & \verb/( -- )/\\
+\verb|cr|  & \verb/( -- )/\\
 % XT_EMIT
-\verb||  & \verb/( c -- )/\\
+\verb|emit|  & \verb/( c -- )/\\
 % XT_EMITQ
-\verb||  & \verb/( -- f )/\\
+\verb|emit?|  & \verb/( -- f )/\\
 % XT_KEY
-\verb||  & \verb/( -- c )/\\
+\verb|key|  & \verb/( -- c )/\\
 % XT_KEYQ
-\verb||  & \verb/( -- f)/\\
+\verb|key?|  & \verb/( -- f)/\\
 % XT_SLASHKEY
-\verb||  & \verb/( -- )/\\
+\verb|/key|  & \verb/( -- )/\\
 % XT_SPACE
-\verb||  & \verb/( -- )/\\
+\verb|space|  & \verb/( -- )/\\
 % XT_SPACES
-\verb||  & \verb/( n -- )/\\
+\verb|spaces|  & \verb/( n -- )/\\
 % XT_TYPE
-\verb||  & \verb/( addr n -- )/\\
+\verb|type|  & \verb/( addr n -- )/\\
 \end{tabular}
 
 \subsection*{Compare}
 \begin{tabular}{\colsa}
 % XT_DGREATER
-\verb||  & \verb/( d1 d2 -- flag )/\\
+\verb|d>|  & \verb/( d1 d2 -- flag )/\\
 % XT_DLESS
-\verb||  & \verb/( d1 d2 -- flasg)/\\
+\verb|d<|  & \verb/( d1 d2 -- flasg)/\\
 % XT_EQUAL
-\verb||  & \verb/( n1 n2 -- flag )/\\
+\verb|=|  & \verb/( n1 n2 -- flag )/\\
 % XT_EQUALZERO
-\verb||  & \verb/( n -- flag )/\\
+\verb|0=|  & \verb/( n -- flag )/\\
 % XT_GREATER
-\verb||  & \verb/( n1 n2 -- flag )/\\
+\verb|>|  & \verb/( n1 n2 -- flag )/\\
 % XT_GREATERZERO
-\verb||  & \verb/( n1 -- flag )/\\
+\verb|0>|  & \verb/( n1 -- flag )/\\
 % XT_LESS
-\verb||  & \verb/( n1 n2 -- flasg)/\\
+\verb|<|  & \verb/( n1 n2 -- flasg)/\\
 % XT_LESSZERO
-\verb||  & \verb/( n1 -- flag)/\\
+\verb|0<|  & \verb/( n1 -- flag)/\\
 % XT_MAX
-\verb||  & \verb/( n1 n2 -- n1|n2 )/\\
+\verb|max|  & \verb/( n1 n2 -- n1|n2 )/\\
 % XT_MIN
-\verb||  & \verb/( n1 n2 -- n1|n2 )/\\
+\verb|min|  & \verb/( n1 n2 -- n1|n2 )/\\
 % XT_NOTEQUAL
-\verb||  & \verb/( n1 n2 -- flag)/\\
+\verb|<>|  & \verb/( n1 n2 -- flag)/\\
 % XT_NOTEQUALZERO
-\verb||  & \verb/( n -- flag )/\\
+\verb|0<>|  & \verb/( n -- flag )/\\
 % XT_UGREATER
-\verb||  & \verb/( u1 u2 -- flag )/\\
+\verb|u>|  & \verb/( u1 u2 -- flag )/\\
 % XT_ULESS
-\verb||  & \verb/( u1 u2 -- flasg)/\\
+\verb|u<|  & \verb/( u1 u2 -- flasg)/\\
 \end{tabular}
 
 \subsection*{Compiler}
 \begin{tabular}{\colsa}
 % XT_BACKSLASH
-\verb||  & \verb/( -- )/\\
+\verb|\|  & \verb/( -- )/\\
 % XT_BRACKETTICK
-\verb|']|  & \verb/( -- XT )/\\
+\verb|[']|  & \verb/( -- XT )/\\
 % XT_CODE
-\verb||  & \verb/( -- )/\\
+\verb|code|  & \verb/( -- )/\\
 % XT_COLON
-\verb||  & \verb/( -- )/\\
+\verb|:|  & \verb/( -- )/\\
 % XT_COLONNONAME
-\verb||  & \verb/( -- xt )/\\
+\verb|:noname|  & \verb/( -- xt )/\\
 % XT_CONSTANT
-\verb||  & \verb/( n -- )/\\
+\verb|constant|  & \verb/( n -- )/\\
 % XT_DOES
-\verb||  & \verb/( -- )/\\
+\verb|does>|  & \verb/( -- )/\\
 % XT_DOTSTRING
-\verb|"|  & \verb/( -- )/\\
+\verb|."|  & \verb/( -- )/\\
 % XT_EDEFER
-\verb||  & \verb/( n <name> -- )/\\
+\verb|Edefer|  & \verb/( c<name> -- )/\\
 % XT_ELSE
-\verb||  & \verb/( addr1 -- addr2)/\\
+\verb|else|  & \verb/( addr1 -- addr2)/\\
 % XT_ENDCODE
-\verb||  & \verb/( -- )/\\
+\verb|end-code|  & \verb/( -- )/\\
 % XT_EXIT
-\verb||  & \verb/( -- )/\\
+\verb|exit|  & \verb/( -- )/\\
               & \verb/R(xt --)/\\
 % XT_IMMEDIATE
-\verb||  & \verb/( -- )/\\
+\verb|immediate|  & \verb/( -- )/\\
 % XT_LBRACKET
-\verb||  & \verb/( --  )/\\
+\verb|[|  & \verb/( --  )/\\
 % XT_LITERAL
-\verb||  & \verb/( n -- )/\\
+\verb|literal|  & \verb/( n -- )/\\
 % XT_LPARENTHESIS
-\verb||  & \verb/( -- )/\\
+\verb|(|  & \verb/( -- )/\\
 % XT_RBRACKET
-\verb||  & \verb/( --  )/\\
+\verb|]|  & \verb/( --  )/\\
 % XT_RDEFER
-\verb||  & \verb/( n <name> -- )/\\
+\verb|Rdefer|  & \verb/( c<name> -- )/\\
 % XT_RECURSE
-\verb||  & \verb/( -- )/\\
+\verb|recurse|  & \verb/( -- )/\\
 % XT_SCOMMA
-\verb|,|  & \verb/( addr len -- )/\\
+\verb|s,|  & \verb/( addr len -- )/\\
 % XT_SEMICOLON
-\verb||  & \verb/( -- )/\\
+\verb|;|  & \verb/( -- )/\\
 % XT_SQUOTE
-\verb|"|  & \verb/( <cchar> -- )/\\
+\verb|s"|  & \verb/( <cchar> -- )/\\
 % XT_STATE
-\verb||  & \verb/( -- addr )/\\
+\verb|state|  & \verb/( -- addr )/\\
 % XT_THEN
-\verb||  & \verb/( addr -- )/\\
+\verb|then|  & \verb/( addr -- )/\\
 % XT_UNTIL
-\verb||  & \verb/( addr -- )/\\
+\verb|until|  & \verb/( addr -- )/\\
 % XT_USER
-\verb||  & \verb/( n -- )/\\
+\verb|user|  & \verb/( n -- )/\\
 % XT_VALUE
-\verb||  & \verb/( n <name> -- )/\\
+\verb|value|  & \verb/( n <name> -- )/\\
 % XT_VARIABLE
-\verb||  & \verb/( -- )/\\
+\verb|variable|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{Control Structure}
 \begin{tabular}{\colsa}
 % XT_AGAIN
-\verb||  & \verb/( addr -- )/\\
+\verb|again|  & \verb/( addr -- )/\\
 % XT_BEGIN
-\verb||  & \verb/( -- addr )/\\
+\verb|begin|  & \verb/( -- addr )/\\
 % XT_DO
-\verb||  & \verb/( -- loop-sys )/\\
+\verb|do|  & \verb/( -- loop-sys )/\\
 % XT_I
-\verb||  & \verb/( -- n )/\\
+\verb|i|  & \verb/( -- n )/\\
               & \verb/; R( loop-sys -- loop-sys)/\\
 % XT_IF
-\verb||  & \verb/( -- addr )/\\
+\verb|if|  & \verb/( -- addr )/\\
 % XT_J
-\verb||  & \verb/( -- n )/\\
+\verb|j|  & \verb/( -- n )/\\
               & \verb/; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)/\\
 % XT_LEAVE
-\verb||  & \verb/( -- )/\\
+\verb|leave|  & \verb/( -- )/\\
               & \verb/R(loop-sys --)/\\
 % XT_LOOP
-\verb||  & \verb/( loop-sys -- )/\\
+\verb|loop|  & \verb/( loop-sys -- )/\\
 % XT_PLUSLOOP
-\verb||  & \verb/( addr -- )/\\
+\verb|+loop|  & \verb/( addr -- )/\\
 % XT_QDO
-\verb||  & \verb/( -- addr )/\\
+\verb|?do|  & \verb/( -- addr )/\\
 % XT_REPEAT
-\verb||  & \verb/(addr1 -- addr2 )/\\
+\verb|repeat|  & \verb/(addr1 -- addr2 )/\\
 % XT_UNLOOP
-\verb||  & \verb/( -- )/\\
-              & \verb/; R(loop-sys -- )/\\
+\verb|unloop|  & \verb/( -- )/\\
+              & \verb/R(loop-sys --)/\\
 % XT_WHILE
-\verb||  & \verb/( dest -- orig dest )/\\
+\verb|while|  & \verb/( dest -- orig dest )/\\
 \end{tabular}
 
 \subsection*{Conversion}
 \begin{tabular}{\colsa}
 % XT_D2S
-\verb||  & \verb/( d1 -- n1 )/\\
+\verb|d>s|  & \verb/( d1 -- n1 )/\\
 % XT_S2D
-\verb||  & \verb/( n1 -- d1 )/\\
+\verb|s>d|  & \verb/( n1 -- d1 )/\\
 \end{tabular}
 
 \subsection*{Dictionary}
 \begin{tabular}{\colsa}
 % XT_COMMA
-\verb||  & \verb/( n -- )/\\
+\verb|,|  & \verb/( n -- )/\\
 % XT_COMPILE
-\verb||  & \verb/( -- )/\\
+\verb|compile|  & \verb/( -- )/\\
 % XT_CREATE
-\verb||  & \verb/( -- )/\\
+\verb|create|  & \verb/( -- )/\\
 % XT_TICK
-\verb||  & \verb/( -- XT )/\\
+\verb|'|  & \verb/( -- XT )/\\
 \end{tabular}
 
 \subsection*{Exceptions}
 \begin{tabular}{\colsa}
 % XT_ABORT
-\verb||  & \verb/( n*x -- )/\\
+\verb|abort|  & \verb/( n*x -- )/\\
               & \verb/R(n*y --)/\\
 % XT_ABORTSTRING
-\verb|"|  & \verb/( n*x -- )/\\
+\verb|abort"|  & \verb/( n*x -- )/\\
               & \verb/R(n*y --)/\\
 % XT_CATCH
-\verb||  & \verb/( xt -- )/\\
+\verb|catch|  & \verb/( xt -- )/\\
 % XT_ENVSLASHHOLD
-\verb||  & \verb/( n*x -- )/\\
+\verb|/hold|  & \verb/( n*x -- )/\\
               & \verb/R(n*y --)/\\
 % XT_HANDLER
-\verb||  & \verb/( -- addr )/\\
+\verb|handler|  & \verb/( -- addr )/\\
 % XT_THROW
-\verb||  & \verb/( n -- )/\\
+\verb|throw|  & \verb/( n -- )/\\
 \end{tabular}
 
 \subsection*{Extended VM}
 \begin{tabular}{\colsa}
 % XT_AFETCH
-\verb||  & \verb/( -- n2 )/\\
+\verb|a@|  & \verb/( -- n2 )/\\
 % XT_AFETCHMINUS
-\verb||  & \verb/( -- n )/\\
+\verb|a@-|  & \verb/( -- n )/\\
 % XT_AFETCHPLUS
-\verb||  & \verb/( -- n )/\\
+\verb|a@+|  & \verb/( -- n )/\\
 % XT_ASTORE
-\verb||  & \verb/( n -- )/\\
+\verb|a!|  & \verb/( n -- )/\\
 % XT_ASTOREMINUS
-\verb||  & \verb/( -- n2 )/\\
+\verb|a!-|  & \verb/( -- n2 )/\\
 % XT_ASTOREPLUS
-\verb||  & \verb/( -- n2 )/\\
+\verb|a!+|  & \verb/( -- n2 )/\\
 % XT_A_FROM
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|a>|  & \verb/( n1 -- n2 )/\\
 % XT_BFETCH
-\verb||  & \verb/( -- n2 )/\\
+\verb|b@|  & \verb/( -- n2 )/\\
 % XT_BFETCHMINUS
-\verb||  & \verb/( -- n )/\\
+\verb|b@-|  & \verb/( -- n )/\\
 % XT_BFETCHPLUS
-\verb||  & \verb/( -- n )/\\
+\verb|b@+|  & \verb/( -- n )/\\
 % XT_BSTORE
-\verb||  & \verb/( n -- )/\\
+\verb|b!|  & \verb/( n -- )/\\
 % XT_BSTOREMINUS
-\verb||  & \verb/( -- n2 )/\\
+\verb|b!-|  & \verb/( -- n2 )/\\
 % XT_BSTOREPLUS
-\verb||  & \verb/( -- n2 )/\\
+\verb|b!+|  & \verb/( -- n2 )/\\
 % XT_B_FROM
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|b>|  & \verb/( n1 -- n2 )/\\
 % XT_NAFETCH
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|na@|  & \verb/( n1 -- n2 )/\\
 % XT_NASTORE
-\verb||  & \verb/( n offs -- )/\\
+\verb|na!|  & \verb/( n offs -- )/\\
 % XT_NBFETCH
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|nb@|  & \verb/( n1 -- n2 )/\\
 % XT_NBSTORE
-\verb||  & \verb/( n offs -- )/\\
+\verb|nb!|  & \verb/( n offs -- )/\\
 % XT_TO_A
-\verb||  & \verb/( n -- )/\\
+\verb|>a|  & \verb/( n -- )/\\
 % XT_TO_B
-\verb||  & \verb/( n -- )/\\
+\verb|>b|  & \verb/( n -- )/\\
 \end{tabular}
 
 \subsection*{Hardware Access}
 \begin{tabular}{\colsa}
 % XT_RX0
-\verb||  & \verb/( -- c)/\\
+\verb|rx0|  & \verb/( -- c)/\\
 % XT_RX0Q
-\verb||  & \verb/( -- f)/\\
+\verb|rx0?|  & \verb/( -- f)/\\
+% XT_TERM_INIT
+\verb|+term|  & \verb/( -- )/\\
+% XT_TERM_RX
+\verb|term-rx|  & \verb/( -- c)/\\
+% XT_TERM_RXQ
+\verb|term-rx?|  & \verb/( -- f)/\\
+% XT_TERM_TX
+\verb|term-tx|  & \verb/(c -- )/\\
+% XT_TERM_TXQ
+\verb|term-tx?|  & \verb/( -- f)/\\
+% XT_TOTERM
+\verb|>term|  & \verb/( -- )/\\
 % XT_TOUSART0
-\verb||  & \verb/( -- )/\\
+\verb|>usart0|  & \verb/( -- )/\\
 % XT_TX0
-\verb||  & \verb/(c -- )/\\
+\verb|tx0|  & \verb/(c -- )/\\
 % XT_TX0Q
-\verb||  & \verb/( -- f)/\\
+\verb|tx0?|  & \verb/( -- f)/\\
 % XT_USART0
-\verb||  & \verb/( -- )/\\
+\verb|+usart0|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{IO}
 \begin{tabular}{\colsa}
 % XT_REFILL
-\verb||  & \verb/( -- f )/\\
+\verb|refill|  & \verb/( -- f )/\\
 \end{tabular}
 
 \subsection*{Interrupt}
 \begin{tabular}{\colsa}
 % XT_INTFETCH
-\verb||  & \verb/( i -- xt )/\\
+\verb|int@|  & \verb/( i -- xt )/\\
 % XT_INTOFF
-\verb||  & \verb/( -- sreg )/\\
+\verb|-int|  & \verb/( -- sreg )/\\
 % XT_INTON
-\verb||  & \verb/( --  )/\\
+\verb|+int|  & \verb/( --  )/\\
 % XT_INTSTORE
-\verb||  & \verb/( xt i -- )/\\
+\verb|int!|  & \verb/( xt i -- )/\\
 % XT_NUMINT
-\verb||  & \verb/( -- n )/\\
+\verb|#int|  & \verb/( -- n )/\\
 \end{tabular}
 
 \subsection*{Logic}
 \begin{tabular}{\colsa}
 % XT_AND
-\verb||  & \verb/( n1 n2 -- n3 )/\\
+\verb|and|  & \verb/( n1 n2 -- n3 )/\\
 % XT_NEGATE
-\verb||  & \verb/( n1 -- n2 )/\\
+\verb|negate|  & \verb/( n1 -- n2 )/\\
 % XT_NOT
-\verb||  & \verb/( flag -- flag' )/\\
+\verb|not|  & \verb/( flag -- flag' )/\\
 % XT_OR
-\verb||  & \verb/( n1 n2 -- n3 )/\\
+\verb|or|  & \verb/( n1 n2 -- n3 )/\\
 % XT_XOR
-\verb||  & \verb/( n1 n2 -- n3)/\\
+\verb|xor|  & \verb/( n1 n2 -- n3)/\\
 \end{tabular}
 
 \subsection*{MCU}
 \begin{tabular}{\colsa}
 % XT_NOJTAG
-\verb||  & \verb/( -- )/\\
+\verb|-jtag|  & \verb/( -- )/\\
 % XT_NOWDT
-\verb||  & \verb/( -- )/\\
+\verb|-wdt|  & \verb/( -- )/\\
 % XT_SLEEP
-\verb||  & \verb/( -- )/\\
+\verb|sleep|  & \verb/( -- )/\\
 % XT_SPIRW
-\verb||  & \verb/( txbyte -- rxbyte)/\\
-% XT_SPIRWN
-\verb||  & \verb/(  addr len -- )/\\
+\verb|spirw|  & \verb/( txbyte -- rxbyte)/\\
 % XT_WDR
-\verb||  & \verb/( -- )/\\
+\verb|wdr|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{Memory}
 \begin{tabular}{\colsa}
 % XT_CFETCH
-\verb||  & \verb/( addr - c1 )/\\
+\verb|c@|  & \verb/( addr - c1 )/\\
 % XT_CMOVE
-\verb||  & \verb/(addr-from addr-to n -- )/\\
+\verb|cmove|  & \verb/(addr-from addr-to n -- )/\\
 % XT_CMOVE_G
-\verb||  & \verb/(addr-from addr-to n -- )/\\
+\verb|cmove>|  & \verb/(addr-from addr-to n -- )/\\
 % XT_CSTORE
-\verb||  & \verb/( c addr -- )/\\
+\verb|c!|  & \verb/( c addr -- )/\\
 % XT_EFETCH
-\verb||  & \verb/( addr - n)/\\
+\verb|e@|  & \verb/( addr - n)/\\
 % XT_ESTORE
-\verb||  & \verb/( n addr -- )/\\
+\verb|e!|  & \verb/( n addr -- )/\\
 % XT_FETCH
-\verb||  & \verb/( addr -- n )/\\
+\verb|@|  & \verb/( addr -- n )/\\
 % XT_FILL
-\verb||  & \verb/( c-addr u c -- )/\\
+\verb|fill|  & \verb/( c-addr u c -- )/\\
 % XT_IFETCH
-\verb||  & \verb/( addr -- n1 )/\\
+\verb|i@|  & \verb/( addr -- n1 )/\\
 % XT_ISTORE
-\verb||  & \verb/( n addr -- )/\\
+\verb|i!|  & \verb/( n addr -- )/\\
 % XT_STORE
-\verb||  & \verb/( n addr -- )/\\
+\verb|!|  & \verb/( n addr -- )/\\
 \end{tabular}
 
 \subsection*{Multitasking}
 \begin{tabular}{\colsa}
 % XT_PAUSE
-\verb||  & \verb/( -- )/\\
+\verb|pause|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{Numeric IO}
 \begin{tabular}{\colsa}
 % XT_BASE
-\verb||  & \verb/( -- addr )/\\
+\verb|base|  & \verb/( -- addr )/\\
 % XT_DDOT
-\verb||  & \verb/( d1 -- )/\\
+\verb|d.|  & \verb/( d1 -- )/\\
 % XT_DDOTR
-\verb||  & \verb/( d1 n -- )/\\
+\verb|d.r|  & \verb/( d1 n -- )/\\
 % XT_DECIMAL
-\verb||  & \verb/( -- )/\\
-% XT_DIGIT
-\verb||  & \verb/( c base -- number flag )/\\
+\verb|decimal|  & \verb/( -- )/\\
+% XT_DIGITQ
+\verb|digit?|  & \verb/( c -- number flag )/\\
 % XT_DOT
-\verb||  & \verb/( n -- )/\\
+\verb|.|  & \verb/( n -- )/\\
 % XT_DOTR
-\verb||  & \verb/( n w -- )/\\
+\verb|.r|  & \verb/( n w -- )/\\
 % XT_HEX
-\verb||  & \verb/( -- )/\\
+\verb|hex|  & \verb/( -- )/\\
 % XT_HLD
-\verb||  & \verb/( -- addr )/\\
+\verb|hld|  & \verb/( -- addr )/\\
 % XT_HOLD
-\verb||  & \verb/( c -- )/\\
+\verb|hold|  & \verb/( c -- )/\\
 % XT_L_SHARP
-\verb||  & \verb/( -- )/\\
+\verb|<#|  & \verb/( -- )/\\
 % XT_NUMBER
-\verb||  & \verb/(addr -- n )/\\
+\verb|number|  & \verb/(addr -- n )/\\
 % XT_SHARP
-\verb||  & \verb/( d1 -- )/\\
+\verb|#|  & \verb/( d1 -- )/\\
 % XT_SHARP_G
-\verb||  & \verb/( d1 -- addr count )/\\
+\verb|#>|  & \verb/( d1 -- addr count )/\\
 % XT_SHARP_S
-\verb||  & \verb/( d1 -- 0)/\\
+\verb|#s|  & \verb/( d1 -- 0)/\\
 % XT_SIGN
-\verb||  & \verb/( n -- )/\\
+\verb|sign|  & \verb/( n -- )/\\
+% XT_TO_NUMBER
+\verb|>number|  & \verb/( ud1 c-addr1 u1 -- ud2 c-addr2 u2 )/\\
 % XT_UDDOT
-\verb||  & \verb/( ud1 w -- )/\\
+\verb|ud.|  & \verb/( ud1 w -- )/\\
 % XT_UDDOTR
-\verb||  & \verb/( ud w -- )/\\
+\verb|ud.r|  & \verb/( ud w -- )/\\
 % XT_UDOT
-\verb||  & \verb/( ud1 -- )/\\
+\verb|u.|  & \verb/( ud1 -- )/\\
 % XT_UDOTR
-\verb||  & \verb/( ud w -- )/\\
+\verb|u.r|  & \verb/( ud w -- )/\\
 % XT_UZERODOTR
-\verb||  & \verb/( ud n -- )/\\
+\verb|u0.r|  & \verb/( ud n -- )/\\
 \end{tabular}
 
 \subsection*{Stack}
 \begin{tabular}{\colsa}
 % XT_DEPTH
-\verb||  & \verb/( -- n )/\\
+\verb|depth|  & \verb/( -- n )/\\
 % XT_DROP
-\verb||  & \verb/( n -- )/\\
+\verb|drop|  & \verb/( n -- )/\\
 % XT_DUP
-\verb||  & \verb/( n -- n n )/\\
+\verb|dup|  & \verb/( n -- n n )/\\
 % XT_OVER
-\verb||  & \verb/( n1 n2 -- n1 n2 n1 )/\\
+\verb|over|  & \verb/( n1 n2 -- n1 n2 n1 )/\\
 % XT_QDUP
-\verb||  & \verb/( n1 -- [ n1 n1 ] | 0)/\\
+\verb|?dup|  & \verb/( n1 -- [ n1 n1 ] | 0)/\\
 % XT_ROT
-\verb||  & \verb/( n1 n2 n3 -- n2 n3 n1)/\\
+\verb|rot|  & \verb/( n1 n2 n3 -- n2 n3 n1)/\\
 % XT_R_FETCH
-\verb||  & \verb/( -- n)/\\
+\verb|r@|  & \verb/( -- n)/\\
               & \verb/R(n -- n)/\\
 % XT_R_FROM
-\verb||  & \verb/( -- n )/\\
+\verb|r>|  & \verb/( -- n )/\\
               & \verb/; R( n --)/\\
 % XT_SWAP
-\verb||  & \verb/( n1 n2 -- n2 n1)/\\
+\verb|swap|  & \verb/( n1 n2 -- n2 n1)/\\
 % XT_TO_R
-\verb||  & \verb/( n -- )/\\
+\verb|>r|  & \verb/( n -- )/\\
               & \verb/; R( -- n)/\\
 \end{tabular}
 
 \subsection*{Stackpointer}
 \begin{tabular}{\colsa}
 % XT_RP0
-\verb||  & \verb/( -- addr)/\\
+\verb|rp0|  & \verb/( -- addr)/\\
 % XT_RP_FETCH
-\verb||  & \verb/(  -- n)/\\
+\verb|rp@|  & \verb/(  -- n)/\\
 % XT_RP_STORE
-\verb||  & \verb/( n  -- )/\\
+\verb|rp!|  & \verb/( n  -- )/\\
               & \verb/; R( -- xy) /\\
 % XT_SP
-\verb||  & \verb/( -- addr)/\\
+\verb|sp|  & \verb/( -- addr)/\\
 % XT_SP0
-\verb||  & \verb/( -- addr)/\\
+\verb|sp0|  & \verb/( -- addr)/\\
 % XT_SP_FETCH
-\verb||  & \verb/(  -- n)/\\
+\verb|sp@|  & \verb/(  -- n)/\\
 % XT_SP_STORE
-\verb||  & \verb/( addr -- i*x)/\\
+\verb|sp!|  & \verb/( addr -- i*x)/\\
 \end{tabular}
 
 \subsection*{String}
 \begin{tabular}{\colsa}
 % XT_COUNT
-\verb||  & \verb/( addr -- addr+1 n)/\\
+\verb|count|  & \verb/( addr -- addr+1 n)/\\
 % XT_CSCAN
-\verb||  & \verb/( addr1 n1 c -- addr1 n2 )/\\
+\verb|cscan|  & \verb/( addr1 n1 c -- addr1 n2 )/\\
 % XT_CSKIP
-\verb||  & \verb/( addr1 n1 c -- addr2 n2 )/\\
+\verb|cskip|  & \verb/( addr1 n1 c -- addr2 n2 )/\\
 % XT_PARSE
-\verb||  & \verb/( char "ccc" -- c-addr u )/\\
+\verb|parse|  & \verb/( char "ccc" -- c-addr u )/\\
 % XT_PLACE
-\verb||  & \verb/( addr1 len1 addr2 -- )/\\
+\verb|place|  & \verb/( addr1 len1 addr2 -- )/\\
 % XT_SLASHSTRING
-\verb||  & \verb/( addr1 u1 n-- addr2 u2 )/\\
+\verb|/string|  & \verb/( addr1 u1 n-- addr2 u2 )/\\
 \end{tabular}
 
 \subsection*{System}
 \begin{tabular}{\colsa}
 % XT_ACCEPT
-\verb||  & \verb/( addr n1 -- n2 )/\\
+\verb|accept|  & \verb/( addr n1 -- n2 )/\\
 % XT_ALLOT
-\verb||  & \verb/( n -- )/\\
+\verb|allot|  & \verb/( n -- )/\\
 % XT_COLD
-\verb||  & \verb/( -- )/\\
+\verb|cold|  & \verb/( -- )/\\
 % XT_DEFERFETCH
-\verb||  & \verb/( xt1 -- xt2 )/\\
+\verb|defer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_DEFERSTORE
-\verb||  & \verb/( xt1 xt2 -- )/\\
+\verb|defer!|  & \verb/( xt1 xt2 -- )/\\
+% XT_EVALUATE
+\verb|evaluate|  & \verb/( c-addr len -- )/\\
+              & \verb/R(i*x - j*x)/\\
 % XT_EXECUTE
-\verb||  & \verb/( xt -- )/\\
+\verb|execute|  & \verb/( xt -- )/\\
 % XT_F_CPU
-\verb||  & \verb/( -- f_cou )/\\
+\verb|f_cpu|  & \verb/( -- f_cou )/\\
 % XT_G_IN
-\verb||  & \verb/( -- addr )/\\
+\verb|>in|  & \verb/( -- addr )/\\
 % XT_INTERPRET
-\verb||  & \verb/( -- )/\\
-              & \verb/; R(i*x - j*x )/\\
+\verb|interpret|  & \verb/( -- )/\\
+              & \verb/R(i*x - j*x)/\\
 % XT_IS
-\verb||  & \verb/( xt1 c<char> -- )/\\
+\verb|is|  & \verb/( xt1 c<char> -- )/\\
 % XT_NUMBERTIB
-\verb||  & \verb/( -- addr )/\\
+\verb|#tib|  & \verb/( -- addr )/\\
 % XT_QEXECUTE
-\verb||  & \verb/( xt|0 -- )/\\
+\verb|?execute|  & \verb/( xt|0 -- )/\\
 % XT_QUIT
-\verb||  & \verb/( -- )/\\
+\verb|quit|  & \verb/( -- )/\\
 % XT_SOURCE
-\verb||  & \verb/( -- addr n )/\\
+\verb|source|  & \verb/( -- addr n )/\\
 % XT_UP_FETCH
-\verb||  & \verb/( -- addr )/\\
+\verb|up@|  & \verb/( -- addr )/\\
 % XT_UP_STORE
-\verb||  & \verb/( addr -- )/\\
+\verb|up!|  & \verb/( addr -- )/\\
 \end{tabular}
 
 \subsection*{System Value}
 \begin{tabular}{\colsa}
 % XT_BAUD0
-\verb||  & \verb/( -- v)/\\
+\verb|baud0|  & \verb/( -- v)/\\
 % XT_EDP
-\verb||  & \verb/( -- edp)/\\
+\verb|edp|  & \verb/( -- edp)/\\
 % XT_HEAD
-\verb||  & \verb/( -- faddr)/\\
+\verb|head|  & \verb/( -- faddr)/\\
 % XT_HEAP
-\verb||  & \verb/( -- addr)/\\
+\verb|heap|  & \verb/( -- addr)/\\
 % XT_HERE
-\verb||  & \verb/( -- faddr )/\\
+\verb|here|  & \verb/( -- faddr )/\\
 % XT_PAD
-\verb||  & \verb/( -- addr )/\\
+\verb|pad|  & \verb/( -- addr )/\\
+% XT_TERM_BAUD
+\verb|term-baud|  & \verb/( -- v)/\\
 % XT_TIB
-\verb||  & \verb/( -- addr )/\\
+\verb|tib|  & \verb/( -- addr )/\\
 % XT_TIBSIZE
-\verb||  & \verb/( -- n )/\\
+\verb|tibsize|  & \verb/( -- n )/\\
 % XT_TURNKEY
-\verb||  & \verb/( -- n*y )/\\
+\verb|turnkey|  & \verb/( -- n*y )/\\
 \end{tabular}
 
 \subsection*{Time}
 \begin{tabular}{\colsa}
 % XT_1MS
-\verb||  & \verb/( -- )/\\
+\verb|1ms|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{Tools}
 \begin{tabular}{\colsa}
 % XT_BRACKETCHAR
-\verb||  & \verb/( -- c )/\\
+\verb|[char]|  & \verb/( -- c )/\\
 % XT_CHAR
-\verb||  & \verb/( -- c )/\\
-% XT_DOFIND
-\verb||  & \verb/( c-addr len searchstart -- [ 0 ] | [ xt [-1|1]] )/\\
+\verb|char|  & \verb/( -- c )/\\
 % XT_DOTS
-\verb||  & \verb/( -- )/\\
+\verb|.s|  & \verb/( -- )/\\
 % XT_ENVIRONMENTQ
-\verb||  & \verb/( addr len -- [ 0 ] | [i*x -1 )/\\
+\verb|environment?|  & \verb/( addr len -- [ 0 ] | [i*x -1 )/\\
 % XT_FIND
-\verb||  & \verb/( addr -- [ addr 0 ] | [ xt [-1|1]] )/\\
+\verb|find|  & \verb/( addr -- [ addr 0 ] | [ xt [-1|1]] )/\\
 % XT_ICOMPARE
-\verb||  & \verb/( r-addr r-len f-addr f-len --  f)/\\
+\verb|icompare|  & \verb/( r-addr r-len f-addr f-len --  f)/\\
 % XT_ICOUNT
-\verb||  & \verb/( addr -- addr+1 n )/\\
+\verb|icount|  & \verb/( addr -- addr+1 n )/\\
 % XT_ITYPE
-\verb||  & \verb/( addr n --  )/\\
+\verb|itype|  & \verb/( addr n --  )/\\
 % XT_NOOP
-\verb||  & \verb/( -- )/\\
+\verb|noop|  & \verb/( -- )/\\
 % XT_TO
-\verb||  & \verb/( n <name> -- )/\\
+\verb|to|  & \verb/( n <name> -- )/\\
 % XT_UNUSED
-\verb||  & \verb/( -- n )/\\
+\verb|unused|  & \verb/( -- n )/\\
 % XT_VER
-\verb||  & \verb/( -- )/\\
+\verb|ver|  & \verb/( -- )/\\
 % XT_WORD
-\verb||  & \verb/( c -- addr )/\\
+\verb|word|  & \verb/( c -- addr )/\\
 % XT_WORDS
-\verb||  & \verb/( -- )/\\
+\verb|words|  & \verb/( -- )/\\
 \end{tabular}
 
 \subsection*{internal/hidden}
 \begin{tabular}{\colsa}
 % XT_DOBRANCH
-\verb||  & \verb/(-- )/\\
+\verb|(branch)|  & \verb/(-- )/\\
 % XT_DOCONDBRANCH
-\verb||  & \verb/(f -- )/\\
+\verb|(?branch)|  & \verb/(f -- )/\\
 % XT_DOCONSTANT
-\verb||  & \verb/(-- addr )/\\
+\verb|(constant)|  & \verb/(-- addr )/\\
 % XT_DOCREATE
-\verb||  & \verb/(--  )/\\
+\verb|(create)|  & \verb/(--  )/\\
 % XT_DODO
-\verb||  & \verb/(limit counter -- )/\\
+\verb|(do)|  & \verb/(limit counter -- )/\\
               & \verb/R(-- limit counter )/\\
 % XT_DODOES
-\verb||  & \verb/(-- )/\\
+\verb|(does>)|  & \verb/(-- )/\\
 % XT_DOEDEFER
-\verb||  & \verb/(i*x -- j*x )/\\
+\verb|(defer)|  & \verb/(i*x -- j*x )/\\
+% XT_DOFIND
+\verb|(find)|  & \verb/( c-addr len searchstart -- [ 0 ] | [ xt [-1|1]] )/\\
 % XT_DOLITERAL
-\verb||  & \verb/(-- n1 )/\\
+\verb|(literal)|  & \verb/(-- n1 )/\\
 % XT_DOLOOP
-\verb||  & \verb/(-- )/\\
+\verb|(loop)|  & \verb/(-- )/\\
               & \verb/R(limit counter -- limit counter+1|)/\\
 % XT_DOPLUSLOOP
-\verb||  & \verb/(n1 -- )/\\
+\verb|(+loop)|  & \verb/(n1 -- )/\\
               & \verb/R(llimit counter -- limit counter+n1|)/\\
 % XT_DOQDO
-\verb||  & \verb/(limit counter -- )/\\
+\verb|(?do)|  & \verb/(limit counter -- )/\\
               & \verb/R(-- limit counter| )/\\
 % XT_DORP0
-\verb||  & \verb/    .dw XT_FETCH/\\
+\verb|(rp0)|  & \verb/    .dw XT_FETCH/\\
               & \verb/    .dw XT_EXIT/\\
 % XT_DOSCOMMA
-\verb|,)|  & \verb/( addr len len' -- )/\\
+\verb|(s,)|  & \verb/( addr len len' -- )/\\
 % XT_DOSP0
-\verb||  & \verb/( -- addr)/\\
+\verb|(sp0)|  & \verb/( -- addr)/\\
 % XT_DOSPM
-\verb||  & \verb/(spmcsr x addr -- )/\\
+\verb|(spm)|  & \verb/(spmcsr x addr -- )/\\
 % XT_DOTO
-\verb||  & \verb/( n -- )/\\
+\verb|(to)|  & \verb/( n -- )/\\
               & \verb/R(IP -- IP+1)/\\
 % XT_DOUSER
-\verb||  & \verb/(-- addr )/\\
+\verb|(user)|  & \verb/(-- addr )/\\
 % XT_DOVARIABLE
-\verb||  & \verb/(-- addr )/\\
+\verb|(variable)|  & \verb/(-- addr )/\\
 % XT_EDEFERFETCH
-\verb||  & \verb/( xt1 -- xt2 )/\\
+\verb|Edefer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_EDEFERSTORE
-\verb||  & \verb/( xt1 xt2 -- )/\\
+\verb|Edefer!|  & \verb/( xt1 xt2 -- )/\\
 % XT_GMARK
-\verb||  & \verb/( -- addr )/\\
+\verb|>mark|  & \verb/( -- addr )/\\
 % XT_GRESOLVE
-\verb||  & \verb/( addr -- )/\\
+\verb|>resolve|  & \verb/( addr -- )/\\
 % XT_HIEMIT
-\verb||  & \verb/(w -- )/\\
+\verb|hiemit|  & \verb/(w -- )/\\
 % XT_INTRESTORE
-\verb||  & \verb/( sreg -- )/\\
+\verb|int_restore|  & \verb/( sreg -- )/\\
 % XT_LMARK
-\verb||  & \verb/( -- addr )/\\
+\verb|<mark|  & \verb/( -- addr )/\\
 % XT_LRESOLVE
-\verb||  & \verb/( addr -- )/\\
+\verb|<resolve|  & \verb/( addr -- )/\\
 % XT_RDEFERFETCH
-\verb||  & \verb/( xt1 -- xt2 )/\\
+\verb|Rdefer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_RDEFERSTORE
-\verb||  & \verb/( xt1 xt2 -- )/\\
+\verb|Rdefer!|  & \verb/( xt1 xt2 -- )/\\
 % XT_SLITERAL
-\verb||  & \verb/( -- addr n)/\\
+\verb|(sliteral)|  & \verb/( -- addr n)/\\
 % XT_SPMBUF
-\verb||  & \verb/(x addr -- )/\\
+\verb|spmbuf|  & \verb/(x addr -- )/\\
 % XT_SPMERASE
-\verb||  & \verb/(addr -- )/\\
+\verb|spmerase|  & \verb/(addr -- )/\\
 % XT_SPMPAGELOAD
-\verb||  & \verb/(addr -- )/\\
+\verb|spmpageload|  & \verb/(addr -- )/\\
 % XT_SPMRWW
-\verb||  & \verb/(-- )/\\
+\verb|spmrww|  & \verb/(-- )/\\
 % XT_SPMRWWQ
-\verb||  & \verb/(-- )/\\
+\verb|spmrww?|  & \verb/(-- )/\\
 % XT_SPMWRITE
-\verb||  & \verb/(spmcsr x addr -- )/\\
+\verb|spmwrite|  & \verb/(spmcsr x addr -- )/\\
 % XT_UDEFERFETCH
-\verb||  & \verb/( xt1 -- xt2 )/\\
+\verb|Udefer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_UDEFERSTORE
-\verb||  & \verb/( xt1 xt2 -- )/\\
+\verb|Udefer!|  & \verb/( xt1 xt2 -- )/\\
 \end{tabular}
 
 \end{multicols}

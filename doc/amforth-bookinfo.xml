@@ -1,0 +1,17 @@
+	<bookinfo>
+		<title>amforth 3.2</title>
+		<subtitle>Technical Documentation</subtitle>
+		<author>
+			<personname>
+				<firstname>Matthias</firstname>
+				<surname>Trute</surname>
+			</personname>
+			<email>mtrute@users.sourceforge.net
+			</email>
+		</author>
+		<pubdate>2008</pubdate>
+		<copyright>
+			<year>2007, 2008</year>
+			<holder>Matthias Trute</holder>
+		</copyright>
+	</bookinfo>

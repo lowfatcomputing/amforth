@@ -1,0 +1,25 @@
+	<chapter id="FIRST_STEPS">
+		<title>First Steps</title>
+		<para>
+			The first steps require an ATmega microcontroller with an
+			RS232 connection to an PC or a terminal like the
+			<productname class="trade">VT100</productname>
+			or similar hardware. A customization may change these requirements.
+		</para>
+		<sect1 id="UserInterface">
+			<title>User Interface</title>
+			<para>
+				amforth has a simple user interface. Connect your system to a serial
+				terminal (or a PC) and you get the forth prompt
+				<prompt>></prompt>
+				.
+				<screen>
+					amforth 3.2 ATmega32
+					<prompt>></prompt>
+					<command>words</command>
+					d2/ s>d up! up@ 0 1ms cmove cmove> i! i@ unloop i sp! ...
+					<prompt>></prompt>
+				</screen>
+			</para>
+		</sect1>
+	</chapter>

@@ -1,0 +1,178 @@
+	<chapter id="Hardware">
+		<title>Hardware</title>
+		<sect1 id="Controller">
+			<title>Controller</title>
+			<para>amforth is designed to run on AVR Atmega
+				microcontrollers. It requires
+				ca 7KB flash memory for the basic
+				system and can address 128KB of
+				flash memory.
+		</para>
+			<para>The ATtiny microcontrollers and a a few ATmega types lack
+				the minimum
+				flash capacity. The ATtiny's some machine instructions as
+				well. </para>
+
+			<para>Microcontrollers with more than 128KB flash
+				memory are currently not
+				usable.</para>
+
+		</sect1>
+		<sect1 id="Bootloader">
+			<title>Bootloader Support</title>
+			<para>Most bootloaders will not work with amforth since they do
+				not provide an
+				application programming interface to rewrite a single
+				flash cell. The default
+				setup will thus replace any bootloader found
+				with some core
+				routines.</para>
+			<para>
+				It is possible to change the word
+				<code>i!</code>
+				to use an API and work
+				with existing bootloaders.
+			</para>
+		</sect1>
+		<sect1 id="Fuses">
+			<title>Fuses</title>
+			<para> Amforth uses the self programming feature of the ATmega
+				microcontrollers to work with the dictionary. It is ok to use the
+				factory default settings plus the changes for the oscillator
+				settings. It is recommended to use a higher CPU frequency to meet
+				the timing requirements of the serial terminal.</para>
+		</sect1>
+	</chapter>
+	<chapter id="Sources">
+		<title>Source Organisation</title>
+		<sect1 id="src_overview">
+			<title>Overview</title>
+			<para> amforth is written using the standard Atmel AVR 8 bit assembly
+				language. That does not mean that every word is actually written in
+				assembly language however. Most of the words are written in forth
+				itself, but are precompiled into the assembler syntax. This solves
+				the chicken-and-egg problem: how to compile the compiler words.
+			</para>
+			<para> The source code can be processed with both the AVR Studio and
+				the linux avr assembler avra.</para>
+			<para>
+				amforth consists of a great number of small source files. Nearly all
+				words are coded in their own source files. These files are organized
+				with include files, named after the pattern
+				<filename>dict*.inc</filename>
+				. Currently 4 such files exists:
+				<filename>dict_minimum</filename>
+				,
+				<filename>dict_mcu</filename>
+				,
+				<filename>dict_core.inc</filename>
+				and
+				<filename>dict_compiler.inc</filename>
+				. The order in which the files are included defines the search order
+				and there location within the flash memory. Most words can be moved
+				from one include file to another to optimize the flash usage.
+			</para>
+			<para>
+				There are two additional files:
+				<filename>amforth.asm</filename>
+				and
+				<filename>macros.asm</filename>
+				. The first one is the master file and the only one the application
+				needs to include. The file
+				<filename>macros.asm</filename>
+				contains some useful assembler macros that make the source code
+				easier to read.
+			</para>
+		</sect1>
+		<sect1 id="src_core_entry">
+			<title>Core system</title>
+			<para>
+				The file
+				<filename>amforth.asm</filename>
+				is the core of amforth. Here is the startup code for the
+				microcontroller, and the forth inner interpreter with the interrupt
+				service routine. It includes the dictionary files.
+			</para>
+			<sect2 id="src_core_dict">
+				<title>Dictionary files</title>
+				<para>
+					The dictionary files have two tasks: First they include the word
+					definition files. Second, they determine each word's location in
+					the resulting flash layout. The file
+					<filename>dict_core.inc</filename>
+					contains all words for the NRWW flash section, Since the word
+					<command>I!</command>
+					cannot write to this address range, no new words can be compiled to
+					this section at runtime. Thus it is advisable to include as many
+					words as possible in
+					<filename>dict_core.inc</filename>
+					if the amount of writable dictionary space is an issue.
+				</para>
+				<para>
+					A useful forth system needs in addition to the above at least the
+					file
+					<filename>dict_minimum.inc</filename>
+					, which includes the forth interpreter words.
+				</para>
+				<para>
+					An almost complete forth system with a compiler gives the third
+					include file:
+					<filename>dict_compiler.inc</filename>
+					.
+				</para>
+				<para>
+					Some words have their source files within the
+					<filename>core/words</filename>
+					directory but have to be included via the
+					<filename>dict_appl.inc</filename>
+					file. These words define the hardware dependecies to access the
+					amforth system. The serial line terminal is an example.
+				</para>
+				<para> There are a few words left out from the dictionary lists.
+					These words are either not always needed or are some variants of
+					existing words or simply cannot be included in the core system due
+					to size limitations in the NRWW section with smaller atmegas. They
+					are usually included by the application specific include file(s).
+				</para>
+			</sect2>
+			<sect2>
+				<title>Device Settings</title>
+				<para> Every Atmega has its own specific settings. They are based on
+					the official include files provided by Atmel and define the
+					important settings for the serial IO port (which port and which
+					parameters), the interrupt vectors and some macros.</para>
+				<para>Adapting another ATmega microcontroller is as easy as
+					copy and edit an existing file from a similiar type.</para>
+				<para>
+					The last definition is a string with the device name in clear text.
+					This string is used within the word
+					<command>VER</command>
+					.
+				</para>
+			</sect2>
+		</sect1>
+		<sect1>
+			<title>Application Code</title>
+			<para> Every build of amforth needs an application. There are a few
+				sample applications, which can be used either directly (AVR
+				Butterfly) or serve as a source for inspiration (template
+				application).</para>
+			<para>
+				The structure is basically always the same. First the file
+				<filename>macros.asm</filename>
+				has to be included. After that some definitions need to done: The
+				size of the Forth buffers, the CPU frequency, initial terminal
+				settings etc. Then the device specific part needs to be included and
+				as the last step the amforth core is included.
+			</para>
+			<para>
+				For a comfortable development cycle the use of a build utility such
+				as
+				<command>make</command>
+				or
+				<command>ant</command>
+				is recommended. The assembler needs a few settings and the proper
+				order of the include directories.
+			</para>
+		</sect1>
+	</chapter>
