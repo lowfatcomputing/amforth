@@ -15,9 +15,9 @@ debug = False
 
 def send_line(f,line):
     global debug
-    # interactive prompt: 'ok\x00\r\n> '
-    # compiling prompt: 'ok\x00'
-    # error prompt: ' ??\x00 '
+    # interactive prompt: 'okr\n> '
+    # compiling prompt: 'ok'
+    # error prompt: ' ?? '
     f.send(line)
     print "+",
     sys.stdout.flush() # don't want to wait for progress indicator
