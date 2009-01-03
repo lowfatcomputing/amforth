@@ -26,24 +26,24 @@ XT_USART0:
 PFA_USART0:          ; ( -- )
 
   .dw XT_DOLITERAL
-  .dw USART0_B_VALUE
+  .dw USART_B_VALUE
   .dw XT_DOLITERAL
-  .dw USART0_B
+  .dw USART_B
   .dw XT_CSTORE
 
   .dw XT_DOLITERAL
-  .dw USART0_C_VALUE
+  .dw USART_C_VALUE
   .dw XT_DOLITERAL
-  .dw USART0_C
+  .dw USART_C
   .dw XT_CSTORE
 
   .dw XT_DUP
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL
-  .dw BAUDRATE0_HIGH
+  .dw BAUDRATE_HIGH
   .dw XT_CSTORE
   .dw XT_DOLITERAL
-  .dw BAUDRATE0_LOW
+  .dw BAUDRATE_LOW
   .dw XT_CSTORE
 
 

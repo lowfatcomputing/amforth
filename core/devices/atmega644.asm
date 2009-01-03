@@ -9,22 +9,22 @@
 
   .equ amforth_interpreter = $7000
 
-  .equ BAUDRATE0_LOW = UBRR0L
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+  
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (3<<UCSZ00)
 
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (3<<UCSZ00)
-
-  ; needs atmel avrasm32.exe
   .equ URXCaddr = URXC0addr
   .equ UDREaddr = UDRE0addr
-  .equ EEWE     = EEPE
-  .equ EEMWE    = EEMPE
-  .equ SPMCR    = SPMCSR
-
-  .equ PE0      = UPE0
+  .equ UDR = UDR0
+  .equ FE = FE0
+  .equ DOR = DOR0
+  .equ PE = UPE0
+  .equ UDRIE = UDRIE0
 
 .macro jmp_
     jmp @0

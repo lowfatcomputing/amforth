@@ -10,6 +10,22 @@
   
   .equ amforth_interpreter = $1c00
 
+  .equ UDR = UDR0
+  .equ FE = FE0
+  .equ DOR = DOR0
+  .equ PE = UPE0
+  .equ UDRIE = UDRIE0
+
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
+
+  .equ SPMEN = SELFPRGEN
+
 .macro jmp_
     jmp @0
 .endmacro
@@ -29,22 +45,6 @@
     lsl zl
     rol zh
 .endmacro
-
-  .equ BAUDRATE0_LOW = UBRR0L
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B
-
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (3<<UCSZ00)
-
-
-  .equ EEWE = EEPE
-  .equ SPMCR = SPMCSR
-  .equ SPMEN = SELFPRGEN
-  .equ EEMWE = EEMPE
-
-  .equ PE0  = UPE0
 
 .org  INT0addr       
     rcall isr  ; External Interrupt .orgest 0

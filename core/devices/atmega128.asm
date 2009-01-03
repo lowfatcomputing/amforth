@@ -35,17 +35,22 @@
     out_ RAMPZ, temp7
 .endmacro
 
-  .equ BAUDRATE0_LOW = UBRR0L+$20
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B+$20
-  .equ USART0_A = UCSR0A+$20
+  
+  .equ BAUDRATE_LOW = UBRR0L+$20
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
+  
   .equ URXCaddr = URXC0addr
   .equ UDREaddr = UDRE0addr
+  .equ UDR  = UDR0
 
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
-  
+  .equ EEPE   = EEWE
+  .equ EEMPE  = EEMWE
 
 ; ***** INTERRUPT VECTORS ************************************************
 .org  INT0addr      

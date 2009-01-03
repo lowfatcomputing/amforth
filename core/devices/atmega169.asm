@@ -32,28 +32,19 @@
 
 
 ; the baud rate registers are memory addresses!
-  .equ BAUDRATE0_LOW = UBRR0L
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
 
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UCSZ00)|(1<<UCSZ01)
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (1<<UCSZ00)|(1<<UCSZ01)
 
+  .equ PE  = UPE0
 
-.ifdef PCINT0addr
-    .equ PCI0addr = PCINT0addr
-.endif
-.ifdef PCINT1addr
-    .equ PCI1addr = PCINT1addr
-.endif
-
-; difference between avra and avrasm2.exe definition files
-.if defined(SPMCR)
-    ; .message "SPMCR"
-.else
-    .equ SPMCR = SPMCSR
-.endif
+  .equ EEPE   = EEWE
+  .equ EEMPE  = EEMWE
 
 ; interrupt table
 .org	INT0addr

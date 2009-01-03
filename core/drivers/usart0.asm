@@ -59,9 +59,9 @@ usart0_udre_doqueue:
   brne usart0_udre_next
 
 usart0_udre_last:
-  lds xl, USART0_B
-  cbr xl,(1<<UDRIE0)
-  sts USART0_B,xl
+  lds xl, USART_B
+  cbr xl,(1<<UDRIE)
+  sts USART_B,xl
 
   rjmp usart0_udre_done
 
@@ -76,7 +76,7 @@ usart0_udre_next:
   adc zh,zeroh
 usart0_udre_send:
   ld xl,z
-  out_ UDR0,xl
+  out_ UDR,xl
 
 usart0_udre_done:
   pop zh
@@ -116,9 +116,9 @@ usart0_rx_isr:
   push zl
   push zh
 
-  in_ xh, UCSR0A ; read status
-  andi xh, (1<<FE0) | (1<<DOR0) | (1<<PE0)
-  in_ xh, UDR0
+  in_ xh, USART_A ; read status
+  andi xh, (1<<FE) | (1<<DOR) | (1<<PE)
+  in_ xh, UDR
   brne usart0_rx_isr_finish
   lds xl,usart0_rx_in
   inc xl

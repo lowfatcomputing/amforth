@@ -4,26 +4,26 @@
 .nolist
 	.include "m328Pdef.inc"
 .list
-  .equ PE0  = UPE0
 
-  .equ EEWE = EEPE
-  .equ SPMCR = SPMCSR
+  .equ UDR = UDR0
+  .equ FE = FE0
+  .equ DOR = DOR0
+  .equ PE = UPE0
+  .equ UDRIE = UDRIE0
+
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
+
   .equ SPMEN = SELFPRGEN
-  .equ EEMWE = EEMPE
-
-  .equ BAUDRATE0_LOW = UBRR0L
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B
-
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
-
-  .equ URXC0addr = URXCaddr
-  .equ UDRE0addr = UDREaddr
 
 .equ ramstart =  $100
 .equ amforth_interpreter = $3800 ; NRWW_START
+
 .macro jmp_
 	jmp @0
 .endmacro

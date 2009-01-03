@@ -38,13 +38,9 @@
   .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .equ USART0_C_VALUE = (1<<UMSEL00)|(3<<UCSZ00)
 
-
   .equ PE0  = UPE0
 
-  .equ EEWE = EEPE
-  .equ SPMCR = SPMCSR
   .equ SPMEN = SELFPRGEN
-  .equ EEMWE = EEMPE
  
 .org  INT0addr
     rcall isr    ; External Interrupt Request 0

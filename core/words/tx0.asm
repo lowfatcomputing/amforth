@@ -33,11 +33,11 @@ PFA_TX0:
   .dw XT_CSTORE
   ; enable interrupt
   .dw XT_DOLITERAL
-  .dw USART0_B
+  .dw USART_B
   .dw XT_DUP            ;
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw 1<<UDRIE0
+  .dw 1<<UDRIE
   .dw XT_OR
   .dw XT_SWAP
   .dw XT_CSTORE

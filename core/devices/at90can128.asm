@@ -8,6 +8,23 @@
   .equ intvecsize = 2
   .equ amforth_interpreter = $f000
 
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+  .equ URXCaddr = URXC0addr
+  .equ UDREaddr = UDRE0addr
+  .equ UDR  = UDR0
+  .equ FE = FE0
+  .equ DOR = DOR0
+  .equ PE = UPE0
+  .equ UDRIE = UDRIE0
+  
+  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
+  .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
+
+
 .macro jmp_
     jmp @0
 .endmacro
@@ -34,16 +51,9 @@
     out_ RAMPZ, temp7
 .endmacro
 
-  .equ BAUDRATE0_LOW = UBRR0L
-  .equ BAUDRATE0_HIGH = UBRR0H
-  .equ USART0_C = UCSR0C
-  .equ USART0_B = UCSR0B
-  .equ URXCaddr = URXC0addr
-  .equ UDREaddr = UDRE0addr
 
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
-  
+  .equ EEPE   = EEWE
+  .equ EEMPE  = EEMWE
 
 ; ***** INTERRUPT VECTORS ************************************************
 .org  INT0addr      
@@ -108,10 +118,10 @@
     rcall isr ; Timer/Counter3 Output CompareC Interrupt Address
 .org  OVF3addr      
     rcall isr ; Timer/Counter3 Overflow Interrupt Address
-.org  URXC1addr     
-    rcall isr ; USART-1 Receive Complete Interrupt Address
-.org  UDRE1addr     
-    rcall isr ; USART-1 Data Register Empty Interrupt Address
+;.org  URXC1addr     
+;    rcall isr ; USART-1 Receive Complete Interrupt Address
+;.org  UDRE1addr     
+;    rcall isr ; USART-1 Data Register Empty Interrupt Address
 .org  UTXC1addr     
     rcall isr ; USART-1 Transmit Complete Interrupt Address
 .org  TWIaddr       

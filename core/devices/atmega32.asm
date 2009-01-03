@@ -28,45 +28,20 @@
     rol zh
 .endmacro
 
-
-; the baud rate registers are io addresses!
-  .equ BAUDRATE0_LOW = UBRRL+$20
-  .equ BAUDRATE0_HIGH = UBRRH+$20
-  .equ USART0_C = UCSRC+$20
-  .equ USART0_B = UCSRB+$20
-
-  .equ USART0_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
-  .equ USART0_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+  .equ BAUDRATE_LOW = UBRRL+$20
+  .equ BAUDRATE_HIGH = UBRRH+$20
+  .equ USART_C = UCSRC+$20
+  .equ USART_B = UCSRB+$20
+  .equ USART_A = UCSRA+$20  
   
-  .equ ISR_UDR0 = 14
-  
-; some hacks
-.if defined(UDRE0)
-    ;
-.else
+  .equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
+  .equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
 
-.if defined(RWWSRE)
-.else
+  .equ SPMCSR = SPMCR
+  .equ EEPE   = EEWE
+  .equ EEMPE  = EEMWE
   .equ RWWSRE = ASRE
   .equ RWWSB  = ASB
-.endif
-
-.if defined(UDR0)
-.else
-  .equ UDR0 = UDR
-.endif
-
-.if defined(UCSR0A)
-.else
-  .equ UCSR0A = UCSRA
-.endif
-
-  .equ PE0  = PE
-  .equ FE0  = FE
-  .equ DOR0 = DOR
-  .equ UDRIE0 = UDRIE
-  
-.endif
 
 ; default interrupt handlers
 .org	INT0addr ; External Interrupt0 Vector Address
