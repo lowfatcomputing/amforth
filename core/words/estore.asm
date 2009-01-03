@@ -24,11 +24,11 @@ PFA_ESTORE:
     
 PFA_ESTORE1:
     in_ temp0, EECR
-    sbrc temp0,EEWE
+    sbrc temp0,EEPE
     rjmp PFA_ESTORE1
 
 PFA_ESTORE2: ; estore_wait_low_spm:
-    in_ temp0, SPMCR
+    in_ temp0, SPMCSR
     sbrc temp0,SPMEN
     rjmp PFA_ESTORE2
 
@@ -38,7 +38,7 @@ PFA_ESTORE2: ; estore_wait_low_spm:
     out_ EEDR, temp1
     in_ temp2, SREG
     cli
-    sbi EECR,EEMWE
-    sbi EECR,EEWE
+    sbi EECR,EEMPE
+    sbi EECR,EEPE
     out_ SREG, temp2
     ret
