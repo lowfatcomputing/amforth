@@ -22,7 +22,7 @@ PFA_EFETCH:
 
 PFA_EFETCH1:
     in_ temp1, EECR
-    sbrc temp1,EEWE
+    sbrc temp1,EEPE
     rjmp PFA_EFETCH1
 
     out_ EEARH,zh
