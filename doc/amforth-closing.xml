@@ -1,5 +1,5 @@
-    <chapter id="FINAL_REMARKS">
-        <title>Final Remarks</title>
+    <chapter id="Outlook">
+        <title>Outlook</title>
         <sect1 id="ANS94_WORDS">
             <title>More ANS94 Words</title>
             <para>
@@ -20,7 +20,7 @@
                 only 1KB RAM. It can be useful to deploy block sizes
                 smaller than 1KB to match the native block sizes of the
                 attached storage devices: serial EEPROM have e.g. 64
-                bytes, SD-Cards have 512 bytes. Some rather simple code
+                bytes, SD-Cards have (usually) 512 bytes. Some rather simple code
                 can be used from the library for I2C/TWI EEPROM modules
                 with native block sizes.
             </para>
@@ -35,18 +35,6 @@
                 bytes. The other possible devices are the XMega MCU.
                 ATtiny devices are not supported since they lack both
                 flash size and a few instructions that amforth uses.
-            </para>
-        </sect1>
-        <sect1 id="Contributors">
-            <title>Contributors</title>
-            <para>
-                amforth would not be the system it now is without the
-                feedback and help from its users. I would like to thank
-                all of them. The following people made an outstanding
-                work to improve amforth (in no particular order): Milan
-                Horkel, Ullrich Hoffmann, Michael Kalus, Karl Lunt,
-                Bruce Wolk, Lubos Pekny. But there are many more that
-                helped by simply asking how to do some tasks.
             </para>
         </sect1>
         <sect1 id="SUPPORT">
@@ -64,6 +52,18 @@
                     mailing list
                 </ulink>
                 .
+            </para>
+        </sect1>
+        <sect1 id="Contributors">
+            <title>Contributors</title>
+            <para>
+                amforth would not be the system it now is without the
+                feedback and help from its users. I would like to thank
+                all of them. The following people made an outstanding
+                work to improve amforth (in no particular order): Milan
+                Horkel, Ullrich Hoffmann, Michael Kalus, Karl Lunt,
+                Bruce Wolk, Lubos Pekny. But there are many more that
+                helped by simply asking how to do some tasks.
             </para>
         </sect1>
     </chapter>

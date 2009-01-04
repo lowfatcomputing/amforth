@@ -5,6 +5,7 @@
 <!ENTITY PREFACE SYSTEM "amforth-preface.xml">
 <!ENTITY FIRSTSTEPS SYSTEM "amforth-firststeps.xml">
 <!ENTITY HARDWARE   SYSTEM "amforth-hardware.xml">
+<!ENTITY SOURCES   SYSTEM "amforth-sources.xml">
 <!ENTITY ARCHITECTURE   SYSTEM "amforth-architecture.xml">
 <!ENTITY IMPLEMENTATION   SYSTEM "amforth-implementation.xml">
 <!ENTITY LIBRARY   SYSTEM "amforth-library.xml">
@@ -18,6 +19,7 @@
 	&PREFACE;
 	&FIRSTSTEPS;
 	&HARDWARE;
+	&SOURCES;
 	&ARCHITECTURE;
 	&IMPLEMENTATION;
 	&LIBRARY;
