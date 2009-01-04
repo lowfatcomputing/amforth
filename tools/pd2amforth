@@ -90,7 +90,7 @@ sub readXML ($) {
 	foreach my $iomd (@iomds) {
           my ($name, $iv, $li, $source);
 	  print FRT "\n\\ $iomd\n";
-	  print INC "\n********\n.ifdef $iomd\n********\n";
+	  print INC "\n; ********\n.ifdef $iomd\n; ********\n";
 	  $iv = $iomodule -> getElementsByTagName($iomd) ;
 	  $li = $iv->[0] -> getElementsByTagName("LIST");
           $li =~ s/\[//;
