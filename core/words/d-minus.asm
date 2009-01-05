@@ -9,19 +9,20 @@ VE_DMINUS:
 XT_DMINUS:
     .dw PFA_DMINUS
 PFA_DMINUS:
+    ld temp2, Y+
+    ld temp3, Y+
+
     ld temp4, Y+
     ld temp5, Y+
     ld temp6, Y+
     ld temp7, Y+
 
-    ld temp2, Y+
-    ld temp3, Y+
+    sub temp6, temp2
+    sbc temp7, temp3
+    sbc temp4, tosl
+    sbc temp5, tosh
 
-    sub temp2, temp6
-    sbc temp3, temp7
-    sbc tosl, temp4
-    sbc tosh, temp5
-
-    st -Y, temp3
-    st -Y, temp2
+    st -Y, temp7
+    st -Y, temp6
+    movw tosl, temp4
     jmp_ DO_NEXT
