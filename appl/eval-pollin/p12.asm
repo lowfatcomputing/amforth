@@ -7,8 +7,6 @@
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
 
-.equ dict_appl=1
-
 ; cpu clock in hertz
 .equ F_CPU = 8000000
 ; baud rate of terminal
@@ -17,6 +15,5 @@
 .set heap = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-
 
 .include "amforth.asm"

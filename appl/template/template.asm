@@ -22,24 +22,12 @@
 .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64 ; ANS94 needs at least 80 characters per line
 .equ USERSIZE = 24  ; size of user area in bytes, at least 24
+.equ CELLSIZE = 2   ; must be 2, currently. Do not change
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
-
-; the application specific dictionary can
-;   - not be included, set to 0 (zero)
-;   - be included in the rww section: set to 1 (one)
-;   - be included in the nrww (bootsector) area: set to 2 (two)
-; this  dictionary can be quite large so putting
-; it into the bootsector area (NRWW) does make sense for the bigger
-; atmegas only (ATmega32 and up) only
-
-.set dict_appl=1
-
-; change only if you know what to you do
-.equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 
 ; include the whole source tree.
 .include "amforth.asm"

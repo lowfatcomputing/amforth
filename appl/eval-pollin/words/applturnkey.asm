@@ -24,7 +24,7 @@ PFA_APPLTURNKEY:
     .dw XT_DOT
     .dw XT_SLITERAL
     .dw 3
-    .db "kHz"
+    .db "kHz",0
     .dw XT_ITYPE
     
     .dw XT_EXIT

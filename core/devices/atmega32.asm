@@ -3,7 +3,6 @@
 .list
 
   .equ ramstart = $60 ; first address of RAM
-
   .equ INTVECTORS = 21 ; INT_VECTORS_SIZE / 2
   .equ intvecsize = 2
   .equ amforth_interpreter = $3800
