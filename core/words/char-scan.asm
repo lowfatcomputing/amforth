@@ -13,7 +13,7 @@ PFA_CSCAN:
     .dw XT_DUP          ; ( -- addr1 c n1 n1)
     .dw XT_TO_R         ; ( -- addr1 c n1)
     .dw XT_ZERO         ; ( -- addr1 c n1 0)
-    .dw XT_DODO         ; ( -- addr1 c)
+    .dw XT_DOQDO        ; ( -- addr1 c)
     .dw PFA_CSCAN3
 PFA_CSCAN1:
     .dw XT_OVER         ; ( -- addr1 c addr1 )
