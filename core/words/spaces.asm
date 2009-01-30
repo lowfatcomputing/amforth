@@ -9,6 +9,9 @@ VE_SPACES:
 XT_SPACES:
     .dw DO_COLON
 PFA_SPACES:
+    .dw XT_DUP
+    .dw XT_GREATERZERO
+    .dw XT_AND
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_SPACES2
