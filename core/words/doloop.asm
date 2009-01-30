@@ -1,5 +1,5 @@
 ; ( -- )
-; R(limit counter -- limit counter+1|)
+; R( leave-addr limit counter -- leave-addr limit counter+1|)
 ; runtime of loop
 ;VE_DOLOOP:
 ;    .dw $ff06
