@@ -43,8 +43,8 @@ PFA_QUIT4:
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
     	.dw XT_SLITERAL
-	    .dw 3
-	    .db  " ??",00
+	    .dw 4
+	    .db  " ?? "
         .dw XT_ITYPE
 	    .dw XT_BASE
 	    .dw XT_FETCH
