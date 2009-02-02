@@ -40,12 +40,13 @@
 .include "words/less.asm"
 .include "words/greater.asm"
 .include "words/lesszero.asm"
-.include "words/greaterzero.asm"
+.include "words/zero.asm"
+.include "words/true.asm"
 .include "words/uless.asm"
 .include "words/ugreater.asm"
+.include "words/greaterzero.asm"
 .include "words/d-greater.asm"
 .include "words/d-less.asm"
-
 .include "words/log2.asm"
 .include "words/minus.asm"
 .include "words/plus.asm"
@@ -84,11 +85,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
-
 .include "words/byteswap.asm"
-
-.include "words/zero.asm"
 .include "words/up.asm"
-
 .include "words/s_to_d.asm"
 

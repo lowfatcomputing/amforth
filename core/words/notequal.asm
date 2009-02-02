@@ -13,9 +13,5 @@ PFA_NOTEQUAL:
     ld temp3, Y+
     cp tosl, temp2
     cpc tosh, temp3
-    movw zl, zerol
-    breq PFA_NOTEQUAL_EQUAL
-    sbiw zl, 1
-PFA_NOTEQUAL_EQUAL:
-    movw tosl, zl
-    rjmp DO_NEXT
+    breq PFA_ZERO1
+    rjmp PFA_TRUE1

@@ -14,9 +14,5 @@ PFA_EQUAL:
     cp tosl, temp2
     cpc tosh, temp3
 PFA_EQUALDONE:
-    movw zl, zerol
-    brne PFA_EQUAL1
-    sbiw zl, 1
-PFA_EQUAL1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    brne PFA_ZERO1
+    rjmp PFA_TRUE1

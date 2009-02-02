@@ -13,10 +13,6 @@ PFA_UGREATER:
     ld temp3, Y+
     cp temp2, tosl
     cpc temp3, tosh
-    movw zl, zerol
-    brlo PFA_UGREATER1
-    brbs 1, PFA_UGREATER1
-    sbiw zl, 1
-PFA_UGREATER1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    brlo PFA_ZERO1
+    brbs 1, PFA_ZERO1
+    rjmp PFA_TRUE

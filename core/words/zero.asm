@@ -7,6 +7,10 @@ VE_ZERO:
     .dw VE_HEAD
     .set VE_HEAD = VE_ZERO
 XT_ZERO:
-    .dw PFA_DOVARIABLE
+    .dw PFA_ZERO
 PFA_ZERO:
-    .dw 0
+    savetos
+PFA_ZERO1:
+    clr tosl
+    clr tosh
+    rjmp DO_NEXT

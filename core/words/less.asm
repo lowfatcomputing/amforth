@@ -14,9 +14,5 @@ PFA_LESS:
     cp temp2, tosl
     cpc temp3, tosh
 PFA_LESSDONE:
-    movw zl, zerol
-    brge PFA_LESS1
-    sbiw zl, 1
-PFA_LESS1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    brge PFA_ZERO1
+    rjmp PFA_TRUE1

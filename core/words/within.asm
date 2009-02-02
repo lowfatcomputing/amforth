@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3 ) Arithmetics
+; ( n min max -- f) Arithmetics
 ; R( -- )
-; multiply routine
+; check interval 
 VE_WITHIN:
     .dw $ff06
     .db "within"

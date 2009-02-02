@@ -13,10 +13,6 @@ PFA_ULESS:
     ld temp3, Y+
     cp tosl, temp2
     cpc tosh, temp3
-    movw zl, zerol
-    brlo PFA_ULESS1
-    brbs 1, PFA_ULESS1
-    sbiw zl, 1
-PFA_ULESS1:
-    movw tosl, zl
-    rjmp DO_NEXT
+    brlo PFA_ZERO1
+    brbs 1, PFA_ZERO1
+    rjmp PFA_TRUE1
