@@ -7,12 +7,11 @@
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = VE_DOLITERAL
 XT_DOLITERAL:
-    .dw DO_COLON
+    .dw PFA_DOLITERAL
 PFA_DOLITERAL:
-    .dw XT_R_FROM
-    .dw XT_DUP
-    .dw XT_1PLUS
-    .dw XT_TO_R
-    .dw XT_IFETCH
-    .dw XT_EXIT
+    savetos
+    movw zl, xl
+    readflashcell tosl,tosh
+    adiw xl, 1
+    rjmp DO_NEXT
 
