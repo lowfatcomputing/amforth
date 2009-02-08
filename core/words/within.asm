@@ -9,12 +9,12 @@ VE_WITHIN:
 XT_WITHIN:
     .dw DO_COLON
 PFA_WITHIN:
-    .dw XT_OVER
-    .dw XT_MINUS
     .dw XT_TO_R
-    .dw XT_MINUS
+    .dw XT_OVER
+    .dw XT_GREATER
+    .dw XT_SWAP
     .dw XT_R_FROM
-    .dw XT_ULESS
+    .dw XT_GREATER
+    .dw XT_OR
+    .dw XT_EQUALZERO
     .dw XT_EXIT
-
-; : WITHIN ( n min max -- Truth )  OVER - >R - R> U< ;
