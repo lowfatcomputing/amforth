@@ -19,12 +19,17 @@ PFA_DIGITQ:
      .dw $00DF
      .dw XT_AND
      .dw XT_DOLITERAL
-     .dw $41-10
+     .dw 'A'
+     .dw XT_DOLITERAL
+     .dw 10
+     .dw XT_TO_R
      .dw XT_DOBRANCH
      .dw PFA_DIGITQ2
 PFA_DIGITQ1:
      .dw XT_DOLITERAL
      .dw '0'
+     .dw XT_ZERO
+     .dw XT_TO_R
 PFA_DIGITQ2:
     .dw XT_MINUS
     .dw XT_DUP
@@ -32,4 +37,8 @@ PFA_DIGITQ2:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_WITHIN
+    .dw XT_SWAP
+    .dw XT_R_FROM
+    .dw XT_PLUS
+    .dw XT_SWAP
     .dw XT_EXIT
