@@ -7,6 +7,6 @@ VE_NOOP:
     .dw VE_HEAD
     .set VE_HEAD = VE_NOOP
 XT_NOOP:
-    .dw DO_COLON
+    .dw PFA_NOOP
 PFA_NOOP:
-    .dw XT_EXIT
+    jmp_ DO_NEXT
