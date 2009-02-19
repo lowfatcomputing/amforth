@@ -4,7 +4,7 @@
 VE_ENVSLASHHOLD:
     .dw $ff05
     .db "/hold",0
-    .dw VE_HEAD
+    .dw VE_ENVHEAD
     .set VE_ENVHEAD = VE_ENVSLASHHOLD
 XT_ENVSLASHHOLD:
     .dw DO_COLON
