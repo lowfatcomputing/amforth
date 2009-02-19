@@ -13,7 +13,7 @@ PFA_RECURSE:
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL
-    .dw $001f
+    .dw $00ff
     .dw XT_AND
     .dw XT_2SLASH
     .dw XT_1PLUS
