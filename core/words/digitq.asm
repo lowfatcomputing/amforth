@@ -33,12 +33,11 @@ PFA_DIGITQ1:
 PFA_DIGITQ2:
     .dw XT_MINUS
     .dw XT_DUP
+    .dw XT_R_FROM
+    .dw XT_PLUS
+    .dw XT_SWAP
     .dw XT_ZERO
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_WITHIN
-    .dw XT_SWAP
-    .dw XT_R_FROM
-    .dw XT_PLUS
-    .dw XT_SWAP
     .dw XT_EXIT
