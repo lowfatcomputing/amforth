@@ -13,7 +13,7 @@ PFA_IMMEDIATE:
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL
-    .dw $00ff
+    .dw $7fff
     .dw XT_AND
     .dw XT_SWAP
     .dw XT_ISTORE
