@@ -13,7 +13,7 @@ PFA_ENVHEAD:
 
 ; ( addr len -- [ 0 ] | [i*x -1 ) Tools
 ; R( -- )
-; search dictionary
+; get environment
 VE_ENVIRONMENTQ:
     .dw $FF0C
     .db "environment?"
@@ -23,7 +23,7 @@ XT_ENVIRONMENTQ:
     .dw DO_COLON
 PFA_ENVIRONMENTQ:
     .dw XT_ENVHEAD
-    .dw XT_DOFIND ; ( -- [ 0 | xt +/-1 ] )
+    .dw XT_SEARCH_WORDLIST ; ( -- [ 0 | xt +/-1 ] )
     .dw XT_DUP
     .dw XT_DOCONDBRANCH
     .dw PFA_ENVIRONMENTQ1

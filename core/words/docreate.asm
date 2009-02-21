@@ -23,10 +23,11 @@ PFA_DOCREATE:
     .dw XT_OR
     .dw XT_DOSCOMMA
     ; make voc link
-    .dw XT_HEAD       ; ( -- here head )
-    .dw XT_COMMA      ; ( -- here)
-    .dw XT_DOTO
-    .dw PFA_HEAD
+    .dw XT_GET_CURRENT ; ( -- here head )
+    .dw XT_DUP
+    .dw XT_EFETCH
+    .dw XT_COMMA       ; ( -- here current)
+    .dw XT_ESTORE
     .dw XT_EXIT
 
 PFA_DOCREATE4:

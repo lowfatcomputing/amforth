@@ -9,8 +9,13 @@ VE_WORDS:
 XT_WORDS:
     .dw DO_COLON
 PFA_WORDS:
-    .dw XT_HEAD
+    .dw XT_GET_ORDER 
+    .dw XT_ZERO
+    .dw XT_DOQDO
+    .dw PFA_WORDS2
 PFA_WORDS1:
+    .dw XT_EFETCH
+PFA_WORDS3:
     .dw XT_QDUP           ; ( -- addr addr )
     .dw XT_DOCONDBRANCH  ; ( -- addr ) is nfa = counted string
     .dw PFA_WORDS2       ;
@@ -28,8 +33,8 @@ PFA_WORDS1:
     .dw XT_PLUS
     .dw XT_IFETCH        ; ( -- addr )
     .dw XT_DOBRANCH      ; ( -- addr )
-    .dw PFA_WORDS1       ; ( -- addr )
-
+    .dw PFA_WORDS3       ; ( -- addr )
 PFA_WORDS2:
+    .dw XT_DOLOOP
+    .dw PFA_WORDS1
     .dw XT_EXIT
-

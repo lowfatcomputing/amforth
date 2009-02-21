@@ -29,7 +29,8 @@ XT_DODOES:
     .dw DO_COLON
 PFA_DODOES:
     .dw XT_R_FROM
-    .dw XT_HEAD
+    .dw XT_GET_CURRENT
+    .dw XT_EFETCH
     .dw XT_ICOUNT
     .dw XT_DOLITERAL
     .dw $00ff

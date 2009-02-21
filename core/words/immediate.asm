@@ -9,7 +9,8 @@ VE_IMMEDIATE:
 XT_IMMEDIATE:
     .dw DO_COLON
 PFA_IMMEDIATE:
-    .dw XT_HEAD
+    .dw XT_GET_CURRENT
+    .dw XT_EFETCH
     .dw XT_DUP
     .dw XT_IFETCH
     .dw XT_DOLITERAL
