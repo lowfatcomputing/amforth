@@ -2,6 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
 
 <!ENTITY BOOKINFO SYSTEM "amforth-bookinfo.xml">
+<!ENTITY VERSION  SYSTEM "amforth-version.xml">
 <!ENTITY PREFACE SYSTEM "amforth-preface.xml">
 <!ENTITY FIRSTSTEPS SYSTEM "amforth-firststeps.xml">
 <!ENTITY HARDWARE   SYSTEM "amforth-hardware.xml">
@@ -11,10 +12,12 @@
 <!ENTITY LIBRARY   SYSTEM "amforth-library.xml">
 <!ENTITY TOOLS   SYSTEM "amforth-tools.xml">
 <!ENTITY CLOSING   SYSTEM "amforth-closing.xml">
+<!ENTITY REFCARD SYSTEM "refcard.xml">
 
 ]>
 <book>
 	&BOOKINFO;
+	&VERSION;
 	<toc />
 	&PREFACE;
 	&FIRSTSTEPS;

@@ -1,4 +1,4 @@
-    <chapter id="Tools">
+<chapter id="Tools">
         <title>Tools</title>
         <sect1 id="Tools_host">
             <title>Host</title>
@@ -6,8 +6,20 @@
                 There a few number of tools on the host side (PC) that
                 are specifically written to support amforth. They are
                 written in script languages like perl and python and
-                should work on all major operating systems.
+                should work on all major operating systems. They are
+                not needed to use amforth but may be useful.
             </para>
+            <sect2>
+        	<title>Partdescription Converter</title>
+        	<para>
+        	    The <command>pd2amforth.pl</command> script reads a part
+        	    description file in XML format (comes with
+        	    the Atmel Studio package) and produces
+        	    the controller specific <filename>devices/</filename> file. The 
+        	    generated files may need some checks and 
+        	    small corrections however.
+        	</para>
+            </sect2>
             <sect2>
                 <title>Documentation</title>
                 <para>

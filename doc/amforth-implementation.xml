@@ -211,8 +211,9 @@
             <sect2 id="ANS_SEARCH">
                 <title>Search Order</title>
                 <para>
-                    amforth does not support word lists, so no words
-                    from the search word set are implemented.
+                    amforth supports the ANS Search Order Wordlist. There can be up to 8 entries
+		    in the order search list. This limit can be changed at compile time in the
+		    application definition file.
                 </para>
             </sect2>
             <sect2 id="ANS_STRING">

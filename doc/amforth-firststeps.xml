@@ -14,7 +14,7 @@
 				<prompt>></prompt>
 				.
 				<screen>
-					amforth 3.2 ATmega32
+					amforth 3.3 ATmega640
 					<prompt>></prompt>
 					<command>words</command>
 					d2/ s>d up! up@ 0 1ms cmove cmove> i! i@ unloop i sp! ...
