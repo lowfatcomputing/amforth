@@ -1,4 +1,4 @@
-Date: 1.8.2008
+Date: 21.2.2009
 
 Author: 
     Matthias Trute <mtrute@users.sourceforge.net> 
@@ -31,8 +31,8 @@ and http://amforth.sourceforge.net/ for examples how to deploy
 amforth with your project.
 
 Development hardware are evaluation boards running varios atmega's
-at 8 & 16 MHz MHz with a few led's and pushbuttons and the
-AVR Butterfly.
+between 2 and 20 MHz MHz with a various external hardware: none,
+led, push-buttons, sd-card, ethernet controller, rf module etc.
 
 Documentation can be found in the doc/ subdirectory.
 
