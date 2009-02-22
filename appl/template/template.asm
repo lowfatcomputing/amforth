@@ -10,7 +10,7 @@
 
 ; include the amforth device definition file. These
 ; files include the *def.inc from atmel internally.
-.include "devices/atmega168.asm"
+.include "devices/atmega128.asm"
 
 ; amforth needs two essential parameters
 ; cpu clock in hertz, 1MHz is factory default
@@ -22,12 +22,15 @@
 .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64 ; ANS94 needs at least 80 characters per line
 .equ USERSIZE = 24  ; size of user area in bytes, at least 24
-.equ CELLSIZE = 2   ; must be 2, currently. Do not change
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
+
+; change only if you know what to you do
+.equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
+.equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
 ; include the whole source tree.
 .include "amforth.asm"

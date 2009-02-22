@@ -39,7 +39,9 @@
 .include "words/code.asm"
 .include "words/end-code.asm"
 
-.include "words/env-slashhold.asm"
 .include "words/environment-q.asm"
+.include "words/env-slashhold.asm"
 
-
+.include "words/get-current.asm"
+.include "words/get-order.asm"
+.include "words/order.asm"

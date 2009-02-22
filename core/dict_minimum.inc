@@ -17,7 +17,6 @@
 .include "words/keyq.asm"
 .include "words/slashkey.asm"
 
-.include "words/head.asm"
 .include "words/here.asm"
 .include "words/allot.asm"
 
@@ -116,6 +115,7 @@
 .include "words/udefer-store.asm"
 
 .include "words/do-defer.asm"
+.include "words/search-wordlist.asm"
 .include "words/find.asm"
 .include "words/icompare.asm"
 .include "words/defer-store.asm"

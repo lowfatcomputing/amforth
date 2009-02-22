@@ -103,7 +103,7 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
 .eseg
     .dw -1           ; EEPROM Address 0 should not be used
     .dw lowflashlast ; HERE
-    .dw VE_HEAD      ; HEAD
+    .dw FORTHWORDLIST; forth-wordlist
     .dw heap         ; HEAP
     .dw edp          ; EDP
     .dw XT_APPLTURNKEY  ; TURNKEY
@@ -116,11 +116,22 @@ DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
 .if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
   .error "Serial line cannot be set up properly (systematic baud error too high)"
 .endif
-
-    .dw (F_CPU/(BAUD * 16))-1    ; BAUDRATE
+    .dw UBRR_VAL     ; BAUDRATE
     .dw TIB          ; terminal input buffer
     .dw TIBSIZE      ; and its maximum length
     .dw VE_ENVHEAD   ; environmental queries
-; 1st free address in EEPROM, see above
+FORTHWORDLIST:    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+    .dw FORTHWORDLIST; get/set-current
+ORDERLIST: ; list of wordlist id
+    .dw FORTHWORDLIST      ; get/set-order
+    .dw -1
+    .dw -1
+    .dw -1
+    .dw -1
+    .dw -1
+    .dw -1
+    .dw -1
+    .dw -1 ; NUMWORDLISTS + 1 entry, this entry has to be -1
+; 1st free address in EEPROM.
 edp:
 .cseg

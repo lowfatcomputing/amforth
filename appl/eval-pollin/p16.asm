@@ -6,7 +6,7 @@
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
-
+  .equ NUMWORDLISTS = 8
 ; cpu clock in hertz
 .equ F_CPU = 8000000
 ; baud rate of terminal
