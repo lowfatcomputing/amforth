@@ -1,4 +1,4 @@
-; ( c -- number flag ) Numeric IO
+; ( c base -- number flag ) Numeric IO
 ; R( -- )
 ; convert character to number, set flag if successful
 VE_DIGITQ:
@@ -9,6 +9,7 @@ VE_DIGITQ:
 XT_DIGITQ:
     .dw DO_COLON
 PFA_DIGITQ:
+    .dw XT_TO_R
     .dw XT_DUP
     .dw XT_DOLITERAL
     .dw '9'
@@ -32,12 +33,10 @@ PFA_DIGITQ1:
      .dw XT_TO_R
 PFA_DIGITQ2:
     .dw XT_MINUS
-    .dw XT_DUP
     .dw XT_R_FROM
     .dw XT_PLUS
-    .dw XT_SWAP
+    .dw XT_DUP
     .dw XT_ZERO
-    .dw XT_BASE
-    .dw XT_FETCH
+    .dw XT_R_FROM
     .dw XT_WITHIN
     .dw XT_EXIT
