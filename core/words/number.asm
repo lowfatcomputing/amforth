@@ -9,10 +9,13 @@ VE_NUMBER:
 XT_NUMBER:
     .dw DO_COLON
 PFA_NUMBER:
+    .dw XT_BASE
+    .dw XT_FETCH
+    .dw XT_TO_R
     .dw XT_COUNT   ; ( -- addr len )
+; now check for +/- signs
     .dw XT_OVER    ; ( -- addr char addr )
     .dw XT_CFETCH
-    ; now check for +/- signs
     .dw XT_DOLITERAL
     .dw $2d ; '-'
     .dw XT_EQUAL  ; ( -- addr len flag )
@@ -24,6 +27,20 @@ PFA_NUMBER:
     .dw 1
     .dw XT_SLASHSTRING
 PFA_NUMBER0: ; ( addr len  -- )
+    ; next is the $ sign for hex values
+    .dw XT_OVER    ; ( -- addr char addr )
+    .dw XT_CFETCH
+    .dw XT_DOLITERAL
+    .dw $24 ; '$'
+    .dw XT_EQUAL  ; ( -- addr len flag )
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBER00
+    .dw XT_HEX
+    .dw XT_DOLITERAL      ; skip dollar sign character
+    .dw 1
+    .dw XT_SLASHSTRING
+PFA_NUMBER00: ; ( addr len  -- )    
+
     .dw XT_ZERO       ; starting value
     .dw XT_ROT
     .dw XT_ROT
@@ -35,6 +52,8 @@ PFA_NUMBER1: ; ( -- n addr )
     .dw XT_I
     .dw XT_PLUS
     .dw XT_CFETCH  ; ( -- n addr char )
+    .dw XT_BASE
+    .dw XT_FETCH
     .dw XT_DIGITQ
     .dw XT_EQUALZERO
     ; check for non number characters and stop converting if found
@@ -61,4 +80,7 @@ PFA_NUMBER6:
     .dw PFA_NUMBER5
     .dw XT_NEGATE
 PFA_NUMBER5:
+    .dw XT_R_FROM
+    .dw XT_BASE
+    .dw XT_STORE
     .dw XT_EXIT
