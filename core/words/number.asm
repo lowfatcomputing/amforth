@@ -39,7 +39,23 @@ PFA_NUMBER0: ; ( addr len  -- )
     .dw XT_DOLITERAL      ; skip dollar sign character
     .dw 1
     .dw XT_SLASHSTRING
-PFA_NUMBER00: ; ( addr len  -- )    
+    .dw XT_DOBRANCH
+    .dw PFA_NUMBER000
+PFA_NUMBER00:
+    ; next is the % sign for binary values
+    .dw XT_OVER    ; ( -- addr char addr )
+    .dw XT_CFETCH
+    .dw XT_DOLITERAL
+    .dw $25 ; '%'
+    .dw XT_EQUAL  ; ( -- addr len flag )
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBER000
+    .dw XT_BIN
+    .dw XT_DOLITERAL      ; skip dollar sign character
+    .dw 1
+    .dw XT_SLASHSTRING
+PFA_NUMBER000: ; ( addr len  -- )    
+
 
     .dw XT_ZERO       ; starting value
     .dw XT_ROT

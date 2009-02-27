@@ -28,6 +28,7 @@
 .include "words/comma.asm"
 .include "words/brackettick.asm"
 
+.include "words/bin.asm"
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
