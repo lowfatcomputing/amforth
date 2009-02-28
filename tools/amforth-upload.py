@@ -50,11 +50,11 @@ def search_and_open_file(filename):
 	if debug:
 	    print >>sys.stderr, "Trying in  "+directory
 	try:
-	    filehandle = file(filename,"r")
+	    filehandle = file(directory+"/"+filename,"r")
 	    if debug:
 		   print >>sys.stderr, "Found! in "+directory	    
 	    if verbose:
-        	print >>sys.stderr, "\nincluding file: '"+filename+"'"
+        	print >>sys.stderr, "\nincluding file: '"+directory+"/"+filename+"'"
 	    return filehandle
 	except IOError:
 	    if debug:
@@ -160,8 +160,18 @@ def write_line_flow(string,dest):
 			else:
 				state = start
 	
-	
-
+		elif state == space:
+			if i == "?":
+				state = question
+			else:
+				state = start
+		elif state == question:
+			if i == "?":
+				if debug: 
+					print >>sys.stderr, "<matched ' ??'>"
+				break
+			else:
+				state = start
 
 def write_file_flow(in_file,dest):
 	while(True):
@@ -208,7 +218,13 @@ def main(argv):
 			debug = True
 
 	if not force:	
-		if not os.system("which fuser >/dev/null 2>&1"):
+		if not os.system("which lsof > /dev/null 2>&1"):
+			if not os.system("lsof " + tty_dev_name):
+				print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
+				print >>sys.stderr, "please stop the process and try again."
+				print >>sys.stderr, "run with the -f option to force execution anyway"	
+				sys.exit(1)
+		elif not os.system("which fuser >/dev/null 2>&1"):
 			if not os.system("fuser -u "+tty_dev_name):
 				print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
 				print >>sys.stderr, "please stop the process and try again."
