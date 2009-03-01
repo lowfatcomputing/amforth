@@ -1,16 +1,36 @@
 \ defines a word which resets the dictionary when called 
 \ better then forget but has still limitations
 
+
 : marker ( c<chars> -- )
-    head 
+    get-order
+    get-current dup e@
     here 
     edp  
     heap 
     \ maybe save turnkey as well
-    create , , , ,
+    create 
+    , , , , ,
+    \ for save the search order wordlists
+    dup ,
+    0 ?do
+	dup ,
+	e@  ,
+    loop
     does>
        dup i@ to heap
     1+ dup i@ to edp 
     1+ dup i@ to here
-    1+     i@ to head 
+    1+ dup i@ swap 1+ dup i@ swap >r
+    swap over e! set-current
+    r>
+    1+ dup i@ \ # of entries in search order
+       dup >r
+       0 ?do
+        1+ dup i@ 
+	swap 1+ dup i@ over e!
+       loop
+    drop
+    r> set-order
 ;
+
