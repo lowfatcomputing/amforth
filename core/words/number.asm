@@ -14,7 +14,7 @@ PFA_NUMBER:
     .dw XT_TO_R
     .dw XT_COUNT   ; ( -- addr len )
 ; now check for +/- signs
-    .dw XT_OVER    ; ( -- addr char addr )
+    .dw XT_OVER    ; ( -- addr len addr )
     .dw XT_CFETCH
     .dw XT_DOLITERAL
     .dw $2d ; '-'
@@ -26,37 +26,9 @@ PFA_NUMBER:
     .dw XT_DOLITERAL      ; skip sign character
     .dw 1
     .dw XT_SLASHSTRING
-PFA_NUMBER0: ; ( addr len  -- )
-    ; next is the $ sign for hex values
-    .dw XT_OVER    ; ( -- addr char addr )
-    .dw XT_CFETCH
-    .dw XT_DOLITERAL
-    .dw $24 ; '$'
-    .dw XT_EQUAL  ; ( -- addr len flag )
-    .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER00
-    .dw XT_HEX
-    .dw XT_DOLITERAL      ; skip dollar sign character
-    .dw 1
-    .dw XT_SLASHSTRING
-    .dw XT_DOBRANCH
-    .dw PFA_NUMBER000
-PFA_NUMBER00:
-    ; next is the % sign for binary values
-    .dw XT_OVER    ; ( -- addr char addr )
-    .dw XT_CFETCH
-    .dw XT_DOLITERAL
-    .dw $25 ; '%'
-    .dw XT_EQUAL  ; ( -- addr len flag )
-    .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER000
-    .dw XT_BIN
-    .dw XT_DOLITERAL      ; skip dollar sign character
-    .dw 1
-    .dw XT_SLASHSTRING
-PFA_NUMBER000: ; ( addr len  -- )    
 
-
+PFA_NUMBER0: ; ( addr len  -- )    
+    .dw XT_PRAEFIX
     .dw XT_ZERO       ; starting value
     .dw XT_ROT
     .dw XT_ROT
@@ -100,3 +72,68 @@ PFA_NUMBER5:
     .dw XT_BASE
     .dw XT_STORE
     .dw XT_EXIT
+
+;VE_SETBASE:
+;    .dw $FF07 
+;    .db "setbase",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SETBASE
+XT_SETBASE:
+    .dw DO_COLON 
+PFA_SETBASE:        ; ( c -- ) 
+    .dw XT_DUP 
+    .dw XT_DOLITERAL
+    .dw $24 
+    .dw XT_EQUAL 
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SETBASE0 
+    .dw XT_DROP 
+    .dw XT_HEX 
+    .dw XT_EXIT 
+PFA_SETBASE0:
+    .dw XT_DUP 
+    .dw XT_DOLITERAL
+    .dw $25 
+    .dw XT_EQUAL 
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SETBASE1 
+    .dw XT_DROP 
+    .dw XT_BIN
+    .dw XT_EXIT 
+PFA_SETBASE1:
+    .dw XT_DOLITERAL
+    .dw $26 
+    .dw XT_EQUAL 
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SETBASE2 
+    .dw XT_DECIMAL 
+    .dw XT_EXIT 
+PFA_SETBASE2:        ; ( error) 
+    .dw XT_EXIT 
+
+
+;VE_PRAEFIX:
+;    .dw $FF07 
+;    .db "praefix",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_PRAEFIX
+XT_PRAEFIX:
+    .dw DO_COLON 
+PFA_PRAEFIX:        ; ( adr1 len1 -- adr2 len2 ) 
+    .dw XT_OVER 
+    .dw XT_CFETCH 
+    .dw XT_DOLITERAL
+    .dw $29 
+    .dw XT_GREATER 
+    .dw XT_DOCONDBRANCH
+    .dw PFA_PRAEFIX0 
+    .dw XT_EXIT 
+PFA_PRAEFIX0:
+    .dw XT_OVER 
+    .dw XT_CFETCH 
+    .dw XT_SETBASE
+    .dw XT_DOLITERAL
+    .dw $1 
+    .dw XT_SLASHSTRING 
+    .dw XT_EXIT 
+
