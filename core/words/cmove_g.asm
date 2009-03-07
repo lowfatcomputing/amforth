@@ -11,22 +11,21 @@ XT_CMOVE_G:
 PFA_CMOVE_G:
     push xh
     push xl
-    movw wl, tosl
     ld zl, Y+
     ld zh, Y+ ; addr-to
     ld xl, Y+
     ld xh, Y+ ; addr-from
-    mov temp0, wh
-    or temp0, wl
+    mov temp0, tosh
+    or temp0, tosl
     brbs 1, PFA_CMOVE_G1
-    add zl, wl
-    adc zh, wh
-    add xl, wl
-    adc xh, wh
+    add zl, tosl
+    adc zh, tosh
+    add xl, tosl
+    adc xh, tosh
 PFA_CMOVE_G2:
     ld temp1, -X
     st -Z, temp1
-    sbiw wl, 1
+    sbiw tosl, 1
     brbc 1, PFA_CMOVE_G2
 PFA_CMOVE_G1:
     pop xl

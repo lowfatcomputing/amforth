@@ -1,15 +1,12 @@
+; Partname:  ATmega168
+; Built using part description XML file version 201
+; generated automatically
 .nolist
-.include "m168def.inc"
+	.include "m168def.inc"
 .list
 
-  ; first address of RAM 
-  .equ ramstart = $100
-
-  .equ INTVECTORS = 23
-  .equ intvecsize = 2
-  
-  .equ amforth_interpreter = $1c00
-
+.equ ramstart =  $100
+.equ max_dict_addr = $1C00 
   .equ UDR = UDR0
   .equ FE = FE0
   .equ DOR = DOR0
@@ -27,77 +24,74 @@
   .equ SPMEN = SELFPRGEN
 
 .macro jmp_
-    jmp @0
+	jmp @0
 .endmacro
-
 .macro call_
-    call @0
+	call @0
 .endmacro
-
 .macro readflashcell
-    lsl zl
-    rol zh
-    lpm @0, Z+
-    lpm @1, Z+
+	lsl zl
+	rol zh
+	lpm @0, Z+
+	lpm @1, Z+
 .endmacro
-
 .macro writeflashcell
-    lsl zl
-    rol zh
+	lsl zl
+	rol zh
 .endmacro
-
-.org  INT0addr       
-    rcall isr  ; External Interrupt .orgest 0
-.org  INT1addr       
-    rcall isr  ; External Interrupt .orgest 1
-.org  PCI0addr        
-    rcall isr  ; Pin Change Interrupt .orgest 0
-.org  PCI1addr        
-    rcall isr  ; Pin Change Interrupt .orgest 0
-.org  PCI2addr        
-    rcall isr  ; Pin Change Interrupt .orgest 1
-.org  WDTaddr         
-    rcall isr  ; Watchdog Time-out Interrupt
-.org  OC2Aaddr        
-    rcall isr  ; Timer/Counter2 Compare Match A
-.org  OC2Baddr        
-    rcall isr  ; Timer/Counter2 Compare Match A
-.org  OVF2addr        
-    rcall isr  ; Timer/Counter2 Overflow
-.org  ICP1addr        
-    rcall isr  ; Timer/Counter1 Capture Event
-.org  OC1Aaddr        
-    rcall isr  ; Timer/Counter1 Compare Match A
-.org  OC1Baddr        
-    rcall isr  ; Timer/Counter1 Compare Match B
-.org  OVF1addr        
-    rcall isr  ; Timer/Counter1 Overflow
-.org  OC0Aaddr        
-    rcall isr  ; TimerCounter0 Compare Match A
-.org  OC0Baddr        
-    rcall isr  ; TimerCounter0 Compare Match B
-.org  OVF0addr        
-    rcall isr  ; Timer/Couner0 Overflow
-.org  SPIaddr         
-    rcall isr  ; SPI Serial Transfer Complete
-;.org  URXCaddr        
-;    rcall isr  ; USART Rx Complete
-;.org  UDREaddr        
-;    rcall isr  ; USART, Data Register Empty
-.org  UTXCaddr        
-    rcall isr  ; USART Tx Complete
-.org  ADCaddr         
-    rcall isr  ; ADC Conversion Complete
-.org  ERDYaddr        
-    rcall isr  ; EEPROM Ready
-.org  ACIaddr         
-    rcall isr  ; Analog Comparator
-.org  TWIaddr         
-    rcall isr  ; Two-wire Serial Interface
-.org  SPMRaddr        
-    rcall isr  ; Store Program Memory Read
-
+.equ intvecsize = 2 ; please verify; flash size: 16384 bytes
+.equ INTVECTORS = 26
+.org $002
+	 rcall isr ; External Interrupt Request 0
+.org $004
+	 rcall isr ; External Interrupt Request 1
+.org $006
+	 rcall isr ; Pin Change Interrupt Request 0
+.org $008
+	 rcall isr ; Pin Change Interrupt Request 0
+.org $00A
+	 rcall isr ; Pin Change Interrupt Request 1
+.org $00C
+	 rcall isr ; Watchdog Time-out Interrupt
+.org $00E
+	 rcall isr ; Timer/Counter2 Compare Match A
+.org $0010
+	 rcall isr ; Timer/Counter2 Compare Match A
+.org $0012
+	 rcall isr ; Timer/Counter2 Overflow
+.org $0014
+	 rcall isr ; Timer/Counter1 Capture Event
+.org $0016
+	 rcall isr ; Timer/Counter1 Compare Match A
+.org $0018
+	 rcall isr ; Timer/Counter1 Compare Match B
+.org $001A
+	 rcall isr ; Timer/Counter1 Overflow
+.org $001C
+	 rcall isr ; TimerCounter0 Compare Match A
+.org $001E
+	 rcall isr ; TimerCounter0 Compare Match B
+.org $020
+	 rcall isr ; Timer/Couner0 Overflow
+.org $022
+	 rcall isr ; SPI Serial Transfer Complete
+.org $024
+	 rcall isr ; USART Rx Complete
+.org $026
+	 rcall isr ; USART, Data Register Empty
+.org $028
+	 rcall isr ; USART Tx Complete
+.org $02A
+	 rcall isr ; ADC Conversion Complete
+.org $02C
+	 rcall isr ; EEPROM Ready
+.org $02E
+	 rcall isr ; Analog Comparator
+.org $030
+	 rcall isr ; Two-wire Serial Interface
+.org $032
+	 rcall isr ; Store Program Memory Read
 mcustring:
-  .dw 9
-  .db "ATmega168 "
-.set codestart = pc
+	.dw 09
+	.db "ATmega168",0
+.set codestart=pc

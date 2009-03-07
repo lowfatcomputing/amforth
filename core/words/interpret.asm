@@ -14,6 +14,7 @@ PFA_INTERPRET1:
     .dw XT_WORD
     .dw XT_DUP
     .dw XT_CFETCH
+
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET4

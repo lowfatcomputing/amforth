@@ -52,9 +52,9 @@ amforthstart:
 .org amforth_interpreter
 ; the inner interpreter.
 DO_DODOES:
-    adiw wl, 1
     savetos
     movw tosl, wl
+    adiw tosl, 1
     ; the following takes the address from a real uC-call
     pop wh
     pop wl
@@ -64,25 +64,24 @@ DO_DODOES:
     movw XL, wl
     rjmp DO_NEXT
 
-DO_COLON: ; 31 CPU cycles to ijmp
+DO_COLON:
     push XH
     push XL          ; PUSH IP
-    adiw wl, 1       ; set W to PFA
     movw XL, wl
-
-DO_NEXT: ; 24 CPU cycles to ijmp
+    adiw xl, 1
+DO_NEXT:
     brts DO_INTERRUPT
     movw zl, XL        ; READ IP
     readflashcell wl, wh
     adiw XL, 1        ; INC IP
 
-DO_EXECUTE: ; 12 cpu cycles to ijmp
+DO_EXECUTE:
     movw zl, wl
     readflashcell temp0,temp1
     movw zl, temp0
     ijmp
 
-DO_INTERRUPT: ; 12 cpu cycles to rjmp (+12=24 to ijmp)
+DO_INTERRUPT:
     ; here we deal with interrupts the forth way
     lds temp0, intcur
     ldi zl, LOW(intvec)

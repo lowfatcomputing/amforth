@@ -7,6 +7,7 @@
   .equ CELLSIZE = 2   ;
   .equ USERSIZE = 24  ; size of user area
   .equ NUMWORDLISTS = 8
+  .equ amforth_interpreter = NRWW_START_ADDR
 ; cpu clock in hertz
 .equ F_CPU = 8000000
 ; baud rate of terminal

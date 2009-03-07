@@ -9,6 +9,5 @@ VE_1PLUS:
 XT_1PLUS:
     .dw PFA_1PLUS
 PFA_1PLUS:
-    subi tosl, low(-1)
-    sbci tosh, high(-1)
+    adiw tosl,1
     rjmp DO_NEXT

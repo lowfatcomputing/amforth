@@ -12,8 +12,7 @@
 ; baud rate of terminal
 .equ BAUD = 9600
 
-.set dict_appl=1
-.set istore_nrww=1
+.equ amforth_interpreter = NRWW_START_ADDR
 
 .set NUMWORDLISTS=8
 

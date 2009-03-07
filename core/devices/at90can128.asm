@@ -1,13 +1,12 @@
+; Partname:  AT90CAN128
+; Built using part description XML file version 170
+; generated automatically
 .nolist
-.include "can128def.inc"
+	.include "can128def.inc"
 .list
 
-  .equ ramstart = $100 ; first address of RAM
-
-  .equ INTVECTORS = 37 ; INT_VECTORS_SIZE / 2
-  .equ intvecsize = 2
-  .equ amforth_interpreter = $f000
-
+.equ ramstart =  $0100
+.equ max_dict_addr = $F000 
   .equ BAUDRATE_LOW = UBRR0L
   .equ BAUDRATE_HIGH = UBRR0H
   .equ USART_C = UCSR0C
@@ -20,116 +19,107 @@
   .equ DOR = DOR0
   .equ PE = UPE0
   .equ UDRIE = UDRIE0
-  
+
   .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
 
-
 .macro jmp_
-    jmp @0
+	jmp @0
 .endmacro
-
 .macro call_
-    call @0
+	call @0
 .endmacro
-
 .macro readflashcell
-    clr temp7
-    lsl zl
-    rol zh
-    rol temp7
-    out_ RAMPZ, temp7
-    elpm @0, Z+
-    elpm @1, Z+
+	clr temp7
+	lsl zl
+	rol zh
+	rol temp7
+	out_ RAMPZ, temp7
+	elpm @0, Z+
+	elpm @1, Z+
 .endmacro
-
 .macro writeflashcell
-    clr temp7
-    lsl zl
-    rol zh
-    rol temp7
-    out_ RAMPZ, temp7
+	clr temp7
+	lsl zl
+	rol zh
+	rol temp7
+	out_ RAMPZ, temp7
 .endmacro
-
-
-  .equ EEPE   = EEWE
-  .equ EEMPE  = EEMWE
-
-; ***** INTERRUPT VECTORS ************************************************
-.org  INT0addr      
-    rcall isr ; External Interrupt0 Vector Address
-.org  INT1addr      
-    rcall isr ; External Interrupt1 Vector Address
-.org  INT2addr      
-    rcall isr ; External Interrupt2 Vector Address
-.org  INT3addr      
-    rcall isr ; External Interrupt3 Vector Address
-.org  INT4addr      
-    rcall isr ; External Interrupt4 Vector Address
-.org  INT5addr      
-    rcall isr ; External Interrupt5 Vector Address
-.org  INT6addr      
-    rcall isr ; External Interrupt6 Vector Address
-.org  INT7addr      
-    rcall isr ; External Interrupt7 Vector Address
-.org  OC2addr       
-    rcall isr ; Timer/Counter2 Compare Match Interrupt Address
-.org  OVF2addr      
-    rcall isr ; Timer/Counter2 Overflow Interrupt Address
-.org  ICP1addr      
-    rcall isr ; Timer/Counter1 Input Capture Interrupt Address
-.org  OC1Aaddr      
-    rcall isr ; Timer/Counter1 Output CompareA Interrupt Address
-.org  OC1Baddr      
-    rcall isr ; Timer/Counter1 Output CompareB Interrupt Address
-.org  OC1Caddr      
-    rcall isr ; Timer/Counter1 Output CompareC Interrupt Address
-.org  OVF1addr      
-    rcall isr ; Timer/Counter1 Overflow Interrupt Address
-.org  OC0addr       
-    rcall isr ; Timer/Counter0 Compare Match Interrupt Address
-.org  OVF0addr      
-    rcall isr ; Timer/Counter0 Overflow Interrupt Address
-.org  CANITaddr     
-    rcall isr ; CAN Transfer Complete or Error Address
-.org  OVRITaddr     
-    rcall isr ; CAN Timer Overrun Address
-.org  SPIaddr       
-    rcall isr ; SPI Interrupt Address
-;.org  URXC0addr     
-;    rcall isr ; USART-0 Receive Complete Interrupt Address
-;.org  UDRE0addr     
-;    rcall isr ; USART-0 Data Register Empty Interrupt Address
-.org  UTXC0addr     
-    rcall isr ; USART-0 Transmit Complete Interrupt Address
-.org  ACIaddr       
-    rcall isr ; Analog Comparator Interrupt Address
-.org  ADCCaddr      
-    rcall isr ; ADC Conversion Complete Interrupt Address
-.org  ERDYaddr      
-    rcall isr ; EEPROM Write Complete Interrupt Address
-.org  ICP3addr      
-    rcall isr ; Timer/Counter3 Input Capture Interrupt Address
-.org  OC3Aaddr      
-    rcall isr ; Timer/Counter3 Output CompareA Interrupt Address
-.org  OC3Baddr      
-    rcall isr ; Timer/Counter3 Output CompareB Interrupt Address
-.org  OC3Caddr      
-    rcall isr ; Timer/Counter3 Output CompareC Interrupt Address
-.org  OVF3addr      
-    rcall isr ; Timer/Counter3 Overflow Interrupt Address
-;.org  URXC1addr     
-;    rcall isr ; USART-1 Receive Complete Interrupt Address
-;.org  UDRE1addr     
-;    rcall isr ; USART-1 Data Register Empty Interrupt Address
-.org  UTXC1addr     
-    rcall isr ; USART-1 Transmit Complete Interrupt Address
-.org  TWIaddr       
-    rcall isr ; TWI Interrupt Vector Address
-.org  SPMRaddr      
-    rcall isr ; Store Program Memory Ready Interrupt Address
-
+.equ intvecsize = 2 ; please verify; flash size: 131072 bytes
+.equ INTVECTORS = 37
+.org $0002
+	 rcall isr ; External Interrupt Request 0
+.org $0004
+	 rcall isr ; External Interrupt Request 1
+.org $0006
+	 rcall isr ; External Interrupt Request 2
+.org $0008
+	 rcall isr ; External Interrupt Request 3
+.org $000A
+	 rcall isr ; External Interrupt Request 4
+.org $000C
+	 rcall isr ; External Interrupt Request 5
+.org $000E
+	 rcall isr ; External Interrupt Request 6
+.org $0010
+	 rcall isr ; External Interrupt Request 7
+.org $0012
+	 rcall isr ; Timer/Counter2 Compare Match
+.org $0014
+	 rcall isr ; Timer/Counter2 Overflow
+.org $0016
+	 rcall isr ; Timer/Counter1 Capture Event
+.org $0018
+	 rcall isr ; Timer/Counter1 Compare Match A
+.org $001A
+	 rcall isr ; Timer/Counter Compare Match B
+.org $001C
+	 rcall isr ; Timer/Counter1 Compare Match C
+.org $001E
+	 rcall isr ; Timer/Counter1 Overflow
+.org $0020
+	 rcall isr ; Timer/Counter0 Compare Match
+.org $0022
+	 rcall isr ; Timer/Counter0 Overflow
+.org $0024
+	 rcall isr ; CAN Transfer Complete or Error
+.org $0026
+	 rcall isr ; CAN Timer Overrun
+.org $0028
+	 rcall isr ; SPI Serial Transfer Complete
+.org $002A
+	 rcall isr ; USART0, Rx Complete
+.org $002C
+	 rcall isr ; USART0 Data Register Empty
+.org $002E
+	 rcall isr ; USART0, Tx Complete
+.org $0030
+	 rcall isr ; Analog Comparator
+.org $0032
+	 rcall isr ; ADC Conversion Complete
+.org $0034
+	 rcall isr ; EEPROM Ready
+.org $0036
+	 rcall isr ; Timer/Counter3 Capture Event
+.org $0038
+	 rcall isr ; Timer/Counter3 Compare Match A
+.org $003A
+	 rcall isr ; Timer/Counter3 Compare Match B
+.org $003C
+	 rcall isr ; Timer/Counter3 Compare Match C
+.org $003E
+	 rcall isr ; Timer/Counter3 Overflow
+.org $0040
+	 rcall isr ; USART1, Rx Complete
+.org $0042
+	 rcall isr ; USART1, Data Register Empty
+.org $0044
+	 rcall isr ; USART1, Tx Complete
+.org $0046
+	 rcall isr ; 2-wire Serial Interface
+.org $0048
+	 rcall isr ; Store Program Memory Read
 mcustring:
-  .dw 11
-  .db "AT90can128 "
-.set codestart = pc
+	.dw 10
+	.db "AT90CAN128"
+.set codestart=pc

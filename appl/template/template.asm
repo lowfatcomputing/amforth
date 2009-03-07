@@ -10,7 +10,7 @@
 
 ; include the amforth device definition file. These
 ; files include the *def.inc from atmel internally.
-.include "devices/atmega128.asm"
+.include "devices/atmega16.asm"
 
 ; amforth needs two essential parameters
 ; cpu clock in hertz, 1MHz is factory default
@@ -27,7 +27,7 @@
 .set heap = ramstart           ; start address of HEAP, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
-
+.equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
 .equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8

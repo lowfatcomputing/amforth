@@ -20,11 +20,11 @@
   .def temp6 = r20
   .def temp7 = r21
 
-  .def tosl = r22
-  .def tosh = r23
+  .def tosl = r24
+  .def tosh = r25
 
-  .def wl = r24
-  .def wh = r25
+  .def wl = r22
+  .def wh = r23
 
 .macro loadtos
     ld tosl, Y+

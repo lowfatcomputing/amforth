@@ -1,35 +1,12 @@
+; Partname:  ATmega88
+; Built using part description XML file version 232
+; generated automatically
 .nolist
-.include "m88def.inc"
+	.include "m88def.inc"
 .list
 
-  ; first address of RAM 
-  .equ ramstart = $100
-
-  .equ amforth_interpreter = $1c00
-
-  .equ INTVECTORS = 25 ; INT_VECTORS_SIZE
-  .equ intvecsize = 1
-
-.macro jmp_
-    rjmp @0
-.endmacro
-
-.macro call_
-    rcall @0
-.endmacro
-
-.macro readflashcell
-    lsl zl
-    rol zh
-    lpm @0, Z+
-    lpm @1, Z+
-.endmacro
-
-.macro writeflashcell
-    lsl zl
-    rol zh
-.endmacro
-
+.equ ramstart =  $100
+.equ max_dict_addr = $C00 
   .equ BAUDRATE0_LOW = UBRR0L+$20
   .equ BAUDRATE0_HIGH = UBRR0H+$20
   .equ USART0_C = UCSR0C+$20
@@ -41,59 +18,76 @@
   .equ PE0  = UPE0
 
   .equ SPMEN = SELFPRGEN
- 
-.org  INT0addr
-    rcall isr    ; External Interrupt Request 0
-.org  INT1addr       
-    rcall isr ; External Interrupt Request 1
-.org  PCI0addr       
-    rcall isr ; Pin Change Interrupt Request 0
-.org  PCI1addr       
-    rcall isr ; Pin Change Interrupt Request 0
-.org  PCI2addr       
-    rcall isr ; Pin Change Interrupt Request 1
-.org  WDTaddr        
-    rcall isr ; Watchdog Time-out Interrupt
-.org  OC2Aaddr       
-    rcall isr ; Timer/Counter2 Compare Match A
-.org  OC2Baddr       
-    rcall isr ; Timer/Counter2 Compare Match A
-.org  OVF2addr       
-    rcall isr ; Timer/Counter2 Overflow
-.org  ICP1addr       
-    rcall isr ; Timer/Counter1 Capture Event
-.org  OC1Aaddr       
-    rcall isr ; Timer/Counter1 Compare Match A
-.org  OC1Baddr       
-    rcall isr ; Timer/Counter1 Compare Match B
-.org  OVF1addr       
-    rcall isr ; Timer/Counter1 Overflow
-.org  OC0Aaddr       
-    rcall isr ; TimerCounter0 Compare Match A
-.org  OC0Baddr       
-    rcall isr ; TimerCounter0 Compare Match B
-.org  OVF0addr       
-    rcall isr ; Timer/Couner0 Overflow
-.org  SPIaddr        
-    rcall isr ; SPI Serial Transfer Complete
-;.org  URXCaddr       
-;    rcall isr ; USART Rx Complete
-;.org  UDREaddr       
-;    rcall isr ; USART, Data Register Empty
-.org  UTXCaddr       
-    rcall isr ; USART Tx Complete
-.org  ADCaddr        
-    rcall isr ; ADC Conversion Complete
-.org  ERDYaddr       
-    rcall isr ; EEPROM Ready
-.org  ACIaddr        
-    rcall isr ; Analog Comparator
-.org  TWIaddr        
-    rcall isr ; Two-wire Serial Interface
-.org  SPMRaddr       
-    rcall isr ; Store Program Memory Read
 
+.macro jmp_
+	rjmp @0
+.endmacro
+.macro call_
+	rcall @0
+.endmacro
+.macro readflashcell
+	lsl zl
+	rol zh
+	lpm @0, Z+
+	lpm @1, Z+
+.endmacro
+.macro writeflashcell
+	lsl zl
+	rol zh
+.endmacro
+.equ intvecsize = 1 ; please verify; flash size: 8192 bytes
+.equ INTVECTORS = 26
+.org $001
+	 rcall isr ; External Interrupt Request 0
+.org $002
+	 rcall isr ; External Interrupt Request 1
+.org $003
+	 rcall isr ; Pin Change Interrupt Request 0
+.org $004
+	 rcall isr ; Pin Change Interrupt Request 0
+.org $005
+	 rcall isr ; Pin Change Interrupt Request 1
+.org $006
+	 rcall isr ; Watchdog Time-out Interrupt
+.org $007
+	 rcall isr ; Timer/Counter2 Compare Match A
+.org $008
+	 rcall isr ; Timer/Counter2 Compare Match A
+.org $009
+	 rcall isr ; Timer/Counter2 Overflow
+.org $00A
+	 rcall isr ; Timer/Counter1 Capture Event
+.org $00B
+	 rcall isr ; Timer/Counter1 Compare Match A
+.org $00C
+	 rcall isr ; Timer/Counter1 Compare Match B
+.org $00D
+	 rcall isr ; Timer/Counter1 Overflow
+.org $00E
+	 rcall isr ; TimerCounter0 Compare Match A
+.org $00F
+	 rcall isr ; TimerCounter0 Compare Match B
+.org $010
+	 rcall isr ; Timer/Couner0 Overflow
+.org $011
+	 rcall isr ; SPI Serial Transfer Complete
+.org $012
+	 rcall isr ; USART Rx Complete
+.org $013
+	 rcall isr ; USART, Data Register Empty
+.org $014
+	 rcall isr ; USART Tx Complete
+.org $015
+	 rcall isr ; ADC Conversion Complete
+.org $016
+	 rcall isr ; EEPROM Ready
+.org $017
+	 rcall isr ; Analog Comparator
+.org $018
+	 rcall isr ; Two-wire Serial Interface
+.org $019
+	 rcall isr ; Store Program Memory Read
 mcustring:
-  .dw 8
-  .db "ATmega88"
-.set codestart = pc
+	.dw 08
+	.db "ATmega88"
+.set codestart=pc

@@ -9,7 +9,7 @@
 XT_DOCONSTANT:
     .dw PFA_DOCONSTANT
 PFA_DOCONSTANT:
-    adiw wl, 1
     savetos
     movw tosl, wl
+    adiw tosl, 1
     rjmp DO_NEXT
