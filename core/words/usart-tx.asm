@@ -1,35 +1,35 @@
 ; (c -- ) Hardware Access
 ; R( --)
-; put 1 character into output queue, wait if needed, enable UDRIE0 interrupt
-VE_TX0:
-    .dw $ff03
-    .db "tx0",0
+; put 1 character into output queue, wait if needed, enable UDRIE interrupt
+VE_TX:
+    .dw $ff02
+    .db "tx"
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX0
-XT_TX0:
+    .set VE_HEAD = VE_TX
+XT_TX:
     .dw DO_COLON
-PFA_TX0:
+PFA_TX:
   ; wait for queue
-  .dw XT_TX0Q
+  .dw XT_TXQ
   .dw XT_DOCONDBRANCH
-  .dw PFA_TX0
+  .dw PFA_TX
   ; append to queue
   .dw XT_DOLITERAL
-  .dw usart0_tx_in
+  .dw usart_tx_in
   .dw XT_CFETCH        ; ( -- c tx_in)
   .dw XT_1PLUS
   .dw XT_DOLITERAL
-  .dw usart0_tx_mask
+  .dw usart_tx_mask
   .dw XT_AND           ; ( -- c tx_in_new)
   .dw XT_SWAP
   .dw XT_OVER          ; ( -- tx_in_new c tx_in_new
   .dw XT_DOLITERAL
-  .dw usart0_tx_data   ; ( -- c tx_in_new data)
+  .dw usart_tx_data   ; ( -- c tx_in_new data)
   .dw XT_PLUS
   .dw XT_CSTORE
 
   .dw XT_DOLITERAL
-  .dw usart0_tx_in
+  .dw usart_tx_in
   .dw XT_CSTORE
   ; enable interrupt
   .dw XT_DOLITERAL
@@ -46,20 +46,20 @@ PFA_TX0:
 ; ( -- f)  Hardware Access
 ; R( --)
 ; check if a character can be appended to output queue.
-VE_TX0Q:
-    .dw $ff04
-    .db "tx0?"
+VE_TXQ:
+    .dw $ff03
+    .db "tx?",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX0Q
-XT_TX0Q:
+    .set VE_HEAD = VE_TXQ
+XT_TXQ:
     .dw DO_COLON
-PFA_TX0Q:
+PFA_TXQ:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
-  .dw usart0_tx_out
+  .dw usart_tx_out
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw usart0_tx_in
+  .dw usart_tx_in
   .dw XT_CFETCH
   .dw XT_EQUAL
   .dw XT_EXIT

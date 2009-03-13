@@ -1,11 +1,11 @@
 ; this dictionary contains optional words
 ; they may be moved to the core dictionary if needed
 
-.include "drivers/usart0.asm"
+.include "drivers/usart.asm"
 
-.include "words/rx0.asm"
-.include "words/tx0.asm"
-.include "words/usart0.asm"
+.include "words/usart-rx.asm"
+.include "words/usart-tx.asm"
+.include "words/usart.asm"
 .include "words/applturnkey.asm"
 
 .include "words/udot.asm"

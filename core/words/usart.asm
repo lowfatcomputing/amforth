@@ -2,28 +2,28 @@
 
 ; ( -- v) System Value
 ; R( -- )
-; returns usart0 baudrate
-VE_BAUD0:
-  .dw $ff05
-  .db "baud0",0
+; returns usart baudrate
+VE_BAUD:
+  .dw $ff04
+  .db "baud"
   .dw VE_HEAD
-  .set VE_HEAD = VE_BAUD0
-XT_BAUD0:
+  .set VE_HEAD = VE_BAUD
+XT_BAUD:
   .dw PFA_DOVALUE
-PFA_BAUD00:          ; ( -- )
+PFA_BAUD:          ; ( -- )
   .dw 12
 
 ; ( -- ) Hardware Access
 ; R( --)
-; initialize usart0
-VE_USART0:
-  .dw $ff07
-  .db "+usart0",0
+; initialize usart
+VE_USART:
+  .dw $ff06
+  .db "+usart"
   .dw VE_HEAD
-  .set VE_HEAD = VE_USART0
-XT_USART0:
+  .set VE_HEAD = VE_USART
+XT_USART:
   .dw DO_COLON
-PFA_USART0:          ; ( -- )
+PFA_USART:          ; ( -- )
 
   .dw XT_DOLITERAL
   .dw USART_B_VALUE
@@ -49,12 +49,12 @@ PFA_USART0:          ; ( -- )
 
   .dw XT_ZERO
   .dw XT_DOLITERAL
-  .dw usart0_tx_in
+  .dw usart_tx_in
   .dw XT_STORE
 
   .dw XT_ZERO
   .dw XT_DOLITERAL
-  .dw usart0_rx_in
+  .dw usart_rx_in
   .dw XT_STORE
 
   .dw XT_EXIT
@@ -62,35 +62,35 @@ PFA_USART0:          ; ( -- )
 ; ( -- ) Hardware Access
 ; R( --)
 ; calculate the baudrate register value
-VE_TOUSART0:
-  .dw $ff07
-  .db ">usart0",0
+VE_TOUSART:
+  .dw $ff06
+  .db ">usart"
   .dw VE_HEAD
-  .set VE_HEAD = VE_TOUSART0
-XT_TOUSART0:
+  .set VE_HEAD = VE_TOUSART
+XT_TOUSART:
   .dw DO_COLON
-PFA_TOUSART0:          ; ( -- )
+PFA_TOUSART:          ; ( -- )
 
   .dw XT_DOLITERAL
-  .dw XT_TX0
+  .dw XT_TX
   .dw XT_DOLITERAL
   .dw XT_EMIT
   .dw XT_DEFERSTORE
 
   .dw XT_DOLITERAL
-  .dw XT_TX0Q
+  .dw XT_TXQ
   .dw XT_DOLITERAL
   .dw XT_EMITQ
   .dw XT_DEFERSTORE
 
   .dw XT_DOLITERAL
-  .dw XT_RX0
+  .dw XT_RX
   .dw XT_DOLITERAL
   .dw XT_KEY
   .dw XT_DEFERSTORE
 
   .dw XT_DOLITERAL
-  .dw XT_RX0Q
+  .dw XT_RXQ
   .dw XT_DOLITERAL
   .dw XT_KEYQ
   .dw XT_DEFERSTORE
