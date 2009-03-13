@@ -84,6 +84,6 @@
 .org $02C
 	 rcall isr ; LCD Start of Frame
 mcustring:
-	.dw 09
+	.dw 9
 	.db "ATmega169",0
 .set codestart=pc
