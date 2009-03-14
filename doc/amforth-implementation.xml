@@ -179,6 +179,7 @@
                     .
                 </para>
                 <para>
+            	    The control stack commands
                     <command>CS-ROLL</command>
                     ,
                     <command>CS-PICK</command>
@@ -193,9 +194,9 @@
                 </para>
                 <para>
                     <command>FORGET</command>
-                    is implemented but does not fully reset the
-                    dictionary state. The better way is using
-                    <command>MARKER</command>
+                    is not implemented since it would be nearly impossible to
+                    reset the search order word list with reasonable efforts.
+                    The better way is using <command>MARKER</command>
                     from the library.
                 </para>
                 <para>An EDITOR is not implemented.</para>
@@ -215,6 +216,13 @@
 		    in the order search list. This limit can be changed at compile time in the
 		    application definition file.
                 </para>
+                
+                <para>
+                    The search order is stored in EEPROM. While there can be any number
+                    of word lists, at every moment there can be at most 8 active ones. This
+                    limit can be changed at compile time with the NUMWORDLISTS setting in
+                    the application definition file.
+                </para>
             </sect2>
             <sect2 id="ANS_STRING">
                 <title>Strings</title>
@@ -222,6 +230,8 @@
                     <command>SLITERAL</command>
                     ,
                     <command>CMOVE></command>
+                    ,
+                    <command>CMOVE</command>
                     and
                     <command>/STRING</command>
                     are implemented.
@@ -230,8 +240,6 @@
                     <command>-TRAILING</command>
                     ,
                     <command>BLANK</command>
-                    ,
-                    <command>CMOVE</command>
                     ,
                     <command>COMPARE</command>
                     and
@@ -289,7 +297,7 @@
                     amforth provides wrapper words for the
                     microcontroller instructions
                     <command>SLEEP</command>
-                    and
+		    and
                     <command>WDR</command>
                     (watch dog reset). To work properly, the MCU needs
                     more configuration. amforth itself does not call
@@ -386,8 +394,7 @@
                     The predefined words use an interrupt driven IO with
                     a buffer for input and output. They do not implement
                     a handshake procedure (XON/XOFF or CTS/RTS). The
-                    default terminal device is USART0 (if more than one
-                    USART port is available).
+                    default terminal device is selected at compile time.
                 </para>
                 <para>
                     These basic words include a call to the
@@ -419,7 +426,7 @@
                     Strings are stored as counted strings with a 16 bit
 		    counter value (1 flash cell)
                     Strings in flash are compressed: two consecutive
-                    bytes are placed into one flash cell. The standard
+            	    characters (bytes) are placed into one flash cell. The standard
                     word
                     <command>S"</command>
                     copies the string from the RAM into flash using the
