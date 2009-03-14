@@ -88,3 +88,4 @@
 .include "words/byteswap.asm"
 .include "words/up.asm"
 .include "words/s_to_d.asm"
+.include "words/not.asm"

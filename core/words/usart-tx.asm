@@ -61,5 +61,6 @@ PFA_TXQ:
   .dw XT_DOLITERAL
   .dw usart_tx_in
   .dw XT_CFETCH
-  .dw XT_EQUAL
+  .dw XT_GREATER
+  .dw XT_NOT
   .dw XT_EXIT

@@ -8,7 +8,7 @@
 .org pc_
 
 ; sizes have to be powers of 2!
-.equ usart_tx_size = $4
+.equ usart_tx_size = $10
 .equ usart_tx_mask = usart_tx_size - 1
 
 .set usart_tx_in = heap
