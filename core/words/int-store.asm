@@ -9,7 +9,6 @@ VE_INTSTORE:
 XT_INTSTORE:
     .dw DO_COLON
 PFA_INTSTORE:
-    .dw XT_2STAR
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS

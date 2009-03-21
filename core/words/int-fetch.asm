@@ -9,7 +9,6 @@ VE_INTFETCH:
 XT_INTFETCH:
     .dw DO_COLON
 PFA_INTFETCH:
-    .dw XT_2STAR
     .dw XT_DOLITERAL
     .dw intvec
     .dw XT_PLUS
