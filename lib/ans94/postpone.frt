@@ -10,5 +10,5 @@
 	, exit 
     then
     drop
-    [ base @ decimal ] -13 [ base ! ] throw 
+    -&13 throw 
 ; immediate
