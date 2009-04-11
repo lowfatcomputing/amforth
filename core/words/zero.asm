@@ -11,6 +11,5 @@ XT_ZERO:
 PFA_ZERO:
     savetos
 PFA_ZERO1:
-    clr tosl
-    clr tosh
+    movw tosl, zerol
     rjmp DO_NEXT
