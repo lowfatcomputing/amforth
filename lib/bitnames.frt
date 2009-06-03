@@ -132,5 +132,15 @@ hex
   then
 ; 
 
+\ disable the pull up resistor
+: pin_highZ ( pinmask portaddr -- )
+  over over pin_input low
+;
 
-\ finis
+
+\ enable the pull up resistor
+: pin_pullup_on ( pinmask portaddr -- )
+  over over pin_input high
+;
+
+
