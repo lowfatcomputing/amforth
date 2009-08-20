@@ -20,5 +20,6 @@ PFA_RECURSE:
     .dw XT_1PLUS
     .dw XT_PLUS
     .dw XT_1PLUS
+    .dw XT_1PLUS
     .dw XT_COMMA
     .dw XT_EXIT
