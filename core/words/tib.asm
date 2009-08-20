@@ -11,4 +11,4 @@ XT_TIB:
 PFA_TIB:
     .set TIB = heap
     .set heap = heap + TIBSIZE
-    .dw 14
+    .dw EE_TIB

@@ -17,7 +17,7 @@ PFA_SET_ORDER:
     .dw PFA_SET_ORDER0
 	.dw XT_DROP
 	.dw XT_DOLITERAL
-	.dw FORTHWORDLIST
+	.dw EE_FORTHWORDLIST
 	.dw XT_DOLITERAL
 	.dw 1
 PFA_SET_ORDER0:
@@ -30,7 +30,7 @@ PFA_SET_ORDER1:
     .dw XT_I
     .dw XT_2STAR
     .dw XT_DOLITERAL
-    .dw ORDERLIST
+    .dw EE_ORDERLIST
     .dw XT_PLUS
     .dw XT_ESTORE
     .dw XT_DOLOOP
@@ -39,7 +39,7 @@ PFA_SET_ORDER2:
     .dw XT_DOLITERAL
     .dw -1
     .dw XT_DOLITERAL
-    .dw ORDERLIST
+    .dw EE_ORDERLIST
     .dw XT_R_FROM
     .dw XT_2STAR
     .dw XT_PLUS

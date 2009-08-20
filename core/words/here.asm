@@ -9,4 +9,4 @@ VE_HERE:
 XT_HERE:
     .dw PFA_DOVALUE
 PFA_HERE:
-    .dw 2
+    .dw EE_HERE

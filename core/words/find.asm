@@ -20,7 +20,7 @@ PFA_FIND1:
     .dw XT_OVER
     .dw XT_COUNT ; ( -- addr 0 addr+1 len )
     .dw XT_DOLITERAL
-    .dw ORDERLIST
+    .dw EE_ORDERLIST
     .dw XT_I
     .dw XT_2STAR
     .dw XT_PLUS  ; ( -- addr 0 addr+1 len wid )
@@ -38,7 +38,7 @@ PFA_FIND1:
 	.dw XT_LEAVE
 PFA_FIND3:
     .dw XT_SEARCH_WORDLIST ; ( -- addr 0 [xt] flag
-    .dw XT_QDUP  
+    .dw XT_QDUP
     .dw XT_DOCONDBRANCH
     .dw PFA_FIND4
 	.dw XT_TO_R

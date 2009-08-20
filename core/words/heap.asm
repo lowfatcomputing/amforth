@@ -9,4 +9,4 @@ VE_HEAP:
 XT_HEAP:
     .dw PFA_DOVALUE
 PFA_HEAP:
-    .dw 6
+    .dw EE_HEAP

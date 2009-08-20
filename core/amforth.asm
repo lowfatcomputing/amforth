@@ -101,10 +101,13 @@ DO_INTERRUPT:
 
 .eseg
     .dw -1           ; EEPROM Address 0 should not be used
+EE_HERE:
     .dw lowflashlast ; HERE
-    .dw FORTHWORDLIST; forth-wordlist
+EE_HEAP:
     .dw heap         ; HEAP
+EE_EDP:
     .dw edp          ; EDP
+EE_TURNKEY:
     .dw XT_APPLTURNKEY  ; TURNKEY
 
 ; calculate baud rate error
@@ -115,14 +118,20 @@ DO_INTERRUPT:
 .if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
   .error "Serial line cannot be set up properly (systematic baud error too high)"
 .endif
+EE_UBRRVAL:
     .dw UBRR_VAL     ; BAUDRATE
+EE_TIB:
     .dw TIB          ; terminal input buffer
+EE_TIBSIZE:
     .dw TIBSIZE      ; and its maximum length
+EE_ENVHEAD:
     .dw VE_ENVHEAD   ; environmental queries
-FORTHWORDLIST:    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-    .dw FORTHWORDLIST; get/set-current
-ORDERLIST: ; list of wordlist id
-    .dw FORTHWORDLIST      ; get/set-order
+EE_WL_FORTH:
+    .dw EE_FORTHWORDLIST; forth-wordlist
+EE_FORTHWORDLIST:    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+    .dw EE_FORTHWORDLIST; get/set-current
+EE_ORDERLIST: ; list of wordlist id
+    .dw EE_FORTHWORDLIST      ; get/set-order
     .dw -1
     .dw -1
     .dw -1

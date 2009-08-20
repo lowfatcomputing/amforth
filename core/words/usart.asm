@@ -11,7 +11,7 @@ VE_BAUD:
 XT_BAUD:
   .dw PFA_DOVALUE
 PFA_BAUD:          ; ( -- )
-  .dw 12
+  .dw EE_UBRRVAL
 
 ; ( -- ) Hardware Access
 ; R( --)

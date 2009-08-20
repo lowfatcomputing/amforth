@@ -7,19 +7,19 @@ VE_GET_ORDER:
     .dw VE_HEAD
     .set VE_HEAD = VE_GET_ORDER
 XT_GET_ORDER:
-    .dw DO_COLON	
+    .dw DO_COLON
 PFA_GET_ORDER:
     .dw XT_DOLITERAL
     .dw NUMWORDLISTS
     .dw XT_DUP
-    .dw XT_ZERO 
+    .dw XT_ZERO
     .dw XT_SWAP  ; ( -- numwl  0 numwl )
     .dw XT_DODO
     .dw PFA_GET_ORDER2
 PFA_GET_ORDER1:
-    ; ( widlist n) 
+    ; ( widlist n)
     .dw XT_DOLITERAL
-    .dw ORDERLIST
+    .dw EE_ORDERLIST
     .dw XT_I
     .dw XT_2STAR
     .dw XT_PLUS

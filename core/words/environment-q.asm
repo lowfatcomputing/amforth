@@ -9,7 +9,7 @@
 XT_ENVHEAD:
     .dw PFA_DOVALUE
 PFA_ENVHEAD:
-    .dw 18
+    .dw EE_ENVHEAD
 
 ; ( addr len -- [ 0 ] | [i*x -1 ) Tools
 ; R( -- )

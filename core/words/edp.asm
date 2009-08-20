@@ -9,4 +9,4 @@ VE_EDP:
 XT_EDP:
     .dw PFA_DOVALUE
 PFA_EDP:
-    .dw $08
+    .dw EE_EDP
