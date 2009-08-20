@@ -129,7 +129,9 @@ EE_ENVHEAD:
 EE_WL_FORTH:
     .dw EE_FORTHWORDLIST; forth-wordlist
 EE_FORTHWORDLIST:    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-    .dw EE_FORTHWORDLIST; get/set-current
+    .dw EE_FORTHWORDLIST
+EE_CURRENT:
+    .dw EE_FORTHWORDLIST
 EE_ORDERLIST: ; list of wordlist id
     .dw EE_FORTHWORDLIST      ; get/set-order
     .dw -1
