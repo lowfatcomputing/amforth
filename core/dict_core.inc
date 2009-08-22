@@ -9,8 +9,6 @@
 .include "words/dobranch.asm"
 .include "words/docondbranch.asm"
 
-.include "words/estore.asm"
-.include "words/efetch.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
 .include "words/dovariable.asm"
@@ -79,9 +77,6 @@
 .include "words/doplusloop.asm"
 .include "words/unloop.asm"
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/ifetch.asm"
-.include "words/istore_nrww.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 .include "words/cmove_g.asm"
