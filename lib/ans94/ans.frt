@@ -22,19 +22,33 @@
 \ flash is 2 characters
 : c, , ;
 
+: char+ 1+ ;
+: chars ;
+
 \  converts the address of the xt into the parameter field address
 : >body ( xt -- pfa )
     1+
 ;
 
+\ go from the XT backwards to get the Name field
+: xt>nfa ( xt -- nfa )
+    1- \ link address
+    \ tricky: we look for the flash cell whose address + it content & 0x00ff is
+    \ this address
+    dup 1- >r ( -- lfa)
+    begin
+	1- dup ( -- fla fla )
+	i@ $00ff and 1+ 2/ ( -- fla len )
+	over + ( fla lfa? )
+	r@ = ( fla lfa? )
+    until
+    r> drop
+;
+
+
 \ displays the value of the given address with current base
 : ? ( addr -- )
     @ . ;
-
-\ milliseconds
-: ms ( ms -- )
-    0 ?do 1ms loop
-;
 
 : tuck ( n1 n2 -- n2 n1 n2 )
   swap over 
