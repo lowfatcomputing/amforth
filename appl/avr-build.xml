@@ -1,6 +1,6 @@
 <!-- make multiple targets with antelope -->
 
-<project name="avrbuilds" basedir="." default="Help">
+<project name="Maccros and Commands for ANT" basedir="." default="Help">
         <target name="Help" description="use ant -p for more">
 	    <echo message="use ant -p for a list of available targets"/>
 	    <echo message="and the content of programmer.properties for available programmers"/>
@@ -16,9 +16,10 @@
 	       <fileset dir="." includes="*.map"/>	       
 	    </delete>
 	</target>
+	
     <macrodef name="avra">
 	<attribute name="binary"       default="avra" />
-	<attribute name="includes"     default="/home/mt/lib/avra" />
+	<attribute name="includes"     default="../../Atmel/Appnotes" />
 	<attribute name="projectname"  default="undefined"/>
 	<attribute name="amforth.core" default="../../core"/>
 	<sequential>
@@ -35,8 +36,8 @@
 
     <macrodef name="avrasm2">
 	<attribute name="binary"       default="wine" />
-	<attribute name="avrasm"       default="/home/mt/lib/avr/avrasm2.exe"/>
-	<attribute name="includes"     default="/home/mt/lib/avr/include" />
+	<attribute name="avrasm"       default="../../Atmel/avrasm2.exe"/>
+	<attribute name="includes"     default="../../Atmel/Appnotes2" />
 	<attribute name="projectname"  default="undefined"/>
 	<attribute name="amforth.core" default="../../core"/>
 	<sequential>
@@ -54,7 +55,7 @@
     </macrodef>
 
     <macrodef name="avrdude">
-	<attribute name="binary"      default="avrdude" />
+	<attribute name="binary"      default="/opt/avrdude/bin/avrdude" />
 	<attribute name="port"        default="/dev/ttyS0" />
 	<attribute name="mcu"         default="m8"/>
 	<attribute name="type"        default="avr910"/>
@@ -62,12 +63,34 @@
 	<attribute name="eepromfile"  default=""/>
 	<sequential>
 	    <exec executable="@{binary}" spawn="false" failonerror="true">
-	        <arg line="-c @{type}"/>
+	    <arg line="-c @{type}"/>
+		<arg line="-p @{mcu}"/>
+		<arg line="-P @{port}"/>
+		<arg line="-e"/> 
+		<arg line="-U flash:w:@{flashfile}"/>
+		<arg line="-U eeprom:w:@{eepromfile}"/>
+		<arg line="-v"/>
+	    </exec>
+	</sequential>
+    </macrodef>
+
+    <macrodef name="avrdude-2fuses">
+	<attribute name="binary"      default="avrdude" />
+	<attribute name="port"        default="/dev/ttyS0" />
+	<attribute name="mcu"         default="m8"/>
+	<attribute name="type"        default="avr910"/>
+	<attribute name="hfuse"       default="0xnn"/>
+	<attribute name="lfuse"       default="0xnn"/>
+	<sequential>
+	    <exec executable="@{binary}" spawn="false" failonerror="true">
+	    <arg line="-c @{type}"/>
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
 		<arg line="-e"/>
-		<arg line="-U eeprom:w:@{eepromfile}"/>
-		<arg line="-U flash:w:@{flashfile}"/>
+		<srg line="-B 24"/>
+		<!-- $(AVRDUDE) $(USB) -p $(MCU) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m -->
+		<arg line="-U hfuse:w:@{hfuse}:m"/>
+		<arg line="-U lfuse:w:@{lfuse}:m"/>
 		<arg line="-v"/>
 	    </exec>
 	</sequential>
