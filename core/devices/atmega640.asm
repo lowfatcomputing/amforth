@@ -25,6 +25,8 @@
   .equ PE = UPE3
   .equ UDRIE = UDRIE3
 
+; size of program counter in bytes
+.equ pclen = 2
 
 .macro jmp_
 	jmp @0

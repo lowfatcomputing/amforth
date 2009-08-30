@@ -18,6 +18,8 @@
   .equ PE0  = UPE0
 
   .equ SPMEN = SELFPRGEN
+; size of program counter in bytes
+.equ pclen = 2
 
 .macro jmp_
 	rjmp @0

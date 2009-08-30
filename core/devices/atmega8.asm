@@ -18,6 +18,8 @@
   .equ SPMCSR = SPMCR
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
+; size of program counter in bytes
+.equ pclen = 2
 
 .macro jmp_
 	rjmp @0

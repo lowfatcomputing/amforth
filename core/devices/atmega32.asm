@@ -24,6 +24,9 @@
   .equ RWWSRE = ASRE
   .equ RWWSB  = ASB
 
+; size of program counter in bytes
+.equ pclen = 2
+
 .macro jmp_
 	jmp @0
 .endmacro

@@ -9,6 +9,9 @@
   .equ intvecsize = 2
   .equ amforth_interpreter = $f000
 
+; size of program counter in bytes
+.equ pclen = 2
+
 .macro jmp_
     jmp @0
 .endmacro

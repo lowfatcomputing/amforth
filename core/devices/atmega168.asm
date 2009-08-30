@@ -22,6 +22,8 @@
   .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
 
   .equ SPMEN = SELFPRGEN
+; size of program counter in bytes
+.equ pclen = 2
 
 .macro jmp_
 	jmp @0

@@ -18,10 +18,10 @@ amforthstart:
     movw upl, zl
     ; init return stack pointer
     ldi temp0,low(rstackstart)
-    out SPL,temp0
+    out_ SPL,temp0
     std Z+4, temp0
     ldi temp1,high(rstackstart)
-    out SPH,temp1
+    out_ SPH,temp1
     std Z+5, temp1
 
     ; init parameter stack pointer
@@ -56,6 +56,9 @@ DO_DODOES:
     movw tosl, wl
     adiw tosl, 1
     ; the following takes the address from a real uC-call
+.if (pclen==3)
+    pop wh ; some 128K Flash devices use 3 cells for call/ret
+.endif
     pop wh
     pop wl
 
@@ -97,6 +100,7 @@ DO_INTERRUPT:
 .include "dict_core.inc"
 .include "dict_appl_core.inc"
 
+
 .set flashlast = pc
 
 .eseg
@@ -128,10 +132,10 @@ EE_ENVHEAD:
     .dw VE_ENVHEAD   ; environmental queries
 EE_WL_FORTH:
     .dw EE_FORTHWORDLIST; forth-wordlist
-EE_FORTHWORDLIST:    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-    .dw EE_FORTHWORDLIST
 EE_CURRENT:
     .dw EE_FORTHWORDLIST
+EE_FORTHWORDLIST:
+    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
 EE_ORDERLIST: ; list of wordlist id
     .dw EE_FORTHWORDLIST      ; get/set-order
     .dw -1
