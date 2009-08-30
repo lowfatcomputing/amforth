@@ -37,6 +37,7 @@ PFA_USART:          ; ( -- )
   .dw USART_C
   .dw XT_CSTORE
 
+  .dw XT_BAUD
   .dw XT_DUP
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL
@@ -46,17 +47,8 @@ PFA_USART:          ; ( -- )
   .dw BAUDRATE_LOW
   .dw XT_CSTORE
 
-
-  .dw XT_ZERO
-  .dw XT_DOLITERAL
-  .dw usart_tx_in
-  .dw XT_STORE
-
-  .dw XT_ZERO
-  .dw XT_DOLITERAL
-  .dw usart_rx_in
-  .dw XT_STORE
-
+  .dw XT_USART_INIT_RX
+  .dw XT_USART_INIT_TX
   .dw XT_EXIT
 
 ; ( -- ) Hardware Access

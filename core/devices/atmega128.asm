@@ -44,7 +44,8 @@
   .equ USART_C = UCSR0C
   .equ USART_B = UCSR0B
   .equ USART_A = UCSR0A
-
+  .equ USART_DATA = UDR0
+  
   .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
   

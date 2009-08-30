@@ -13,17 +13,18 @@
   .equ USART_C = UCSR0C
   .equ USART_B = UCSR0B
   .equ USART_A = UCSR0A
+  .equ USART_DATA = UDR0
 
   .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
   .equ USART_C_VALUE = (3<<UCSZ00)
 
   .equ URXCaddr = URXC0addr
   .equ UDREaddr = UDRE0addr
-  .equ UDR = UDR0
   .equ FE = FE0
   .equ DOR = DOR0
   .equ PE = UPE0
   .equ UDRIE = UDRIE0
+  .equ UDRE  = UDRE0
 
 ; size of program counter in bytes
 .equ pclen = 2
