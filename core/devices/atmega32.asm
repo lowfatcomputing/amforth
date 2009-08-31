@@ -22,8 +22,9 @@
   .equ SPMCSR = SPMCR
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
-  .equ RWWSRE = ASRE
-  .equ RWWSB  = ASB
+
+;  .equ RWWSRE = ASRE
+;  .equ RWWSB  = ASB
 
 ; size of program counter in bytes
 .equ pclen = 2
@@ -87,6 +88,6 @@
 .org $28
 	 rcall isr ; Store Program Memory Ready
 mcustring:
-	.dw 08
+	.dw 8
 	.db "ATmega32"
 .set codestart=pc

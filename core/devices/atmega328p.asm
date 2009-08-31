@@ -11,6 +11,7 @@
   .equ DOR = DOR0
   .equ PE = UPE0
   .equ UDRIE = UDRIE0
+  .equ UDRE  = UDRE0
 
   .equ BAUDRATE_LOW = UBRR0L
   .equ BAUDRATE_HIGH = UBRR0H
@@ -23,6 +24,7 @@
   .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
 
   .equ SPMEN = SELFPRGEN
+  .equ WDTCR = WDTCSR
 ; size of program counter in bytes
 .equ pclen = 2
 

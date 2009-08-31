@@ -61,10 +61,10 @@
 	 rcall isr ; Timer/Counter0 Overflow
 .org $00A
 	 rcall isr ; Serial Transfer Complete
-.org $00B
-	 rcall isr ; USART, Rx Complete
-.org $00C
-	 rcall isr ; USART Data Register Empty
+;.org $00B
+;	 rcall isr ; USART, Rx Complete
+;.org $00C
+;	 rcall isr ; USART Data Register Empty
 .org $00D
 	 rcall isr ; USART, Tx Complete
 .org $00E

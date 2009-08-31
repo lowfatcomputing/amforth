@@ -24,7 +24,7 @@
   .equ DOR = DOR3
   .equ PE = UPE3
   .equ UDRIE = UDRIE3
-
+  .equ UDRE  = UDRE3
 ; size of program counter in bytes
 .equ pclen = 2
 

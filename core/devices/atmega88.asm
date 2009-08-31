@@ -75,10 +75,10 @@
 	 rcall isr ; Timer/Couner0 Overflow
 .org $011
 	 rcall isr ; SPI Serial Transfer Complete
-.org $012
-	 rcall isr ; USART Rx Complete
-.org $013
-	 rcall isr ; USART, Data Register Empty
+;.org $012
+;	 rcall isr ; USART Rx Complete
+;.org $013
+;	 rcall isr ; USART, Data Register Empty
 .org $014
 	 rcall isr ; USART Tx Complete
 .org $015
