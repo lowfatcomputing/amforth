@@ -20,10 +20,10 @@ EFUSE=0xnn
 
 # some programs
 AVRDUDE=avrdude
-AVRA=avra -I ~/lib/avra
 INCLUDE=-I $(AMFORTH)
 
-AVRASM=wine ~/lib/avr/avrasm2.exe -I ~/lib/avr/include
+AVRA=avra -I ../../Atmel/Appnotes
+AVRASM=wine ../../Atmel/avrasm2.exe -I ../../Atmel/Appnotes2
 
 # some settings
 USB=-c avr911  -P /dev/ttyUSB3
@@ -35,6 +35,7 @@ template: template.hex
 
 template.hex: template.asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
 	$(AVRA) $(INCLUDE) --listmac -l template.lst -m template.map template.asm
+#	$(AVRASM) $(INCLUDE) -fI -v0 -e template.eep.hex -l template.lst template.asm
 
 template.back:
 	$(AVRDUDE) $(USB) -p $(MCU)  -U flash:r:template.hex:i -U eeprom:r:template.eep.hex:i

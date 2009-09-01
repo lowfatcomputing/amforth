@@ -7,8 +7,8 @@ AMFORTH=../../core
 # some programs
 AVRDUDE=avrdude
 
-AVRA=avra -I ~/lib/avra
-AVRASM=wine ~/lib/avr/avrasm2.exe -I ~/lib/avr/include
+AVRA=avra -I ../../Atmel/Appnotes
+AVRASM=wine ../../Atmel/avrasm2.exe -I ../../Atmel/Appnotes2
 
 INCLUDE=-I $(AMFORTH)
 

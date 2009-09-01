@@ -32,5 +32,10 @@
 .equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
+; the size in bytes of the program counter 
+; it's 2 for devices with up to and including 
+; 128KB addressable flash, 3 otherwise.
+.equ pclen = 2
+
 ; include the whole source tree.
 .include "amforth.asm"

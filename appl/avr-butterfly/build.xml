@@ -4,7 +4,7 @@
     <import file="../avr-build.xml"/>
     <target name="bf.hex" description="Hexfiles for AVR Butterfly">
         <echo>Producing Hexfiles</echo>
-        <avrasm2 projectname="bf"/>
+        <avraasm2 projectname="bf"/>
     </target>
 
     <target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">

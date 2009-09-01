@@ -6,7 +6,7 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $1C00 
+.equ max_dict_addr = $1BFF
   .equ BAUDRATE_LOW = UBRR0L
   .equ BAUDRATE_HIGH = UBRR0H
   .equ USART_C = UCSR0C
@@ -24,6 +24,10 @@
 
 ; size of program counter in bytes
 .equ pclen = 2
+
+.if !defined NRWW_START_ADDR
+    .equ NRWW_START_ADDR = LARGEBOOTSTART
+.endif
 
 .macro jmp_
 	jmp @0

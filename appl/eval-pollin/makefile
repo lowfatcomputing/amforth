@@ -3,11 +3,10 @@
 # AMFORTH=../../releases/2.0
 AMFORTH=../../core
 AVRDUDE=avrdude
-AVRA=avra -I ~/lib/avra
-MCU=atmega644
 INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
 
-AVRASM=wine ~/lib/avr/avrasm2.exe -I ~/lib/avr/include
+AVRA=avra -I ../../Atmel/Appnotes
+AVRASM=wine ../../Atmel/avrasm2.exe -I ../../Atmel/Appnotes2
 
 USB=-c avr911  -P /dev/ttyUSB1
 PP=-c stk200  -P /dev/parport0
@@ -31,7 +30,7 @@ p8.hex: p8.asm $(AMFORTH)/*.asm $(AMFORTH)/*.inc $(AMFORTH)/words/*.asm $(AMFORT
 	$(AVRA) $(INCLUDE) --listmac -l p8.lst -m p8.map p8.asm
 
 p8.back:
-	$(AVRDUDE) $(PP) -p atmega168  -U flash:r:p8.hex:i -U eeprom:r:p8.eep.hex:i
+	$(AVRDUDE) $(PP) -p atmega16  -U flash:r:p8.hex:i -U eeprom:r:p8.eep.hex:i
 
 p12: p12.hex
 	$(AVRDUDE) $(JDRG) -p atmega644 -e -U flash:w:p12.hex:i -U eeprom:w:p12.eep.hex:i
