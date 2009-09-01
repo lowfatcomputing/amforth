@@ -15,11 +15,11 @@ PFA_RX:
   .dw XT_DOLITERAL
   .dw usart_rx_out
   .dw XT_CFETCH
+  .dw XT_DUP
   .dw XT_1PLUS
   .dw XT_DOLITERAL
   .dw usart_rx_mask
   .dw XT_AND
-  .dw XT_DUP
   .dw XT_DOLITERAL
   .dw usart_rx_out
   .dw XT_CSTORE

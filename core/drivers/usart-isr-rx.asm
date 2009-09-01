@@ -28,16 +28,17 @@ usart_rx_isr:
   push zl
   push zh
 
-  in_ xh, USART_DATA
+  lds xh, USART_DATA
   lds xl,usart_rx_in
-  inc xl
-  andi xl,usart_rx_mask
-
   ldi zl, low(usart_rx_data)
   ldi zh, high(usart_rx_data)
   add zl, xl
   adc zh, zeroh
   st Z, xh
+
+  inc xl
+  andi xl,usart_rx_mask
+
   sts usart_rx_in, xl
 
 usart_rx_isr_finish:

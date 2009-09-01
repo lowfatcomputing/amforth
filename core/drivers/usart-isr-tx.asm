@@ -51,7 +51,7 @@ usart_udre_next:
   adc zh,zeroh
 usart_udre_send:
   ld xl,z
-  out_ USART_DATA,xl
+  sts USART_DATA,xl
 
 usart_udre_done:
   pop zh
