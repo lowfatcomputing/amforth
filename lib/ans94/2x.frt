@@ -58,6 +58,12 @@
 : 2!
   swap over ! cell+ ! ;
 
+: 2constant 
+    create , ,
+    does>
+    dup i@ swap 1+ i@ swap
+;
+
 \ m+ ( d1 n -- d2 )
 : m+ s>d d+ ;
 
