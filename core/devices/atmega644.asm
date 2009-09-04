@@ -15,9 +15,6 @@
   .equ USART_A = UCSR0A
   .equ USART_DATA = UDR0
 
-  .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART_C_VALUE = (3<<UCSZ00)
-
   .equ URXCaddr = URXC0addr
   .equ UDREaddr = UDRE0addr
   .equ FE = FE0

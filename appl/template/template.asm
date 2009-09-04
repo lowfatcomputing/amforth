@@ -19,6 +19,15 @@
 ; initial baud rate of terminal
 .equ BAUD = 9600
 
+; initial values for the usart contral registers
+; turn on both receiver and sender, if you
+; want the receiver interrupt comment out the
+; receiver interrupt flag too
+.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN);  | (1<<RXCIE)
+; 8N1 settings
+.equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+
+; some internals, never make them less
 .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64 ; ANS94 needs at least 80 characters per line
 .equ USERSIZE = 24  ; size of user area in bytes, at least 24

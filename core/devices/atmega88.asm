@@ -14,9 +14,6 @@
   .equ USART0_A = UCSR0A+$20
   .equ USART_DATA = UDR+$20
 
-  .equ USART0_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-  .equ USART0_C_VALUE = (1<<UMSEL00)|(3<<UCSZ00)
-
   .equ PE0  = UPE0
 
   .equ SPMEN = SELFPRGEN

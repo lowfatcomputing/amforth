@@ -15,8 +15,6 @@
   .equ USART_A = UCSRA+$20
   .equ USART_DATA = UDR+$20
 
-  .equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
-  .equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
 ; size of program counter in bytes
 .equ pclen = 2
 
