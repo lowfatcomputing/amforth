@@ -1,6 +1,6 @@
 ; (c -- ) Hardware Access
 ; R( --)
-; put 1 character into output queue, wait if needed, enable UDRIE interrupt
+; check availability and send one character to the terminal.
 VE_TX:
     .dw $ff02
     .db "tx"

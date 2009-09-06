@@ -1,6 +1,6 @@
 ; (c -- ) Hardware Access
 ; R( --)
-; put 1 character into output queue, wait if needed, enable UDRIE interrupt
+; wait for one character and read it from the terminal connection
 VE_RX:
     .dw $ff02
     .db "rx"
@@ -35,7 +35,7 @@ PFA_RXQ:
   .dw USART_A
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw USART_RX_bm
+  .dw USART_RXEN_bm
   .dw XT_AND
   .dw XT_EXIT
 
