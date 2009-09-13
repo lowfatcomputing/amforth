@@ -19,7 +19,7 @@
   .equ USART_B = UCSR0B
   .equ USART_A = UCSR0A
   .equ USART_DATA = UDR0
-
+  .equ USART_RXEN_bm = 1 << RXC
   .equ SPMEN = SELFPRGEN
   .equ WDTCR = WDTCSR
 ; size of program counter in bytes

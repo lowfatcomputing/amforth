@@ -17,8 +17,9 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-.include "drivers/usart-isr-rx.asm"
-.include "words/usart-rx-isr.asm"
+;.include "drivers/usart-isr-rx.asm"
+;.include "words/usart-rx-isr.asm"
+.include "words/usart-rx-poll.asm"
 
 ; use either interrupt transmit
 ;.include "drivers/usart-isr-tx.asm"

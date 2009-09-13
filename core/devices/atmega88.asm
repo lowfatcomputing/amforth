@@ -13,7 +13,7 @@
   .equ USART0_B = UCSR0B+$20
   .equ USART0_A = UCSR0A+$20
   .equ USART_DATA = UDR+$20
-
+  .equ USART_RXEN_bm = 1 << RXC
   .equ PE0  = UPE0
 
   .equ SPMEN = SELFPRGEN
