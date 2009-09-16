@@ -122,12 +122,9 @@ EE_TURNKEY:
 .if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
   .error "Serial line cannot be set up properly (systematic baud error too high)"
 .endif
+
 EE_UBRRVAL:
     .dw UBRR_VAL     ; BAUDRATE
-EE_TIB:
-    .dw TIB          ; terminal input buffer
-EE_TIBSIZE:
-    .dw TIBSIZE      ; and its maximum length
 EE_ENVHEAD:
     .dw VE_ENVHEAD   ; environmental queries
 EE_WL_FORTH:

@@ -7,8 +7,7 @@ VE_TIB:
     .dw VE_HEAD
     .set VE_HEAD = VE_TIB
 XT_TIB:
-    .dw PFA_DOVALUE
+    .dw PFA_DOVARIABLE
 PFA_TIB:
-    .set TIB = heap
+    .dw heap
     .set heap = heap + TIBSIZE
-    .dw EE_TIB
