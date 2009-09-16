@@ -14,15 +14,16 @@
   .equ USART_B = UCSRB+$20
   .equ USART_A = UCSRA+$20
   .equ USART_DATA = UDR+$20
-  .equ USART_RXEN_bm = 1 << RXC
+
 ; size of program counter in bytes
 .equ pclen = 2
 
 ; compatability definitions
-  .equ SPMCSR = SPMCR
+;  .equ SPMCSR = SPMCR
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
 
+  .equ USART_RXEN_bm = 1 << RXC
 ;  .equ RWWSRE = ASRE
 ;  .equ RWWSB  = ASB
 
@@ -85,6 +86,6 @@
 .org $028
 	 rcall isr ; Store Program Memory Ready
 mcustring:
-	.dw 08
+	.dw 8
 	.db "ATmega16"
 .set codestart=pc

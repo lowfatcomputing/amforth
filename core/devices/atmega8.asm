@@ -75,6 +75,6 @@
 .org $012
 	 rcall isr ; Store Program Memory Ready
 mcustring:
-	.dw 07
+	.dw 7
 	.db "ATmega8",0
 .set codestart=pc
