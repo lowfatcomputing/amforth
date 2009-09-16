@@ -8,8 +8,6 @@
 
 .include "words/g_in.asm"
 .include "words/sharptib.asm"
-.include "words/tib.asm"
-.include "words/tibsize.asm"
 .include "words/pad.asm"
 .include "words/emit.asm"
 .include "words/emitq.asm"
@@ -130,4 +128,6 @@
 .include "words/dnegate.asm"
 .include "words/cmove.asm"
 .include "words/d-2slash.asm"
-.include "words/1ms.asm"
+
+.include "words/tib.asm"
+.include "words/tibsize.asm"
