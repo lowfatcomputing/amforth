@@ -9,4 +9,4 @@ VE_HANDLER:
 XT_HANDLER:
     .dw PFA_DOUSER
 PFA_HANDLER:
-    .dw 10
+    .dw USER_HANDLER

@@ -21,4 +21,4 @@ PFA_RP0:
 XT_DORP0:
     .dw PFA_DOUSER
 PFA_DORP0:
-    .dw 4
+    .dw USER_RP

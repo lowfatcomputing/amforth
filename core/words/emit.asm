@@ -9,6 +9,6 @@ VE_EMIT:
 XT_EMIT:
     .dw PFA_DODEFER
 PFA_EMIT:
-    .dw 14
+    .dw USER_EMIT
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE

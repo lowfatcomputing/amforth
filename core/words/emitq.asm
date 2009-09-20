@@ -9,6 +9,6 @@ VE_EMITQ:
 XT_EMITQ:
     .dw PFA_DODEFER
 PFA_EMITQ:
-    .dw 16
+    .dw USER_EMITQ
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE

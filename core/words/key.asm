@@ -9,6 +9,6 @@ VE_KEY:
 XT_KEY:
     .dw PFA_DODEFER
 PFA_KEY:
-    .dw 18
+    .dw USER_KEY
     .dw XT_UDEFERFETCH
     .dw XT_UDEFERSTORE

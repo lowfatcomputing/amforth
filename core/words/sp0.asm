@@ -24,7 +24,7 @@ PFA_SP0:
 XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:
-    .dw 6
+    .dw USER_SP0
 
 ; ( -- addr) Stackpointer
 ; R( -- )
@@ -37,4 +37,4 @@ VE_SP:
 XT_SP:
     .dw PFA_DOUSER
 PFA_SP:
-    .dw 8
+    .dw USER_SP

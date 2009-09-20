@@ -1,4 +1,6 @@
 
+.include "user.inc"
+
   .def zerol = r2
   .def zeroh = r3
   .def upl = r4

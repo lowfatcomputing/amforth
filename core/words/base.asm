@@ -9,4 +9,4 @@ VE_BASE:
 XT_BASE:
     .dw PFA_DOUSER
 PFA_BASE:
-    .dw 12
+    .dw USER_BASE
