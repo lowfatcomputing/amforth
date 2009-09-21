@@ -7,7 +7,7 @@
 ;    .dw VE_HEAD
 ;    .set VE_HEAD = _VE_ENVHEAD
 XT_ENVHEAD:
-    .dw PFA_DOVALUE
+    .dw PFA_DOVARIABLE
 PFA_ENVHEAD:
     .dw EE_ENVHEAD
 
