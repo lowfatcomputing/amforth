@@ -13,8 +13,6 @@
 .include "words/dotstring.asm"
 .include "words/squote.asm"
 
-.include "words/words.asm"
-
 .include "words/edefer.asm"
 .include "words/rdefer.asm"
 .include "words/is.asm"
@@ -35,3 +33,6 @@
 
 .include "words/fill.asm"
 
+.include "words/show-wordlist.asm"
+.include "words/ewords.asm"
+.include "words/words.asm"
