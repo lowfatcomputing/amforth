@@ -383,6 +383,26 @@
                     as the task control block.
                 </para>
             </sect2>
+            <sect2 id="Wordlists">
+              <title>Word Lists and Environment Queries</title>
+              <para>
+                 Wordlists and environment queries are implemented using the
+                 same structure. They are based upon the simple linked list built
+                 with <command>create</command>. The wordlist identifier is
+                 a EEPROM address that holds the starting point address for the
+                 wordlist search.
+              </para>
+              <para>
+                 Environment queries are normal colon words. They are called within
+                 <command>environment?</command> and leave there results at the data
+                 stack.
+              </para>
+              <para>
+                <command>find</command> uses an array of wordlist identifiers to
+                search for the word. This list can be accessed with 
+                <command>get-order</command> as well.
+              </para>
+            </sect2>
         </sect1>
         <sect1 id="Memory_Layout">
             <title>Memory Layout</title>
