@@ -1,16 +1,3 @@
-; ( -- faddr) System Value
-; R( -- )
-; wid of the environmental search list
-_VE_ENVHEAD:
-    .dw $ff08
-    .db "env-head"
-    .dw VE_HEAD
-    .set VE_HEAD = _VE_ENVHEAD
-XT_ENVHEAD:
-    .dw PFA_DOVARIABLE
-PFA_ENVHEAD:
-    .dw EE_ENVHEAD
-
 ; ( addr len -- [ 0 ] | [i*x -1 ) Tools
 ; R( -- )
 ; get environment
@@ -22,7 +9,7 @@ VE_ENVIRONMENTQ:
 XT_ENVIRONMENTQ:
     .dw DO_COLON
 PFA_ENVIRONMENTQ:
-    .dw XT_ENVHEAD
+    .dw XT_ENVIRONMENT
     .dw XT_SEARCH_WORDLIST ; ( -- [ 0 | xt +/-1 ] )
     .dw XT_DUP
     .dw XT_DOCONDBRANCH
@@ -32,4 +19,3 @@ PFA_ENVIRONMENTQ:
     .dw XT_R_FROM
 PFA_ENVIRONMENTQ1:
     .dw XT_EXIT
-

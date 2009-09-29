@@ -39,6 +39,7 @@
 .include "words/code.asm"
 .include "words/end-code.asm"
 
+.include "words/environment.asm"
 .include "words/environment-q.asm"
 .include "words/env-slashpad.asm"
 .include "words/env-slashhold.asm"

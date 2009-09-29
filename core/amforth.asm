@@ -125,7 +125,7 @@ EE_TURNKEY:
 
 EE_UBRRVAL:
     .dw UBRR_VAL     ; BAUDRATE
-EE_ENVHEAD:
+EE_ENVIRONMENT:
     .dw VE_ENVHEAD   ; environmental queries
 EE_WL_FORTH:
     .dw EE_FORTHWORDLIST; forth-wordlist
