@@ -11,7 +11,7 @@ XT_VER:
 PFA_VER:
     .dw XT_SLITERAL
     .dw 11
-    .db "amforth 3.6",0
+    .db "amforth 3.7",0
     .dw XT_ITYPE
     .dw XT_SPACE
     .dw XT_DOLITERAL
