@@ -1,11 +1,16 @@
 # simple makefile for building the 
 # template project. 
 
+
+# --- edit these values ------------------------------------
+# Name of your application (useful, if you rename template.asm)
+TARGET=template
+
 # versions before 2.1 may produce some warnings
 # but should produce a running system. You should
 # _always_ use the trunk.
 
-#AMFORTH=../../releases/1.8
+#AMFORTH=../../releases/3.6
 AMFORTH=../../core
 
 # the MCU should be identical to the device
@@ -18,31 +23,50 @@ HFUSE=0xnn
 # some MCU have this one, see write-fuses target below
 EFUSE=0xnn
 
-# some programs
-AVRDUDE=avrdude
-INCLUDE=-I $(AMFORTH)
+# serial port
+CONSOLE=/dev/ttyUSB0
 
-AVRA=avra -I ../../Atmel/Appnotes
-AVRASM=wine ../../Atmel/avrasm2.exe -I ../../Atmel/Appnotes2
+# directories
+DIR_ATMEL=../../Atmel
 
-# some settings
+# programms / flags
 USB=-c avr911  -P /dev/ttyUSB3
 PP=-c stk200  -P /dev/parport0
 JTAG=-c jtag2 -P /dev/ttyUSB2
+BURNER=$(USB)
+AVRDUDE=avrdude
+AVRDUDE_FLAGS=-q $(BURNER) -p $(MCU)
 
-template: template.hex
-	$(AVRDUDE) $(USB) -p $(MCU) -e -U flash:w:template.hex:i -U eeprom:w:template.eep.hex:i
+AVRA=avra -I $(DIR_ATMEL)/Appnotes
 
-template.hex: template.asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
-	$(AVRA) $(INCLUDE) --listmac -l template.lst -m template.map template.asm
-#	$(AVRASM) $(INCLUDE) -fI -v0 -e template.eep.hex -l template.lst template.asm
+AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
-template.back:
-	$(AVRDUDE) $(USB) -p $(MCU)  -U flash:r:template.hex:i -U eeprom:r:template.eep.hex:i
+# ----------------------------------------------------------
+
+INCLUDE=-I $(AMFORTH)
+
+default:  $(TARGET).hex
+
+erase:
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -e
+
+install: $(TARGET).hex
+	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
+
+upload:
+	amforth-upload.py  -t ${CONSOLE} $(TARGET).frt
+
+
+$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
+#	$(AVRA) $(INCLUDE) --listmac -l $(TARGET).lst -m $(TARGET).map $(TARGET).asm
+	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
+
+$(TARGET).back:
+	$(AVRDUDE) $(AVRDUDE_FLAGS)  -U flash:r:$(TARGET).hex:i -U eeprom:r:$(TARGET).eep.hex:i
 
 clean:
-	rm -f template.hex template.eep.hex template.lst template.map template.cof template.obj
+	rm -f $(TARGET).{hex,eep.hex,lst,map,cof,obj}
 
 write-fuse:
-	$(AVRDUDE) $(USB) -p $(MCU) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
-	# $(AVRDUDE) $(USB) -p $(MCU) -U efuse:w:$(EFUSE):m -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
+#	$(AVRDUDE) $(AVRDUDE_FLAGS) -U efuse:w:$(EFUSE):m -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
