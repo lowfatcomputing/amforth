@@ -44,6 +44,7 @@ PFA_TO_NUMBER2:
     .dw PFA_TO_NUMBER
 PFA_TO_NUMBER1:
     .dw XT_EXIT
+
 ;: >number  ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 )
 ;  \ convert double number, leaving address of first unconverted byte
 ;   begin  dup  while                  ( ud adr len )
@@ -56,9 +57,9 @@ PFA_TO_NUMBER1:
 ;   repeat                             ( ud' adr len )
 ;;
 
-; ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 ) Numeric IO
+; ( d1 d2 -- d2 d1 ) Numeric IO
 ; R( -- )
-; convert a string as long as possible
+; swaps the two top level double cells
 VE_2SWAP:
     .dw $ff05
     .db "2swap",0
