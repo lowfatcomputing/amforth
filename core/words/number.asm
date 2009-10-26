@@ -29,39 +29,21 @@ PFA_NUMBER:
 
 PFA_NUMBER0: ; ( addr len  -- )    
     .dw XT_PRAEFIX
+    .dw XT_TO_R
+    .dw XT_TO_R
     .dw XT_ZERO       ; starting value
-    .dw XT_ROT
-    .dw XT_ROT
-    .dw XT_ZERO       ; ( -- n addr' len 0)
-    .dw XT_DOQDO
-    .dw PFA_NUMBER6
-PFA_NUMBER1: ; ( -- n addr )
-    .dw XT_DUP
-    .dw XT_I
-    .dw XT_PLUS
-    .dw XT_CFETCH  ; ( -- n addr char )
-    .dw XT_BASE
-    .dw XT_FETCH
-    .dw XT_DIGITQ
-    .dw XT_EQUALZERO
-    ; check for non number characters and stop converting if found
+    .dw XT_ZERO
+    .dw XT_R_FROM
+    .dw XT_R_FROM
+    .dw XT_TO_NUMBER
     .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER3
-    .dw XT_DOLITERAL
-    .dw -13
-    .dw XT_THROW
-PFA_NUMBER3:
-    .dw XT_ROT   ; ( -- addr digit n )
-    .dw XT_BASE
-    .dw XT_FETCH
-    .dw XT_STAR
-    .dw XT_PLUS
-    .dw XT_SWAP  ; ( -- n addr )
-PFA_NUMBER4:
-    .dw XT_DOLOOP
     .dw PFA_NUMBER1
-PFA_NUMBER6:
-    .dw XT_DROP
+        .dw XT_DOLITERAL
+        .dw -13
+        .dw XT_THROW
+PFA_NUMBER1:
+    .dw XT_DROP ; remove the address
+    .dw XT_DROP ; make it a single cell value
     ; incorporate sign into number
     .dw XT_R_FROM
     .dw XT_DOCONDBRANCH
