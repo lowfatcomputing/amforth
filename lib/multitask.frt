@@ -67,13 +67,6 @@ decimal
 	allot heap     ( -- rp0 )
 	    r@ 4 + !   (  ... place it in tcb )
 	r>
-	     0   over 10 + ! \ handler
-	     16  over 12 + ! \ base
-	['] tx  over 14 + ! \ is emit
-	['] tx? over 16 + ! \ is emit?
-	['] rx  over 18 + ! \ is key
-	['] rx? over 20 + ! \ is key?
-	['] noop over 22 + ! \ is /key
 	dup task-sleep       \ make it sleep
 	1 allot \ keep heap away
 ;

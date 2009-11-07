@@ -9,6 +9,9 @@ dup alsotask   ( -- tid )
 
 variable counter 0 counter !
 : taskdemo ( tid -- )
+    0   over 10 + ! \ handler
+    16  over 12 + ! \ base
+    >usart          \ use the default terminal for IO
     activate
     begin
 	1 counter +!
