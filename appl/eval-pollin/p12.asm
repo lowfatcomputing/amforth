@@ -5,7 +5,8 @@
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
-  .equ USERSIZE = 24  ; size of user area
+  .equ APPUSERSIZE = 0  ; size of user area, application specific
+
   .equ NUMWORDLISTS = 8
   .equ amforth_interpreter = NRWW_START_ADDR
 ; cpu clock in hertz

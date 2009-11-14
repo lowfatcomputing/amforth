@@ -30,7 +30,7 @@
 ; some internals, never make them less
 .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64 ; ANS94 needs at least 80 characters per line
-.equ USERSIZE = 24  ; size of user area in bytes, at least 24
+.equ APPUSERSIZE = 0  ; size of user area, application specific in bytes
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward

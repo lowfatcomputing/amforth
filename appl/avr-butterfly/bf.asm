@@ -5,7 +5,7 @@
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ; never change
-  .equ USERSIZE = 24  ; size of user area
+  .equ APPUSERSIZE = 0  ; size of user area, application specific
 
 ; cpu clock in hertz
 .equ F_CPU = 8000000

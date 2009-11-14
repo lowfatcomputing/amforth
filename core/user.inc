@@ -23,4 +23,5 @@
 .set USER_KEYQ  = 20
 .set USER_SKEY  = 22
 
+.set SYSUSERSIZE = 24
 ; 

@@ -31,7 +31,7 @@ amforthstart:
     std Z+7, yh
 
     ; allocate space for User Area
-    .set heap = heap + USERSIZE
+    .set heap = heap + SYSUSERSIZE + APPUSERSIZE
 
     ; load Forth IP with starting word
     ldi XL, low(PFA_COLD)
