@@ -82,6 +82,7 @@
 .include "words/refill.asm"
 .include "words/char.asm"
 .include "words/number.asm"
+.include "words/to-number.asm"
 .include "words/parse.asm"
 .include "words/char-scan.asm"
 .include "words/source.asm"
