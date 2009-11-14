@@ -9,8 +9,8 @@ VE_APPLTURNKEY:
 XT_APPLTURNKEY:
     .dw DO_COLON
 PFA_APPLTURNKEY:
+    .dw XT_INITUSER
     .dw XT_USART
-    .dw XT_TOUSART
     .dw XT_INTON
     .dw XT_VER
     .dw XT_EXIT

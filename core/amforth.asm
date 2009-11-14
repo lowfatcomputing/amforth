@@ -143,6 +143,23 @@ EE_ORDERLIST: ; list of wordlist id
     .dw -1
     .dw -1
     .dw -1 ; NUMWORDLISTS + 1 entry, this entry has to be -1
+; default user area
+EE_INITUSER:
+    .dw 0  ; USER_STATE
+    .dw 0  ; USER_FOLLOWER
+    .dw rstackstart  ; USER_RP
+    .dw stackstart   ; USER_SP0
+    .dw stackstart   ; USER_SP
+    
+    .dw 0  ; USER_HANDLER
+    .dw 10 ; USER_BASE
+    
+    .dw XT_TX  ; USER_EMIT
+    .dw XT_TXQ ; USER_EMITQ
+    .dw XT_RX  ; USER_KEY
+    .dw XT_RXQ ; USER_KEYQ
+    .dw XT_NOOP ; USER_SKEY
+
 ; 1st free address in EEPROM.
 edp:
 .cseg
