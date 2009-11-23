@@ -44,7 +44,7 @@ PFA_EE2RAM_2:
 
 ; ( -- v) System Value
 ; R( -- )
-; address of the default user content in eeprom
+; copy the system user area to the current user area
 VE_INITUSER:
   .dw $ff09
   .db "init-user",0
@@ -56,7 +56,7 @@ PFA_INITUSER:          ; ( -- )
     .dw XT_EEUSER
     .dw XT_UP_FETCH
     .dw XT_DOLITERAL
-    .dw SYSUSERSIZE + APPUSERSIZE
+    .dw SYSUSERSIZE
     .dw XT_2SLASH
     .dw XT_EE2RAM
     .dw XT_EXIT
