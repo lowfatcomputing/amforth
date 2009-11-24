@@ -1,4 +1,3 @@
-
 \ testing multitasker
 \ 2009-11-13  EW
 \ Friday, the 13th  :-) 
@@ -23,10 +22,13 @@ variable N
 
 $20 $20 task  constant tid_demo \ save tid
 : demo
-  $0   over $10 + ! \ handler
-  $16  over $12 + ! \ base
+  tid_demo
+    0  over $10 + ! \ handler
+  &16  over $12 + ! \ base
+  \ use with care: parallel output from two tasks may result in 
+  \ garbage on the screen 
   >usart            \ use the default terminal for IO
-  tid_demo activate
+  activate
   job
 ;
 : run-turnkey
