@@ -12,15 +12,5 @@ PFA_LPARENTHESIS:
     .dw XT_DOLITERAL
     .dw $29
     .dw XT_WORD
-    .dw XT_COUNT
-    .dw XT_SWAP
-    .dw XT_EQUALZERO
-    .dw XT_DOCONDBRANCH
-    .dw PFA_LPARENTHESIS3
     .dw XT_DROP
-    .dw XT_REFILL
-    .dw XT_EQUALZERO
-    .dw XT_DOCONDBRANCH
-    .dw PFA_LPARENTHESIS
-PFA_LPARENTHESIS3:
     .dw XT_EXIT
