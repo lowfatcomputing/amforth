@@ -3,4 +3,3 @@
 
 .include "words/istore_nrww.asm"
 .include "words/ifetch.asm"
-

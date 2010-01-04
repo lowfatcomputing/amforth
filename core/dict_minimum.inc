@@ -131,3 +131,5 @@
 .include "words/d-2slash.asm"
 
 .include "words/tib.asm"
+
+.include "words/user-init.asm"

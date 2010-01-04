@@ -14,7 +14,7 @@
   .equ USART_B = UCSR3B
   .equ USART_A = UCSR3A
   .equ USART_DATA = UDR3
-  .equ USART_RXEN_bm = 1 << RXC
+  .equ USART_RXEN_bm = 1 << RXC3
   .equ URXCaddr = URXC3addr
   .equ UDREaddr = UDRE3addr
   .equ FE = FE3

@@ -14,7 +14,6 @@ PFA_APPLTURNKEY:
     .dw XT_INTON
     .dw XT_VER
     .dw XT_SPACE
-    .dw XT_EXIT
     .dw XT_F_CPU
     .dw XT_DOLITERAL
     .dw 1000
@@ -22,9 +21,9 @@ PFA_APPLTURNKEY:
     .dw XT_SWAP
     .dw XT_DROP
     .dw XT_DECIMAL
-    .dw XT_DROP
+    .dw XT_DOT
     .dw XT_SLITERAL
-    .dw 3
-    .db "kHz",0
+    .dw 4
+    .db "kHz "
     .dw XT_ITYPE
     .dw XT_EXIT

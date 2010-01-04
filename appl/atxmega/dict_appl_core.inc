@@ -14,9 +14,15 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-; note the x in the filename
+;.include "drivers/usart-isr-rx.asm"
+;.include "words/usart-rx-isr.asm"
 .include "words/usartx-rx-poll.asm"
+; use either interrupt transmit
+;.include "drivers/usart-isr-tx.asm"
+;.include "words/usart-tx-isr.asm"
+; or use the poll transmit
 .include "words/usartx-tx-poll.asm"
+; 
 .include "words/usartx.asm"
 
 .include "words/applturnkey.asm"
@@ -25,7 +31,8 @@
 
 .include "words/fill.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.include "drivers/atxmega_nvm.asm"
 .include "words/ifetch.asm"
-.include "words/istore_nrww.asm"
+.include "words/istore_nvm.asm"
 .include "words/estore_nvm.asm"
 .include "words/efetch_nvm.asm"

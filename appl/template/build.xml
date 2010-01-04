@@ -12,7 +12,7 @@
 		<avrdude 
 		    type="${avr.programmer.dragon}"
 		    port="${avr.programmer.dragonport}"
-		    mcu="m16"
+		    mcu="template"
 		    flashfile="template.hex"
 		    eepromfile="template.eep.hex"
 		/>

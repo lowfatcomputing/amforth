@@ -19,7 +19,7 @@
 .equ pclen = 2
 
 ; compatability definitions
-;  .equ SPMCSR = SPMCR
+  .equ SPMCSR = SPMCR
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
 
@@ -37,7 +37,7 @@
 	lsl zl
 	rol zh
 	lpm @0, Z+
-	lpm @1, Z+
+	lpm @1, Z
 .endmacro
 .macro writeflashcell
 	lsl zl

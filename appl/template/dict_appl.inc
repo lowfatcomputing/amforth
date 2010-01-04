@@ -11,13 +11,14 @@
 .include "words/dotstring.asm"
 .include "words/squote.asm"
 
+.include "words/words.asm"
+
 .include "words/edefer.asm"
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-;.include "drivers/usart-isr-rx.asm"
-;.include "words/usart-rx-isr.asm"
-.include "words/usart-rx-poll.asm"
+.include "drivers/usart-isr-rx.asm"
+.include "words/usart-rx-isr.asm"
 
 ; use either interrupt transmit
 ;.include "drivers/usart-isr-tx.asm"
@@ -31,7 +32,4 @@
 .include "words/int-store.asm"
 
 .include "dict_compiler.inc"
-
 .include "words/show-wordlist.asm"
-.include "words/ewords.asm"
-.include "words/words.asm"

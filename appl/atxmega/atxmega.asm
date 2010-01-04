@@ -1,3 +1,4 @@
+; Settings for the avr butterfly demo board
 .include "macros.asm"
 .include "devices/atxmega128a1.asm"
 
@@ -39,4 +40,4 @@
 .set OPTION_FLOWCONTROL = 1
 .set amforth_interpreter = $F000
 
-.include "amforth-low.asm"
+.include "amforth.asm"

@@ -20,8 +20,8 @@
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
 
-.equ RWWSRE = ASRE
-.equ RWWSB  = ASB
+;  .equ RWWSRE = ASRE
+;  .equ RWWSB  = ASB
 
 ; size of program counter in bytes
 .equ pclen = 2

@@ -1,23 +1,26 @@
-; Settings for the eval board with Atmega8 & 8 MHz
+; Settings for the eval board with Atmega32 & 16 MHz
 .include "macros.asm"
 .include "devices/atmega32.asm"
 
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
-  .equ APPUSERSIZE = 0  ; size of user area, application specific
+  .equ APPUSERSIZE = 0  ; size of user area
+.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN);  | (1<<RXCIE)
+.equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
 
-  .equ NUMWORDLISTS = 8
-  .set amforth_interpreter = max_dict_addr
+
 ; cpu clock in hertz
 .equ F_CPU = 16000000
 ; baud rate of terminal
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN);  | (1<<RXCIE)
-.equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
 
-.set heap = ramstart
+; size of return stack in bytes
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
+.set heap = ramstart
+.set amforth_interpreter = max_dict_addr
 
+.set NUMWORDLISTS = 8
+.set OPTION_FLOWCONTROL = 1
 .include "amforth.asm"

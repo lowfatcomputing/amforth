@@ -37,7 +37,7 @@ BURNER=$(USB)
 AVRDUDE=avrdude
 AVRDUDE_FLAGS=-q $(BURNER) -p $(MCU)
 
-AVRA=avra -I $(DIR_ATMEL)/Appnotes
+AVRA=avra -I $(DIR_ATMEL)/Appnotes2
 
 AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
