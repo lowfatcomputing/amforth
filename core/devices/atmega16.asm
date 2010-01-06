@@ -19,7 +19,9 @@
 .equ pclen = 2
 
 ; compatability definitions
+.ifndef SPMCSR
   .equ SPMCSR = SPMCR
+.endif
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
 

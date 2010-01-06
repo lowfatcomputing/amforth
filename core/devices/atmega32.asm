@@ -16,7 +16,9 @@
   .equ USART_A = UCSRA+$20
   .equ USART_DATA = UDR+$20
   .equ USART_RXEN_bm = 1 << RXC
+.ifndef SPMCSR
   .equ SPMCSR = SPMCR
+.endif
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
 

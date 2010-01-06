@@ -3,7 +3,7 @@
 ; wid of the environmental search list
 VE_ENVIRONMENT:
     .dw $ff0b
-    .db "environment"
+    .db "environment",0
     .dw VE_HEAD
     .set VE_HEAD = VE_ENVIRONMENT
 XT_ENVIRONMENT:

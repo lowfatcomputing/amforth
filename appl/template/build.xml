@@ -4,7 +4,7 @@
 
 	<target name="template.hex" description="Hexfiles for Template">
 		<echo>Producing Hexfiles</echo>
-		<avra projectname="template"/>
+		<avrasm2 projectname="template"/>
 	</target>
 
 	<target name="template" depends="template.hex" description="Template @ Template mHz">

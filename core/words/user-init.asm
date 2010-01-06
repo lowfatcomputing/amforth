@@ -3,7 +3,7 @@
 ; address of the default user content in eeprom
 VE_EEUSER:
   .dw $ff07
-  .db "ee-user"
+  .db "ee-user",0
   .dw VE_HEAD
   .set VE_HEAD = VE_EEUSER
 XT_EEUSER:
