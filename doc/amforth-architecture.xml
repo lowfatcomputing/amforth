@@ -89,12 +89,8 @@
 				be changed.</para>
 			<para> The registers from R10 to R13 are currently unused, but may be
 				used for the VM extended registers X and Y sometimes. The
-				registers
-				R14 to R21
-				are used as temporary registers and can be used
-				freely
-				within one
-				module as temp0 to temp7.</para>
+				registers R14 to R21 are used as temporary registers and can be used
+				freely within one module as temp0 to temp7.</para>
 			<para>
 				The forth core uses the
 				<code>T</code>
@@ -381,6 +377,13 @@
                     status and the link to the next entry in the task
                     list. In that situation the user area is/can be seen
                     as the task control block.
+                </para>
+		<para>
+		    Beginning with release 3.7 the USER area has been split
+		    into two parts. The first one called system user area contains
+                    all the variabled described above. The second one is the application
+                    user area that contains all variabled defined with the USER command.
+		    The default application user area is empty and by default of size zero.
                 </para>
             </sect2>
             <sect2 id="Wordlists">

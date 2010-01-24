@@ -3,7 +3,7 @@
         <sect1 id="ANS">
             <title>ANS Words</title>
             <para>
-            amforth is not fully ANS94 compatible. The main difference comes from
+            amforth is close to the ANS94 Forth standard. The main difference comes from
             the fact that the AVR ATmegas use a Havard architecture (separate code and
             data address space) that amforth does not hide. amforth gives full and unmodified
             access to the whole address space.  
@@ -53,7 +53,8 @@
                 <para>
                     Double cell numbers work as expected. Not all words
                     are implemented. Entering them directly using the
-                    dot- notation does not work however.
+                    dot- notation work for dots at the end of the number, 
+                    not if the dot is somewhere within it.
                 </para>
             </sect2>
             <sect2 id="ANS_EXCEPTION">
@@ -88,7 +89,7 @@
                 <para>
                     The word
                     <command>MS</command>
-                    can implemented with the word
+                    is implemented with the word
                     <command>1MS</command>
                     which busy waits almost exactly 1 millisecond. The
                     calculation is based upon the frequency specified at
@@ -373,7 +374,7 @@
             <sect2 id="AMFORTH_IO">
                 <title>Input Output</title>
                 <para>
-                    amforth uses simple terminal IO. A serial console is
+                    amforth uses character terminal IO. A serial console is
                     used. All IO is based upon the standard words
                     <command>EMIT</command>
                     /
@@ -382,7 +383,7 @@
                     <command>KEY</command>
                     /
                     <command>KEY?</command>
-                    . In addition the word
+                    . Additionally the word
                     <command>/KEY</command>
                     is used to signal the sender to stop. All these
                     words are deferred words in the USER area and can be
