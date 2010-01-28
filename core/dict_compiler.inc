@@ -3,6 +3,7 @@
 .include "words/g_resolve.asm"
 .include "words/l_mark.asm"
 .include "words/l_resolve.asm"
+; .include "words/qpairs.asm"
 
 .include "words/if.asm"
 .include "words/else.asm"

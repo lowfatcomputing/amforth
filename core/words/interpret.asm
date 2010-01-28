@@ -10,6 +10,7 @@ XT_INTERPRET:
     .dw DO_COLON
 PFA_INTERPRET:
 PFA_INTERPRET1:
+    .dw XT_QSTACK
     .dw XT_BL
     .dw XT_WORD
     .dw XT_DUP
