@@ -99,6 +99,7 @@
 .include "words/rp0.asm"
 .include "words/depth.asm"
 .include "words/interpret.asm"
+.include "words/qstack.asm"
 .include "words/ver.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/noop.asm"
