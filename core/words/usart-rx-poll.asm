@@ -37,6 +37,9 @@ PFA_RXQ:
   .dw XT_DOLITERAL
   .dw USART_RXEN_bm
   .dw XT_AND
+  .dw XT_DOLITERAL
+  .dw USART_RXEN_bm
+  .dw XT_EQUAL
   .dw XT_EXIT
 
 ; ( -- ) Hardware Access
