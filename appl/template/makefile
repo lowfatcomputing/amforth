@@ -26,7 +26,7 @@ EFUSE=0xnn
 # serial port
 CONSOLE=/dev/ttyUSB0
 
-# directories
+# additional directory for includes from Atmel Studio, not re-distributed!
 DIR_ATMEL=../../Atmel
 
 # programms / flags
@@ -50,23 +50,23 @@ default:  $(TARGET).hex
 erase:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -e
 
-install: $(TARGET).hex
+upload: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
-upload:
-	amforth-upload.py  -t ${CONSOLE} $(TARGET).frt
-
-
+# assembling the sources, either avra or avrasm
 $(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
 #	$(AVRA) $(INCLUDE) --listmac -l $(TARGET).lst -m $(TARGET).map $(TARGET).asm
 	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 
+# getting the image back from the controller
 $(TARGET).back:
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -U flash:r:$(TARGET).hex:i -U eeprom:r:$(TARGET).eep.hex:i
 
+# remove generated files
 clean:
 	rm -f $(TARGET).{hex,eep.hex,lst,map,cof,obj}
 
+# some controller types have three fuse bytes, some only two of them
 write-fuse:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
 #	$(AVRDUDE) $(AVRDUDE_FLAGS) -U efuse:w:$(EFUSE):m -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
