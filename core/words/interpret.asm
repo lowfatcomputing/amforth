@@ -48,15 +48,14 @@ PFA_INTERPRET5:
     ; check state
     .dw XT_STATE
     .dw XT_FETCH
-    .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET7
-    ; state is zero, execute xt
-    .dw XT_EXECUTE
+    .dw XT_COMMA
     .dw XT_DOBRANCH
     .dw PFA_INTERPRET8
 PFA_INTERPRET7:
-    .dw XT_COMMA
+    ; state is zero, execute xt
+    .dw XT_EXECUTE
 PFA_INTERPRET8:
 PFA_INTERPRET6:
 PFA_INTERPRET3:
