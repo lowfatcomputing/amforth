@@ -21,31 +21,18 @@ PFA_INTERPRET1:
 
     .dw XT_FIND
     .dw XT_QDUP
-    .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH 
     .dw PFA_INTERPRET2
-    .dw XT_NUMBER
-    .dw XT_STATE
-    .dw XT_FETCH
-    .dw XT_DOCONDBRANCH
-    .dw PFA_INTERPRET9
-        .dw XT_COMPILE
-        .dw XT_DOLITERAL
-        .dw XT_COMMA
-PFA_INTERPRET9:
-        .dw XT_DOBRANCH
-        .dw PFA_INTERPRET3
-PFA_INTERPRET2:
-    ; either compile or execute
+    ; either compile or execute the XT
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET5
-    ; flag was 1: always execute
+    ; flag is 1: always execute
     .dw XT_EXECUTE
     .dw XT_DOBRANCH
     .dw PFA_INTERPRET6
 PFA_INTERPRET5:
-    ; check state
+    ; check state 
     .dw XT_STATE
     .dw XT_FETCH
     .dw XT_DOCONDBRANCH
@@ -58,6 +45,19 @@ PFA_INTERPRET7:
     .dw XT_EXECUTE
 PFA_INTERPRET8:
 PFA_INTERPRET6:
+    .dw XT_DOBRANCH
+    .dw PFA_INTERPRET3
+PFA_INTERPRET2:
+    ; try converting to a number
+    .dw XT_NUMBER ; may throw an exception
+    .dw XT_STATE
+    .dw XT_FETCH
+    .dw XT_DOCONDBRANCH
+    .dw PFA_INTERPRET9
+        .dw XT_COMPILE
+        .dw XT_DOLITERAL
+        .dw XT_COMMA
+PFA_INTERPRET9:
 PFA_INTERPRET3:
     .dw XT_QSTACK
     .dw XT_DOBRANCH
@@ -66,8 +66,3 @@ PFA_INTERPRET3:
 PFA_INTERPRET4:
     .dw XT_DROP
     .dw XT_EXIT
-
-; The word INTERPRET could be replaced by the phrase
-; SOURCE >IN @ /STRING EVALUATE SOURCE SWAP DROP >IN !
-; (note that for block interpretation the word \ is
-; not equivalent to SOURCE NIP >IN ! ).
