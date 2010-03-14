@@ -155,7 +155,9 @@
                     <command>SEE</command>
                     is that amforth is OpenSource software. If your
                     vendor does not disclose the full source, let me
-                    know. He violates the GPL.
+                    know. He violates the GPL. Nevertheless a word
+                    <command>XT2NFA</command> exists that leads to
+                    the name field.
                 </para>
                 <para>
                     <command>STATE</command>
@@ -210,19 +212,19 @@
                     are not implemented.
                 </para>
             </sect2>
-            <sect2 id="ANS_SEARCH">
-                <title>Search Order</title>
+            <sect2 id="ANS_SEARCHORDER">
+                <title>Word Lists and Search Order</title>
                 <para>
-                    amforth supports the ANS Search Order Wordlist. There can be up to 8 entries
-		    in the order search list. This limit can be changed at compile time in the
-		    application definition file.
+                    Amforth supports the ANS Search Order Wordlist. A Word list consist of a linked list
+                    of words. There are no limits on the number of word lists defined. Only the length of
+                    the search order is limied: There can be up to 8 entries at any given moment.
+                    This limit can be changed at compile time in the application definition file.
                 </para>
-                
                 <para>
-                    The search order is stored in EEPROM. While there can be any number
-                    of word lists, at every moment there can be at most 8 active ones. This
-                    limit can be changed at compile time with the NUMWORDLISTS setting in
-                    the application definition file.
+                    Internally the wordlist identifier is the address where the wordlist start
+                    address is stored in the EEPROM. Creating a new word list means to allocate
+                    a new EEPROM cell. Since the ANS standard does not give named wordlist
+                    there is library code available that uses the old fashioned vocabulary.
                 </para>
             </sect2>
             <sect2 id="ANS_STRING">
@@ -258,13 +260,14 @@
             jump to the startup code which is located right after the ISR table. 
             </para>
             <para>The assembly part of the startup code creates the basic runtime environment
-            to start the virtual forth machine. It sets up the stack pointers (and
+            to start the virtual forth machine. It sets up the stack pointers and
             the user pointer and places the forth instruction pointer on the 
-            word <code>cold</code>. Then it activates the forth virtual machine 
+            word <code>COLD</code>. Then it boots the forth virtual machine 
             by jumping to the inner interpreter.
             </para>
             <para>The start addresses of the stacks are placed to the user area 
             for later use as well.</para>
+            
             <sect3 id="COLD"><title>COLD</title>
             <para>The word <code>COLD</code> is the high level part of the 
             forth VM initialization. When called from
@@ -277,7 +280,7 @@
             </sect3>
             <sect3 id="TURNKEY"><title>TURNKEY</title>
             <para>The <code>turnkey</code> is a EEPROM deferred word that 
-            points to an application specific startup action.
+            points to an application specific startup word.
             </para>
             <para>Its main task is to initialize the character IO to enable 
             the forth interpreter to interact with the command prompt. The 
@@ -355,7 +358,7 @@
                     External RAM shares the normal RAM address space
                     after initialization (which can be done in the
                     turnkey action). It is accessible without further
-                    action.
+                    changes.
                 </para>
                 <para>
                     For RAM only there is the special word pair

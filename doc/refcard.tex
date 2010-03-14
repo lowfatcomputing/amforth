@@ -1,6 +1,5 @@
 
-\documentclass[a4paper,10pt]{article}
-\usepackage{a4wide}
+\documentclass[a4paper,10pt,landscape]{article}
 \usepackage[latin1]{inputenc}
 \usepackage{url}
 \usepackage{multicol}
@@ -22,13 +21,6 @@
 \begin{footnotesize}
 \section*{\Large amforth 3.6 Reference Card}
 \begin{multicols}{3}
-
-\subsection*{}
-\begin{tabular}{\colsa}
-% 
-\verb||  & \verb//\\
-              & \verb//\\
-\end{tabular}
 
 \subsection*{Arithmetics}
 \begin{tabular}{\colsa}
@@ -76,8 +68,6 @@
 \verb|mod|  & \verb/( n1 n2 -- n3)/\\
 % XT_MSTAR
 \verb|m*|  & \verb/( n1 n2 -- d)/\\
-% XT_MUSTAR
-\verb|mu*|  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUS
 \verb|+|  & \verb/( n1 n2 -- n3)/\\
 % XT_PLUSSTORE
@@ -358,6 +348,10 @@
 \verb|rx|  & \verb/( -- c)/\\
 % XT_RX
 \verb|rx|  & \verb/( -- c)/\\
+% XT_RX
+\verb|rx|  & \verb/( -- c)/\\
+% XT_RXQ
+\verb|rx?|  & \verb/( -- f)/\\
 % XT_RXQ
 \verb|rx?|  & \verb/( -- f)/\\
 % XT_RXQ
@@ -368,10 +362,16 @@
 \verb|tx|  & \verb/(c -- )/\\
 % XT_TX
 \verb|tx|  & \verb/(c -- )/\\
+% XT_TX
+\verb|tx|  & \verb/(c -- )/\\
 % XT_TXQ
 \verb|tx?|  & \verb/( -- f)/\\
 % XT_TXQ
 \verb|tx?|  & \verb/( -- f)/\\
+% XT_TXQ
+\verb|tx?|  & \verb/( -- f)/\\
+% XT_USART
+\verb|+usart|  & \verb/( -- )/\\
 % XT_USART
 \verb|+usart|  & \verb/( -- )/\\
 \end{tabular}
@@ -448,8 +448,8 @@
 \verb|fill|  & \verb/( c-addr u c -- )/\\
 % XT_IFETCH
 \verb|i@|  & \verb/( addr -- n1 )/\\
-% XT_IFETCH
-\verb|i@|  & \verb/( addr -- n1 )/\\
+% XT_ISTORE
+\verb|i!|  & \verb/( n addr -- )/\\
 % XT_ISTORE
 \verb|i!|  & \verb/( n addr -- )/\\
 % XT_ISTORE
@@ -466,6 +466,8 @@
 
 \subsection*{Numeric IO}
 \begin{tabular}{\colsa}
+% XT_2SWAP
+\verb|2swap|  & \verb/( d1 d2 -- d2 d1 )/\\
 % XT_BASE
 \verb|base|  & \verb/( -- addr )/\\
 % XT_BIN
@@ -492,6 +494,10 @@
 \verb|<#|  & \verb/( -- )/\\
 % XT_NUMBER
 \verb|number|  & \verb/(addr -- n )/\\
+% XT_QPAIRS
+\verb|?pairs|  & \verb/(addr -- n )/\\
+% XT_QSTACK
+\verb|?stack|  & \verb/(addr -- n )/\\
 % XT_SHARP
 \verb|#|  & \verb/( d1 -- )/\\
 % XT_SHARP_G
@@ -550,6 +556,8 @@
 \verb|dup|  & \verb/( n -- n n )/\\
 % XT_OVER
 \verb|over|  & \verb/( n1 n2 -- n1 n2 n1 )/\\
+% XT_PICK
+\verb|pick|  & \verb/( xu ... x1 x0 u -- xu ... x1 x0 xu )/\\
 % XT_QDUP
 \verb|?dup|  & \verb/( n1 -- [ n1 n1 ] | 0)/\\
 % XT_ROT
@@ -614,9 +622,6 @@
 \verb|defer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_DEFERSTORE
 \verb|defer!|  & \verb/( xt1 xt2 -- )/\\
-% XT_EVALUATE
-\verb|evaluate|  & \verb/( c-addr len -- )/\\
-              & \verb/R(i*x - j*x)/\\
 % XT_EXECUTE
 \verb|execute|  & \verb/( xt -- )/\\
 % XT_F_CPU
@@ -646,12 +651,22 @@
 \begin{tabular}{\colsa}
 % XT_BAUD
 \verb|baud|  & \verb/( -- v)/\\
+% XT_BAUD
+\verb|baud|  & \verb/( -- v)/\\
 % XT_EDP
 \verb|edp|  & \verb/( -- edp)/\\
+% XT_EE2RAM
+\verb|ee>ram|  & \verb/( e-addr r-addr len -- )/\\
+% XT_EEUSER
+\verb|ee-user|  & \verb/( -- v)/\\
+% XT_ENVIRONMENT
+\verb|environment|  & \verb/( -- faddr)/\\
 % XT_HEAP
 \verb|heap|  & \verb/( -- addr)/\\
 % XT_HERE
 \verb|here|  & \verb/( -- faddr )/\\
+% XT_INITUSER
+\verb|init-user|  & \verb/( -- v)/\\
 % XT_PAD
 \verb|pad|  & \verb/( -- addr )/\\
 % XT_TIB
@@ -765,15 +780,15 @@
 % XT_LRESOLVE
 \verb|<resolve|  & \verb/( addr -- )/\\
 % XT_PRAEFIX
-\verb|praefix|  & \verb/    .dw XT_EXIT /\\
-              & \verb//\\
+\verb|praefix|  & \verb/    .dw XT_STORE/\\
+              & \verb/    .dw XT_EXIT/\\
 % XT_RDEFERFETCH
 \verb|Rdefer@|  & \verb/( xt1 -- xt2 )/\\
 % XT_RDEFERSTORE
 \verb|Rdefer!|  & \verb/( xt1 xt2 -- )/\\
 % XT_SETBASE
-\verb|setbase|  & \verb/    .dw XT_STORE/\\
-              & \verb/    .dw XT_EXIT/\\
+\verb|setbase|  & \verb/    .dw XT_SLASHSTRING /\\
+              & \verb/    .dw XT_EXIT /\\
 % XT_SLITERAL
 \verb|(sliteral)|  & \verb/( -- addr n)/\\
 % XT_SPMBUF
@@ -793,6 +808,10 @@
 % XT_UDEFERSTORE
 \verb|Udefer!|  & \verb/( xt1 xt2 -- )/\\
 % XT_USART_INIT_RX
+\verb|+usart|  & \verb/( -- )/\\
+% XT_USART_INIT_RX
+\verb|+usart|  & \verb/( -- )/\\
+% XT_USART_INIT_TX
 \verb|+usart|  & \verb/( -- )/\\
 % XT_USART_INIT_TX
 \verb|+usart|  & \verb/( -- )/\\
