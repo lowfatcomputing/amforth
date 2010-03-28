@@ -11,7 +11,8 @@ XT_STORE:
 PFA_STORE:
     movw zl, tosl
     loadtos
-    std Z+0, tosl
+	    std Z+0, tosl
     std Z+1, tosh
+
     loadtos
     rjmp DO_NEXT

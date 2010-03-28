@@ -10,33 +10,49 @@ XT_INTERPRET:
     .dw DO_COLON
 PFA_INTERPRET:
 PFA_INTERPRET1:
+    ; begin
+    ;   bl word dup c@ 0> 
+    ; while
+    ;   find ?dup if
+    ;      0> if
+    ;         execute
+    ;      else
+    ;         state @ if , else execute then
+    ;      then
+    ;   else
+    ;      number state @ if
+    ;        compile (literal) ,
+    ;      then
+    ;   then
+    ;  ?stack
+    ; repeat drop
+
     .dw XT_BL
     .dw XT_WORD
     .dw XT_DUP
     .dw XT_CFETCH
-
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET4
-
+    
     .dw XT_FIND
     .dw XT_QDUP
     .dw XT_DOCONDBRANCH 
     .dw PFA_INTERPRET2
-    ; either compile or execute the XT
-    .dw XT_GREATERZERO
-    .dw XT_DOCONDBRANCH
-    .dw PFA_INTERPRET5
-    ; flag is 1: always execute
-    .dw XT_EXECUTE
-    .dw XT_DOBRANCH
-    .dw PFA_INTERPRET6
+	; either compile or execute the XT
+	.dw XT_GREATERZERO
+	.dw XT_DOCONDBRANCH
+	.dw PFA_INTERPRET5
+	    ; flag is 1: always execute
+	    .dw XT_EXECUTE
+	    .dw XT_DOBRANCH
+	    .dw PFA_INTERPRET6
 PFA_INTERPRET5:
-    ; check state 
-    .dw XT_STATE
-    .dw XT_FETCH
-    .dw XT_DOCONDBRANCH
-    .dw PFA_INTERPRET7
+        ; check state 
+	    .dw XT_STATE
+	    .dw XT_FETCH
+	    .dw XT_DOCONDBRANCH
+	    .dw PFA_INTERPRET7
     .dw XT_COMMA
     .dw XT_DOBRANCH
     .dw PFA_INTERPRET8
