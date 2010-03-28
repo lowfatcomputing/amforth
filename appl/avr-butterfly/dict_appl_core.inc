@@ -1,3 +1,4 @@
+.include "dict_core.inc"
 .include "words/estore.asm"
 .include "words/efetch.asm"
 

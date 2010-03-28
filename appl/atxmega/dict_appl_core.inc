@@ -1,3 +1,5 @@
+.include "dict_core.inc"
+
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"

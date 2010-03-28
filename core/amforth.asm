@@ -5,8 +5,7 @@
 .set pc_ = pc
 
 .org $0000
-  rjmp amforthstart
-
+  jmp_ amforthstart
 .org pc_
 ; main entry point
 amforthstart:
@@ -44,12 +43,12 @@ amforthstart:
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
 
-.include "dict_minimum.inc"
 .include "dict_appl.inc"
 
 .set lowflashlast = pc
 
 .org amforth_interpreter
+
 ; the inner interpreter.
 DO_DODOES:
     savetos
@@ -97,7 +96,6 @@ DO_INTERRUPT:
     clt ; clear the t flag to indicate that the interrupt is handled
     rjmp DO_EXECUTE
 
-.include "dict_core.inc"
 .include "dict_appl_core.inc"
 
 

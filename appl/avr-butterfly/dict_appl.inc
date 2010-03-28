@@ -1,6 +1,8 @@
 ; this dictionary contains optional words
 ; they may be moved to the core dictionary if needed
 
+.include "dict_minimum.inc"
+
 .include "drivers/usart-isr-rx.asm"
 .include "words/usart-rx-isr.asm"
 

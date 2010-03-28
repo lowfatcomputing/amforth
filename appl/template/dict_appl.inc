@@ -1,6 +1,10 @@
 ; this dictionary contains optional words
 ; they may be moved to the core dictionary if needed
 
+; always include the minimum dictionary
+.include "dict_minimum.inc"
+
+; and what you need in addition
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
