@@ -21,11 +21,7 @@ PFA_QUIT2:
     .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_QUIT4
-    .dw XT_CR
-    .dw XT_SLITERAL
-    .dw 2
-    .db "> "
-    .dw XT_ITYPE
+    .dw XT_PROMPTRDY
 PFA_QUIT4:
     .dw XT_REFILL
     .dw XT_DOCONDBRANCH
@@ -42,40 +38,13 @@ PFA_QUIT4:
 	.dw XT_LESS
 	.dw XT_DOCONDBRANCH
 	.dw PFA_QUIT5
-.if want_fun
-	.dw XT_G_IN
-	.dw XT_FETCH
-	.dw XT_SPACES
-	.dw XT_DOLITERAL
-	.dw '^'
-	.dw XT_EMIT
-	.dw XT_CR
-.endif
-	.dw XT_SLITERAL
-	.dw 4
-	.db  " ?? "
-        .dw XT_ITYPE
-	.dw XT_BASE
-	.dw XT_FETCH
-	.dw XT_TO_R
-	.dw XT_DECIMAL
-	.dw XT_DOT
-	.dw XT_G_IN
-	.dw XT_FETCH
-	.dw XT_DOT
-	.dw XT_R_FROM
-	.dw XT_BASE
-	.dw XT_STORE
-
+	.dw XT_PROMPTERROR
 PFA_QUIT5:
 	.dw XT_DOBRANCH
 	.dw PFA_QUIT
 PFA_QUIT3:
-    .dw XT_SLITERAL
-    .dw 3
-    .db " ok",0
-    .dw XT_ITYPE
+    .dw XT_PROMPTOK
     .dw XT_DOBRANCH
     .dw PFA_QUIT2
-
     .dw XT_EXIT ; never reached
+

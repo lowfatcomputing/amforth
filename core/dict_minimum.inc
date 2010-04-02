@@ -92,6 +92,7 @@
 .include "words/place.asm"
 
 .include "words/quit.asm"
+.include "words/prompts.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
