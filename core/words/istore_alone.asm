@@ -19,10 +19,10 @@ PFA_ISTORE:
 
   ; erase page if needed
   ; it is needed if a bit goes from 0 to 1
-  com temp6
-  com temp7
-  and tosl, temp6
-  and tosh, temp7
+  com temp4
+  com temp5
+  and tosl, temp4
+  and tosh, temp5
   or tosh, tosl
   breq istore_writepage 
 
@@ -73,6 +73,7 @@ pageload_loop:
     movw r0, temp6
     rjmp pageload_cont
 pageload_newdata:
+    movw temp4, temp6
     movw r0, tosl
 pageload_cont:
   ldi temp0,(1<<SPMEN)
