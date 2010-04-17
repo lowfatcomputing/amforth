@@ -36,7 +36,7 @@ PFA_ICOMPARE_LOOP:
     ; that means: if the flash cell is less $0100, than mask the
     ; high byte in the ram cell
     .dw XT_DUP
-    .dw XT_BYTESWAP
+    ;.dw XT_BYTESWAP
     .dw XT_DOLITERAL
     .dw $100
     .dw XT_LESS
