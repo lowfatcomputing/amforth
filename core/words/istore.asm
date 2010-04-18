@@ -11,7 +11,21 @@ XT_ISTORE:
 PFA_ISTORE:
   movw temp2, tosl ; save the (word) address
   loadtos          ; get the new value for the flash cell
+  push xl
+  push xh
+  push yl
+  push yh
+  rcall istore_atmega
+  pop yh
+  pop yl
+  pop xh
+  pop xl
+  ; finally clear the stack
+  loadtos
+  jmp_ DO_NEXT
 
+; 
+istore_atmega:
   ; write data to temp page buffer
   ; use the values in tosl/tosh at the
   ; appropiate place
@@ -40,19 +54,11 @@ istore_writepage:
   movw zl, temp2
   ldi temp0,(1<<RWWSRE|1<<SPMEN)
   rcall dospm
-  ; finally clear the stack
-  loadtos
-  jmp_ DO_NEXT
-
+  ret
 
 ; load the desired page
 .equ pagemask = ~ ( PAGESIZE - 1 )
 pageload:
-  push xl
-  push xh
-  push yl
-  push yh
-
   movw zl, temp2
   ; get the beginning of page
   andi zl,low(pagemask)
@@ -65,8 +71,8 @@ pageload_loop:
   ; we need the current flash value anyways
   movw z, y
   readflashcell temp6, temp7 ; destroys Z
-  movw z, y
   ; now check: if Z points to the same cell as temp2/3, we want the new data
+  movw z, y
   cp zl, temp2
   cpc zh, temp3
   breq pageload_newdata
@@ -83,10 +89,6 @@ pageload_cont:
   brne pageload_loop
 
 pageload_done:
-  pop yh
-  pop yl
-  pop xh
-  pop xl
   ret
 
 
@@ -117,4 +119,3 @@ wait_spm:
   ; restore status register
   out SREG,temp1
   ret
-
