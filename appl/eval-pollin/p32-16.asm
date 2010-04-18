@@ -5,10 +5,9 @@
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ CELLSIZE = 2   ;
-  .equ APPUSERSIZE = 0  ; size of user area
-.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN);  | (1<<RXCIE)
+  .equ APPUSERSIZE = 2  ; size of user area
+.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) ; | (1<<RXCIE)
 .equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
-
 
 ; cpu clock in hertz
 .equ F_CPU = 16000000
@@ -22,5 +21,4 @@
 .set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8
-.set OPTION_FLOWCONTROL = 1
 .include "amforth.asm"
