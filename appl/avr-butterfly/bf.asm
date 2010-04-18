@@ -21,5 +21,6 @@
 .set heap = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
+.equ want_fun = 1
 
 .include "amforth.asm"
