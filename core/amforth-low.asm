@@ -111,6 +111,8 @@ EE_EDP:
     .dw edp          ; EDP
 EE_TURNKEY:
     .dw XT_APPLTURNKEY  ; TURNKEY
+EE_ISTORE:
+    .dw XT_DO_ISTORE  ; Store a cell into flash
 
 ; calculate baud rate error
 .equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round

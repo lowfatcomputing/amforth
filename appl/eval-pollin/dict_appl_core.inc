@@ -4,4 +4,5 @@
 .include "words/efetch.asm"
 
 .include "words/ifetch.asm"
+.include "words/istore_nrww.asm"
 .include "words/istore.asm"
