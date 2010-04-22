@@ -1,5 +1,5 @@
-<!-- make multiple targets with ant(elope) -->
-<project name="template" basedir="." default="Help">
+<!-- make multiple targets with antelope -->
+<project name="pollins" basedir="." default="Help">
         <import file="../avr-build.xml"/>
 
 	<target name="template.hex" description="Hexfiles for Template">

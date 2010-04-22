@@ -53,3 +53,13 @@ PFA_FIND4:
     .dw PFA_FIND1
 PFA_FIND2:
     .dw XT_EXIT
+
+
+; : find >r get-order r> swap 0 swap 0 ( widn...wid1 addr 0 n 0 -- )
+;   ?do
+;     dup 0<> if
+;        rot drop
+;     else
+;        drop dup >r count rot search-wordlist r> swap
+;   loop
+;   ;

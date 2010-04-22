@@ -24,5 +24,5 @@
 .set NUMWORDLISTS = 8
 
 .set amforth_interpreter = max_dict_addr
-
+.equ want_fun = 1
 .include "amforth.asm"

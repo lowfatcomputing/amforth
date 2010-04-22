@@ -30,14 +30,11 @@
 ; baud rate of terminal
 .equ BAUD = 9600
 
-.set dict_appl=1
-.set istore_nrww=1
-
 .set heap = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 
-.set OPTION_FLOWCONTROL = 1
 .set amforth_interpreter = $F000
+.equ want_fun = 1
 
 .include "amforth.asm"

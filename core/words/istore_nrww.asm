@@ -103,17 +103,17 @@ dospm:
   push temp1
   cli
 Wait_ee:
-  sbic EECR, EEWE
+  sbic EECR, EEPE
   rjmp Wait_ee
 wait_spm:
-  in   temp1, SPMCR
+  in   temp1, SPMCSR
   sbrc temp1, SPMEN
   rjmp Wait_spm
 
   ; turn the word addres into a byte address
   writeflashcell
   ; execute spm
-  out SPMCR,temp0
+  out SPMCSR,temp0
   spm
   pop temp1
   ; restore status register

@@ -1,3 +1,5 @@
+.include "dict_core.inc"
+
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
@@ -33,6 +35,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "drivers/atxmega_nvm.asm"
 .include "words/ifetch.asm"
+.include "words/istore.asm"
 .include "words/istore_nvm.asm"
 .include "words/estore_nvm.asm"
 .include "words/efetch_nvm.asm"

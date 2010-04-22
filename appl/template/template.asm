@@ -24,7 +24,7 @@
 
 .equ HLDSIZE  = $10    ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
-.equ APPUSERSIZE = 2   ; size of application specific user area in bytes, at least 0
+.equ APPUSERSIZE = 24  ; size of user area in bytes, at least 24
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward
@@ -34,6 +34,8 @@
 ; change only if you know what to you do
 .equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
+
+.equ want_fun = 0 ; in case of an error out print an additional line with an caret indicating the error position
 
 ; include the whole source tree.
 .include "amforth.asm"
