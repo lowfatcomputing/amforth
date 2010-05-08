@@ -55,7 +55,7 @@
     </macrodef>
 
     <macrodef name="avrdude">
-	<attribute name="binary"      default="/opt/avrdude/bin/avrdude" />
+	<attribute name="binary"      default="avrdude" />
 	<attribute name="port"        default="/dev/ttyS0" />
 	<attribute name="mcu"         default="m8"/>
 	<attribute name="type"        default="avr910"/>

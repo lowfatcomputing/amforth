@@ -37,4 +37,4 @@
 .set amforth_interpreter = $F000
 .equ want_fun = 1
 
-.include "amforth.asm"
+.include "amforth-low.asm"

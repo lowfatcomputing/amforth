@@ -10,8 +10,8 @@
     <target name="atxmega" depends="atxmega.hex" description="AVR atxmega: Atmega2561 @ 14.7456 MHz">
         <echo>Uploading Hexfiles for AVR atxmega</echo>
         <avrdude 
-		    type="${avr.programmer.dragon}"
-		    port="${avr.programmer.dragonport}"
+		    type="${avr.programmer.avrisp2}"
+		    port="${avr.programmer.avrisp2port}"
 		    mcu="x128a1"
 		    flashfile="atxmega.hex"
 		    eepromfile="atxmega.eep.hex"
