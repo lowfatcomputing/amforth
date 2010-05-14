@@ -40,6 +40,19 @@ amforthstart:
 
 .include "drivers/generic-isr.asm"
 ; the inner interpreter.
+DO_INTERRUPT:
+    ; here we deal with interrupts the forth way
+    lds temp0, intcur
+    ldi zl, LOW(intvec)
+    ldi zh, HIGH(intvec)
+    add zl, temp0
+    adc zh, zeroh
+    ldd wl, Z+0
+    ldd wh, Z+1
+
+    clt ; clear the t flag to indicate that the interrupt is handled
+    rjmp DO_EXECUTE
+
 DO_DODOES:
     savetos
     movw tosl, wl
@@ -73,18 +86,6 @@ DO_EXECUTE:
     movw zl, temp0
     ijmp
 
-DO_INTERRUPT:
-    ; here we deal with interrupts the forth way
-    lds temp0, intcur
-    ldi zl, LOW(intvec)
-    ldi zh, HIGH(intvec)
-    add zl, temp0
-    adc zh, zeroh
-    ldd wl, Z+0
-    ldd wh, Z+1
-
-    clt ; clear the t flag to indicate that the interrupt is handled
-    rjmp DO_EXECUTE
 
 ; lower part of the dictionary
 .set VE_HEAD = $0000
