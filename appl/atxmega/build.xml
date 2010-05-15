@@ -10,21 +10,8 @@
     <target name="atxmega" depends="atxmega.hex" description="AVR atxmega: Atmega2561 @ 14.7456 MHz">
         <echo>Uploading Hexfiles for AVR atxmega</echo>
         <avrdude 
-		    type="${avr.programmer.avrisp2}"
-		    port="${avr.programmer.avrisp2port}"
+		    type="avrisp2"
 		    mcu="x128a1"
-		    flashfile="atxmega.hex"
-		    eepromfile="atxmega.eep.hex"
-		/>
-    </target>
-
-    <target name="atxmega.back" description="AVR atxmega Backup">
-        <echo>Download Hexfiles from AVR atxmega</echo>
-        <avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
-		    mode="r"
-		    mcu="m169"
 		    flashfile="atxmega.hex"
 		    eepromfile="atxmega.eep.hex"
 		/>

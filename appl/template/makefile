@@ -4,7 +4,7 @@
 
 # --- edit these values ------------------------------------
 # Name of your application (useful, if you rename template.asm)
-TARGET=template
+TARGET=m16
 
 # versions before 2.1 may produce some warnings
 # but should produce a running system. You should

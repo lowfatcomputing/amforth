@@ -7,8 +7,8 @@
 	</target>
 
         <!-- generic target to clean up directory -->
-	<target name="clean" description="Delete all generated files">
-	    <delete>
+	<target name="clean" description="Delete all generated files" >
+	    <delete verbose="true">
 	       <fileset dir="." includes="*.hex"/>
 	       <fileset dir="." includes="*.lst"/>
 	       <fileset dir="." includes="*.obj"/>
@@ -56,14 +56,16 @@
 
     <macrodef name="avrdude">
 	<attribute name="binary"      default="avrdude" />
-	<attribute name="port"        default="/dev/ttyS0" />
-	<attribute name="mcu"         default="m8"/>
 	<attribute name="type"        default="avr910"/>
+	<attribute name="port"        default="${avr.programmer.@{type}port}" />
+	<attribute name="programmer"  default="${avr.programmer.@{type}}" />
+	<attribute name="mcu"         default="m8"/>
+
 	<attribute name="flashfile"   default=""/>
 	<attribute name="eepromfile"  default=""/>
 	<sequential>
 	    <exec executable="@{binary}" spawn="false" failonerror="true">
-	    <arg line="-c @{type}"/>
+	    <arg line="-c @{programmer}"/>
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
 		<arg line="-e"/> 

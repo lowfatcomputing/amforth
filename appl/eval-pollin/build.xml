@@ -10,8 +10,7 @@
     <target name="p32-16-fuse" description="Atmega32 @ 16MHZ, ext Quartz">
 	<echo>Writing fuses</echo>
 	<avrdude-2fuses
-		    type="${avr.programmer.avrisp2}"
-		    port="${avr.programmer.avrisp2port}"
+		    type="avrisp2"
 		    mcu="m32"
 		    hfuse="0x99"
 		    lfuse="0xff"
@@ -20,8 +19,7 @@
     <target name="p32-16" depends="p32-16.hex" description="Atmega32 @ 16 MHz">
 	        <echo>Uploading Hexfiles for p32-16</echo>
 		<avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
+		    type="stk200"
 		    mcu="m32"
 		    flashfile="p32-16.hex"
 		    eepromfile="p32-16.eep.hex"
@@ -36,8 +34,7 @@
     <target name="p8-12" depends="p8-12.hex" description="Atmega8 @ 12 MHz">
 	        <echo>Uploading Hexfiles for p8-12</echo>
 		<avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
+		    type="stk200"
 		    mcu="m8"
 		    flashfile="p8-12.hex"
 		    eepromfile="p8-12.eep.hex"
@@ -52,8 +49,7 @@
     <target name="p328-12" depends="p328-12.hex" description="Atmega328 @ 12 MHz">
 	        <echo>Uploading Hexfiles for p328-12</echo>
 		<avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
+		    type="stk200"
 		    mcu="m328p"
 		    flashfile="p328-12.hex"
 		    eepromfile="p328-12.eep.hex"
@@ -64,8 +60,7 @@
     <target name="p32-8" depends="p32-8.hex" description="Atmega32 @ 8 MHz">
         <echo>Uploading Hexfiles for p32-8</echo>
         <avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
+		    type="stk200"
 		    mcu="m32"
 		    flashfile="p32-8.hex"
 		    eepromfile="p32-8.eep.hex"
@@ -85,9 +80,7 @@
     <target name="p16-8" depends="p16-8.hex" description="Atmega16 @ 8 MHz">
         <echo>Uploading Hexfiles for p16-8</echo>
         <avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
-
+		    type="stk200"
 		    mcu="m16"
 		    flashfile="p16-8.hex"
 		    eepromfile="p16-8.eep.hex"
@@ -102,8 +95,7 @@
     <target name="p644-16" depends="p644-16.hex" description="Atmega644 @ 16 MHz">
         <echo>Uploading Hexfiles for p644 - 16</echo>
         <avrdude 
-		    type="${avr.programmer.stk200}"
-		    port="${avr.programmer.stk200port}"
+		    type="stk200"
 		    mcu="m644"
 		    flashfile="p644-16.hex"
 		    eepromfile="p644-16.eep.hex"

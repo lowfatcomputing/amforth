@@ -13,20 +13,7 @@
     <target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">
         <echo>Uploading Hexfiles to the AVR Butterfly</echo>
         <avrdude 
-		    type="${avr.programmer.mysmartusb}"
-		    port="${avr.programmer.mysmartusbport}"
-		    mcu="m169"
-		    flashfile="bf.hex"
-		    eepromfile="bf.eep.hex"
-		/>
-    </target>
-
-    <target name="bf.back" description="AVR Butterfly Backup">
-        <echo>Download Hexfiles from AVR Butterfly</echo>
-        <avrdude 
-		    type="${avr.programmer.mysmartusb}"
-		    port="${avr.programmer.mysmartusbport}"
-		    mode="r"
+		    type="mysmartusb"
 		    mcu="m169"
 		    flashfile="bf.hex"
 		    eepromfile="bf.eep.hex"
