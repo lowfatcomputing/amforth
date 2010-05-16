@@ -1,5 +1,5 @@
 <!-- make multiple targets with antelope -->
-<project name="pollins" basedir="." default="Help">
+<project name="Bunch of Evaluation Boards from pollin.de" basedir="." default="Help">
     <import file="../avr-build.xml"/>
 
     <target name="p32-16.hex" description="Hexfiles for p32-16">

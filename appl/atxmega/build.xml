@@ -1,5 +1,5 @@
 <!-- make multiple targets with antelope -->
-<project name="aldivi" basedir="." default="Help">
+<project name="atxmega128" basedir="." default="Help">
 
     <import file="../avr-build.xml"/>
     <target name="atxmega.hex" description="Hexfiles for AVR atxmega">

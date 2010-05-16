@@ -1,9 +1,8 @@
 <!-- make multiple targets with antelope -->
-
-<project name="Maccros and Commands for ANT" basedir="." default="Help">
+<project name="Macros and Commands for ANT" basedir="." default="Help">
         <target name="Help" description="use ant -p for more">
 	    <echo message="use ant -p for a list of available targets"/>
-	    <echo message="and the content of programmer.properties for available programmers"/>
+	    <echo message="and look at programmer.properties for available programmers"/>
 	</target>
 
         <!-- generic target to clean up directory -->
@@ -78,14 +77,16 @@
 
     <macrodef name="avrdude-2fuses">
 	<attribute name="binary"      default="avrdude" />
-	<attribute name="port"        default="/dev/ttyS0" />
-	<attribute name="mcu"         default="m8"/>
 	<attribute name="type"        default="avr910"/>
+	<attribute name="port"        default="${avr.programmer.@{type}port}" />
+	<attribute name="programmer"  default="${avr.programmer.@{type}}" />
+
+	<attribute name="mcu"         default="m8"/>
 	<attribute name="hfuse"       default="0xnn"/>
 	<attribute name="lfuse"       default="0xnn"/>
 	<sequential>
 	    <exec executable="@{binary}" spawn="false" failonerror="true">
-	    <arg line="-c @{type}"/>
+	    <arg line="-c @{programmer}"/>
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
 		<arg line="-e"/>

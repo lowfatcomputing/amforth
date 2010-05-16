@@ -1,5 +1,5 @@
 <!-- make multiple targets with antelope -->
-<project name="AVRButterfly" basedir="." default="Help">
+<project name="AVR Butterfly" basedir="." default="Help">
 
     <import file="../avr-build.xml"/>
     <target name="updatecheck">
