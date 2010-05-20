@@ -18,7 +18,7 @@
 
 ; initial baud rate of terminal
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
+.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) ; | (1<<RXCIE)
 .equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
 
 
