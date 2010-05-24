@@ -1,6 +1,6 @@
-; ( n*x -- ) Exceptions
-; R( n*y -- )
-; send an exception -1
+; ( -- hldsize ) Environment
+; R( -- )
+; size of the HOLD buffer in bytes
 VE_ENVSLASHHOLD:
     .dw $ff05
     .db "/hold",0

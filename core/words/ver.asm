@@ -9,13 +9,12 @@ VE_VER:
 XT_VER:
     .dw DO_COLON
 PFA_VER:
-    .dw XT_SLITERAL
-    .dw 11
-    .db "amforth 3.9",0
+    .dw XT_ENV_FORTHNAME
     .dw XT_ITYPE
     .dw XT_SPACE
-    .dw XT_DOLITERAL
-    .dw mcustring
-    .dw XT_ICOUNT
+    .dw XT_ENV_FORTHVERSION
+    .dw XT_ITYPE
+    .dw XT_SPACE
+    .dw XT_ENV_CPU
     .dw XT_ITYPE
     .dw XT_EXIT

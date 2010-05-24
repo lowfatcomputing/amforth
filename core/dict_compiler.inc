@@ -42,9 +42,12 @@
 
 .include "words/environment.asm"
 .include "words/environment-q.asm"
+.include "words/env-wordlists.asm"
 .include "words/env-slashpad.asm"
 .include "words/env-slashhold.asm"
-.include "words/env-wordlists.asm"
+.include "words/env-forthname.asm"
+.include "words/env-forthversion.asm"
+.include "words/env-cpu.asm"
 
 .include "words/get-current.asm"
 .include "words/get-order.asm"

@@ -1,6 +1,6 @@
-; ( n*x -- ) Exceptions
-; R( n*y -- )
-; send an exception -1
+; ( -- n ) Environment
+; R( -- )
+; Size of the PAD buffer in bytes
 VE_ENVSLASHPAD:
     .dw $ff04
     .db "/pad"
