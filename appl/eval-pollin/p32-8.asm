@@ -7,7 +7,7 @@
   .equ CELLSIZE = 2   ;
   .equ APPUSERSIZE = 2  ; size of user area
 .equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) ; | (1<<RXCIE)
-.equ USART_C_VALUE = (1<<URSEL)|(3<<UCSZ0)
+.equ USART_C_VALUE = (3<<UCSZ0)
 
 ; cpu clock in hertz
 .equ F_CPU = 8000000
