@@ -9,20 +9,20 @@
 .equ ramstart =  $200
 .equ max_dict_addr = $F000
 
-  .equ BAUDRATE_LOW = UBRR3L
-  .equ BAUDRATE_HIGH = UBRR3H
-  .equ USART_C = UCSR3C
-  .equ USART_B = UCSR3B
-  .equ USART_A = UCSR3A
-  .equ USART_DATA = UDR3
-  .equ USART_RXEN_bm = 1 << RXC3
-  .equ URXCaddr = URXC3addr
-  .equ UDREaddr = UDRE3addr
-  .equ FE = FE3
-  .equ DOR = DOR3
-  .equ PE = UPE3
-  .equ UDRIE = UDRIE3
-  .equ UDRE  = UDRE3
+  .equ BAUDRATE_LOW = UBRR0L
+  .equ BAUDRATE_HIGH = UBRR0H
+  .equ USART_C = UCSR0C
+  .equ USART_B = UCSR0B
+  .equ USART_A = UCSR0A
+  .equ USART_DATA = UDR0
+  .equ USART_RXEN_bm = 1 << RXC0
+  .equ URXCaddr = URXC0addr
+  .equ UDREaddr = UDRE0addr
+  .equ FE = FE0
+  .equ DOR = DOR0
+  .equ PE = UPE0
+  .equ UDRIE = UDRIE0
+  .equ UDRE  = UDRE0
 ; size of program counter in bytes
 .equ pclen = 2
 
@@ -167,6 +167,6 @@
 	 rcall isr ; USART3, Tx Complete
 
 mcustring:
-	.dw 9
-	.db "ATmega1280",0
+	.dw 10
+	.db "ATmega1280"
 .set codestart=pc
