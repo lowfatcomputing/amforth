@@ -1,0 +1,35 @@
+<!-- make multiple targets with antelope -->
+<project name="ForthDuino" basedir="." default="Help">
+        <import file="../avr-build.xml"/>
+
+	<target name="mega.hex" description="Hexfiles for Arduino Mega Board www.arduino.cc">
+		<echo>Producing Hexfiles</echo>
+		<avrasm2 projectname="mega"/>
+	</target>
+
+	<target name="mega" depends="mega.hex" description="Arduino Mega Board www.arduino.cc">
+	        <echo>Uploading Hexfiles to Arduino Mega</echo>
+		<avrdude 
+		    type="avrisp2"
+		    mcu="m1280"
+		    flashfile="mega.hex"
+		    eepromfile="mega.eep.hex"
+		/>
+	</target>
+
+	<target name="duemilanove.hex" description="Hexfiles for Arduino Duemilanove Board www.arduino.cc">
+		<echo>Producing Hexfiles</echo>
+		<avrasm2 projectname="duemilanove"/>
+	</target>
+
+	<target name="duemilanove" depends="duemilanove.hex" description="Arduino Duemilanove Board www.arduino.cc">
+	        <echo>Uploading Hexfiles to Arduino Duemilanove</echo>
+		<avrdude 
+		    type="avrisp2"
+		    mcu="m328p"
+		    flashfile="duemilanove.hex"
+		    eepromfile="duemilanove.eep.hex"
+		/>
+	</target>
+
+</project>
