@@ -19,12 +19,12 @@
 ; initial baud rate of terminal
 .equ BAUD = 9600
 .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) ;| (1<<RXCIE0)
-.equ USART_C_VALUE = (3<<UCSZ00) ;| (1<<UMSEL0)
+.equ USART_C_VALUE = (3<<UCSZ00)
 
 
 .equ HLDSIZE  = $10    ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
-.equ APPUSERSIZE = 24  ; size of user area in bytes, at least 24
+.equ APPUSERSIZE = 2   ; size of application specific user area in bytes
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward
