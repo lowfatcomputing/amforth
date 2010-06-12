@@ -36,6 +36,8 @@
 .include "words/usart.asm"
 .include "words/applturnkey.asm"
 .include "words/int-store.asm"
+.include "words/1ms.asm"
+.include "words/ms.asm"
 
 .include "dict_compiler.inc"
 .include "words/show-wordlist.asm"
