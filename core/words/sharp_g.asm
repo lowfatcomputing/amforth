@@ -1,6 +1,6 @@
 ; ( d1 -- addr count ) Numeric IO
 ; R( -- )
-; convert HLD buffer to a usable string
+; convert Pictured Numeric Output buffer into an usable string
 VE_SHARP_G:
     .dw $ff02
     .db "#>"
@@ -12,5 +12,9 @@ PFA_SHARP_G:
     .dw XT_DROP
     .dw XT_DROP
     .dw XT_HLD
-    .dw XT_COUNT
+    .dw XT_FETCH
+    .dw XT_DUP
+    .dw XT_PAD
+    .dw XT_SWAP
+    .dw XT_MINUS
     .dw XT_EXIT

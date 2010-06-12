@@ -1,13 +1,13 @@
 ; ( -- addr ) Numeric IO
 ; R( -- )
-; address of buffer for pictured numeric output
+; pointer to current write position in the Pictured Numeric Output buffer
 VE_HLD:
     .dw $ff03
     .db "hld",0
     .dw VE_HEAD
     .set VE_HEAD = VE_HLD
 XT_HLD:
-    .dw DO_COLON
+    .dw PFA_DOVARIABLE
 PFA_HLD:
-    .dw XT_HEAP
-    .dw XT_EXIT
+    .dw heap
+    .set heap = heap + CELLSIZE

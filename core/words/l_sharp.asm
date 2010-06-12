@@ -9,7 +9,7 @@ VE_L_SHARP:
 XT_L_SHARP:
     .dw DO_COLON
 PFA_L_SHARP:
-    .dw XT_ZERO
+    .dw XT_PAD
     .dw XT_HLD
     .dw XT_STORE
     .dw XT_EXIT
