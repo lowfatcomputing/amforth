@@ -9,6 +9,7 @@ VE_ENVSLASHPAD:
 XT_ENVSLASHPAD:
     .dw DO_COLON
 PFA_ENVSLASHPAD:
-    .dw XT_DOLITERAL
-    .dw 80
+    .dw XT_SP_FETCH
+    .dw XT_PAD
+    .dw XT_MINUS
     .dw XT_EXIT
