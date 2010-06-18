@@ -1,6 +1,6 @@
 ; Settings for the avr butterfly demo board
 .include "macros.asm"
-.include "devices/atmega169.asm"
+.include "device.asm"
 
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...

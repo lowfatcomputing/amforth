@@ -1,6 +1,6 @@
 ; Settings for the eval board with Atmega8 & 8 MHz
 .include "macros.asm"
-.include "devices/atmega8.asm"
+.include "device.asm"
 
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
@@ -19,7 +19,7 @@
 
 .set heap = ramstart
 .set rstackstart = RAMEND
-.set stackstart  = RAMEND - 80
+.set stackstart  = RAMEND - 40
 
 .set NUMWORDLISTS = 8
 

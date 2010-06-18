@@ -3,8 +3,7 @@
 
     <import file="../avr-build.xml"/>
     <target name="atmega256.hex" description="Hexfiles for AVR atmega256">
-        <echo>Producing Hexfiles</echo>
-        <avrasm2 projectname="atmega256"/>
+        <avrasm2 projectname="atmega256" mcu="atmega2561"/>
     </target>
 
     <target name="atmega256" depends="atmega256.hex" description="AVR atmega256: Atmega2561 @ 14.7456 MHz">

@@ -22,22 +22,22 @@ sub fmt_str {
 sub readXML ($) {
     my ($basename) = @_;
     my ($timestamp, $number, $label, %regs, $partname, $defname);
-    my ($start, $ivecsize, $fsize, $mcustring, $coreversion);
+    my ($start, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
     use XML::LibXML;
     my $parser = new XML::LibXML;
     my $doc = $parser->parse_file ($basename);
     $basename = lc $basename;
 
-    $basename =~ s/xml/frt/;
+    $basename =~ s/\.xml$//;
     $basename =~ s/\.gz$//;
-    open(FRT, ">$basename") or die "$basename: $!\n";
+    mkdir $basename unless -d $basename;
+    open(FRT, ">$basename/$basename.frt") or die "$basename: $!\n";
 
     $basename =~ s/frt/asm/;
-    open(ASM, ">$basename") or die "$basename: $!\n";
+    open(ASM, ">$basename/device.asm") or die "$basename: $!\n";
 
-    $basename =~ s/asm/inc/;
     $basename = lc $basename;
-    open(INC, ">$basename") or die "$basename: $!\n";
+    open(INC, ">$basename/device.inc") or die "$basename: $!\n";
     
     my $admin = $doc -> getElementsByTagName("ADMIN") -> item(0);
     $partname = $admin -> getElementsByTagName("PART_NAME");
@@ -90,7 +90,7 @@ sub readXML ($) {
 	foreach my $iomd (@iomds) {
           my ($name, $iv, $li, $source);
 	  print FRT "\n\\ $iomd\n";
-	  print INC "\n; ********\n.ifdef $iomd\n; ********\n";
+	  print INC "\n; ********\n.ifdef WANT_$iomd\n; ********\n";
 	  $iv = $iomodule -> getElementsByTagName($iomd) ;
 	  $li = $iv->[0] -> getElementsByTagName("LIST");
           $li =~ s/\[//;
@@ -103,7 +103,8 @@ sub readXML ($) {
 	     next if $regs{$addr};
 	     $regs{$addr} = 1;
 	     print FRT "$addr constant $reg\t\\ $name\n";
-	     print INC "\nVE_${reg}:\n\t" . fmt_str($reg, "\$ff")."\n\t.dw VE_HEAD\n\t.set VEHEAD=VE_${reg}\n";
+	     print INC "; ( -- addr ) System Constant\n; R( -- )\n; $name";
+	     print INC "\nVE_${reg}:\n\t" . fmt_str($reg, "\$ff")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${reg}\n";
 	     print INC "XT_${reg}:\n\t.dw PFA_DOVARIABLE\nPFA_${reg}:\n\t.dw \$$addr\n";
 	  }
 	  print INC "\n.endif\n";
@@ -112,8 +113,11 @@ sub readXML ($) {
     
     $ivecsize = "2";
     $ivecsize = "1" if int($fsize) <= 8192; # educated guess
+    $pclen    = "2";
+    $pclen    = "3" if int($fsize) > 128000; 
 
     print ASM ".equ intvecsize = $ivecsize ; please verify; flash size: $fsize bytes\n";
+    print ASM ".equ pclen = $pclen ; please verify\n";
     print FRT "\n\\ Interrupts\n";
     foreach my $ivector ($doc -> getElementsByTagName("INTERRUPT_VECTOR")) {
 	$number     = $ivector -> getElementsByTagName("NMB_VECTORS");

@@ -6,8 +6,7 @@
     	<uptodate  srcfile="bf.asm" targetfile="bf.hex" property="bf-hex"/>
     </target>
     <target name="bf.hex" unless="bf-hex" depends="updatecheck" description="Hexfiles for AVR Butterfly">
-        <echo>Producing Hexfiles</echo>
-        <avrasm2 projectname="bf"/>
+        <avrasm2 projectname="bf" mcu="atmega169"/>
     </target>
 
     <target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">

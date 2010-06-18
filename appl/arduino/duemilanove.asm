@@ -1,6 +1,6 @@
 ; Settings for the eval board with Atmega8 & 8 MHz
 .include "macros.asm"
-.include "devices/atmega328p.asm"
+.include "device.asm"
 
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...

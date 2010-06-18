@@ -3,11 +3,10 @@
 
     <import file="../avr-build.xml"/>
     <target name="atxmega.hex" description="Hexfiles for AVR atxmega">
-        <echo>Producing Hexfiles</echo>
-        <avrasm2 projectname="atxmega"/>
+        <avrasm2 projectname="atxmega" mcu="atxmega128a1"/>
     </target>
 
-    <target name="atxmega" depends="atxmega.hex" description="AVR atxmega: Atmega2561 @ 14.7456 MHz">
+    <target name="atxmega" depends="atxmega.hex" description="AVR atxmega 128 a1 @ 2 MHz">
         <echo>Uploading Hexfiles for AVR atxmega</echo>
         <avrdude 
 		    type="avrisp2"

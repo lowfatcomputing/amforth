@@ -4,7 +4,7 @@
 
 # --- edit these values ------------------------------------
 # Name of your application (useful, if you rename template.asm)
-TARGET=m16
+TARGET=template
 
 # versions before 2.1 may produce some warnings
 # but should produce a running system. You should
@@ -43,7 +43,7 @@ AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
 # ----------------------------------------------------------
 
-INCLUDE=-I $(AMFORTH)
+INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
 
 default:  $(TARGET).hex
 
@@ -53,11 +53,7 @@ erase:
 install: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
-upload:
-	amforth-upload.py  -t ${CONSOLE} $(TARGET).frt
-
-
-$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/*.asm 
+$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/$(MCU)/*.asm 
 #	$(AVRA) $(INCLUDE) --listmac -l $(TARGET).lst -m $(TARGET).map $(TARGET).asm
 	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 

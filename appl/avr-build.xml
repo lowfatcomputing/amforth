@@ -38,12 +38,15 @@
 	<attribute name="avrasm"       default="../../Atmel/avrasm2.exe"/>
 	<attribute name="includes"     default="../../Atmel/Appnotes2" />
 	<attribute name="projectname"  default="undefined"/>
+	<attribute name="mcu"          default="undefined"/>
 	<attribute name="amforth.core" default="../../core"/>
 	<sequential>
+		<echo>Producing Hexfiles for @{mcu}</echo>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="@{avrasm}"/>
 		    <arg line="-I @{includes}"/>
 		    <arg line="-I @{amforth.core}"/>
+		    <arg line="-I @{amforth.core}/devices/@{mcu}"/>
 		    <arg line="-fI -v0"/>
 		    <arg line="-e @{projectname}.eep.hex"/>
 		    <arg line="-l @{projectname}.lst"/>

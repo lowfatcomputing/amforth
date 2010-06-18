@@ -3,8 +3,7 @@
         <import file="../avr-build.xml"/>
 
 	<target name="mega.hex" description="Hexfiles for Arduino Mega Board www.arduino.cc">
-		<echo>Producing Hexfiles</echo>
-		<avrasm2 projectname="mega"/>
+		<avrasm2 projectname="mega" mcu="atmega1280"/>
 	</target>
 
 	<target name="mega" depends="mega.hex" description="Arduino Mega Board www.arduino.cc">
@@ -18,15 +17,14 @@
 	</target>
 
 	<target name="sanguino.hex" description="Hexfiles for Sanguino Board sanguino.cc">
-		<echo>Producing Hexfiles</echo>
-		<avrasm2 projectname="sanguino"/>
+		<avrasm2 projectname="sanguino" mcu="atmega644p"/>
 	</target>
 
 	<target name="sanguino" depends="sanguino.hex" description="Sangiono Board sanguino.cc">
 	        <echo>Uploading Hexfiles to Arduino Mega</echo>
 		<avrdude 
 		    type="avrisp2"
-		    mcu="m644p"
+		    mcu="m644"
 		    flashfile="sanguino.hex"
 		    eepromfile="sanguino.eep.hex"
 		/>
@@ -35,8 +33,7 @@
 
 
 	<target name="duemilanove.hex" description="Hexfiles for Arduino Duemilanove Board www.arduino.cc">
-		<echo>Producing Hexfiles</echo>
-		<avrasm2 projectname="duemilanove"/>
+		<avrasm2 projectname="duemilanove" mcu="atmega328p"/>
 	</target>
 
 	<target name="duemilanove" depends="duemilanove.hex" description="Arduino Duemilanove Board www.arduino.cc">

@@ -41,8 +41,6 @@
 
 ; size of program counter in bytes
 .equ pclen = 2
-
-
 .equ intvecsize = 2 ; please verify; flash size: 65536 bytes
 .equ INTVECTORS = 31
 .org $002
