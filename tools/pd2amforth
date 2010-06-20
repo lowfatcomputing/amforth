@@ -81,18 +81,21 @@ sub readXML ($) {
     print ASM "\tlsl zl\n\trol zh\n" if int($fsize) <= 65536;
     print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n" if int($fsize) > 65536;
     print ASM ".endmacro\n";
-    
+    print ASM "\nthe following definitions are shortcuts for the respective forth source segments if set to 1\n";
     foreach my $iomodule ($doc -> getElementsByTagName("IO_MODULE")) {
 	my $iomods = $iomodule -> getElementsByTagName("MODULE_LIST");
 	$iomods =~ s/\[//;
 	$iomods =~ s/\]//;
 	my @iomds = sort split /:/, $iomods;
 	foreach my $iomd (@iomds) {
-          my ($name, $iv, $li, $source);
+          my ($name, $iv, $li, $source, $descr);
 	  print FRT "\n\\ $iomd\n";
+
 	  print INC "\n; ********\n.ifdef WANT_$iomd\n; ********\n";
 	  $iv = $iomodule -> getElementsByTagName($iomd) ;
 	  $li = $iv->[0] -> getElementsByTagName("LIST");
+	  $descr = $iv->[0] -> getElementsByTagName("TEXT");
+	  print ASM ".set WANT_${iomd} = 0\n";
           $li =~ s/\[//;
 	  $li =~ s/\]//;
 	  foreach my $reg ( sort split /:/, $li) {
