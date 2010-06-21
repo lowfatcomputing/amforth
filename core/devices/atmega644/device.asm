@@ -7,25 +7,6 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $7000 
-
-  .equ BAUDRATE_LOW = UBRR0L
-  .equ BAUDRATE_HIGH = UBRR0H
-  .equ USART_C = UCSR0C
-  .equ USART_B = UCSR0B
-  .equ USART_A = UCSR0A
-  .equ USART_DATA = UDR0
-  .equ USART_RXEN_bm = 1 << RXC0
-  .equ URXCaddr = URXC0addr
-  .equ UDREaddr = UDRE0addr
-  .equ FE = FE0
-  .equ DOR = DOR0
-  .equ PE = UPE0
-  .equ UDRIE = UDRIE0
-  .equ UDRE  = UDRE0
-
-; size of program counter in bytes
-.equ pclen = 2
-
 .macro jmp_
 	jmp @0
 .endmacro
@@ -43,6 +24,7 @@
 	rol zh
 .endmacro
 .equ intvecsize = 2 ; please verify; flash size: 65536 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 28
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -82,10 +64,10 @@
 	 rcall isr ; Timer/Counter0 Overflow
 .org $026
 	 rcall isr ; SPI Serial Transfer Complete
-;.org $028
-;	 rcall isr ; USART0, Rx Complete
-;.org $02A
-;	 rcall isr ; USART0 Data register Empty
+.org $028
+	 rcall isr ; USART0, Rx Complete
+.org $02A
+	 rcall isr ; USART0 Data register Empty
 .org $02C
 	 rcall isr ; USART0, Tx Complete
 .org $02E
@@ -99,6 +81,6 @@
 .org $036
 	 rcall isr ; Store Program Memory Read
 mcustring:
-	.dw 9
+	.dw 09
 	.db "ATmega644",0
 .set codestart=pc

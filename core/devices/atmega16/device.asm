@@ -14,6 +14,8 @@
   .equ USART_B = UCSRB+$20
   .equ USART_A = UCSRA+$20
   .equ USART_DATA = UDR+$20
+  .equ USART_RXRD_bm = 1 << RXC
+  .equ USART_TXRD_bm = 1 << UDRE
 
 ; size of program counter in bytes
 .equ pclen = 2
@@ -24,10 +26,6 @@
 .endif
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
-
-  .equ USART_RXEN_bm = 1 << RXC
-;  .equ RWWSRE = ASRE
-;  .equ RWWSB  = ASB
 
 .macro jmp_
 	jmp @0

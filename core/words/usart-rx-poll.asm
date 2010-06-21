@@ -32,13 +32,12 @@ XT_RXQ:
 PFA_RXQ:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
+  .dw USART_RXRD_bm
+  .dw XT_DUP
+  .dw XT_DOLITERAL
   .dw USART_A
   .dw XT_CFETCH
-  .dw XT_DOLITERAL
-  .dw USART_RXEN_bm
   .dw XT_AND
-  .dw XT_DOLITERAL
-  .dw USART_RXEN_bm
   .dw XT_EQUAL
   .dw XT_EXIT
 

@@ -28,7 +28,6 @@ hex
 54 constant MCUSR	\ MCU Status Register
 66 constant OSCCAL	\ Oscillator Calibration Value
 64 constant PRR	\ Power Reduction Register
-5B constant RAMPZ	\ RAM Page Z Select Register
 53 constant SMCR	\ Sleep Mode Control Register
 5E constant SPH	\ Stack Pointer High
 5D constant SPL	\ Stack Pointer Low

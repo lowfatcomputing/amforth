@@ -8,6 +8,25 @@
 .equ ramstart =  $60
 .equ max_dict_addr = $3800 
 
+; the following definitions are shortcuts for the respective forth source segments if set to 1
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_PORTA = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_TWI = 0
+.set WANT_USART = 0
+.set WANT_WATCHDOG = 0
+
 
   .equ BAUDRATE_LOW = UBRRL+$20
   .equ BAUDRATE_HIGH = UBRRH+$20
@@ -15,15 +34,14 @@
   .equ USART_B = UCSRB+$20
   .equ USART_A = UCSRA+$20
   .equ USART_DATA = UDR+$20
-  .equ USART_RXEN_bm = 1 << RXC
+  .equ USART_RXRD_bm = 1 << RXC
+  .equ USART_TXRD_bm = 1 << UDRE
+
 .ifndef SPMCSR
   .equ SPMCSR = SPMCR
 .endif
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
-
-;  .equ RWWSRE = ASRE
-;  .equ RWWSB  = ASB
 
 ; size of program counter in bytes
 .equ pclen = 2

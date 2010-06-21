@@ -13,8 +13,8 @@
   .equ USART_B = UCSR0B
   .equ USART_A = UCSR0A
   .equ USART_DATA = UDR0
-  .equ USART_RXEN_bm = 1 << RXC
-  .equ PE  = UPE0
+  .equ USART_RXRD_bm = 1 << RXC0
+  .equ USART_TXRD_bm = 1 << UDRE0
 
   .equ EEPE   = EEWE
   .equ EEMPE  = EEMWE
@@ -38,6 +38,30 @@
 	lsl zl
 	rol zh
 .endmacro
+
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_JTAG = 0
+.set WANT_LCD = 0
+.set WANT_PORTA = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_PORTE = 0
+.set WANT_PORTF = 0
+.set WANT_PORTG = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_USART0 = 0
+.set WANT_USI = 0
+.set WANT_WATCHDOG = 0
+
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ INTVECTORS = 23
 .org $002

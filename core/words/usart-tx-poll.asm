@@ -35,7 +35,7 @@ PFA_TXQ:
   .dw USART_A
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw 1<<UDRE
+  .dw USART_TXRD_bm
   .dw XT_AND
   .dw XT_EXIT
 

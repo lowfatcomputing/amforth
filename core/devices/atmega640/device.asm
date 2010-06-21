@@ -14,14 +14,12 @@
   .equ USART_B = UCSR3B
   .equ USART_A = UCSR3A
   .equ USART_DATA = UDR3
-  .equ USART_RXEN_bm = 1 << RXC3
+  .equ USART_RXRD_bm = 1 << RXC3
+  .equ USART_TXRD_bm = 1 << UDRE3
+
   .equ URXCaddr = URXC3addr
   .equ UDREaddr = UDRE3addr
-  .equ FE = FE3
-  .equ DOR = DOR3
-  .equ PE = UPE3
   .equ UDRIE = UDRIE3
-  .equ UDRE  = UDRE3
 ; size of program counter in bytes
 .equ pclen = 2
 

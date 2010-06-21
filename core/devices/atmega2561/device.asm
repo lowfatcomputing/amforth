@@ -14,16 +14,11 @@
   .equ USART_B = UCSR1B
   .equ USART_A = UCSR1A
   .equ USART_DATA = UDR1
-
-  .equ USART_RXEN_bm = 1 << RXC1
+  .equ USART_RXRD_bm = 1 << RXC1
+  .equ USART_TXRD_bm = 1 << UDRE1
 
   .equ URXCaddr = URXC1addr
   .equ UDREaddr = UDRE1addr
-  .equ UDR  = UDR1
-  .equ UDRE = UDRE1
-  .equ FE = FE1
-  .equ DOR = DOR1
-  .equ PE = UPE1
   .equ UDRIE = UDRIE1
 
   .equ pclen = 3
