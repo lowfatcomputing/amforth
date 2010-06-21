@@ -9,8 +9,11 @@
 .org pc_
 ; main entry point
 amforthstart:
+    in_ r10, MCUSR
+    clr r11
     clr zerol
     clr zeroh
+    out_ MCUSR, zerol
     ; init first user data area
     ldi zl, low(heap)
     ldi zh, high(heap)
