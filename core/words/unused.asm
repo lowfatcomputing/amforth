@@ -10,7 +10,7 @@ XT_UNUSED:
     .dw DO_COLON
 PFA_UNUSED:
     .dw XT_DOLITERAL
-    .dw amforth_interpreter
+    .dw max_dict_addr
     .dw XT_HERE
     .dw XT_MINUS
     .dw XT_EXIT
