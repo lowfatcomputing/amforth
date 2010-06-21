@@ -24,13 +24,11 @@
 	        <echo>Uploading Hexfiles to Arduino Mega</echo>
 		<avrdude 
 		    type="avrisp2"
-		    mcu="m644"
+		    mcu="m644p"
 		    flashfile="sanguino.hex"
 		    eepromfile="sanguino.eep.hex"
 		/>
 	</target>
-
-
 
 	<target name="duemilanove.hex" description="Hexfiles for Arduino Duemilanove Board www.arduino.cc">
 		<avrasm2 projectname="duemilanove" mcu="atmega328p"/>
@@ -43,6 +41,20 @@
 		    mcu="m328p"
 		    flashfile="duemilanove.hex"
 		    eepromfile="duemilanove.eep.hex"
+		/>
+	</target>
+
+	<target name="diecimila.hex" description="Hexfiles for Arduino Diecimila Board www.arduino.cc">
+		<avrasm2 projectname="diecimila" mcu="atmega168"/>
+	</target>
+
+	<target name="diecimila" depends="diecimila.hex" description="Arduino Diecimila Board www.arduino.cc">
+	        <echo>Uploading Hexfiles to Arduino Diecimila</echo>
+		<avrdude 
+		    type="avrisp2"
+		    mcu="m168"
+		    flashfile="diecimila.hex"
+		    eepromfile="diecimila.eep.hex"
 		/>
 	</target>
 

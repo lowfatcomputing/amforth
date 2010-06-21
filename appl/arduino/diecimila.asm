@@ -1,3 +1,4 @@
+; This is a template for an Arduino Diecimila based amforth project.
 ;
 ; The order of the entries (esp the include order) must not be
 ; changed since it is very important that the settings are in the
@@ -9,7 +10,7 @@
 
 ; include the amforth device definition file. These
 ; files include the *def.inc from atmel internally.
-.include "devices/atmega1280/device.asm"
+.include "devices/atmega168/device.asm"
 
 ; amforth needs two essential parameters
 ; cpu clock in hertz, 1MHz is factory default
@@ -17,13 +18,13 @@
 
 ; initial baud rate of terminal
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) ;| (1<<RXCIE0)
+.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
 .equ USART_C_VALUE = (3<<UCSZ00)
 
 
 .equ HLDSIZE  = $10    ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
-.equ APPUSERSIZE = 2   ; size of application specific user area in bytes
+.equ APPUSERSIZE = 2   ; size of user area in bytes
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward

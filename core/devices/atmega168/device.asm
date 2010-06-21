@@ -7,9 +7,6 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $1C00 
-  .equ FE = FE0
-  .equ DOR = DOR0
-  .equ PE = UPE0
   .equ UDRIE = UDRIE0
 
   .equ BAUDRATE_LOW = UBRR0L
@@ -18,7 +15,7 @@
   .equ USART_B = UCSR0B
   .equ USART_A = UCSR0A
   .equ USART_DATA = UDR0
-  .equ USART_RXEN_bm = 1 << RXC
+  .equ USART_RXEN_bm = 1 << RXC0
   .equ SPMEN = SELFPRGEN
 ; size of program counter in bytes
 .equ pclen = 2
