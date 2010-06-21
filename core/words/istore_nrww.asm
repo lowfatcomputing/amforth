@@ -9,6 +9,11 @@ VE_DO_ISTORE:
 XT_DO_ISTORE:
     .dw PFA_DO_ISTORE
 PFA_DO_ISTORE:
+  ; store status register
+  in temp1,SREG
+  push temp1
+  cli
+
   movw temp2, tosl ; save the (word) address
   loadtos          ; get the new value for the flash cell
   push xl
@@ -22,6 +27,10 @@ PFA_DO_ISTORE:
   pop xl
   ; finally clear the stack
   loadtos
+  pop temp1
+  ; restore status register (and interrupt enable flag)
+  out SREG,temp1
+
   jmp_ DO_NEXT
 
 ; 
@@ -41,18 +50,18 @@ DO_ISTORE_atmega:
   breq DO_ISTORE_writepage 
 
     movw zl, temp2
-    ldi temp0,(1<<PGERS|1<<SPMEN)
+    ldi temp0,(1<<PGERS)
     rcall dospm
 
 DO_ISTORE_writepage:
   ; write page
   movw zl, temp2
-  ldi temp0,(1<<PGWRT|1<<SPMEN)
+  ldi temp0,(1<<PGWRT)
   rcall dospm
 
   ; reenable RWW section
   movw zl, temp2
-  ldi temp0,(1<<RWWSRE|1<<SPMEN)
+  ldi temp0,(1<<RWWSRE)
   rcall dospm
   ret
 
@@ -82,7 +91,7 @@ pageload_newdata:
     movw temp4, temp6
     movw r0, tosl
 pageload_cont:
-  ldi temp0,(1<<SPMEN)
+  clr temp0
   rcall dospm
   adiw y, 1
   sbiw x, 1
@@ -98,24 +107,18 @@ pageload_done:
 ;;   temp0 holds the value for SPMCR
 
 dospm:
-  ; store status register
-  in temp1,SREG
-  push temp1
-  cli
-Wait_ee:
+dospm_wait_ee:
   sbic EECR, EEPE
-  rjmp Wait_ee
-wait_spm:
+  rjmp dospm_wait_ee
+dospm_wait_spm:
   in   temp1, SPMCSR
   sbrc temp1, SPMEN
-  rjmp Wait_spm
+  rjmp dospm_wait_spm
 
   ; turn the word addres into a byte address
   writeflashcell
   ; execute spm
+  ori temp0, (1<<SPMEN)
   out SPMCSR,temp0
   spm
-  pop temp1
-  ; restore status register
-  out SREG,temp1
   ret
