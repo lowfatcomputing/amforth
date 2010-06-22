@@ -1,6 +1,6 @@
-; ( d1 -- 0) Numeric IO
+; ( d -- 0) Numeric IO
 ; R( -- )
-; call # until a value of zero is reached
+; pictured numeric output: convert all digits until 0 (zero) is reached
 VE_SHARP_S:
     .dw $ff02
     .db "#s"

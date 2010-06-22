@@ -1,6 +1,6 @@
 ; ( d1 -- addr count ) Numeric IO
 ; R( -- )
-; convert Pictured Numeric Output buffer into an usable string
+; Pictured Numeric Output: convert PNO buffer into an string
 VE_SHARP_G:
     .dw $ff02
     .db "#>"

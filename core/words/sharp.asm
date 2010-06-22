@@ -1,6 +1,6 @@
-; ( d1 -- ) Numeric IO
+; ( d1 -- d2) Numeric IO
 ; R( -- )
-; double cell output
+; pictured numeric output: convert one digit
 VE_SHARP:
     .dw $ff01
     .db "#",0
