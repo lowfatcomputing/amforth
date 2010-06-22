@@ -9,11 +9,8 @@
 .org pc_
 ; main entry point
 amforthstart:
-    in_ r10, MCUSR
-    clr r11
     clr zerol
     clr zeroh
-    out_ MCUSR, zerol
     ; init first user data area
     ldi zl, low(heap)
     ldi zh, high(heap)
@@ -106,22 +103,6 @@ EE_HEAP:
     .dw heap         ; HEAP
 EE_EDP:
     .dw edp          ; EDP
-EE_TURNKEY:
-    .dw XT_APPLTURNKEY  ; TURNKEY
-EE_ISTORE:
-    .dw XT_DO_ISTORE  ; Store a cell into flash
-
-; calculate baud rate error
-.equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round
-.equ BAUD_REAL  = (F_CPU/(16*(UBRR_VAL+1)))     ; effective baud rate
-.equ BAUD_ERROR = ((BAUD_REAL*1000)/BAUD-1000)  ; error in pro mille
-
-.if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
-  .error "Serial line cannot be set up properly (systematic baud error too high)"
-.endif
-
-EE_UBRRVAL:
-    .dw UBRR_VAL     ; BAUDRATE
 EE_ENVIRONMENT:
     .dw VE_ENVHEAD   ; environmental queries
 EE_WL_FORTH:
