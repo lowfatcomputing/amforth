@@ -13,10 +13,10 @@ my $PDDIR="../Atmel/Partdescriptionfiles/";
 $PDDIR=".";
 
 sub fmt_str {
-    my ($str, $prefix) = @_;
+    my ($str, $format) = @_;
     my $result;
-    my $len = sprintf("%2d", length $str);
-    $result  = ".dw $prefix$len\n";
+    my $len = sprintf("$format", length $str);
+    $result  = ".dw $len\n";
     $result .= "\t.db \"$str\"";
     $result .= ",0" if length($str)%2;
     return $result;
@@ -96,7 +96,7 @@ sub readXML ($) {
 	foreach my $iomd (@iomds) {
           my ($name, $iv, $li, $source, $descr, $collectusartregs);
 	  print FRT "\n\\ $iomd\n";
-	  print INC "\n; ********\n.ifdef WANT_$iomd\n; ********\n";
+	  print INC "\n; ********\n.if WANT_$iomd == 1\n; ********\n";
 	  $iv = $iomodule -> getElementsByTagName($iomd) ;
 	  $li = $iv->[0] -> getElementsByTagName("LIST");
 	  $descr = $iv->[0] -> getElementsByTagName("TEXT");
@@ -121,7 +121,7 @@ sub readXML ($) {
 	     $regs{$addr} = 1;
 	     print FRT "$addr constant $reg\t\\ $name\n";
 	     print INC "; ( -- addr ) System Constant\n; R( -- )\n; $name";
-	     print INC "\nVE_${reg}:\n\t" . fmt_str($reg, "\$ff")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${reg}\n";
+	     print INC "\nVE_${reg}:\n\t" . fmt_str($reg, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${reg}\n";
 	     print INC "XT_${reg}:\n\t.dw PFA_DOVARIABLE\nPFA_${reg}:\n\t.dw \$$addr\n";
 	  }
 	  print INC "\n.endif\n";
@@ -162,7 +162,7 @@ sub readXML ($) {
 	}
     }
 
-    print ASM "mcustring:\n\t". fmt_str($partname, "")."\n";
+    print ASM "mcustring:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
 
     close(FRT);

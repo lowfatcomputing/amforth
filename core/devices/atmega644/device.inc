@@ -2,13 +2,13 @@
 ; Built using part description XML file version 69
 
 ; ********
-.ifdef WANT_AD_CONVERTER
+.if WANT_AD_CONVERTER == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; ADC Data Register High Byte
 VE_ADCH:
-	.dw $ff 4
+	.dw $ff04
 	.db "ADCH"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ADCH
@@ -20,7 +20,7 @@ PFA_ADCH:
 ; R( -- )
 ; ADC Data Register Low Byte
 VE_ADCL:
-	.dw $ff 4
+	.dw $ff04
 	.db "ADCL"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ADCL
@@ -32,7 +32,7 @@ PFA_ADCL:
 ; R( -- )
 ; The ADC Control and Status register A
 VE_ADCSRA:
-	.dw $ff 6
+	.dw $ff06
 	.db "ADCSRA"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ADCSRA
@@ -44,7 +44,7 @@ PFA_ADCSRA:
 ; R( -- )
 ; The ADC Control and Status register B
 VE_ADCSRB:
-	.dw $ff 6
+	.dw $ff06
 	.db "ADCSRB"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ADCSRB
@@ -56,7 +56,7 @@ PFA_ADCSRB:
 ; R( -- )
 ; The ADC multiplexer Selection Register
 VE_ADMUX:
-	.dw $ff 5
+	.dw $ff05
 	.db "ADMUX",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ADMUX
@@ -68,7 +68,7 @@ PFA_ADMUX:
 ; R( -- )
 ; Digital Input Disable Register
 VE_DIDR0:
-	.dw $ff 5
+	.dw $ff05
 	.db "DIDR0",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DIDR0
@@ -80,13 +80,13 @@ PFA_DIDR0:
 .endif
 
 ; ********
-.ifdef WANT_ANALOG_COMPARATOR
+.if WANT_ANALOG_COMPARATOR == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Analog Comparator Control And Status Register
 VE_ACSR:
-	.dw $ff 4
+	.dw $ff04
 	.db "ACSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ACSR
@@ -98,7 +98,7 @@ PFA_ACSR:
 ; R( -- )
 ; Digital Input Disable Register 1
 VE_DIDR1:
-	.dw $ff 5
+	.dw $ff05
 	.db "DIDR1",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DIDR1
@@ -110,13 +110,13 @@ PFA_DIDR1:
 .endif
 
 ; ********
-.ifdef WANT_BOOT_LOAD
+.if WANT_BOOT_LOAD == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Store Program Memory Control Register
 VE_SPMCSR:
-	.dw $ff 6
+	.dw $ff06
 	.db "SPMCSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPMCSR
@@ -128,13 +128,13 @@ PFA_SPMCSR:
 .endif
 
 ; ********
-.ifdef WANT_CPU
+.if WANT_CPU == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; 
 VE_CLKPR:
-	.dw $ff 5
+	.dw $ff05
 	.db "CLKPR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_CLKPR
@@ -146,7 +146,7 @@ PFA_CLKPR:
 ; R( -- )
 ; General Purpose IO Register 0
 VE_GPIOR0:
-	.dw $ff 6
+	.dw $ff06
 	.db "GPIOR0"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_GPIOR0
@@ -158,7 +158,7 @@ PFA_GPIOR0:
 ; R( -- )
 ; General Purpose IO Register 1
 VE_GPIOR1:
-	.dw $ff 6
+	.dw $ff06
 	.db "GPIOR1"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_GPIOR1
@@ -170,7 +170,7 @@ PFA_GPIOR1:
 ; R( -- )
 ; General Purpose IO Register 2
 VE_GPIOR2:
-	.dw $ff 6
+	.dw $ff06
 	.db "GPIOR2"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_GPIOR2
@@ -182,7 +182,7 @@ PFA_GPIOR2:
 ; R( -- )
 ; MCU Control Register
 VE_MCUCR:
-	.dw $ff 5
+	.dw $ff05
 	.db "MCUCR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_MCUCR
@@ -194,7 +194,7 @@ PFA_MCUCR:
 ; R( -- )
 ; MCU Status Register
 VE_MCUSR:
-	.dw $ff 5
+	.dw $ff05
 	.db "MCUSR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_MCUSR
@@ -206,7 +206,7 @@ PFA_MCUSR:
 ; R( -- )
 ; Oscillator Calibration Value
 VE_OSCCAL:
-	.dw $ff 6
+	.dw $ff06
 	.db "OSCCAL"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OSCCAL
@@ -218,7 +218,7 @@ PFA_OSCCAL:
 ; R( -- )
 ; Power Reduction Register
 VE_PRR:
-	.dw $ff 3
+	.dw $ff03
 	.db "PRR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PRR
@@ -230,7 +230,7 @@ PFA_PRR:
 ; R( -- )
 ; Sleep Mode Control Register
 VE_SMCR:
-	.dw $ff 4
+	.dw $ff04
 	.db "SMCR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SMCR
@@ -242,7 +242,7 @@ PFA_SMCR:
 ; R( -- )
 ; Stack Pointer High
 VE_SPH:
-	.dw $ff 3
+	.dw $ff03
 	.db "SPH",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPH
@@ -254,7 +254,7 @@ PFA_SPH:
 ; R( -- )
 ; Stack Pointer Low
 VE_SPL:
-	.dw $ff 3
+	.dw $ff03
 	.db "SPL",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPL
@@ -266,7 +266,7 @@ PFA_SPL:
 ; R( -- )
 ; Status Register
 VE_SREG:
-	.dw $ff 4
+	.dw $ff04
 	.db "SREG"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SREG
@@ -278,13 +278,13 @@ PFA_SREG:
 .endif
 
 ; ********
-.ifdef WANT_EEPROM
+.if WANT_EEPROM == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; EEPROM Address Register Low Byte
 VE_EEARH:
-	.dw $ff 5
+	.dw $ff05
 	.db "EEARH",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EEARH
@@ -296,7 +296,7 @@ PFA_EEARH:
 ; R( -- )
 ; EEPROM Address Register Low Byte
 VE_EEARL:
-	.dw $ff 5
+	.dw $ff05
 	.db "EEARL",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EEARL
@@ -308,7 +308,7 @@ PFA_EEARL:
 ; R( -- )
 ; EEPROM Control Register
 VE_EECR:
-	.dw $ff 4
+	.dw $ff04
 	.db "EECR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EECR
@@ -320,7 +320,7 @@ PFA_EECR:
 ; R( -- )
 ; EEPROM Data Register
 VE_EEDR:
-	.dw $ff 4
+	.dw $ff04
 	.db "EEDR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EEDR
@@ -332,13 +332,13 @@ PFA_EEDR:
 .endif
 
 ; ********
-.ifdef WANT_EXTERNAL_INTERRUPT
+.if WANT_EXTERNAL_INTERRUPT == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; External Interrupt Control Register A
 VE_EICRA:
-	.dw $ff 5
+	.dw $ff05
 	.db "EICRA",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EICRA
@@ -350,7 +350,7 @@ PFA_EICRA:
 ; R( -- )
 ; External Interrupt Flag Register
 VE_EIFR:
-	.dw $ff 4
+	.dw $ff04
 	.db "EIFR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EIFR
@@ -362,7 +362,7 @@ PFA_EIFR:
 ; R( -- )
 ; External Interrupt Mask Register
 VE_EIMSK:
-	.dw $ff 5
+	.dw $ff05
 	.db "EIMSK",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_EIMSK
@@ -374,7 +374,7 @@ PFA_EIMSK:
 ; R( -- )
 ; Pin Change Interrupt Control Register
 VE_PCICR:
-	.dw $ff 5
+	.dw $ff05
 	.db "PCICR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCICR
@@ -386,7 +386,7 @@ PFA_PCICR:
 ; R( -- )
 ; Pin Change Interrupt Flag Register
 VE_PCIFR:
-	.dw $ff 5
+	.dw $ff05
 	.db "PCIFR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCIFR
@@ -398,7 +398,7 @@ PFA_PCIFR:
 ; R( -- )
 ; Pin Change Mask Register 0
 VE_PCMSK0:
-	.dw $ff 6
+	.dw $ff06
 	.db "PCMSK0"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCMSK0
@@ -410,7 +410,7 @@ PFA_PCMSK0:
 ; R( -- )
 ; Pin Change Mask Register 1
 VE_PCMSK1:
-	.dw $ff 6
+	.dw $ff06
 	.db "PCMSK1"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCMSK1
@@ -422,7 +422,7 @@ PFA_PCMSK1:
 ; R( -- )
 ; Pin Change Mask Register 2
 VE_PCMSK2:
-	.dw $ff 6
+	.dw $ff06
 	.db "PCMSK2"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCMSK2
@@ -434,7 +434,7 @@ PFA_PCMSK2:
 ; R( -- )
 ; Pin Change Mask Register 3
 VE_PCMSK3:
-	.dw $ff 6
+	.dw $ff06
 	.db "PCMSK3"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PCMSK3
@@ -446,13 +446,13 @@ PFA_PCMSK3:
 .endif
 
 ; ********
-.ifdef WANT_JTAG
+.if WANT_JTAG == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; On-Chip Debug Related Register in I/O Memory
 VE_OCDR:
-	.dw $ff 4
+	.dw $ff04
 	.db "OCDR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCDR
@@ -464,13 +464,13 @@ PFA_OCDR:
 .endif
 
 ; ********
-.ifdef WANT_PORTA
+.if WANT_PORTA == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port A Data Direction Register
 VE_DDRA:
-	.dw $ff 4
+	.dw $ff04
 	.db "DDRA"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DDRA
@@ -482,7 +482,7 @@ PFA_DDRA:
 ; R( -- )
 ; Port A Input Pins
 VE_PINA:
-	.dw $ff 4
+	.dw $ff04
 	.db "PINA"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PINA
@@ -494,7 +494,7 @@ PFA_PINA:
 ; R( -- )
 ; Port A Data Register
 VE_PORTA:
-	.dw $ff 5
+	.dw $ff05
 	.db "PORTA",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PORTA
@@ -506,13 +506,13 @@ PFA_PORTA:
 .endif
 
 ; ********
-.ifdef WANT_PORTB
+.if WANT_PORTB == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port B Data Direction Register
 VE_DDRB:
-	.dw $ff 4
+	.dw $ff04
 	.db "DDRB"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DDRB
@@ -524,7 +524,7 @@ PFA_DDRB:
 ; R( -- )
 ; Port B Input Pins
 VE_PINB:
-	.dw $ff 4
+	.dw $ff04
 	.db "PINB"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PINB
@@ -536,7 +536,7 @@ PFA_PINB:
 ; R( -- )
 ; Port B Data Register
 VE_PORTB:
-	.dw $ff 5
+	.dw $ff05
 	.db "PORTB",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PORTB
@@ -548,13 +548,13 @@ PFA_PORTB:
 .endif
 
 ; ********
-.ifdef WANT_PORTC
+.if WANT_PORTC == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port C Data Direction Register
 VE_DDRC:
-	.dw $ff 4
+	.dw $ff04
 	.db "DDRC"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DDRC
@@ -566,7 +566,7 @@ PFA_DDRC:
 ; R( -- )
 ; Port C Input Pins
 VE_PINC:
-	.dw $ff 4
+	.dw $ff04
 	.db "PINC"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PINC
@@ -578,7 +578,7 @@ PFA_PINC:
 ; R( -- )
 ; Port C Data Register
 VE_PORTC:
-	.dw $ff 5
+	.dw $ff05
 	.db "PORTC",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PORTC
@@ -590,13 +590,13 @@ PFA_PORTC:
 .endif
 
 ; ********
-.ifdef WANT_PORTD
+.if WANT_PORTD == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port D Data Direction Register
 VE_DDRD:
-	.dw $ff 4
+	.dw $ff04
 	.db "DDRD"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_DDRD
@@ -608,7 +608,7 @@ PFA_DDRD:
 ; R( -- )
 ; Port D Input Pins
 VE_PIND:
-	.dw $ff 4
+	.dw $ff04
 	.db "PIND"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PIND
@@ -620,7 +620,7 @@ PFA_PIND:
 ; R( -- )
 ; Port D Data Register
 VE_PORTD:
-	.dw $ff 5
+	.dw $ff05
 	.db "PORTD",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_PORTD
@@ -632,13 +632,13 @@ PFA_PORTD:
 .endif
 
 ; ********
-.ifdef WANT_SPI
+.if WANT_SPI == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; SPI Control Register
 VE_SPCR:
-	.dw $ff 4
+	.dw $ff04
 	.db "SPCR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPCR
@@ -650,7 +650,7 @@ PFA_SPCR:
 ; R( -- )
 ; SPI Data Register
 VE_SPDR:
-	.dw $ff 4
+	.dw $ff04
 	.db "SPDR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPDR
@@ -662,7 +662,7 @@ PFA_SPDR:
 ; R( -- )
 ; SPI Status Register
 VE_SPSR:
-	.dw $ff 4
+	.dw $ff04
 	.db "SPSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_SPSR
@@ -674,13 +674,13 @@ PFA_SPSR:
 .endif
 
 ; ********
-.ifdef WANT_TIMER_COUNTER_0
+.if WANT_TIMER_COUNTER_0 == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; General Timer/Counter Control Register
 VE_GTCCR:
-	.dw $ff 5
+	.dw $ff05
 	.db "GTCCR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_GTCCR
@@ -692,7 +692,7 @@ PFA_GTCCR:
 ; R( -- )
 ; Timer/Counter0 Output Compare Register
 VE_OCR0A:
-	.dw $ff 5
+	.dw $ff05
 	.db "OCR0A",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR0A
@@ -704,7 +704,7 @@ PFA_OCR0A:
 ; R( -- )
 ; Timer/Counter0 Output Compare Register
 VE_OCR0B:
-	.dw $ff 5
+	.dw $ff05
 	.db "OCR0B",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR0B
@@ -716,7 +716,7 @@ PFA_OCR0B:
 ; R( -- )
 ; Timer/Counter  Control Register A
 VE_TCCR0A:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR0A"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR0A
@@ -728,7 +728,7 @@ PFA_TCCR0A:
 ; R( -- )
 ; Timer/Counter Control Register B
 VE_TCCR0B:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR0B"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR0B
@@ -740,7 +740,7 @@ PFA_TCCR0B:
 ; R( -- )
 ; Timer/Counter0
 VE_TCNT0:
-	.dw $ff 5
+	.dw $ff05
 	.db "TCNT0",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCNT0
@@ -752,7 +752,7 @@ PFA_TCNT0:
 ; R( -- )
 ; Timer/Counter0 Interrupt Flag register
 VE_TIFR0:
-	.dw $ff 5
+	.dw $ff05
 	.db "TIFR0",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIFR0
@@ -764,7 +764,7 @@ PFA_TIFR0:
 ; R( -- )
 ; Timer/Counter0 Interrupt Mask Register
 VE_TIMSK0:
-	.dw $ff 6
+	.dw $ff06
 	.db "TIMSK0"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIMSK0
@@ -776,13 +776,13 @@ PFA_TIMSK0:
 .endif
 
 ; ********
-.ifdef WANT_TIMER_COUNTER_1
+.if WANT_TIMER_COUNTER_1 == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Input Capture Register High Byte
 VE_ICR1H:
-	.dw $ff 5
+	.dw $ff05
 	.db "ICR1H",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ICR1H
@@ -794,7 +794,7 @@ PFA_ICR1H:
 ; R( -- )
 ; Timer/Counter1 Input Capture Register Low Byte
 VE_ICR1L:
-	.dw $ff 5
+	.dw $ff05
 	.db "ICR1L",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ICR1L
@@ -806,7 +806,7 @@ PFA_ICR1L:
 ; R( -- )
 ; Timer/Counter1 Output Compare Register A High Byte
 VE_OCR1AH:
-	.dw $ff 6
+	.dw $ff06
 	.db "OCR1AH"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR1AH
@@ -818,7 +818,7 @@ PFA_OCR1AH:
 ; R( -- )
 ; Timer/Counter1 Output Compare Register A Low Byte
 VE_OCR1AL:
-	.dw $ff 6
+	.dw $ff06
 	.db "OCR1AL"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR1AL
@@ -830,7 +830,7 @@ PFA_OCR1AL:
 ; R( -- )
 ; Timer/Counter1 Output Compare Register B High Byte
 VE_OCR1BH:
-	.dw $ff 6
+	.dw $ff06
 	.db "OCR1BH"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR1BH
@@ -842,7 +842,7 @@ PFA_OCR1BH:
 ; R( -- )
 ; Timer/Counter1 Output Compare Register B Low Byte
 VE_OCR1BL:
-	.dw $ff 6
+	.dw $ff06
 	.db "OCR1BL"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR1BL
@@ -854,7 +854,7 @@ PFA_OCR1BL:
 ; R( -- )
 ; Timer/Counter1 Control Register A
 VE_TCCR1A:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR1A"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR1A
@@ -866,7 +866,7 @@ PFA_TCCR1A:
 ; R( -- )
 ; Timer/Counter1 Control Register B
 VE_TCCR1B:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR1B"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR1B
@@ -878,7 +878,7 @@ PFA_TCCR1B:
 ; R( -- )
 ; Timer/Counter1 Control Register C
 VE_TCCR1C:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR1C"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR1C
@@ -890,7 +890,7 @@ PFA_TCCR1C:
 ; R( -- )
 ; Timer/Counter1 High Byte
 VE_TCNT1H:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCNT1H"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCNT1H
@@ -902,7 +902,7 @@ PFA_TCNT1H:
 ; R( -- )
 ; Timer/Counter1 Low Byte
 VE_TCNT1L:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCNT1L"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCNT1L
@@ -914,7 +914,7 @@ PFA_TCNT1L:
 ; R( -- )
 ; Timer/Counter Interrupt Flag register
 VE_TIFR1:
-	.dw $ff 5
+	.dw $ff05
 	.db "TIFR1",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIFR1
@@ -926,7 +926,7 @@ PFA_TIFR1:
 ; R( -- )
 ; Timer/Counter1 Interrupt Mask Register
 VE_TIMSK1:
-	.dw $ff 6
+	.dw $ff06
 	.db "TIMSK1"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIMSK1
@@ -938,13 +938,13 @@ PFA_TIMSK1:
 .endif
 
 ; ********
-.ifdef WANT_TIMER_COUNTER_2
+.if WANT_TIMER_COUNTER_2 == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Asynchronous Status Register
 VE_ASSR:
-	.dw $ff 4
+	.dw $ff04
 	.db "ASSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_ASSR
@@ -956,7 +956,7 @@ PFA_ASSR:
 ; R( -- )
 ; Timer/Counter2 Output Compare Register A
 VE_OCR2A:
-	.dw $ff 5
+	.dw $ff05
 	.db "OCR2A",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR2A
@@ -968,7 +968,7 @@ PFA_OCR2A:
 ; R( -- )
 ; Timer/Counter2 Output Compare Register B
 VE_OCR2B:
-	.dw $ff 5
+	.dw $ff05
 	.db "OCR2B",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_OCR2B
@@ -980,7 +980,7 @@ PFA_OCR2B:
 ; R( -- )
 ; Timer/Counter2 Control Register A
 VE_TCCR2A:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR2A"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR2A
@@ -992,7 +992,7 @@ PFA_TCCR2A:
 ; R( -- )
 ; Timer/Counter2 Control Register B
 VE_TCCR2B:
-	.dw $ff 6
+	.dw $ff06
 	.db "TCCR2B"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCCR2B
@@ -1004,7 +1004,7 @@ PFA_TCCR2B:
 ; R( -- )
 ; Timer/Counter2
 VE_TCNT2:
-	.dw $ff 5
+	.dw $ff05
 	.db "TCNT2",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TCNT2
@@ -1016,7 +1016,7 @@ PFA_TCNT2:
 ; R( -- )
 ; Timer/Counter Interrupt Flag Register
 VE_TIFR2:
-	.dw $ff 5
+	.dw $ff05
 	.db "TIFR2",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIFR2
@@ -1028,7 +1028,7 @@ PFA_TIFR2:
 ; R( -- )
 ; Timer/Counter Interrupt Mask register
 VE_TIMSK2:
-	.dw $ff 6
+	.dw $ff06
 	.db "TIMSK2"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TIMSK2
@@ -1040,13 +1040,13 @@ PFA_TIMSK2:
 .endif
 
 ; ********
-.ifdef WANT_TWI
+.if WANT_TWI == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; TWI (Slave) Address Mask Register
 VE_TWAMR:
-	.dw $ff 5
+	.dw $ff05
 	.db "TWAMR",0
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWAMR
@@ -1058,7 +1058,7 @@ PFA_TWAMR:
 ; R( -- )
 ; TWI (Slave) Address register
 VE_TWAR:
-	.dw $ff 4
+	.dw $ff04
 	.db "TWAR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWAR
@@ -1070,7 +1070,7 @@ PFA_TWAR:
 ; R( -- )
 ; TWI Bit Rate register
 VE_TWBR:
-	.dw $ff 4
+	.dw $ff04
 	.db "TWBR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWBR
@@ -1082,7 +1082,7 @@ PFA_TWBR:
 ; R( -- )
 ; TWI Control Register
 VE_TWCR:
-	.dw $ff 4
+	.dw $ff04
 	.db "TWCR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWCR
@@ -1094,7 +1094,7 @@ PFA_TWCR:
 ; R( -- )
 ; TWI Data register
 VE_TWDR:
-	.dw $ff 4
+	.dw $ff04
 	.db "TWDR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWDR
@@ -1106,7 +1106,7 @@ PFA_TWDR:
 ; R( -- )
 ; TWI Status Register
 VE_TWSR:
-	.dw $ff 4
+	.dw $ff04
 	.db "TWSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_TWSR
@@ -1118,13 +1118,13 @@ PFA_TWSR:
 .endif
 
 ; ********
-.ifdef WANT_USART0
+.if WANT_USART0 == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART Baud Rate Register High Byte
 VE_UBRR0H:
-	.dw $ff 6
+	.dw $ff06
 	.db "UBRR0H"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UBRR0H
@@ -1136,7 +1136,7 @@ PFA_UBRR0H:
 ; R( -- )
 ; USART Baud Rate Register Low Byte
 VE_UBRR0L:
-	.dw $ff 6
+	.dw $ff06
 	.db "UBRR0L"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UBRR0L
@@ -1148,7 +1148,7 @@ PFA_UBRR0L:
 ; R( -- )
 ; USART Control and Status Register A
 VE_UCSR0A:
-	.dw $ff 6
+	.dw $ff06
 	.db "UCSR0A"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UCSR0A
@@ -1160,7 +1160,7 @@ PFA_UCSR0A:
 ; R( -- )
 ; USART Control and Status Register B
 VE_UCSR0B:
-	.dw $ff 6
+	.dw $ff06
 	.db "UCSR0B"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UCSR0B
@@ -1172,7 +1172,7 @@ PFA_UCSR0B:
 ; R( -- )
 ; USART Control and Status Register C
 VE_UCSR0C:
-	.dw $ff 6
+	.dw $ff06
 	.db "UCSR0C"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UCSR0C
@@ -1184,7 +1184,7 @@ PFA_UCSR0C:
 ; R( -- )
 ; USART I/O Data Register
 VE_UDR0:
-	.dw $ff 4
+	.dw $ff04
 	.db "UDR0"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_UDR0
@@ -1196,13 +1196,13 @@ PFA_UDR0:
 .endif
 
 ; ********
-.ifdef WANT_WATCHDOG
+.if WANT_WATCHDOG == 1
 ; ********
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Watchdog Timer Control Register
 VE_WDTCSR:
-	.dw $ff 6
+	.dw $ff06
 	.db "WDTCSR"
 	.dw VE_HEAD
 	.set VE_HEAD=VE_WDTCSR
