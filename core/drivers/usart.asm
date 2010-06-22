@@ -1,0 +1,9 @@
+
+.equ BAUDRATE_LOW = UBRRL+$20
+.equ BAUDRATE_HIGH = UBRRH+$20
+.equ USART_C = UCSRC+$20
+.equ USART_B = UCSRB+$20
+.equ USART_A = UCSRA+$20
+.equ USART_DATA = UDR+$20
+.equ USART_RXRD_bm = 1 << RXC
+.equ USART_TXRD_bm = 1 << UDRE

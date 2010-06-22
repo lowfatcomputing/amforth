@@ -7,6 +7,7 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $7000 
+.equ CELLSIZE = 2
 .macro jmp_
 	jmp @0
 .endmacro
@@ -23,6 +24,43 @@
 	lsl zl
 	rol zh
 .endmacro
+
+; the following definitions are shortcuts for the respective forth source segments if set to 1
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_JTAG = 0
+.set WANT_PORTA = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_TWI = 0
+.set WANT_USART0 = 0
+.set WANT_WATCHDOG = 0
+
+
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
+
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 65536 bytes
 .equ pclen = 2 ; please verify
 .equ INTVECTORS = 28
@@ -81,6 +119,6 @@
 .org $036
 	 rcall isr ; Store Program Memory Read
 mcustring:
-	.dw 09
+	.dw  9
 	.db "ATmega644",0
 .set codestart=pc

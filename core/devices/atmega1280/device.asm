@@ -1,29 +1,13 @@
 ; Partname:  ATmega1280
-; Hacked from datasheet, at90can128 and atmega640 definitions
-; Hacked by hand, Andy Kirby (andy@kirbyand.co.uk)
-; 
+; Built using part description XML file version 1
+; generated automatically
 .nolist
 	.include "m1280def.inc"
 .list
 
 .equ ramstart =  $200
-.equ max_dict_addr = $F000
-
-  .equ BAUDRATE_LOW = UBRR0L
-  .equ BAUDRATE_HIGH = UBRR0H
-  .equ USART_C = UCSR0C
-  .equ USART_B = UCSR0B
-  .equ USART_A = UCSR0A
-  .equ USART_DATA = UDR0
-  .equ URXCaddr = URXC0addr
-  .equ UDREaddr = UDRE0addr
-  .equ UDRIE = UDRIE0
-  .equ USART_RXRD_bm = 1 << RXC0
-  .equ USART_TXRD_bm = 1 << UDRE0
-
-; size of program counter in bytes
-.equ pclen = 2
-
+.equ max_dict_addr = $F000 
+.equ CELLSIZE = 2
 .macro jmp_
 	jmp @0
 .endmacro
@@ -47,10 +31,58 @@
 	out_ RAMPZ, temp7
 .endmacro
 
+; the following definitions are shortcuts for the respective forth source segments if set to 1
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_JTAG = 0
+.set WANT_PORTA = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_PORTE = 0
+.set WANT_PORTF = 0
+.set WANT_PORTG = 0
+.set WANT_PORTH = 0
+.set WANT_PORTJ = 0
+.set WANT_PORTK = 0
+.set WANT_PORTL = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_TIMER_COUNTER_3 = 0
+.set WANT_TIMER_COUNTER_4 = 0
+.set WANT_TIMER_COUNTER_5 = 0
+.set WANT_TWI = 0
+.set WANT_USART0 = 0
+.set WANT_USART1 = 0
+.set WANT_USART2 = 0
+.set WANT_USART3 = 0
+.set WANT_WATCHDOG = 0
+
+
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
+
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 131072 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 57
-;.org $000
-;	 rcall isr ; Reset, NMI etc
 .org $002
 	 rcall isr ; External Interrupt Request 0
 .org $004
@@ -163,7 +195,6 @@
 	 rcall isr ; USART3 Data register Empty
 .org $070
 	 rcall isr ; USART3, Tx Complete
-
 mcustring:
 	.dw 10
 	.db "ATmega1280"

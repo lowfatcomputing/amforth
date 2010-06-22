@@ -7,6 +7,23 @@
 
 .equ ramstart =  $60
 .equ max_dict_addr = $3800 
+.equ CELLSIZE = 2
+.macro jmp_
+	jmp @0
+.endmacro
+.macro call_
+	call @0
+.endmacro
+.macro readflashcell
+	lsl zl
+	rol zh
+	lpm @0, Z+
+	lpm @1, Z+
+.endmacro
+.macro writeflashcell
+	lsl zl
+	rol zh
+.endmacro
 
 ; the following definitions are shortcuts for the respective forth source segments if set to 1
 .set WANT_AD_CONVERTER = 0
@@ -28,41 +45,23 @@
 .set WANT_WATCHDOG = 0
 
 
-  .equ BAUDRATE_LOW = UBRRL+$20
-  .equ BAUDRATE_HIGH = UBRRH+$20
-  .equ USART_C = UCSRC+$20
-  .equ USART_B = UCSRB+$20
-  .equ USART_A = UCSRA+$20
-  .equ USART_DATA = UDR+$20
-  .equ USART_RXRD_bm = 1 << RXC
-  .equ USART_TXRD_bm = 1 << UDRE
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
 
 .ifndef SPMCSR
-  .equ SPMCSR = SPMCR
+ .equ SPMCSR = SPMCR
 .endif
-  .equ EEPE   = EEWE
-  .equ EEMPE  = EEMWE
 
-; size of program counter in bytes
-.equ pclen = 2
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
 
-.macro jmp_
-	jmp @0
-.endmacro
-.macro call_
-	call @0
-.endmacro
-.macro readflashcell
-	lsl zl
-	rol zh
-	lpm @0, Z+
-	lpm @1, Z+
-.endmacro
-.macro writeflashcell
-	lsl zl
-	rol zh
-.endmacro
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 32768 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 21
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -88,10 +87,10 @@
 	 rcall isr ; Timer/Counter0 Overflow
 .org $018
 	 rcall isr ; Serial Transfer Complete
-;.org $01A
-;	 rcall isr ; USART, Rx Complete
-;.org $01C
-;	 rcall isr ; USART Data Register Empty
+.org $01A
+	 rcall isr ; USART, Rx Complete
+.org $01C
+	 rcall isr ; USART Data Register Empty
 .org $01E
 	 rcall isr ; USART, Tx Complete
 .org $020
@@ -105,6 +104,6 @@
 .org $28
 	 rcall isr ; Store Program Memory Ready
 mcustring:
-	.dw 8
+	.dw  8
 	.db "ATmega32"
 .set codestart=pc

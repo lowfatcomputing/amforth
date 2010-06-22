@@ -1,16 +1,7 @@
 .include "dict_minimum.inc"
-; this dictionary contains optional words
-; they may be moved to the core dictionary if needed
-
-.include "drivers/usart-isr-rx.asm"
-.include "words/usart-rx-isr.asm"
-
-; use either interrupt transmit
-;.include "drivers/usart-isr-tx.asm"
-;.include "words/usart-tx-isr.asm"
-; or use the poll transmit
-.include "words/usart-tx-poll.asm"
-.include "words/usart.asm"
+.include "device.inc"
+.include "dict_usart.inc"
+.include "dict_compiler.inc"
 
 .include "words/applturnkey.asm"
 
@@ -29,9 +20,9 @@
 .include "words/int-store.asm"
 .include "words/int-fetch.asm"
 
-.include "dict_compiler.inc"
 .include "words/d-invert.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/spirw.asm"
+
 

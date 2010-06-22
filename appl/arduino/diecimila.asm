@@ -17,6 +17,7 @@
 .equ F_CPU = 16000000
 
 ; initial baud rate of terminal
+.include "drivers/usart_0.asm"
 .equ BAUD = 9600
 .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
 .equ USART_C_VALUE = (3<<UCSZ00)
@@ -24,7 +25,7 @@
 
 .equ HLDSIZE  = $10    ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
-.equ APPUSERSIZE = 2   ; size of user area in bytes
+.equ APPUSERSIZE = 0  ; size of application specific user area in bytes
 
 ; addresses of various data segments
 .set heap = ramstart           ; start address of HEAP, grows upward
@@ -33,7 +34,6 @@
 ;.set dict_appl=1			   ; include applic dictionary in rww section (non boot)
 .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
-.equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
 .equ want_fun = 1 ; in case of an error out print an additional line with an caret indicating the error position

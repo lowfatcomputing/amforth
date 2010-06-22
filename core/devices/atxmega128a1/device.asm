@@ -8,11 +8,11 @@
 .equ ramstart =  8192
 .equ max_dict_addr = $F000 
 .equ pclen = 3
-
+.equ CELLSIZE = 2
 ; register name aliases
-    .equ SPL = CPU_SPL
-    .equ SPH = CPU_SPH
-    .equ SREG = CPU_SREG
+.equ SPL = CPU_SPL
+.equ SPH = CPU_SPH
+.equ SREG = CPU_SREG
 .macro jmp_
 	jmp @0
 .endmacro

@@ -7,6 +7,23 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $3800 
+.equ CELLSIZE = 2
+.macro jmp_
+	jmp @0
+.endmacro
+.macro call_
+	call @0
+.endmacro
+.macro readflashcell
+	lsl zl
+	rol zh
+	lpm @0, Z+
+	lpm @1, Z+
+.endmacro
+.macro writeflashcell
+	lsl zl
+	rol zh
+.endmacro
 
 ; the following definitions are shortcuts for the respective forth source segments if set to 1
 .set WANT_AD_CONVERTER = 0
@@ -25,38 +42,24 @@
 .set WANT_USART0 = 0
 .set WANT_WATCHDOG = 0
 
-  .equ UDRIE = UDRIE0
-  .equ BAUDRATE_LOW = UBRR0L
-  .equ BAUDRATE_HIGH = UBRR0H
-  .equ USART_C = UCSR0C
-  .equ USART_B = UCSR0B
-  .equ USART_A = UCSR0A
-  .equ USART_DATA = UDR0
-  .equ USART_RXRD_bm = 1 << RXC0
-  .equ USART_TXRD_bm = 1 << UDRE0
 
-  .equ SPMEN = SELFPRGEN
-  .equ WDTCR = WDTCSR
-; size of program counter in bytes
-.equ pclen = 2
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
 
-.macro jmp_
-	jmp @0
-.endmacro
-.macro call_
-	call @0
-.endmacro
-.macro readflashcell
-	lsl zl
-	rol zh
-	lpm @0, Z+
-	lpm @1, Z+
-.endmacro
-.macro writeflashcell
-	lsl zl
-	rol zh
-.endmacro
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 32768 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 26
 .org $002
 	 rcall isr ; External Interrupt Request 0

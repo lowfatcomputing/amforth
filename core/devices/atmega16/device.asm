@@ -7,26 +7,7 @@
 
 .equ ramstart =  $60
 .equ max_dict_addr = $1C00 
-
-  .equ BAUDRATE_LOW = UBRRL+$20
-  .equ BAUDRATE_HIGH = UBRRH+$20
-  .equ USART_C = UCSRC+$20
-  .equ USART_B = UCSRB+$20
-  .equ USART_A = UCSRA+$20
-  .equ USART_DATA = UDR+$20
-  .equ USART_RXRD_bm = 1 << RXC
-  .equ USART_TXRD_bm = 1 << UDRE
-
-; size of program counter in bytes
-.equ pclen = 2
-
-; compatability definitions
-.ifndef SPMCSR
-  .equ SPMCSR = SPMCR
-.endif
-  .equ EEPE   = EEWE
-  .equ EEMPE  = EEMWE
-
+.equ CELLSIZE = 2
 .macro jmp_
 	jmp @0
 .endmacro
@@ -37,13 +18,51 @@
 	lsl zl
 	rol zh
 	lpm @0, Z+
-	lpm @1, Z
+	lpm @1, Z+
 .endmacro
 .macro writeflashcell
 	lsl zl
 	rol zh
 .endmacro
+
+; the following definitions are shortcuts for the respective forth source segments if set to 1
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_JTAG = 0
+.set WANT_PORTA = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_TWI = 0
+.set WANT_USART = 0
+.set WANT_WATCHDOG = 0
+
+
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
+
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 21
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -65,10 +84,10 @@
 	 rcall isr ; Timer/Counter0 Overflow
 .org $014
 	 rcall isr ; Serial Transfer Complete
-;.org $016
-;	 rcall isr ; USART, Rx Complete
-;.org $018
-;	 rcall isr ; USART Data Register Empty
+.org $016
+	 rcall isr ; USART, Rx Complete
+.org $018
+	 rcall isr ; USART Data Register Empty
 .org $01A
 	 rcall isr ; USART, Tx Complete
 .org $01C
@@ -86,6 +105,6 @@
 .org $028
 	 rcall isr ; Store Program Memory Ready
 mcustring:
-	.dw 8
+	.dw  8
 	.db "ATmega16"
 .set codestart=pc

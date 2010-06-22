@@ -72,8 +72,8 @@ hex
 \ TIMER_COUNTER_1
 47 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
 46 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
-4B constant OCR1AH	\ Timer/Counter1 Outbut Compare Register High Byte
-4A constant OCR1AL	\ Timer/Counter1 Outbut Compare Register Low Byte
+4B constant OCR1AH	\ Timer/Counter1 Output Compare Register High Byte
+4A constant OCR1AL	\ Timer/Counter1 Output Compare Register Low Byte
 49 constant OCR1BH	\ Timer/Counter1 Output Compare Register High Byte
 48 constant OCR1BL	\ Timer/Counter1 Output Compare Register Low Byte
 4F constant TCCR1A	\ Timer/Counter1 Control Register A

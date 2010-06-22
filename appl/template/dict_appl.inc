@@ -17,19 +17,9 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-.include "drivers/usart-isr-rx.asm"
-.include "words/usart-rx-isr.asm"
-
-; use either interrupt transmit
-;.include "drivers/usart-isr-tx.asm"
-;.include "words/usart-tx-isr.asm"
-; or use the poll transmit
-.include "words/usart-tx-poll.asm"
-; 
-
-.include "words/usart.asm"
 .include "words/applturnkey.asm"
 .include "words/int-store.asm"
 
 .include "dict_compiler.inc"
+.include "dict_usart.inc"
 .include "words/show-wordlist.asm"

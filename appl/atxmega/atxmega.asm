@@ -4,7 +4,6 @@
 
   .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ CELLSIZE = 2   ; never change
   .equ APPUSERSIZE = 0  ; size of user area
 
   .equ TERM_USART = USARTE0_base

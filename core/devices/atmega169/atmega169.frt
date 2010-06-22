@@ -122,8 +122,8 @@ E6 constant LCDFRR	\ LCD Frame Rate Register
 \ TIMER_COUNTER_1
 87 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
 86 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
-89 constant OCR1AH	\ Timer/Counter1 Outbut Compare Register A High Byte
-88 constant OCR1AL	\ Timer/Counter1 Outbut Compare Register A Low Byte
+89 constant OCR1AH	\ Timer/Counter1 Output Compare Register A High Byte
+88 constant OCR1AL	\ Timer/Counter1 Output Compare Register A Low Byte
 8B constant OCR1BH	\ Timer/Counter1 Output Compare Register B High Byte
 8A constant OCR1BL	\ Timer/Counter1 Output Compare Register B Low Byte
 80 constant TCCR1A	\ Timer/Counter1 Control Register A

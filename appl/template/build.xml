@@ -22,4 +22,7 @@
 	    <echo message="ant.project.name: ${ant.project.name}" />
 	    <echo message="ant.java.version: ${ant.java.version}" />
 	 </target>
+    <target name="compile" depends="template.hex,print_default_properties">
+    </target>
+
 </project>

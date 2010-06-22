@@ -9,10 +9,13 @@
 
 use strict;
 
+my $PDDIR="../Atmel/Partdescriptionfiles/";
+$PDDIR=".";
+
 sub fmt_str {
     my ($str, $prefix) = @_;
     my $result;
-    my $len = sprintf("%02d", length $str);
+    my $len = sprintf("%2d", length $str);
     $result  = ".dw $prefix$len\n";
     $result .= "\t.db \"$str\"";
     $result .= ",0" if length($str)%2;
@@ -23,9 +26,10 @@ sub readXML ($) {
     my ($basename) = @_;
     my ($timestamp, $number, $label, %regs, $partname, $defname);
     my ($start, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
+    my ($numberusarts, %usartregs);
     use XML::LibXML;
     my $parser = new XML::LibXML;
-    my $doc = $parser->parse_file ($basename);
+    my $doc = $parser->parse_file ("$PDDIR/$basename");
     $basename = lc $basename;
 
     $basename =~ s/\.xml$//;
@@ -63,6 +67,7 @@ sub readXML ($) {
     
     my $nrww = $doc->getElementsByTagName("NRWW_START_ADDR");
     print ASM ".equ max_dict_addr = $nrww \n";
+    print ASM ".equ CELLSIZE = 2\n";
 
     print ASM ".macro jmp_\n\t";
     print ASM "r" if int($fsize) <= 8192;
@@ -81,16 +86,16 @@ sub readXML ($) {
     print ASM "\tlsl zl\n\trol zh\n" if int($fsize) <= 65536;
     print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n" if int($fsize) > 65536;
     print ASM ".endmacro\n";
-    print ASM "\nthe following definitions are shortcuts for the respective forth source segments if set to 1\n";
+    print ASM "\n; the following definitions are shortcuts for the respective forth source segments if set to 1\n";
+    $numberusarts = 0;
     foreach my $iomodule ($doc -> getElementsByTagName("IO_MODULE")) {
 	my $iomods = $iomodule -> getElementsByTagName("MODULE_LIST");
 	$iomods =~ s/\[//;
 	$iomods =~ s/\]//;
 	my @iomds = sort split /:/, $iomods;
 	foreach my $iomd (@iomds) {
-          my ($name, $iv, $li, $source, $descr);
+          my ($name, $iv, $li, $source, $descr, $collectusartregs);
 	  print FRT "\n\\ $iomd\n";
-
 	  print INC "\n; ********\n.ifdef WANT_$iomd\n; ********\n";
 	  $iv = $iomodule -> getElementsByTagName($iomd) ;
 	  $li = $iv->[0] -> getElementsByTagName("LIST");
@@ -98,11 +103,20 @@ sub readXML ($) {
 	  print ASM ".set WANT_${iomd} = 0\n";
           $li =~ s/\[//;
 	  $li =~ s/\]//;
+	  if($iomd=~/USART/) {
+	    $numberusarts ++;
+	    $collectusartregs = 1;
+	  } else {
+	    $collectusartregs = 0;
+	  }
 	  foreach my $reg ( sort split /:/, $li) {
 	     my $addr = $iv->[0] -> getElementsByTagName($reg) ->[0]->getElementsByTagName("MEM_ADDR");
 	     my $name = $iv->[0] -> getElementsByTagName($reg) ->[0]->getChildrenByTagName("DESCRIPTION");
 	     $addr =~ s/\$//;
 	     $addr =~ s/0x//;
+	     if($collectusartregs) {
+	        $usartregs{$reg} = $addr;
+	     }
 	     next if $regs{$addr};
 	     $regs{$addr} = 1;
 	     print FRT "$addr constant $reg\t\\ $name\n";
@@ -113,11 +127,15 @@ sub readXML ($) {
 	  print INC "\n.endif\n";
 	}
     }
-    
+    print ASM "\n";
+    print ASM "\n.ifndef SPMEN\n .equ SPMEN = SELFPRGEN\n.endif\n";
+    print ASM "\n.ifndef SPMCSR\n .equ SPMCSR = SPMCR\n.endif\n";    
+    print ASM "\n.ifndef EEPE\n .equ EEPE = EEWE\n.endif\n";    
+    print ASM "\n.ifndef EEMPE\n .equ EEMPE = EEMWE\n.endif\n";    
     $ivecsize = "2";
     $ivecsize = "1" if int($fsize) <= 8192; # educated guess
     $pclen    = "2";
-    $pclen    = "3" if int($fsize) > 128000; 
+    $pclen    = "3" if int($fsize) > 132000; 
 
     print ASM ".equ intvecsize = $ivecsize ; please verify; flash size: $fsize bytes\n";
     print ASM ".equ pclen = $pclen ; please verify\n";
@@ -155,9 +173,10 @@ sub readXML ($) {
 sub main {
     my( $basename);
     $|=1;
-    opendir(CWD, ".");
+    opendir(CWD, $PDDIR);
     foreach (reverse sort readdir(CWD)) {
-        next unless -f;
+        next if /attiny/i;
+        next if /atxmega/i;
         next unless /(.*).xml(\.gz)?$/;
         $basename = $_;
         print "$basename\n";

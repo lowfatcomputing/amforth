@@ -7,19 +7,7 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $C00 
-  .equ BAUDRATE_LOW = UBRR0L+$20
-  .equ BAUDRATE_HIGH = UBRR0H+$20
-  .equ USART_C = UCSR0C+$20
-  .equ USART_B = UCSR0B+$20
-  .equ USART_A = UCSR0A+$20
-  .equ USART_DATA = UDR0+$20
-  .equ USART_RXRD_bm = 1 << RXC0
-  .equ USART_TXRD_bm = 1 << UDRE0
-
-  .equ SPMEN = SELFPRGEN
-; size of program counter in bytes
-.equ pclen = 2
-
+.equ CELLSIZE = 2
 .macro jmp_
 	rjmp @0
 .endmacro
@@ -36,7 +24,42 @@
 	lsl zl
 	rol zh
 .endmacro
+
+; the following definitions are shortcuts for the respective forth source segments if set to 1
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_PORTB = 0
+.set WANT_PORTC = 0
+.set WANT_PORTD = 0
+.set WANT_SPI = 0
+.set WANT_TIMER_COUNTER_0 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_TIMER_COUNTER_2 = 0
+.set WANT_TWI = 0
+.set WANT_USART0 = 0
+.set WANT_WATCHDOG = 0
+
+
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
+
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 1 ; please verify; flash size: 8192 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 26
 .org $001
 	 rcall isr ; External Interrupt Request 0
@@ -72,10 +95,10 @@
 	 rcall isr ; Timer/Couner0 Overflow
 .org $011
 	 rcall isr ; SPI Serial Transfer Complete
-;.org $012
-;	 rcall isr ; USART Rx Complete
-;.org $013
-;	 rcall isr ; USART, Data Register Empty
+.org $012
+	 rcall isr ; USART Rx Complete
+.org $013
+	 rcall isr ; USART, Data Register Empty
 .org $014
 	 rcall isr ; USART Tx Complete
 .org $015
@@ -89,6 +112,6 @@
 .org $019
 	 rcall isr ; Store Program Memory Read
 mcustring:
-	.dw 8
+	.dw  8
 	.db "ATmega88"
 .set codestart=pc

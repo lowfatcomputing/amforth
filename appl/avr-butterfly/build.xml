@@ -1,5 +1,5 @@
 <!-- make multiple targets with antelope -->
-<project name="AVR Butterfly" basedir="." default="Help">
+<project name="AVRButterfly" basedir="." default="Help">
 
     <import file="../avr-build.xml"/>
     <target name="updatecheck">
@@ -12,10 +12,33 @@
     <target name="bf" depends="bf.hex" description="AVR Butterfly: Atmega169 @ 8 MHz">
         <echo>Uploading Hexfiles to the AVR Butterfly</echo>
         <avrdude 
-		    type="mysmartusb"
+		    type="avrisp2"
 		    mcu="m169"
 		    flashfile="bf.hex"
 		    eepromfile="bf.eep.hex"
 		/>
     </target>
+
+    <target name="bf.back" description="AVR Butterfly Backup">
+        <echo>Download Hexfiles from AVR Butterfly</echo>
+        <avrdude 
+		    type="avrisp2"
+		    mode="r"
+		    mcu="m169"
+		    flashfile="bf.hex"
+		    eepromfile="bf.eep.hex"
+		/>
+    </target>
+    <target name="bf-fuse" description="Atmega169 @ 8MHZ, internal RC">
+	<echo>Writing fuses</echo>
+	<avrdude-2fuses
+		    type="avrisp2"
+		    mcu="m169"
+		    hfuse="0x99"
+		    lfuse="0xff"
+	/>
+    </target>
+    <target name="compile" depends="bf.hex">
+    </target>
+
 </project>

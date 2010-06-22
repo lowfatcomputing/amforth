@@ -138,8 +138,8 @@ E8 constant CANTTCL	\ TTC Timer Register Low
 \ TIMER_COUNTER_1
 87 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
 86 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
-89 constant OCR1AH	\ Timer/Counter1 Outbut Compare Register High Byte
-88 constant OCR1AL	\ Timer/Counter1 Outbut Compare Register Low Byte
+89 constant OCR1AH	\ Timer/Counter1 Output Compare Register High Byte
+88 constant OCR1AL	\ Timer/Counter1 Output Compare Register Low Byte
 8B constant OCR1BH	\ Timer/Counter1 Output Compare Register High Byte
 8A constant OCR1BL	\ Timer/Counter1 Output Compare Register Low Byte
 8D constant OCR1CH	\ Timer/Counter1 Output Compare Register High Byte
@@ -163,8 +163,8 @@ B2 constant TCNT2	\ Timer/Counter2
 \ TIMER_COUNTER_3
 97 constant ICR3H	\ Timer/Counter3 Input Capture Register High Byte
 96 constant ICR3L	\ Timer/Counter3 Input Capture Register Low Byte
-99 constant OCR3AH	\ Timer/Counter3 Outbut Compare Register High Byte
-98 constant OCR3AL	\ Timer/Counter3 Outbut Compare Register Low Byte
+99 constant OCR3AH	\ Timer/Counter3 Output Compare Register High Byte
+98 constant OCR3AL	\ Timer/Counter3 Output Compare Register Low Byte
 9B constant OCR3BH	\ Timer/Counter3 Output Compare Register High Byte
 9A constant OCR3BL	\ Timer/Counter3 Output Compare Register Low Byte
 9D constant OCR3CH	\ Timer/Counter3 Output Compare Register High Byte

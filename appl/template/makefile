@@ -42,7 +42,6 @@ AVRA=avra -I $(DIR_ATMEL)/Appnotes2
 AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
 # ----------------------------------------------------------
-
 INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
 
 default:  $(TARGET).hex
@@ -53,7 +52,7 @@ erase:
 install: $(TARGET).hex
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -e -U flash:w:$(TARGET).hex:i -U eeprom:w:$(TARGET).eep.hex:i
 
-$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/$(MCU)/*.asm 
+$(TARGET).hex: $(TARGET).asm $(AMFORTH)/*.asm $(AMFORTH)/words/*.asm $(AMFORTH)/devices/$(MCU)/*.asm
 #	$(AVRA) $(INCLUDE) --listmac -l $(TARGET).lst -m $(TARGET).map $(TARGET).asm
 	$(AVRASM) $(INCLUDE) -fI -v0 -e $(TARGET).eep.hex -l $(TARGET).lst $(TARGET).asm
 

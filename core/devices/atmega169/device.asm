@@ -7,21 +7,7 @@
 
 .equ ramstart =  $100
 .equ max_dict_addr = $1C00 
-  .equ BAUDRATE_LOW = UBRR0L
-  .equ BAUDRATE_HIGH = UBRR0H
-  .equ USART_C = UCSR0C
-  .equ USART_B = UCSR0B
-  .equ USART_A = UCSR0A
-  .equ USART_DATA = UDR0
-  .equ USART_RXRD_bm = 1 << RXC0
-  .equ USART_TXRD_bm = 1 << UDRE0
-
-  .equ EEPE   = EEWE
-  .equ EEMPE  = EEMWE
-
-; size of program counter in bytes
-.equ pclen = 2
-
+.equ CELLSIZE = 2
 .macro jmp_
 	jmp @0
 .endmacro
@@ -39,6 +25,7 @@
 	rol zh
 .endmacro
 
+; the following definitions are shortcuts for the respective forth source segments if set to 1
 .set WANT_AD_CONVERTER = 0
 .set WANT_ANALOG_COMPARATOR = 0
 .set WANT_BOOT_LOAD = 0
@@ -62,7 +49,24 @@
 .set WANT_USI = 0
 .set WANT_WATCHDOG = 0
 
+
+.ifndef SPMEN
+ .equ SPMEN = SELFPRGEN
+.endif
+
+.ifndef SPMCSR
+ .equ SPMCSR = SPMCR
+.endif
+
+.ifndef EEPE
+ .equ EEPE = EEWE
+.endif
+
+.ifndef EEMPE
+ .equ EEMPE = EEMWE
+.endif
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
+.equ pclen = 2 ; please verify
 .equ INTVECTORS = 23
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -88,10 +92,10 @@
 	 rcall isr ; Timer/Counter0 Overflow
 .org $018
 	 rcall isr ; SPI Serial Transfer Complete
-;.org $01A
-;	 rcall isr ; USART0, Rx Complete
-;.org $01C
-;	 rcall isr ; USART0 Data register Empty
+.org $01A
+	 rcall isr ; USART0, Rx Complete
+.org $01C
+	 rcall isr ; USART0 Data register Empty
 .org $01E
 	 rcall isr ; USART0, Tx Complete
 .org $020
@@ -109,6 +113,6 @@
 .org $02C
 	 rcall isr ; LCD Start of Frame
 mcustring:
-	.dw 9
+	.dw  9
 	.db "ATmega169",0
 .set codestart=pc

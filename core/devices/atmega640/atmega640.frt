@@ -31,7 +31,6 @@ hex
 66 constant OSCCAL	\ Oscillator Calibration Value
 64 constant PRR0	\ Power Reduction Register0
 65 constant PRR1	\ Power Reduction Register1
-5B constant RAMPZ	\ RAM Page Z Select Register
 53 constant SMCR	\ Sleep Mode Control Register
 5E constant SPH	\ Stack Pointer High
 5D constant SPL	\ Stack Pointer Low
@@ -132,8 +131,8 @@ hex
 \ TIMER_COUNTER_1
 87 constant ICR1H	\ Timer/Counter1 Input Capture Register High Byte
 86 constant ICR1L	\ Timer/Counter1 Input Capture Register Low Byte
-89 constant OCR1AH	\ Timer/Counter1 Outbut Compare Register A High Byte
-88 constant OCR1AL	\ Timer/Counter1 Outbut Compare Register A Low Byte
+89 constant OCR1AH	\ Timer/Counter1 Output Compare Register A High Byte
+88 constant OCR1AL	\ Timer/Counter1 Output Compare Register A Low Byte
 8B constant OCR1BH	\ Timer/Counter1 Output Compare Register B High Byte
 8A constant OCR1BL	\ Timer/Counter1 Output Compare Register B Low Byte
 8D constant OCR1CH	\ Timer/Counter1 Output Compare Register C High Byte
@@ -159,8 +158,8 @@ B2 constant TCNT2	\ Timer/Counter2
 \ TIMER_COUNTER_3
 97 constant ICR3H	\ Timer/Counter3 Input Capture Register High Byte
 96 constant ICR3L	\ Timer/Counter3 Input Capture Register Low Byte
-99 constant OCR3AH	\ Timer/Counter3 Outbut Compare Register A High Byte
-98 constant OCR3AL	\ Timer/Counter3 Outbut Compare Register A Low Byte
+99 constant OCR3AH	\ Timer/Counter3 Output Compare Register A High Byte
+98 constant OCR3AL	\ Timer/Counter3 Output Compare Register A Low Byte
 9B constant OCR3BH	\ Timer/Counter3 Output Compare Register B High Byte
 9A constant OCR3BL	\ Timer/Counter3 Output Compare Register B Low Byte
 9D constant OCR3CH	\ Timer/Counter3 Output Compare Register B High Byte
@@ -176,8 +175,8 @@ B2 constant TCNT2	\ Timer/Counter2
 \ TIMER_COUNTER_4
 A7 constant ICR4H	\ Timer/Counter4 Input Capture Register High Byte
 A6 constant ICR4L	\ Timer/Counter4 Input Capture Register Low Byte
-A9 constant OCR4AH	\ Timer/Counter4 Outbut Compare Register A High Byte
-A8 constant OCR4AL	\ Timer/Counter4 Outbut Compare Register A Low Byte
+A9 constant OCR4AH	\ Timer/Counter4 Output Compare Register A High Byte
+A8 constant OCR4AL	\ Timer/Counter4 Output Compare Register A Low Byte
 AB constant OCR4BH	\ Timer/Counter4 Output Compare Register B High Byte
 AA constant OCR4BL	\ Timer/Counter4 Output Compare Register B Low Byte
 AD constant OCR4CH	\ Timer/Counter4 Output Compare Register B High Byte
@@ -193,8 +192,8 @@ A4 constant TCNT4L	\ Timer/Counter4 Low Byte
 \ TIMER_COUNTER_5
 127 constant ICR5H	\ Timer/Counter5 Input Capture Register High Byte
 126 constant ICR5L	\ Timer/Counter5 Input Capture Register Low Byte
-129 constant OCR5AH	\ Timer/Counter5 Outbut Compare Register A High Byte
-128 constant OCR5AL	\ Timer/Counter5 Outbut Compare Register A Low Byte
+129 constant OCR5AH	\ Timer/Counter5 Output Compare Register A High Byte
+128 constant OCR5AL	\ Timer/Counter5 Output Compare Register A Low Byte
 12B constant OCR5BH	\ Timer/Counter5 Output Compare Register B High Byte
 12A constant OCR5BL	\ Timer/Counter5 Output Compare Register B Low Byte
 12D constant OCR5CH	\ Timer/Counter5 Output Compare Register B High Byte

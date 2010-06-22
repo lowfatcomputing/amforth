@@ -17,6 +17,7 @@
 .equ F_CPU = 8000000
 
 ; initial baud rate of terminal
+.include "drivers/usart.asm"
 .equ BAUD = 9600
 .equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
 .equ USART_C_VALUE = (3<<UCSZ0)
@@ -32,7 +33,6 @@
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
 .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
-.equ CELLSIZE = 2   ; currently the only allowed value is 2 (bytes per cell)
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
 .equ want_fun = 0 ; in case of an error out print an additional line with an caret indicating the error position

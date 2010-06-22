@@ -2,10 +2,9 @@
 .include "macros.asm"
 .include "device.asm"
 
-  .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ CELLSIZE = 2   ; never change
-  .equ APPUSERSIZE = 2  ; size of user area
+.equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
+.equ TIBSIZE  = $64 ; 80 characters is one line...
+.equ APPUSERSIZE = 2  ; size of user area
 
 ; cpu clock in hertz
 .equ F_CPU = 8000000
@@ -22,5 +21,6 @@
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .equ want_fun = 1
+.set WANT_SPI = 1
 
 .include "amforth.asm"
