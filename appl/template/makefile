@@ -1,6 +1,8 @@
 # simple makefile for building the 
 # template project. 
 
+# set the shell, if a make clean does not delete all files
+# SHELL=/bin/bash
 
 # --- edit these values ------------------------------------
 # Name of your application (useful, if you rename template.asm)
