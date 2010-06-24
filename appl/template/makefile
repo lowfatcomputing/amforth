@@ -1,8 +1,8 @@
 # simple makefile for building the 
 # template project. 
 
-# set the shell, if a make clean does not delete all files
-# SHELL=/bin/bash
+# sometimes the login shell causes trouble
+#SHELL=/bin/bash
 
 # --- edit these values ------------------------------------
 # Name of your application (useful, if you rename template.asm)
@@ -44,6 +44,7 @@ AVRA=avra -I $(DIR_ATMEL)/Appnotes2
 AVRASM=wine $(DIR_ATMEL)/avrasm2.exe -I $(DIR_ATMEL)/Appnotes2
 
 # ----------------------------------------------------------
+
 INCLUDE=-I $(AMFORTH) -I $(AMFORTH)/devices/$(MCU)
 
 default:  $(TARGET).hex
@@ -62,7 +63,12 @@ $(TARGET).back:
 	$(AVRDUDE) $(AVRDUDE_FLAGS)  -U flash:r:$(TARGET).hex:i -U eeprom:r:$(TARGET).eep.hex:i
 
 clean:
-	rm -f $(TARGET).{hex,eep.hex,lst,map,cof,obj}
+	rm -f $(TARGET).hex
+	rm -f $(TARGET).eep.hex
+	rm -f $(TARGET).lst
+	rm -f $(TARGET).map
+	rm -f $(TARGET).cof
+	rm -f $(TARGET).obj
 
 write-fuse:
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m
