@@ -6,26 +6,29 @@ AM_TECHNICAL_HB = amforth.xml \
                   amforth-de.xml amforth-firststeps.xml amforth-hardware.xml \
                   amforth-implementation.xml amforth-library.xml amforth-preface.xml \
                   amforth-sources.xml amforth-tools.xml amforth-version.xml
-AM_TECHNICAL_HB_PICS = ram-structure.eps ram2-structure.eps \
+AM_TECHNICAL_HB_PICS_EPS = ram-structure.eps ram2-structure.eps \
                        flash-structure.eps flash2-structure.eps \
                        flash3-structure.eps
 
-all:  amforth.pdf refcard.pdf
+AM_TECHNICAL_HB_PICS_PNG = ram-structure.png ram2-structure.png \
+                       flash-structure.png flash2-structure.png \
+                       flash3-structure.png
+
+all:  amforth.pdf amforth.epub
 
 %.eps: %.dia
 	dia -e $@ -t eps $<
 
+%.png: %.dia
+	dia -e $@ -t png $<
+
 clean:
-	rm amforth.pdf refcard.pdf *.eps
+	rm amforth.pdf *.eps *.png amforth.epub
 
-
-
-amforth.pdf: ${AM_TECHNICAL_HB} ${AM_TECHNICAL_HB_PICS} jadetex.cfg 
+amforth.pdf: ${AM_TECHNICAL_HB} ${AM_TECHNICAL_HB_PICS_EPS} jadetex.cfg 
 	docbook2dvi -l /usr/share/sgml/declaration/xml.dcl amforth.xml
 	dvipdf amforth.dvi amforth.pdf
 	rm amforth.dvi
 
-refcard.pdf: refcard.tex 
-	pdflatex refcard.tex
-	rm refcard.aux refcard.log
-
+amforth.epub: ${AM_TECHNICAL_HB} ${AM_TECHNICAL_HB_PICS_PNG} jadetex.cfg 
+	dbtoepub amforth.xml
