@@ -73,7 +73,7 @@ def write_line_flow(string,dest):
 
 	string = re.sub("(^| )\( .*?\)"," ",string)
 	string = re.sub("(^| )\( [^\)]*$"," \n",string)
-	string = re.sub("(^| )\\\\ .*","",string)
+        #string = re.sub("(^| )\\\\ .*","",string)
 
 	if re.match("^\s*$",string):
 		if verbose:
@@ -120,6 +120,8 @@ def write_line_flow(string,dest):
 		#print >>sys.stderr, "{"+str(state)+"}"
 		#dest.write("")
 		i = dest.read(1)
+		if i=="":
+			continue
 		#print "<"+i+"]",
 		#print >>sys.stderr, "i=["+i+"] state="+str(state)
 		sys.stdout.write(i)
