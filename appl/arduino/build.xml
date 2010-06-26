@@ -43,7 +43,6 @@
 		    eepromfile="duemilanove.eep.hex"
 		/>
 	</target>
-
 	<target name="diecimila.hex" description="Hexfiles for Arduino Diecimila Board www.arduino.cc">
 		<avrasm2 projectname="diecimila" mcu="atmega168"/>
 	</target>
@@ -58,4 +57,6 @@
 		/>
 	</target>
 
+    <target name="compile" depends="sanguino.hex, mega.hex, diecimila.hex, duemilanove.hex">
+    </target>
 </project>

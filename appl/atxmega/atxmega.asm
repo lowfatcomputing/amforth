@@ -29,9 +29,9 @@
 ; baud rate of terminal
 .equ BAUD = 9600
 
-.set heap = ramstart
-.set rstackstart = RAMEND
+.set here = ramstart           ; start address of HERE, grows upward.set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
+.set rstackstart = RAMEND
 
 .set amforth_interpreter = $F000
 .equ want_fun = 1

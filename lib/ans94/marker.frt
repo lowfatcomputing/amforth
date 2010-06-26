@@ -5,9 +5,9 @@
 : marker ( c<chars> -- )
     get-order
     get-current dup e@
-    here 
-    edp  
-    heap 
+    dp
+    edp
+    here
     \ maybe save turnkey as well
     create 
     , , , , ,
@@ -18,9 +18,9 @@
 	e@  ,
     loop
     does>
-       dup i@ to heap
+       dup i@ to here
     1+ dup i@ to edp 
-    1+ dup i@ to here
+    1+ dup i@ to dp
     1+ dup i@ swap 1+ dup i@ swap >r
     swap over e! set-current
     r>

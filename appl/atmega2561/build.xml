@@ -15,4 +15,7 @@
 		    eepromfile="atmega256.eep.hex"
 		/>
     </target>
+    <target name="compile" depends="atmega256.hex">
+    </target>
+
 </project>

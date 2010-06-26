@@ -12,7 +12,7 @@ PFA_ABORTSTRING:
     ; postpone if
     .dw XT_COMPILE
     .dw XT_DOCONDBRANCH
-    .dw XT_HERE
+    .dw XT_DP
     .dw XT_COMPILE
     .dw -1
     
@@ -26,7 +26,7 @@ PFA_ABORTSTRING:
     .dw XT_COMPILE
     .dw XT_THROW
     ; then
-    .dw XT_HERE
+    .dw XT_DP
     .dw XT_SWAP
     .dw XT_ISTORE
     .dw XT_EXIT

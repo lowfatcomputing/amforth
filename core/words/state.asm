@@ -9,5 +9,5 @@ VE_STATE:
 XT_STATE:
     .dw PFA_DOVARIABLE
 PFA_STATE:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw here
+    .set here = here + CELLSIZE

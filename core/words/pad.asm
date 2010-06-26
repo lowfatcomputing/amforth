@@ -9,7 +9,7 @@ VE_PAD:
 XT_PAD:
     .dw DO_COLON
 PFA_PAD:
-    .dw XT_HEAP
+    .dw XT_HERE
     .dw XT_DOLITERAL
     .dw 100
     .dw XT_PLUS

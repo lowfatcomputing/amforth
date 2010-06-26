@@ -9,5 +9,5 @@ VE_TIB:
 XT_TIB:
     .dw PFA_DOVARIABLE
 PFA_TIB:
-    .dw heap
-    .set heap = heap + TIBSIZE
+    .dw here
+    .set here = here + TIBSIZE

@@ -9,14 +9,14 @@
 .equ usart_rx_size = $10
 .equ usart_rx_mask = usart_rx_size - 1
 
-.set usart_rx_in = heap
-.set heap = heap + 1
+.set usart_rx_in = here
+.set here = here + 1
 
-.set usart_rx_out = heap
-.set heap = heap + 1
+.set usart_rx_out = here
+.set here = here + 1
 
-.set usart_rx_data = heap
-.set heap = heap + usart_rx_size
+.set usart_rx_data = here
+.set here = here + usart_rx_size
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; todo: wenn XON/XOFF erkannt werden, nicht in den Input Buffer schreiben!

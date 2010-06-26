@@ -296,7 +296,7 @@
                 </para>
 		
 		<para>
-		    The first USER area is located at the first heap address
+		    The first USER area is located at the first data address
 		    (usually RAMSTART).
 		</para>
 				<table>
@@ -439,7 +439,8 @@
                     Nearly all colon words are located here. New words
                     are appended to this section. This section is filled
                     with FFFF cells when flashing the controller
-                    initially.
+                    initially. The current write pointer is the <code>DP</code>
+                    pointer.
                 </para>
                 <para>
                     The last section is identical to the boot loader
@@ -629,9 +630,9 @@
                 <para>
                   Forth defines a few transient buffer regions for varios purposes.
                   The most important is PAD, the scratch buffer. It is located 100 bytes
-                  above the current HEAP and goes to upper addresses. The Pictured Numeric 
+                  above the current HERE and goes to upper addresses. The Pictured Numeric 
                   Output is just at PAD and grows downward. The word WORD uses the area above
-                  HEAP as it's buffer to store the just recognized word from SOURCE.
+                  HERE as it's buffer to store the just recognized word from SOURCE.
                 </para>
                 <para>
                 <xref linkend="RAM_FIGURE"/> shows an ram layout that can be used on systems
@@ -650,7 +651,7 @@
                 </figure>
                 Another layout, that makes the external RAM easily available is shown in
                 <xref linkend="RAM2_FIGURE"/>. Here are the stacks at the beginning of the internal RAM and the
-                heap and all other buffers grow directly into the external data space. From
+                data space region. All other buffers grow directly into the external data space. From
                 an application point of view there is not difference but a speed penalty when
                 working with external RAM instead of internal.
                 <figure id="RAM2_FIGURE">

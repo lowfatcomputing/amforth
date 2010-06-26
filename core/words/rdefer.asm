@@ -13,7 +13,7 @@ PFA_RDEFER:
     .dw XT_COMPILE
     .dw PFA_DODEFER
 
-    .dw XT_HEAP
+    .dw XT_HERE
     .dw XT_COMMA
     .dw XT_DOLITERAL
     .dw 2

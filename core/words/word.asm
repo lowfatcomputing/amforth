@@ -32,9 +32,9 @@ PFA_WORD:
     .dw XT_G_IN
     .dw XT_PLUSSTORE   ; ( -- addr''' len''')
 
-    ; move to heap
-    .dw XT_HEAP
+    ; move to HERE
+    .dw XT_HERE
     .dw XT_PLACE
     ; leave result
-    .dw XT_HEAP
+    .dw XT_HERE
     .dw XT_EXIT

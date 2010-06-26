@@ -15,6 +15,8 @@
 .include "words/keyq.asm"
 .include "words/slashkey.asm"
 
+.include "words/dp.asm"
+.include "words/edp.asm"
 .include "words/here.asm"
 .include "words/allot.asm"
 
@@ -30,8 +32,7 @@
 .include "words/decimal.asm"
 .include "words/hex.asm"
 .include "words/bl.asm"
-.include "words/edp.asm"
-.include "words/heap.asm"
+
 .include "words/turnkey.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/starslashmod.asm"

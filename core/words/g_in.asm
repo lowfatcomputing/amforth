@@ -9,5 +9,5 @@ VE_G_IN:
 XT_G_IN:
     .dw PFA_DOVARIABLE
 PFA_G_IN:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw here
+    .set here = here + CELLSIZE

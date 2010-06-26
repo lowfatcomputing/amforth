@@ -9,5 +9,5 @@ VE_HLD:
 XT_HLD:
     .dw PFA_DOVARIABLE
 PFA_HLD:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw here
+    .set here = here + CELLSIZE

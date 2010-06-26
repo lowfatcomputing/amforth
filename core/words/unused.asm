@@ -11,6 +11,6 @@ XT_UNUSED:
 PFA_UNUSED:
     .dw XT_DOLITERAL
     .dw max_dict_addr
-    .dw XT_HERE
+    .dw XT_DP
     .dw XT_MINUS
     .dw XT_EXIT

@@ -11,14 +11,14 @@
 .equ usart_tx_size = $10
 .equ usart_tx_mask = usart_tx_size - 1
 
-.set usart_tx_in = heap
-.set heap = heap + 1
+.set usart_tx_in = here
+.set here = here + 1
 
-.set usart_tx_out = heap
-.set heap = heap + 1
+.set usart_tx_out = here
+.set here = here + 1
 
-.set usart_tx_data = heap
-.set heap = heap + usart_tx_size
+.set usart_tx_data = here
+.set here = here + usart_tx_size
 
 usart_udre_isr:
   push xl

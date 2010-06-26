@@ -9,8 +9,8 @@ VE_ALLOT:
 XT_ALLOT:
     .dw DO_COLON
 PFA_ALLOT:
-    .dw XT_HEAP
+    .dw XT_HERE
     .dw XT_PLUS
     .dw XT_DOTO
-    .dw PFA_HEAP
+    .dw PFA_HERE
     .dw XT_EXIT

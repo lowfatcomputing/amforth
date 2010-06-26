@@ -17,7 +17,7 @@
 ; size of return stack in bytes
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-.set heap = ramstart
+.set here = ramstart
 .set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8

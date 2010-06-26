@@ -9,6 +9,6 @@ VE_NUMBERTIB:
 XT_NUMBERTIB:
     .dw PFA_DOVARIABLE
 PFA_NUMBERTIB:
-    .dw heap
-    .set heap  = heap + CELLSIZE
+    .dw here
+    .set here  = here + CELLSIZE
  

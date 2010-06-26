@@ -9,7 +9,7 @@ VE_PAUSE:
 XT_PAUSE:
     .dw PFA_DODEFER
 PFA_PAUSE:
-    .dw heap
-    .set heap = heap + CELLSIZE
+    .dw here
+    .set here = here + CELLSIZE
     .dw XT_RDEFERFETCH
     .dw XT_RDEFERSTORE

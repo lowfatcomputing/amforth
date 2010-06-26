@@ -15,7 +15,7 @@
 .equ USART_B_VALUE = (1<<TXEN1) | (1<<RXEN1) ; | (1<<RXCIE1)
 .equ USART_C_VALUE = (1<<UCSZ11) | ( 1<<UCSZ10)
 
-.set heap = ramstart
+.set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set amforth_interpreter = NRWW_START_ADDR

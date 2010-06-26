@@ -60,15 +60,15 @@ decimal
 
 : task ( rs-size ds-size -- tid )
 	\ allocate stack memory
-	heap >r   \ allocate user area
+	here >r   \ allocate user area
 	24 allot     \ default user size
-	allot heap     ( -- rs-size sp0 )
+	allot here     ( -- rs-size sp0 )
 	    r@ 6 + !   (  ... place sp0 in tcb )
-	allot heap     ( -- rp0 )
+	allot here     ( -- rp0 )
 	    r@ 4 + !   (  ... place it in tcb )
 	r>
 	dup task-sleep       \ make it sleep
-	1 allot \ keep heap away
+	1 allot \ keep here away
 ;
 
 \ stop multitasking

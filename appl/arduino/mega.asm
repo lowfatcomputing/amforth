@@ -27,7 +27,7 @@
 .equ APPUSERSIZE = 0   ; size of application specific user area in bytes
 
 ; addresses of various data segments
-.set heap = ramstart           ; start address of HEAP, grows upward
+.set here = ramstart           ; start address of HERE, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
 ;.set dict_appl=1			   ; include applic dictionary in rww section (non boot)

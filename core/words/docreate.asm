@@ -9,7 +9,7 @@
 XT_DOCREATE:
     .dw DO_COLON
 PFA_DOCREATE:
-    .dw XT_HERE   ; ( -- here)
+    .dw XT_DP     ; ( -- here)
     .dw XT_BL
     .dw XT_WORD   ; ( -- here addr)
     .dw XT_COUNT  ; ( -- here addr' n)

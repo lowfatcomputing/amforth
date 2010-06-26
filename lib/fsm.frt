@@ -25,8 +25,8 @@ hex
 \ comment if you have this word.
 : tuck swap over ;
 
-\ Allocate a RAM variable on the heap, init with x, and return RAM address
-: >ram  ( x -- addr )  heap 1 cells allot tuck ! ; 
+\ Allocate a RAM variable on the data space, init with x, and return RAM address
+: >ram  ( x -- addr )  here 1 cells allot tuck ! ; 
 
 
 \ This word creates FSM transition tables

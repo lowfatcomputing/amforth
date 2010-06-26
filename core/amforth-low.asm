@@ -12,8 +12,8 @@ amforthstart:
     clr zerol
     clr zeroh
     ; init first user data area
-    ldi zl, low(heap)
-    ldi zh, high(heap)
+    ldi zl, low(here)
+    ldi zh, high(here)
     movw upl, zl
     ; init return stack pointer
     ldi temp0,low(rstackstart)
@@ -30,7 +30,7 @@ amforthstart:
     std Z+7, yh
 
     ; allocate space for User Area
-    .set heap = heap + SYSUSERSIZE + APPUSERSIZE
+    .set here = here + SYSUSERSIZE + APPUSERSIZE
 
     ; load Forth IP with starting word
     ldi XL, low(PFA_COLD)
@@ -97,10 +97,10 @@ DO_EXECUTE:
 
 .eseg
     .dw -1           ; EEPROM Address 0 should not be used
+EE_DP:
+    .dw lowflashlast ; DP
 EE_HERE:
-    .dw lowflashlast ; HERE
-EE_HEAP:
-    .dw heap         ; HEAP
+    .dw here         ; HERE
 EE_EDP:
     .dw edp          ; EDP
 EE_ENVIRONMENT:

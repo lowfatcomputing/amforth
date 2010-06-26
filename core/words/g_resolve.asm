@@ -9,7 +9,7 @@
 XT_GRESOLVE:
     .dw DO_COLON
 PFA_GRESOLVE:
-    .dw XT_HERE
+    .dw XT_DP
     .dw XT_SWAP
     .dw XT_ISTORE
     .dw XT_EXIT

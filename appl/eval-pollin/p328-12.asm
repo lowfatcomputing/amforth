@@ -14,7 +14,7 @@
 .equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) ; | (1<<RXCIE0)
 .equ USART_C_VALUE = (1<<UCSZ01) | ( 1<<UCSZ00)
 
-.set heap = ramstart
+.set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set amforth_interpreter = max_dict_addr

@@ -9,5 +9,5 @@
 XT_LMARK:
     .dw DO_COLON
 PFA_LMARK:
-    .dw XT_HERE
+    .dw XT_DP
     .dw XT_EXIT
