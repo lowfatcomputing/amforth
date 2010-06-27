@@ -9,3 +9,7 @@ fib.frt: simple benchmark. calculate a fibonacci number using
 
 sieve.frt: not-so simple benchmark modelled after the sieve code
     of Marcel Hendrix. Uses single bits to store the is-prim flag.
+
+run-hayes.frt: demonstrate the use of the amforth-upload.py utility 
+    and the special #include syntax. The test itself is a slightly
+    modified HAYES test suite
