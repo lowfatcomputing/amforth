@@ -62,3 +62,6 @@
 : blank  ( addr n -- )
   bl fill
 ;
+
+: move
+  >r 2dup u< if r> cmove> else r> cmove then ;
