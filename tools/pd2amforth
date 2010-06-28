@@ -34,13 +34,11 @@ sub readXML ($) {
 
     $basename =~ s/\.xml$//;
     $basename =~ s/\.gz$//;
+
     mkdir $basename unless -d $basename;
     open(FRT, ">$basename/$basename.frt") or die "$basename: $!\n";
-
-    $basename =~ s/frt/asm/;
     open(ASM, ">$basename/device.asm") or die "$basename: $!\n";
-
-    $basename = lc $basename;
+    open(PY, ">$basename/device.py") or die "$basename: $!\n";
     open(INC, ">$basename/device.inc") or die "$basename: $!\n";
     
     my $admin = $doc -> getElementsByTagName("ADMIN") -> item(0);
@@ -50,10 +48,13 @@ sub readXML ($) {
     print FRT "\\ generated automatically\n\nhex\n";    
     print ASM "; Partname:  $partname\n";
     print ASM "; Built using part description XML file version " . $admin -> getElementsByTagName("BUILD")."\n";
+    print ASM "; generated automatically, do not edit\n";    
     print INC "; Partname:  " . $admin -> getElementsByTagName("PART_NAME") ."\n";
     print INC "; Built using part description XML file version " . $admin -> getElementsByTagName("BUILD")."\n";
-    
-    print ASM "; generated automatically";    
+    print INC "; generated automatically, no not edit\n";
+    print PY "# Partname: $partname\n# Built using part description XML file version " . $admin -> getElementsByTagName("BUILD")."\n";
+    print PY "# generated automatically, do not edit\n";
+    print PY "MCUREGS = {";
     $defname = "unknown";
     $defname = "m$1def.inc" if $partname=~/ATmega(.*)/;
     $defname = "usb$1def.inc" if $partname=~/AT90USB(.*)/;
@@ -88,6 +89,7 @@ sub readXML ($) {
     print ASM ".endmacro\n";
     print ASM "\n; the following definitions are shortcuts for the respective forth source segments if set to 1\n";
     foreach my $iomodule ($doc -> getElementsByTagName("IO_MODULE")) {
+        my ($firstentry) = (1);
 	my $iomods = $iomodule -> getElementsByTagName("MODULE_LIST");
 	$iomods =~ s/\[//;
 	$iomods =~ s/\]//;
@@ -113,9 +115,13 @@ sub readXML ($) {
 	     print INC "; ( -- addr ) System Constant\n; R( -- )\n; $name";
 	     print INC "\nVE_${reg}:\n\t" . fmt_str($reg, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${reg}\n";
 	     print INC "XT_${reg}:\n\t.dw PFA_DOVARIABLE\nPFA_${reg}:\n\t.dw \$$addr\n";
+	     if($firstentry==0) { print PY ","; } else {$firstentry=0;}
+	     print PY "\n\t'${reg}': '\$$addr'";
 	  }
+
 	  print INC "\n.endif\n";
 	}
+    print PY "\n}";
     }
     print ASM "\n";
     print ASM "\n.ifndef SPMEN\n .equ SPMEN = SELFPRGEN\n.endif\n";

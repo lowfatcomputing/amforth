@@ -31,13 +31,14 @@ import os
 import re
 import time
 
+global verbose, debug, mcudef
+
 def merge(seq):
     merged = []
     for s in seq:
         for x in s:
             merged.append(x)
     return merged
-
 
 def search_and_open_file(filename):
     directorylist=["."]
@@ -71,6 +72,11 @@ def write_line_flow(string,dest):
 	if debug:
 		print >>sys.stderr, "line before comment stripping: "+string
 
+	if usemcudef:
+		for regname in MCUREGS:
+		    string = re.sub('(^|\s)+'+regname+'(\s|$)+', " " + MCUREGS[regname] + " ", string)
+		if string[-1] != "\n":
+		    string = string + "\n"
 	string = re.sub("(^| )\( .*?\)"," ",string)
 	string = re.sub("(^| )\( [^\)]*$"," \n",string)
         #string = re.sub("(^| )\\\\ .*","",string)
@@ -183,73 +189,76 @@ def write_file_flow(in_file,dest):
 		else:
 			break		
 
-def main(argv):
 
-	global verbose, debug
 
-	#in_file = file("file.frt")
-	#tty_dev = file("/dev/ttyS0","w+",0)
+#in_file = file("file.frt")
+#tty_dev = file("/dev/ttyS0","w+",0)
 
-	tty_dev_name = "/dev/ttyS0"
-	force = False
-	verbose = False
-	debug = False
+tty_dev_name = "/dev/ttyS0"
+force = False
+verbose = False
+debug = False
+usemcudef = False
+starttime = time.time()
 
-	try:
-		opts, args = getopt.getopt(argv,"ht:vfd")
-	except getopt.GetoptError:
-		print >>sys.stderr, "unknown option. try -h"
+try:
+	opts, args = getopt.getopt(sys.argv[1:],"ht:vfdc:")
+except getopt.GetoptError:
+	print >>sys.stderr, "unknown option. try -h"
+	sys.exit(1)
+for opt, arg in opts:
+	if opt == "-h":
+		print >>sys.stderr, "usage: amforth-upload [-h] [-v] [-f] [-t tty] [file1] [file2] [...]"
+		print >>sys.stderr, "   default tty is "+tty_dev_name
+		print >>sys.stderr, "   if no files are specified, input is read from the the terminal"
+		print >>sys.stderr, "   -f will run without checking for other processes accessing the tty"
+		print >>sys.stderr, "   -v will print extra information during execution"
+		print >>sys.stderr, "   -t selects the serial device. Default is " + tty_dev_name
+		print >>sys.stderr, "   -c partname-directory tries to load the device.py file from the partname directory."
 		sys.exit(1)
+	elif opt == "-t":
+		tty_dev_name = arg
+	elif opt == "-v":
+		verbose = True
+	elif opt == "-f":
+		force = True
+	elif opt == "-d":
+		debug = True
+	elif opt == "-c":
+		mcudef = arg
+		sys.path.append(mcudef)
+		try:
+			from device import *
+			usemcudef = True
+			print "using device.py from " + mcudef
+		except:
+			print "failed using device.py from " + mcudef + " .. continuing"
 
-	for opt, arg in opts:
-		if opt == "-h":
-			print >>sys.stderr, "usage: amforth-upload [-h] [-v] [-f] [-t tty] [file1] [file2] [...]"
-			print >>sys.stderr, "   default tty is "+tty_dev_name
-			print >>sys.stderr, "   if no files are specified, input is read from the the terminal"
-			print >>sys.stderr, "   -f will run without checking for other processes accessing the tty"
-			print >>sys.stderr, "   -v will print extra information during execution"
-			print >>sys.stderr, "   -t selects the serial device. Default is " + tty_dev_name
+if not force:	
+	if not os.system("which lsof > /dev/null 2>&1"):
+		if not os.system("lsof " + tty_dev_name):
+			print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
+			print >>sys.stderr, "please stop the process and try again."
+			print >>sys.stderr, "run with the -f option to force execution anyway"	
 			sys.exit(1)
-		elif opt == "-t":
-			tty_dev_name = arg
-		elif opt == "-v":
-			verbose = True
-		elif opt == "-f":
-			force = True
-		elif opt == "-d":
-			debug = True
-
-	if not force:	
-		if not os.system("which lsof > /dev/null 2>&1"):
-			if not os.system("lsof " + tty_dev_name):
-				print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
-				print >>sys.stderr, "please stop the process and try again."
-				print >>sys.stderr, "run with the -f option to force execution anyway"	
-				sys.exit(1)
-		elif not os.system("which fuser >/dev/null 2>&1"):
-			if not os.system("fuser -u "+tty_dev_name):
-				print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
-				print >>sys.stderr, "please stop the process and try again."
-				print >>sys.stderr, "run with the -f option to force execution anyway"	
-				sys.exit(1)
-		else:
-			print >>sys.stderr, "couldn't find fuser. so i can't check if "+tty_dev_name+" is in use."
-
+	elif not os.system("which fuser >/dev/null 2>&1"):
+		if not os.system("fuser -u "+tty_dev_name):
+			print >>sys.stderr, "the above process is accessing "+tty_dev_name+"."
+			print >>sys.stderr, "please stop the process and try again."
+			print >>sys.stderr, "run with the -f option to force execution anyway"	
+			sys.exit(1)
+	else:
+		print >>sys.stderr, "couldn't find fuser. so i can't check if "+tty_dev_name+" is in use."
 	tty_dev = file(tty_dev_name,"r+",0)
-
 	if len(args)<1:
 		if verbose:
 			print >>sys.stderr, "processing stdin"
 		write_file_flow(sys.stdin,tty_dev)
 	else:
 		for filename in args:
-			in_file = search_and_open_file(filename)
-			write_file_flow(in_file,tty_dev)
-			in_file.close()
-
-if __name__ == "__main__":
-	starttime = time.time()
-	main(sys.argv[1:])	
-	endtime = time.time()
-	runtime = endtime - starttime
-	print "\ntime: ", runtime, " seconds"
+		    in_file = search_and_open_file(filename)
+		    write_file_flow(in_file,tty_dev)
+		    in_file.close()
+endtime = time.time()
+runtime = endtime - starttime
+print "\ntime: ", runtime, " seconds"
