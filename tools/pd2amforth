@@ -87,7 +87,6 @@ sub readXML ($) {
     print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n" if int($fsize) > 65536;
     print ASM ".endmacro\n";
     print ASM "\n; the following definitions are shortcuts for the respective forth source segments if set to 1\n";
-    $numberusarts = 0;
     foreach my $iomodule ($doc -> getElementsByTagName("IO_MODULE")) {
 	my $iomods = $iomodule -> getElementsByTagName("MODULE_LIST");
 	$iomods =~ s/\[//;
@@ -103,20 +102,11 @@ sub readXML ($) {
 	  print ASM ".set WANT_${iomd} = 0\n";
           $li =~ s/\[//;
 	  $li =~ s/\]//;
-	  if($iomd=~/USART/) {
-	    $numberusarts ++;
-	    $collectusartregs = 1;
-	  } else {
-	    $collectusartregs = 0;
-	  }
 	  foreach my $reg ( sort split /:/, $li) {
 	     my $addr = $iv->[0] -> getElementsByTagName($reg) ->[0]->getElementsByTagName("MEM_ADDR");
 	     my $name = $iv->[0] -> getElementsByTagName($reg) ->[0]->getChildrenByTagName("DESCRIPTION");
 	     $addr =~ s/\$//;
 	     $addr =~ s/0x//;
-	     if($collectusartregs) {
-	        $usartregs{$reg} = $addr;
-	     }
 	     next if $regs{$addr};
 	     $regs{$addr} = 1;
 	     print FRT "$addr constant $reg\t\\ $name\n";
