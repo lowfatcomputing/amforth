@@ -1,6 +1,7 @@
 ; Partname:  ATmega88
 ; Built using part description XML file version 232
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m88def.inc"
 .list

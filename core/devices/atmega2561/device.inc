@@ -1,5 +1,6 @@
 ; Partname:  ATmega2561
 ; Built using part description XML file version 168
+; generated automatically, no not edit
 
 ; ********
 .if WANT_AD_CONVERTER == 1

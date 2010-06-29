@@ -1,6 +1,7 @@
 ; Partname:  ATmega32
 ; Built using part description XML file version 229
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m32def.inc"
 .list

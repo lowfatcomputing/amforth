@@ -1,6 +1,7 @@
 ; Partname:  ATmega644P
 ; Built using part description XML file version 52
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m644Pdef.inc"
 .list

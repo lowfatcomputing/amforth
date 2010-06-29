@@ -1,6 +1,7 @@
 ; Partname:  ATmega328P
 ; Built using part description XML file version 1
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m328Pdef.inc"
 .list

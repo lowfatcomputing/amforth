@@ -1,6 +1,7 @@
 ; Partname:  ATmega640
 ; Built using part description XML file version 1
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m640def.inc"
 .list

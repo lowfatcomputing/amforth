@@ -1,6 +1,7 @@
 ; Partname:  ATmega1280
 ; Built using part description XML file version 1
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m1280def.inc"
 .list

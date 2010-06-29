@@ -1,5 +1,6 @@
 ; Partname:  AT90CAN128
 ; Built using part description XML file version 170
+; generated automatically, no not edit
 
 ; ********
 .if WANT_AD_CONVERTER == 1

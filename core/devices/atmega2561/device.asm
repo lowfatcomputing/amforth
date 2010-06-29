@@ -1,6 +1,7 @@
 ; Partname:  ATmega2561
 ; Built using part description XML file version 168
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m2561def.inc"
 .list

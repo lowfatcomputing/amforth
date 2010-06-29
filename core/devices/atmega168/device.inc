@@ -1,5 +1,6 @@
 ; Partname:  ATmega168
 ; Built using part description XML file version 201
+; generated automatically, no not edit
 
 ; ********
 .if WANT_AD_CONVERTER == 1

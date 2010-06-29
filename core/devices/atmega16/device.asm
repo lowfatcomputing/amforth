@@ -1,6 +1,7 @@
 ; Partname:  ATmega16
 ; Built using part description XML file version 247
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "m16def.inc"
 .list

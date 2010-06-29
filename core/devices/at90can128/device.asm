@@ -1,6 +1,7 @@
 ; Partname:  AT90CAN128
 ; Built using part description XML file version 170
-; generated automatically
+; generated automatically, do not edit
+
 .nolist
 	.include "can128def.inc"
 .list
