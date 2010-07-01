@@ -10,7 +10,7 @@
 .equ F_CPU = 16000000
 ; baud rate of terminal
 .include "drivers/usart.asm"
-.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) ; | (1<<RXCIE)
+.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
 .equ USART_C_VALUE = (3<<UCSZ0)
 .equ BAUD = 9600
 

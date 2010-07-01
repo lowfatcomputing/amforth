@@ -31,4 +31,4 @@
 .include "words/ewords.asm"
 .include "words/words.asm"
 
-
+.include "words/1ms.asm"

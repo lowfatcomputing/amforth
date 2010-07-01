@@ -50,6 +50,7 @@
 		    <arg line="-fI -v0"/>
 		    <arg line="-e @{projectname}.eep.hex"/>
 		    <arg line="-l @{projectname}.lst"/>
+		    <arg line="-m @{projectname}.map"/>
 		    <arg line="-o @{projectname}.hex"/>
 		    <arg line="@{projectname}.asm"/>
 		</exec>

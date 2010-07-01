@@ -12,7 +12,7 @@
 ; baud rate of terminal
 .include "drivers/usart_1.asm"
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN1) | (1<<RXEN1) ; | (1<<RXCIE1)
+.equ USART_B_VALUE = (1<<TXEN1) | (1<<RXEN1) | (1<<RXCIE1)
 .equ USART_C_VALUE = (1<<UCSZ11) | ( 1<<UCSZ10)
 
 .set here = ramstart

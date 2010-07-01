@@ -18,7 +18,7 @@
 ; initial baud rate of terminal
 .include "drivers/usart_0.asm"
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) ;| (1<<RXCIE0)
+.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
 .equ USART_C_VALUE = (3<<UCSZ00)
 
 
@@ -30,7 +30,6 @@
 .set here = ramstart           ; start address of HERE, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
-;.set dict_appl=1			   ; include applic dictionary in rww section (non boot)
 .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8

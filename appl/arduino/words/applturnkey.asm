@@ -11,5 +11,6 @@ XT_APPLTURNKEY:
 PFA_APPLTURNKEY:
     .dw XT_INITUSER
     .dw XT_USART
+    .dw XT_INTON
     .dw XT_VER
     .dw XT_EXIT
