@@ -60,8 +60,7 @@
     dup i@ swap 1+ i@ swap
 ;
 
-\ m+ ( d1 n -- d2 )
-: m+ s>d d+ ;
-
-\ m* ( d1 n -- d2 )
+: 2variable
+    here 2 cells allot constant
+;
 
