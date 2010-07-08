@@ -15,20 +15,50 @@
 				words are coded in their own source files. These files are organized
 				with include files, named after the pattern
 				<filename>dict*.inc</filename>
-				. Currently 4 such files exists:
-				<filename>dict_minimum</filename>
-				,
-				<filename>dict_mcu</filename>
-				,
-				<filename>dict_core.inc</filename>
-				and
-				<filename>dict_compiler.inc</filename>
-				. The order in which the files are included defines the search order
+				. Currently the following files exist:
+				<table> <title></title>
+				 <tgroup cols="2"> 
+				   <thead><row><entry>Filename</entry><entry>purpose</entry></row></thead>
+				   <tbody>
+				     <row>
+				       <entry>dict_minimum.inc</entry>
+				       <entry>All basic primitives</entry>
+				     </row>
+				     <row>
+				       <entry>dict_mcu.inc</entry>
+				       <entry>Microcontroller specific primitives</entry>
+				     </row>
+				     <row>
+				       <entry>dict_core.inc</entry>
+				       <entry>All essential primitives</entry>
+				     </row>
+				     <row>
+				       <entry>dict_compiler</entry>
+				       <entry>All Compiler words</entry>
+				     </row>
+				     <row>
+				       <entry>dict_usart</entry>
+				       <entry>Usart Terminal IO words</entry>
+				     </row>
+
+				     <row>
+				       <entry>dict_vm</entry>
+				       <entry>Not-Yet proposed additional VM registers A and B</entry>
+				     </row>
+				     <row>
+				       <entry>dict_wl</entry>
+				       <entry>words dealing with word lists.</entry>
+				     </row>
+
+				   </tbody>
+				  </tgroup>
+				</table>
+				The order in which the files are included defines the search order
 				and there location within the flash memory. Most words can be moved
 				from one include file to another to optimize the flash usage.
 			</para>
 			<para>
-				There are two additional files:
+				There are additional files:
 				<filename>amforth.asm</filename>
 				and
 				<filename>macros.asm</filename>
@@ -37,6 +67,8 @@
 				<filename>macros.asm</filename>
 				contains some useful assembler macros that make the source code
 				easier to read.
+				<filename>user.inc</filename> contains the layout of the system
+				user area.
 			</para>
 		</sect1>
 		<sect1 id="src_core_entry">

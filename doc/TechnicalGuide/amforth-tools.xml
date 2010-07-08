@@ -15,9 +15,7 @@
         	    The <command>pd2amforth.pl</command> script reads a part
         	    description file in XML format (comes with
         	    the Atmel Studio package) and produces
-        	    the controller specific <filename>devices/</filename> file. The 
-        	    generated files may need some checks and 
-        	    small corrections however.
+        	    the controller specific <filename>devices/controllername/*</filename> files. 
         	</para>
             </sect2>
             <sect2>
