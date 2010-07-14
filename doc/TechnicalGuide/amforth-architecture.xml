@@ -522,27 +522,6 @@
                 It could be used as a block device. 
                 </para>
                 
-                <para>
-                  This flash structure places the whole core system including the forth
-                  compiler in the (large enough) bootloader section of the controller.
-                  This enables the use of an undestroyable forth system since no application
-                  can overwrite the bootloader section. 
-                <figure>
-                <title>All-High Alternative FLASH Structure</title>
-                <mediaobject>
-                    <imageobject>
-                    <imagedata fileref="flash3-structure.png" format="PNG" scale="33"/>
-                    </imageobject>
-                    <imageobject>
-                    <imagedata fileref="flash3-structure.eps" format="EPS" scale="33"/>
-                    </imageobject>
-                </mediaobject>
-                </figure>
-                  Some additional words may be useful
-                  to reset the user defined data space to some inital (empty) state. This
-                  scenario is  obviously usable for bigger atmegas only.
-                </para>
-
                 <sect3>
                     <title>Flash Write</title>
                     <para>
