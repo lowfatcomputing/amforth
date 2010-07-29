@@ -3,7 +3,7 @@
 \ Friday, the 13th  :-) 
 
 marker --start--
-include lib/multitask.frt
+#include lib/multitask.frt
 
 variable N
 : init
