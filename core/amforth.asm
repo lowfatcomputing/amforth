@@ -101,7 +101,10 @@ DO_INTERRUPT:
 .include "dict_appl_core.inc"
 
 .set flashlast = pc
-
+.if (pc>FLASHEND)
+  .error "*** Flash size exceeded, please edit your dict_appl_core file to use less space! Aborting."
+.endif
+  
 .eseg
 EE_DP:
     .dw lowflashlast ; DP
