@@ -9,8 +9,11 @@
 .org pc_
 ; main entry point
 amforthstart:
+    in_ r10, MCUSR
+    clr r11
     clr zerol
     clr zeroh
+    out_ MCUSR, zerol
     ; init first user data area
     ldi zl, low(here)
     ldi zh, high(here)
@@ -31,28 +34,14 @@ amforthstart:
 
     ; allocate space for User Area
     .set here = here + SYSUSERSIZE + APPUSERSIZE
-
     ; load Forth IP with starting word
     ldi XL, low(PFA_COLD)
     ldi XH, high(PFA_COLD)
     ; its a far jump...
     jmp_ DO_NEXT
 
-.include "drivers/generic-isr.asm"
+
 ; the inner interpreter.
-DO_INTERRUPT:
-    ; here we deal with interrupts the forth way
-    lds temp0, intcur
-    ldi zl, LOW(intvec)
-    ldi zh, HIGH(intvec)
-    add zl, temp0
-    adc zh, zeroh
-    ldd wl, Z+0
-    ldd wh, Z+1
-
-    clt ; clear the t flag to indicate that the interrupt is handled
-    rjmp DO_EXECUTE
-
 DO_DODOES:
     savetos
     movw tosl, wl
@@ -86,7 +75,20 @@ DO_EXECUTE:
     movw zl, temp0
     ijmp
 
+DO_INTERRUPT:
+    ; here we deal with interrupts the forth way
+    lds temp0, intcur
+    ldi zl, LOW(intvec)
+    ldi zh, HIGH(intvec)
+    add zl, temp0
+    adc zh, zeroh
+    ldd wl, Z+0
+    ldd wh, Z+1
 
+    clt ; clear the t flag to indicate that the interrupt is handled
+    rjmp DO_EXECUTE
+
+.include "drivers/generic-isr.asm"
 ; lower part of the dictionary
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
@@ -95,8 +97,9 @@ DO_EXECUTE:
 
 .set lowflashlast = pc
 
+.set flashlast = pc
+
 .eseg
-    .dw -1           ; EEPROM Address 0 should not be used
 EE_DP:
     .dw lowflashlast ; DP
 EE_HERE:
