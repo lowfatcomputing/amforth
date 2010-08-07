@@ -14,42 +14,58 @@
 				amforth consists of a great number of small source files. Nearly all
 				words are coded in their own source files. These files are organized
 				with include files, named after the pattern
-				<filename>dict*.inc</filename>
-				. Currently the following files exist:
+				<filename>dict*.inc</filename>.</para>
+			<para>The include hierarchy is as follows: Top level is the application specific
+			file (template.asm). It included the file (core/)amforth.asm only. This file includes
+			the two (appl/) files dict_appl.inc for the low address words (RWW space) and the
+			file dict_appl_core.inc for the high address space words (NRWW). These two include
+			files use other dict* files and direct words defintion files. Any cross-references
+			are solved by the assembler. The use need to take care that the highest used address
+			is within the flash address range.
+			</para>
+			<para>
+				Currently the following pre defined dict files exist:
 				<table> <title></title>
 				 <tgroup cols="2"> 
-				   <thead><row><entry>Filename</entry><entry>purpose</entry></row></thead>
+				   <thead><row><entry>Filename</entry><entry>purpose</entry><entry>placement</entry></row></thead>
 				   <tbody>
 				     <row>
 				       <entry>dict_minimum.inc</entry>
-				       <entry>All basic primitives</entry>
+				       <entry>All basic words beyond the primitives.</entry>
+				       <entry>Usually included via dict_appl.inc and placed in the
+				       RWW section. If possible put it into the NRWW section however.</entry>
 				     </row>
 				     <row>
 				       <entry>dict_mcu.inc</entry>
-				       <entry>Microcontroller specific primitives</entry>
+				       <entry>Microcontroller specific primitives.</entry>
+				       <entry>It can be placed everywhere. Usually in dict_appl_core.inc.</entry>
 				     </row>
 				     <row>
 				       <entry>dict_core.inc</entry>
-				       <entry>All essential primitives</entry>
+				       <entry>All essential primitives.</entry>
+				       <entry>Always near the inner interpreter (NRWW, dict_appl_core.inc).</entry>
 				     </row>
 				     <row>
 				       <entry>dict_compiler</entry>
-				       <entry>All Compiler words</entry>
+				       <entry>All Compiler words.</entry>
+				       <entry>Usually part of the dict_appl.inc.</entry>
 				     </row>
 				     <row>
 				       <entry>dict_usart</entry>
 				       <entry>Usart Terminal IO words</entry>
+				       <entry>Usually part of the dict_appl.inc.</entry>
 				     </row>
 
 				     <row>
 				       <entry>dict_vm</entry>
 				       <entry>Not-Yet proposed additional VM registers A and B</entry>
+				       <entry>Usually part of the dict_appl.inc.</entry>
 				     </row>
 				     <row>
 				       <entry>dict_wl</entry>
 				       <entry>words dealing with word lists.</entry>
+				       <entry>Usually part of the dict_appl.inc</entry>
 				     </row>
-
 				   </tbody>
 				  </tgroup>
 				</table>
