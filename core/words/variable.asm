@@ -9,11 +9,8 @@ VE_VARIABLE:
 XT_VARIABLE:
     .dw DO_COLON
 PFA_VARIABLE:
-    .dw XT_DOCREATE
-    .dw XT_COMPILE
-    .dw PFA_DOVARIABLE
     .dw XT_HERE
-    .dw XT_COMMA
+    .dw XT_CONSTANT
     .dw XT_DOLITERAL
     .dw 2
     .dw XT_ALLOT
