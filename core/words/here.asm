@@ -1,6 +1,6 @@
-; ( -- faddr ) System Value
+; ( -- addr ) System Value
 ; R( -- )
-; address of the next free dictionary cell
+; address of the next free data space (RAM) cell
 VE_HERE:
     .dw $ff04
     .db "here"
