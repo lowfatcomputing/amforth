@@ -1,4 +1,4 @@
-; (addr -- n ) Numeric IO
+; (addr -- n f) Numeric IO
 ; R( -- )
 ; convert a counted string at addr to a number, throw exception -13 on error
 VE_NUMBER:
@@ -54,11 +54,15 @@ PFA_NUMBER0: ; ( addr len  -- )
 	.dw XT_EQUAL
 	.dw XT_DOCONDBRANCH
 	.dw PFA_NUMBER2
+	; its a double cell number
         ; incorporate sign into number
 	.dw XT_R_FROM
         .dw XT_DOCONDBRANCH
-	.dw PFA_NUMBER5
+	.dw PFA_NUMBER3
         .dw XT_DNEGATE
+PFA_NUMBER3:
+	.dw XT_DOLITERAL
+	.dw 2
 	.dw XT_DOBRANCH
 	.dw PFA_NUMBER5
 PFA_NUMBER2:
@@ -72,8 +76,11 @@ PFA_NUMBER1:
     ; incorporate sign into number
     .dw XT_R_FROM
     .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER5
+    .dw PFA_NUMBER4
     .dw XT_NEGATE
+PFA_NUMBER4:
+    .dw XT_DOLITERAL
+    .dw 1
 PFA_NUMBER5:
     .dw XT_R_FROM
     .dw XT_BASE
