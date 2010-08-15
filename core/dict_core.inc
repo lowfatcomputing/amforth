@@ -11,7 +11,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/doliteral.asm"
-.include "words/doliteral2.asm"
 .include "words/dovariable.asm"
 .include "words/doconstant.asm"
 .include "words/douser.asm"

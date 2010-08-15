@@ -71,19 +71,17 @@ PFA_INTERPRET2:
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET9
 	.dw XT_DOLITERAL
-	.dw 1
+	.dw 2
 	.dw XT_EQUAL
 	.dw XT_DOCONDBRANCH
 	.dw PFA_INTERPRET10
+	.dw XT_SWAP
         .dw XT_COMPILE
         .dw XT_DOLITERAL
         .dw XT_COMMA
-        .dw XT_DOBRANCH
-        .dw PFA_INTERPRET3
 PFA_INTERPRET10:
         .dw XT_COMPILE
-        .dw XT_DOLITERAL2
-        .dw XT_COMMA
+        .dw XT_DOLITERAL
         .dw XT_COMMA
 	.dw XT_DOBRANCH
 	.dw PFA_INTERPRET3
