@@ -34,15 +34,25 @@ sub readXML ($) {
 
     $basename =~ s/\.xml$//;
     $basename =~ s/\.gz$//;
+    $fsize = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("PROG_FLASH");
+    return unless int($fsize)>8000;
+    my $admin = $doc -> getElementsByTagName("ADMIN") -> item(0);
+    $partname = $admin -> getElementsByTagName("PART_NAME");
+    $defname = "unknown";
+    $defname = "m$1def.inc" if $partname=~/ATmega(.*)/;
+    $defname = "usb$1def.inc" if $partname=~/AT90USB(.*)/;
+    $defname = "can$1def.inc" if $partname=~/AT90CAN(.*)/;
+    $defname = "pwm$1def.inc" if $partname=~/AT90PWM(.*)/;
+    $defname = "unknown" if $defname=~/comp/;
+    return if $defname=~/unknown/;
 
     mkdir $basename unless -d $basename;
+
     open(FRT, ">$basename/$basename.frt") or die "$basename: $!\n";
     open(ASM, ">$basename/device.asm") or die "$basename: $!\n";
     open(PY, ">$basename/device.py") or die "$basename: $!\n";
     open(INC, ">$basename/device.inc") or die "$basename: $!\n";
     
-    my $admin = $doc -> getElementsByTagName("ADMIN") -> item(0);
-    $partname = $admin -> getElementsByTagName("PART_NAME");
     print FRT "\\ Partname: $partname\n";
     print FRT "\\ Built using part description XML file version " . $admin -> getElementsByTagName("BUILD")."\n";
     print FRT "\\ generated automatically\n\nhex\n";    
@@ -55,16 +65,11 @@ sub readXML ($) {
     print PY "# Partname: $partname\n# Built using part description XML file version " . $admin -> getElementsByTagName("BUILD")."\n";
     print PY "# generated automatically, do not edit\n";
     print PY "MCUREGS = {";
-    $defname = "unknown";
-    $defname = "m$1def.inc" if $partname=~/ATmega(.*)/;
-    $defname = "usb$1def.inc" if $partname=~/AT90USB(.*)/;
-    $defname = "can$1def.inc" if $partname=~/AT90CAN(.*)/;
-    $defname = "pwm$1def.inc" if $partname=~/AT90PWM(.*)/;
     print ASM "\n.nolist\n\t.include \"$defname\"\n.list\n\n";    
     
     $start = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("INT_SRAM")->item(0)->getChildrenByTagName("START_ADDR");
     print ASM ".equ ramstart =  $start\n";
-    $fsize = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("PROG_FLASH");
+
     
     my $nrww = $doc->getElementsByTagName("NRWW_START_ADDR");
     print ASM ".equ max_dict_addr = $nrww \n";
