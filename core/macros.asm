@@ -1,4 +1,11 @@
 
+; some defaults
+
+.set WANT_ISR_TX = 0
+.set WANT_ISR_RX = 1
+
+;
+
 .include "user.inc"
 
   .def zerol = r2
