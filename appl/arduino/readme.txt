@@ -8,11 +8,14 @@ Models Described are:-
 Model		Microcontroler	Host	Xtal	DBG-LED	Flash	B-Load			Ram	Fuses (E,H,L)
 Mega		ATMega 1280	uart0	16Mhz	PB7	128K	512b/1k/2k/4k		8k	F7 D9 FF
 Diecimila	ATMega 168	uart0	16Mhz	PB5	16K	128b/256b/512b/1k	1k	F9 DD FF
-Duemilanove	ATMega 328	uart0	16Mhz	PB5	32k	256b/512b/1k/2k		2k	FD DB FF
+Duemilanove	ATMega 328	uart0	16Mhz	PB5	32k	256b/512b/1k/2k		2k	05 D9 FF
 Sanguino	ATMega 644	uart0	16Mhz	PB0	64k	512/1k/2k/4k		4k	FD F9 FF
 
 
 Notes
+
+0. double check the fuses settings. Esp. the duemilanove may have the wrong settings. set the HFuse to 0xd9
+   to maximize the bootloader size.
 
 1. Whilst most errors and problems you encounter are likely to be those I have created rather than the original 
    code on which this is based, please report forward comments, feedback, reports, bugs, fixes and patches etc 
@@ -40,3 +43,5 @@ Notes
 
 8. The Diecimila board is also compatible with the 328 device commonly found in the newer Duemilanove board.
 
+9. For the arduino mega the content of the dict_appl.inc can be moved to dict_appl_core.inc. This gives more
+   usable dictionary space.
