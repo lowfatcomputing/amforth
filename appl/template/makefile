@@ -17,7 +17,7 @@ AMFORTH=../../core
 
 # the MCU should be identical to the device
 # setting in template.asm
-MCU=atmega16
+MCU=atmega1284p
 
 # set the fuses according to your MCU
 LFUSE=0xnn

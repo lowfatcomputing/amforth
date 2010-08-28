@@ -3,7 +3,7 @@
         <import file="../avr-build.xml"/>
 
 	<target name="template.hex" description="Hexfiles for Template">
-		<avrasm2 projectname="template" mcu="atmega16"/>
+		<avrasm2 projectname="template" mcu="atmega1284p"/>
 	</target>
 
 	<target name="template" depends="template.hex" description="Template @ Template mHz">

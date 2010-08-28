@@ -23,3 +23,6 @@
 .include "dict_compiler.inc"
 .include "dict_usart.inc"
 .include "words/show-wordlist.asm"
+
+; include some controller specific definitions
+.include "device.inc"
