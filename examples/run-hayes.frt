@@ -13,7 +13,7 @@
 \ enjoy!
 \
 \ it is meant to be run on a newly flashed
-\ controller, e.g. all the dict_* are included
+\ controller, with all the dict_* files included
 \ 
 
 \ include all sources 
