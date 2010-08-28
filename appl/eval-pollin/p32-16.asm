@@ -2,8 +2,8 @@
 .include "macros.asm"
 .include "device.asm"
 
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ APPUSERSIZE = 2  ; size of user area
+  .equ TIBSIZE  = $64    ; 80 characters is one line...
+  .equ APPUSERSIZE = 10  ; size of user area
 
 ; cpu clock in hertz
 .equ F_CPU = 16000000

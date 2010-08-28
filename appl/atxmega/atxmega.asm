@@ -2,8 +2,8 @@
 .include "macros.asm"
 .include "device.asm"
 
-  .equ TIBSIZE  = $64 ; 80 characters is one line...
-  .equ APPUSERSIZE = 0  ; size of user area
+  .equ TIBSIZE  = $64    ; 80 characters is one line...
+  .equ APPUSERSIZE = 10  ; size of user area
 
   .equ TERM_USART = USARTE0_base
   .equ TERM_USART_PORT = PORTE_base

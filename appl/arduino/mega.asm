@@ -22,7 +22,7 @@
 .equ USART_C_VALUE = (3<<UCSZ00)
 
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
-.equ APPUSERSIZE = 0   ; size of application specific user area in bytes
+.equ APPUSERSIZE = 10  ; size of application specific user area in bytes
 
 ; addresses of various data segments
 .set here = ramstart           ; start address of HERE, grows upward

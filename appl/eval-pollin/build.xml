@@ -2,19 +2,24 @@
 <project name="pollins" basedir="." default="Help">
     <import file="../avr-build.xml"/>
 
+    <target name="p16-8.hex" description="Hexfiles for p16-8">
+        <avrasm2 projectname="p16-8" mcu="atmega16"/>
+    </target>
+
+    <target name="p16-8" depends="p16-8.hex" description="Atmega16 @ 8 MHz">
+        <echo>Uploading Hexfiles for p16-8</echo>
+        <avrdude 
+		    type="stk200"
+		    mcu="atmega16"
+		    flashfile="p16-8.hex"
+		    eepromfile="p16-8.eep.hex"
+		/>
+    </target>
+
     <target name="p32-16.hex" description="Hexfiles for p32-16">
         <avrasm2 projectname="p32-16" mcu="atmega32"/>
     </target>
 
-    <target name="p32-16-fuse" description="Atmega32 @ 16MHZ, ext Quartz">
-	<echo>Writing fuses</echo>
-	<avrdude-2fuses
-		    type="avrisp2"
-		    mcu="atmega32"
-		    hfuse="0x99"
-		    lfuse="0xff"
-	/>
-    </target>
     <target name="p32-16" depends="p32-16.hex" description="Atmega32 @ 16 MHz">
 	        <echo>Uploading Hexfiles for p32-16</echo>
 		<avrdude 
@@ -24,35 +29,30 @@
 		    eepromfile="p32-16.eep.hex"
 		/>
     </target>
-
-    <target name="p8-12.hex" description="Hexfiles for p8-12">
-        <avrasm2 projectname="p8-12" mcu="atmega88"/>
-    </target>
-
-    <target name="p8-12" depends="p8-12.hex" description="Atmega8 @ 12 MHz">
-	        <echo>Uploading Hexfiles for p8-12</echo>
-		<avrdude 
+    <target name="p32-16-back" description="Atmega32 @ 16 MHz">
+	        <echo>Download Hexfiles from p32-16</echo>
+		<avrdude-back 
 		    type="stk200"
-		    mcu="atmega88"
-		    flashfile="p8-12.hex"
-		    eepromfile="p8-12.eep.hex"
+		    mcu="atmega32"
+		    flashfile="p32-16.hex"
+		    eepromfile="p32-16.eep.hex"
 		/>
     </target>
 
-    <target name="p328-12.hex" description="Hexfiles for p328-16">
-        <avrasm2 projectname="p328-12" mcu="atmega328p"/>
+
+    <target name="p328-16.hex" description="Hexfiles for p328-16">
+        <avrasm2 projectname="p328-16" mcu="atmega328p"/>
     </target>
 
-    <target name="p328-12" depends="p328-12.hex" description="Atmega328 @ 16 MHz">
-	        <echo>Uploading Hexfiles for p328-12</echo>
+    <target name="p328-16" depends="p328-16.hex" description="Atmega328 @ 16 MHz">
+	        <echo>Uploading Hexfiles for p328-16</echo>
 		<avrdude 
 		    type="stk200"
 		    mcu="atmega328p"
-		    flashfile="p328-12.hex"
-		    eepromfile="p328-12.eep.hex"
+		    flashfile="p328-16.hex"
+		    eepromfile="p328-16.eep.hex"
 		/>
     </target>
-
 
     <target name="p32-8" depends="p32-8.hex" description="Atmega32 @ 8 MHz">
         <echo>Uploading Hexfiles for p32-8</echo>
@@ -68,19 +68,6 @@
         <avrasm2 projectname="p32-8" mcu="atmega32"/>
     </target>
 
-    <target name="p16-8.hex" description="Hexfiles for p16-8">
-        <avrasm2 projectname="p16-8" mcu="atmega16"/>
-    </target>
-
-    <target name="p16-8" depends="p16-8.hex" description="Atmega16 @ 8 MHz">
-        <echo>Uploading Hexfiles for p16-8</echo>
-        <avrdude 
-		    type="stk200"
-		    mcu="atmega16"
-		    flashfile="p16-8.hex"
-		    eepromfile="p16-8.eep.hex"
-		/>
-    </target>
 
     <target name="p644-16.hex" description="Hexfiles for p644-16">
         <avrasm2 projectname="p644-16" mcu="atmega644"/>
@@ -89,13 +76,26 @@
     <target name="p644-16" depends="p644-16.hex" description="Atmega644 @ 16 MHz">
         <echo>Uploading Hexfiles for p644 - 16</echo>
         <avrdude 
-		    type="stk200"
+		    type="mysmartusb"
 		    mcu="atmega644"
 		    flashfile="p644-16.hex"
 		    eepromfile="p644-16.eep.hex"
 		/>
     </target>
-    <target name="compile" depends="p644-16.hex, p328-12.hex, p32-8.hex, p16-8.hex">
+    <target name="p8-12.hex" description="Hexfiles for p8-12">
+        <avrasm2 projectname="p8-12" mcu="atmega88"/>
+    </target>
+
+    <target name="p8-12" depends="p8-12.hex" description="Atmega8 @ 12 MHz">
+	        <echo>Uploading Hexfiles for p8-12</echo>
+		<avrdude 
+		    type="stk200"
+		    mcu="atmega88"
+		    flashfile="p8-12.hex"
+		    eepromfile="p8-12.eep.hex"
+		/>
+    </target>
+    <target name="compile" depends="p644-16.hex, p328-16.hex, p32-8.hex, p16-8.hex">
     </target>
 
 </project>

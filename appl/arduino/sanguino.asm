@@ -2,8 +2,8 @@
 .include "macros.asm"
 .include "device.asm"
 
-.equ TIBSIZE  = $64 ; 80 characters is one line
-.equ APPUSERSIZE = 0  ; size of application specific user area
+.equ TIBSIZE  = $64    ; 80 characters is one line
+.equ APPUSERSIZE = 10  ; size of application specific user area
 
 ; cpu clock in hertz
 .equ F_CPU = 16000000
@@ -22,6 +22,6 @@
 .set want_fun = 0
 
 ; some registers
-;.set WANT_SPI = 1
+.set WANT_PORTA = 1
 
 .include "amforth.asm"

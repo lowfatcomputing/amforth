@@ -1,8 +1,8 @@
 .include "macros.asm"
 .include "device.asm"
 
-.equ TIBSIZE  = $64 ; 80 characters is one line...
-.equ APPUSERSIZE = 2  ; size of user area
+.equ TIBSIZE  = $64    ; 80 characters is one line...
+.equ APPUSERSIZE = 10  ; size of user area
 
 .equ NUMWORDLISTS = 8
 
