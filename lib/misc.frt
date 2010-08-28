@@ -12,12 +12,13 @@
 : .res ( -- ) 
     base @ >r
     decimal
-	." free FLASH cells      " unused u. cr
-	." free RAM bytes        " sp@ here - u. cr
-	." used EEPROM bytes     " edp u. cr
-	." used data stack cells " depth u. cr
-	." used return stack     " rp0 rp@ - 1- 1- u. cr
-	." free return stack     " rp@ sp0 - 1+ 1+ u. cr
+        ver ."  running at " f_cpu 1000 um/mod . drop ." kHz " cr
+	." free FLASH cells        " unused u. cr
+	." free RAM bytes          " sp@ here - u. cr
+	." used EEPROM bytes       " edp u. cr
+	." used data stack cells   " depth u. cr
+	." used return stack cells " rp0 rp@ - 1- 1- 2/ u. cr
+	." free return stack cells " rp@ sp0 - 1+ 1+ 2/ u. cr
     r> base !
 ;
 
