@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # amforth-upload.py
 #
 #   uploads text files containing forth commands to a microcontroller running amforth (v1.3)
