@@ -13,6 +13,8 @@
 .equ SPL = CPU_SPL
 .equ SPH = CPU_SPH
 .equ SREG = CPU_SREG
+.equ MCUSR = RST_STATUS
+
 .macro jmp_
 	jmp @0
 .endmacro
