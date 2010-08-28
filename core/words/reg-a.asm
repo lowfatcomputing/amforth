@@ -64,8 +64,8 @@ XT_AFETCHMINUS:
 PFA_AFETCHMINUS:
     savetos
     movw zl, al
+    ld tosh, -Z  ; TODO: check byte order!! 
     ld tosl, -Z
-    ld tosh, -Z
     movw al, zl
     jmp_ DO_NEXT
 
@@ -136,8 +136,8 @@ XT_ASTOREMINUS:
     .dw PFA_ASTOREMINUS
 PFA_ASTOREMINUS:
     movw zl, al
-    st -Z, tosl
     st -Z, tosh
+    st -Z, tosl
     loadtos
     movw al, zl
     jmp_ DO_NEXT

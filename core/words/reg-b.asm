@@ -64,8 +64,8 @@ XT_BFETCHMINUS:
 PFA_BFETCHMINUS:
     savetos
     movw zl, bl
-    ld tosl, -Z
     ld tosh, -Z
+    ld tosl, -Z
     movw bl, zl
     jmp_ DO_NEXT
 
@@ -136,8 +136,8 @@ XT_BSTOREMINUS:
     .dw PFA_BSTOREMINUS
 PFA_BSTOREMINUS:
     movw zl, bl
-    st -Z, tosl
     st -Z, tosh
+    st -Z, tosl
     loadtos
     movw bl, zl
     jmp_ DO_NEXT
