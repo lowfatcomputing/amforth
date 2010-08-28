@@ -48,11 +48,19 @@
 
 \ 2@ ( addr -- n1 n2 )
 : 2@
-  dup cell+ @ swap @ ;
-  
+  dup ( -- addr addr )
+  cell+ ( -- addr addr+2 )
+  @     ( -- addr n2 )
+  swap  ( -- n2 addr )
+  @ ;   ( -- n2 n1 )
+
 \ 2! ( n1 n2 addr -- )
 : 2!
-  swap over ! cell+ ! ;
+  swap ( -- n1 addr n2 )
+  over ( -- n1 addr n2 addr )
+  !    ( -- n1 addr )
+  cell+ ( -- n1 addr+2 )
+  ! ;
 
 : 2constant 
     create , ,
