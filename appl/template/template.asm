@@ -22,8 +22,6 @@
 .equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
 .equ USART_C_VALUE = (3<<UCSZ0)
 
-
-.equ HLDSIZE  = $10    ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
 .equ APPUSERSIZE = 0   ; size of application specific user area in bytes
 

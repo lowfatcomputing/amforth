@@ -9,6 +9,7 @@ VE_ENVSLASHHOLD:
 XT_ENVSLASHHOLD:
     .dw DO_COLON
 PFA_ENVSLASHHOLD:
-    .dw XT_DOLITERAL
-    .dw HLDSIZE
+    .dw XT_PAD
+    .dw XT_HERE
+    .dw XT_MINUS
     .dw XT_EXIT

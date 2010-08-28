@@ -1,7 +1,6 @@
 .include "macros.asm"
 .include "device.asm"
 
-  .equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
   .equ TIBSIZE  = $64 ; 80 characters is one line...
   .equ APPUSERSIZE = 0  ; size of application user area
 

@@ -2,7 +2,6 @@
 .include "macros.asm"
 .include "device.asm"
 
-.equ HLDSIZE  = $10 ; 16 bit cellsize with binary representation
 .equ TIBSIZE  = $64 ; 80 characters is one line
 .equ APPUSERSIZE = 0  ; size of application specific user area
 
@@ -23,6 +22,6 @@
 .set want_fun = 0
 
 ; some registers
-.set WANT_PORTA = 1
+;.set WANT_SPI = 1
 
 .include "amforth.asm"
