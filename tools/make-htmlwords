@@ -34,7 +34,7 @@ sub readASM {
 	    $dstack = "( $1 )" if $dstack=~/\((.+)\)/;
 	    $rstack = $prevline2;
 	    $rstack = "R( $1 )" if $rstack=~/\((.+)\)/;
-            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
+            $description = "$1" if $prevline1=~/^;(.*)/;
 	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
 	        $category = $2;
 		$dstack   = "( $1 )";
@@ -55,21 +55,15 @@ sub readASM {
 	        $category = $2;
 		$dstack   = "( $1 )";
 	    }
-            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
+            $description = "$1" if $prevline1=~/^;(.*)/;
 	    $category = "internal/hidden";
 	    $stack = "$dstack\n$rstack";
 	    next;
 	}
-	if($state =~ /new_header_found/ && $line=~/.db\s*(.*)/) {
-	    my @voc = split/,/, $1;
-	    my $i=0;
-	    $voc = "";
-	    foreach my $v (@voc) {
-		#print "[$v]";
-		next if $i++ == 0;
-		$voc .= chr(hex($1)) if $v=~/\$([\da-fA-F]+)/;
-		$voc .= $1 if $v=~/"(\S+)"/;
-	    }
+	if($state =~ /new_header_found/ && $line=~/.db\s*"(.*)"/) {
+		#$voc .= chr(hex($1)) if $v=~/\$([\da-fA-F]+)/;
+		$voc = $1;
+        print $voc;
 	    $state = "vocabulary entry found";
 	    $STACK{$lbl} = $stack;
 	    next;
@@ -152,8 +146,7 @@ sub format_xt {
 
 sub html_head {
     my ($title) = @_;
-    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"
-   \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+    return "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
 <html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">
 <head>
 <title>amforth: Words $title</title>
@@ -182,11 +175,10 @@ sub html_head {
 					<li><a href=\"/\">Home</a></li>
 					<li><a href=\"/faq.html\">FAQ</a></li>
 					<li><a href=\"/howto.html\">Howto</a></li>
+					<li><a href=\"/porting.html\">Porting</a></li>
 					<li><a href=\"/links.html\">Links</a></li>
 					<li id=\"current\"><a href=\"/words/index.html\">Words</a></li>
-					<li><a href=\"/samples.html\">Samples</a></li>
-					<li><a href=\"/butterfly.html\">Butterfly</a></li>
-
+					<li><a href=\"http://sourceforge.net/projects/amforth\">Download</a></li>
 				</ul>
 			</div>
 		</div>
@@ -232,10 +224,12 @@ sub html_foot {
 		<!-- end: #main -->
 		<!-- begin: #footer -->
 		<div id=\"footer\">
- <p>Hosted by <a href=\"http://sourceforge.net\"> <IMG
-                src=\"http://sourceforge.net/sflogo.php?group_id=29376\"
-                width=\"88\" height=\"31\" border=\"0\" alt=\"SourceForge
-                Logo\"></a><a href=\"mailto:amforth-devel\@lists.sourceforge.net\">amforth-devel\@lists.sourceforge.net</a></p>
+ <p>Hosted by <a 
+    href=\"http://sourceforge.net/projects/amforth\">
+    <img src=\"http://sflogo.sourceforge.net/sflogo.php?group_id=179967&type=10\" 
+    width=\"80\" height=\"15\" border=\"0\" 
+    alt=\"Get amforth: Forth for AVR ATmega at SourceForge.net. Fast, secure and Free Open Source software downloads\" />
+    </a>
 <br />
 Layout based on <a href=\"http://www.yaml.de/\">YAML</a></div>
 		<!-- end: #footer -->
@@ -268,8 +262,8 @@ sub printHTML {
         print HTML "<p>$DESCRIPTION{$lbl}</p>\n";
 	print HTML "<h2>Stackeffects</h2>\n";
 	my @s = split /\n/, $STACK{$lbl};
-	$s[0] =~ s/;//g;
-	$s[1] =~ s/;//g;
+	$s[0] =~ s/;//g; $s[0]=~ s/</&lt;/g;
+	$s[1] =~ s/;//g; $s[1]=~ s/</&lt;/g;
 	print HTML "$s[0]\n<br>$s[1]";
 	print HTML "<h2>Definition</h2>\n";
 	if($xt=~/PFA_$shortlbl/) {
@@ -282,11 +276,11 @@ sub printHTML {
 	    push @VARIABLES, $lbl;
 	} elsif($xt=~/PFA_DOVALUE/) {
 	    my $offset = 0;
-	    if ($ASM=~/\.dw\s+(\d+)/) {
+	    if ($ASM=~/\.dw\s+(\w+)/m) {
 		$offset = $1;
 	    }
 	    print HTML "<pre>
-		( $offset ) value $voc
+		value $voc
 </pre>";
 	    push @VALUES, $lbl;
 	} elsif($xt=~/PFA_DODEFER/) {

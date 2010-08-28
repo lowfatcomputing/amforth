@@ -10,7 +10,7 @@ my %DSTACK;
 my %RSTACK;
 my %CATEGORY;
 
-my $version = "3.3";
+my $version="4.1";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
@@ -35,9 +35,9 @@ sub readASM {
 	    $voc   = "(unnamed)";
 	    $category = "unclassified";
 	    $dstack = $prevline3;
-	    $dstack = "($1)" if $dstack=~/\( (.+) \)/;
+	    $dstack = "($1)" if $dstack=~/\(\s*(.+)\)/;
 	    $rstack = $prevline2;
-	    $rstack = "R($1)" if $rstack=~/\( (.+) \)/;
+	    $rstack = "R($1)" if $rstack=~/R\(\s*(.+)\)/;
             $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
 	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
 	        $category = $2;
@@ -57,7 +57,7 @@ sub readASM {
 	    $dstack = $prevline3;
 	    $dstack = "($1)" if $dstack=~/\(\s*(.+)\s*\)/;
 	    $rstack = $prevline2;
-	    $rstack = "R($1)" if $rstack=~/\(\s*(.+)\s*\)/;
+	    $rstack = "R($1)" if $rstack=~/R\(\s*(.+)\s*\)/;
 	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
 	        $category = $2;
 		$dstack   = "($1)";
@@ -66,13 +66,17 @@ sub readASM {
 	    $category = "internal/hidden";
 	    next;
 	}
-	if($state =~ /new_header_found/ && $line=~/.db\s*(.*)/) {
+	if($state =~ /new_header_found/ && $line=~/.dw\s*(.*)/) {
+	    $state = "new_voc_header";
+	    next;
+	}
+	if ($state =~ /new_voc_header/ && $line=~/.db\s*(.*)/) {
 	    my @voc = split/,/, $1;
 	    my $i=0;
 	    $voc = "";
 	    foreach my $v (@voc) {
-		#print "[$v]";
-		next if $i++ == 0;
+		# next if $i++ == 0;
+		print "[$v]";		
 		$voc .= chr(hex($1)) if $v=~/\$([\da-fA-F]+)/;
 		$voc .= $1 if $v=~/"(\S+)"/;
 	    }
@@ -117,7 +121,7 @@ sub latex_head {
 \\usepackage[latin1]{inputenc}
 \\usepackage{url}
 \\usepackage{multicol}
-%\\usepackage{supertabular}
+\\usepackage{supertabular}
 
 \\setlength{\\parindent}{0cm}
 \\setlength{\\oddsidemargin}{0cm}
