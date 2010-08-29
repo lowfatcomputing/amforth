@@ -5,14 +5,6 @@
 
 \ requires cell.frt
 
-\ tos gets tor
-: 2>r 
-    swap >r >r ;
-
-\ tor gets tos
-: 2r> 
-    >r >r swap ;
-
 \ 2drop	( w1 w2 -- )		core	two_drop
 : 2drop
  drop drop ;
