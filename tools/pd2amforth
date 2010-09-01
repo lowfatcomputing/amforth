@@ -141,6 +141,7 @@ sub readXML ($) {
     print ASM ".equ intvecsize = $ivecsize ; please verify; flash size: $fsize bytes\n";
     print ASM ".equ pclen = $pclen ; please verify\n";
     print FRT "\n\\ Interrupts\n";
+    print ASM ".overlap\n";
     foreach my $ivector ($doc -> getElementsByTagName("INTERRUPT_VECTOR")) {
 	$number     = $ivector -> getElementsByTagName("NMB_VECTORS");
 	print ASM ".equ INTVECTORS = $number\n";
@@ -162,7 +163,7 @@ sub readXML ($) {
 	  print ASM ".org \$$addr\n\t rcall isr ; $name\n";
 	}
     }
-
+    print ASM ".nooverlap\n";
     print ASM "mcustring:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
 

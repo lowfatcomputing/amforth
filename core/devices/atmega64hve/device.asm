@@ -60,6 +60,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 65536 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 25
 .org $0002
 	 rcall isr ; External Interrupt 0
@@ -109,6 +110,7 @@
 	 rcall isr ; SPM Ready
 .org $030
 	 rcall isr ; PLL Lock Change Interrupt
+.nooverlap
 mcustring:
 	.dw 11
 	.db "ATmega64HVE",0

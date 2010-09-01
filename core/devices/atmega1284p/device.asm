@@ -72,6 +72,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 131072 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 35
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -141,6 +142,7 @@
 	 rcall isr ; Timer/Counter3 Compare Match B
 .org $044
 	 rcall isr ; Timer/Counter3 Overflow
+.nooverlap
 mcustring:
 	.dw 11
 	.db "ATmega1284P",0

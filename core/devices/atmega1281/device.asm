@@ -77,6 +77,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 131072 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 57
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -190,6 +191,7 @@
 	 rcall isr ; USART3 Data register Empty
 .org $070
 	 rcall isr ; USART3, Tx Complete
+.nooverlap
 mcustring:
 	.dw 10
 	.db "ATmega1281"

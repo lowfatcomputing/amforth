@@ -83,6 +83,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 131072 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 72
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -226,6 +227,7 @@
 	 rcall isr ; AES engine ready interrupt
 .org $08E
 	 rcall isr ; Battery monitor indicates supply voltage below threshold
+.nooverlap
 mcustring:
 	.dw 13
 	.db "ATmega128RFA1",0

@@ -67,6 +67,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 43
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -152,6 +153,7 @@
 	 rcall isr ; Timer/Counter4 Overflow
 .org $054
 	 rcall isr ; Timer/Counter4 Fault Protection Interrupt
+.nooverlap
 mcustring:
 	.dw 10
 	.db "ATmega16U4"

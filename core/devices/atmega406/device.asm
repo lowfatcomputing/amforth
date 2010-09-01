@@ -65,6 +65,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 40960 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 23
 .org $002
 	 rcall isr ; Battery Protection Interrupt
@@ -110,6 +111,7 @@
 	 rcall isr ; EEPROM Ready
 .org $02C
 	 rcall isr ; Store Program Memory Ready
+.nooverlap
 mcustring:
 	.dw  9
 	.db "ATmega406",0

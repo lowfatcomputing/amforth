@@ -70,6 +70,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 32768 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 25
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -119,6 +120,7 @@
 	 rcall isr ; Pin Change Interrupt Request 2
 .org $030
 	 rcall isr ; Pin Change Interrupt Request 3
+.nooverlap
 mcustring:
 	.dw 11
 	.db "ATmega3290P",0

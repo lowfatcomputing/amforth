@@ -63,6 +63,7 @@
 .endif
 .equ intvecsize = 1 ; please verify; flash size: 8192 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 21
 .org $0001
 	 rcall isr ; Battery Protection Interrupt
@@ -104,6 +105,7 @@
 	 rcall isr ; Coloumb Counter ADC Accumulator
 .org $014
 	 rcall isr ; EEPROM Ready
+.nooverlap
 mcustring:
 	.dw 10
 	.db "ATmega8HVA"

@@ -61,6 +61,7 @@
 .endif
 .equ intvecsize = 1 ; please verify; flash size: 8192 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 38
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -118,6 +119,7 @@
 	 rcall isr ; EEPROM Ready
 .org $038
 	 rcall isr ; Store Program Memory Read
+.nooverlap
 mcustring:
 	.dw  9
 	.db "ATmega8U2",0

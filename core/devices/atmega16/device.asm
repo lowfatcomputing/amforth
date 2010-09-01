@@ -64,6 +64,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 21
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -105,6 +106,7 @@
 	 rcall isr ; Timer/Counter0 Compare Match
 .org $028
 	 rcall isr ; Store Program Memory Ready
+.nooverlap
 mcustring:
 	.dw  8
 	.db "ATmega16"

@@ -66,6 +66,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 32
 .org $0002
 	 rcall isr ; PSC2 Capture Event
@@ -129,6 +130,7 @@
 	 rcall isr ; 
 .org $003E
 	 rcall isr ; Store Program Memory Read
+.nooverlap
 mcustring:
 	.dw 10
 	.db "AT90PWM316"

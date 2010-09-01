@@ -68,6 +68,7 @@
 .endif
 .equ intvecsize = 2 ; please verify; flash size: 32768 bytes
 .equ pclen = 2 ; please verify
+.overlap
 .equ INTVECTORS = 23
 .org $002
 	 rcall isr ; External Interrupt Request 0
@@ -113,6 +114,7 @@
 	 rcall isr ; Store Program Memory Read
 .org $02C
 	 rcall isr ; LCD Start of Frame
+.nooverlap
 mcustring:
 	.dw 11
 	.db "ATmega329PA",0
