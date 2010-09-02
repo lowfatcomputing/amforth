@@ -10,7 +10,7 @@
 				The RAM contains buffers, variables and the stacks.</para>
 			<para> The compiler is a classic compiler without any optimization
 				support.</para>
-			<para> amforth uses most of the CPU registers to hold vital data: The
+			<para> amforth uses all of the CPU registers to hold vital data: The
 				data stack pointer, the instruction pointer, the user pointer, and
 				the Top-Of-Stack cell. The hardware stack is used as the return
 				stack. Some registers are used for temporary data in primitives.
@@ -19,8 +19,14 @@
 		<sect1 id="Architecture_VM">
 			<title>CPU -- Forth VM Mapping</title>
 			<para>
-				The default Forth registers are mapped as follows
-				<table>
+				The Forth VM has a few registers that need to be mapped to the
+				microcontroller registers. The mapping has been extended over time
+				and may cover all available registers. The actual coverage depends
+				on the amount of additional packages. The default settings are shown
+				in the table <xref linkend="register_mappings"/>.
+			</para>
+			<para>
+				<table id="register_mappings" xreflabel="Register Mapping">
 					<title>Register Mapping</title>
 					<tgroup cols="2">
 						<thead>
