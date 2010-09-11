@@ -38,7 +38,7 @@
 						<tbody>
 							<row>
 								<entry>W: Working Register</entry>
-								<entry>R24:R25</entry>
+								<entry>R22:R23</entry>
 							</row>
 							<row>
 								<entry>IP: Instruction Pointer</entry>
@@ -58,7 +58,7 @@
 							</row>
 							<row>
 								<entry>TOS: Top Of Stack</entry>
-								<entry>R22:R23</entry>
+								<entry>R24:R25</entry>
 							</row>
 							<row>
 								<entry>X: temporary (scratch pad) register</entry>
