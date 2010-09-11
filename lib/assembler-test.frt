@@ -1,22 +1,20 @@
 \ ----- Test AvrAsm -----
 
-: loadtos, 16 Y+ ld, 17 Y+ ld, ; \ define macro
-: savetos, -Y 17 st, -Y 16 st, ; \ tosl=r22, tosh=r23
+: loadtos, 24 Y+ ld, 25 Y+ ld, ; \ define macro
+: savetos, -Y 25 st, -Y 24 st, ; \ from macros.asm
 
 code dup_  savetos, end-code   \ insert asm code
 code drop_ loadtos, end-code
 
 code ++_      \ ( x1 x2 x3 -- x4 ) 
-  R8 push,    \ x4 = x1+x2+x3
-  R8 2 ldi,   \ + +
+  R14 2 ldi,   \ + +
  label>
   R16 Y+ ld,
   R17 Y+ ld,
-  R22 R16 add,
-  R23 R17 adc,
-  R8 1 subi,
+  R24 R16 add,
+  R25 R17 adc,
+  R14 1 subi,
  <radr brne,
-  R8 pop,
 end-code
 
 \ code demojmp \ demo jump + dup
