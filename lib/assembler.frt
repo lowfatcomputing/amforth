@@ -235,22 +235,22 @@ assembler definitions  \ vocabulary
 
   \ Relative addr, for jump back, <radr brne
 : <radr     ( adr -- k )
-    here 1+ - ;
+    dp 1+ - ;
 
 
   \ Label for jump back,     label> ......... <radr brne,
 : label>    ( -- adr )     \ label> ......... <radr rjmp,
-    here ;                 \ label> ......... 0 jmp,
+    dp ;                 \ label> ......... 0 jmp,
 
 
   \ Addr, for jump forward, adr> brne, adr> 0 jmp,
 : adr>     ( -- adr k )
-    here 0 ;
+    dp 0 ;
 
 
   \ Label for branch forward,  adr> brne, ......... <labelb
 : <labelb   ( adr -- )
-    dup 1+ here swap - 
+    dup 1+ dp swap - 
     7F and 3 lshift            \ -- adr k7
     over i@ or                 \ -- adr opcode
     swap i! ;                  \ overwrite branch
@@ -258,7 +258,7 @@ assembler definitions  \ vocabulary
 
   \ Label for jump forward,    adr> rjmp, ......... <labelr
 : <labelr   ( adr -- )
-    dup 1+ here swap -
+    dup 1+ dp swap -
     0FFF and                   \ -- adr k12
     over i@ or                 \ -- adr opcode
     swap i! ;                  \ overwrite rjmp, rcall
@@ -266,7 +266,7 @@ assembler definitions  \ vocabulary
 
   \ Label for long jump forward,  adr> 0 jmp, ......... <labell
 : <labell   ( adr -- )
-    1+ here swap i! ;          \ overwrite k16
+    1+ dp swap i! ;          \ overwrite k16
 
 
 00  constant R0
