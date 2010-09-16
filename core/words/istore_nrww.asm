@@ -52,21 +52,13 @@ DO_ISTORE_atmega:
     movw zl, temp2
     ldi temp0,(1<<PGERS)
     rcall dospm
-    ; reenable RWW section
-    movw zl, temp2
-    ldi temp0,(1<<RWWSRE)
-    rcall dospm
 
 DO_ISTORE_writepage:
   ; write page
   movw zl, temp2
   ldi temp0,(1<<PGWRT)
   rcall dospm
-  in temp1, SPMCSR
-  sbrs temp1, RWWSB
-  ret
-  ; If RWWSB is set, the RWW section is not ready yet
-  
+
   ; reenable RWW section
   movw zl, temp2
   ldi temp0,(1<<RWWSRE)
@@ -115,13 +107,13 @@ pageload_done:
 ;;   temp0 holds the value for SPMCR
 
 dospm:
+dospm_wait_ee:
+  sbic EECR, EEPE
+  rjmp dospm_wait_ee
 dospm_wait_spm:
   in   temp1, SPMCSR
   sbrc temp1, SPMEN
   rjmp dospm_wait_spm
-dospm_wait_ee:
-  sbic EECR, EEPE
-  rjmp dospm_wait_ee
 
   ; turn the word addres into a byte address
   writeflashcell
