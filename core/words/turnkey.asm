@@ -12,7 +12,3 @@ PFA_TURNKEY:
     .dw EE_TURNKEY
     .dw XT_EDEFERFETCH
     .dw XT_EDEFERSTORE
-.eseg
-EE_TURNKEY:
-    .dw XT_APPLTURNKEY  ; TURNKEY
-.cseg

@@ -12,7 +12,3 @@ PFA_ISTORE:
     .dw EE_ISTORE
     .dw XT_EDEFERFETCH
     .dw XT_EDEFERSTORE
-.eseg
-EE_ISTORE:
-    .dw XT_DO_ISTORE  ; Store a cell into flash
-.cseg
