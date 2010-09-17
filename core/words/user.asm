@@ -10,6 +10,9 @@ XT_USER:
     .dw DO_COLON
 PFA_USER:
     .dw XT_DOCREATE
+    .dw XT_GET_CURRENT
+    .dw XT_ESTORE
+
     .dw XT_COMPILE
     .dw PFA_DOUSER
     .dw XT_COMMA

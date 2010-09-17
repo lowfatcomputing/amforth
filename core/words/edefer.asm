@@ -10,6 +10,8 @@ XT_EDEFER:
     .dw DO_COLON
 PFA_EDEFER:
     .dw XT_DOCREATE
+    .dw XT_GET_CURRENT
+    .dw XT_ESTORE
     .dw XT_COMPILE
     .dw PFA_DODEFER
 

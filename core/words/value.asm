@@ -10,6 +10,9 @@ XT_VALUE:
     .dw DO_COLON
 PFA_VALUE:
     .dw XT_DOCREATE
+    .dw XT_GET_CURRENT
+    .dw XT_ESTORE
+
     .dw XT_COMPILE
     .dw PFA_DOVALUE
     .dw XT_EDP

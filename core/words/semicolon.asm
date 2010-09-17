@@ -12,4 +12,9 @@ PFA_SEMICOLON:
     .dw XT_COMPILE
     .dw XT_EXIT
     .dw XT_LBRACKET
+    .dw XT_DOLITERAL
+    .dw COLON_SMUDGE
+    .dw XT_FETCH
+    .dw XT_GET_CURRENT
+    .dw XT_ESTORE
     .dw XT_EXIT
