@@ -1,6 +1,6 @@
 ; ( n <name> -- ) Compiler
 ; R( -- )
-; allocate space for 1 cell in EEPROM. used in conjunction with TO
+; create a dictionary entry for a value and allocate 1 cell in EEPROM.
 VE_VALUE:
     .dw $ff05
     .db "value",0

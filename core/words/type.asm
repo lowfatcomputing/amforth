@@ -1,6 +1,6 @@
 ; ( addr n -- ) Character IO
 ; R( -- )
-; emits a string
+; print a RAM based string
 VE_TYPE:
     .dw $ff04
     .db "type"

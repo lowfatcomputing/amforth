@@ -1,6 +1,6 @@
 ; ( n min max -- f) Arithmetics
 ; R( -- )
-; check interval 
+; check if value is within interval 
 VE_WITHIN:
     .dw $ff06
     .db "within"

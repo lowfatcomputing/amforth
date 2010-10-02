@@ -132,6 +132,7 @@
 .include "words/dnegate.asm"
 .include "words/cmove.asm"
 .include "words/d-2slash.asm"
+.include "words/2swap.asm"
 
 .include "words/tib.asm"
 

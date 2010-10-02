@@ -1,6 +1,6 @@
 ; ( n addr -- ) Memory
 ; R( -- )
-; write 16bit to RAM memory (or IO or CPU registers)
+; write 16bit to RAM memory, low byte first
 VE_STORE:
     .dw $ff01
     .db "!",0
@@ -11,7 +11,7 @@ XT_STORE:
 PFA_STORE:
     movw zl, tosl
     loadtos
-	    std Z+0, tosl
+    std Z+0, tosl
     std Z+1, tosh
 
     loadtos

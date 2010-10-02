@@ -1,6 +1,6 @@
 ; ( -- ) MCU
 ; R( -- )
-; calls the MCU wdr instruction
+; calls the MCU watch dog reset instruction
 VE_WDR:
     .dw $ff03
     .db "wdr",0

@@ -1,6 +1,6 @@
 ; ( -- ) Tools
 ; R( -- )
-; emits a list of all (visible) words in the dictionary
+; prints a list of all (visible) words in the dictionary
 VE_WORDS:
     .dw $ff05
     .db "words",0

@@ -1,6 +1,6 @@
 ; ( n <name> -- ) Tools
 ; R( --)
-; store the TOS to value (an EEPROM 16bit cell)
+; store the TOS to the named value (eeprom cell)
 VE_TO:
     .dw $0002
     .db "to"
@@ -31,7 +31,7 @@ PFA_TO1:
 ;    .dw $ff04
 ;    .db "(to)"
 ;    .dw VE_HEAD
-;    .set VE_HEAD = VE_VALUE
+;    .set VE_HEAD = VE_DOTO
 XT_DOTO:
     .dw DO_COLON
 PFA_DOTO:

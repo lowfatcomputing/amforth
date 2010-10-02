@@ -1,6 +1,6 @@
 ; ( -- addr ) System
 ; R( -- )
-; get user pointer
+; get user area pointer
 VE_UP_FETCH:
     .dw $ff03
     .db "up@",0
@@ -15,7 +15,7 @@ PFA_UP_FETCH:
 
 ; ( addr -- ) System
 ; R( -- )
-; set user pointer
+; set user area pointer
 VE_UP_STORE:
     .dw $ff03
     .db "up!",0

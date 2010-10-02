@@ -1,6 +1,6 @@
 ; ( n1 n2 -- n3 ) Arithmetics
 ; R( -- )
-; logical shift right
+; shift n1 n2-times logically right
 VE_RSHIFT:
     .dw $ff06
     .db "rshift"

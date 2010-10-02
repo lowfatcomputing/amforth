@@ -1,6 +1,6 @@
 ; ( c -- addr ) Tools
 ; R( -- )
-; skip leading delimiter characters and parses SOURCE to the next delimiter. copy the word to PAD
+; skip leading delimiter character and parse SOURCE until the next delimiter. copy the word to HERE
 VE_WORD:
     .dw $ff04
     .db "word"

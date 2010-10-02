@@ -1,6 +1,6 @@
 ; ( dest -- orig dest ) Control Structure
 ; R( -- )
-; control structure
+; at runtime skip until repeat if non-true
 VE_WHILE:
     .dw $0005
     .db "while",0

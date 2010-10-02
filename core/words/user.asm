@@ -1,6 +1,6 @@
 ; ( n -- ) Compiler
 ; R( -- )
-; define  a new user variable
+; create a dictionary entry for a user variable at offset n
 VE_USER:
     .dw $ff04
     .db "user"

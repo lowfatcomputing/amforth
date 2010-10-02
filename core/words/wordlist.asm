@@ -1,6 +1,6 @@
 ; ( -- wid ) Search Order
 ; R( -- )
-; create a new empty wordlist
+; create a new, empty wordlist
 VE_WORDLIST:
     .dw $ff08
     .db "wordlist"

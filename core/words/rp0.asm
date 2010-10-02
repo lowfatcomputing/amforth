@@ -1,6 +1,6 @@
 ; ( -- addr) Stackpointer
 ; R( -- )
-; start value of return stack
+; starting address of return stack
 VE_RP0:
     .dw $ff03
     .db "rp0",0

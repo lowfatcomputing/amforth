@@ -1,6 +1,6 @@
 ; ( -- 0 ) Arithmetics
 ; R( -- )
-; leaves the value 0 on TOS
+; place a value 0 on TOS
 VE_ZERO:
     .dw $ff01
     .db "0",0

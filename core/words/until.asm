@@ -1,6 +1,6 @@
 ; ( addr -- ) Compiler
 ; R( -- )
-; finish begin with conditional branch
+; finish begin with conditional branch, leaves the loop if true flag at runtime
 VE_UNTIL:
     .dw $0005
     .db "until",0

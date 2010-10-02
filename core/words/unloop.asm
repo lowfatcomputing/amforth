@@ -1,6 +1,6 @@
 ; ( -- ) Control Structure
 ; R(loop-sys -- )
-; remove loop-sys
+; remove loop-sys, exit a loop and continue execution after it
 VE_UNLOOP:
     .dw $ff06
     .db "unloop"

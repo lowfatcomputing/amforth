@@ -1,6 +1,6 @@
 ; ( -- ) Tools
 ; R( -- )
-; emits the version string
+; print the version string
 VE_VER:
     .dw $ff03
     .db "ver",0

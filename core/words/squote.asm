@@ -1,6 +1,6 @@
 ; ( <cchar> -- ) Compiler
 ; R( -- )
-; compiles a string to flash, at runtime leaves ( -- addr count) on stack
+; compiles a string to flash, at runtime leaves ( -- flash-addr count) on stack
 VE_SQUOTE:
   .dw $0002
   .db "s",$22

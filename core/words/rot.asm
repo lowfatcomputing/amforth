@@ -1,6 +1,6 @@
 ; ( n1 n2 n3 -- n2 n3 n1) Stack
 ; R( -- )
-; stack manupulation
+; stack manipulation: rotate the three top level cells
 VE_ROT:
     .dw $ff03
     .db "rot",0

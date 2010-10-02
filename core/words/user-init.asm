@@ -1,6 +1,6 @@
 ; ( -- v) System Value
 ; R( -- )
-; address of the default user content in eeprom
+; address of the default user area content in eeprom
 VE_EEUSER:
   .dw $ff07
   .db "ee-user",0
@@ -13,7 +13,7 @@ PFA_EEUSER:          ; ( -- )
 
 ; ( e-addr r-addr len -- ) System Value
 ; R( -- )
-; address of the default user content in eeprom
+; copy len cells from eeprom to ram
 VE_EE2RAM:
   .dw $ff06
   .db "ee>ram"
@@ -44,7 +44,7 @@ PFA_EE2RAM_2:
 
 ; ( -- v) System Value
 ; R( -- )
-; copy the system user area to the current user area
+; setup the default user area from eeprom
 VE_INITUSER:
   .dw $ff09
   .db "init-user",0
