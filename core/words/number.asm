@@ -14,6 +14,17 @@ PFA_NUMBER:
     .dw XT_TO_R
     .dw XT_COUNT   ; ( -- addr len )
 ; now check for +/- signs
+    .dw XT_OVER
+    .dw XT_CFETCH
+    .dw XT_DOLITERAL
+    .dw $2b
+    .dw XT_EQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBER_MINUSCHECK
+      .dw XT_DOLITERAL
+      .dw 1
+      .dw XT_SLASHSTRING
+PFA_NUMBER_MINUSCHECK:
     .dw XT_OVER    ; ( -- addr len addr )
     .dw XT_CFETCH
     .dw XT_DOLITERAL
