@@ -17,7 +17,6 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-.include "words/applturnkey.asm"
 .include "words/int-store.asm"
 
 .include "dict_compiler.inc"
@@ -26,3 +25,7 @@
 
 ; include some controller specific definitions
 .include "device.inc"
+
+; include locally defined words
+.include "words/applturnkey.asm"
+.include "words/qmark.asm"
