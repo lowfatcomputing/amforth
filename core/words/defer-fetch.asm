@@ -1,6 +1,6 @@
 ; ( xt1 -- xt2 ) System
 ; R( -- )
-; returns the XT assoziates with the given XT
+; returns the XT associated with the given XT
 VE_DEFERFETCH:
     .dw $ff06
     .db "defer@"

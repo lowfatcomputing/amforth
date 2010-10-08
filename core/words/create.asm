@@ -1,6 +1,6 @@
 ; ( -- ) Dictionary
 ; R( -- )
-; create a complete dictionary header.
+; create a dictionary header. XT is DO_CONSTANT
 VE_CREATE:
     .dw $ff06
     .db "create"

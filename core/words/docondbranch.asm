@@ -1,6 +1,6 @@
 ; ( f -- )
 ; R( -- )
-; runtime portion of ?branch
+; runtime of ?branch
 ;VE_DOCONDBRANCH:
 ;    .dw $ff09
 ;    .db "(?branch)"

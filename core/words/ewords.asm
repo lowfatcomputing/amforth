@@ -1,6 +1,6 @@
 ; ( -- ) Tools
 ; R( -- )
-; emits a list of all (visible) words in the dictionary
+; prints a list of all words in the environment
 VE_EWORDS:
     .dw $ff06
     .db "ewords"

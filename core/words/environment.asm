@@ -1,4 +1,4 @@
-; ( -- faddr) System Value
+; ( -- wid) System Value
 ; R( -- )
 ; wid of the environmental search list
 VE_ENVIRONMENT:

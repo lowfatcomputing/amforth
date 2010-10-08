@@ -1,4 +1,4 @@
-; ( -- n ) Control Structure
+; ( -- n ) Compiler
 ; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
 ; loop counter of outer loop
 VE_J:

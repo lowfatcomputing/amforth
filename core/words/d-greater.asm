@@ -1,6 +1,6 @@
 ; ( d1 d2 -- flag ) Compare
 ; R( -- )
-; compares two values (signed)
+; compares two double cell values (signed)
 VE_DGREATER:
     .dw $ff02
     .db "d>"

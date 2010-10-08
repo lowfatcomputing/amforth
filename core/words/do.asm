@@ -1,4 +1,4 @@
-; ( -- loop-sys ) Control Structure
+; ( -- loop-sys ) Compiler
 ; R( -- )
 ; start do .. [+]loop
 VE_DO:

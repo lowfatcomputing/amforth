@@ -1,4 +1,4 @@
-; ( -- addr ) Control Structure
+; ( -- addr ) Compiler
 ; R( -- )
 ; start conditional branch
 VE_IF:

@@ -1,6 +1,6 @@
 ; ( -- addr )
 ; R( -- )
-; place PFA on TOS
+; place data field address on TOS
 ;VE_DOCONSTANT:
 ;    .dw $ff0a
 ;    .db "(constant)"

@@ -1,4 +1,4 @@
-; ( -- ) Control Structure
+; ( -- ) Compiler
 ; R(loop-sys -- )
 ; remove loop-sys, exit a loop and continue execution after it
 VE_UNLOOP:

@@ -1,4 +1,4 @@
-; ( dest -- orig dest ) Control Structure
+; ( dest -- orig dest ) Compiler
 ; R( -- )
 ; at runtime skip until repeat if non-true
 VE_WHILE:

@@ -1,4 +1,4 @@
-; ( addr -- ) Control Structure
+; ( addr -- ) Compiler
 ; R( -- )
 ; resolved backward jumps
 ;VE_GRESOLVE:

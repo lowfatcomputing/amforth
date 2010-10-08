@@ -1,6 +1,6 @@
 ; ( -- ) System
 ; R( -- )
-; main entry word. executes turnkey operation and jumps to  quit
+; main entry word. executes turnkey operation and jumps to quit
 VE_COLD:
     .dw $ff04
     .db "cold"

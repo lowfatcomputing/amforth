@@ -1,4 +1,4 @@
-; ( -- addr ) Control Structure
+; ( -- addr ) Compiler
 ; R( -- )
 ; start a control structture
 VE_BEGIN:

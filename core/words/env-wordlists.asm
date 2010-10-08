@@ -1,6 +1,6 @@
-; ( n*x -- ) Exceptions
-; R( n*y -- )
-; send an exception -1
+; ( -- n ) Environment
+; R( -- )
+; give the number of wordlists in the dictionary search order
 VE_ENVWORDLISTS:
     .dw $ff09
     .db "wordlists",0

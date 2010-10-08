@@ -1,6 +1,6 @@
 ; ( -- ) Compiler
 ; R( -- )
-; create named entry in the dictionary
+; create named entry in the dictionary, XT is COLON
 VE_COLON:
     .dw $ff01
     .db ":",0

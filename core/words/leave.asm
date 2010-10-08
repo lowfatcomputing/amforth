@@ -1,4 +1,4 @@
-; ( -- ) Control Structure
+; ( -- ) Compiler
 ; R( loop-sys -- )
 ; immediatly leave the current DO..LOOP
 VE_LEAVE:

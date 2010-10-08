@@ -1,5 +1,5 @@
 ; ( limit counter -- )
-; R( -- limit counter )
+; R( -- loop-sys )
 ; runtime of do
 ;VE_DODO:
 ;    .dw $ff04

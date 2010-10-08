@@ -1,6 +1,6 @@
-; ( -- addr ) Control Structure
-; R( -- )
-; start do .. [+]loop
+; ( -- addr ) Compiler
+; R( -- loop-sys|)
+; start ?do .. [+]loop
 VE_QDO:
     .dw $0003
     .db "?do",0

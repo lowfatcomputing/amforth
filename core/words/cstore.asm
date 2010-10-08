@@ -1,6 +1,6 @@
 ; ( c addr -- ) Memory
 ; R( -- )
-; store a byte to RAM address
+; store a single byte to RAM address
 VE_CSTORE:
     .dw $ff02
     .db "c!"

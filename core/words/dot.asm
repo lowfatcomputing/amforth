@@ -1,6 +1,6 @@
 ; ( n -- ) Numeric IO
 ; R( -- )
-; single cell output
+; single cell numeric output
 VE_DOT:
     .dw $ff01
     .db ".",0

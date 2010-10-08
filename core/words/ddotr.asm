@@ -1,6 +1,6 @@
 ; ( d1 n -- ) Numeric IO
 ; R( -- )
-; double cell output
+; double cell output, right aligned into n characters, filled up with spaces
 VE_DDOTR:
     .dw $ff03
     .db "d.r",0

@@ -1,6 +1,6 @@
-; ( d1 d2 -- flasg) Compare
+; ( d1 d2 -- flag) Compare
 ; R( -- )
-; compare two values
+; compare two double cell values
 VE_DLESS:
     .dw $ff02
     .db "d<"

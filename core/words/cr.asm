@@ -1,6 +1,6 @@
 ; ( -- ) Character IO
 ; R( -- )
-; emits CR/LF
+; print CR/LF
 VE_CR:
     .dw $ff02
     .db "cr"

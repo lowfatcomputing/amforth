@@ -1,6 +1,6 @@
 ; ( n w -- ) Numeric IO
 ; R( -- )
-; single cell output
+; single cell numeric output
 VE_DOTR:
     .dw $ff02
     .db ".r"

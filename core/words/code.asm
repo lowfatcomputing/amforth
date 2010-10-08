@@ -1,6 +1,6 @@
 ; ( -- ) Compiler
 ; R( -- )
-; create named entry in the dictionary
+; create named entry in the dictionary, XT is the data field
 VE_CODE:
     .dw $ff04
     .db "code"

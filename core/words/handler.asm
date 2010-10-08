@@ -1,6 +1,6 @@
 ; ( -- addr ) Exceptions
 ; R( -- )
-; used by catch/throw
+; USER variable used by catch/throw
 VE_HANDLER:
     .dw $ff07
     .db "handler",0

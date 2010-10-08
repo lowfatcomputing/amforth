@@ -1,6 +1,6 @@
 ; ( n1 n2 -- flag ) Compare
 ; R( -- )
-; compares two values
+; compares two double cell values
 VE_DEQUAL:
     .dw $ff02
     .db "d="

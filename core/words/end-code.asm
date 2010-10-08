@@ -1,6 +1,6 @@
 ; ( -- ) Compiler
 ; R( -- )
-; formal finish of a code definition
+; finish a code definition
 VE_ENDCODE:
     .dw $ff08
     .db "end-code"

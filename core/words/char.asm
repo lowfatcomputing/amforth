@@ -1,6 +1,6 @@
 ; ( -- c ) Tools
 ; R( -- )
-; first character of the next word
+; copy the first character of the next word as TOS
 VE_CHAR:
     .dw $ff04
     .db "char"

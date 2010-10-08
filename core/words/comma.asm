@@ -1,6 +1,6 @@
 ; ( n -- ) Dictionary
 ; R( -- )
-; compile 16 bit into flash at here.
+; compile 16 bit into flash at DP
 VE_COMMA:
     .dw $ff01
     .db $2c,0 ; ,

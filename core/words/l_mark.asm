@@ -1,4 +1,4 @@
-; ( -- addr ) Control Structure
+; ( -- addr ) Compiler
 ; R( -- )
 ; place destination for backward branch
 ;VE_LMARK:

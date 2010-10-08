@@ -1,6 +1,6 @@
 ; ( -- ) Dictionary
 ; R( -- )
-; copy the next flash cell to HERE
+; append the the next flash cell to flash at DP
 VE_COMPILE:
     .dw $ff07
     .db "compile",0

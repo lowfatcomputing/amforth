@@ -1,6 +1,6 @@
-; ( loop-sys -- ) Control Structure
+; ( loop-sys -- ) Compiler
 ; R( -- )
-; cpmpile (loop) and resolve branch
+; compile (loop) and resolve the backward branch
 VE_LOOP:
     .dw $0004
     .db "loop"

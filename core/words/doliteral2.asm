@@ -1,6 +1,6 @@
 ; ( -- n1 )
 ; R( -- )
-; runtime of literal
+; runtime of 2literal
 ;VE_DOLITERAL:
 ;    .dw $ff09
 ;    .db "(literal)"

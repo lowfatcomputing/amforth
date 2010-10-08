@@ -1,6 +1,6 @@
 ; ( -- xt ) Compiler
 ; R( -- )
-; create unnamed entry in the dictionary
+; create unnamed entry in the dictionary, XT is COLON
 VE_COLONNONAME:
     .dw $ff07
     .db ":noname",0

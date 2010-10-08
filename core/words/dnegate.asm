@@ -15,4 +15,4 @@ PFA_DNEGATE:
     .dw XT_ZERO
     .dw XT_DPLUS
     .dw XT_EXIT
-; : dnegate   ( ud1 -- ud2 ) dinvert 1 0 d+ ;
+; : dnegate   ( ud1 -- ud2 ) dinvert 1. d+ ;

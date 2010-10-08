@@ -1,6 +1,6 @@
-; ( addr -- ) Control Structure
-; R( -- )
-; compile +loop and resolve branch
+; ( addr -- ) Compiler
+; R( loop-sys -- loop-sys )
+; compile (+loop) and resolve branch
 VE_PLUSLOOP:
     .dw $0005
     .db "+loop",0
