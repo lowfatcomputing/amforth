@@ -9,6 +9,8 @@ VE_EFETCH:
 XT_EFETCH:
     .dw PFA_EFETCH
 PFA_EFETCH:
+    in_ temp2, SREG
+    cli
     movw zl, tosl
     rcall PFA_EFETCH1
     in_ tosl, EEDR
@@ -17,7 +19,7 @@ PFA_EFETCH:
 
     rcall PFA_EFETCH1
     in_  tosh, EEDR
-
+    out_ SREG, temp2
     rjmp DO_NEXT
 
 PFA_EFETCH1:

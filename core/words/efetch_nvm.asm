@@ -9,6 +9,9 @@ VE_EFETCH:
 XT_EFETCH:
     .dw PFA_EFETCH
 PFA_EFETCH:
+    in_ temp2, SREG
+    cli
+
     rcall nvm_waitfor
     sts NVM_ADDR0, tosl
     sts NVM_ADDR1, tosh
@@ -26,4 +29,5 @@ PFA_EFETCH:
     call_ nvm_command
     lds temp7, NVM_DATA0
     movw tosl, temp6
+    out_ SREG, temp2
     jmp_ DO_NEXT
