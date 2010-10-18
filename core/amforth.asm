@@ -164,6 +164,11 @@ EE_INITUSER:
     .dw XT_RXQ ; USER_KEYQ
     .dw XT_NOOP ; USER_SKEY
 
+EE_RECOGNIZERS:
+    .dw 3
+    .dw XT_REC_FIND
+    .dw XT_REC_INTNUMBER
+    .dw XT_REC_NOTFOUND
 ; 1st free address in EEPROM.
 edp:
 .cseg

@@ -1,6 +1,6 @@
-; (addr -- n f) Numeric IO
+; (addr -- [n|d size] f) Numeric IO
 ; R( -- )
-; convert a counted string at addr to a number, throw exception -13 on error
+; convert a counted string at addr to a number
 VE_NUMBER:
     .dw $ff06
     .db "number"
@@ -77,10 +77,16 @@ PFA_NUMBER3:
 	.dw XT_DOBRANCH
 	.dw PFA_NUMBER5
 PFA_NUMBER2:
-	; more than one character or not a trailing . is left
-        .dw XT_DOLITERAL
-        .dw -13
-        .dw XT_THROW
+	.dw XT_DROP
+	.dw XT_DROP
+	.dw XT_DROP
+	.dw XT_R_FROM
+	.dw XT_DROP
+        .dw XT_R_FROM
+        .dw XT_BASE
+        .dw XT_STORE
+	.dw XT_ZERO
+	.dw XT_EXIT
 PFA_NUMBER1:
     .dw XT_DROP ; remove the address
     .dw XT_DROP ; make it a single cell value
@@ -96,6 +102,7 @@ PFA_NUMBER5:
     .dw XT_R_FROM
     .dw XT_BASE
     .dw XT_STORE
+    .dw XT_TRUE
     .dw XT_EXIT
 
 ;VE_PRAEFIX:

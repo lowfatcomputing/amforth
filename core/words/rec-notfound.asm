@@ -1,0 +1,7 @@
+XT_REC_NOTFOUND:
+    .dw DO_COLON
+PFA_REC_NOTFOUND:
+    .dw XT_DOLITERAL
+    .dw -13
+    .dw XT_THROW
+    .dw XT_EXIT
