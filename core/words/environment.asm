@@ -1,6 +1,6 @@
 ; ( -- wid) System Value
 ; R( -- )
-; wid of the environmental search list
+; word list identifier of the environmental search list
 VE_ENVIRONMENT:
     .dw $ff0b
     .db "environment",0

@@ -1,6 +1,6 @@
 ; ( n addr -- ) Memory
 ; R( -- )
-; write to eeprom address
+; write to eeprom address using nvm (atxmega)
 VE_ESTORE:
     .dw $ff02
     .db "e!"

@@ -1,6 +1,6 @@
-; ( -- n*y ) System Value
+; ( n addr -- ) System Value
 ; R( -- )
-; Deferred action during startup/reset
+; Deferred action for flash write of a single cell
 VE_ISTORE:
     .dw $ff02
     .db "i!"

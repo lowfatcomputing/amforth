@@ -1,6 +1,6 @@
 ; ( -- ) Search Order
 ; R( -- )
-; prints the current and oder word lists
+; prints the id's if the current word list and the search order
 VE_ORDER:
     .dw $ff05
     .db "order",0

@@ -1,6 +1,6 @@
-; ( -- f_cou ) System
+; ( -- d ) System
 ; R( -- )
-; put the cpu frequency on stack
+; put the cpu frequency in Hz on stack
 VE_F_CPU:
     .dw $ff05
     .db "f_cpu",0

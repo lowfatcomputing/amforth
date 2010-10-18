@@ -1,6 +1,6 @@
 ; ( addr -- addr+1 n )  Tools
 ; R( -- )
-; get count byte out of packed counted string in flash
+; get count information out of a counted string in flash
 VE_ICOUNT:
     .dw $ff06
     .db "icount"

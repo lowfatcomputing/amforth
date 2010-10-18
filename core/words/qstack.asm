@@ -1,6 +1,6 @@
 ; (addr -- n ) Numeric IO
 ; R( -- )
-; convert a counted string at addr to a number, throw exception -13 on error
+; check stack underflow
 VE_QSTACK:
     .dw $ff06
     .db "?stack"

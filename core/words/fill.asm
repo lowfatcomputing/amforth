@@ -1,6 +1,6 @@
 ; ( c-addr u c -- ) Memory
 ; R( -- )
-; Fill u bytes memory beginning at a-addr with character c
+; fill u bytes memory beginning at a-addr with character c
 VE_FILL:
     .dw $ff04
     .db "fill"

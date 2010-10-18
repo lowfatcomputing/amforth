@@ -1,6 +1,6 @@
 ; ( addr n --  ) Tools
 ; R( -- )
-; reads string from flash and emit it
+; reads string from flash and prints it
 VE_ITYPE:
     .dw $ff05
     .db "itype",0

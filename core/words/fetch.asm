@@ -1,6 +1,6 @@
 ; ( addr -- n ) Memory
 ; R( -- )
-; read 1 cell from RAM (or IO or CPU register)
+; read 1 cell from RAM address
 VE_FETCH:
     .dw $ff01
     .db "@",0

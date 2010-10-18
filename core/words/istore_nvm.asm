@@ -1,6 +1,6 @@
 ; ( n addr -- ) Memory
 ; R( -- )
-; writes a cell in flash
+; writes a cell in flash using NVM (atxmega)
 VE_DO_ISTORE:
     .dw $ff04
     .db "(i!)"

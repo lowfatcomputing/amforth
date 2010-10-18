@@ -1,6 +1,6 @@
 ; ( -- )
 ; R( -- )
-; replace the order list with the system default list
+; replace the search order list with the system default list
 VE_FORTH:
     .dw $ff05
     .db "forth",0
