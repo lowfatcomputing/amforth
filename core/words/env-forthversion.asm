@@ -11,5 +11,5 @@ XT_ENV_FORTHVERSION:
 PFA_EN_FORTHVERSION:
     .dw XT_SLITERAL
     .dw 3
-    .db "4.2",0
+    .db "4.3",0
     .dw XT_EXIT
