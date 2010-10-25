@@ -1,6 +1,6 @@
-; ( -- addr len ) Environment
+; ( -- faddr len ) Environment
 ; R( -- )
-; address of the CPU identification string
+; flash address of the CPU identification string
 VE_ENV_CPU:
     .dw $ff03
     .db "cpu",0

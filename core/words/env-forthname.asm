@@ -1,6 +1,6 @@
-; ( -- addr len ) Environment
+; ( -- faddr len ) Environment
 ; R( -- )
-; address of the amforth name
+; flash address of the amforth name string
 VE_ENV_FORTHNAME:
     .dw $ff0a
     .db "forth-name"

@@ -1,6 +1,6 @@
-; ( -- addr len ) Environment
+; ( -- faddr len ) Environment
 ; R( -- )
-; address of the amforth name
+; flash address of the amforth version string
 VE_ENV_FORTHVERSION:
     .dw $ff07
     .db "version",0

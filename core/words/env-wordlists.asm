@@ -1,6 +1,6 @@
 ; ( -- n ) Environment
 ; R( -- )
-; give the number of wordlists in the dictionary search order
+; maximum number of wordlists in the dictionary search order
 VE_ENVWORDLISTS:
     .dw $ff09
     .db "wordlists",0
