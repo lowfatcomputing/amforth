@@ -25,9 +25,9 @@ PFA_REC_FIND_EXECUTE:
     ; state is zero, execute xt
     .dw XT_EXECUTE
 PFA_REC_FIND_OK:
-    .dw XT_ZERO
+    .dw XT_TRUE
     .dw XT_EXIT
 PFA_REC_FIND_NOTFOUND:
-    .dw XT_TRUE
+    .dw XT_ZERO
     .dw XT_EXIT
 

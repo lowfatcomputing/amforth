@@ -29,8 +29,8 @@ PFA_REC_NUMBER_SINGLE:
 PFA_REC_NUMBER_DONE:
     .dw XT_DROP
 PFA_REC_NUMBER_OK:
-    .dw XT_ZERO
+    .dw XT_TRUE
     .dw XT_EXIT
 PFA_REC_NONUMBER:
-    .dw XT_TRUE
+    .dw XT_ZERO
     .dw XT_EXIT
