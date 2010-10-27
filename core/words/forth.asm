@@ -1,4 +1,4 @@
-; ( -- )
+; ( -- ) Search Order
 ; R( -- )
 ; replace the search order list with the system default list
 VE_FORTH:
