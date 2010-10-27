@@ -1,3 +1,11 @@
+; ( addr -- f ) System
+; R( -- )
+; recognizer for find
+;VE_REC_FIND:
+;    .dw $ff07
+;    .db "rec-find"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_REC_FIND
 XT_REC_FIND:
     .dw DO_COLON
 PFA_REC_FIND:
