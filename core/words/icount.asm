@@ -12,5 +12,5 @@ PFA_ICOUNT:
     .dw XT_DUP
     .dw XT_1PLUS
     .dw XT_SWAP
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_EXIT

@@ -1,14 +1,14 @@
 ; ( n addr -- ) Memory
 ; R( -- )
 ; writes a cell in flash using assembly code
-VE_DO_ISTORE:
+VE_DO_STOREI_NRWW:
     .dw $ff04
     .db "(i!)"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DO_ISTORE
-XT_DO_ISTORE:
-    .dw PFA_DO_ISTORE
-PFA_DO_ISTORE:
+    .set VE_HEAD = VE_DO_STOREI_NRWW
+XT_DO_STOREI:
+    .dw PFA_DO_STOREI_NRWW
+PFA_DO_STOREI_NRWW:
   ; store status register
   in temp1,SREG
   push temp1
@@ -20,7 +20,7 @@ PFA_DO_ISTORE:
   push xh
   push yl
   push yh
-  rcall DO_ISTORE_atmega
+  rcall DO_STOREI_atmega
   pop yh
   pop yl
   pop xh
@@ -34,7 +34,7 @@ PFA_DO_ISTORE:
   jmp_ DO_NEXT
 
 ; 
-DO_ISTORE_atmega:
+DO_STOREI_atmega:
   ; write data to temp page buffer
   ; use the values in tosl/tosh at the
   ; appropiate place
@@ -47,13 +47,13 @@ DO_ISTORE_atmega:
   and tosl, temp4
   and tosh, temp5
   or tosh, tosl
-  breq DO_ISTORE_writepage 
+  breq DO_STOREI_writepage 
 
     movw zl, temp2
     ldi temp0,(1<<PGERS)
     rcall dospm
 
-DO_ISTORE_writepage:
+DO_STOREI_writepage:
   ; write page
   movw zl, temp2
   ldi temp0,(1<<PGWRT)

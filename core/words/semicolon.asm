@@ -16,5 +16,5 @@ PFA_SEMICOLON:
     .dw COLON_SMUDGE
     .dw XT_FETCH
     .dw XT_GET_CURRENT
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_EXIT

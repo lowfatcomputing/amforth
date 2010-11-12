@@ -1,17 +1,14 @@
 ; ( addr - n) Memory
 ; R( -- )
 ; read 1 cell from eeprom
-VE_EFETCH:
+VE_FETCHENVM:
     .dw $ff02
-    .db "e@"
+    .db "@e"
     .dw VE_HEAD
-    .set VE_HEAD = VE_EFETCH
-XT_EFETCH:
-    .dw PFA_EFETCH
-PFA_EFETCH:
-    in_ temp2, SREG
-    cli
-
+    .set VE_HEAD = VE_FETCHENVM
+XT_FETCHE: ; the same label as XT_FETCHE
+    .dw PFA_FETCHENVM
+PFA_FETCHENVM:
     rcall nvm_waitfor
     sts NVM_ADDR0, tosl
     sts NVM_ADDR1, tosh
@@ -29,5 +26,4 @@ PFA_EFETCH:
     call_ nvm_command
     lds temp7, NVM_DATA0
     movw tosl, temp6
-    out_ SREG, temp2
     jmp_ DO_NEXT

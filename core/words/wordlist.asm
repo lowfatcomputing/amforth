@@ -12,7 +12,7 @@ PFA_WORDLIST:
     .dw XT_EDP
     .dw XT_ZERO
     .dw XT_OVER
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_DUP
     .dw XT_1PLUS
     .dw XT_1PLUS

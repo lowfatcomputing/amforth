@@ -11,7 +11,7 @@ XT_CODE:
 PFA_CODE:
     .dw XT_DOCREATE
     .dw XT_GET_CURRENT
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_DP
     .dw XT_1PLUS
     .dw XT_COMMA

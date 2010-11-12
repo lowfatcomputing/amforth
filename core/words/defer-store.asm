@@ -13,7 +13,7 @@ PFA_DEFERSTORE:
     .dw XT_DOLITERAL
     .dw 3
     .dw XT_PLUS   ; >body 2 +
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_EXECUTE
     .dw XT_EXIT
 

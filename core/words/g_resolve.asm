@@ -11,5 +11,5 @@ XT_GRESOLVE:
 PFA_GRESOLVE:
     .dw XT_DP
     .dw XT_SWAP
-    .dw XT_ISTORE
+    .dw XT_STOREI
     .dw XT_EXIT

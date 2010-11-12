@@ -13,7 +13,7 @@ PFA_COMPILE:
     .dw XT_DUP
     .dw XT_1PLUS
     .dw XT_TO_R
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_COMMA
     .dw XT_EXIT
 

@@ -10,7 +10,7 @@ XT_UDEFERSTORE:
     .dw DO_COLON
 PFA_UDEFERSTORE:
     .dw XT_1PLUS
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_UP_FETCH
     .dw XT_PLUS
     .dw XT_STORE

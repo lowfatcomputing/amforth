@@ -1,18 +1,20 @@
 ; ( -- addr n) Compiler
 ; R( -- )
 ; runtime portion of s" 
-;VE_SLITERAL:
-;  .dw $ff0a
-;  .db "(sliteral)"
-;  .dw VE_HEAD
-;  .set VE_HEAD = VE_SLITERAL
+.ifdef FULL_HEADER
+VE_SLITERAL:
+  .dw $ff0a
+  .db "(sliteral)"
+  .dw VE_HEAD
+  .set VE_HEAD = VE_SLITERAL
+.endif
 XT_SLITERAL:
   .dw DO_COLON
 PFA_SLITERAL:
   .dw XT_R_FROM   ; ( -- addr )
   .dw XT_DUP      ; ( -- addr addr )
   .dw XT_DUP
-  .dw XT_IFETCH   ; ( -- addr addr n )
+  .dw XT_FETCHI   ; ( -- addr addr n )
   .dw XT_SWAP
   .dw XT_1PLUS
   .dw XT_SWAP

@@ -21,7 +21,7 @@ PFA_ITYPE:
     .dw PFA_ITYPE2
 PFA_ITYPE1:
     .dw XT_DUP         ; ( -- addr addr )
-    .dw XT_IFETCH      ; ( -- addr c1c2 )
+    .dw XT_FETCHI      ; ( -- addr c1c2 )
     .dw XT_DUP
     .dw XT_EMIT
     .dw XT_HIEMIT
@@ -34,7 +34,7 @@ PFA_ITYPE2:
     .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE3
       .dw XT_DUP     ; well, tricky
-      .dw XT_IFETCH
+      .dw XT_FETCHI
       .dw XT_EMIT
 PFA_ITYPE3:
     .dw XT_DROP        ; ( -- )

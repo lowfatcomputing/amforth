@@ -11,7 +11,7 @@ XT_COLONNONAME:
 PFA_COLONNONAME:
     ; save the current voc header to make ; easier
     .dw XT_GET_CURRENT
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE
     .dw XT_STORE

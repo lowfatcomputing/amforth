@@ -1,44 +1,42 @@
 ; ( n addr -- ) Memory
 ; R( -- )
 ; write to eeprom address
-VE_ESTORE:
+VE_STOREE:
     .dw $ff02
-    .db "e!"
+    .db "!e"
     .dw VE_HEAD
-    .set VE_HEAD = VE_ESTORE
-XT_ESTORE:
-    .dw PFA_ESTORE
-PFA_ESTORE:
+    .set VE_HEAD = VE_STOREE
+XT_STOREE:
+    .dw PFA_STOREE
+PFA_STOREE:
     movw zl, tosl
     loadtos
-    
+    in_ temp2, SREG
+    cli
     mov temp1, tosl
-    rcall PFA_ESTORE1
+    rcall PFA_STOREE1
     adiw zl,1
 
     mov temp1, tosh
-    rcall PFA_ESTORE1
-    
+    rcall PFA_STOREE1
+    out_ SREG, temp2
     loadtos
     rjmp DO_NEXT
     
-PFA_ESTORE1:
+PFA_STOREE1:
     in_ temp0, EECR
     sbrc temp0,EEPE
-    rjmp PFA_ESTORE1
+    rjmp PFA_STOREE1
 
-PFA_ESTORE2: ; estore_wait_low_spm:
+PFA_STOREE2: ; estore_wait_low_spm:
     in_ temp0, SPMCSR
     sbrc temp0,SPMEN
-    rjmp PFA_ESTORE2
+    rjmp PFA_STOREE2
 
     out_ EEARH,zh
     out_ EEARL,zl
-
     out_ EEDR, temp1
-    in_ temp2, SREG
-    cli
     sbi EECR,EEMPE
     sbi EECR,EEPE
-    out_ SREG, temp2
+
     ret

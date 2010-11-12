@@ -24,7 +24,7 @@ PFA_GET_ORDER1:
     .dw XT_2STAR
     .dw XT_PLUS
     ; check if set
-    .dw XT_EFETCH ; ( -- widlist n wid? )
+    .dw XT_FETCHE ; ( -- widlist n wid? )
 
     .dw XT_DUP
     .dw XT_DOLITERAL

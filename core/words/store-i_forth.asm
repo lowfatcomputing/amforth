@@ -1,14 +1,14 @@
 ; ( n addr -- ) Memory
 ; R( -- )
 ; writes a cell in flash using forth code
-VE_DO_ISTORE:
+VE_DO_STOREI_FORTH:
     .dw $ff04
     .db "(i!)"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DO_ISTORE
-XT_DO_ISTORE:
+    .set VE_HEAD = VE_DO_STOREI_FORTH
+XT_DO_STOREI:
     .dw DO_COLON
-PFA_DO_ISTORE:
+PFA_DO_STOREI:
     .dw XT_INTOFF
     .dw XT_TO_R
     .dw XT_OVER
@@ -22,14 +22,14 @@ PFA_DO_ISTORE:
     ; when changing a bit from 0 to 1
     .dw XT_OVER
     .dw XT_OVER
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_INVERT
     .dw XT_AND
     .dw XT_DOCONDBRANCH
-    .dw PFA_DO_ISTORE_WRITE
+    .dw PFA_DO_STOREI_WRITE
         .dw XT_DUP
 	.dw XT_SPMERASE
-PFA_DO_ISTORE_WRITE:
+PFA_DO_STOREI_WRITE:
     .dw XT_DUP
     .dw XT_SPMWRITE
     .dw XT_SPMRWW
@@ -72,7 +72,7 @@ PFA_SPMPAGELOAD1:
     .dw XT_DOCONDBRANCH
     .dw PFA_SPMPAGELOAD3
 	.dw XT_DUP
-	.dw XT_IFETCH
+	.dw XT_FETCHI
 	.dw XT_OVER
 	.dw XT_SPMBUF
 PFA_SPMPAGELOAD3: ;( size addr -- )

@@ -32,7 +32,7 @@ PFA_SET_ORDER1:
     .dw XT_DOLITERAL
     .dw EE_ORDERLIST
     .dw XT_PLUS
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_DOLOOP
     .dw PFA_SET_ORDER1
 PFA_SET_ORDER2:
@@ -43,5 +43,5 @@ PFA_SET_ORDER2:
     .dw XT_R_FROM
     .dw XT_2STAR
     .dw XT_PLUS
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_EXIT

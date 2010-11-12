@@ -20,18 +20,20 @@ PFA_TO:
     .dw XT_COMMA
     .dw XT_EXIT
 PFA_TO1:
-    .dw XT_IFETCH
-    .dw XT_ESTORE
+    .dw XT_FETCHI
+    .dw XT_STOREE
     .dw XT_EXIT
 
 ; ( n -- ) Tools
 ; R( IP -- IP+1)
 ; runtime portion of to
-;VE_DOTO:
-;    .dw $ff04
-;    .db "(to)"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOTO
+.ifdef FULL_HEADER
+VE_DOTO:
+    .dw $ff04
+    .db "(to)"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOTO
+.endif
 XT_DOTO:
     .dw DO_COLON
 PFA_DOTO:
@@ -39,9 +41,9 @@ PFA_DOTO:
     .dw XT_DUP
     .dw XT_1PLUS
     .dw XT_TO_R
-    .dw XT_IFETCH
-    .dw XT_IFETCH
-    .dw XT_ESTORE
+    .dw XT_FETCHI
+    .dw XT_FETCHI
+    .dw XT_STOREE
     .DW XT_EXIT
 
 ; : (to) r> dup 1+ >r i@ e! ;

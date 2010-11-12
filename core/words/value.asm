@@ -11,7 +11,7 @@ XT_VALUE:
 PFA_VALUE:
     .dw XT_DOCREATE
     .dw XT_GET_CURRENT
-    .dw XT_ESTORE
+    .dw XT_STOREE
 
     .dw XT_COMPILE
     .dw PFA_DOVALUE
@@ -23,13 +23,13 @@ PFA_VALUE:
     .dw XT_1PLUS
     .dw XT_DOTO
     .dw PFA_EDP
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_EXIT
 
 PFA_DOVALUE:
     call_ DO_DODOES
-    .dw XT_IFETCH
-    .dw XT_EFETCH
+    .dw XT_FETCHI
+    .dw XT_FETCHE
     .dw XT_EXIT
 
 ; : value ( n -- )

@@ -10,12 +10,12 @@ XT_IMMEDIATE:
     .dw DO_COLON
 PFA_IMMEDIATE:
     .dw XT_GET_CURRENT
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_DUP
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_DOLITERAL
     .dw $7fff
     .dw XT_AND
     .dw XT_SWAP
-    .dw XT_ISTORE
+    .dw XT_STOREI
     .dw XT_EXIT

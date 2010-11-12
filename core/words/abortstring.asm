@@ -28,5 +28,5 @@ PFA_ABORTSTRING:
     ; then
     .dw XT_DP
     .dw XT_SWAP
-    .dw XT_ISTORE
+    .dw XT_STOREI
     .dw XT_EXIT

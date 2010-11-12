@@ -10,7 +10,7 @@ XT_UDEFERFETCH:
     .dw DO_COLON
 PFA_UDEFERFETCH:
     .dw XT_1PLUS ; >body
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_UP_FETCH
     .dw XT_PLUS
     .dw XT_FETCH

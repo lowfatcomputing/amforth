@@ -12,6 +12,6 @@ PFA_DEFERFETCH:
     .dw XT_DUP
     .dw XT_1PLUS ; >body
     .dw XT_1PLUS 
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_EXECUTE
     .dw XT_EXIT

@@ -11,7 +11,7 @@ XT_RDEFER:
 PFA_RDEFER:
     .dw XT_DOCREATE
     .dw XT_GET_CURRENT
-    .dw XT_ESTORE
+    .dw XT_STOREE
 
     .dw XT_COMPILE
     .dw PFA_DODEFER

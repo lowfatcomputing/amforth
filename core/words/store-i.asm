@@ -1,14 +1,14 @@
 ; ( n addr -- ) System Value
 ; R( -- )
 ; Deferred action for flash write of a single cell
-VE_ISTORE:
+VE_STOREI:
     .dw $ff02
-    .db "i!"
+    .db "!i"
     .dw VE_HEAD
-    .set VE_HEAD = VE_ISTORE
-XT_ISTORE:
+    .set VE_HEAD = VE_STOREI
+XT_STOREI:
     .dw PFA_DODEFER
-PFA_ISTORE:
-    .dw EE_ISTORE
+PFA_STOREI:
+    .dw EE_STOREI
     .dw XT_EDEFERFETCH
     .dw XT_EDEFERSTORE

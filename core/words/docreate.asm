@@ -24,7 +24,7 @@ PFA_DOCREATE:
     .dw XT_DOSCOMMA
     ; make voc link
     .dw XT_GET_CURRENT ; ( -- here head )
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_COMMA       ; ( -- here current)
     .dw XT_EXIT
 

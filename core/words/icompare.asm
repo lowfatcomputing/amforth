@@ -30,7 +30,7 @@ PFA_ICOMPARE_LOOP:
     .dw XT_OVER
     .dw XT_FETCH
     .dw XT_OVER
-    .dw XT_IFETCH ; ( -- r-addr f-addr r-cc f- cc)
+    .dw XT_FETCHI ; ( -- r-addr f-addr r-cc f- cc)
 
     ; flash strings are zero-padded at the last cell
     ; that means: if the flash cell is less $0100, than mask the

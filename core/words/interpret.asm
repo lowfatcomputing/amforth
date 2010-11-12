@@ -20,7 +20,7 @@ PFA_INTERPRET1:
     .dw XT_DOLITERAL
     .dw EE_RECOGNIZERS
     .dw XT_DUP
-    .dw XT_EFETCH       ; ( addr rec # -- )
+    .dw XT_FETCHE       ; ( addr rec # -- )
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_INTERPRET4
@@ -28,7 +28,7 @@ PFA_INTERPRET2:
     .dw XT_CELLPLUS
     .dw XT_TO_R
     .dw XT_R_FETCH
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_EXECUTE
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET3

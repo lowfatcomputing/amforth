@@ -28,7 +28,7 @@ PFA_EE2RAM:          ; ( -- )
 PFA_EE2RAM_1:
     ; ( -- e-addr r-addr )
     .dw XT_OVER
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_OVER
     .dw XT_STORE
     .dw XT_CELLPLUS

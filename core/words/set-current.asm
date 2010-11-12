@@ -11,5 +11,5 @@ XT_SET_CURRENT:
 PFA_SET_CURRENT:
     .dw XT_DOLITERAL
     .dw EE_CURRENT
-    .dw XT_ESTORE
+    .dw XT_STOREE
     .dw XT_EXIT

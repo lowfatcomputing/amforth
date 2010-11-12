@@ -1,14 +1,14 @@
 ; ( addr -- n1 ) Memory
 ; R( -- )
 ; reads a cell from flash
-VE_IFETCH:
+VE_FETCHI:
     .dw $ff02
-    .db "i@"
+    .db "@i"
     .dw VE_HEAD
-    .set VE_HEAD = VE_IFETCH
-XT_IFETCH:
-    .dw PFA_IFETCH
-PFA_IFETCH:
+    .set VE_HEAD = VE_FETCHI
+XT_FETCHI:
+    .dw PFA_FETCHI
+PFA_FETCHI:
     movw zl, tosl
     readflashcell tosl,tosh
     rjmp DO_NEXT

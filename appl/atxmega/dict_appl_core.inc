@@ -27,8 +27,8 @@
 .include "words/fill.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "drivers/atxmega_nvm.asm"
-.include "words/ifetch.asm"
-.include "words/istore.asm"
-.include "words/istore_nvm.asm"
-.include "words/estore_nvm.asm"
-.include "words/efetch_nvm.asm"
+.include "words/fetch-i.asm"
+.include "words/store-i.asm"
+.include "words/store-i_nvm.asm"
+.include "words/store-e_nvm.asm"
+.include "words/fetch-e_nvm.asm"

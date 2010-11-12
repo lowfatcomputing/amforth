@@ -10,7 +10,7 @@ XT_COMMA:
     .dw DO_COLON
 PFA_COMMA:
     .dw XT_DP
-    .dw XT_ISTORE
+    .dw XT_STOREI
     .dw XT_DP
     .dw XT_1PLUS
     .dw XT_DOTO

@@ -14,7 +14,7 @@ PFA_DODEFER:
     .dw XT_1MINUS
     .dw XT_SWAP
     .dw XT_1PLUS
-    .dw XT_IFETCH
+    .dw XT_FETCHI
     .dw XT_EXECUTE 
     .dw XT_EXECUTE
     .dw XT_EXIT

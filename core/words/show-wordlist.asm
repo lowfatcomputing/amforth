@@ -9,7 +9,7 @@ VE_SHOWWORDLIST:
 XT_SHOWWORDLIST:
     .dw DO_COLON
 PFA_SHOWWORDLIST:
-    .dw XT_EFETCH
+    .dw XT_FETCHE
 PFA_SHOWWORDLIST3:
     .dw XT_QDUP           ; ( -- addr addr )
     .dw XT_DOCONDBRANCH  ; ( -- addr ) is nfa = counted string
@@ -26,7 +26,7 @@ PFA_SHOWWORDLIST3:
     .dw XT_1PLUS
     .dw XT_2SLASH   ; ( -- addr (n+1)/2 )
     .dw XT_PLUS
-    .dw XT_IFETCH        ; ( -- addr )
+    .dw XT_FETCHI        ; ( -- addr )
     .dw XT_DOBRANCH      ; ( -- addr )
     .dw PFA_SHOWWORDLIST3       ; ( -- addr )
 PFA_SHOWWORDLIST2:

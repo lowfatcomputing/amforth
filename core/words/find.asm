@@ -24,8 +24,8 @@ PFA_FIND1:
     .dw XT_I
     .dw XT_2STAR
     .dw XT_PLUS  ; ( -- addr 0 addr+1 len wid )
-    .dw XT_EFETCH
-    ; check if last in order
+    .dw XT_FETCHE
+    ; check if last in order, maybe a dup? serves the same purpose, without the additional -1 in EEPROM?
     .dw XT_DUP
     .dw XT_DOLITERAL
     .dw -1

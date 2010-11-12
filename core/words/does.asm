@@ -30,7 +30,7 @@ XT_DODOES:
 PFA_DODOES:
     .dw XT_R_FROM
     .dw XT_GET_CURRENT
-    .dw XT_EFETCH
+    .dw XT_FETCHE
     .dw XT_ICOUNT
     .dw XT_DOLITERAL
     .dw $00ff
@@ -40,5 +40,5 @@ PFA_DODOES:
     .dw XT_PLUS
     .dw XT_1PLUS
 
-    .dw XT_ISTORE
+    .dw XT_STOREI
     .dw XT_EXIT
