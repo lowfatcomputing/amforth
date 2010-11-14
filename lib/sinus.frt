@@ -24,7 +24,7 @@ create sintab  \ 0...90 Grad, Index in Grad
 9945 ,  9962 ,  9976 ,  9986 ,  9994 ,  9998 ,  
 10000 , 
 
-: sinus@        sintab + i@ ;
+: sinus@        sintab + @i ;
 : sin           ( grad -- sinus )
                 dup 0< >r abs
                 360 mod  

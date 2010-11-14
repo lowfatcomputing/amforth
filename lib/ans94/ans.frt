@@ -38,7 +38,7 @@
     dup 1- >r ( -- lfa)
     begin
 	1- dup ( -- fla fla )
-	i@ $00ff and 1+ 2/ ( -- fla len )
+	@i $00ff and 1+ 2/ ( -- fla len )
 	over + ( fla lfa? )
 	r@ = ( fla lfa? )
     until

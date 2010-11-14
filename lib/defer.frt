@@ -34,7 +34,7 @@
 \    dup   ( -- xt1 xt2 xt2 )
 \    >body ( -- xt1 xt2 pfa )
 \    2 +   ( -- xt1 xt2 'xt-dodefer! )
-\    i@    ( -- xt1 xt2 xt-dodefer! )
+\    @i    ( -- xt1 xt2 xt-dodefer! )
 \    execute 
 \ ;
 
@@ -51,11 +51,11 @@
 \ EEPROM defers
 \ ****************************
 : Edefer@ ( xt1 -- xt2 )
-    >body i@ e@
+    >body @i @e
 ;
 
 : Edefer! ( xt2 xt1 -- )
-    >body i@ e!
+    >body @i !e
 ;
 
 : Edefer ( "name" -- )
@@ -65,20 +65,20 @@
       ['] Edefer@ ,
       ['] Edefer! ,
       dup 1+ 1+ to edp  \ allot 1 cell in EEPROM
-      ['] abort swap e! \ default action is abort
+      ['] abort swap !e \ default action is abort
    does> ( i*x -- j*x ) 
-      i@ e@ execute
+      @i @e execute
 ; 
 
 \ ***************************
 \ USER defered 
 \ **************************
 : Udefer@ ( xt1 -- xt2 )
-    >body i@ up@ + @
+    >body @i up@ + @
 ;
 
 : Udefer! ( xt2 xt1 -- )
-    >body i@ up@ + !
+    >body @i up@ + !
 ;
 
 
@@ -87,7 +87,7 @@
       ['] Udefer@ ,
       ['] Udefer! ,
    does> ( i*x -- j*x ) 
-      i@ up@ + @ execute 
+      @i up@ + @ execute 
 ;
 
 \ ***************************
@@ -95,11 +95,11 @@
 \ ***************************
 
 : Rdefer@ ( xt1 -- xt2 )
-    >body i@ @
+    >body @i @
 ;
 
 : Rdefer! ( xt2 xt1 -- )
-    >body i@ !
+    >body @i !
 ;
 
 : Rdefer ( "name" -- )
@@ -107,5 +107,5 @@
       ['] Rdefer@ ,
       ['] Rdefer! ,
    does> ( i*x -- j*x ) 
-      i@ @ execute 
+      @i @ execute 
 ; 

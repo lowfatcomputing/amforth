@@ -32,13 +32,13 @@ hex
 : portpin: create ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
     1 swap lshift
     8 lshift or ,               \ packed value
-  does> i@                      \ get packed value
+  does> @i                      \ get packed value
     dup 8 rshift swap ff and    \ 
 ;
 
 : bitmask: create ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
     8 lshift or ,               \ packed value
-  does> i@                      \ get packed value
+  does> @i                      \ get packed value
     dup 8 rshift swap ff and    \ 
 ;
 

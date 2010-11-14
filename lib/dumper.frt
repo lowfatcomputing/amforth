@@ -27,8 +27,8 @@ hex
 : .item     4 u.r space ; 
 
 ( addr -- )
-: i?     i@ .item ;
-: e?     e@ .item ;
+: i?     @i .item ;
+: e?     @e .item ;
 : ?       @ .item ;
 
 ( addr n -- addr+n )

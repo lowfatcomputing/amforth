@@ -6,7 +6,7 @@
 : vocabulary ( "char" -- )
     wordlist constant
     does>
-    i@ >r
+    @i >r
     get-order swap drop 
     r> swap
     set-order

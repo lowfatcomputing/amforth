@@ -252,21 +252,21 @@ assembler definitions  \ vocabulary
 : <labelb   ( adr -- )
     dup 1+ dp swap - 
     7F and 3 lshift            \ -- adr k7
-    over i@ or                 \ -- adr opcode
-    swap i! ;                  \ overwrite branch
+    over @i or                 \ -- adr opcode
+    swap !i ;                  \ overwrite branch
 
 
   \ Label for jump forward,    adr> rjmp, ......... <labelr
 : <labelr   ( adr -- )
     dup 1+ dp swap -
     0FFF and                   \ -- adr k12
-    over i@ or                 \ -- adr opcode
-    swap i! ;                  \ overwrite rjmp, rcall
+    over @i or                 \ -- adr opcode
+    swap !i ;                  \ overwrite rjmp, rcall
 
 
   \ Label for long jump forward,  adr> 0 jmp, ......... <labell
 : <labell   ( adr -- )
-    1+ dp swap i! ;          \ overwrite k16
+    1+ dp swap !i ;          \ overwrite k16
 
 
 00  constant R0
