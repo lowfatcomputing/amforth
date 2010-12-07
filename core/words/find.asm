@@ -11,7 +11,8 @@ XT_FIND:
 PFA_FIND:
     .dw XT_ZERO     ; ( addr 0)
     .dw XT_DOLITERAL
-    .dw NUMWORDLISTS
+    .dw EE_ORDERLISTLEN
+    .dw XT_FETCHE
     .dw XT_ZERO
     .dw XT_DOQDO
     .dw PFA_FIND2
@@ -25,17 +26,6 @@ PFA_FIND1:
     .dw XT_2STAR
     .dw XT_PLUS  ; ( -- addr 0 addr+1 len wid )
     .dw XT_FETCHE
-    ; check if last in order, maybe a dup? serves the same purpose, without the additional -1 in EEPROM?
-    .dw XT_DUP
-    .dw XT_DOLITERAL
-    .dw -1
-    .dw XT_EQUAL ; ( addr 0 addr+1 len wid flag )
-    .dw XT_DOCONDBRANCH
-    .dw PFA_FIND3
-	.dw XT_DROP
-	.dw XT_DROP
-	.dw XT_DROP
-	.dw XT_LEAVE
 PFA_FIND3:
     .dw XT_SEARCH_WORDLIST ; ( -- addr 0 [xt] flag
     .dw XT_QDUP

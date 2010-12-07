@@ -131,6 +131,8 @@ EE_CURRENT:
     .dw EE_FORTHWORDLIST
 EE_FORTHWORDLIST:
     .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+EE_ORDERLISTLEN:
+    .dw 1
 EE_ORDERLIST: ; list of wordlist id
     .dw EE_FORTHWORDLIST      ; get/set-order
     .dw -1
@@ -140,7 +142,6 @@ EE_ORDERLIST: ; list of wordlist id
     .dw -1
     .dw -1
     .dw -1
-    .dw -1 ; NUMWORDLISTS + 1 entry, this entry has to be -1
 ; default user area
 EE_INITUSER:
     .dw 0  ; USER_STATE

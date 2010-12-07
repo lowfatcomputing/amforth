@@ -11,37 +11,20 @@ XT_SET_ORDER:
 PFA_SET_ORDER:
     .dw XT_DUP
     .dw XT_DOLITERAL
-    .dw -1
-    .dw XT_EQUAL
-    .dw XT_DOCONDBRANCH
-    .dw PFA_SET_ORDER0
-	.dw XT_DROP
-	.dw XT_DOLITERAL
-	.dw EE_FORTHWORDLIST
-	.dw XT_DOLITERAL
-	.dw 1
-PFA_SET_ORDER0:
-    .dw XT_DUP
-    .dw XT_TO_R
+    .dw EE_ORDERLISTLEN
+    .dw XT_STOREE
+    
     .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_SET_ORDER2
-PFA_SET_ORDER1:
-    .dw XT_I
-    .dw XT_2STAR
+    .dw XT_DODO
+    .dw PFA_SETORDER2
+PFA_SETORDER1:
     .dw XT_DOLITERAL
     .dw EE_ORDERLIST
+    .dw XT_I
+    .dw XT_2STAR
     .dw XT_PLUS
     .dw XT_STOREE
     .dw XT_DOLOOP
-    .dw PFA_SET_ORDER1
-PFA_SET_ORDER2:
-    .dw XT_DOLITERAL
-    .dw -1
-    .dw XT_DOLITERAL
-    .dw EE_ORDERLIST
-    .dw XT_R_FROM
-    .dw XT_2STAR
-    .dw XT_PLUS
-    .dw XT_STOREE
+    .dw PFA_SETORDER1
+PFA_SETORDER2:
     .dw XT_EXIT

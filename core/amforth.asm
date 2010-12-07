@@ -115,8 +115,8 @@ EE_EDP:
     .dw edp          ; EDP
 EE_TURNKEY:
     .dw XT_APPLTURNKEY  ; TURNKEY
-EE_ISTORE:
-    .dw XT_DO_ISTORE  ; Store a cell into flash
+EE_STOREI:
+    .dw XT_DO_STOREI  ; Store a cell into flash
 
 ; calculate baud rate error
 .equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round
@@ -137,16 +137,17 @@ EE_CURRENT:
     .dw EE_FORTHWORDLIST
 EE_FORTHWORDLIST:
     .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-EE_ORDERLIST: ; list of wordlist id
+EE_ORDERLISTLEN:
+    .dw 1
+EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
+    .dw 0
+    .dw 0
+    .dw 0
     .dw -1
     .dw -1
     .dw -1
     .dw -1
-    .dw -1
-    .dw -1
-    .dw -1
-    .dw -1 ; NUMWORDLISTS + 1 entry, this entry has to be -1
 ; default user area
 EE_INITUSER:
     .dw 0  ; USER_STATE
