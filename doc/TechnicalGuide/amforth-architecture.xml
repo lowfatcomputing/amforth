@@ -177,6 +177,41 @@
 					</para>
 				</sect3>
 			</sect2>
+			<sect2 id="INTERPRETER">
+			    <title>Interpreter</title>
+			    <para>
+			      The interpreter a line based command interpreter. It uses ACCEPT to aquire for a
+			      complete input text line. If the line is completed (by sending the CR/LF character(s))
+			      the line is processed by INTERPRET. It splits the line into whitespace delimited words.
+			      The word is analyzed using a sorted list of recognizer words which are specialized
+			      to search for e.g. the wordlists or convert strings into numbers. This list can be
+			      changed at runtime. Its thus possible to extend the interpreter to recognize e.g. 
+			      floating  point numbers without recompiling / reflashing the controller.
+			    </para>
+			    <sect3 id="RECOGNIZER">
+			      <title>Recognizer</title>
+			      <para>
+			        A recognizer gets the word address (API is not yet finalized) of the current word.
+			        If the word can be processed, the recognizer is responsible to do so. A word from
+			        the dictionary has to be either executed or compiled, a number as well. A recognizer
+			        must not change the word buffer content. Finally the recognizer returns a flag to
+			        the interpreter which signals success or not. This flag is consumed, any other stack
+			        change is kept.
+			      </para>
+			      <para>
+			        Three recognizers are defined: Dictionary lookup, integer number conversion and
+			        a not-found dummy. The first two take care of the interpreter state and either
+			        leave more than the flag (e.g. the number entered) or compile to the dictionary.
+			      </para>
+			      <para>
+			        The not-found recognizer throws an exception -13 which can be catched.
+			      </para>
+			      <para>
+			        The list of the recognizers is kept in the EEPROM, the maximum size of the
+			        entries is a compile time setting.
+			      </para>
+			      </sect3>
+			</sect2>
 			<sect2 id="STACKS">
 				<title>Stacks</title>
 				<sect3 id="DATASTACK">
