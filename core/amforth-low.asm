@@ -109,8 +109,8 @@ EE_EDP:
     .dw edp          ; EDP
 EE_TURNKEY:
     .dw XT_APPLTURNKEY  ; TURNKEY
-EE_ISTORE:
-    .dw XT_DO_ISTORE  ; Store a cell into flash
+EE_STOREI:
+    .dw XT_DO_STOREI  ; Store a cell into flash
 
 ; calculate baud rate error
 .equ UBRR_VAL   = ((F_CPU+BAUD*8)/(BAUD*16)-1)  ; smart round
@@ -158,8 +158,15 @@ EE_INITUSER:
     .dw XT_RX  ; USER_KEY
     .dw XT_RXQ ; USER_KEYQ
     .dw XT_NOOP ; USER_SKEY
-
+EE_RECOGNIZERS:
+EE_RECOGNIZERLISTLEN:
+    .dw 3
+EE_RECOGNIZERLIST:
+    .dw XT_REC_FIND
+    .dw XT_REC_INTNUMBER
+    .dw XT_REC_NOTFOUND
 ; 1st free address in EEPROM.
+
 edp:
 
 .cseg
