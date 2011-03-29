@@ -9,6 +9,6 @@ nvm_command:
     ldi temp1,  $D8
     ldi temp2,  $01
     sts NVM_CMD, temp0
-    out $34, temp1
+    out CPU_CCP, temp1
     sts NVM_CTRLA, temp2
     ret
