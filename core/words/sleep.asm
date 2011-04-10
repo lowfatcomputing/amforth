@@ -1,5 +1,3 @@
-
-
 ;
 ;  sleep   ( mode -- )
 ;
@@ -22,11 +20,11 @@
 ;  USART.  For all other sleep modes, you must either use reset
 ;  or provide some kind of timed or external event to wake up;
 ;  the USART won't work.
-;  
+;
 
-; ( n -- ) MCU
+; ( mode -- ) Arithmetics
 ; R( -- )
-; put the controller into the specified sleep state
+; let the controller sleep
 VE_SLEEP:
     .dw $ff05
     .db "sleep", 0
@@ -35,12 +33,12 @@ VE_SLEEP:
 XT_SLEEP:
     .dw PFA_SLEEP
 PFA_SLEEP:
-	andi	tosl, 7				; leave only legal mode bits
-	lsl		tosl				; move to correct location (bits 3-1)
-	ori		tosl, 1				; set the SE bit
-	out		SMCR, tosl			; set the sleep config
-	sleep						; nighty-night
-	clr		tosl				; need to clean up the SMCR reg before we leave
-	out		SMCR, tosl			; 0 protects against accidental sleeps
-	loadtos						; pop argument from stack
-    jmp 	DO_NEXT
+    andi tosl, 7			; leave only legal mode bits
+    lsl tosl				; move to correct location (bits 3-1)
+    ori tosl, 1				; set the SE bit
+    out SMCR, tosl			; set the sleep config
+    sleep				; nighty-night
+    clr tosl				; need to clean up the SMCR reg before we leave
+    out SMCR, tosl			; 0 protects against accidental sleeps
+    loadtos				; pop argument from stack
+    jmp DO_NEXT
