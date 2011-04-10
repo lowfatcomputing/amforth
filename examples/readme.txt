@@ -13,3 +13,6 @@ sieve.frt: not-so simple benchmark modelled after the sieve code
 run-hayes.frt: demonstrate the use of the amforth-upload.py utility 
     and the special #include syntax. The test itself is a slightly
     modified HAYES test suite
+
+timer-interrupt.frt: demonstrate the use of the timer interrupt with
+   forth code.
