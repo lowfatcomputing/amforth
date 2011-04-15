@@ -1,5 +1,5 @@
-; ( -- n )  Interrupt
-; R( -- )
+; ( -- n )  
+; Interrupt
 ; number of interrupt vectors (0 based)
 VE_NUMINT:
     .dw $ff04

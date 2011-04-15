@@ -1,5 +1,5 @@
-; ( c addr -- ) Memory
-; R( -- )
+; ( c a-addr -- ) 
+; Memory
 ; store a single byte to RAM address
 VE_CSTORE:
     .dw $ff02

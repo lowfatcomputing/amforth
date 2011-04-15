@@ -1,5 +1,5 @@
-; ( n1 n2 -- n3 ) Arithmetics
-; R( -- )
+; ( n1 n2 -- n3 ) 
+; Arithmetics
 ; shift n1 n2-times logically right
 VE_RSHIFT:
     .dw $ff06

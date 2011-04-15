@@ -1,6 +1,6 @@
-; ( addr -- n1 ) Memory
-; R( -- )
-; reads a cell from flash
+; ( f-addr -- n1 ) 
+; Memory
+; reads 1 cell from flash
 VE_FETCHI:
     .dw $ff02
     .db "@i"

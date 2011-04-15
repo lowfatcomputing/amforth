@@ -1,5 +1,5 @@
-; ( -- loop-sys ) Compiler
-; R( -- )
+; ( n1 n2 -- ) (R: -- loop-sys ) (C: -- do-sys )
+; Compiler
 ; start do .. [+]loop
 VE_DO:
     .dw $0002

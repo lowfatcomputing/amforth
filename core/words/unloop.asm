@@ -1,6 +1,6 @@
-; ( -- ) Compiler
-; R(loop-sys -- )
-; remove loop-sys, exit a loop and continue execution after it
+; ( -- ) (R: loop-sys -- ) 
+; Compiler
+; remove loop-sys, exit the loop and continue execution after it
 VE_UNLOOP:
     .dw $ff06
     .db "unloop"

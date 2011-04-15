@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( -- )  (R: nest-sys -- ) (C: colon-sys -- )
+; Compiler
 ; finish colon defintion, compiles (exit) and returns to interpreter state 
 VE_SEMICOLON:
     .dw $0001

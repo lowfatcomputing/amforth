@@ -1,5 +1,5 @@
-; ( n w -- ) Numeric IO
-; R( -- )
+; ( n w -- ) 
+; Numeric IO
 ; single cell numeric output
 VE_DOTR:
     .dw $ff02

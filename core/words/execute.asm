@@ -1,5 +1,5 @@
-; ( xt -- ) System
-; R( -- )
+; ( xt -- ) 
+; System
 ; execute XT
 VE_EXECUTE:
     .dw $ff07

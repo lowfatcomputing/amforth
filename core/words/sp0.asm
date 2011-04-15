@@ -1,5 +1,5 @@
-; ( -- addr) Stackpointer
-; R( -- )
+; ( -- addr) 
+; Stack
 ; start address of the data stack
 VE_SP0:
     .dw $ff03
@@ -13,21 +13,23 @@ PFA_SP0:
     .dw XT_FETCH
     .dw XT_EXIT
 
-; ( -- addr) Stackpointer
-; R( -- )
+; ( -- addr) 
+; Stack
 ; start address of the data stack
-;VE_DOSP0:
-;    .dw $ff05
-;    .db "(sp0)"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOSP0
+.ifdef FULL_HEADER
+VE_DOSP0:
+    .dw $ff05
+    .db "(sp0)"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOSP0
+.endif
 XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:
     .dw USER_SP0
 
-; ( -- addr) Stackpointer
-; R( -- )
+; ( -- addr) 
+; Stack
 ; address of user variable to store top-of-stack for inactive tasks
 VE_SP:
     .dw $ff02

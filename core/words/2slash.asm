@@ -1,5 +1,5 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
+; ( n1 -- n2 ) 
+; Arithmetics
 ; arithmetic shift right
 VE_2SLASH:
     .dw $ff02

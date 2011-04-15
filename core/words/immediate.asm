@@ -1,6 +1,6 @@
-; ( -- ) Compiler
-; R( -- )
-; set immediate flag
+; ( -- ) 
+; Compiler
+; set immediate flag for the most recent word definition
 VE_IMMEDIATE:
     .dw $ff09
     .db "immediate",0

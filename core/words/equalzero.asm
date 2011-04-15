@@ -1,5 +1,5 @@
-; ( n -- flag ) Compare
-; R( -- )
+; ( n -- flag ) 
+; Compare
 ; compare with 0 (zero)
 VE_EQUALZERO:
     .dw $ff02

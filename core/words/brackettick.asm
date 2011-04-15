@@ -1,6 +1,6 @@
-; ( -- XT ) Compiler
-; R( -- )
-; what does ' in the interpreter mode do in colon definitions
+; ( -- xt ) (C: "<space>name" -- ) 
+; Compiler
+; what ' does in the interpreter mode, do in colon definitions
 VE_BRACKETTICK:
     .dw $0003
     .db "[",$27,"]",0

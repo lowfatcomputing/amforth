@@ -1,5 +1,5 @@
-; ( addr -- [ addr 0 ] | [ xt [-1|1]] ) Tools
-; R( -- )
+; ( addr -- [ addr 0 ] | [ xt [-1|1]] ) 
+; Tools
 ; search wordlists
 VE_FIND:
     .dw $ff04

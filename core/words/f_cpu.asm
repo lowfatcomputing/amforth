@@ -1,5 +1,5 @@
-; ( -- d ) System
-; R( -- )
+; ( -- d ) 
+; System
 ; put the cpu frequency in Hz on stack
 VE_F_CPU:
     .dw $ff05

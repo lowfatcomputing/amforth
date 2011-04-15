@@ -1,5 +1,5 @@
-; ( n -- ) Stack
-; R( -- )
+; ( n -- ) 
+; Stack
 ; drop TOS
 VE_DROP:
     .dw $ff04

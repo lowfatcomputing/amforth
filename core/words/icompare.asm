@@ -1,5 +1,5 @@
-; ( r-addr r-len f-addr f-len --  f) Tools
-; R( -- )
+; ( r-addr r-len f-addr f-len --  f) 
+; Tools
 ; compares string in RAM with string in flash
 VE_ICOMPARE:
     .dw $ff08

@@ -1,5 +1,5 @@
-; ( addr n -- ) Character IO
-; R( -- )
+; ( addr n -- ) 
+; Character IO
 ; print a RAM based string
 VE_TYPE:
     .dw $ff04

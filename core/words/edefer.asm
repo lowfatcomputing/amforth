@@ -1,5 +1,5 @@
-; ( c<name> -- ) Compiler
-; R( -- )
+; ( c<name> -- ) 
+; Compiler
 ; creates a defer vector which is kept in eeprom.
 VE_EDEFER:
     .dw $ff06

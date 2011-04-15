@@ -1,6 +1,6 @@
-; ( addr -- ) Compiler
-; R( -- )
-; resolved backward jumps
+; ( dest -- ) 
+; Compiler
+; resolve backward jumps
 ;VE_GRESOLVE:
 ;    .dw $ff08
 ;    .db ">resolve"

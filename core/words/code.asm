@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( -- ) (C: cchar -- )
+; Compiler
 ; create named entry in the dictionary, XT is the data field
 VE_CODE:
     .dw $ff04

@@ -1,5 +1,5 @@
-; ( n <name> -- ) Tools
-; R( --)
+; ( n <name> -- ) 
+; Tools
 ; store the TOS to the named value (eeprom cell)
 VE_TO:
     .dw $0002
@@ -24,8 +24,8 @@ PFA_TO1:
     .dw XT_STOREE
     .dw XT_EXIT
 
-; ( n -- ) Tools
-; R( IP -- IP+1)
+; ( n -- ) (R: IP -- IP+1)
+; Tools
 ; runtime portion of to
 .ifdef FULL_HEADER
 VE_DOTO:

@@ -1,5 +1,5 @@
-; ( d -- 0) Numeric IO
-; R( -- )
+; ( d -- 0 ) 
+; Numeric IO
 ; pictured numeric output: convert all digits until 0 (zero) is reached
 VE_SHARP_S:
     .dw $ff02

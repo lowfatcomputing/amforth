@@ -1,7 +1,7 @@
 ;;; usart driver
 
-; ( -- v) System Value
-; R( -- )
+; ( -- v) 
+; System Value
 ; returns usart baudrate
 VE_BAUD:
   .dw $ff04
@@ -13,8 +13,8 @@ XT_BAUD:
 PFA_BAUD:          ; ( -- )
   .dw EE_UBRRVAL
 
-; ( -- ) Hardware Access
-; R( --)
+; ( -- )
+; MCU
 ; initialize usart
 VE_USART:
   .dw $ff06

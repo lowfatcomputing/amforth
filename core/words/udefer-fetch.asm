@@ -1,5 +1,5 @@
-; ( xt1 -- xt2 ) System
-; R( -- )
+; ( xt1 -- xt2 ) 
+; System
 ; does the real defer@ for user based defers
 ;VE_UDEFERFETCH:
 ;    .dw $ff07

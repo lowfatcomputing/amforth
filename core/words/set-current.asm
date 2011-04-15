@@ -1,6 +1,6 @@
-; ( wid -- ) Search Order
-; R( -- )
-; set current to given word list 
+; ( wid -- ) 
+; Search Order
+; set current word list to the given word list wid
 VE_SET_CURRENT:
     .dw $ff0b
     .db "set-current",0

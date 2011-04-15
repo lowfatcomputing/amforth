@@ -1,5 +1,5 @@
-; ( -- c) Hardware Access
-; R( --)
+; ( -- c) 
+; MCU
 ; wait for and get one character from the terminal
 VE_RX:
     .dw $ff02
@@ -19,8 +19,8 @@ PFA_RX:
   .dw XT_CFETCH
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f)
+; MCU
 ; check if a character can read from the terminal
 VE_RXQ:
     .dw $ff03
@@ -39,8 +39,8 @@ PFA_RXQ:
   .dw XT_AND
   .dw XT_EXIT
 
-; ( -- ) Hardware Access
-; R( --)
+; ( -- )
+; MCU
 ; initialize usart
 ;VE_USART_INIT_RX:
 ;  .dw $ff06

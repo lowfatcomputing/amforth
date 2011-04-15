@@ -1,6 +1,6 @@
-; ( widn .. wid0 n -- ) Search Order
-; R( -- )
-; replace the order list
+; ( widn .. wid0 n -- ) 
+; Search Order
+; replace the search order list
 VE_SET_ORDER:
     .dw $ff09
     .db "set-order",0

@@ -1,5 +1,5 @@
-; (c -- ) Hardware Access
-; R( --)
+; (c -- )
+; MCU
 ; check availability and send one character to the terminal.
 VE_TX:
     .dw $ff02
@@ -19,8 +19,8 @@ PFA_TX:
   .dw XT_CSTORE
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f) MCU
+; MCU
 ; check if a character can be appended to output queue.
 VE_TXQ:
     .dw $ff03

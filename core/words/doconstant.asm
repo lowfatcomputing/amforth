@@ -1,5 +1,5 @@
 ; ( -- addr )
-; R( -- )
+; System
 ; place data field address on TOS
 ;VE_DOCONSTANT:
 ;    .dw $ff0a

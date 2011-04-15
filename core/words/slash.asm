@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3) Arithmetics
-; R( -- )
-; diviion
+; ( n1 n2 -- n3) 
+; Arithmetics
+; divide n1 by n2. giving the quotient
 VE_SLASH:
     .dw $ff01
     .db "/",0

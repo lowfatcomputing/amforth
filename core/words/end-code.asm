@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( -- ) 
+; Compiler
 ; finish a code definition
 VE_ENDCODE:
     .dw $ff08

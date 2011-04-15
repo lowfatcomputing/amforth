@@ -1,5 +1,5 @@
-; ( -- d ) Stack
-; R( d --)
+; ( -- x1 x2 ) (R: x1 x2 --) 
+; Stack
 ; move DTOR to TOS
 VE_2R_FROM:
     .dw $ff03

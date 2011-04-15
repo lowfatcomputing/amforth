@@ -1,5 +1,5 @@
-; ( n1 -- flag) Compare
-; R( -- )
+; ( n1 -- flag) 
+; Compare
 ; compare with zero
 VE_LESSZERO:
     .dw $ff02

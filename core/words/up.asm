@@ -1,5 +1,5 @@
-; ( -- addr ) System
-; R( -- )
+; ( -- addr ) 
+; System Variable
 ; get user area pointer
 VE_UP_FETCH:
     .dw $ff03
@@ -13,8 +13,8 @@ PFA_UP_FETCH:
     movw tosl, upl
     rjmp DO_NEXT
 
-; ( addr -- ) System
-; R( -- )
+; ( addr -- ) 
+; System Variable
 ; set user area pointer
 VE_UP_STORE:
     .dw $ff03

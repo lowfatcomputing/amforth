@@ -1,5 +1,5 @@
-; ( -- v) System Value
-; R( -- )
+; ( -- v) 
+; System Value
 ; address of the default user area content in eeprom
 VE_EEUSER:
   .dw $ff07
@@ -11,8 +11,8 @@ XT_EEUSER:
 PFA_EEUSER:          ; ( -- )
   .dw EE_INITUSER
 
-; ( e-addr r-addr len -- ) System Value
-; R( -- )
+; ( e-addr r-addr len -- ) 
+; Tools
 ; copy len cells from eeprom to ram
 VE_EE2RAM:
   .dw $ff06
@@ -42,8 +42,8 @@ PFA_EE2RAM_2:
     .dw XT_DROP
     .dw XT_EXIT
 
-; ( -- v) System Value
-; R( -- )
+; ( -- )
+; Tools
 ; setup the default user area from eeprom
 VE_INITUSER:
   .dw $ff09

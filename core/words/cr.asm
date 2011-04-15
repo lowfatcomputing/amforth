@@ -1,6 +1,6 @@
-; ( -- ) Character IO
-; R( -- )
-; print CR/LF
+; ( -- ) 
+; Character IO
+; cause subsequent output appear at the beginning of the next line
 VE_CR:
     .dw $ff02
     .db "cr"

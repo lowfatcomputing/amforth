@@ -1,5 +1,5 @@
-; ( ud w -- ) Numeric IO
-; R( -- )
+; ( ud w -- ) 
+; Numeric IO
 ; double cell output
 VE_UDOTR:
     .dw $ff03

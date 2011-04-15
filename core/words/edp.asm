@@ -1,5 +1,5 @@
-; ( -- edp) System Value
-; R( -- )
+; ( -- e-addr ) 
+; System Value
 ; address of the first unused address in eeprom
 VE_EDP:
     .dw $ff03

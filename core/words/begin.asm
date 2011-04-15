@@ -1,6 +1,6 @@
-; ( -- addr ) Compiler
-; R( -- )
-; start a control structture
+; ( -- ) (C: -- dest ) 
+; Compiler
+; put the next location for a transfer of control onto the control flow stack
 VE_BEGIN:
     .dw $0005
     .db "begin",0

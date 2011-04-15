@@ -1,5 +1,5 @@
-; ( -- ) Character IO
-; R( -- )
+; ( -- ) 
+; Character IO
 ; fetch /key vector and execute it, should turn off the sender of key events
 VE_SLASHKEY:
     .dw $ff04

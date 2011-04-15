@@ -1,5 +1,5 @@
-; (addr -- [n|d size] f) Numeric IO
-; R( -- )
+; (addr len -- [n|d size] f) 
+; Numeric IO
 ; convert a counted string at addr to a number
 VE_NUMBER:
     .dw $ff06
@@ -12,7 +12,6 @@ PFA_NUMBER:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_TO_R
-    .dw XT_COUNT   ; ( -- addr len )
 ; now check for +/- signs
     .dw XT_OVER
     .dw XT_CFETCH
@@ -105,6 +104,9 @@ PFA_NUMBER5:
     .dw XT_TRUE
     .dw XT_EXIT
 
+; ( addr len -- addr' len' ) 
+; Numeric IO
+; skip a numeric prefix character
 ;VE_PRAEFIX:
 ;    .dw $FF07 
 ;    .db "praefix",0
@@ -130,6 +132,9 @@ PFA_PRAEFIX0:
     .dw XT_SLASHSTRING 
     .dw XT_EXIT 
 
+; (c -- ) Numeric IO
+; R( -- )
+; set the BASE value depending on the character
 ;VE_SETBASE:
 ;    .dw $FF07 
 ;    .db "setbase",0

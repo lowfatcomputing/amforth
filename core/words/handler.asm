@@ -1,5 +1,5 @@
-; ( -- addr ) Exceptions
-; R( -- )
+; ( -- a-addr ) 
+; Exceptions
 ; USER variable used by catch/throw
 VE_HANDLER:
     .dw $ff07

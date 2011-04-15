@@ -1,6 +1,6 @@
-; ( d1 d2 -- d2 d1 ) Stack
-; R( -- )
-; swaps the two top level double cells
+; ( x1 x2 x3 x4 -- x3 x4 x1 x2 ) 
+; Stack
+; Exchange the two top cell pairs
 VE_2SWAP:
     .dw $ff05
     .db "2swap",0

@@ -1,5 +1,5 @@
-; ( -- ) Tools
-; R( -- )
+; ( -- ) 
+; Tools
 ; prints a list of all (visible) words in the dictionary
 VE_WORDS:
     .dw $ff05

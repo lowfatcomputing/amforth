@@ -1,6 +1,6 @@
-; ( n -- ) Numeric IO
-; R( -- )
-; place a - in HLD if value is negative
+; ( n -- ) 
+; Numeric IO
+; place a - in HLD if n is negative
 VE_SIGN:
     .dw $ff04
     .db "sign"

@@ -1,5 +1,5 @@
-; ( -- n ) Environment
-; R( -- )
+; ( -- n ) 
+; Environment
 ; Size of the PAD buffer in bytes
 VE_ENVSLASHPAD:
     .dw $ff04

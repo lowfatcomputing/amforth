@@ -1,5 +1,5 @@
-; ( n -- ) Compiler
-; R( -- )
+; ( n cchar -- ) 
+; Compiler
 ; create a dictionary entry for a user variable at offset n
 VE_USER:
     .dw $ff04

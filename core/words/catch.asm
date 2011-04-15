@@ -1,6 +1,6 @@
-; ( xt -- ) Exceptions
-; R( -- ) or R( ny -- )
-; execute the XT and restore stack frame if an exception is thrown
+; ( i*x xt -- j*x 0 | i*x n )
+; Exceptions
+; execute XT and check for exceptions.
 VE_CATCH:
     .dw $ff05
     .db "catch",0

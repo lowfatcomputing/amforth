@@ -1,6 +1,6 @@
-; ( -- wid) Search Order
-; R( -- )
-; get the current word list
+; ( -- wid) 
+; Search Order
+; get the wid of the current compilation word list
 VE_GET_CURRENT:
     .dw $ff0b
     .db "get-current",0

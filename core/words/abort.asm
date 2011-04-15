@@ -1,5 +1,5 @@
-; ( n*x -- ) Exceptions
-; R( n*y -- )
+; ( i*x -- ) (R: j*y -- )
+; Exceptions
 ; send an exception -1
 VE_ABORT:
     .dw $ff05

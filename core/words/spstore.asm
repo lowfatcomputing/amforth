@@ -1,6 +1,6 @@
-; ( addr -- i*x) Stackpointer
-; R( -- )
-; data stack pointer changed to addr
+; ( addr -- i*x) 
+; Stack
+; set data stack pointer to addr
 VE_SP_STORE:
     .dw $ff03
     .db "sp!",0

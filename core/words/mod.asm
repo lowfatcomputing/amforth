@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3) Arithmetics
-; R( -- )
-; remainder of division
+; ( n1 n2 -- n3) 
+; Arithmetics
+; divide n1 by n2 giving the remainder n3
 VE_MOD:
     .dw $ff03
     .db "mod",0

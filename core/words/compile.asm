@@ -1,5 +1,5 @@
-; ( -- ) Dictionary
-; R( -- )
+; ( -- ) 
+; Dictionary
 ; append the the next flash cell to flash at DP
 VE_COMPILE:
     .dw $ff07

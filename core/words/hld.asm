@@ -1,5 +1,5 @@
-; ( -- addr ) Numeric IO
-; R( -- )
+; ( -- addr ) 
+; Numeric IO
 ; pointer to current write position in the Pictured Numeric Output buffer
 VE_HLD:
     .dw $ff03

@@ -1,5 +1,5 @@
-; ( xt1 -- xt2 ) System
-; R( -- )
+; ( xt1 -- xt2 ) 
+; Systemm
 ; does the real defer@ for ram defers
 ;VE_RDEFERFETCH:
 ;    .dw $ff07

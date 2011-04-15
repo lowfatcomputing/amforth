@@ -1,5 +1,5 @@
-; ( n1 n2 n3 -- rem quot) Arithmetics
-; R( -- )
+; ( n1 n2 n3 -- rem quot) 
+; Arithmetics
 ; signed multiply n1 * n2 and division  with n3 with double precision intermediate and remainder
 VE_STARSLASHMOD:
     .dw $ff05

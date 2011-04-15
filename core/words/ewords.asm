@@ -1,5 +1,5 @@
-; ( -- ) Tools
-; R( -- )
+; ( -- ) 
+; Environment
 ; prints a list of all words in the environment
 VE_EWORDS:
     .dw $ff06

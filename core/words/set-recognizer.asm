@@ -1,5 +1,5 @@
-; ( recn .. rec00 n -- ) Interpreter
-; R( -- )
+; ( recn .. rec0 n -- ) 
+; Interpreter
 ; replace the recognizer list
 VE_SET_RECOGNIZER:
     .dw $ff0e

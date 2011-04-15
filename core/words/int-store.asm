@@ -1,5 +1,5 @@
-; ( xt i -- )  Interrupt
-; R( -- )
+; ( xt i -- )  
+; Interrupt
 ; stores XT as interrupt vector i
 VE_INTSTORE:
     .dw $ff04

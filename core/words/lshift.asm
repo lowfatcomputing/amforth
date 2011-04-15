@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3) Arithmetics
-; R( -- )
-; logical shift left 
+; ( n1 n2 -- n3) 
+; Arithmetics
+; logically shift n1 left n2 times
 VE_LSHIFT:
     .dw $ff06
     .db "lshift"

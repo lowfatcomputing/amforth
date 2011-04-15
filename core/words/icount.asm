@@ -1,5 +1,5 @@
-; ( addr -- addr+1 n )  Tools
-; R( -- )
+; ( addr -- addr+1 n )  
+; Tools
 ; get count information out of a counted string in flash
 VE_ICOUNT:
     .dw $ff06

@@ -1,5 +1,5 @@
-; ( c<name> -- ) Compiler
-; R( -- )
+; ( c<name> -- ) 
+; Compiler
 ; creates a RAM based defer vector
 VE_RDEFER:
     .dw $ff06

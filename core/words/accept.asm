@@ -1,6 +1,6 @@
-; ( addr n1 -- n2 ) System
-; R( -- )
-; reads a line with with KEY into addr until n2 characters are reveived or cr/lf detected.
+; ( addr +n1 -- +n2 ) 
+; System
+; receive a string of at most n1 characters at addr until n2 characters are reveived or cr/lf detected.
 VE_ACCEPT:
     .dw $ff06
     .db "accept"

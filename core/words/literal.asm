@@ -1,5 +1,5 @@
-; ( n -- ) Compiler
-; R( -- )
+; ( -- n ) (C: n -- )
+; Compiler
 ; compile a literal in colon defintions
 VE_LITERAL:
     .dw $0007

@@ -1,5 +1,5 @@
-; ( limit counter -- )
-; R( -- loop-sys| )
+; ( limit counter -- ) (R: -- loop-sys| )
+; System
 ; runtime of ?do
 ;VE_DOQDO:
 ;    .dw $ff05

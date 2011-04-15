@@ -1,6 +1,6 @@
-; (addr -- n ) Numeric IO
-; R( -- )
-; check stack underflow
+; ( --  ) 
+; Tools
+; check stack underflow, throw exception -42
 VE_QSTACK:
     .dw $ff06
     .db "?stack"

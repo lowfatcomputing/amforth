@@ -1,6 +1,6 @@
-; ( addr -- ) Compiler
-; R( -- )
-; go back to begin
+; ( -- ) (C: dest -- ) 
+; Compiler
+; compile a jump back to dest
 VE_AGAIN:
     .dw $0005
     .db "again",0

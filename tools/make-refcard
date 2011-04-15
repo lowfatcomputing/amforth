@@ -8,9 +8,10 @@ my %USEDBY;
 my %DESCRIPTION;
 my %DSTACK;
 my %RSTACK;
+my %CSTACK;
 my %CATEGORY;
 
-my $version="4.1";
+my $version="4.3";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
@@ -21,10 +22,11 @@ sub readASM {
     my @ASM = <ASM>;
     close(ASM);
     my $ASM = "";
-    my ($lbl, $state, $voc, $xt, $dstack, $rstack, $category);
+    my ($lbl, $state, $voc, $xt, $dstack, $rstack, $cstack, $category);
     my ($prevline1, $prevline2, $prevline3, $description) = ("","","", "");
     foreach my $line (@ASM) {
 	chomp($line);
+	next if $line=~/\.if/;
 	$line =~ s/_VE_HEAD/VE_HEAD/;
 	$ASM .= $line;
 	if($line=~/^VE_(.*):/) {
@@ -34,14 +36,15 @@ sub readASM {
 	    $state = "new_header_found";
 	    $voc   = "(unnamed)";
 	    $category = "unclassified";
-	    $dstack = $prevline3;
-	    $dstack = "($1)" if $dstack=~/\(\s*(.+)\)/;
-	    $rstack = $prevline2;
-	    $rstack = "R($1)" if $rstack=~/R\(\s*(.+)\)/;
-            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
-	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
-	        $category = $2;
-		$dstack   = "($1)";
+	    $dstack = "( -- )";
+	    $dstack = "($1)" if $prevline3=~/\([S]?:?([^\)]+)/;
+	    $rstack = "";
+	    $rstack = "(R: $1)" if $prevline3=~/R:\s+(.+)\)/;
+	    $cstack = "";
+	    $cstack = "(C: $1)" if $prevline3=~/C:\s+(.+)\)/;
+            $description = $1 if $prevline1=~/^;(.*)/;
+	    if( $prevline2=~/;(.+)$/) {
+	        $category = $1;
 	    }
 #	    print "***\n$prevline3\n$prevline2\n$prevline1\n$line\n***\n";
 #	    print "$prevline3 : $category\n";
@@ -55,14 +58,16 @@ sub readASM {
 	    $state = "new_header_found";
 	    $voc   = "(hidden)";
 	    $dstack = $prevline3;
-	    $dstack = "($1)" if $dstack=~/\(\s*(.+)\s*\)/;
-	    $rstack = $prevline2;
-	    $rstack = "R($1)" if $rstack=~/R\(\s*(.+)\s*\)/;
-	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
-	        $category = $2;
-		$dstack   = "($1)";
+	    $dstack = "( -- )";
+	    $dstack = "($1)" if $prevline3=~/\([S]?:?([^\)]+)/;
+	    $rstack = "";
+	    $rstack = "R($1)" if $prevline3=~/R:\s+(.+)\)/;
+	    $cstack = "";
+	    $cstack = "(C: $1)" if $prevline3=~/C:\s+(.+)\)/;
+            $description = $1 if $prevline1=~/^;(.*)/;
+	    if( $prevline2=~/;(.+)$/) {
+	        $category = $1;
 	    }
-            $description = "<pre>$1</pre>" if $prevline1=~/^;(.*)/;
 	    $category = "internal/hidden";
 	    next;
 	}
@@ -95,6 +100,7 @@ sub readASM {
 	if($state =~ /header_complete/) {
 	    $DSTACK{$lbl} = $dstack;
 	    $RSTACK{$lbl} = $rstack;
+	    $CSTACK{$lbl} = $cstack;
 	    
 	    $XT{$lbl} = $xt;
 	    $VOC{$lbl} = $voc;
@@ -122,13 +128,14 @@ sub latex_head {
 \\usepackage{url}
 \\usepackage{multicol}
 \\usepackage{supertabular}
+\\usepackage{fancyvrb}
 
 \\setlength{\\parindent}{0cm}
 \\setlength{\\oddsidemargin}{0cm}
 \\setlength{\\topmargin}{-1cm}
 \\setlength{\\headheight}{0cm}
 \\setlength{\\headsep}{0cm}
-\\def\\colsa{p{1cm}p{4cm}}
+\\def\\colsa{p{2cm}p{4cm}}
 \\def\\colsb{p{2.4cm}p{4cm}}
 \\def\\colsc{p{1.5cm}p{4cm}}
 
@@ -138,7 +145,7 @@ sub latex_head {
 
 \\begin{footnotesize}
 \\section*{\\Large amforth $title Reference Card}
-\\begin{multicols}{3}
+\\begin{multicols}{2}
 ";
 }
 
@@ -156,21 +163,27 @@ sub printLaTeX {
     foreach my $category (sort keys %CATEGORY) {
 	print "$category\n";
 	print LATEX "\n\\subsection*{$category}\n";
-	print LATEX "\\begin{tabular}{\\colsa}\n";
+
 	foreach my $lbl (sort @{$CATEGORY{$category}}) {
 	    print "\t$lbl\n";
+	print LATEX "\\begin{tabular}{\\colsa}\n";
 	    my $xt  = $XT{$lbl};
 	    my $voc = $VOC{$lbl};
 	    my $shortlbl = substr($lbl, 3);
 	    my $dstack = $DSTACK{$lbl};
 	    my $rstack = $RSTACK{$lbl};
+	    my $cstack = $CSTACK{$lbl};
 	    my $verbdelim = "|";
 	    $verbdelim = "/" if $dstack=~/$verbdelim/;
 	    print LATEX "% $lbl\n";
-	    print LATEX "\\verb|$voc|  & \\verb$verbdelim$dstack$verbdelim\\\\\n";
-	    print LATEX "              & \\verb$verbdelim$rstack$verbdelim\\\\\n" unless $rstack =~ /R\(\s*--\s*\)/;
-	}
+	    print LATEX "\\begin{Verbatim}[fontfamily=courier,fontseries=b]\n$voc\n\\end{Verbatim}\n  & \\verb$verbdelim$dstack$verbdelim\\newline\n";
+	    print LATEX "                \\verb$verbdelim$rstack$verbdelim\\newline\n" unless $rstack =~ /^\s*$/;
+	    print LATEX "                \\verb$verbdelim$cstack$verbdelim\\newline\n" unless $cstack =~ /^\s*$/;
+	    print LATEX "                $DESCRIPTION{$lbl}\\newline\n";
+	    print LATEX "\\\\\n";
 	print LATEX "\\end{tabular}\n";
+	}
+
     }
     print LATEX latex_foot();
 }

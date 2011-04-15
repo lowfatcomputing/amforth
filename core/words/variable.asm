@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( cchar -- ) 
+; Compiler
 ; create an dictionary entry for a variable and allocate 1 cell RAM space for it
 VE_VARIABLE:
     .dw $ff08

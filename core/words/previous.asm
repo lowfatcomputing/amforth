@@ -1,5 +1,5 @@
-; ( -- ) Search Order
-; R( -- )
+; ( -- ) 
+; Search Order
 ; remove the first entry in the search order list
 VE_PREVIOUS:
     .dw $ff08

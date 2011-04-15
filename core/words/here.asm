@@ -1,5 +1,5 @@
-; ( -- addr ) System Value
-; R( -- )
+; ( -- addr ) 
+; System Value
 ; address of the next free data space (RAM) cell
 VE_HERE:
     .dw $ff04

@@ -1,5 +1,5 @@
-; ( flag -- flag' ) Logic
-; R( -- )
+; ( flag -- flag' ) 
+; Logic
 ; identical to 0=
 VE_NOT:
     .dw $ff03

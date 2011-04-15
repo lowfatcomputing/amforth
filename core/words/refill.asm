@@ -1,5 +1,5 @@
-; ( -- f ) IO
-; R( -- )
+; ( -- f ) 
+; System
 ; refills the input buffer
 VE_REFILL:
     .dw $ff06

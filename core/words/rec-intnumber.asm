@@ -1,5 +1,5 @@
-; ( addr -- f ) System
-; R( -- )
+; ( addr -- f ) 
+; System
 ; recognizer for integer numbers
 ;VE_REC_INTNUMBER:
 ;    .dw $ff07
@@ -10,6 +10,7 @@ XT_REC_INTNUMBER:
     .dw DO_COLON
 PFA_REC_INTNUMBER:
     ; try converting to a number
+    .dw XT_COUNT
     .dw XT_NUMBER 
     .dw XT_DOCONDBRANCH 
     .dw PFA_REC_NONUMBER

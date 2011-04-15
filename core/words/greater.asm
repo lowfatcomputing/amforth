@@ -1,6 +1,6 @@
-; ( n1 n2 -- flag ) Compare
-; R( -- )
-; compares two values (signed)
+; ( n1 n2 -- flag ) 
+; Compare
+; flag is true if n1 is greater than n2
 VE_GREATER:
     .dw $ff01
     .db ">",0

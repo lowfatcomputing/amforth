@@ -1,5 +1,5 @@
-; ( n <name> -- ) Compiler
-; R( -- )
+; ( n <name> -- ) 
+; Compiler
 ; create a dictionary entry for a value and allocate 1 cell in EEPROM.
 VE_VALUE:
     .dw $ff05

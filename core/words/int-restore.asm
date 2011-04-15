@@ -1,6 +1,6 @@
-; ( sreg -- ) Interrupt
-; R( -- )
-; restores SREG from TOS (
+; ( sreg -- ) 
+; Interrupt
+; restores SREG from TOS
 ;VE_INTRESTORE:
 ;    .dw $ff0B
 ;    .db "int_restore"

@@ -1,5 +1,5 @@
-; ( addr len -- ) Compiler
-; R( -- )
+; ( addr len -- ) 
+; Compiler
 ; compiles a string from RAM to Flash
 VE_SCOMMA:
   .dw $ff02
@@ -13,14 +13,16 @@ PFA_SCOMMA:
     .dw XT_DOSCOMMA
     .dw XT_EXIT
 
-; ( addr len len' -- ) Compiler
-; R( -- )
+; ( addr len len' -- ) 
+; Compiler
 ; compiles a string from RAM to Flash
-;VE_DOSCOMMA:
-;  .dw $ff04
-;  .db "(s",$2c,")"
-;  .dw VE_HEAD
-;  .set VE_HEAD = VE_DOSCOMMA
+.ifdef FULL_HEADER
+VE_DOSCOMMA:
+  .dw $ff04
+  .db "(s",$2c,")"
+  .dw VE_HEAD
+  .set VE_HEAD = VE_DOSCOMMA
+.endif
 XT_DOSCOMMA:
     .dw DO_COLON
 PFA_DOSCOMMA:

@@ -1,6 +1,6 @@
-; ( -- ) Search Order
-; R( -- )
-; Duplicate first search order entry
+; ( -- ) 
+; Search Order
+; Duplicate first entry in the current search order list
 VE_ALSO:
     .dw $ff04
     .db "also"

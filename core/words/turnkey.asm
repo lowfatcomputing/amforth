@@ -1,5 +1,5 @@
-; ( -- n*y ) System Value
-; R( -- )
+; ( -- n*y ) 
+; System Value
 ; Deferred action during startup/reset
 VE_TURNKEY:
     .dw $ff07

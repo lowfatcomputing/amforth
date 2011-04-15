@@ -1,5 +1,5 @@
-; ( n -- ) Character IO
-; R( -- )
+; ( n -- ) 
+; Character IO
 ; emits n space(s) (bl)
 VE_SPACES:
     .dw $ff06

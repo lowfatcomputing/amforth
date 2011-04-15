@@ -1,5 +1,5 @@
-; ( i -- xt ) Interrupt
-; R( -- )
+; ( i -- xt ) 
+; Interrupt
 ; fetches XT from interrupt vector i
 VE_INTFETCH:
     .dw $ff04

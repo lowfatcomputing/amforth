@@ -1,5 +1,5 @@
-; (c -- ) Hardware Access
-; R( --)
+; (c -- )
+; MCU
 ; put 1 character into output queue, wait if needed, enable UDRIE interrupt
 VE_TX:
     .dw $ff02
@@ -43,8 +43,8 @@ PFA_TX:
   .dw XT_CSTORE
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f)
+; MCU
 ; check if a character can be appended to output queue.
 VE_TXQ:
     .dw $ff03

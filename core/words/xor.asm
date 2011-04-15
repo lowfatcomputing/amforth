@@ -1,5 +1,5 @@
-; ( n1 n2 -- n3) Logic
-; R( -- )
+; ( n1 n2 -- n3) 
+; Logic
 ; exclusive or
 VE_XOR:
     .dw $ff03

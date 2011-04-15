@@ -1,5 +1,5 @@
-; ( <cchar> -- ) Compiler
-; R( -- )
+; ( -- addr len) (C: <cchar> -- ) 
+; Compiler
 ; compiles a string to flash, at runtime leaves ( -- flash-addr count) on stack
 VE_SQUOTE:
   .dw $0002

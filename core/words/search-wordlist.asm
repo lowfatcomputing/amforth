@@ -1,6 +1,6 @@
-; ( c-addr len wid -- [ 0 ] | [ xt [-1|1]] ) Search Order
-; R( -- )
-; searches the word lists for the word
+; ( c-addr len wid -- [ 0 ] | [ xt [-1|1]] ) 
+; Search Order
+; searches the word list wid for the word at c-addr/len
 VE_SEARCH_WORDLIST:
     .dw $ff0f
     .db "search-wordlist",0

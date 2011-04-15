@@ -1,6 +1,6 @@
-; ( n -- ) Compiler
-; R( -- )
-; create a named constant
+; ( -- x ) (C: x "<spaces>name" -- )
+; Compiler
+; create a constant in the dictionary
 VE_CONSTANT:
     .dw $ff08
     .db "constant"

@@ -1,6 +1,6 @@
-; ( -- n ) Tools
-; R( -- )
-; number of unused flash cells
+; ( -- n ) 
+; Tools
+; number of unused dictionary cells
 VE_UNUSED:
     .dw $ff06
     .db "unused"

@@ -1,5 +1,5 @@
-; ( -- sreg ) Interrupt
-; R( -- )
+; ( -- sreg ) 
+; Interrupt
 ; turns off all interrupts and leaves SREG in TOS
 VE_INTOFF:
     .dw $ff04

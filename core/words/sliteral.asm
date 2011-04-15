@@ -1,5 +1,5 @@
-; ( -- addr n) Compiler
-; R( -- )
+; ( -- addr len ) (C: addr len -- )
+; System
 ; runtime portion of s" 
 .ifdef FULL_HEADER
 VE_SLITERAL:

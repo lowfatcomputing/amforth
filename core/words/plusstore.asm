@@ -1,6 +1,6 @@
-; ( n addr -- ) Arithmetics
-; R( -- )
-; add value to content of RAM address
+; ( n a-addr -- ) 
+; Arithmetics
+; add n to content of RAM address a-addr
 VE_PLUSSTORE:
     .dw $ff02
     .db "+!"

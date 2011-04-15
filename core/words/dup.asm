@@ -1,5 +1,5 @@
-; ( n -- n n ) Stack
-; R( -- )
+; ( n -- n n ) 
+; Stack
 ; duplicate TOS
 VE_DUP:
     .dw $ff03

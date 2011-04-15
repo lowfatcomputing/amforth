@@ -1,5 +1,5 @@
-; ( c -- addr ) Tools
-; R( -- )
+; ( c -- addr ) 
+; Tools
 ; skip leading delimiter character and parse SOURCE until the next delimiter. copy the word to HERE
 VE_WORD:
     .dw $ff04

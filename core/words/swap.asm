@@ -1,5 +1,5 @@
-; ( n1 n2 -- n2 n1) Stack
-; R( -- )
+; ( n1 n2 -- n2 n1) 
+; Stack
 ; swaps the two top level stack cells
 VE_SWAP:
     .dw $ff04

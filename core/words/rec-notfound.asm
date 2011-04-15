@@ -1,5 +1,5 @@
-; ( addr --  ) System
-; R( -- )
+; ( addr --  ) 
+; System
 ; recognizer for NOT FOUND
 ;VE_REC_NOTFOUND:
 ;    .dw $ff07

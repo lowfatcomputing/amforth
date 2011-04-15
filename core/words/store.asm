@@ -1,5 +1,5 @@
-; ( n addr -- ) Memory
-; R( -- )
+; ( n addr -- ) 
+; Memory
 ; write 16bit to RAM memory, low byte first
 VE_STORE:
     .dw $ff01

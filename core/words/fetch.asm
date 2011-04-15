@@ -1,5 +1,5 @@
-; ( addr -- n ) Memory
-; R( -- )
+; ( a-addr -- n ) 
+; Memory
 ; read 1 cell from RAM address
 VE_FETCH:
     .dw $ff01

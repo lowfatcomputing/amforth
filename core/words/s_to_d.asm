@@ -1,5 +1,5 @@
-; ( n1 -- d1 ) Conversion
-; R( -- )
+; ( n1 -- d1 ) 
+; Conversion
 ; extend (signed) single cell value to double cell
 VE_S2D:
     .dw $ff03

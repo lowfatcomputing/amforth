@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
-; logarithm base 2 or highest set bitnumber
+; ( n1 -- n2 ) 
+; Arithmetics
+; logarithm to base 2 or highest set bitnumber
 VE_LOG2:
     .dw $ff04
     .db "log2"

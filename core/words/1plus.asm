@@ -1,5 +1,5 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
+; ( n1|u1 -- n2|u2 ) 
+; Arithmetics
 ; optimized increment
 VE_1PLUS:
     .dw $ff02

@@ -1,5 +1,5 @@
-; ( char "ccc" -- c-addr u ) String
-; R( -- )
+; ( char "ccc<char>" -- c-addr u ) 
+; String
 ; in input buffer parse ccc delimited string by the delimiter char.
 VE_PARSE:
     .dw $ff05

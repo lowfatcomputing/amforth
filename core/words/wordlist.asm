@@ -1,5 +1,5 @@
-; ( -- wid ) Search Order
-; R( -- )
+; ( -- wid ) 
+; Search Order
 ; create a new, empty wordlist
 VE_WORDLIST:
     .dw $ff08

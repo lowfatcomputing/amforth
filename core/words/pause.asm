@@ -1,6 +1,6 @@
-; ( -- ) Multitasking
-; R( -- ) 
-; fetch pause vector and execute it. may make a context/task switch
+; ( -- ) 
+; Multitasking
+; Fetch pause vector and execute it. may make a context/task switch
 VE_PAUSE:
     .dw $ff05
     .db "pause",0

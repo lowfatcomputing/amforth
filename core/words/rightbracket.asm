@@ -1,5 +1,5 @@
-; ( --  ) Compiler
-; R( -- )
+; ( --  ) 
+; Compiler
 ; turn on compiler mode
 VE_RBRACKET:
     .dw $ff01

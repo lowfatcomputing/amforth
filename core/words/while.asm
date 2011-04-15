@@ -1,5 +1,5 @@
-; ( dest -- orig dest ) Compiler
-; R( -- )
+; ( f -- ) (C: dest -- orig dest ) 
+; Compiler
 ; at runtime skip until repeat if non-true
 VE_WHILE:
     .dw $0005

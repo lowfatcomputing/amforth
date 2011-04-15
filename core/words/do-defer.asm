@@ -1,5 +1,5 @@
 ; ( i*x -- j*x )
-; R( -- )
+; System
 ; runtime of defer
 ;VE_DOEDEFER:
 ;    .dw $ff0a

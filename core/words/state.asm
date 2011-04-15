@@ -1,5 +1,5 @@
-; ( -- addr ) Compiler
-; R( -- )
+; ( -- addr ) 
+; System Variable
 ; system state
 VE_STATE:
     .dw $ff05

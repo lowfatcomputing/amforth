@@ -1,6 +1,6 @@
-; ( n1 n2 -- flag ) Compare
-; R( -- )
-; compares two values
+; ( n1 n2 -- flag ) 
+; Compare
+; compares two values for equality
 VE_EQUAL:
     .dw $ff01
     .db "=",0

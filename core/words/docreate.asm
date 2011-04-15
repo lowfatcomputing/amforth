@@ -1,5 +1,5 @@
-; ( --  )
-; R( -- )
+; ( --  ) (C: "<spaces>name" -- )
+; Compiler
 ; creates the vocabulary header without XT and data field (PF)
 ;VE_DOCREATE:
 ;    .dw $ff08

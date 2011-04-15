@@ -1,6 +1,6 @@
-; ( n1 -- flag ) Compare
-; R( -- )
-; compare with zero
+; ( n1 -- flag ) 
+; Compare
+; true if n1 is greater than 0
 VE_GREATERZERO:
     .dw $ff02
     .db "0>"

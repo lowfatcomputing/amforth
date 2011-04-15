@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( "ccc<paren>" -- ) 
+; Compiler
 ; skip everything up to the closing bracket on the same line
 VE_LPARENTHESIS:
     .dw $0001

@@ -1,5 +1,5 @@
-; ( -- ) System
-; R( -- )
+; ( -- ) 
+; System
 ; main loop of amforth. accept - interpret in an endless loop
 VE_QUIT:
     .dw $ff04

@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; ( -- ) 
+; Compiler
 ; compile  XT of the word beeing currently defined into dictionary
 VE_RECURSE:
     .dw $0007

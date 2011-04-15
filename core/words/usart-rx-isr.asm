@@ -1,5 +1,5 @@
-; ( -- c)  Hardware Access
-; R( --)
+; ( -- c)
+; MCU
 ; get 1 character from input queue, wait if needed
 VE_RX:
     .dw $ff02
@@ -29,8 +29,8 @@ PFA_RX:
   .dw XT_CFETCH
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f)  
+; MCU
 ; check if unread characters are in the input queue.
 VE_RXQ:
     .dw $ff03

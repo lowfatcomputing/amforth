@@ -1,5 +1,5 @@
-; (n1 n2 n3 -- n4) Arithmetics
-; R( -- )
+; (n1 n2 n3 -- n4) 
+; Arithmetics
 ; signed multiply and division with double precision intermediate
 VE_STARSLASH:
     .dw $ff02

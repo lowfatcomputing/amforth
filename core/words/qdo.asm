@@ -1,6 +1,6 @@
-; ( -- addr ) Compiler
-; R( -- loop-sys|)
-; start ?do .. [+]loop
+; ( n1|u1 n2|u2 -- ) R( -- | loop-sys ) (C: -- do-sys)
+; Compiler
+; start a ?do .. [+]loop control structure
 VE_QDO:
     .dw $0003
     .db "?do",0

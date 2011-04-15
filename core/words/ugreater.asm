@@ -1,6 +1,6 @@
-; ( u1 u2 -- flag ) Compare
-; R( -- )
-; compares u1 > u2 (unsigned)
+; ( u1 u2 -- flag ) 
+; Compare
+; true if u1 > u2 (unsigned)
 VE_UGREATER:
     .dw $ff02
     .db "u>"

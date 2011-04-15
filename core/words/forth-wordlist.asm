@@ -1,5 +1,5 @@
-; ( -- wid ) Search Order
-; R( -- )
+; ( -- wid ) 
+; Search Order
 ; get the system default word list
 VE_FORTH_WORDLIST:
     .dw $ff0e

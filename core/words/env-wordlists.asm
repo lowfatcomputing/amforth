@@ -1,5 +1,5 @@
-; ( -- n ) Environment
-; R( -- )
+; ( -- n ) 
+; Environment
 ; maximum number of wordlists in the dictionary search order
 VE_ENVWORDLISTS:
     .dw $ff09

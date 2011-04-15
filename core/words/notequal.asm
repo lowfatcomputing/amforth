@@ -1,6 +1,6 @@
-; ( n1 n2 -- flag) Compare
-; R( -- )
-; compare two values
+; ( n1 n2 -- flag) 
+; Compare
+; true if n1 is not equal to n2
 VE_NOTEQUAL:
     .dw $ff02
     .db "<>"

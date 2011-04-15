@@ -1,5 +1,5 @@
-; ( txbyte -- rxbyte) MCU
-; R( -- )
+; ( txbyte -- rxbyte) 
+; MCU
 ; SPI exchange of 1 byte
 VE_SPIRW:
     .dw $ff05

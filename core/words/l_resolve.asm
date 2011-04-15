@@ -1,5 +1,5 @@
-; ( addr -- ) Compiler
-; R( -- )
+; ( dest -- ) 
+; Compiler
 ; resolve backward branch
 ;VE_LRESOLVE:
 ;    .dw $ff08

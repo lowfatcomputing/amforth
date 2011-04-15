@@ -1,5 +1,5 @@
-; ( xt1 xt2 -- ) System
-; R( -- )
+; ( xt1 xt2 -- ) 
+; System
 ; stores xt1 as the xt to be executed when xt2 is called
 VE_DEFERSTORE:
     .dw $ff06

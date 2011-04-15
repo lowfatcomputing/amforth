@@ -1,5 +1,5 @@
-; ( d -- ud ) Arithmetics
-; R( -- )
+; ( d -- ud ) 
+; Arithmetics
 ; double cell absolute value
 VE_DABS:
     .dw $ff04

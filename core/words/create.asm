@@ -1,6 +1,6 @@
-; ( -- ) Dictionary
-; R( -- )
-; create a dictionary header. XT is (constant)
+; ( -- a-addr ) (C: "<spaces>name" -- )
+; Dictionary
+; create a dictionary header. XT is (constant), with the address of the data field of name
 VE_CREATE:
     .dw $ff06
     .db "create"

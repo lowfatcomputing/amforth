@@ -1,6 +1,6 @@
-; ( addr -- addr+1 n) String
-; R( -- )
-; addr is the address of a counted string in RAM
+; ( c-addr1 -- c-addr2 n) 
+; String
+; c-addr1 is the address of a counted string in RAM
 VE_COUNT:
     .dw $ff05
     .db "count",0

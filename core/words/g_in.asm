@@ -1,6 +1,6 @@
-; ( -- addr ) System
-; R( -- )
-; pointer to current read position in TIB
+; ( -- a-addr ) 
+; System Variable
+; pointer to current read position in input buffer
 VE_G_IN:
     .dw $ff03
     .db ">in",0

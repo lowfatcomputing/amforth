@@ -1,6 +1,6 @@
-; ( d1 d2 -- d3) Arithmetics
-; R( -- )
-; add double cell values
+; ( d1 d2 -- d3) 
+; Arithmetics
+; add 2 double cell values
 VE_DPLUS:
     .dw $ff02
     .db "d+"

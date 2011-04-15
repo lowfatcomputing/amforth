@@ -1,5 +1,5 @@
-; ( -- hldsize ) Environment
-; R( -- )
+; ( -- hldsize ) 
+; Environment
 ; size of the pictured numeric output buffer in bytes
 VE_ENVSLASHHOLD:
     .dw $ff05

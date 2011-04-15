@@ -1,5 +1,5 @@
-; ( d -- ) Stack
-; R( -- d)
+; ( x1 x2 -- ) (R: -- x1 x2)
+; Stack
 ; move DTOS to TOR
 VE_2TO_R:
     .dw $ff03

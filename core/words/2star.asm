@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
-; arithmetic shift left
+; ( n1 -- n2 ) 
+; Arithmetics
+; arithmetic shift left, filling with zero
 VE_2STAR:
     .dw $ff02
     .db "2*"

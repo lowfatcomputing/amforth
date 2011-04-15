@@ -1,5 +1,5 @@
-; ( n1 n2 -- n1|n2 ) Compare
-; R( -- )
+; ( n1 n2 -- n1|n2 ) 
+; Compare
 ; compare two values, leave the bigger one
 VE_MAX:
     .dw $ff03

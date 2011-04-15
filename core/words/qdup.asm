@@ -1,5 +1,5 @@
-; ( n1 -- [ n1 n1 ] | 0) Stack
-; R( -- )
+; ( n1 -- [ n1 n1 ] | 0) 
+; Stack
 ; duplicate TOS if non-zero
 VE_QDUP:
     .dw $ff04

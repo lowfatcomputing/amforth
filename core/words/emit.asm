@@ -1,5 +1,5 @@
-; ( c -- ) Character IO
-; R( -- )
+; ( c -- ) 
+; Character IO
 ; fetch the emit vector and execute it. should emit a character from TOS
 VE_EMIT:
     .dw $ff04

@@ -1,6 +1,6 @@
-; ( -- ) Compiler
-; R( -- )
-;
+; ( i*x -- j*y ) (R: nest-sys1 -- ) (C: colon-sys1 -- colon-sys2 )
+; Compiler
+; replace the runtime semantics
 VE_DOES:
     .dw $0005
     .db "does>",0
@@ -19,7 +19,7 @@ PFA_DOES:
     .dw XT_EXIT
 
 ; ( -- )
-;R( -- )
+; System
 ; runtime of does>
 ;VE_DODOES:
 ;   .dw $ff07

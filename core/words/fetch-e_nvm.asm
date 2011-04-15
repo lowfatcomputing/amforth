@@ -1,6 +1,6 @@
-; ( addr - n) Memory
-; R( -- )
-; read 1 cell from eeprom
+; ( e-addr - n) 
+; Memory
+; read 1 cell from eeprom using NVM
 VE_FETCHENVM:
     .dw $ff02
     .db "@e"

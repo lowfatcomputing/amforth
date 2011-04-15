@@ -1,5 +1,5 @@
-; ( loop-sys -- ) Compiler
-; R( -- )
+; (R: loop-sys -- ) (C: do-sys -- ) 
+; Compiler
 ; compile (loop) and resolve the backward branch
 VE_LOOP:
     .dw $0004

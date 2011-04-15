@@ -1,5 +1,5 @@
-; ( -- ) Search Order
-; R( -- )
+; ( -- ) 
+; Search Order
 ; replace the search order list with the system default list
 VE_FORTH:
     .dw $ff05

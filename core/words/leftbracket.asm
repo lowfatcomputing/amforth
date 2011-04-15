@@ -1,6 +1,6 @@
-; ( --  ) Compiler
-; R( -- )
-; put system to interpreter state
+; ( --  ) 
+; Compiler
+; enter interpretation state
 VE_LBRACKET:
     .dw $0001
     .db "[",0

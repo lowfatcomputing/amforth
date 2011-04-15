@@ -1,5 +1,5 @@
-; ( u1 u2 -- d) Arithmetics
-; R( -- )
+; ( u1 u2 -- d) 
+; Arithmetics
 ; multiply 2 unsigned cells to a double cell
 VE_UMSTAR:
     .dw $ff03

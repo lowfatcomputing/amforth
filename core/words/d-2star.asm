@@ -1,5 +1,5 @@
-; ( d1 -- d2 ) Arithmetics
-; R( -- )
+; ( d1 -- d2 ) 
+; Arithmetics
 ; shift a double cell left
 VE_D2STAR:
     .dw $ff03

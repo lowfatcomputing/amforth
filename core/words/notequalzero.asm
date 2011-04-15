@@ -1,6 +1,6 @@
-; ( n -- flag ) Compare
-; R( -- )
-; compare with zero
+; ( n -- flag ) 
+; Compare
+; true if n is not zero
 VE_NOTEQUALZERO:
     .dw $ff03
     .db "0<>",0

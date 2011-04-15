@@ -1,6 +1,6 @@
-; ( n1 n2 -- n1 n2 n1 ) Stack
-; R( -- )
-; stack manipulation
+; ( x1 x2 -- x1 x2 x1 ) 
+; Stack
+; Place a copy of x1 on top of the stack
 VE_OVER:
     .dw $ff04
     .db "over"

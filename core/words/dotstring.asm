@@ -1,6 +1,6 @@
-; ( -- ) Compiler
-; R( -- )
-; compiles string into dictionary to be typed at runtime
+; ( -- ) (C: "ccc<quote>" -- )
+; Compiler
+; compiles string into dictionary to be printed at runtime
 VE_DOTSTRING:
     .dw $0002
     .db ".",$22

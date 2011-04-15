@@ -1,6 +1,6 @@
-; ( -- n ) Stack
-; R( -- )
-; currently used data stack size in cells
+; ( -- n ) 
+; Stack
+; number of single-cell values contained in the data stack before n was placed on the stack.
 VE_DEPTH:
     .dw $ff05
     .db "depth",0

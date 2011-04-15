@@ -1,6 +1,6 @@
-; ( d1 d2 -- flag) Compare
-; R( -- )
-; compare two double cell values
+; ( d1 d2 -- flag) 
+; Compare
+; checks whether d1 is less than d2
 VE_DLESS:
     .dw $ff02
     .db "d<"

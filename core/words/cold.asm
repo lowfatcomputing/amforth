@@ -1,5 +1,5 @@
-; ( -- ) System
-; R( -- )
+; ( nx* -- ) (R: ny* -- )
+; System
 ; main entry word. executes turnkey operation and jumps to quit
 VE_COLD:
     .dw $ff04
@@ -14,7 +14,6 @@ PFA_COLD:
     .dw XT_DOLITERAL
     .dw XT_PAUSE
     .dw XT_DEFERSTORE
-    .dw XT_HEX
     .dw XT_TURNKEY
     .dw XT_QUIT
     .dw XT_EXIT

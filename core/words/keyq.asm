@@ -1,5 +1,5 @@
-; ( -- f) Character IO
-; R( -- )
+; ( -- f) 
+; Character IO
 ; fetch key? vector and execute it. should turn on key sender, if it is disabled/stopped
 VE_KEYQ:
     .dw $ff04

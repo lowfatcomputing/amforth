@@ -1,6 +1,6 @@
-; ( -- XT ) Dictionary
-; R( -- )
-; search dictionary, returns XT or throw an exception -13
+; ( "<spaces>name" -- XT ) 
+; Dictionary
+; search dictionary for name, returns XT or throw an exception -13
 VE_TICK:
     .dw $ff01
     .db $27,0

@@ -1,6 +1,6 @@
-; ( d -- ) Compiler
-; R( -- )
-; compile a double cell literal in colon defintions
+; ( -- x1 x2 ) (C: x1 x2 -- )
+; Compiler
+; compile a cell pair literal in colon defintions
 VE_2LITERAL:
     .dw $0008
     .db "2literal"

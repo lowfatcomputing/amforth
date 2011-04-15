@@ -1,5 +1,5 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
+; (S: n1 -- n2 )
+; Arithmetics
 ; optimized decrement (CORE)
 VE_1MINUS:
     .dw $ff02 

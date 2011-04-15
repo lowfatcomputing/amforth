@@ -1,5 +1,5 @@
 ; ( -- addr )
-; R( -- )
+; System
 ; runtime part of user
 ;VE_DOUSER:
 ;    .dw $ff06

@@ -1,6 +1,6 @@
-; ( -- ) Numeric IO
-; R( -- )
-; set base to 10 (decimal)
+; ( -- ) 
+; Numeric IO
+; set base for numeric conversion to 10
 VE_DECIMAL:
     .dw $ff07
     .db "decimal",0

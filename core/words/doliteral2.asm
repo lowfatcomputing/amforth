@@ -1,11 +1,11 @@
-; ( -- n1 )
-; R( -- )
+; ( -- x1 x2 )
+; System
 ; runtime of 2literal
-;VE_DOLITERAL:
-;    .dw $ff09
-;    .db "(literal)"
+;VE_DOLITERAL2:
+;    .dw $ff0a
+;    .db "(2literal)"
 ;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOLITERAL
+;    .set VE_HEAD = VE_DOLITERAL2
 XT_DOLITERAL2:
     .dw PFA_DOLITERAL2
 PFA_DOLITERAL2:

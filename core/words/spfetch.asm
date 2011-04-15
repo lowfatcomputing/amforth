@@ -1,5 +1,5 @@
-; (  -- n) Stackpointer
-; R( -- )
+; (  -- addr ) 
+; Stack
 ; current data stack pointer
 VE_SP_FETCH:
     .dw $ff03

@@ -1,6 +1,6 @@
-; ( -- ) Numeric IO
-; R( -- )
-; set base to 16 (decimal)
+; ( -- ) 
+; Numeric IO
+; set base for number conversion to 2
 VE_BIN:
     .dw $ff03
     .db "bin",0

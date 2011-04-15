@@ -1,6 +1,6 @@
-; ( -- c ) Tools
-; R( -- )
-; first character of the next word
+; ( -- c ) (C: "<space>name" -- )
+; Tools
+; skip leading space delimites, place the first character of the word on the stack
 VE_BRACKETCHAR:
     .dw $0006
     .db "[char]"

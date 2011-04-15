@@ -1,5 +1,5 @@
-; ( addr -- ) Compiler
-; R( -- )
+; ( -- ) (C: orig -- ) 
+; Compiler
 ; finish if
 VE_THEN:
     .dw $0004

@@ -1,5 +1,5 @@
-; ( d1 n -- rem ud2 ) Arithmetics
-; R( -- )
+; ( d1 n -- rem ud2 ) 
+; Arithmetics
 ; unsigned double cell division with remainder
 VE_UDSLASHMOD:
     .dw $ff06

@@ -1,5 +1,5 @@
-; ( n1 -- n2) Arithmetics
-; R( -- )
+; ( n1 -- n2) 
+; Arithmetics
 ; 1-complement of TOS
 VE_INVERT:
     .dw $ff06

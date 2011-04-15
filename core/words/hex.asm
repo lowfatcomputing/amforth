@@ -1,6 +1,6 @@
-; ( -- ) Numeric IO
-; R( -- )
-; set base to 16 (decimal)
+; ( -- )
+; Numeric IO
+; set base for number conversion to 16
 VE_HEX:
     .dw $ff03
     .db "hex",0

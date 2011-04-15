@@ -1,7 +1,7 @@
-; ( n1 n2 -- flag) Compare
-; R( -- )
-; compare two values
-VE_LESS:
+; ( n1 n2 -- flag) 
+; Compare
+; true if n1 is less than n2
+    VE_LESS:
     .dw $ff01
     .db "<",0
     .dw VE_HEAD

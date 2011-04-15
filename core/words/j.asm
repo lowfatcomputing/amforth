@@ -1,5 +1,5 @@
-; ( -- n ) Compiler
-; R( loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
+; ( -- n ) (R: loop-sys1 loop-sys2 -- loop-sys1 loop-sys2)
+; Compiler
 ; loop counter of outer loop
 VE_J:
     .dw $FF01

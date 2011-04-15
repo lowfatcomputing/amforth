@@ -1,5 +1,5 @@
-; ( n1 -- n2 ) Logic
-; R( -- )
+; ( n1 -- n2 ) 
+; Logic
 ; 2-complement
 VE_NEGATE:
     .dw $ff06

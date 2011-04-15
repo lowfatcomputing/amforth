@@ -1,5 +1,5 @@
-; ( n addr -- ) Memory
-; R( -- )
+; ( n f-addr -- ) 
+; Memory
 ; writes a cell in flash using NVM (atxmega)
 VE_DO_STOREI_NVM:
     .dw $ff04

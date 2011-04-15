@@ -1,5 +1,5 @@
-; (c -- ) Hardware Access
-; R( --)
+; (c -- )
+; MCU
 ; wait for the terminal becomes ready and put 1 character to it
 VE_TX:
     .dw $ff02
@@ -19,8 +19,8 @@ PFA_TX:
   .dw XT_CSTORE
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f)
+; MCU
 ; check if a character can be send
 VE_TXQ:
     .dw $ff03
@@ -41,8 +41,8 @@ PFA_TXQ:
   .dw XT_NOTEQUALZERO
   .dw XT_EXIT
 
-; ( -- ) Hardware Access
-; R( --)
+; ( -- )
+; MCU
 ; initialize usart
 ;VE_USART_INIT_TX:
 ;  .dw $ff06

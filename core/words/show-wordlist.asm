@@ -1,6 +1,6 @@
-; ( wid -- ) Tools
-; R( -- )
-; prints the names of the words in a wordlist
+; ( wid -- ) 
+; Tools
+; prints the name of the words in a wordlist
 VE_SHOWWORDLIST:
     .dw $ff0d
     .db "show-wordlist",0

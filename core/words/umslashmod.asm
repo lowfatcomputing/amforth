@@ -1,5 +1,5 @@
-; ( ud u2 -- rem quot) Arithmetics
-; R( -- )
+; ( ud u2 -- rem quot) 
+; Arithmetics
 ; unsigned division ud / u2 with remainder
 VE_UMSLASHMOD:
     .dw $ff06

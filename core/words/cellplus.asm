@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
-; add cell size (CORE)
+; ( a-addr1 -- a-addr2 ) 
+; Arithmetics
+; add the size of an address-unit to a-addr1
 VE_CELLPLUS:
     .dw $ff05
     .db "cell+",0

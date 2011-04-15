@@ -1,5 +1,5 @@
-; ( n1 -- u1 ) Arithmetics
-; R( -- )
+; ( n1 -- u1 ) 
+; Arithmetics
 ; get the absolute value
 VE_ABS:
     .dw $ff03

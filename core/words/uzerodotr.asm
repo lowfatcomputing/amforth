@@ -1,5 +1,5 @@
-; ( ud n -- ) Numeric IO
-; R( -- )
+; ( ud n -- ) 
+; Numeric IO
 ; Print n digits, fill in preceeding zeros if needed
 VE_UZERODOTR:
     .dw $ff04

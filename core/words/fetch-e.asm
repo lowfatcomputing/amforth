@@ -1,6 +1,6 @@
-; ( addr - n) Memory
-; R( -- )
-; read 2 bytes from eeprom
+; ( e-addr - n) 
+; Memory
+; read 1 cell from eeprom
 VE_FETCHE:
     .dw $ff02
     .db "@e"

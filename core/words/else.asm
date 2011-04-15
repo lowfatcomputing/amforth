@@ -1,6 +1,6 @@
-; ( addr1 -- addr2) Compiler
-; R( -- )
-; 
+; (C: orig1 -- orig2 ) 
+; Compiler
+; resolve the forware reference and place a new unresolved forward reference
 VE_ELSE:
     .dw $0004
     .db "else"

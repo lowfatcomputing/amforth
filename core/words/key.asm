@@ -1,5 +1,5 @@
-; ( -- c ) Character IO
-; R( -- )
+; ( -- c ) 
+; Character IO
 ; fetch key vector and execute it, should leave a single character on TOS
 VE_KEY:
     .dw $ff03

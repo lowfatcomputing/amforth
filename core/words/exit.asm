@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( xt -- )
+; ( -- ) (R: nest-sys -- )
+; Compiler
 ; end of current colon word
 VE_EXIT:
     .dw $ff04

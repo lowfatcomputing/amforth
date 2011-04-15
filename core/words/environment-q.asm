@@ -1,5 +1,5 @@
-; ( addr len -- [ 0 ] | [i*x -1 ) Tools
-; R( -- )
+; ( addr len -- 0 | i*x -1 ) 
+; Tools
 ; get environment information
 VE_ENVIRONMENTQ:
     .dw $FF0C

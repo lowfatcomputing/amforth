@@ -1,5 +1,5 @@
-; ( xt|0 -- ) System
-; R( -- )
+; ( xt|0 -- ) 
+; System
 ; execute XT if non-zero
 VE_QEXECUTE:
     .dw $ff08

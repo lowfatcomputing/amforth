@@ -1,5 +1,5 @@
-; ( c -- ) Numeric IO
-; R( -- )
+; ( c -- ) 
+; Numeric IO
 ; prepend character to pictured numeric output buffer
 VE_HOLD:
     .dw $ff04

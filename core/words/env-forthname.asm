@@ -1,5 +1,5 @@
-; ( -- faddr len ) Environment
-; R( -- )
+; ( -- faddr len ) 
+; Environment
 ; flash address of the amforth name string
 VE_ENV_FORTHNAME:
     .dw $ff0a

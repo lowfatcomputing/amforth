@@ -1,5 +1,5 @@
-; ( -- n ) Compiler
-; R( loop-sys -- loop-sys)
+; ( -- n ) (R: loop-sys -- loop-sys)
+; Compiler
 ; current loop counter
 VE_I:
     .dw $FF01

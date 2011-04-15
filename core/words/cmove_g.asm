@@ -1,6 +1,6 @@
-; (addr-from addr-to n -- ) Memory
-; R( -- )
-; copy data in RAM
+; (addr-from addr-to n -- ) 
+; Memory
+; copy data in RAM from higher to lower addresses.
 VE_CMOVE_G:
     .dw $ff06
     .db "cmove>"

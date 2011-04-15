@@ -1,5 +1,5 @@
-; ( n -- ) Exceptions
-; R( -- )
+; ( n -- ) 
+; Exceptions
 ; throw an exception
 VE_THROW:
     .dw $ff05

@@ -1,6 +1,6 @@
-; ( c base -- number flag ) Numeric IO
-; R( -- )
-; convert character to number, set flag if successful
+; ( c base -- number flag ) 
+; Numeric IO
+; tries to convert a character to a number, set flag accordingly
 VE_DIGITQ:
     .dw $ff06
     .db "digit?"

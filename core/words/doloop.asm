@@ -1,5 +1,5 @@
-; ( -- )
-; R( leave-addr limit counter -- leave-addr limit counter+1|)
+; ( -- ) (R: loop-sys1 -- loop-sys2| )
+; System
 ; runtime of loop
 ;VE_DOLOOP:
 ;    .dw $ff06

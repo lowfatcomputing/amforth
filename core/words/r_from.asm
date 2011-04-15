@@ -1,5 +1,5 @@
-; ( -- n ) Stack
-; R( n --)
+; ( -- n ) (R: n --)
+; Stack
 ; move TOR to TOS
 VE_R_FROM:
     .dw $ff02

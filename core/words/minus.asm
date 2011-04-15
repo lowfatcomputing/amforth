@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3 ) Arithmetics
-; R( -- )
-; subtract 
+; ( n1|u1 n2|u2 -- n3|u3 ) 
+; Arithmetics
+; subtract n2 from n1
 VE_MINUS:
     .dw $ff01
     .db "-",0

@@ -1,6 +1,6 @@
-; ( -- addr ) System Value
-; R( -- )
-; Address of the temporary scratch buffer. 
+; ( -- a-addr ) 
+; System Variable
+; Address of the temporary scratch buffer.
 VE_PAD:
     .dw $ff03
     .db "pad",0

@@ -1,5 +1,5 @@
-; ( -- ) Tools
-; R( -- )
+; ( -- ) 
+; Tools
 ; do nothing
 VE_NOOP:
     .dw $ff04

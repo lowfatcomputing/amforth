@@ -1,6 +1,6 @@
-; ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 ) Numeric IO
-; R( -- )
-; convert a string to a number 
+; ( ud1 c-addr1 u1 -- ud2 c-addr2 u2 ) 
+; Numeric IO
+; convert a string to a number  c-addr2/u2 is the unconverted string
 VE_TO_NUMBER:
     .dw $ff07
     .db ">number",0

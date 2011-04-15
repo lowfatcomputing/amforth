@@ -1,5 +1,5 @@
 ; ( f -- )
-; R( -- )
+; System
 ; runtime of ?branch
 ;VE_DOCONDBRANCH:
 ;    .dw $ff09

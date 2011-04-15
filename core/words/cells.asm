@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
-; cells (CORE)
+; ( n1 -- n2 ) 
+; Arithmetics
+; n2 is the size in address units of n1 cells
 VE_CELLS:
     .dw $ff05
     .db "cells",0

@@ -1,5 +1,5 @@
-; ( n1 n2 -- d) Arithmetics
-; R( -- )
+; ( n1 n2 -- d) 
+; Arithmetics
 ; multiply 2 cells to a double cell
 VE_MSTAR:
     .dw $ff02

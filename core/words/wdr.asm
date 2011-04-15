@@ -1,5 +1,5 @@
-; ( -- ) MCU
-; R( -- )
+; ( -- ) 
+; MCU
 ; calls the MCU watch dog reset instruction
 VE_WDR:
     .dw $ff03

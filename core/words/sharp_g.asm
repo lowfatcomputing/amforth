@@ -1,5 +1,5 @@
-; ( d1 -- addr count ) Numeric IO
-; R( -- )
+; ( d1 -- addr count ) 
+; Numeric IO
 ; Pictured Numeric Output: convert PNO buffer into an string
 VE_SHARP_G:
     .dw $ff02

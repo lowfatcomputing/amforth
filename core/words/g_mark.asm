@@ -1,5 +1,5 @@
-; ( -- addr ) Compiler
-; R( -- )
+; ( -- dest ) 
+; Compiler
 ; places current dictionary position for backward resolves
 ;VE_GMARK:
 ;    .dw $ff05

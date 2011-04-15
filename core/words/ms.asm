@@ -1,5 +1,5 @@
-; ( n -- ) Time
-; R( -- )
+; ( n -- ) 
+; Time
 ; busy waits the specified amount of milliseconds
 VE_MS:
     .dw $ff02

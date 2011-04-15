@@ -1,5 +1,5 @@
-; ( -- addr ) Compiler
-; R( -- )
+; ( -- dest ) 
+; Compiler
 ; place destination for backward branch
 ;VE_LMARK:
 ;    .dw $ff05

@@ -1,5 +1,5 @@
-; ( xt1 c<char> -- ) System
-; R( --)
+; ( xt1 c<char> -- ) 
+; System
 ; stores xt into defer or compiles code to do so at runtime
 VE_IS:
     .dw $0002

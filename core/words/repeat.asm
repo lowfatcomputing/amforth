@@ -1,6 +1,6 @@
-; (addr1 -- addr2 ) Compiler
-; R( -- )
-; go back to begin
+; ( --  ) (C: orig dest -- )
+; Compiler
+; continue execution at dest, resolve orig
 VE_REPEAT:
     .dw $0006
     .db "repeat"

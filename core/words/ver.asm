@@ -1,5 +1,5 @@
-; ( -- ) Tools
-; R( -- )
+; ( -- ) 
+; Tools
 ; print the version string
 VE_VER:
     .dw $ff03

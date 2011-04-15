@@ -1,5 +1,5 @@
-; ( d1 -- n1 ) Conversion
-; R( -- )
+; ( d1 -- n1 ) 
+; Conversion
 ; shrink double cell value to single cell. 
 VE_D2S:
     .dw $ff03

@@ -1,6 +1,6 @@
-; ( addr1 len1 addr2 -- ) String
-; R( -- )
-; copy string as counted string, does not check overflows
+; ( addr1 len1 addr2 -- ) 
+; String
+; copy string as counted string
 VE_PLACE:
     .dw $ff05
     .db "place",0

@@ -1,6 +1,6 @@
-; ( -- c ) Tools
-; R( -- )
-; copy the first character of the next word as TOS
+; ( "<spaces>name" -- c ) 
+; Tools
+; copy the first character of the next word onto the stack
 VE_CHAR:
     .dw $ff04
     .db "char"

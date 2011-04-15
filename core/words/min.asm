@@ -1,5 +1,5 @@
-; ( n1 n2 -- n1|n2 ) Compare
-; R( -- )
+; ( n1 n2 -- n1|n2 ) 
+; Compare
 ; compare two values leave the smaller one
 VE_MIN:
     .dw $ff03

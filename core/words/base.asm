@@ -1,6 +1,6 @@
-; ( -- addr ) Numeric IO
-; R( -- )
-; base fo numeric IO
+; ( -- a-addr ) 
+; Numeric IO
+; location of the cell containing the number conversion radix
 VE_BASE:
     .dw $ff04
     .db "base"

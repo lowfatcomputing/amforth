@@ -1,5 +1,5 @@
-; (c -- ) Hardware Access
-; R( --)
+; (c -- )
+; MCU
 ; wait for one character and read it from the terminal connection
 VE_RX:
     .dw $ff02
@@ -19,8 +19,8 @@ PFA_RX:
   .dw XT_CFETCH
   .dw XT_EXIT
 
-; ( -- f)  Hardware Access
-; R( --)
+; ( -- f)
+; MCU
 ; check if a character can be appended to output queue.
 VE_RXQ:
     .dw $ff03

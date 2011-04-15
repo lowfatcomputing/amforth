@@ -1,5 +1,5 @@
-; ( n addr -- ) Memory
-; R( -- )
+; ( n f-addr -- ) 
+; Memory
 ; writes a cell in flash using forth code
 VE_DO_STOREI_FORTH:
     .dw $ff04

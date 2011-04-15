@@ -1,6 +1,6 @@
-; ( d1 -- d2 ) Arithmetics
-; R( -- )
-; double cell negate
+; ( d1 -- d2 ) 
+; Arithmetics
+; double cell negation
 VE_DNEGATE:
     .dw $ff07
     .db "dnegate",0

@@ -1,5 +1,5 @@
-; ( -- n2 ) Extended VM
-; R( -- )
+; ( -- n2 ) 
+; Extended VM
 ; Read memory pointed to by register A (Extended VM)
 VE_AFETCH:
     .dw $ff02
@@ -15,8 +15,8 @@ PFA_AFETCH:
     ld tosh, Z+
     jmp_ DO_NEXT
 
-; ( n1 -- n2 ) Extended VM
-; R( -- )
+; ( n1 -- n2 )
+; Extended VM
 ; Read memory pointed to by register A plus offset (Extended VM)
 VE_NAFETCH:
     .dw $ff03
@@ -33,8 +33,8 @@ PFA_NAFETCH:
     ld tosh, Z+
     jmp_ DO_NEXT
 
-; ( -- n ) Extended VM
-; R( -- )
+; ( -- n ) 
+; Extended VM
 ; Read memory pointed to by register A, increment A by 1 cell (Extended VM)
 VE_AFETCHPLUS:
     .dw $ff03
@@ -51,8 +51,8 @@ PFA_AFETCHPLUS:
     movw al, zl
     jmp_ DO_NEXT
 
-; ( -- n ) Extended VM
-; R( -- )
+; ( -- n )
+; Extended VM
 ; Read memory pointed to by register A, decrement A by 1 cell (Extended VM)
 VE_AFETCHMINUS:
     .dw $ff03
@@ -69,8 +69,8 @@ PFA_AFETCHMINUS:
     movw al, zl
     jmp_ DO_NEXT
 
-; ( n -- ) Extended VM
-; R( -- )
+; ( n -- )
+; Extended VM
 ; Write memory pointed to by register A (Extended VM)
 VE_ASTORE:
     .dw $ff02
@@ -86,8 +86,8 @@ PFA_ASTORE:
     loadtos
     jmp_ DO_NEXT
 
-; ( n offs -- ) Extended VM
-; R( -- )
+; ( n offs -- )
+; Extended VM
 ; Write memory pointed to by register A plus offset (Extended VM)
 VE_NASTORE:
     .dw $ff03
@@ -106,8 +106,8 @@ PFA_NASTORE:
     loadtos
     jmp_ DO_NEXT
 
-; ( -- n2 ) Extended VM
-; R( -- )
+; ( -- n2 )
+; Extended VM
 ; Write memory pointed to by register A, increment A by 1 cell (Extended VM)
 VE_ASTOREPLUS:
     .dw $ff03
@@ -124,8 +124,8 @@ PFA_ASTOREPLUS:
     movw al, zl
     jmp_ DO_NEXT
 
-; ( -- n2 ) Extended VM
-; R( -- )
+; ( -- n2 )
+; Extended VM
 ; Write memory pointed to by register A, decrement A by 1 cell (Extended VM)
 VE_ASTOREMINUS:
     .dw $ff03
@@ -144,8 +144,8 @@ PFA_ASTOREMINUS:
 
 
 
-; ( n -- ) Extended VM
-; R( -- )
+; ( n -- )
+; Extended VM
 ; Write to A register (Extended VM)
 VE_TO_A:
     .dw $ff02
@@ -159,8 +159,8 @@ PFA_TO_A:
     loadtos
     jmp_ DO_NEXT
 
-; ( n1 -- n2 ) Extended VM
-; R( -- )
+; ( n1 -- n2 ) 
+; Extended VM
 ; read the A register (Extended VM)
 VE_A_FROM:
     .dw $ff02

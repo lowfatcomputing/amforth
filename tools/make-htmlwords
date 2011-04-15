@@ -19,7 +19,7 @@ sub readASM {
     my @ASM = <ASM>;
     close(ASM);
     my $ASM = "";
-    my ($lbl, $state, $voc, $xt, $stack, $dstack, $rstack, $category);
+    my ($lbl, $state, $voc, $xt, $stack, $dstack, $rstack, $cstack,$category);
     my ($prevline1, $prevline2, $prevline3, $description) = ("","","", "");
     foreach my $line (@ASM) {
 	$line =~ s/_VE_HEAD/VE_HEAD/;
@@ -30,16 +30,17 @@ sub readASM {
 	    $state = "new_header_found";
 	    $voc   = "(unnamed)";
 	    $category = "unclassified";
-	    $dstack = $prevline3;
-	    $dstack = "( $1 )" if $dstack=~/\((.+)\)/;
-	    $rstack = $prevline2;
-	    $rstack = "R( $1 )" if $rstack=~/\((.+)\)/;
-            $description = "$1" if $prevline1=~/^;(.*)/;
-	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
-	        $category = $2;
-		$dstack   = "( $1 )";
+	    $dstack = "( -- )";
+	    $dstack = "($1)" if $prevline3=~/\([S]?:?([^\)]+)/;
+	    $rstack = "";
+	    $rstack = "(R: $1)" if $prevline3=~/R:\s+(.+)\)/;
+	    $cstack = "";
+	    $cstack = "(C: $1)" if $prevline3=~/C:\s+(.+)\)/;
+            $description = $1 if $prevline1=~/^;(.*)/;
+	    if( $prevline2=~/;(.+)$/) {
+	        $category = $1;
 	    }
-	    $stack = "$dstack\n$rstack";
+	    $stack = "$dstack\n$rstack\n$cstack";
 	}
 	if($line=~/^;VE_(.*):/) {
 	    # start a new definition
@@ -47,17 +48,18 @@ sub readASM {
 	    $lbl = "XT_$1";
 	    $state = "new_header_found";
 	    $voc   = "(hidden)";
-	    $dstack = $prevline3;
-	    $dstack = "( $1 )" if $dstack=~/\((.+)\)/;
-	    $rstack = $prevline2;
-	    $rstack = "R( $1 )" if $rstack=~/\((.+)\)/;
-	    if( $prevline3=~/; \((.+)\)\s+(.+)$/) {
-	        $category = $2;
-		$dstack   = "( $1 )";
+	    $dstack = "( -- )";
+	    $dstack = "($1)" if $prevline3=~/\([S]?:?([^\)]+)/;
+	    $rstack = "";
+	    $rstack = "(R: $1)" if $prevline3=~/R:\s+(.+)\)/;
+	    $cstack = "";
+	    $cstack = "(C: $1)" if $prevline3=~/C:\s+(.+)\)/;
+            $description = $1 if $prevline1=~/^;(.*)/;
+	    if( $prevline2=~/;(.+)$/) {
+	        $category = $1;
 	    }
-            $description = "$1" if $prevline1=~/^;(.*)/;
 	    $category = "internal/hidden";
-	    $stack = "$dstack\n$rstack";
+	    $stack = "$dstack\n$rstack\n$cstack";
 	    next;
 	}
 	if($state =~ /new_header_found/ && $line=~/.db\s*"(.*)"/) {
@@ -158,7 +160,18 @@ sub html_head {
 <!--[if lte IE 7]>
 <link href=\"/css/patches/patch_3col_fixed_seo.css\" rel=\"stylesheet\" type=\"text/css\" />
 <![endif]-->
-
+<!-- Piwik -->
+<script type=\"text/javascript\">
+var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://sourceforge.net/apps/piwik/amforth/\" : \"http://sourceforge.net/apps/piwik/amforth/\");
+document.write(unescape(\"%3Cscript src='\" + pkBaseURL + \"piwik.js' type='text/javascript'%3E%3C/script%3E\"));
+</script><script type=\"text/javascript\">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + \"piwik.php\", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src=\"http://sourceforge.net/apps/piwik/amforth/piwik.php?idsite=1\" style=\"border:0\" alt=\"\"/></p></noscript>
+<!-- End Piwik Tag -->
 </head>
 <body>
 
@@ -261,10 +274,10 @@ sub printHTML {
 	print HTML "<h1>$voc</h1>\n";
         print HTML "<p>$DESCRIPTION{$lbl}</p>\n";
 	print HTML "<h2>Stackeffects</h2>\n";
-	my @s = split /\n/, $STACK{$lbl};
-	$s[0] =~ s/;//g; $s[0]=~ s/</&lt;/g;
-	$s[1] =~ s/;//g; $s[1]=~ s/</&lt;/g;
-	print HTML "$s[0]\n<br>$s[1]";
+	foreach my $s (split /\n/, $STACK{$lbl}) {
+	    $s =~ s/;//g; $s=~ s/</&lt;/g;
+	    print HTML "$s\n<br>" unless $s=~/ \s*$/;
+	}
 	print HTML "<h2>Definition</h2>\n";
 	if($xt=~/PFA_$shortlbl/) {
 	    print HTML "coded in assembler";

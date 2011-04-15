@@ -1,6 +1,6 @@
-; ( n1 n2 -- rem quot) Arithmetics
-; R( -- )
-; signed division n1/n2 with remainder
+; ( n1 n2 -- rem quot) 
+; Arithmetics
+; signed division n1/n2 with remainder and quotient
 VE_SLASHMOD:
     .dw $ff04
     .db "/mod"

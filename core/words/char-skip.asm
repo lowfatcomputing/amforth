@@ -1,5 +1,5 @@
-; ( addr1 n1 c -- addr2 n2 ) String
-; R( -- )
+; ( addr1 n1 c -- addr2 n2 ) 
+; String
 ; skips leading occurancies in string at addr1/n1 leaving addr2/n2 pointing to the 1st non-c character
 VE_CSKIP:
     .dw $ff05

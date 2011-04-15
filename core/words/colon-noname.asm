@@ -1,5 +1,5 @@
-; ( -- xt ) Compiler
-; R( -- )
+; ( -- xt ) (R: -- nest-sys) (C: -- colon-sys )
+; Compiler
 ; create unnamed entry in the dictionary, XT is COLON
 VE_COLONNONAME:
     .dw $ff07
@@ -15,7 +15,6 @@ PFA_COLONNONAME:
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE
     .dw XT_STORE
-
     
     .dw XT_DP
     .dw XT_DUP

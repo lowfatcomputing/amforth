@@ -1,5 +1,5 @@
-; ( d1 -- d2) Numeric IO
-; R( -- )
+; ( d1 -- d2 ) 
+; Numeric IO
 ; pictured numeric output: convert one digit
 VE_SHARP:
     .dw $ff01

@@ -1,6 +1,6 @@
-; ( addr -- ) Compiler
-; R( loop-sys -- loop-sys )
-; compile (+loop) and resolve branch
+; ( n -- ) (R: loop-sys -- loop-sys| ) (C: do-sys -- )
+; Compiler
+; compile (+loop) and resolve branches
 VE_PLUSLOOP:
     .dw $0005
     .db "+loop",0

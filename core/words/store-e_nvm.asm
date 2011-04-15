@@ -1,5 +1,5 @@
-; ( n addr -- ) Memory
-; R( -- )
+; ( n e-addr -- ) 
+; Memory
 ; write to eeprom address using nvm (atxmega)
 VE_STOREENVM:
     .dw $ff02

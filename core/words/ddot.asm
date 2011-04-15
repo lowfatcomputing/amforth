@@ -1,5 +1,5 @@
-; ( d1 -- ) Numeric IO
-; R( -- )
+; ( d1 -- ) 
+; Numeric IO
 ; double cell output
 VE_DDOT:
     .dw $ff02

@@ -1,5 +1,5 @@
-; ( -- addr ) Compiler
-; R( -- )
+; ( f -- ) (C: -- orig )
+; Compiler
 ; start conditional branch
 VE_IF:
     .dw $0002

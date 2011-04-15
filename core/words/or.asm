@@ -1,5 +1,5 @@
-; ( n1 n2 -- n3 ) Logic
-; R( -- )
+; ( n1 n2 -- n3 ) 
+; Logic
 ; logical or
 VE_OR:
     .dw $ff02

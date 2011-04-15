@@ -1,6 +1,6 @@
-; ( -- widn .. wid0 n) Search Order
-; R( -- )
-; Get the current search order list
+; ( -- widn .. wid0 n) 
+; Tools
+; Get the current recognizer list
 VE_GET_RECOGNIZER:
     .dw $ff0e
     .db "get-recognizer"

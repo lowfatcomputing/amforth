@@ -1,5 +1,5 @@
-; ( -- ) System
-; R(i*x - j*x )
+; ( -- ) (R: i*x - j*x )
+; System
 ; interpret input word by word. may throw exceptions
 VE_INTERPRET:
     .dw $ff09

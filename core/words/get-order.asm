@@ -1,6 +1,6 @@
-; ( -- widn .. wid0 n) Search Order
-; R( -- )
-; Get the current search order list
+; ( -- widn .. wid0 n) 
+; Search Order
+; Get the current search order word list
 VE_GET_ORDER:
     .dw $ff09
     .db "get-order",0

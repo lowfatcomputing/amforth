@@ -1,6 +1,6 @@
-; ( d1 d2 -- d3 ) Arithmetics
-; R( -- )
-; subtract double cell values
+; ( d1 d2 -- d3 ) 
+; Arithmetics
+; subtract d2 from d1 
 VE_DMINUS:
     .dw $ff02
     .db "d-"

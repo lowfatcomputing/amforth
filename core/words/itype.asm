@@ -1,5 +1,5 @@
-; ( addr n --  ) Tools
-; R( -- )
+; ( addr n --  ) 
+; Tools
 ; reads string from flash and prints it
 VE_ITYPE:
     .dw $ff05

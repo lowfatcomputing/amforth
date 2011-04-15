@@ -1,6 +1,6 @@
-; ( n -- ) System
-; R( -- )
-; allocate memory in RAM
+; ( n -- ) 
+; System
+; allocate or release memory in RAM
 VE_ALLOT:
     .dw $ff05
     .db "allot",0

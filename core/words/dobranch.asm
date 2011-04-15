@@ -1,5 +1,5 @@
 ; ( -- ) 
-; R( -- )
+; System
 ; runtime of branch
 ;VE_DOBRANCH:
 ;    .dw $ff08

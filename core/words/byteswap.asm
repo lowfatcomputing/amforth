@@ -1,6 +1,6 @@
-; ( n1 -- n2 ) Arithmetics
-; R( -- )
-; swap the bytes of the TOS
+; ( n1 -- n2 ) 
+; Arithmetics
+; exchange the bytes of the TOS
 VE_BYTESWAP:
     .dw $ff02
     .db "><"

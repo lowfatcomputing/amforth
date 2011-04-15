@@ -1,6 +1,6 @@
-; ( d1 -- d2) Arithmetics
-; R( -- )
-; flip all bits in the double cell value
+; ( d1 -- d2) 
+; Arithmetics
+; invert all bits in the double cell value
 VE_DINVERT:
     .dw $ff07
     .db "dinvert",0

@@ -1,5 +1,5 @@
 ; ( -- n1 )
-; R( -- )
+; System
 ; runtime of literal
 ;VE_DOLITERAL:
 ;    .dw $ff09

@@ -1,6 +1,6 @@
-; ( n1 n2 -- n3) Arithmetics
-; R( -- )
-; addition
+; ( n1 n2 -- n3) 
+; Arithmetics
+; add n1 and n2
 VE_PLUS:
     .dw $ff01
     .db "+",0

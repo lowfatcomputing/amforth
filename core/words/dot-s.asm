@@ -1,5 +1,5 @@
-; ( -- ) Tools
-; R( -- )
+; ( -- ) 
+; Tools
 ; stack dump
 VE_DOTS:
     .dw $ff02

@@ -1,5 +1,5 @@
-; ( -- faddr len ) Environment
-; R( -- )
+; ( -- faddr len ) 
+; Environment
 ; flash address of the amforth version string
 VE_ENV_FORTHVERSION:
     .dw $ff07

@@ -1,6 +1,6 @@
-; ( -- -1 ) Arithmetics
-; R( -- )
-; leaves the value -1 on TOS
+; ( -- -1 ) 
+; Arithmetics
+; leaves the value -1 (true) on TOS
 VE_TRUE:
     .dw $ff04
     .db "true"

@@ -1,5 +1,5 @@
-; ( -- ) Time
-; R(--)
+; ( -- )
+; Time
 ; busy waits (almost) exactly 1 millisecond
 VE_1MS:
     .dw $ff03

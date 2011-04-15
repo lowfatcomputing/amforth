@@ -1,5 +1,5 @@
-; ( -- n) Stack
-; R( n -- n )
+; ( -- n) (R: n -- n )
+; Stack
 ; fetch content of TOR
 VE_R_FETCH:
     .dw $ff02

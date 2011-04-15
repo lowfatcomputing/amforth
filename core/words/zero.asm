@@ -1,5 +1,5 @@
-; ( -- 0 ) Arithmetics
-; R( -- )
+; ( -- 0 ) 
+; Arithmetics
 ; place a value 0 on TOS
 VE_ZERO:
     .dw $ff01

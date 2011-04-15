@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( loop-sys -- )
+; ( -- ) (R: loop-sys -- )
+; Compiler
 ; immediatly leave the current DO..LOOP
 VE_LEAVE:
    .dw $FF05

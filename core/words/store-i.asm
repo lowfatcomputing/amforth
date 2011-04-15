@@ -1,5 +1,5 @@
-; ( n addr -- ) System Value
-; R( -- )
+; ( n addr -- ) 
+; Memory
 ; Deferred action for flash write of a single cell
 VE_STOREI:
     .dw $ff02

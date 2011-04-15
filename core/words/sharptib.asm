@@ -1,5 +1,5 @@
-; ( -- addr ) System
-; R( -- )
+; ( -- addr ) 
+; System Variable
 ; address of variable holding the number of characters in TIB
 VE_NUMBERTIB:
     .dw $ff04

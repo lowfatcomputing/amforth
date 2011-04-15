@@ -1,6 +1,6 @@
-; ( -- ) Numeric IO
-; R( -- )
-; emties counted string at address from hld
+; ( -- ) 
+; Numeric IO
+; initialize the pictured numeric output conversion process
 VE_L_SHARP:
     .dw $ff02
     .db "<#"

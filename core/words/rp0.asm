@@ -1,6 +1,6 @@
-; ( -- addr) Stackpointer
-; R( -- )
-; starting address of return stack
+; ( -- addr) 
+; Stack
+; start address of return stack
 VE_RP0:
     .dw $ff03
     .db "rp0",0
@@ -13,6 +13,9 @@ PFA_RP0:
     .dw XT_FETCH
     .dw XT_EXIT
 
+; ( -- addr) 
+; Stack
+; user variable of the address of the initial return stack
 ;VE_DORP0:
 ;    .dw $ff05
 ;    .db "(rp0)"

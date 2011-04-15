@@ -1,5 +1,5 @@
-; ( n -- ) Numeric IO
-; R( -- )
+; ( n -- ) 
+; Numeric IO
 ; single cell numeric output
 VE_DOT:
     .dw $ff01

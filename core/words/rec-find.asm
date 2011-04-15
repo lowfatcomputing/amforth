@@ -1,5 +1,5 @@
-; ( addr -- f ) System
-; R( -- )
+; ( addr -- f ) 
+; System
 ; recognizer for find
 ;VE_REC_FIND:
 ;    .dw $ff07

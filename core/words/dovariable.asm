@@ -1,5 +1,5 @@
 ; ( -- addr )
-; R( -- )
+; System
 ; puts content of parameter field (1 cell) to TOS
 ;VE_DOVARIABLE:
 ;    .dw $ff0a

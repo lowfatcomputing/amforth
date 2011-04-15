@@ -1,5 +1,5 @@
-; ( addr1 n1 c -- addr1 n2 ) String
-; R( -- )
+; ( addr1 n1 c -- addr1 n2 ) 
+; String
 ; Scan string at addr1/n1 for the first c, leaving addr1/n2, char at n2 is first non-c character
 VE_CSCAN:
     .dw $ff05

@@ -1,5 +1,5 @@
-; ( -- ) Character IO
-; R( -- )
+; ( -- ) 
+; Character IO
 ; emits a space (bl)
 VE_SPACE:
     .dw $ff05

@@ -1,5 +1,5 @@
-; (  -- n) Stackpointer
-; R( -- )
+; (  -- n) 
+; Stack
 ; current return stack pointer address
 VE_RP_FETCH:
     .dw $ff03

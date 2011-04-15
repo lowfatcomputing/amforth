@@ -1,5 +1,5 @@
-; ( -- faddr len ) Environment
-; R( -- )
+; ( -- faddr len ) 
+; Environment
 ; flash address of the CPU identification string
 VE_ENV_CPU:
     .dw $ff03

@@ -1,5 +1,5 @@
-; ( -- ) MCU
-; R( -- )
+; ( -- ) 
+; MCU
 ; disable jtag at runtime
 VE_NOJTAG:
     .dw $FF05

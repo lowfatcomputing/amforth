@@ -1,5 +1,5 @@
-; ( -- addr ) System Value
-; R( -- )
+; ( -- addr ) 
+; System Variable
 ; terminal input buffer address
 VE_TIB:
     .dw $ff03

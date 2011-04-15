@@ -1,6 +1,6 @@
-; ( n*x -- ) Exceptions
-; R( n*y -- )
-; check flag. If true emit some text and throw  exception -2 
+; ( i*x x1 -- | i*x ) (R: j*y -- | j*y ) (C: "ccc<quote>" -- )
+; Exceptions
+; check flag. If true display the parsed text and throw exception -2 
 VE_ABORTSTRING:
     .dw $0006
     .db "abort", $22

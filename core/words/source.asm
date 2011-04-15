@@ -1,5 +1,5 @@
-; ( -- addr n ) System
-; R( -- )
+; ( -- addr n ) 
+; System
 ; address and current length of the input buffer
 VE_SOURCE:
     .dw $FF06

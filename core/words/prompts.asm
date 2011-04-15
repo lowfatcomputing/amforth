@@ -1,5 +1,5 @@
-; ( -- ) System
-; R( -- )
+; ( -- )
+; System
 ; send the READY prompt to the command line
 ;VE_PROMPTRDY:
 ;    .dw $ff04
@@ -16,8 +16,8 @@ PFA_PROMPTRDY:
     .dw XT_ITYPE
     .dw XT_EXIT
 
-; ( -- ) System
-; R( -- )
+; ( -- )
+; System
 ; send the OK prompt to the command line
 ;VE_PROMPTOK:
 ;    .dw $ff04
@@ -33,8 +33,8 @@ PFA_PROMPTOK:
     .dw XT_ITYPE
     .dw XT_EXIT
 
-; ( n -- ) System
-; R( -- )
+; ( n -- ) 
+; System
 ; process the error prompt
 ;VE_PROMPTERROR:
 ;    .dw $ff04

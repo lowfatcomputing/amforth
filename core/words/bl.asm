@@ -1,5 +1,5 @@
-; ( -- 32 ) Character IO
-; R( -- )
+; ( -- 32 ) 
+; Character IO
 ; put ascii code of the blank to the stack
 VE_BL:
     .dw $ff02

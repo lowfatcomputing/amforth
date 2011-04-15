@@ -1,5 +1,5 @@
-; ( -- ) Compiler
-; R( -- )
+; (R: -- nest-sys ) (C: "<spaces>name" -- colon-sys )
+; Compiler
 ; create named entry in the dictionary, XT is COLON
 VE_COLON:
     .dw $ff01

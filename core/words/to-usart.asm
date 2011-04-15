@@ -1,5 +1,5 @@
-; ( -- ) Hardware Access
-; R( --)
+; ( -- ) 
+; MCU
 ; initialize the user area to use the system terminal for IO
 VE_TOUSART:
   .dw $ff06

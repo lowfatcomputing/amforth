@@ -1,5 +1,5 @@
-; ( n addr -- ) Memory
-; R( -- )
+; ( n e-addr -- ) 
+; Memory
 ; write to eeprom address
 VE_STOREE:
     .dw $ff02

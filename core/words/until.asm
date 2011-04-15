@@ -1,5 +1,5 @@
-; ( addr -- ) Compiler
-; R( -- )
+; ( f -- ) (C: dest -- ) 
+; Compiler
 ; finish begin with conditional branch, leaves the loop if true flag at runtime
 VE_UNTIL:
     .dw $0005

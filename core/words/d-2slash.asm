@@ -1,5 +1,5 @@
-; ( d1 -- d2 ) Arithmetics
-; R( -- )
+; ( d1 -- d2 ) 
+; Arithmetics
 ; shift a double cell value right
 VE_D2SLASH:
     .dw $ff03

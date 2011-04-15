@@ -1,6 +1,6 @@
-; ( addr - c1 ) Memory
-; R( -- )
-; fetch a single byte from RAM (or IO or CPU register)
+; ( a-addr - c1 ) 
+; Memory
+; fetch a single byte from memory mapped locations
 VE_CFETCH:
     .dw $ff02
     .db "c@"

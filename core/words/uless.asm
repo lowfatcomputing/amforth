@@ -1,6 +1,6 @@
-; ( u1 u2 -- flasg) Compare
-; R( -- )
-; compare values u1 < u2 (unsigned)
+; ( u1 u2 -- flasg) 
+; Compare
+; true if u1 < u2 (unsigned)
 VE_ULESS:
     .dw $ff02
     .db "u<"

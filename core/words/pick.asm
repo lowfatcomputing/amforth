@@ -1,6 +1,6 @@
-; ( xu ... x1 x0 u -- xu ... x1 x0 xu ) Stack
-; R( -- )
-; from core extension ( n1 n2 -- n1 n2 n1 ) Stack  0 pick=dup   1 pick = over ... 
+; ( xu ... x1 x0 u -- xu ... x1 x0 xu ) 
+; Stack
+; access the stack as an array and fetch the u-th element as new TOS
 VE_PICK:
     .dw $ff04
     .db "pick"

@@ -1,5 +1,5 @@
-; ( n  -- ) Stackpointer
-; R( -- xy) 
+; ( addr  -- ) (R: -- x*y)
+; Stack
 ; set return stack pointer
 VE_RP_STORE:
     .dw $ff03

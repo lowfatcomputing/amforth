@@ -1,6 +1,6 @@
-; ( -- ) Search Order
-; R( -- )
-; further words will be part of the first word list entry in the search list
+; ( -- ) 
+; Search Order
+; Make the compilation word list the same as the current first word list in the search order.
 VE_DEFINITIONS:
     .dw $ff0b
     .db "definitions",0

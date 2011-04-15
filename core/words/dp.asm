@@ -1,5 +1,5 @@
-; ( -- faddr ) System Value
-; R( -- )
+; ( -- f-addr ) 
+; System Value
 ; address of the next free dictionary cell
 VE_DP:
     .dw $ff02
