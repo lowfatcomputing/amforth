@@ -38,6 +38,7 @@ a constant hd44780-short-delay
     hd44780-rs low
 ;
 
+
 : hd44780-read-mode
     0 hd44780-data 1- c! \ input
     hd44780-rw high
@@ -85,6 +86,27 @@ a constant hd44780-short-delay
     hd44780-rw pin_output
     hd44780-en pin_output
     hd44780-rs pin_output
+;
+\ from tracker: hd44780.frt - added LCD initialization - ID: 2785157
+: hd44780-cmd-no-wait ( n -- )
+  hd44780-write-mode
+  hd44780-command-mode
+  hd44780-data c!
+  hd44780-pulse-en
+;
+
+: hd44780-start
+  hd44780-init
+  15 ms
+  30 hd44780-cmd-no-wait
+  4 ms
+  30 hd44780-cmd-no-wait
+  1 ms
+  30 hd44780-cmd-no-wait
+  38 hd44780-command
+  6 hd44780-command
+  c hd44780-command
+  1 hd44780-command
 ;
 
 
