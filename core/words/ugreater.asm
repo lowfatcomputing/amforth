@@ -15,4 +15,4 @@ PFA_UGREATER:
     cpc temp3, tosh
     brlo PFA_ZERO1
     brbs 1, PFA_ZERO1
-    rjmp PFA_TRUE
+    rjmp PFA_TRUE1
