@@ -17,9 +17,6 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-.include "words/int-store.asm"
-.include "words/int-fetch.asm"
-
 .include "words/d-invert.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"

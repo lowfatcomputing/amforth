@@ -1,8 +1,8 @@
 .include "dict_core.inc"
-.include "words/estore.asm"
-.include "words/efetch.asm"
+.include "dict_interrupt.inc"
 
-.include "words/istore.asm"
-.include "words/istore_nrww.asm"
-
-.include "words/ifetch.asm"
+.include "words/store-e.asm"
+.include "words/fetch-e.asm"
+.include "words/store-i.asm"
+.include "words/store-i_nrww.asm"
+.include "words/fetch-i.asm"

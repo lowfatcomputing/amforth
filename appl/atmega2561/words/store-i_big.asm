@@ -1,14 +1,14 @@
 ; ( n addr -- ) Memory
 ; R( -- )
 ; writes a cell in flash
-VE_DO_ISTORE:
+VE_DO_STOREI:
     .dw $ff04
     .db "(i!)"
     .dw VE_HEAD
-    .set VE_HEAD = VE_DO_ISTORE
-XT_DO_ISTORE:
-    .dw PFA_DO_ISTORE
-PFA_DO_ISTORE:
+    .set VE_HEAD = VE_DO_STOREI
+XT_DO_STOREI:
+    .dw PFA_DO_STOREI
+PFA_DO_STOREI:
   movw temp2, tosl ; save the (word) address
   loadtos          ; get the new value for the flash cell
   push xl

@@ -19,7 +19,6 @@
 .include "words/is.asm"
 
 .include "words/applturnkey.asm"
-.include "words/int-store.asm"
 .include "words/1ms.asm"
 .include "words/ms.asm"
 

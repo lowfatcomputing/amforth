@@ -24,9 +24,6 @@
 .include "words/is.asm"
 
 .include "words/applturnkey.asm"
-.include "words/int-store.asm"
-.include "words/int-fetch.asm"
-
 .include "words/fill.asm"
 
 .include "words/show-wordlist.asm"

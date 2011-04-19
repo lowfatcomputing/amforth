@@ -1,4 +1,5 @@
 .include "dict_core.inc"
+.include "dict_interrupt.inc"
 
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
@@ -21,8 +22,6 @@
 .include "words/usartx.asm"
 
 .include "words/applturnkey.asm"
-.include "words/int-store.asm"
-.include "words/int-fetch.asm"
 
 .include "words/fill.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;

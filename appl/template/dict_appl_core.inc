@@ -1,4 +1,6 @@
 .include "dict_core.inc"
+.include "dict_interrupt.inc"
+
 .include "words/store-e.asm"
 .include "words/fetch-e.asm"
 

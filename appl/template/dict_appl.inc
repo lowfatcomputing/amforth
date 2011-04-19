@@ -1,6 +1,9 @@
 ; this dictionary contains optional words
 ; they may be moved to the core dictionary if needed
 .include "dict_minimum.inc"
+.include "dict_compiler.inc"
+.include "dict_usart.inc"
+
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
@@ -17,10 +20,6 @@
 .include "words/rdefer.asm"
 .include "words/is.asm"
 
-.include "words/int-store.asm"
-
-.include "dict_compiler.inc"
-.include "dict_usart.inc"
 .include "words/show-wordlist.asm"
 
 ; include some controller specific definitions
