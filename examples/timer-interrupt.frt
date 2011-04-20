@@ -16,10 +16,6 @@ $12 constant TIMER0_OVFAddr
 \  16MHz F_CPU -> 64 ticks/sec
 \   8MHz F_CPU -> 32 ticks/sec
 \
-: timer-init
-  5 TCCR0 c! \ prescaler 1024, check data sheet
-;
-
 
 variable tick
 
@@ -29,10 +25,14 @@ variable tick
    1 tick +!
 ;
 
+: timer-init
+  5 TCCR0 c! \ prescaler 1024, check data sheet
+  ['] timer-int-isr TIMER0_OVFAddr int!
+  0 tick !
+;
+
 \ turn on the timer, needs timer-init already in place
 : +timer
-  0 tick !
-  ['] timer-int-isr TIMER0_OVFAddr int!
   1 TIMSK c!
 ;
 
@@ -41,3 +41,6 @@ variable tick
   0 TIMSK c!
 ;
 
+\ test the timer interupt with repeated
+\ > TIMER0_OVFAddr int-trap tick @ .
+\ it should increment tick by 1
