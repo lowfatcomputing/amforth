@@ -10,4 +10,4 @@ XT_INTON:
     .dw PFA_INTON
 PFA_INTON:
     sei
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

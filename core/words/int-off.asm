@@ -13,4 +13,4 @@ PFA_INTOFF:
     clr tosh
     in tosl, SREG
     cli
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
