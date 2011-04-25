@@ -54,11 +54,6 @@
   swap over 
 ;
 
-: nip ( n1 n2 -- n2 )
-  swap drop
-;
-
-
 : blank  ( addr n -- )
   bl fill
 ;
