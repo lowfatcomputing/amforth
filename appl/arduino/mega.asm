@@ -33,6 +33,12 @@
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
 .equ want_fun = 1 ; in case of an error out print an additional line with an caret indicating the error position
-
+.set WANT_TIMER_COUNTER_0 = 1
+.set WANT_SPI = 1
+.set WANT_PORTA = 1
+.set WANT_PORTB = 1
+.set WANT_PORTC = 1
+.set WANT_PORTD = 1
+.set WANT_AD_CONVERTER = 1
 ; include the whole source tree.
 .include "amforth.asm"
