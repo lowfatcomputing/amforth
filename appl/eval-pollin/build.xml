@@ -40,17 +40,17 @@
     </target>
 
 
-    <target name="p328-16.hex" description="Hexfiles for p328-16">
-        <avrasm2 projectname="p328-16" mcu="atmega328p"/>
+    <target name="p328-12.hex" description="Hexfiles for p328-12">
+        <avrasm2 projectname="p328-12" mcu="atmega328p"/>
     </target>
 
-    <target name="p328-16" depends="p328-16.hex" description="Atmega328 @ 16 MHz">
-	        <echo>Uploading Hexfiles for p328-16</echo>
+    <target name="p328-12" depends="p328-12.hex" description="Atmega328 @ 12 MHz">
+	        <echo>Uploading Hexfiles for p328-12</echo>
 		<avrdude 
 		    type="stk200"
 		    mcu="atmega328p"
-		    flashfile="p328-16.hex"
-		    eepromfile="p328-16.eep.hex"
+		    flashfile="p328-12.hex"
+		    eepromfile="p328-12.eep.hex"
 		/>
     </target>
 
@@ -95,7 +95,7 @@
 		    eepromfile="p8-12.eep.hex"
 		/>
     </target>
-    <target name="compile" depends="p644-16.hex, p328-16.hex, p32-8.hex, p16-8.hex">
+    <target name="compile" depends="p644-16.hex, p328-12.hex, p32-8.hex, p16-8.hex">
     </target>
 
 </project>

@@ -20,11 +20,13 @@
 	<attribute name="binary"       default="avra" />
 	<attribute name="includes"     default="../../Atmel/Appnotes" />
 	<attribute name="projectname"  default="undefined"/>
+	<attribute name="mcu"          default="undefined"/>
 	<attribute name="amforth.core" default="../../core"/>
 	<sequential>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="-I @{includes}"/>
 		    <arg line="-I @{amforth.core}"/>
+		    <arg line="-I @{amforth.core}/devices/@{mcu}"/>
 		    <arg line="--listmac"/>
 		    <arg line="-l @{projectname}.lst"/>
 		    <arg line="-m @{projectname}.map"/>
@@ -74,6 +76,27 @@
 		<arg line="-e"/> 
 		<arg line="-U flash:w:@{flashfile}"/>
 		<arg line="-U eeprom:w:@{eepromfile}"/>
+		<arg line="-v"/>
+	    </exec>
+	</sequential>
+    </macrodef>
+
+    <macrodef name="avrdude-back">
+	<attribute name="binary"      default="avrdude" />
+	<attribute name="type"        default="avr910"/>
+	<attribute name="port"        default="${avr.programmer.@{type}port}" />
+	<attribute name="programmer"  default="${avr.programmer.@{type}}" />
+	<attribute name="mcu"         default="m8"/>
+
+	<attribute name="flashfile"   default=""/>
+	<attribute name="eepromfile"  default=""/>
+	<sequential>
+	    <exec executable="@{binary}" spawn="false" failonerror="true">
+	    <arg line="-c @{programmer}"/>
+		<arg line="-p @{mcu}"/>
+		<arg line="-P @{port}"/>
+		<arg line="-U flash:r:@{flashfile}:i"/>
+		<arg line="-U eeprom:r:@{eepromfile}:i"/>
 		<arg line="-v"/>
 	    </exec>
 	</sequential>
