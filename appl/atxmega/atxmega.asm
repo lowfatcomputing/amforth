@@ -33,6 +33,5 @@
 .set rstackstart = RAMEND
 
 .set amforth_interpreter = $F000
-.equ want_fun = 1
 
 .include "amforth-low.asm"

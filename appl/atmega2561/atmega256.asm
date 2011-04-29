@@ -18,6 +18,5 @@
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set amforth_interpreter = NRWW_START_ADDR
-.equ want_fun = 1
 
 .include "amforth-low.asm"

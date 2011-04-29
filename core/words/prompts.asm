@@ -44,19 +44,10 @@ PFA_PROMPTOK:
 XT_PROMPTERROR:
     .dw DO_COLON
 PFA_PROMPTERROR:
-.if want_fun
-	.dw XT_G_IN
-	.dw XT_FETCH
-	.dw XT_SPACES
-	.dw XT_DOLITERAL
-	.dw '^'
-	.dw XT_EMIT
-	.dw XT_CR
-.endif
 	.dw XT_SLITERAL
 	.dw 4
 	.db  " ?? "
-        .dw XT_ITYPE
+    .dw XT_ITYPE
 	.dw XT_BASE
 	.dw XT_FETCH
 	.dw XT_TO_R

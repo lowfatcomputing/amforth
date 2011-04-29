@@ -20,7 +20,6 @@
 .set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-.equ want_fun = 1
 .set WANT_SPI = 1
 
 .include "amforth.asm"

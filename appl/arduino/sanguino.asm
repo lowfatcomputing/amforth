@@ -19,7 +19,6 @@
 .set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8
-.set want_fun = 0
 
 ; some registers
 .set WANT_PORTA = 1

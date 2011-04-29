@@ -32,7 +32,6 @@
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
-.equ want_fun = 1 ; in case of an error out print an additional line with an caret indicating the error position
 .set WANT_TIMER_COUNTER_0 = 1
 .set WANT_SPI = 1
 .set WANT_PORTA = 1

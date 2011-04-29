@@ -14,7 +14,6 @@
 .equ USART_C_VALUE = (3<<UCSZ00)
 
 .set here = ramstart
-.equ want_fun = 1
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set amforth_interpreter = max_dict_addr
