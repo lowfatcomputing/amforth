@@ -11,9 +11,9 @@ XT_INTERPRET:
 PFA_INTERPRET:
 PFA_INTERPRET1:
     .dw XT_BL
-    .dw XT_WORD
-    .dw XT_DUP
-    .dw XT_CFETCH
+    .dw XT_WORD  ; ( -- addr )
+    .dw XT_DUP   ; ( -- addr addr )
+    .dw XT_CFETCH ; ( -- addr len )
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET5
@@ -25,18 +25,28 @@ PFA_INTERPRET1:
     .dw XT_DOQDO
     .dw PFA_INTERPRET4
 PFA_INTERPRET2:
-    .dw XT_CELLPLUS
+    ; ( -- addr rec )
+    .dw XT_SWAP
     .dw XT_TO_R
     .dw XT_R_FETCH
+    .dw XT_SWAP
+    .dw XT_CELLPLUS ; ( -- addr rec-addr+1 )   
+    .dw XT_TO_R
+    .dw XT_R_FETCH
+    
     .dw XT_FETCHE
     .dw XT_EXECUTE
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET3
       .dw XT_R_FROM
+      .dw XT_R_FROM
+      .dw XT_DROP
       .dw XT_DROP
       .dw XT_LEAVE
 PFA_INTERPRET3:
     .dw XT_R_FROM
+    .dw XT_R_FROM
+    .dw XT_SWAP
     .dw XT_DOLOOP
     .dw PFA_INTERPRET2
 PFA_INTERPRET4:
