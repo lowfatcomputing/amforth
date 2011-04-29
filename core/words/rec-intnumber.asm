@@ -1,11 +1,11 @@
 ; ( addr -- f ) 
 ; System
 ; recognizer for integer numbers
-;VE_REC_INTNUMBER:
-;    .dw $ff07
-;    .db "rec-intnum"
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_REC_INTNUMBER
+VE_REC_INTNUMBER:
+    .dw $ff0a
+    .db "rec-intnum"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_REC_INTNUMBER
 XT_REC_INTNUMBER:
     .dw DO_COLON
 PFA_REC_INTNUMBER:
