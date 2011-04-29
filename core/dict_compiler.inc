@@ -50,6 +50,7 @@
 .include "words/env-cpu.asm"
 .include "words/env-usersize.asm"
 
+.include "words/get-ee-array.asm"
 .include "words/get-current.asm"
 .include "words/get-order.asm"
 .include "words/order.asm"
