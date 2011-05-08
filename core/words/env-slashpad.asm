@@ -1,4 +1,4 @@
-; ( -- n ) 
+; ( -- padsize ) 
 ; Environment
 ; Size of the PAD buffer in bytes
 VE_ENVSLASHPAD:
