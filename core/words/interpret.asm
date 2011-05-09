@@ -26,10 +26,10 @@ PFA_INTERPRET1:
     .dw PFA_INTERPRET4
 PFA_INTERPRET2:
     ; ( -- addr rec )
-    .dw XT_OVER
-    .dw XT_TO_R
     .dw XT_CELLPLUS ; ( -- addr rec-addr+1 )   
     .dw XT_DUP
+    .dw XT_TO_R
+    .dw XT_OVER
     .dw XT_TO_R
     
     .dw XT_FETCHE
@@ -44,7 +44,6 @@ PFA_INTERPRET2:
 PFA_INTERPRET3:
     .dw XT_R_FROM
     .dw XT_R_FROM
-    .dw XT_SWAP
     .dw XT_DOLOOP
     .dw PFA_INTERPRET2
 PFA_INTERPRET4:
