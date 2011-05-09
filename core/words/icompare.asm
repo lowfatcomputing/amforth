@@ -34,6 +34,9 @@ PFA_ICOMPARE_LOOP:
 .endif
     .dw XT_OVER
     .dw XT_FETCHI ; ( -- r-addr f-addr r-cc f- cc)
+.ifdef WANT_IGNORECASE == 1
+    .dw XT_ICOMPARE_LC
+.endif
     ; flash strings are zero-padded at the last cell
     ; that means: if the flash cell is less $0100, than mask the
     ; high byte in the ram cell
