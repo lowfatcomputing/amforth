@@ -80,3 +80,28 @@
   out_ @0,@2
 .endif
 .endmacro
+
+.macro jmp_
+	; a more flexible macro
+    .ifdef @0
+    .if (@0-pc > 2040) || (pc-@0>2040)
+	jmp @0
+	.else
+	rjmp @0
+	.endif
+	.else
+	jmp @0
+	.endif
+.endmacro
+.macro call_
+	; a more flexible macro
+    .ifdef @0
+    .if (@0-pc > 2040) || (pc-@0>2040)
+	call @0
+	.else
+	rcall @0
+	.endif
+	.else
+	call @0
+	.endif
+.endmacro

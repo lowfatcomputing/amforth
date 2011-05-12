@@ -9,12 +9,6 @@
 .equ ramstart =  $100
 .equ max_dict_addr = $1C00 
 .equ CELLSIZE = 2
-.macro jmp_
-	jmp @0
-.endmacro
-.macro call_
-	call @0
-.endmacro
 .macro readflashcell
 	lsl zl
 	rol zh

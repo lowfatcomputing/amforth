@@ -15,12 +15,6 @@
 .equ SREG = CPU_SREG
 .equ MCUSR = RST_STATUS
 
-.macro jmp_
-	jmp @0
-.endmacro
-.macro call_
-	call @0
-.endmacro
 .macro readflashcell
 	clr temp7
 	lsl zl

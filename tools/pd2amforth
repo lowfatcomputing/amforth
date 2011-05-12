@@ -10,7 +10,7 @@
 use strict;
 
 my $PDDIR="../Atmel/Partdescriptionfiles/";
-$PDDIR=".";
+# $PDDIR="local/";
 
 sub fmt_str {
     my ($str, $format) = @_;
@@ -76,32 +76,6 @@ sub readXML ($) {
     print ASM ".equ CELLSIZE = 2\n";
 
 
-    print ASM ".macro jmp_\n\t";
-    print ASM "; a more flexible macro
-    .ifdef \@0
-    .if (\@0-pc > 2040) || (pc-\@0>2040)
-	jmp \@0
-	.else
-	rjmp \@0
-	.endif
-	.else
-	jmp \@0
-	.endif";
-    print ASM "\n.endmacro\n";
-
-    print ASM ".macro call_\n\t";
-    print ASM "; a more flexible macro
-    .ifdef \@0
-    .if (\@0-pc > 2040) || (pc-\@0>2040)
-	call \@0
-	.else
-	rcall \@0
-	.endif
-	.else
-	call \@0
-	.endif";
-    print ASM "\n.endmacro\n";
-    
     print ASM ".macro readflashcell\n";
     print ASM "\tlsl zl\n\trol zh\n\tlpm \@0, Z+\n\tlpm \@1, Z+\n" if int($fsize) <= 65536;
     print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n\telpm \@0, Z+\n\telpm \@1, Z+\n" if int($fsize) > 65536;
