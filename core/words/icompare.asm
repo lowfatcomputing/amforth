@@ -29,12 +29,12 @@ PFA_ICOMPARE_LOOP:
     ; ( r-addr f-addr --)
     .dw XT_OVER
     .dw XT_FETCH
-.ifdef WANT_IGNORECASE == 1
+.if WANT_IGNORECASE == 1
     .dw XT_ICOMPARE_LC
 .endif
     .dw XT_OVER
     .dw XT_FETCHI ; ( -- r-addr f-addr r-cc f- cc)
-.ifdef WANT_IGNORECASE == 1
+.if WANT_IGNORECASE == 1
     .dw XT_ICOMPARE_LC
 .endif
     ; flash strings are zero-padded at the last cell
@@ -76,7 +76,7 @@ PFA_ICOMPARE_DONE:
     .dw -1
     .dw XT_EXIT
 
-.ifdef WANT_IGNORECASE == 1
+.if WANT_IGNORECASE == 1
 XT_ICOMPARE_LC:
     .dw DO_COLON
 PFA_ICOMPARE_LC:
