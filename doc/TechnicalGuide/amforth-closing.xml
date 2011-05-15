@@ -1,5 +1,5 @@
-    <chapter id="Outlook">
-        <title>Outlook</title>
+    <chapter id="Roadmap">
+        <title>Roadmap</title>
         <sect1 id="ANS94_WORDS">
             <title>More ANS94 Words</title>
             <para>
@@ -28,13 +28,10 @@
         <sect1 id="MoreController">
             <title>More Controller Types</title>
             <para>
-                amforth can run on nearly the whole range of Atmegas. The only
-                limiting factor is the flash size: amforth needs ca 7 KB
-                for itself and can address 128 KB. The ATmega256x may be
-                supported with a change in the cell size from 2 to 3
-                bytes. The other possible devices are the XMega MCU.
-                ATtiny devices are not supported since they lack both
-                flash size and a few instructions that amforth uses.
+                Amforth can be used on any atemga with at least 8KB flash memory.
+                A system with at least 16Kb is recommended. There are pre-generated 
+                driver files from the XML part description files. 
+                Atxmega's may work with a future version.
             </para>
         </sect1>
         <sect1 id="SUPPORT">
