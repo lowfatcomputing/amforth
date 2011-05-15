@@ -146,19 +146,19 @@
 					<para> This last step finally jumps to the machine code pointed to
 						by the X scratch pad register.</para>
 				</sect3>
-				<sect3 id="II_NEST">
-					<title>NEST</title>
-					<para> NEST (aka DO_COLON) first pushes the IP (which points to the
+				<sect3 id="II_DOCOLON">
+					<title>DO COLON</title>
+					<para> DO COLON (aka NEST) first pushes the IP (which points to the
 						next word to be executed when the current word is done) to the
 						return stack. It then increments W by one flash cell, so that it
 						points to the body of the (colon) word, and sets IP to point to
 						that value. Then it continues with NEXT, which begins executing
 						the words in the body of the (parent) colon word.</para>
 				</sect3>
-				<sect3 id="II_UNNEST">
-					<title>UNNEST</title>
+				<sect3 id="II_EXIT">
+					<title>EXIT</title>
 					<para>
-						The code for UNNEST is the forth word
+						The code for EXIT (aka UNNEST) is the forth word
 						<command>EXIT</command>
 						in the dictionary. It reads the IP from the return stack and jumps
 						to NEXT. The return stack pointer is incremented by 2 (1 flash
@@ -180,12 +180,12 @@
 			<sect2 id="INTERPRETER">
 			    <title>Interpreter</title>
 			    <para>
-			      The interpreter a line based command interpreter. It uses ACCEPT to aquire for a
+			      The interpreter a line based command interpreter. It uses ACCEPT to aquire  a
 			      complete input text line. If the line is completed (by sending the CR/LF character(s))
 			      the line is processed by INTERPRET. It splits the line into whitespace delimited words.
 			      The word is analyzed using a sorted list of recognizer words which are specialized
-			      to search for e.g. the wordlists or convert strings into numbers. This list can be
-			      changed at runtime. Its thus possible to extend the interpreter to recognize e.g. 
+			      to deal with e.g. the wordlists or convert strings into numbers. This list can be
+			      changed at runtime. Its possible to extend the interpreter to recognize e.g. 
 			      floating  point numbers without recompiling / reflashing the controller.
 			    </para>
 			    <sect3 id="RECOGNIZER">
@@ -201,15 +201,43 @@
 			      <para>
 			        Three recognizers are defined: Dictionary lookup, integer number conversion and
 			        a not-found dummy. The first two take care of the interpreter state and either
-			        leave more than the flag (e.g. the number entered) or compile to the dictionary.
+			        leave more than the flag (e.g. the number entered) or compile the information
+			        to the dictionary.
 			      </para>
 			      <para>
-			        The not-found recognizer throws an exception -13 which can be catched.
+			        The not-found recognizer prints the word and throws an exception -13 which can be catched.
 			      </para>
 			      <para>
 			        The list of the recognizers is kept in the EEPROM, the maximum size of the
-			        entries is a compile time setting.
+			        entries is a compile time setting (currently 6 slot are available).
 			      </para>
+			      <sect4><title>Example Recognizer</title>
+			      <para>
+			      A recognizer gets the address of a counted word in memory and leaves at least the flag
+			      for the interpreter. If any data is to be left on the stack (e.g. numeric values) it
+			      has to be beneath the flag.
+			      </para>
+			      <para>The small example illustrates the integration of the floating point library for amforth. 
+			      It is based upon a conversion word >float which takes a string and tries to convert it into a 
+			      float. The word fliteral compiles a floating point number into the dictionary.
+			      <screen language="forth">
+: rec-float  \ addr -- (f|) -1 | 0 
+  count >float
+  if state @ if fliteral then -1 else 0 
+  then ;
+:
+                  </screen>
+                  The recognozer first tries to convert the string to a number. If that failes, the flag
+                  from the >float essentially duplicated and the recognizer is left. If the conversion
+                  succeeded, the floating point number is on the data stack. The recognizer now checks
+                  whether the number needs to be compiled or not. In any case the success flag is
+                  returned.
+                  </para>
+                  
+                  <para>
+                    Future versions may change the API from counted strings at addr to addr/len information.
+			      </para>
+			      </sect4>
 			      </sect3>
 			</sect2>
 			<sect2 id="STACKS">
@@ -243,7 +271,7 @@
             <sect2 id="INTERRUPTS">
                 <title>Interrupts</title>
                 <para>
-                    amforth routes the low level interrupts into the
+                    Amforth routes the low level interrupts into the
                     forth inner interpreter. The inner interpreter
                     switches the execution to a predefined word if an
                     interrupt occurs. When that word finishes execution,
@@ -252,40 +280,50 @@
                     without any stack effect.
                 </para>
                 <para>
-                    The processing of the interrupts takes two steps:
-                    The first one is responsible for the low level part.
+                    The processing of interrupts takes place in two steps:
+                    The first one is the low level part.
                     It is called whenever an interrupt occurs. The code
                     is the same for all interrupts. It takes the number
                     of the interrupt from its vector address and stores
                     this in a RAM cell. Then the low level ISR sets the
                     <command>T</command>
-                    flag in the status register of the controller. The
-                    inner interpreter checks this flag every time it is
-                    entered and, if it is set, it switches to interrupt
+                    flag in the status register of the controller and returns
+                    with RET.
+                </para>
+                <para>
+                    The second step is taken from the inner interpreter. 
+                    It checks the T-flag every time it is entered and, 
+                    if it is set, it switches to interrupt
                     handling at forth level. This approach has a penalty
-                    of 2 CPU cycles for checking and skipping the branch
+                    of 1 CPU cycle for checking and skipping the branch
                     instruction to the isr forth code if no interrupt
                     occured.
                 </para>
-                <para>
-                    The ISR at forth level is a RAM based table much
-                    like the low level interrupt table of the execution
-                    tokens associated with the interrupt number.
-                </para>
-                <para>
-                    Interrupts from hardware sources (such as the usart)
-                    may not work as expected. The reason is that the
-                    interrupt source is not cleared within the generic
-                    ISR. This leads to an immediate re-interrupt when
-                    the ISR is left. There is currently no solution but
-                    a custom ISR that clears the interrupt source and
-                    calls the main ISR. This code has to be run within
-                    the interrupt and cannot be (easily) turned into
-                    forth code, since the forth inner interpreter is not
-                    reentrant.
-                    <!-- maybe run an forth
-                        interpreter in background to handle interrupts? -->
-                </para>
+		<para> If an interrupt is detected, the forth VM clears the
+		  T-flag and continues with the word ISR-EXEC. This word 
+		  reads the currently active interrupt number and calls 
+		  the assoicated execution token.  When this word is finished, 
+		  the word ISR-END is called. This word clears the interrupt 
+		  flag for the controller (RETI).
+		</para>
+		<para>This interrupt processing has two advantages: There are
+		  no lost interrupts (the controller itself disables interrupts
+		  within interrupts and re-transmits newly discovered interrupts
+		  afterwards) and it is possible to use standard forth words
+		  to deal with any kind of interrupts.
+		</para>
+       <para>
+            Interrupts from some hardware sources (e.g. the usart)
+            need to be cleared from the Interrupt Service Routine.
+		    If this is not done within the ISR, the interrupt
+		    is re-triggered immediatly after the ISR returned control.
+        </para>
+		<para>The downside is a relativly long latency since the the
+		  forth VM has to be synchronized with the interrupt handling
+		  code in order to use normal colon words as ISR. This peanalty
+		  is usually small since only words in assembly can cause the 
+		  delay.
+		</para>
             </sect2>
             <sect2 id="MULTITASKING">
                 <title>Multitasking</title>
