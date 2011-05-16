@@ -279,6 +279,51 @@
                     handlers are completly normal forth colon words
                     without any stack effect.
                 </para>
+                <sect3><title>Example Interrupt Handling</title>
+                <para> The example illustrates the basic usage of interrupts. The
+                code implements a very basic timer functionality.
+                </para>
+                <para>
+                We use the timer/counter 0 to generate an interrupt any time the 
+                overflow condition is triggered. It is a 8bit counter, the input
+                is the internal oscillator using a prescaler of 1024. The overflow
+                value is set to 256. This gives an interrupt rate of frequency/(1024*256).
+                At 8Mhz this will be 32 interrupts per second.
+                </para>
+                <para>
+                <screen language="forth">
+variable tick
+
+\ this code is executed as an interrupt
+: timer-int-isr
+   1 tick +!
+;
+
+: timer-init
+  5 TCCR0 c! \ prescaler 1024, check data sheet
+  ['] timer-int-isr TIMER0_OVFAddr int!
+  0 tick !
+;
+
+\ turn on the timer, needs timer-init already in place
+: +timer
+  1 TIMSK c!
+;
+
+\ stops the timer
+: -timer
+  0 TIMSK c!
+;
+        </screen></para>
+        <para>To ease debugging the code, the word int-trap can be used. This word
+          simulates the interrupt in any respect but a real hardware cause. To test
+          the routine from above enter the command
+          <screen language="forth">
+ > TIMER0_OVFAddr int-trap tick @ .
+          </screen>, it should increment tick by 1
+                </para>
+                </sect3>
+                <sect3><title>Implementation Details</title>
                 <para>
                     The processing of interrupts takes place in two steps:
                     The first one is the low level part.
@@ -324,6 +369,7 @@
 		  is usually small since only words in assembly can cause the 
 		  delay.
 		</para>
+		</sect3>
             </sect2>
             <sect2 id="MULTITASKING">
                 <title>Multitasking</title>
@@ -661,10 +707,10 @@
                     Low level space management is done through the the
                     EDP variable. This is not a forth value but a EEPROM
                     based variable. To read the current value an
-                    <command>e@</command>
+                    <command>@e</command>
                     operation must be used, changes are written back
                     with
-                    <command>e!</command>
+                    <command>!e</command>
                     . It contains the highest EEPROM address currently
                     allocated. The name is based on the DP variable,
                     which points to the highest dictionary address.
