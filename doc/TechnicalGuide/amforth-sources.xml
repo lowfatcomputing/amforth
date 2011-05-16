@@ -16,17 +16,17 @@
 				with include files, named after the pattern
 				<filename>dict*.inc</filename>.</para>
 			<para>The include hierarchy is as follows: Top level is the application specific
-			file (template.asm). It included the file (core/)amforth.asm only. This file includes
-			the two (appl/) files dict_appl.inc for the low address words (RWW space) and the
-			file dict_appl_core.inc for the high address space words (NRWW). These two include
-			files use other dict* files and direct words defintion files. Any cross-references
-			are solved by the assembler. The use need to take care that the highest used address
-			is within the flash address range.
+			file (template.asm). It included the file (core/)<filename>amforth.asm</filename> only. This file includes
+			the two (appl/) files <filename>dict_appl.inc</filename> for the low address words (RWW space) and the
+			file <filename>dict_appl_core.inc</filename> for the high address space words (NRWW). These two include
+			files use other <filename>dict*</filename> files and direct words defintion files. Any cross-references
+			are solved by the assembler. The user needs to take care that the highest used address
+			is within the flash address range, an assembler error message is generated in that case.
 			</para>
 			<para>
 				Currently the following pre defined dict files exist:
-				<table> <title></title>
-				 <tgroup cols="2"> 
+				<table> <title>Source Filenames</title>
+				 <tgroup cols="3"> 
 				   <thead><row><entry>Filename</entry><entry>purpose</entry><entry>placement</entry></row></thead>
 				   <tbody>
 				     <row>

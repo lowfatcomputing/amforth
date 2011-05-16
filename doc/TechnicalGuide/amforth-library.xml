@@ -155,9 +155,9 @@
                     commands:
                     <command>1ms</command>
                     ,
-                    <command>e!</command>
+                    <command>!i</command>
                     and
-                    <command>i!</command>
+                    <command>!i</command>
                     . For a preemptive task switcher a lot more tools
                     like semaphores may be needed.
                 </para>
