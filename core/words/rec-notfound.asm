@@ -1,5 +1,5 @@
 ; ( addr --  ) 
-; System
+; Interpreter
 ; recognizer for NOT FOUND
 VE_REC_NOTFOUND:
     .dw $ff0c

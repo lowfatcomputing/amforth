@@ -1,5 +1,5 @@
 ; ( addr -- f ) 
-; System
+; Interpreter
 ; recognizer for find
 VE_REC_FIND:
     .dw $ff08

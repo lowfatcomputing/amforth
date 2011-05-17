@@ -1,5 +1,5 @@
 ; ( -- widn .. wid0 n) 
-; Tools
+; Interpreter
 ; Get the current recognizer list
 VE_GET_RECOGNIZER:
     .dw $ff0e

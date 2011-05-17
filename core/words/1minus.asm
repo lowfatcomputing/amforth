@@ -1,6 +1,6 @@
 ; (S: n1 -- n2 )
 ; Arithmetics
-; optimized decrement (CORE)
+; optimized decrement
 VE_1MINUS:
     .dw $ff02 
     .db "1-"

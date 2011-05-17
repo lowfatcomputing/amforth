@@ -1,5 +1,5 @@
 ; ( addr -- f ) 
-; System
+; Interpreter
 ; recognizer for integer numbers
 VE_REC_INTNUMBER:
     .dw $ff0a
