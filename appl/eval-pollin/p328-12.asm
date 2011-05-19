@@ -19,5 +19,4 @@
 .set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8
-.equ want_fun = 1
 .include "amforth.asm"

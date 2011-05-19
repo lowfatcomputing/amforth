@@ -17,7 +17,6 @@
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set amforth_interpreter = max_dict_addr
-.set want_fun = 1
 .set NUMWORDLISTS = 8
 
 .include "amforth.asm"
