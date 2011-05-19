@@ -57,6 +57,6 @@
 		/>
 	</target>
 
-    <target name="compile" depends="sanguino.hex, mega.hex, diecimila.hex, duemilanove.hex">
+    <target name="compile" depends="sanguino.hex, mega.hex, duemilanove.hex">
     </target>
 </project>

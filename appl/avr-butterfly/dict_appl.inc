@@ -2,7 +2,7 @@
 .include "device.inc"
 .include "dict_usart.inc"
 .include "dict_compiler.inc"
-
+.include "dict_interrupt.inc"
 .include "words/applturnkey.asm"
 
 .include "words/udot.asm"
@@ -21,5 +21,3 @@
 .include "words/d-plus.asm"
 .include "words/d-minus.asm"
 .include "words/spirw.asm"
-
-

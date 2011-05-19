@@ -3,6 +3,7 @@
 .include "dict_minimum.inc"
 .include "dict_compiler.inc"
 .include "dict_wl.inc"
+.include "dict_interrupt.inc"
 .include "dict_usart.inc"
 ;.include "dict_mcu.inc"
 .include "dict_vm.inc"
