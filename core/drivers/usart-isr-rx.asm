@@ -19,7 +19,6 @@
 .set here = here + usart_rx_size
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; todo: wenn XON/XOFF erkannt werden, nicht in den Input Buffer schreiben!
 usart_rx_isr:
   push xl
   in xl, SREG
@@ -29,6 +28,9 @@ usart_rx_isr:
   push zh
 
   lds xh, USART_DATA
+  ; optional: check for certain character(s) (e.g. CTRL-C)
+  ; and trigger a soft interrupt instead of storing the
+  ; charater into the input queue.
   lds xl,usart_rx_in
   ldi zl, low(usart_rx_data)
   ldi zh, high(usart_rx_data)
