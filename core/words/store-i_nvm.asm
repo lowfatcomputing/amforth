@@ -2,8 +2,8 @@
 ; Memory
 ; writes a cell in flash using NVM (atxmega)
 VE_DO_STOREI_NVM:
-    .dw $ff04
-    .db "(i!)"
+    .dw $ff07
+    .db "(!i-nvm)",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DO_STOREI_NVM
 XT_DO_STOREI:

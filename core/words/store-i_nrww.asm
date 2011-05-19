@@ -2,8 +2,8 @@
 ; Memory
 ; writes a cell in flash using assembly code
 VE_DO_STOREI_NRWW:
-    .dw $ff04
-    .db "(i!)"
+    .dw $ff09
+    .db "(!i-nrww)",0
     .dw VE_HEAD
     .set VE_HEAD = VE_DO_STOREI_NRWW
 XT_DO_STOREI:
