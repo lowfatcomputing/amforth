@@ -11,7 +11,7 @@ my %RSTACK;
 my %CSTACK;
 my %CATEGORY;
 
-my $version="4.3";
+my $version="4.4";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
@@ -39,9 +39,9 @@ sub readASM {
 	    $dstack = "( -- )";
 	    $dstack = "($1)" if $prevline3=~/\([S]?:?([^\)]+)/;
 	    $rstack = "";
-	    $rstack = "(R: $1)" if $prevline3=~/R:\s+(.+)\)/;
+	    $rstack = "(R: $1)" if $prevline3=~/R:\s+([^)]+)\)/;
 	    $cstack = "";
-	    $cstack = "(C: $1)" if $prevline3=~/C:\s+(.+)\)/;
+	    $cstack = "(C: $1)" if $prevline3=~/C:\s+([^)]+)\)/;
             $description = $1 if $prevline1=~/^;(.*)/;
 	    if( $prevline2=~/;(.+)$/) {
 	        $category = $1;
@@ -122,37 +122,30 @@ sub readASM {
 sub latex_head {
     my ($title) = @_;
     return "
-\\documentclass[a4paper,10pt]{article}
-\\usepackage{a4wide}
-\\usepackage[latin1]{inputenc}
-\\usepackage{url}
-\\usepackage{multicol}
-\\usepackage{supertabular}
+\\documentclass[a4paper,10pt]{scrartcl}
+\\usepackage[ngerman]{babel} %neue deutsche Rechtschreibung
+\\usepackage[utf8x]{inputenc} %wegen Umlautproblemen
+\\usepackage[T1]{fontenc}
+\\usepackage[landscape,lmargin=5mm,rmargin=5mm,bmargin=10mm]{geometry}
+
+\\usepackage{multicol,supertabular}
 \\usepackage{fancyvrb}
+\\columnsep=7mm
 
-\\setlength{\\parindent}{0cm}
-\\setlength{\\oddsidemargin}{0cm}
-\\setlength{\\topmargin}{-1cm}
-\\setlength{\\headheight}{0cm}
-\\setlength{\\headsep}{0cm}
-\\def\\colsa{p{2cm}p{4cm}}
-\\def\\colsb{p{2.4cm}p{4cm}}
-\\def\\colsc{p{1.5cm}p{4cm}}
+\\usepackage{lmodern}
+%\\usepackage[scaled]{luximono}
 
+%\\setkomafont{descriptionlabel}{\bfseries\ttfamily}
+\\def\\colsa{|p{2cm}|p{4cm}|}
 \\begin{document}
-\\thispagestyle{empty}
-\\pagestyle{empty}
-
-\\begin{footnotesize}
-\\section*{\\Large amforth $title Reference Card}
-\\begin{multicols}{2}
+\\section*{amforth $title Reference Card}
+\\begin{multicols}{4} 
 ";
 }
 
 sub latex_foot {
     return "
 \\end{multicols}
-\\end{footnotesize}
 \\end{document}";
 }
 
@@ -161,12 +154,14 @@ sub printLaTeX {
     open(LATEX, ">$texdir/refcard.tex") or die "$!\n";;
     print LATEX latex_head($title);
     foreach my $category (sort keys %CATEGORY) {
+    next if $category=~/^\s*$/;
+    next if $category=~/internal/;
 	print "$category\n";
-	print LATEX "\n\\subsection*{$category}\n";
-
+	print LATEX "\n\\section*{$category}\n";
+	print LATEX "\n\\begin{description}\n";
 	foreach my $lbl (sort @{$CATEGORY{$category}}) {
 	    print "\t$lbl\n";
-	print LATEX "\\begin{tabular}{\\colsa}\n";
+	
 	    my $xt  = $XT{$lbl};
 	    my $voc = $VOC{$lbl};
 	    my $shortlbl = substr($lbl, 3);
@@ -176,14 +171,21 @@ sub printLaTeX {
 	    my $verbdelim = "|";
 	    $verbdelim = "/" if $dstack=~/$verbdelim/;
 	    print LATEX "% $lbl\n";
-	    print LATEX "\\begin{Verbatim}[fontfamily=courier,fontseries=b]\n$voc\n\\end{Verbatim}\n  & \\verb$verbdelim$dstack$verbdelim\\newline\n";
-	    print LATEX "                \\verb$verbdelim$rstack$verbdelim\\newline\n" unless $rstack =~ /^\s*$/;
-	    print LATEX "                \\verb$verbdelim$cstack$verbdelim\\newline\n" unless $cstack =~ /^\s*$/;
-	    print LATEX "                $DESCRIPTION{$lbl}\\newline\n";
-	    print LATEX "\\\\\n";
-	print LATEX "\\end{tabular}\n";
-	}
-
+	    $voc =~ s/\\/\\\\/g;
+	    $voc =~ s/\#/\\#/g;
+	    $voc =~ s/_/\\_/g;
+	    print LATEX "\\item[$voc]\n";
+	    print LATEX "   \\texttt{\n";
+	    # print LATEX "   \\verb$verbdelim$dstack$verbdelim\n";
+	    print LATEX "   $dstack\n";
+	    print LATEX "   \\\\$rstack\n" unless $rstack =~ /^\s*$/;
+	    print LATEX "   \\\\$cstack\n" unless $cstack =~ /^\s*$/;
+	    print LATEX "   }\\\\\n";
+	    print LATEX "$DESCRIPTION{$lbl}\n";
+	    print LATEX "\n";
+	
+	  }
+	print LATEX "\n\\end{description}\n";
     }
     print LATEX latex_foot();
 }
