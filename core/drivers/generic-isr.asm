@@ -21,4 +21,7 @@ isr:
     out SREG, r0
     ld r0, Y+
     set ; set the interrupt flag for the inner interpreter
-    reti ; returns the interrupt, the rcall stack frame is removed!
+    ret ; returns the interrupt, the rcall stack frame is removed!
+
+; maybe: read a single address and store its content somewhere. This may clean
+; some hardware flags as well
