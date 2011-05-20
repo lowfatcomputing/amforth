@@ -8,7 +8,7 @@
 
 \ modified for amforth by Matthias Trute 2007
 
-hex
+marker -ans-tester
 
 \ SET THE FOLLOWING FLAG TO TRUE FOR MORE VERBOSE OUTPUT; THIS MAY
 \ ALLOW YOU TO TELL WHICH TEST CAUSED YOUR SYSTEM TO HANG.
