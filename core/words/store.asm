@@ -11,8 +11,9 @@ XT_STORE:
 PFA_STORE:
     movw zl, tosl
     loadtos
-    std Z+0, tosl
+    ; the high byte is written before the low byte
     std Z+1, tosh
+    std Z+0, tosl
 
     loadtos
     rjmp DO_NEXT
