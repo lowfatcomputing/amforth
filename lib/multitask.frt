@@ -61,7 +61,7 @@ decimal
 : task ( rs-size ds-size -- tid )
 	\ allocate stack memory
 	here >r   \ allocate user area
-	24 allot     \ default user size
+	s" /user" environment? if allot else 24 allot then     \ default user size
 	allot here     ( -- rs-size sp0 )
 	    r@ 6 + !   (  ... place sp0 in tcb )
 	allot here     ( -- rp0 )
