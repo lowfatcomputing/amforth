@@ -10,4 +10,4 @@ XT_NIP:
     .dw PFA_NIP
 PFA_NIP:
     adiw yl, 2
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
