@@ -5,8 +5,3 @@
 .include "words/store-i.asm"
 .include "words/store-i_nrww.asm"
 .include "words/fetch-i.asm"
-
-.include "words/n_to_r.asm"
-.include "words/n_r_from.asm"
-.include "words/nip.asm"
-.include "words/pick.asm"

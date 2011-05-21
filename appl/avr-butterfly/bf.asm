@@ -17,7 +17,6 @@
 
 .set NUMWORDLISTS=8
 
-.set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 .set WANT_SPI = 1

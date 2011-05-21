@@ -8,15 +8,11 @@
 ; sizes have to be powers of 2!
 .equ usart_rx_size = $10
 .equ usart_rx_mask = usart_rx_size - 1
-
-.set usart_rx_in = here
-.set here = here + 1
-
-.set usart_rx_out = here
-.set here = here + 1
-
-.set usart_rx_data = here
-.set here = here + usart_rx_size
+.dseg
+usart_rx_in: .byte 1
+usart_rx_out: .byte 1
+usart_rx_data: .byte usart_rx_size
+.cseg
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 usart_rx_isr:

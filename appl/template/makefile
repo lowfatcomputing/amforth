@@ -1,8 +1,7 @@
 # simple makefile for building the 
 # template project. 
 
-# sometimes the login shell causes trouble
-#SHELL=/bin/bash
+SHELL=/bin/bash
 
 # --- edit these values ------------------------------------
 # Name of your application (useful, if you rename template.asm)
@@ -17,7 +16,6 @@ AMFORTH=../../core
 
 # the MCU should be identical to the device
 MCU=atmega1284p
-
 # set the fuses according to your MCU
 LFUSE=0xnn
 HFUSE=0xnn

@@ -3,10 +3,10 @@
 .include "dict_minimum.inc"
 .include "dict_compiler.inc"
 .include "dict_wl.inc"
-.include "dict_interrupt.inc"
 .include "dict_usart.inc"
 ;.include "dict_mcu.inc"
-.include "dict_vm.inc"
+;.include "dict_vm.inc"
+.include "dict_interrupt.inc"
 
 .include "words/d-2star.asm"
 .include "words/d-plus.asm"
@@ -25,6 +25,7 @@
 .include "words/is.asm"
 
 .include "words/applturnkey.asm"
+
 .include "words/fill.asm"
 
 .include "words/show-wordlist.asm"
@@ -32,3 +33,5 @@
 .include "words/words.asm"
 
 .include "words/1ms.asm"
+.include "words/2literal.asm"
+.include "device.inc"

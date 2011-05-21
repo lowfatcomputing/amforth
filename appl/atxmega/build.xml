@@ -9,7 +9,7 @@
     <target name="atxmega" depends="atxmega.hex" description="AVR ATXMega 128A1 @ 2 MHz">
         <echo>Uploading Hexfiles for AVR atxmega</echo>
         <avrdude 
-		    type="avrisp2"
+		    type="stk200"
 		    mcu="x128a1"
 		    flashfile="atxmega.hex"
 		    eepromfile="atxmega.eep.hex"

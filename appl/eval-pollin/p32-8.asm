@@ -13,7 +13,6 @@
 .equ USART_C_VALUE = (3<<UCSZ0)
 .equ BAUD = 9600
 
-.set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 

@@ -10,6 +10,7 @@ XT_FETCH:
     .dw PFA_FETCH
 PFA_FETCH:
     movw zl, tosl
+    ; low byte is read before the high byte
     ld tosl, z+
     ld tosh, z+
     rjmp DO_NEXT

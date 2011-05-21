@@ -1,8 +1,8 @@
 ; ISR routines
-.set intcur   = here ; current interrupt
-.set here     = here + 1
-.set intvec   = here ; forth interrupt vector (contains the XT)
-.set here     = here + INTVECTORS * CELLSIZE
+.dseg
+intcur: .byte 1
+intvec: .byte INTVECTORS * CELLSIZE
+.cseg
 
 ; interrupt routine gets called (again) by rcall! This gives the
 ; address of the int-vector on the stack.

@@ -11,16 +11,18 @@ XT_COLON:
 PFA_COLON:
     .dw XT_DOCREATE
     .dw XT_DOLITERAL
-    .dw here
-    .set COLON_SMUDGE = here
-    .set here = here + cellsize    
+    .dw COLON_SMUDGE
+.dseg
+COLON_SMUDGE: .byte 2
+.cseg
     .dw XT_STORE
     
     .dw XT_DP
     .dw XT_DOLITERAL
-    .dw here
-    .set COLON_XT = here
-    .set here = here + cellsize    
+    .dw COLON_XT
+.dseg
+COLON_XT: .byte 2
+.cseg
     .dw XT_STORE
     
     .dw XT_COMPILE

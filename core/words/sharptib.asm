@@ -9,6 +9,9 @@ VE_NUMBERTIB:
 XT_NUMBERTIB:
     .dw PFA_DOVARIABLE
 PFA_NUMBERTIB:
-    .dw here
-    .set here  = here + CELLSIZE
+    .dw ram_sharptib
+
+.dseg
+ram_sharptib: .byte 2
+.cseg
  

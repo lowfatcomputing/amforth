@@ -9,5 +9,8 @@ VE_TIB:
 XT_TIB:
     .dw PFA_DOVARIABLE
 PFA_TIB:
-    .dw here
-    .set here = here + TIBSIZE
+    .dw ram_tib
+    
+.dseg
+ram_tib: .byte TIBSIZE
+.cseg

@@ -26,10 +26,8 @@
 .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
 
 ; addresses of various data segments
-.set here = ramstart           ; start address of HERE, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
-;.set dict_appl=1			   ; include applic dictionary in rww section (non boot)
 .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8

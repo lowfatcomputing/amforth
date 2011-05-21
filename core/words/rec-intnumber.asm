@@ -14,6 +14,7 @@ PFA_REC_INTNUMBER:
     .dw XT_NUMBER 
     .dw XT_DOCONDBRANCH 
     .dw PFA_REC_NONUMBER
+
     .dw XT_STATE
     .dw XT_FETCH
     .dw XT_DOCONDBRANCH

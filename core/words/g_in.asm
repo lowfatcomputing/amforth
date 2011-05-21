@@ -9,5 +9,8 @@ VE_G_IN:
 XT_G_IN:
     .dw PFA_DOVARIABLE
 PFA_G_IN:
-    .dw here
-    .set here = here + CELLSIZE
+    .dw ram_g_in
+
+.dseg
+ram_g_in: .byte 2
+.cseg

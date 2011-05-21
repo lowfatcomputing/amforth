@@ -10,15 +10,11 @@
 ; sizes have to be powers of 2!
 .equ usart_tx_size = $10
 .equ usart_tx_mask = usart_tx_size - 1
-
-.set usart_tx_in = here
-.set here = here + 1
-
-.set usart_tx_out = here
-.set here = here + 1
-
-.set usart_tx_data = here
-.set here = here + usart_tx_size
+.dseg
+usart_tx_in: .byte 1
+usart_tx_out: .byte 1
+usart_tx_data: .byte usart_tx_size
+.cseg
 
 usart_udre_isr:
   push xl

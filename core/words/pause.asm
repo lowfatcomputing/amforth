@@ -9,7 +9,10 @@ VE_PAUSE:
 XT_PAUSE:
     .dw PFA_DODEFER
 PFA_PAUSE:
-    .dw here
-    .set here = here + CELLSIZE
+    .dw ram_pause
     .dw XT_RDEFERFETCH
     .dw XT_RDEFERSTORE
+
+.dseg
+ram_pause: .byte 2
+.cseg

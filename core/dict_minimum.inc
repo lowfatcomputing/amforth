@@ -96,6 +96,7 @@
 .include "words/prompts.asm"
 .include "words/pause.asm"
 .include "words/cold.asm"
+.include "words/warm.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/sp0.asm"
 .include "words/rp0.asm"

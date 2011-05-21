@@ -9,5 +9,8 @@ VE_HLD:
 XT_HLD:
     .dw PFA_DOVARIABLE
 PFA_HLD:
-    .dw here
-    .set here = here + CELLSIZE
+    .dw ram_hld
+
+.dseg
+ram_hld: .byte 2
+.cseg

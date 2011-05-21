@@ -18,7 +18,6 @@
 ;.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
 ;.equ USART_C_VALUE = ( 3<<UCSZ0)
 
-.set here = ramstart
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 40
 

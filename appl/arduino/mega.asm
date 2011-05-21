@@ -25,7 +25,6 @@
 .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
 
 ; addresses of various data segments
-.set here = ramstart           ; start address of HERE, grows upward
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
 .equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
@@ -38,6 +37,7 @@
 .set WANT_PORTB = 1
 .set WANT_PORTC = 1
 .set WANT_PORTD = 1
+.set WANT_PORTJ = 1
 .set WANT_AD_CONVERTER = 1
 ; include the whole source tree.
 .include "amforth.asm"

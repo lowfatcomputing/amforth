@@ -9,5 +9,8 @@ VE_STATE:
 XT_STATE:
     .dw PFA_DOVARIABLE
 PFA_STATE:
-    .dw here
-    .set here = here + CELLSIZE
+    .dw ram_state
+
+.dseg
+ram_state: .byte 2
+.cseg
