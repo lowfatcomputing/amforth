@@ -14,6 +14,5 @@ PFA_STORE:
     ; the high byte is written before the low byte
     std Z+1, tosh
     std Z+0, tosl
-
     loadtos
     rjmp DO_NEXT
