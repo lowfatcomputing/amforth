@@ -256,26 +256,24 @@
         </sect1>
         <sect1 id="AMFORTH">
             <title>Amforth</title>
-            <sect2 id="Startup"><title>Startup</title>
-            <para>The startup code is in the file <filename>amforth.asm</filename>.
-            The program execution starts at address 0. Since there is
-            the interrupt service address table, the first instruction is a 
-            jump to the startup code which is located right after the ISR table. 
+            <sect2 id="COLD"><title>COLD</title>
+            <para>The startup code is in the file <filename>cold.asm</filename>.
+            It gets called directly from the address 0 vector.
             </para>
-            <para>The assembly part of the startup code creates the basic runtime environment
+            <para>This assembly part of the startup code creates the basic runtime environment
             to start the virtual forth machine. It sets up the stack pointers and
             the user pointer and places the forth instruction pointer on the 
-            word <code>COLD</code>. Then it boots the forth virtual machine 
+            word <code>WARM</code>. Then it boots the forth virtual machine 
             by jumping to the inner interpreter.
             </para>
             <para>The start addresses of the stacks are placed to the user area 
             for later use as well.</para>
             
-            <sect3 id="COLD"><title>COLD</title>
-            <para>The word <code>COLD</code> is the high level part of the 
+            <sect3 id="WARM"><title>WARM</title>
+            <para>The word <code>WARM</code> is the high level part of the 
             forth VM initialization. When called from
             within forth it is the equivalent to a RESET.
-            <code>COLD</code> initializes the <code>PAUSE</code> 
+            <code>WARM</code> initializes the <code>PAUSE</code> 
             deferred word to do nothing, calls the application defined 
             <code>TURNKEY</code> action and finally hands over to <code>QUIT</code>.
             </para>

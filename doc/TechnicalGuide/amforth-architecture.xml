@@ -537,30 +537,21 @@ variable tick
             <sect2 id="ML_FLASH">
                 <title>Flash</title>
                 <para>
-                    The flash memory is divided into 5 sections. The
+                    The flash memory is divided into 4 sections. The
                     first section, starting at address 0, contains the
                     interrupt vector table for the low level interrupt
                     handling and a character string with the name of the
                     controller in plain text.
                 </para>
                 <para>
-                    The next section is the initialization code block.
-                    It is executed whenever the controller starts. The
-                    code sets up the basic infrastructure for the forth
-                    interpreter. This step is finished by calling the
-                    forth interpreter with the word
-                    <command>COLD</command>
-                    as the entry word.
-                </para>
-                <para>
-                    The 3rd section contains the low level interrupt
+                    The 2nd section contains the low level interrupt
                     handling routines. The interrupt handler is very
                     closely tied to the inner interpreter. It is located
                     near the first section to use the faster relative
                     jump instructions.
                 </para>
                 <para>
-                    The 4th section is the first part of the dictionary.
+                    The 3rd section is the first part of the dictionary.
                     Nearly all colon words are located here. New words
                     are appended to this section. This section is filled
                     with FFFF cells when flashing the controller
