@@ -1,11 +1,11 @@
 .eseg
     .dw -1           ; EEPROM Address 0 should not be used
 EE_DP:
-    .dw lowflashlast ; DP
+    .dw DPSTART      ; Dictionary Pointer
 EE_HERE:
-    .dw here         ; HERE
+    .dw HERESTART    ; Memory Allocation
 EE_EDP:
-    .dw edp          ; EDP
+    .dw EDPSTART     ; EEProm Memory Allocation
 EE_TURNKEY:
     .dw XT_APPLTURNKEY  ; TURNKEY
 EE_STOREI:
@@ -51,14 +51,7 @@ EE_ORDERLISTLEN:
     .dw 1
 EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
-    .dw -1
-    .dw -1
-    .dw -1
-    .dw -1
-    .dw -1
-    .dw -1
-    .dw -1
-
+    .byte  (NUMWORDLISTS-1)*CELLSIZE ; one slot is already used
 
 EE_RECOGNIZERS:
 EE_RECOGNIZERLISTLEN:
@@ -71,5 +64,5 @@ EE_RECOGNIZERLIST:
     .dw -1
     .dw -1
 ; 1st free address in EEPROM.
-edp:
+EDPSTART:
 .cseg

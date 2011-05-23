@@ -17,10 +17,10 @@
 .include "dict_appl_core.inc"
 .include "dict_appl.inc"
 
-.set lowflashlast = pc
+.set DPSTART = pc
 .set flashlast = pc
 
 .dseg
-here:
+HERESTART:
 .cseg
 .include "amforth-eeprom.inc"

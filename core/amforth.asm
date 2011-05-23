@@ -13,7 +13,7 @@
 ; lower part of the dictionary
 .include "dict_appl.inc"
 
-.set lowflashlast = pc
+.set DPSTART = pc
 
 .org amforth_interpreter
 .include "amforth-interpreter.asm"
@@ -25,6 +25,7 @@
 .endif
 
 .dseg
-here:
+; define a label for the 1st free ram address
+HERESTART:
 .cseg
 .include "amforth-eeprom.inc"

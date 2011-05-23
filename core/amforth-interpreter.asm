@@ -19,7 +19,7 @@ DO_COLON:
     push XH
     push XL          ; PUSH IP
     movw XL, wl
-    adiw xl, 1
+    adiw xl, 1       ; >BODY
 DO_NEXT:
     brts DO_INTERRUPT
     movw zl, XL        ; READ IP
