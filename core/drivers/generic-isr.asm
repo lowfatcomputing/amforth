@@ -10,6 +10,9 @@ isr:
     st -Y, r0
     in r0, SREG
     st -Y, r0
+.if (pclen==3)
+    pop r0 ; some 128+K Flash devices use 3 cells for call/ret
+.endif
     pop r0
     pop r0          ; = intnum * intvectorsize + 1 (address following the rcall)
     dec r0
@@ -22,6 +25,3 @@ isr:
     ld r0, Y+
     set ; set the interrupt flag for the inner interpreter
     ret ; returns the interrupt, the rcall stack frame is removed!
-
-; maybe: read a single address and store its content somewhere. This may clean
-; some hardware flags as well
