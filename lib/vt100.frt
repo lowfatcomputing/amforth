@@ -1,7 +1,5 @@
 \ ansi terminal codes
 
-\ needds misc.frt (u.r)
-
 decimal
 
 : ESC[ 27 emit [char] ] emit ;
@@ -51,3 +49,13 @@ decimal
 : text_reverse ( -- | set reverse video text )
   ESC[ [char] 7 emit [char] m emit
 ;
+
+
+0 constant Black
+1 constant Red
+2 constant Green
+3 constant Yellow
+4 constant Blue
+5 constant Brown
+6 constant Cyan
+7 constant White
