@@ -4,8 +4,6 @@
 \  help <word>
 \ prints the stack effects and a short description 
 
-\ requires words from dict_wl.inc
-
 wordlist constant help-wl
 
 : help
