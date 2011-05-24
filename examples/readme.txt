@@ -16,3 +16,14 @@ run-hayes.frt: demonstrate the use of the amforth-upload.py utility
 
 timer-interrupt.frt: demonstrate the use of the timer interrupt with
    forth code.
+   
+queens.frt: solves the queens problem for various size, maybe useful
+  as a benchmark.
+
+twi-eeprom.frt: access a I2C (TWI) EEPROM module.
+
+ascii.frt: prints an ascii table on screen
+
+life.frt: Conveys game of life. Its very memory intensive, the example
+   code works on an Atmega16, but a bigger one would allow larger
+   worlds.
