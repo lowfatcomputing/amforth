@@ -1,6 +1,6 @@
 ; ( n -- ) 
 ; Numeric IO
-; single cell numeric output
+; singed PNO with single cell numbers
 VE_DOT:
     .dw $ff01
     .db ".",0

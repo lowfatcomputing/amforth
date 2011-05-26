@@ -1,6 +1,6 @@
 ; ( n w -- ) 
 ; Numeric IO
-; single cell numeric output
+; singed PNO with single cell numbers, right aligned in width w
 VE_DOTR:
     .dw $ff02
     .db ".r"

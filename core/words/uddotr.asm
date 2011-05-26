@@ -1,6 +1,6 @@
 ; ( ud w -- ) 
 ; Numeric IO
-; double cell output
+; unsigned PNO with double cell numbers, right aligned in width w
 VE_UDDOTR:
     .dw $ff04
     .db "ud.r"

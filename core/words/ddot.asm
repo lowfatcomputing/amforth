@@ -1,6 +1,6 @@
-; ( d1 -- ) 
+; ( d -- ) 
 ; Numeric IO
-; double cell output
+; singed PNO with double cell numbers
 VE_DDOT:
     .dw $ff02
     .db "d."

@@ -1,6 +1,6 @@
-; ( ud1 w -- ) 
+; ( ud -- ) 
 ; Numeric IO
-; double cell output
+; unsigned PNO with double cell numbers
 VE_UDDOT:
     .dw $ff03
     .db "ud.",0
