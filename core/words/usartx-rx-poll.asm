@@ -1,6 +1,6 @@
 ; ( -- c) 
 ; MCU
-; wait for and get one character from the terminal
+; wait for and get one character from the terminal (Poll, ATXmega)
 VE_RX:
     .dw $ff02
     .db "rx"
@@ -21,7 +21,7 @@ PFA_RX:
 
 ; ( -- f)
 ; MCU
-; check if a character can read from the terminal
+; check if a character can read from the terminal (Poll, ATXmega)
 VE_RXQ:
     .dw $ff03
     .db "rx?",0

@@ -1,18 +1,18 @@
 ; (c -- )
 ; MCU
-; check availability and send one character to the terminal.
-VE_TX:
-    .dw $ff02
-    .db "tx"
+; check availability and send one character to the terminal using register poll
+VE_TX_POLL:
+    .dw $ff07
+    .db "tx-poll",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX
-XT_TX:
+    .set VE_HEAD = VE_TX_POLL
+XT_TX_POLL:
     .dw DO_COLON
-PFA_TX:
+PFA_TX_POLL:
   ; wait for data ready
-  .dw XT_TXQ
+  .dw XT_TXQ_POLL
   .dw XT_DOCONDBRANCH
-  .dw PFA_TX
+  .dw PFA_TX_POLL
   ; send to usart
   .dw XT_DOLITERAL
   .dw USART_DATA
@@ -21,15 +21,15 @@ PFA_TX:
 
 ; ( -- f) MCU
 ; MCU
-; check if a character can be appended to output queue.
-VE_TXQ:
-    .dw $ff03
-    .db "tx?",0
+; check if a character can be send using register poll
+VE_TXQ_POLL:
+    .dw $ff08
+    .db "tx?-poll"
     .dw VE_HEAD
-    .set VE_HEAD = VE_TXQ
-XT_TXQ:
+    .set VE_HEAD = VE_TXQ_POLL
+XT_TXQ_POLL:
     .dw DO_COLON
-PFA_TXQ:
+PFA_TXQ_POLL:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw USART_A
@@ -42,12 +42,12 @@ PFA_TXQ:
 ; ( -- ) Hardware Access
 ; R( --)
 ; initialize usart
-;VE_USART_INIT_TX:
+;VE_USART_INIT_TX_POLL:
 ;  .dw $ff06
 ;  .db "+usart"
 ;  .dw VE_HEAD
-;  .set VE_HEAD = VE_USART_INIT_TX
-XT_USART_INIT_TX:
+;  .set VE_HEAD = VE_USART_INIT_TX_POLL
+XT_USART_INIT_TX_POLL:
   .dw DO_COLON
-PFA_USART_INIT_TX:          ; ( -- )
+PFA_USART_INIT_TX_POLL:          ; ( -- )
   .dw XT_EXIT

@@ -1,17 +1,17 @@
 ; ( -- c)
 ; MCU
-; get 1 character from input queue, wait if needed
-VE_RX:
-    .dw $ff02
-    .db "rx"
+; get 1 character from input queue, wait if needed using interrupt driver
+VE_RX_ISR:
+    .dw $ff06
+    .db "rx-isr"
     .dw VE_HEAD
-    .set VE_HEAD = VE_RX
-XT_RX:
+    .set VE_HEAD = VE_RX_ISR
+XT_RX_ISR:
     .dw DO_COLON
-PFA_RX:
+PFA_RX_ISR:
   .dw XT_RXQ
   .dw XT_DOCONDBRANCH
-  .dw PFA_RX
+  .dw PFA_RX_ISR
   .dw XT_DOLITERAL
   .dw usart_rx_out
   .dw XT_CFETCH
@@ -31,15 +31,15 @@ PFA_RX:
 
 ; ( -- f)  
 ; MCU
-; check if unread characters are in the input queue.
-VE_RXQ:
-    .dw $ff03
-    .db "rx?",0
+; check if unread characters are in the input queue using interrupt driver
+VE_RXQ_ISR:
+    .dw $ff07
+    .db "rx?-isr",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_RXQ
-XT_RXQ:
+    .set VE_HEAD = VE_RXQ_ISR
+XT_RXQ_ISR:
     .dw DO_COLON
-PFA_RXQ:
+PFA_RXQ_ISR:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw usart_rx_out

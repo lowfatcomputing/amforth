@@ -1,18 +1,3 @@
-;;; usart driver
-
-; ( -- v) 
-; System Value
-; returns usart baudrate
-VE_BAUD:
-  .dw $ff04
-  .db "baud"
-  .dw VE_HEAD
-  .set VE_HEAD = VE_BAUD
-XT_BAUD:
-  .dw PFA_DOVALUE
-PFA_BAUD:          ; ( -- )
-  .dw EE_UBRRVAL
-
 ; ( -- )
 ; MCU
 ; initialize usart

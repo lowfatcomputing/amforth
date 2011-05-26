@@ -1,21 +1,6 @@
-;;; usart driver
-
-; ( -- v) 
-; System Value
-; returns usart baudrate
-VE_BAUD:
-  .dw $ff04
-  .db "baud"
-  .dw VE_HEAD
-  .set VE_HEAD = VE_BAUD
-XT_BAUD:
-  .dw PFA_DOVALUE
-PFA_BAUD:          ; ( -- )
-  .dw EE_UBRRVAL
-
 ; ( -- )
 ; MCU
-; initialize the atxmega usart
+; initialize the atxmega usart (ATXmega)
 VE_USART:
   .dw $ff06
   .db "+usart"

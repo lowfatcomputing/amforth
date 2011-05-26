@@ -1,18 +1,18 @@
 ; (c -- )
 ; MCU
 ; put 1 character into output queue, wait if needed, enable UDRIE interrupt
-VE_TX:
-    .dw $ff02
-    .db "tx"
+VE_TX_ISR:
+    .dw $ff06
+    .db "tx-isr"
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX
-XT_TX:
+    .set VE_HEAD = VE_TX_ISR
+XT_TX_ISR:
     .dw DO_COLON
-PFA_TX:
+PFA_TX_ISR:
   ; wait for queue
-  .dw XT_TXQ
+  .dw XT_TXQ_ISR
   .dw XT_DOCONDBRANCH
-  .dw PFA_TX
+  .dw PFA_TX_ISR
   ; append to queue
   .dw XT_DOLITERAL
   .dw usart_tx_in
@@ -46,14 +46,14 @@ PFA_TX:
 ; ( -- f)
 ; MCU
 ; check if a character can be appended to output queue.
-VE_TXQ:
-    .dw $ff03
-    .db "tx?",0
+VE_TXQ_ISR:
+    .dw $ff07
+    .db "tx?-isr",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_TXQ
-XT_TXQ:
+    .set VE_HEAD = VE_TXQ_ISR
+XT_TXQ_ISR:
     .dw DO_COLON
-PFA_TXQ:
+PFA_TXQ_ISR:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw usart_tx_out
