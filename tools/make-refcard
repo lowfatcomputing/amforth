@@ -11,7 +11,7 @@ my %RSTACK;
 my %CSTACK;
 my %CATEGORY;
 
-my $version="4.4";
+my $version="4.5";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
@@ -171,7 +171,7 @@ sub printLaTeX {
 	    my $verbdelim = "|";
 	    $verbdelim = "/" if $dstack=~/$verbdelim/;
 	    print LATEX "% $lbl\n";
-	    $voc =~ s/\\/\\\\/g;
+	    $voc =~ s/\\/\\textbackslash/g;
 	    $voc =~ s/\#/\\#/g;
 	    $voc =~ s/_/\\_/g;
 	    print LATEX "\\item[$voc]\n";
