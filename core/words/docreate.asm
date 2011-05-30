@@ -29,7 +29,7 @@ PFA_DOCREATE:
     .dw XT_EXIT
 
 PFA_DOCREATE4:
-    .dw XT_DROP
-    .dw XT_DROP
-    .dw XT_DROP
-    .dw XT_EXIT
+    ; -16: attempt to use zero length string as a name
+    .dw XT_DOLITERAL
+    .dw -16
+    .dw XT_THROW
