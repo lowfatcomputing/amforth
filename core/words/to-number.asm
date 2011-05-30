@@ -14,13 +14,10 @@ PFA_TO_NUMBER:
     .dw PFA_TO_NUMBER1
         .dw XT_OVER
         .dw XT_CFETCH
-        .dw XT_BASE
-        .dw XT_FETCH
         .dw XT_DIGITQ
         .dw XT_EQUALZERO
         .dw XT_DOCONDBRANCH
         .dw PFA_TO_NUMBER2
-            .dw XT_DROP
             .dw XT_EXIT
 PFA_TO_NUMBER2:
         .dw XT_TO_R
