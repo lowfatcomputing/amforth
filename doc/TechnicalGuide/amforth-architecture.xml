@@ -99,8 +99,8 @@
 				freely within one module as temp0 to temp7.</para>
 			<para>
 				The forth core uses the
-				<code>T</code>
-				bit in the machine status register SREG for signalling an interrupt.
+				<code>T</code> Flag in the machine status register SREG for signalling 
+				an interrupt. Any other code must not change that bit.
 			</para>
 		</sect1>
 		<sect1 id="Core_System">
@@ -180,13 +180,13 @@
 			<sect2 id="INTERPRETER">
 			    <title>Interpreter</title>
 			    <para>
-			      The interpreter a line based command interpreter. It uses ACCEPT to aquire  a
+			      The interpreter a line based command interpreter. It uses <command>ACCEPT</command> to aquire  a
 			      complete input text line. If the line is completed (by sending the CR/LF character(s))
-			      the line is processed by INTERPRET. It splits the line into whitespace delimited words.
+			      the line is processed by <command>INTERPRET</command>. It splits the line into whitespace delimited words.
 			      The word is analyzed using a sorted list of recognizer words which are specialized
 			      to deal with e.g. the wordlists or convert strings into numbers. This list can be
 			      changed at runtime. Its possible to extend the interpreter to recognize e.g. 
-			      floating  point numbers without recompiling / reflashing the controller.
+			      floating  point numbers without recompiling and reflashing the controller.
 			    </para>
 			    <sect3 id="RECOGNIZER">
 			      <title>Recognizer</title>
@@ -199,8 +199,9 @@
 			        change is kept.
 			      </para>
 			      <para>
-			        Three recognizers are defined: Dictionary lookup, integer number conversion and
-			        a not-found dummy. The first two take care of the interpreter state and either
+			        Three recognizers are defined: Dictionary lookup <command>rec-find</command>, 
+			        integer number conversion <command>rec-intnum</command> and a not-found dummy
+			        <command>rec-notfound</command>. The first two take care of the interpreter state and either
 			        leave more than the flag (e.g. the number entered) or compile the information
 			        to the dictionary.
 			      </para>
@@ -223,12 +224,11 @@
 			      <screen language="forth">
 : rec-float  \ addr -- (f|) -1 | 0 
   count >float
-  if state @ if fliteral then -1 else 0 
+  if state @ if postpone fliteral then -1 else 0 
   then ;
-:
                   </screen>
                   The recognozer first tries to convert the string to a number. If that failes, the flag
-                  from the >float essentially duplicated and the recognizer is left. If the conversion
+                  from the >float is essentially duplicated and the recognizer is left. If the conversion
                   succeeded, the floating point number is on the data stack. The recognizer now checks
                   whether the number needs to be compiled or not. In any case the success flag is
                   returned.
@@ -345,11 +345,11 @@ variable tick
                     occured.
                 </para>
 		<para> If an interrupt is detected, the forth VM clears the
-		  T-flag and continues with the word ISR-EXEC. This word 
-		  reads the currently active interrupt number and calls 
+		  T-flag and continues with the word <command>ISR-EXEC</command>. 
+		  This word reads the currently active interrupt number and calls 
 		  the assoicated execution token.  When this word is finished, 
-		  the word ISR-END is called. This word clears the interrupt 
-		  flag for the controller (RETI).
+		  the word <command>ISR-END</command> is called. This word clears 
+		  the interrupt flag for the controller (RETI).
 		</para>
 		<para>This interrupt processing has two advantages: There are
 		  no lost interrupts (the controller itself disables interrupts
