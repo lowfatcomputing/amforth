@@ -1,14 +1,14 @@
 ; ( -- )
 ; MCU
 ; initialize the atxmega usart (ATXmega)
-VE_USART:
-  .dw $ff06
-  .db "+usart"
+VE_USARTX:
+  .dw $ff07
+  .db "+usartx"
   .dw VE_HEAD
-  .set VE_HEAD = VE_USART
-XT_USART:
+  .set VE_HEAD = VE_USARTX
+XT_USARTX:
   .dw DO_COLON
-PFA_USART:          ; ( -- )
+PFA_USARTX:          ; ( -- )
 
   .dw XT_DOLITERAL
   .dw $88

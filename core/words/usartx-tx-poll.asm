@@ -1,18 +1,18 @@
 ; (c -- )
 ; MCU
 ; wait for the terminal becomes ready and put 1 character to it (Poll, ATXmega)
-VE_TX_POLL:
-    .dw $ff02
-    .db "tx"
+VE_XTX_POLL:
+    .dw $ff09
+    .db "x-tx-poll",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX_POLL
-XT_TX_POLL:
+    .set VE_HEAD = VE_XTX_POLL
+XT_XTX_POLL:
     .dw DO_COLON
-PFA_TX_POLL:
+PFA_XTX_POLL:
   ; wait for data ready
-  .dw XT_TX_POLLQ
+  .dw XT_XTXQ_POLL
   .dw XT_DOCONDBRANCH
-  .dw PFA_TX_POLL
+  .dw PFA_XTX_POLL
   ; send to usart
   .dw XT_DOLITERAL
   .dw TERM_USART+USART_DATA_offset
@@ -22,14 +22,14 @@ PFA_TX_POLL:
 ; ( -- f)
 ; MCU
 ; check if a character can be sent (Poll, ATXmega)
-VE_TX_POLLQ:
-    .dw $ff03
-    .db "tx?",0
+VE_XTXQ_POLL:
+    .dw $ff0b
+    .db "x-tx?-poll",0
     .dw VE_HEAD
-    .set VE_HEAD = VE_TX_POLLQ
-XT_TX_POLLQ:
+    .set VE_HEAD = VE_XTXQ_POLL
+XT_XTXQ_POLL:
     .dw DO_COLON
-PFA_TX_POLLQ:
+PFA_XTXQ_POLL:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
   .dw TERM_USART+USART_STATUS_offset
@@ -49,7 +49,7 @@ PFA_TX_POLLQ:
 ;  .db "+usart"
 ;  .dw VE_HEAD
 ;  .set VE_HEAD = VE_USART_INIT_TX_POLL
-XT_USART_INIT_TX_POLL:
-  .dw PFA_USART_INIT_TX_POLL
-PFA_USART_INIT_TX_POLL:          ; ( -- )
+XT_USART_INIT_XTX_POLL:
+  .dw PFA_USART_INIT_XTX_POLL
+PFA_USART_INIT_XTX_POLL:          ; ( -- )
   jmp_ DO_NEXT
