@@ -20,4 +20,4 @@ PFA_N_R_FROM1:
     dec temp0
     brne PFA_N_R_FROM1
     movw tosl, zl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

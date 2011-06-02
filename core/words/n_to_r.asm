@@ -20,4 +20,4 @@ PFA_N_TO_R1:
     push zl
     push zh
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
