@@ -15,4 +15,4 @@ PFA_STORE:
     std Z+1, tosh
     std Z+0, tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

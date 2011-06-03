@@ -12,4 +12,4 @@ PFA_ZERO:
     savetos
 PFA_ZERO1:
     movw tosl, zerol
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

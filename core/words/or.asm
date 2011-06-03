@@ -13,5 +13,5 @@ PFA_OR:
     ld temp1, Y+
     or tosl, temp0
     or tosh, temp1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 

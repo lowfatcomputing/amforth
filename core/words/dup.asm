@@ -10,4 +10,4 @@ XT_DUP:
     .dw PFA_DUP
 PFA_DUP:
     savetos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

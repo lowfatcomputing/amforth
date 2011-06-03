@@ -13,4 +13,4 @@ PFA_PLUS:
     ld temp1, Y+
     add tosl, temp0
     adc tosh, temp1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

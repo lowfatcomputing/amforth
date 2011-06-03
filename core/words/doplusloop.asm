@@ -37,4 +37,4 @@ PFA_DOPLUSLOOP1:
     pop  temp0
     pop  temp1  ; remove leave destination
     adiw xl, 1 ; skip branch-back address
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

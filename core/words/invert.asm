@@ -11,4 +11,4 @@ XT_INVERT:
 PFA_INVERT:
     com tosl
     com tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

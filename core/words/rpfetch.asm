@@ -12,4 +12,4 @@ PFA_RP_FETCH:
     savetos
     in tosl, SPL
     in tosh, SPH
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

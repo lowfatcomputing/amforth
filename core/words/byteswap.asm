@@ -12,4 +12,4 @@ PFA_BYTESWAP:
     mov temp0, tosh
     mov tosh, tosl
     mov tosl, temp0
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

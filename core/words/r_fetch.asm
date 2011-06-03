@@ -14,4 +14,4 @@ PFA_R_FETCH:
     pop tosh
     push tosh
     push tosl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

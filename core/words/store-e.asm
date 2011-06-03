@@ -21,7 +21,7 @@ PFA_STOREE:
     rcall PFA_STOREE1
     out_ SREG, temp2
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
     
 PFA_STOREE1:
     in_ temp0, EECR

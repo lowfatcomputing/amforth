@@ -13,4 +13,4 @@ PFA_OVER:
     ldd tosl, Y+2
     ldd tosh, Y+3
 
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

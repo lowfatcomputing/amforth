@@ -15,4 +15,4 @@ PFA_ULESS:
     cpc tosh, temp3
     brlo PFA_ZERO1
     brbs 1, PFA_ZERO1
-    rjmp PFA_TRUE1
+    jmp_ PFA_TRUE1

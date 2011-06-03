@@ -11,4 +11,4 @@ XT_DOBRANCH:
 PFA_DOBRANCH:
     movw zl, XL
     readflashcell XL,XH
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

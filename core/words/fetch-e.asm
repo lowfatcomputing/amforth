@@ -20,7 +20,7 @@ PFA_FETCHE:
     rcall PFA_FETCHE1
     in_  tosh, EEDR
     out_ SREG, temp2
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 PFA_FETCHE1:
     in_ temp1, EECR

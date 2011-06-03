@@ -17,4 +17,4 @@ PFA_DOLOOP:
     cp zl, temp2
     cpc zh, temp3
     breq PFA_DOPLUSLOOP1
-    rjmp PFA_DOPLUSLOOP3
+    jmp_ PFA_DOPLUSLOOP3

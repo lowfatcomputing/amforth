@@ -13,4 +13,4 @@ PFA_FETCH:
     ; low byte is read before the high byte
     ld tosl, z+
     ld tosh, z+
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

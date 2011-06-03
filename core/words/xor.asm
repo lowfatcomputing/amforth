@@ -13,4 +13,4 @@ PFA_XOR:
     ld temp1, Y+
     eor tosl, temp0
     eor tosh, temp1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

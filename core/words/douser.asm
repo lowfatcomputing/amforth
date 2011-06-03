@@ -15,4 +15,4 @@ PFA_DOUSER:
     readflashcell tosl,tosh
     add tosl, upl
     adc tosh, uph
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

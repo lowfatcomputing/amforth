@@ -13,4 +13,4 @@ PFA_TRUE:
 PFA_TRUE1:
     ser tosl
     ser tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

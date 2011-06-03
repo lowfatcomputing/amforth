@@ -15,4 +15,4 @@ PFA_2TO_R:
     push tosh
     push tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

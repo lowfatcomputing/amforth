@@ -13,5 +13,5 @@ PFA_DOLITERAL:
     movw zl, xl
     readflashcell tosl,tosh
     adiw xl, 1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 

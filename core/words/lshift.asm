@@ -18,5 +18,5 @@ PFA_LSHIFT1:
     rol tosh
     rjmp PFA_LSHIFT1
 PFA_LSHIFT2:
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 

@@ -10,4 +10,4 @@ XT_DROP:
     .dw PFA_DROP
 PFA_DROP:
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

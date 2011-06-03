@@ -18,8 +18,9 @@ PFA_LOG2_1:
     lsl  zl
     rol  zh
     brcc PFA_LOG2_1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 PFA_LOG2_2:
     dec tosh
-    rjmp DO_NEXT    
+    jmp_ DO_NEXT
+    

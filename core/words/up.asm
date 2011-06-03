@@ -11,7 +11,7 @@ XT_UP_FETCH:
 PFA_UP_FETCH:
     savetos
     movw tosl, upl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 
 ; ( addr -- ) 
 ; System Variable
@@ -26,4 +26,4 @@ XT_UP_STORE:
 PFA_UP_STORE:
     movw upl, tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

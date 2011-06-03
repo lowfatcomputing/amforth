@@ -15,4 +15,4 @@ PFA_RP_STORE:
     out SPH, tosh
     out SREG, temp2
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

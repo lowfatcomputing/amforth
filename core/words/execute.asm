@@ -11,4 +11,4 @@ XT_EXECUTE:
 PFA_EXECUTE:
     movw wl, tosl
     loadtos
-    rjmp DO_EXECUTE
+    jmp_ DO_EXECUTE

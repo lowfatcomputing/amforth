@@ -25,4 +25,4 @@ PFA_DODO1:
     push tosh
     push tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

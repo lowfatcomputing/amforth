@@ -12,4 +12,4 @@ PFA_R_FROM:
     savetos
     pop tosl
     pop tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

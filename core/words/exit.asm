@@ -11,4 +11,4 @@ XT_EXIT:
 PFA_EXIT:
     pop XL
     pop XH
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

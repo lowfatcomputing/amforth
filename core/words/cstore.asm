@@ -13,4 +13,4 @@ PFA_CSTORE:
     loadtos
     st Z, tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

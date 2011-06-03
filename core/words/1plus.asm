@@ -10,4 +10,4 @@ XT_1PLUS:
     .dw PFA_1PLUS
 PFA_1PLUS:
     adiw tosl,1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

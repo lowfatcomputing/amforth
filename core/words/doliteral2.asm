@@ -18,5 +18,5 @@ PFA_DOLITERAL2:
     savetos
     movw tosl, temp0
     adiw xl, 2
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 

@@ -11,4 +11,4 @@ XT_SP_FETCH:
 PFA_SP_FETCH:
     savetos
     movw tosl, yl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

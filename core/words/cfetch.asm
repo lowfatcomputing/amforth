@@ -12,4 +12,4 @@ PFA_CFETCH:
     movw zl, tosl
     clr tosh
     ld tosl, Z
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

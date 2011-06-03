@@ -14,4 +14,4 @@ PFA_QDUP:
     breq PFA_QDUP1
     savetos
 PFA_QDUP1:
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

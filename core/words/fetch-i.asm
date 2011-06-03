@@ -11,4 +11,4 @@ XT_FETCHI:
 PFA_FETCHI:
     movw zl, tosl
     readflashcell tosl,tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

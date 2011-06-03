@@ -12,4 +12,4 @@ PFA_DOCONSTANT:
     savetos
     movw tosl, wl
     adiw tosl, 1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

@@ -11,4 +11,4 @@ XT_2SLASH:
 PFA_2SLASH:
     asr tosh
     ror tosl
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

@@ -19,4 +19,4 @@ PFA_ROT:
     st -Y, temp1
     st -Y, temp0
 
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

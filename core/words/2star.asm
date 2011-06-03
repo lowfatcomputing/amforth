@@ -11,4 +11,4 @@ XT_2STAR:
 PFA_2STAR:
     lsl tosl
     rol tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

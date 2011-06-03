@@ -31,4 +31,4 @@ PFA_CMOVE_G1:
     pop xl
     pop xh
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

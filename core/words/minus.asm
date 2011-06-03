@@ -14,4 +14,4 @@ PFA_MINUS:
     sub temp0, tosl
     sbc temp1, tosh
     movw tosl, temp0
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

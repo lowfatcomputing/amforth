@@ -2,11 +2,11 @@
 ; Memory
 ; read 1 cell from eeprom using NVM
 VE_FETCHENVM:
-    .dw $ff02
-    .db "@e"
+    .dw $ff06
+    .db "@e-nvm"
     .dw VE_HEAD
     .set VE_HEAD = VE_FETCHENVM
-XT_FETCHE: ; the same label as XT_FETCHE
+XT_FETCHENVM: 
     .dw PFA_FETCHENVM
 PFA_FETCHENVM:
     rcall nvm_waitfor

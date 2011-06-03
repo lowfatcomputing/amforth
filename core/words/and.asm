@@ -13,4 +13,4 @@ PFA_AND:
     ld temp1, Y+
     and tosl, temp0
     and tosh, temp1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

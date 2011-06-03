@@ -2,11 +2,11 @@
 ; Memory
 ; write to eeprom address using nvm (atxmega)
 VE_STOREENVM:
-    .dw $ff02
-    .db "!e"
+    .dw $ff06
+    .db "!e-nvm"
     .dw VE_HEAD
     .set VE_HEAD = VE_STOREENVM
-XT_STOREE:
+XT_STOREENVM:
     .dw PFA_STOREENVM
 PFA_STOREENVM:
     rcall nvm_waitfor

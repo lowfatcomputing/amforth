@@ -11,4 +11,4 @@ XT_SP_STORE:
 PFA_SP_STORE:
     movw yl, tosl
     loadtos
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

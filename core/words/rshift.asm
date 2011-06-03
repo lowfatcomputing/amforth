@@ -18,5 +18,5 @@ PFA_RSHIFT1:
     ror tosl
     rjmp PFA_RSHIFT1
 PFA_RSHIFT2:
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
 

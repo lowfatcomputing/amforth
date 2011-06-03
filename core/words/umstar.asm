@@ -34,4 +34,4 @@ PFA_UMSTAR:
     movw tosl, zl
     savetos
     movw tosl, temp2
-    rjmp DO_NEXT
+    jmp_ DO_NEXT

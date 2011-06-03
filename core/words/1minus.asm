@@ -10,4 +10,4 @@ XT_1MINUS:
     .dw PFA_1MINUS
 PFA_1MINUS:
     sbiw tosl, 1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
