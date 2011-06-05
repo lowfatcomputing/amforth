@@ -5,7 +5,7 @@
 ;
 
 : .(  \ (s -- )
-   [char] ) word count type
+   [char] ) parse type
 ; immediate
 
 \ dump free ressources
