@@ -11,6 +11,7 @@ XT_LPARENTHESIS:
 PFA_LPARENTHESIS:
     .dw XT_DOLITERAL
     .dw $29
-    .dw XT_WORD
+    .dw XT_PARSE
+    .dw XT_DROP
     .dw XT_DROP
     .dw XT_EXIT
