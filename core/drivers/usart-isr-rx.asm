@@ -56,9 +56,9 @@ usart_rx_isr_finish:
 ;  .db "+usart"
 ;  .dw VE_HEAD
 ;  .set VE_HEAD = VE_USART_INIT_RX
-XT_USART_INIT_RX:
+XT_USART_INIT_RX_ISR:
   .dw DO_COLON
-PFA_USART_INIT_RX:          ; ( -- )
+PFA_USART_INIT_RX_ISR:          ; ( -- )
   .dw XT_ZERO
   .dw XT_DOLITERAL
   .dw usart_rx_in

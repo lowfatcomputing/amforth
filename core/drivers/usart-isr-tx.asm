@@ -66,9 +66,9 @@ usart_udre_done:
 ;  .db "+usart"
 ;  .dw VE_HEAD
 ;  .set VE_HEAD = VE_USART_INIT_TX
-XT_USART_INIT_TX:
+XT_USART_INIT_TX_ISR:
   .dw DO_COLON
-PFA_USART_INIT_TX:          ; ( -- )
+PFA_USART_INIT_TX_ISR:          ; ( -- )
   .dw XT_ZERO
   .dw XT_DOLITERAL
   .dw usart_tx_in

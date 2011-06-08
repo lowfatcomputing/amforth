@@ -12,3 +12,6 @@ nvm_command:
     out CPU_CCP, temp1
     sts NVM_CTRLA, temp2
     ret
+
+.equ XT_STOREE = XT_STOREENVM
+.equ XT_FETCHE = XT_FETCHENVM
