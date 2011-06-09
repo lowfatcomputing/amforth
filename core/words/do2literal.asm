@@ -1,14 +1,14 @@
 ; ( -- x1 x2 )
 ; System
 ; runtime of 2literal
-;VE_DOLITERAL2:
+;VE_DO2LITERAL:
 ;    .dw $ff0a
 ;    .db "(2literal)"
 ;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOLITERAL2
-XT_DOLITERAL2:
-    .dw PFA_DOLITERAL2
-PFA_DOLITERAL2:
+;    .set VE_HEAD = VE_DO2LITERAL
+XT_DO2LITERAL:
+    .dw PFA_DO2LITERAL
+PFA_DO2LITERAL:
     savetos
     movw zl, xl
     readflashcell temp0,temp1
