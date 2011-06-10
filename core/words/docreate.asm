@@ -10,9 +10,7 @@ XT_DOCREATE:
     .dw DO_COLON
 PFA_DOCREATE:
     .dw XT_DP     ; ( -- dp)
-    .dw XT_BL
-    .dw XT_WORD   ; ( -- dp addr)
-    .dw XT_COUNT  ; ( -- dp addr' n)
+    .dw XT_PARSENAME
     .dw XT_DUP    ; ( -- dp addr' n n )
     .dw XT_GREATERZERO ;( -- dp addr' n f )
     .dw XT_DOCONDBRANCH

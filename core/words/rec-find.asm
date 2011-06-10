@@ -1,6 +1,6 @@
-; ( addr -- f ) 
+; ( addr len -- f ) 
 ; Interpreter
-; recognizer for find
+; recognizer searching the dictionary
 VE_REC_FIND:
     .dw $ff08
     .db "rec-find"
@@ -9,8 +9,8 @@ VE_REC_FIND:
 XT_REC_FIND:
     .dw DO_COLON
 PFA_REC_FIND:
-    .dw XT_FIND
-    .dw XT_QDUP
+    .dw XT_FINDNAME
+    .dw XT_DUP
     .dw XT_DOCONDBRANCH 
     .dw PFA_REC_FIND_NOTFOUND
 	; either compile or execute the XT
@@ -34,9 +34,6 @@ PFA_REC_FIND_EXECUTE:
     .dw XT_EXECUTE
 PFA_REC_FIND_OK:
     .dw XT_TRUE
-    .dw XT_EXIT
 PFA_REC_FIND_NOTFOUND:
-    .dw XT_DROP
-    .dw XT_ZERO
     .dw XT_EXIT
 

@@ -1,4 +1,4 @@
-; ( addr --  ) 
+; ( addr len --  ) 
 ; Interpreter
 ; recognizer for NOT FOUND
 VE_REC_NOTFOUND:
@@ -9,7 +9,6 @@ VE_REC_NOTFOUND:
 XT_REC_NOTFOUND:
     .dw DO_COLON
 PFA_REC_NOTFOUND:
-    .dw XT_COUNT
     .dw XT_TYPE
     .dw XT_DOLITERAL
     .dw -13

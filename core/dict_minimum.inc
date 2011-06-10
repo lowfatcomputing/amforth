@@ -88,6 +88,8 @@
 .include "words/char-scan.asm"
 .include "words/source.asm"
 .include "words/slashstring.asm"
+.include "words/parse-name.asm"
+.include "words/find-name.asm"
 
 .include "words/word.asm"
 .include "words/place.asm"

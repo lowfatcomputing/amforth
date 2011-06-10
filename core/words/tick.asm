@@ -9,9 +9,8 @@ VE_TICK:
 XT_TICK:
     .dw DO_COLON
 PFA_TICK:
-    .dw XT_BL
-    .dw XT_WORD
-    .dw XT_FIND
+    .dw XT_PARSENAME
+    .dw XT_FINDNAME
     .dw XT_EQUALZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_TICK1
