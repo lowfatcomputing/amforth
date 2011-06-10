@@ -9,7 +9,7 @@ VE_RX_ISR:
 XT_RX_ISR:
     .dw DO_COLON
 PFA_RX_ISR:
-  .dw XT_RXQ
+  .dw XT_RXQ_ISR
   .dw XT_DOCONDBRANCH
   .dw PFA_RX_ISR
   .dw XT_DOLITERAL
