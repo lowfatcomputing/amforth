@@ -9,11 +9,7 @@ VE_BRACKETCHAR:
 XT_BRACKETCHAR:
     .dw DO_COLON
 PFA_BRACKETCHAR:
-    .dw XT_BL
-    .dw XT_WORD
-    .dw XT_COUNT
-    .dw XT_DROP
-    .dw XT_CFETCH
+    .dw XT_CHAR
     .dw XT_COMPILE
     .dw XT_DOLITERAL
     .dw XT_COMMA
