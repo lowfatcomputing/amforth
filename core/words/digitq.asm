@@ -1,4 +1,4 @@
-; ( c -- number flag ) 
+; ( c -- (number|) flag ) 
 ; Numeric IO
 ; tries to convert a character to a number, set flag accordingly
 VE_DIGITQ:
