@@ -9,28 +9,26 @@ VE_WORD:
 XT_WORD:
     .dw DO_COLON
 PFA_WORD:
-    .dw XT_TO_R     ; ( -- )
-    .dw XT_SOURCE   ; ( -- addr len)
-    .dw XT_G_IN     ; ( -- addr len >in)
-    .dw XT_FETCH
-    .dw XT_SLASHSTRING ; ( -- addr' len' )
-    ; skip leading char
-    .dw XT_SWAP        ; ( -- len' addr' )
-    .dw XT_OVER        ; ( -- len' addr' len')
-    .dw XT_R_FETCH     ; ( -- len' addr' len' c)
-    .dw XT_CSKIP       ; ( -- len' addr'' len'')
-    .dw XT_ROT         ; ( -- addr'' len'' len')
-    .dw XT_OVER        ; ( -- addr'' len'' len' len'')
-    .dw XT_MINUS       ; ( -- addr'' len'' dlen)
-    .dw XT_G_IN        ; ( -- addr'' len'' dlen >in)
-    .dw XT_PLUSSTORE   ; ( -- addr'' len'')
-    ; scan
-    .dw XT_R_FROM      ; ( -- addr'' len'' c)
-    .dw XT_CSCAN       ; ( -- addr''' len''')
-    .dw XT_DUP         ; ( -- addr''' len''' len''')
-    .dw XT_1PLUS       ;
-    .dw XT_G_IN
-    .dw XT_PLUSSTORE   ; ( -- addr''' len''')
+    .dw XT_TO_R
+    .dw XT_SOURCE 
+    .dw XT_G_IN 
+    .dw XT_FETCH 
+    .dw XT_SLASHSTRING 
+
+    .dw XT_R_FETCH
+    .dw XT_CSKIP
+    .dw XT_R_FROM
+    .dw XT_CSCAN
+
+    ; adjust >IN
+    .dw XT_OVER
+    .dw XT_OVER     
+    .dw XT_PLUS     
+    .dw XT_SOURCE 
+    .dw XT_DROP     
+    .dw XT_MINUS 
+    .dw XT_G_IN 
+    .dw XT_STORE 
 
     ; move to HERE
     .dw XT_HERE
