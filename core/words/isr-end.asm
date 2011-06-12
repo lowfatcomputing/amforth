@@ -1,11 +1,11 @@
 ; ( --  )  
 ; Interrupt
 ; re-enables interrupts in an ISR
-VE_ISREND:
-    .dw $ff07
-    .db "isr-end",0
-    .dw VE_HEAD
-    .set VE_HEAD = VE_ISREND
+;VE_ISREND:
+;    .dw $ff07
+;    .db "isr-end",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_ISREND
 XT_ISREND:
     .dw PFA_ISREND
 PFA_ISREND:
