@@ -9,15 +9,22 @@ VE_PARSENAME:
 XT_PARSENAME:
     .dw DO_COLON 
 PFA_PARSENAME:
-; ( "name" -- c-addr u ) 
+    .dw XT_BL
+    .dw XT_SKIPSCANCHAR
+    .dw XT_EXIT 
+
+XT_SKIPSCANCHAR:
+    .dw DO_COLON
+PFA_SKIPSCANCHAR:
+    .dw XT_TO_R
     .dw XT_SOURCE 
     .dw XT_G_IN 
     .dw XT_FETCH 
     .dw XT_SLASHSTRING 
 
-    .dw XT_BL
+    .dw XT_R_FETCH
     .dw XT_CSKIP
-    .dw XT_BL
+    .dw XT_R_FROM
     .dw XT_CSCAN
 
     ; adjust >IN
@@ -29,4 +36,4 @@ PFA_PARSENAME:
     .dw XT_MINUS 
     .dw XT_G_IN 
     .dw XT_STORE 
-    .dw XT_EXIT 
+    .dw XT_EXIT
