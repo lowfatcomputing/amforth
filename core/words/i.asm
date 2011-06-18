@@ -7,7 +7,5 @@ VE_I:
     .dw VE_HEAD
     .set VE_HEAD = VE_I
 XT_I:
-    .dw DO_COLON
-PFA_I:
-    .dw XT_R_FETCH
-    .dw XT_EXIT
+    .dw PFA_R_FETCH
+
