@@ -7,11 +7,7 @@ VE_I:
     .dw VE_HEAD
     .set VE_HEAD = VE_I
 XT_I:
-    .dw PFA_I
+    .dw DO_COLON
 PFA_I:
-    savetos
-    pop tosl
-    pop tosh
-    push tosh
-    push tosl
-    jmp_ DO_NEXT
+    .dw XT_R_FETCH
+    .dw XT_EXIT
