@@ -1,6 +1,6 @@
 ; ( -- addr ) 
 ; System Variable
-; address of variable holding the number of characters in TIB
+; variable holding the number of characters in TIB
 VE_NUMBERTIB:
     .dw $ff04
     .db "#tib"

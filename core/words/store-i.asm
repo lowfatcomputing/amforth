@@ -1,6 +1,6 @@
 ; ( n addr -- ) 
 ; Memory
-; Deferred action for flash write of a single cell
+; Deferred action to write a single 16bit cell to flash
 VE_STOREI:
     .dw $ff02
     .db "!i"

@@ -1,6 +1,6 @@
-; ( addr len -- [ 0 ] | [ xt [-1|1]] ) 
+; ( addr len --  0 | xt -1 | xt 1 ) 
 ; Tools
-; search wordlists
+; search wordlists for the name from string addr/len
 VE_FINDNAME:
     .dw $ff09
     .db "find-name",0

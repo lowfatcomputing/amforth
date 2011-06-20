@@ -1,6 +1,6 @@
 ; ( --  ) 
 ; Compiler
-; turn on compiler mode
+; enter compiler mode
 VE_RBRACKET:
     .dw $ff01
     .db "]",0

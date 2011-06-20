@@ -1,6 +1,6 @@
-; ( c-addr1 -- c-addr2 n) 
+; ( c-addr1 -- c-addr2 len) 
 ; String
-; c-addr1 is the address of a counted string in RAM
+; convert addr of counted string to address of the first characater and length of the string
 VE_COUNT:
     .dw $ff05
     .db "count",0

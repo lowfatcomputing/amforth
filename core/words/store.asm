@@ -1,6 +1,6 @@
 ; ( n addr -- ) 
 ; Memory
-; write 16bit to RAM memory, low byte first
+; write n to RAM memory at addr, low byte first
 VE_STORE:
     .dw $ff01
     .db "!",0

@@ -1,6 +1,6 @@
 ; ( n e-addr -- ) 
 ; Memory
-; write to eeprom address using nvm (atxmega)
+; write n (2bytes) to eeprom address using nvm (atxmega)
 VE_STOREENVM:
     .dw $ff06
     .db "!e-nvm"

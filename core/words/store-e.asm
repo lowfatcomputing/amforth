@@ -1,6 +1,6 @@
 ; ( n e-addr -- ) 
 ; Memory
-; write to eeprom address
+; write n (2bytes) to eeprom address
 VE_STOREE:
     .dw $ff02
     .db "!e"

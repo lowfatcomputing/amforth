@@ -1,6 +1,6 @@
 ; (C: orig1 -- orig2 ) 
 ; Compiler
-; resolve the forware reference and place a new unresolved forward reference
+; resolve the forward reference and place a new unresolved forward reference
 VE_ELSE:
     .dw $0004
     .db "else"

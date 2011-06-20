@@ -1,6 +1,6 @@
 ; ( -- ) 
 ; Compiler
-; compile  XT of the word beeing currently defined into dictionary
+; compile the XT of the word currently being defined into the dictionary
 VE_RECURSE:
     .dw $0007
     .db "recurse",0

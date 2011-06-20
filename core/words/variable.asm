@@ -1,6 +1,6 @@
 ; ( cchar -- ) 
 ; Compiler
-; create an dictionary entry for a variable and allocate 1 cell RAM space for it
+; create a dictionary entry for a variable and allocate 1 cell RAM
 VE_VARIABLE:
     .dw $ff08
     .db "variable"

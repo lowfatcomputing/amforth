@@ -1,6 +1,6 @@
 ; ( --  ) 
 ; Compiler
-; enter interpretation state
+; enter interpreter mode
 VE_LBRACKET:
     .dw $0001
     .db "[",0

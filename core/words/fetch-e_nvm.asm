@@ -1,6 +1,6 @@
 ; ( e-addr - n) 
 ; Memory
-; read 1 cell from eeprom using NVM
+; read 1 cell from eeprom using NVM (ATXmega)
 VE_FETCHENVM:
     .dw $ff06
     .db "@e-nvm"

@@ -77,6 +77,14 @@ PFA_ICOMPARE_DONE:
     .dw XT_EXIT
 
 .if WANT_IGNORECASE == 1
+; ( cc1 cc2 -- f) 
+; Tools
+; compares two packed characters 
+;VE_ICOMPARELC:
+;    .dw $ff08
+;    .db "icompare-lower"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_ICOMPARELC
 XT_ICOMPARE_LC:
     .dw DO_COLON
 PFA_ICOMPARE_LC:
@@ -94,7 +102,15 @@ PFA_ICOMPARE_LC:
     .dw XT_BYTESWAP
     .dw XT_OR
     .dw XT_EXIT
-    
+
+; ( C --  c) 
+; String
+; if C is a uppercase letter convert it to lowercase
+VE_TOLOWER:
+    .dw $ff07
+    .db "tolower",0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_TOLOWER
 XT_TOLOWER:
     .dw DO_COLON
 PFA_TOLOWER:

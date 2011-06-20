@@ -1,6 +1,6 @@
 ; ( -- ) 
 ; Dictionary
-; append the the next flash cell to flash at DP
+; read the following cell from the dictionary and append it to the current dictionary position.
 VE_COMPILE:
     .dw $ff07
     .db "compile",0

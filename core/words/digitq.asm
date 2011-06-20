@@ -48,7 +48,7 @@ PFA_DIGITQ2:
 
 ; ( c -- C ) 
 ; String
-; converts lower case characters into uppercase, otherwise does nothing
+; if c is a lowercase letter convert it to uppercase
 VE_TOUPPER:
     .dw $ff07 
     .db "toupper",0

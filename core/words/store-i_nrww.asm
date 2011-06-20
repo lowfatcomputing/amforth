@@ -1,6 +1,6 @@
 ; ( n f-addr -- ) 
 ; Memory
-; writes a cell in flash using assembly code
+; writes n to flash memory using assembly code (code to be placed in boot loader section)
 VE_DO_STOREI_NRWW:
     .dw $ff09
     .db "(!i-nrww)",0

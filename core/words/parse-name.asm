@@ -13,6 +13,14 @@ PFA_PARSENAME:
     .dw XT_SKIPSCANCHAR
     .dw XT_EXIT 
 
+; ( c -- addr2 len2 ) 
+; String
+; skips char and scan what's left in source for char
+;VE_SKIPSCANCHAR:
+;    .dw $FF0A 
+;    .db "skipscanchar"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SKIPSCANCHAR
 XT_SKIPSCANCHAR:
     .dw DO_COLON
 PFA_SKIPSCANCHAR:

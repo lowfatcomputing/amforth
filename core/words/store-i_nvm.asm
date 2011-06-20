@@ -1,6 +1,6 @@
 ; ( n f-addr -- ) 
 ; Memory
-; writes a cell in flash using NVM (atxmega)
+; writes n to flash at f-addr using NVM (ATXmega)
 VE_DO_STOREI_NVM:
     .dw $ff07
     .db "(!i-nvm)",0

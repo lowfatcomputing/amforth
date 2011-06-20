@@ -1,6 +1,6 @@
-; ( addr -- [ addr 0 ] | [ xt [-1|1]] ) 
+; ( addr --  addr 0 | xt -1 | xt 1 ) 
 ; Tools
-; search wordlists
+; search wordlists for entry taken as counted string from addr
 VE_FIND:
     .dw $ff04
     .db "find"

@@ -1,6 +1,6 @@
 ; ( -- e-addr ) 
 ; System Value
-; address of the first unused address in eeprom
+; address of the next free address in eeprom
 VE_EDP:
     .dw $ff03
     .db "edp",0
