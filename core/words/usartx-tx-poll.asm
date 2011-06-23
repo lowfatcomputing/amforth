@@ -23,8 +23,8 @@ PFA_XTX_POLL:
 ; MCU
 ; check if a character can be sent (Poll, ATXmega)
 VE_XTXQ_POLL:
-    .dw $ff0b
-    .db "x-tx?-poll",0
+    .dw $ff0a
+    .db "x-tx?-poll"
     .dw VE_HEAD
     .set VE_HEAD = VE_XTXQ_POLL
 XT_XTXQ_POLL:
@@ -38,7 +38,7 @@ PFA_XTXQ_POLL:
   .dw XT_DOLITERAL
   .dw USART_DREIF_bm
   .dw XT_AND
-  .dw XT_NOTEQUALZERO
+;  .dw XT_NOTEQUALZERO
   .dw XT_EXIT
 
 ; ( -- )

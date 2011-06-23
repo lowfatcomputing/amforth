@@ -3,7 +3,7 @@
 ; initialize the atxmega usart (ATXmega)
 VE_USARTX:
   .dw $ff07
-  .db "+usartx"
+  .db "+usartx",0
   .dw VE_HEAD
   .set VE_HEAD = VE_USARTX
 XT_USARTX:

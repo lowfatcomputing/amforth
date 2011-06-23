@@ -3,7 +3,7 @@
 ; wait for and get one character from the terminal (Poll, ATXmega)
 VE_XRX_POLL:
     .dw $ff09
-    .db "x-rx-poll"
+    .db "x-rx-poll",0
     .dw VE_HEAD
     .set VE_HEAD = VE_XRX_POLL
 XT_XRX_POLL:
