@@ -19,10 +19,12 @@
 .equ F_CPU = 8000000
 
 ; terminal settings
+; check http://amforth.sourceforge.net/recipes/usart-settings.html
+; for further information
 .set WANT_ISR_RX = 1 ; interrupt driven receive
 .set WANT_ISR_TX = 0 ; send slowly but with less code space
 
-; initial baud rate of terminal
+; Baud settings
 .equ BAUD = 9600
 .set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
 
