@@ -156,10 +156,11 @@ sub html_head {
 
 <!-- (en) Add your meta data here -->
 <!-- (de) Fuegen Sie hier ihre Meta-Daten ein -->
-<link href=\"/css/amforth.css\" rel=\"stylesheet\" type=\"text/css\"/>
+<link href=\"/css/layout_styling_content.css\" rel=\"stylesheet\" type=\"text/css\"/>
 <!--[if lte IE 7]>
-<link href=\"/css/patches/patch_3col_fixed_seo.css\" rel=\"stylesheet\" type=\"text/css\" />
+<link href=\"/css/patches/patch_styling_content.css\" rel=\"stylesheet\" type=\"text/css\" />
 <![endif]-->
+<link href=\"/amforth.css\" rel=\"stylesheet\" type=\"text/css\"/>
 <!-- Piwik -->
 <script type=\"text/javascript\">
 var pkBaseURL = ((\"https:\" == document.location.protocol) ? \"https://sourceforge.net/apps/piwik/amforth/\" : \"http://sourceforge.net/apps/piwik/amforth/\");
@@ -177,18 +178,17 @@ piwikTracker.enableLinkTracking();
 
 <div id=\"page_margins\">
 	<div id=\"page\">
-		<div id=\"header\">
+		<div id=\"header\" role=\"banner\">
 			<h1>amforth word $title</h1>
 		</div>
-		<!-- begin: main navigation #nav -->
-		<div id=\"nav\"> <a id=\"navigation\" name=\"navigation\"></a>
-			<!-- skiplink anchor: navigation -->
-			<div id=\"nav_main\">
-				<ul>
+	<!-- begin: main navigation #nav -->
+	<div id=\"nav\" role=\"navigation\">
+    	    <div class=\"hlist\">
+    	    <ul>
 					<li><a href=\"/\">Home</a></li>
 					<li><a href=\"/faq.html\">FAQ</a></li>
-					<li><a href=\"/howto.html\">Howto</a></li>
-					<li><a href=\"/porting.html\">Porting</a></li>
+					<li><a href=\"/recipes/index.html\">Recipes</a></li>
+					<li><a href=\"/howto-customize.html\">Customize</a></li>
 					<li><a href=\"/links.html\">Links</a></li>
 					<li id=\"current\"><a href=\"/words/index.html\">Words</a></li>
 					<li><a href=\"http://sourceforge.net/projects/amforth\">Download</a></li>
