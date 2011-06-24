@@ -91,9 +91,6 @@
 .include "words/parse-name.asm"
 .include "words/find-name.asm"
 
-.include "words/word.asm"
-.include "words/place.asm"
-
 .include "words/quit.asm"
 .include "words/prompts.asm"
 .include "words/pause.asm"

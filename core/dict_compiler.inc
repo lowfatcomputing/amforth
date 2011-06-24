@@ -19,6 +19,9 @@
 .include "words/leave.asm"
 .include "words/qdo.asm"
 
+.include "words/word.asm"
+.include "words/place.asm"
+
 .include "words/create.asm"
 .include "words/does.asm"
 .include "words/colon.asm"
@@ -50,9 +53,11 @@
 .include "words/env-cpu.asm"
 .include "words/env-usersize.asm"
 
-.include "words/get-ee-array.asm"
+.include "words/fetch-ee-array.asm"
+.include "words/store-ee-array.asm"
 .include "words/get-current.asm"
 .include "words/get-order.asm"
 .include "words/order.asm"
-.include "words/set-recognizer.asm"
-.include "words/get-recognizer.asm"
+;.include "words/set-recognizer.asm"
+;.include "words/get-recognizer.asm"
+
