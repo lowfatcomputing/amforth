@@ -2,17 +2,17 @@
 <project name="ForthDuino" basedir="." default="Help">
         <import file="../avr-build.xml"/>
 
-	<target name="mega.hex" description="Hexfiles for Arduino Mega Board (Atmega1280) www.arduino.cc">
-		<avrasm2 projectname="mega" mcu="atmega1280"/>
+	<target name="mega128.hex" description="Hexfiles for Arduino Mega Board (Atmega1280) www.arduino.cc">
+		<avrasm2 projectname="mega128" mcu="atmega1280"/>
 	</target>
 
-	<target name="mega" depends="mega.hex" description="Arduino Mega Board www.arduino.cc">
-	        <echo>Uploading Hexfiles to Arduino Mega</echo>
+	<target name="mega128" depends="mega128.hex" description="Arduino Mega Board www.arduino.cc">
+	        <echo>Uploading Hexfiles to Arduino mega128</echo>
 		<avrdude 
 		    type="avrisp2"
 		    mcu="m1280"
-		    flashfile="mega.hex"
-		    eepromfile="mega.eep.hex"
+		    flashfile="mega128.hex"
+		    eepromfile="mega128.eep.hex"
 		/>
 	</target>
 
@@ -58,6 +58,6 @@
 		/>
 	</target>
 
-    <target name="compile" depends="sanguino.hex, mega.hex, duemilanove.hex">
+    <target name="compile" depends="sanguino.hex, mega128.hex, duemilanove.hex">
     </target>
 </project>
