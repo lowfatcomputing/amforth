@@ -46,6 +46,9 @@
 .include "words/min.asm"
 .include "words/max.asm"
 .include "words/within.asm"
+
+.include "words/to-upper.asm"
+.include "words/to-lower.asm"
 ;;;;;;;;;;;;;;;;;;;;;;
 .include "words/hld.asm"
 .include "words/hold.asm"
