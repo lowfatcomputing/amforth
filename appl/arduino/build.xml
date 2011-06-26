@@ -2,7 +2,7 @@
 <project name="ForthDuino" basedir="." default="Help">
         <import file="../avr-build.xml"/>
 
-	<target name="mega.hex" description="Hexfiles for Arduino Mega Board www.arduino.cc">
+	<target name="mega.hex" description="Hexfiles for Arduino Mega Board (Atmega1280) www.arduino.cc">
 		<avrasm2 projectname="mega" mcu="atmega1280"/>
 	</target>
 
@@ -16,7 +16,7 @@
 		/>
 	</target>
 
-	<target name="sanguino.hex" description="Hexfiles for Sanguino Board sanguino.cc">
+	<target name="sanguino.hex" description="Hexfiles for Sanguino Board (Atmega644p) sanguino.cc">
 		<avrasm2 projectname="sanguino" mcu="atmega644p"/>
 	</target>
 
@@ -30,7 +30,7 @@
 		/>
 	</target>
 
-	<target name="duemilanove.hex" description="Hexfiles for Arduino Duemilanove Board www.arduino.cc">
+	<target name="duemilanove.hex" description="Hexfiles for Arduino Duemilanove Board (Atmega 328P) www.arduino.cc">
 		<avrasm2 projectname="duemilanove" mcu="atmega328p"/>
 	</target>
 
@@ -43,7 +43,8 @@
 		    eepromfile="duemilanove.eep.hex"
 		/>
 	</target>
-	<target name="diecimila.hex" description="Hexfiles for Arduino Diecimila Board www.arduino.cc">
+	<target name="diecimila.hex" description="Hexfiles for Arduino Diecimila Board (Atmega168) www.arduino.cc">
+	    <echo message="Did you adapt your dict_appl files? They are optimizied for the bigger controllers now! Your build may fail!"/>
 		<avrasm2 projectname="diecimila" mcu="atmega168"/>
 	</target>
 
