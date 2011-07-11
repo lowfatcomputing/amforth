@@ -51,7 +51,7 @@ EE_ORDERLISTLEN:
     .dw 1
 EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
-    .byte  (NUMWORDLISTS-1)*CELLSIZE ; one slot is already used
+    .byte  NUMWORDLISTS*CELLSIZE ; number of wordlist available for the user
 
 EE_RECOGNIZERS:
 EE_RECOGNIZERLISTLEN:
