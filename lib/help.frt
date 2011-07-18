@@ -7,8 +7,7 @@
 wordlist constant help-wl
 
 : help
-    bl word count
-    help-wl search-wordlist
+    parse-name help-wl search-wordlist
     if execute then
 ;
 

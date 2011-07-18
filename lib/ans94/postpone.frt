@@ -2,7 +2,7 @@
 \ Implementation by Ulrich Hoffmann
 
 : postpone ( -- )
-    bl word find dup 0< 
+    parse-name find-name dup 0< 
     if 
 	drop compile compile , exit 
     then

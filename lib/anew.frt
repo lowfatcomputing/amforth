@@ -18,7 +18,7 @@
 \   Useful implementation factor of `EMPTY`.
 
 : possibly  ( "name" -- )
-   bl word find  ?dup and if execute  then ;
+   parse-name find-name ?dup and if execute  then ;
 
 : anew  ( "name" -- )  >in @  possibly  >in !  marker ;
 
