@@ -16,13 +16,11 @@ PFA_SCOMMA:
 ; ( addr len len' -- ) 
 ; Compiler
 ; compiles a string from RAM to Flash
-.ifdef FULL_HEADER
-VE_DOSCOMMA:
-  .dw $ff04
-  .db "(s",$2c,")"
-  .dw VE_HEAD
-  .set VE_HEAD = VE_DOSCOMMA
-.endif
+;VE_DOSCOMMA:
+;  .dw $ff04
+;  .db "(s",$2c,")"
+;  .dw VE_HEAD
+;  .set VE_HEAD = VE_DOSCOMMA
 XT_DOSCOMMA:
     .dw DO_COLON
 PFA_DOSCOMMA:

@@ -16,13 +16,11 @@ PFA_SP0:
 ; ( -- addr) 
 ; Stack
 ; start address of the data stack
-.ifdef FULL_HEADER
-VE_DOSP0:
-    .dw $ff05
-    .db "(sp0)"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DOSP0
-.endif
+;VE_DOSP0:
+;    .dw $ff05
+;    .db "(sp0)"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOSP0
 XT_DOSP0:
     .dw PFA_DOUSER
 PFA_DOSP0:

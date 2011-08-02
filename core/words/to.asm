@@ -27,13 +27,11 @@ PFA_TO1:
 ; ( n -- ) (R: IP -- IP+1)
 ; Tools
 ; runtime portion of to
-.ifdef FULL_HEADER
-VE_DOTO:
-    .dw $ff04
-    .db "(to)"
-    .dw VE_HEAD
-    .set VE_HEAD = VE_DOTO
-.endif
+;VE_DOTO:
+;    .dw $ff04
+;    .db "(to)"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_DOTO
 XT_DOTO:
     .dw DO_COLON
 PFA_DOTO:

@@ -1,13 +1,11 @@
 ; ( -- addr len ) (C: addr len -- )
 ; System
 ; runtime portion of s" 
-.ifdef FULL_HEADER
-VE_SLITERAL:
-  .dw $ff0a
-  .db "(sliteral)"
-  .dw VE_HEAD
-  .set VE_HEAD = VE_SLITERAL
-.endif
+;VE_SLITERAL:
+;  .dw $ff0a
+;  .db "(sliteral)"
+;  .dw VE_HEAD
+;  .set VE_HEAD = VE_SLITERAL
 XT_SLITERAL:
   .dw DO_COLON
 PFA_SLITERAL:
