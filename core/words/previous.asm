@@ -13,5 +13,13 @@ PFA_PREVIOUS:
     .dw XT_SWAP
     .dw XT_DROP
     .dw XT_1MINUS
+    .dw XT_DUP
+    .dw XT_EQUALZERO
+    .dw XT_DOCONDBRANCH
+    .dw PFA_PREVIOUS1
+    .dw XT_DOLITERAL
+    .dw -50
+    .dw XT_THROW
+PFA_PREVIOUS1:
     .dw XT_SET_ORDER
     .dw XT_EXIT
