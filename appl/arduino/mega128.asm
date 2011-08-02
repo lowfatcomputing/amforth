@@ -18,9 +18,8 @@
 ; initial baud rate of terminal
 .include "drivers/usart_0.asm"
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-.equ USART_C_VALUE = (3<<UCSZ00)
-
+.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
+.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
 .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
 

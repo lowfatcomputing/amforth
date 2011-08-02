@@ -19,7 +19,7 @@ PFA_USART:          ; ( -- )
   .dw XT_DOLITERAL
   .dw USART_C_VALUE
   .dw XT_DOLITERAL
-  .dw USART_C
+  .dw USART_C | bm_USARTC_en
   .dw XT_CSTORE
 
   .dw XT_BAUD

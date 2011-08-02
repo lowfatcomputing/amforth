@@ -32,7 +32,7 @@ XT_RXQ_POLL:
 PFA_RXQ_POLL:
   .dw XT_PAUSE
   .dw XT_DOLITERAL
-  .dw USART_RXRD_bm
+  .dw bm_USART_RXRD
   .dw XT_DUP
   .dw XT_DOLITERAL
   .dw USART_A
@@ -53,3 +53,4 @@ XT_USART_INIT_RX_POLL:
   .dw DO_COLON
 PFA_USART_INIT_RX_POLL:          ; ( -- )
   .dw XT_EXIT
+

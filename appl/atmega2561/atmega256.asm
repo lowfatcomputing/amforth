@@ -1,8 +1,9 @@
+; Settings for the avr butterfly demo board
 .include "macros.asm"
 .include "device.asm"
 
-.equ TIBSIZE  = $64    ; 80 characters is one line...
-.equ APPUSERSIZE = 10  ; size of user area
+.equ TIBSIZE  = $64 ; 80 characters is one line...
+.equ APPUSERSIZE = 2  ; size of user area
 
 .equ NUMWORDLISTS = 8
 
@@ -11,8 +12,8 @@
 ; baud rate of terminal
 .include "drivers/usart_1.asm"
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN1) | (1<<RXEN1) | (1<<RXCIE1)
-.equ USART_C_VALUE = (1<<UCSZ11) | ( 1<<UCSZ10)
+.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
+.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80

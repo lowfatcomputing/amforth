@@ -11,8 +11,8 @@
 .include "drivers/usart.asm"
 
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN) | (1<<RXEN) | (1<<RXCIE)
-.equ USART_C_VALUE = (3<<UCSZ0)
+.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
+.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
@@ -20,11 +20,11 @@
 .set NUMWORDLISTS = 8
 
 .set WANT_TIMER_COUNTER_0 = 1
-.set WANT_PORTA = 1
-.set WANT_PORTB = 1
-.set WANT_PORTC = 1
-.set WANT_PORTD = 1
-.set WANT_TWI = 1
+;.set WANT_PORTA = 1
+;.set WANT_PORTB = 1
+;.set WANT_PORTC = 1
+;.set WANT_PORTD = 1
+;.set WANT_TWI = 1
 
-.set WANT_IGNORECASE = 1
+;.set WANT_IGNORECASE = 1
 .include "amforth.asm"

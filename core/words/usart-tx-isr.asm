@@ -37,7 +37,7 @@ PFA_TX_ISR:
   .dw XT_DUP            ;
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw 1<<UDRIE
+  .dw bm_ENABLE_INT_TX
   .dw XT_OR
   .dw XT_SWAP
   .dw XT_CSTORE
@@ -64,3 +64,4 @@ PFA_TXQ_ISR:
   .dw XT_GREATER
   .dw XT_NOT
   .dw XT_EXIT
+

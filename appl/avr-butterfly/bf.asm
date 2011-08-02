@@ -10,8 +10,8 @@
 ; baud rate of terminal
 .include "drivers/usart.asm"
 .equ BAUD = 9600
-.equ USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0)
-.equ USART_C_VALUE = (1<<UCSZ00)|(1<<UCSZ01)
+.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
+.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 
 .equ amforth_interpreter = NRWW_START_ADDR
 

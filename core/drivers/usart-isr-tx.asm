@@ -31,7 +31,7 @@ usart_udre_isr:
 
 usart_udre_last:
   lds xl, USART_B
-  cbr xl,(1<<UDRIE)
+  cbr xl, bm_ENABLE_INT_TX
   sts USART_B,xl
 
   rjmp usart_udre_done

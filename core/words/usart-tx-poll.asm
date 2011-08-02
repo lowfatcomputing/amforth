@@ -35,7 +35,7 @@ PFA_TXQ_POLL:
   .dw USART_A
   .dw XT_CFETCH
   .dw XT_DOLITERAL
-  .dw USART_TXRD_bm
+  .dw bm_USART_TXRD
   .dw XT_AND
   .dw XT_EXIT
 
@@ -51,3 +51,4 @@ XT_USART_INIT_TX_POLL:
   .dw DO_COLON
 PFA_USART_INIT_TX_POLL:          ; ( -- )
   .dw XT_EXIT
+

@@ -1,4 +1,3 @@
-
 .if WANT_ISR_RX == 1
   .include "drivers/usart-isr-rx.asm"
   .include "words/usart-rx-isr.asm"
@@ -27,3 +26,4 @@
 
 .include "words/baud.asm"
 .include "words/usart.asm"
+

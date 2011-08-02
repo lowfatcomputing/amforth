@@ -8,6 +8,7 @@
 ;
 ; first is to include the macros from the amforth
 ; directory
+
 .include "macros.asm"
 
 ; include the amforth device definition file. These
@@ -24,17 +25,18 @@
 .set WANT_ISR_RX = 1 ; interrupt driven receive
 .set WANT_ISR_TX = 0 ; send slowly but with less code space
 
-; Baud settings
+; 9600 @ 8N1 is commonly used.
 .equ BAUD = 9600
-.set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
+.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 
+; dont touch the next 5 lines
 .if WANT_ISR_RX == 1
-  .set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)| (1<<RXCIE0)
+  .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
 .else
-  .set USART_B_VALUE = (1<<TXEN0) | (1<<RXEN0)
+  .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX 
 .endif
-; 8N1 is commonly used
-.equ USART_C_VALUE = (3<<UCSZ00)
+
+; define which usart to use.
 .include "drivers/usart_0.asm"
 
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
@@ -49,3 +51,4 @@
 
 ; include the whole source tree.
 .include "amforth.asm"
+
