@@ -111,7 +111,7 @@ dospm_wait_ee:
   sbic EECR, EEPE
   rjmp dospm_wait_ee
 dospm_wait_spm:
-  in   temp1, SPMCSR
+  in_  temp1, SPMCSR
   sbrc temp1, SPMEN
   rjmp dospm_wait_spm
 
@@ -119,6 +119,6 @@ dospm_wait_spm:
   writeflashcell
   ; execute spm
   ori temp0, (1<<SPMEN)
-  out SPMCSR,temp0
+  out_ SPMCSR,temp0
   spm
   ret
