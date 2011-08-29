@@ -2,8 +2,8 @@
 ; MCU
 ; SPI exchange of 1 byte
 VE_SPIRW:
-    .dw $ff05
-    .db "spirw",0
+    .dw $ff06
+    .db "c!@spi"
     .dw VE_HEAD
     .set VE_HEAD  = VE_SPIRW
 XT_SPIRW:

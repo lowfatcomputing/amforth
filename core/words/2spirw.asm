@@ -2,8 +2,8 @@
 ; MCU
 ; SPI exchange of 2 bytes, high byte first
 VE_2SPIRW:
-    .dw $ff06
-    .db "2spirw"
+    .dw $ff05
+    .db "!@spi",0
     .dw VE_HEAD
     .set VE_HEAD  = VE_2SPIRW
 XT_2SPIRW:
