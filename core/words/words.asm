@@ -9,14 +9,8 @@ VE_WORDS:
 XT_WORDS:
     .dw DO_COLON
 PFA_WORDS:
-    .dw XT_GET_ORDER 
-    .dw XT_ZERO
-    .dw XT_DOQDO
-    .dw PFA_WORDS2
-PFA_WORDS1:
+    .dw XT_DOLITERAL
+    .dw EE_ORDERLIST
+    .dw XT_FETCHE
     .dw XT_SHOWWORDLIST
-    .dw XT_LEAVE
-PFA_WORDS2:
-    .dw XT_DOLOOP
-    .dw PFA_WORDS1
     .dw XT_EXIT
