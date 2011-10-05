@@ -19,9 +19,6 @@
 .include "words/leave.asm"
 .include "words/qdo.asm"
 
-.include "words/word.asm"
-.include "words/place.asm"
-
 .include "words/create.asm"
 .include "words/does.asm"
 .include "words/colon.asm"

@@ -73,7 +73,6 @@
 .include "words/cr.asm"
 .include "words/space.asm"
 .include "words/spaces.asm"
-.include "words/count.asm"
 .include "words/type.asm"
 .include "words/tick.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -123,13 +122,12 @@
 .include "words/rdefer-store.asm"
 .include "words/udefer-fetch.asm"
 .include "words/udefer-store.asm"
-
-.include "words/do-defer.asm"
-.include "words/search-wordlist.asm"
-.include "words/find.asm"
-.include "words/icompare.asm"
 .include "words/defer-store.asm"
 .include "words/defer-fetch.asm"
+.include "words/do-defer.asm"
+
+.include "words/search-wordlist.asm"
+.include "words/icompare.asm"
 
 .include "words/star.asm"
 .include "words/j.asm"
