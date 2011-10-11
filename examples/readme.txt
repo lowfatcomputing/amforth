@@ -15,7 +15,7 @@ run-hayes.frt: demonstrate the use of the amforth-upload.py utility
     modified HAYES test suite
 
 timer-interrupt.frt: demonstrate the use of the timer interrupt with
-   forth code.
+   forth code. An example usage can be found in timer.frt.
    
 queens.frt: solves the queens problem for various size, maybe useful
   as a benchmark.
