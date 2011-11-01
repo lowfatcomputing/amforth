@@ -55,20 +55,36 @@ decimal
    task-awake 
 ;
 
-\ task      allocates stack space and creates the task control block
+\ task:     allocates stack space and creates the task control block
 \ alsotask  appends the tcb to the (circular, existing) list of TCB
+\ --------------------------------------
+: task: ( C: rstacksize dstacksize usersize "name" -- ) ( R: -- f )
+    create
+    \ allocate user area
+    here ,
+    \ does not work currently
+    \ s" /user" environment? 0= if $24 then +  allot
+    $24 + allot 
+    \ allocate stacks
+    allot here ,    ( sp0 )
+    allot here ,    ( rp0 )
+    \ keep HERE away
+    1 allot
+;
 
-: task ( rs-size ds-size -- tid )
-	\ allocate stack memory
-	here >r   \ allocate user area
-	s" /user" environment? if allot else 24 allot then     \ default user size
-	allot here     ( -- rs-size sp0 )
-	    r@ 6 + !   (  ... place sp0 in tcb )
-	allot here     ( -- rp0 )
-	    r@ 4 + !   (  ... place it in tcb )
-	r>
-	dup task-sleep       \ make it sleep
-	1 allot \ keep here away
+: >tid  ( f -- tid )      @i ;
+: >sp0  ( f -- sp0 )  1+  @i ;
+: >rp0  ( f -- rp0 )  2 + @i ;
+: >size ( f -- size ) dup >tid swap >rp0 1+ swap - ;
+
+
+: task-init ( f -- )
+  dup >tid over >size erase    \ -- f     clear RAM space from tid ... rp0+1
+  dup >sp0 over >tid &6 + !    \ -- f     store sp0    in tid[6]
+  dup >sp0 cell- over >tid &8 + !   \     store sp0--  in tid[8], tos
+  dup >rp0 over >tid &4 + !    \ -- f     store rp0    in tid[4]
+  $10      over >tid &12 + !   \ -- f     store base   in tid[12]
+      >tid task-sleep          \ -- f     store 'pass' in tid[0]
 ;
 
 \ stop multitasking
@@ -88,6 +104,7 @@ decimal
     up@  follower ! \ point to myself
 ;
 
+
 \ insert new task structure into task list
 : alsotask      ( tid -- )
    ['] pause defer@ >r \ stop multitasking
@@ -100,25 +117,24 @@ decimal
    r> is pause  \ restore multitasking
 ;
 
+
 \ print all tasks with there id and status
 : tlist ( -- )
     status ( -- tid ) \ starting value
     dup
     begin      ( -- tid1 ctid )
-	dup u. ( -- tid1 ctid )
-	dup @  ( -- tid1 ctid status )
-            dup 
-	    wake = if ."   running" drop else
-	    pass = if ."  sleeping" else
-	              ."   unknown" then
-	then
-\	dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
-\	dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
-\	dup 8 + @ ."    sp=" u.
-	
-	cr
-	cell+ @ ( -- tid1 next-tid )
-	over  over =     ( -- f flag)
+      dup u. ( -- tid1 ctid )
+      dup @  ( -- tid1 ctid status )
+      dup wake = if ."   running" drop else
+          pass = if ."  sleeping" else
+                    ."   unknown" then
+      then
+\     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
+\     dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
+\     dup 8 + @ ."    sp=" u.
+      cr
+      cell+ @ ( -- tid1 next-tid )
+      over over =     ( -- f flag)
     until
     drop drop
     ." Multitasker is " 
