@@ -127,7 +127,7 @@ decimal
       dup @  ( -- tid1 ctid status )
       dup wake = if ."   running" drop else
           pass = if ."  sleeping" else
-                    ."   unknown" then
+                    abort"   unknown" then
       then
 \     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
 \     dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
