@@ -16,11 +16,11 @@ hex
 
 \ perform word that executes vector
 : perform 
-	   i@ execute  ;  
+     @i execute  ;  
 
 \ Get 2 cells from dictionary space
-: i2@ 
-	dup 1+ i@ swap i@ ;
+: 2@i 
+	dup 1+ @i swap @i ;
 
 \ comment if you have this word.
 : tuck swap over ;
@@ -33,13 +33,13 @@ hex
 : fsm:   ( width -- )
       create  0 >ram  ,  ,   ] 	\ ram addr of state stored in dict,also width.
       does>               ( col# adr -- )
-          dup dup >r i2@  @  * 2* +   ( -- col#+width*state ) 
+          dup dup >r 2@i  @  * 2* +   ( -- col#+width*state ) 
           swap 2* 1+ 1+ + 	    ( -- offset-to-action)
           dup >r           ( -- offset-to-action)
           perform          ( ? )
           r> 1+            ( -- offset-to-update)
           perform          ( -- state')
-          r>  i@ !  ;       \ update state
+          r>  @i !  ;       \ update state
 
 
 \ ......... some test code .............. 

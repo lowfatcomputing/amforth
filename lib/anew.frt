@@ -1,9 +1,9 @@
 \ POSSIBLY  ( "name" -- )
 \   Execute _name_ if it exists; otherwise, do nothing.
-\   Useful implementation factor of `anew`.
+\   Useful implementation factor of `ANEW`.
 
 \ ANEW  ( "name" -- )
-\   Compiler directive used in the form: `anew _name_`.
+\   Compiler directive used in the form: `ANEW _name_`.
 \   If the word _name_ already exists, it and all
 \   subsequent words are forgotten from the current
 \   dictionary, and then a `MARKER` word _name_ is

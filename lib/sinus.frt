@@ -39,8 +39,8 @@ create sintab  \ 0...90 Grad, Index in Grad
 
 \ Notes:
 
-\ In gforth it has to be   : sinus@  ( grad -- )  cell * sintab + i@ ;
-\ Since i@ increments by 16 bytes each step in an atmega flash, 
+\ In gforth it has to be   : sinus@  ( grad -- )  cell * sintab + @i ;
+\ Since @i increments by 16 bytes each step in an atmega flash, 
 \ there is no need for cell adjustment in amforth.
 
 \ In the phrase 

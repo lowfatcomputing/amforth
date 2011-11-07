@@ -20,9 +20,9 @@ marker _pid_
     does> ( runtime of pid )
     \ ( -- current iaddr )
     >r \ we'll need this address many times 
-    r@ i@ cell+ @ ( -- current setpoint ) - ( -- e )
+    r@ @i cell+ @ ( -- current setpoint ) - ( -- e )
     \ calculate integration, limit esum
-    dup r@ i@ cell+ cell+ dup @ ( -- e 'esum esum )
+    dup r@ @i cell+ cell+ dup @ ( -- e 'esum esum )
     rot ( -- 'esum esum e )
     + 1023 > if drop 1023 then  \ anti-windup ( -- e 'esum esum )
     dup 0<   if drop 0 then     \ anti-winddown ( -- e 'esum esum )

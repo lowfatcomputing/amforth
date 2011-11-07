@@ -54,7 +54,7 @@ c constant spi.mode3  \ --/sample rising
 
 \ -sptx Stop transmit
 
-  \ send a byte
+\ send a byte
 : spi! ( c -- )
     <bit> SPDR c! begin SPSR c@ 80 and until ;
 

@@ -2,6 +2,8 @@
 
 \ die bits einer Variablen als "flags" benutzen
 
+\ flag@ ( var bitnum -- f ) und flag! ( flag var bitnum -- )
+
 \ variable mainFlags
 \ mainFlags 0 flag: Fdebug
 \ Fdebug fset       ( set bit 0 in Variable mainFlags )
@@ -14,7 +16,7 @@
 : flag: create ( addr bit -- )
   1 swap lshift , ,
 does>          ( -- bitmask addr )
-  dup i@ swap 1+ i@
+  dup @i swap 1+ @i
 ;
 
 \ bitvalue, convert number of bit [0..7] to mask
