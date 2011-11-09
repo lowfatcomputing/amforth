@@ -4,17 +4,6 @@
     0 \ always user input device
 ;
 
-\ provide some kind of rewind
-: save-input ( -- x1 1 )
-    >in @ 1 
-;
-
-
-: restore-input ( x1 1 -- )
-    drop >in !
-;
-
-
 \ atmegas are always aligned
 : align ;
 : aligned ;
@@ -31,7 +20,7 @@
 ;
 
 \ go from the XT backwards to get the Name field
-: xt>nfa ( xt -- nfa )
+: >name ( xt -- nfa )
     1- \ link address
     \ tricky: we look for the flash cell whose address + it content & 0x00ff is
     \ this address
