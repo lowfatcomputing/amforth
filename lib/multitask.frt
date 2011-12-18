@@ -1,3 +1,4 @@
+\ lib/multitask.frt
 \ -------------------------------------------------------------------
 \ Cooperative Multitasker based on 
 \ Message-ID: <1187362648.046634.262200@o80g2000hse.googlegroups.com>
@@ -57,34 +58,34 @@ decimal
 
 \ task:     allocates stack space and creates the task control block
 \ alsotask  appends the tcb to the (circular, existing) list of TCB
-\ --------------------------------------
-: task: ( C: rstacksize dstacksize usersize "name" -- ) ( R: -- f )
-    create
-    \ allocate user area
-    here ,
-    \ does not work currently
-    \ s" /user" environment? 0= if $24 then +  allot
-    $24 + allot 
-    \ allocate stacks
-    allot here ,    ( sp0 )
-    allot here ,    ( rp0 )
-    \ keep HERE away
-    1 allot
+
+: task: ( C: dstacksize rstacksize add.usersize "name" -- )
+        ( R: -- addr )
+  create
+    here ,                      \ store address of TCB
+    ( add.usersize ) &24 + allot \ default user area size
+                                \ allocate stacks
+    ( rstacksize ) allot here , \ store sp0
+    ( dstacksize ) allot here , \ store rp0 
+
+    1 allot                   \ keep here away, amforth specific
+  does>
+                                \ leave flash addr on stack
+;  
+: tcb>tid  ( f -- tid )      @i ;
+: tcb>sp0  ( f -- sp0 )  1+  @i ;
+: tcb>rp0  ( f -- rp0 )  2 + @i ;
+: tcb>size ( f -- size )
+  dup tcb>tid swap tcb>rp0 1+ swap -
 ;
-
-: >tid  ( f -- tid )      @i ;
-: >sp0  ( f -- sp0 )  1+  @i ;
-: >rp0  ( f -- rp0 )  2 + @i ;
-: >size ( f -- size ) dup >tid swap >rp0 1+ swap - ;
-
-
 : task-init ( f -- )
-  dup >tid over >size erase    \ -- f     clear RAM space from tid ... rp0+1
-  dup >sp0 over >tid &6 + !    \ -- f     store sp0    in tid[6]
-  dup >sp0 cell- over >tid &8 + !   \     store sp0--  in tid[8], tos
-  dup >rp0 over >tid &4 + !    \ -- f     store rp0    in tid[4]
-  $10      over >tid &12 + !   \ -- f     store base   in tid[12]
-      >tid task-sleep          \ -- f     store 'pass' in tid[0]
+  dup tcb>tid  over tcb>size  0 fill \ clear RAM for tcb and stacks
+  \ fixme: possibly use init-user?
+  dup tcb>sp0 over tcb>tid &6 + !       \ store sp0    in tid[6]
+  dup tcb>sp0 cell- over tcb>tid &8 + ! \ store sp0--  in tid[8], tos
+  dup tcb>rp0 over tcb>tid &4 + !       \ store rp0    in tid[4]
+      &10  over tcb>tid &12 + !         \ store base   in tid[12]
+      tcb>tid task-sleep                \ store 'pass' in tid[0]
 ;
 
 \ stop multitasking
@@ -117,24 +118,24 @@ decimal
    r> is pause  \ restore multitasking
 ;
 
-
-\ print all tasks with there id and status
-: tlist ( -- )
+\ print all tasks with their id and status
+: tasks ( -- )
     status ( -- tid ) \ starting value
     dup
     begin      ( -- tid1 ctid )
-      dup u. ( -- tid1 ctid )
-      dup @  ( -- tid1 ctid status )
-      dup wake = if ."   running" drop else
-          pass = if ."  sleeping" else
-                    abort"   unknown" then
-      then
-\     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
-\     dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
-\     dup 8 + @ ."    sp=" u.
-      cr
-      cell+ @ ( -- tid1 next-tid )
-      over over =     ( -- f flag)
+	dup u. ( -- tid1 ctid )
+	dup @  ( -- tid1 ctid status )
+            dup 
+	    wake = if ."   running" drop else
+	    pass = if ."  sleeping" else
+	          abort"   unknown" then
+	then
+\	dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
+\	dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
+\	dup 8 + @ ."    sp=" u.
+	cr
+	cell+ @ ( -- tid1 next-tid )
+	over  over =     ( -- f flag)
     until
     drop drop
     ." Multitasker is " 
