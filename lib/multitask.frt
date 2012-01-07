@@ -63,7 +63,7 @@ decimal
         ( R: -- addr )
   create
     here ,                      \ store address of TCB
-    ( add.usersize ) &24 + allot \ default user area size
+    ( add.usersize ) &28 + allot \ default user area size
                                 \ allocate stacks
     ( rstacksize ) allot here , \ store sp0
     ( dstacksize ) allot here , \ store rp0 

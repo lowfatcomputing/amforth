@@ -7,9 +7,10 @@ VE_SOURCE:
     .dw VE_HEAD
     .set VE_HEAD = VE_SOURCE
 XT_SOURCE:
-    .dw DO_COLON
+    .dw PFA_DODEFER
 PFA_SOURCE:
-    .dw XT_TIB
-    .dw XT_NUMBERTIB
-    .dw XT_FETCH
-    .dw XT_EXIT
+    .dw USER_SOURCE
+    .dw XT_UDEFERFETCH
+    .dw XT_UDEFERSTORE
+
+

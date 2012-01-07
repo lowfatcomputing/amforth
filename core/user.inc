@@ -21,7 +21,10 @@
 .set USER_EMITQ = 16
 .set USER_KEY   = 18
 .set USER_KEYQ  = 20
-.set USER_SKEY  = 22
 
-.set SYSUSERSIZE = 24
+.set USER_SOURCE  = 22
+.set USER_G_IN    = 24
+.set USER_REFILL  = 26
+
+.set SYSUSERSIZE = 28
 ; 

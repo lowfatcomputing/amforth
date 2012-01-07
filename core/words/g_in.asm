@@ -7,10 +7,6 @@ VE_G_IN:
     .dw VE_HEAD
     .set VE_HEAD = VE_G_IN
 XT_G_IN:
-    .dw PFA_DOVARIABLE
+    .dw PFA_DOUSER
 PFA_G_IN:
-    .dw ram_g_in
-
-.dseg
-ram_g_in: .byte 2
-.cseg
+    .dw USER_G_IN

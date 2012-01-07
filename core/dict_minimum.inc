@@ -13,7 +13,6 @@
 .include "words/emitq.asm"
 .include "words/key.asm"
 .include "words/keyq.asm"
-.include "words/slashkey.asm"
 
 .include "words/dp.asm"
 .include "words/edp.asm"

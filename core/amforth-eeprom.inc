@@ -34,7 +34,9 @@ EE_INITUSER:
     .dw XT_TXQ ; USER_EMITQ
     .dw XT_RX  ; USER_KEY
     .dw XT_RXQ ; USER_KEYQ
-    .dw XT_NOOP ; USER_SKEY
+    .dw XT_SOURCETIB ; USER_SKEY
+    .dw 0            ; USER_G_IN
+    .dw XT_REFILLTIB ; USER_REFILL  
 
 EE_UBRRVAL:
     .dw UBRR_VAL     ; BAUDRATE
@@ -47,11 +49,14 @@ EE_CURRENT:
     .dw EE_FORTHWORDLIST
 EE_FORTHWORDLIST:
     .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+EE_ROOTWORDLIST:
+    .dw VE_ROOT      ; some root word list
 EE_ORDERLISTLEN:
-    .dw 1
+    .dw 2
 EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
-    .byte  NUMWORDLISTS*CELLSIZE ; number of wordlist available for the user
+    .dw EE_ROOTWORDLIST
+    .byte  (NUMWORDLISTS-2)*CELLSIZE ; two slots are already used
 
 EE_RECOGNIZERS:
 EE_RECOGNIZERLISTLEN:

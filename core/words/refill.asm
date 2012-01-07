@@ -7,17 +7,9 @@ VE_REFILL:
     .dw VE_HEAD
     .set VE_HEAD = VE_REFILL
 XT_REFILL:
-    .dw DO_COLON
+    .dw PFA_DODEFER
 PFA_REFILL:
-    .dw XT_TIB
-    .dw XT_DOLITERAL
-    .dw TIBSIZE
-    .dw XT_ACCEPT
-    .dw XT_NUMBERTIB
-    .dw XT_STORE
-    .dw XT_ZERO
-    .dw XT_G_IN
-    .dw XT_STORE
-    .dw XT_DOLITERAL
-    .dw -1
-    .dw XT_EXIT
+    .dw USER_REFILL
+    .dw XT_UDEFERFETCH
+    .dw XT_UDEFERSTORE
+
