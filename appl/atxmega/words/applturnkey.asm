@@ -10,7 +10,7 @@ XT_APPLTURNKEY:
     .dw DO_COLON
 PFA_APPLTURNKEY:
     .dw XT_INITUSER
-    .dw XT_USART
+    .dw XT_USARTX
     .dw XT_INTON
     .dw XT_VER
     .dw XT_SPACE
