@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # amforth-upload.py
 #
 #   uploads text files containing forth commands to a microcontroller running amforth (v1.3)
@@ -100,8 +100,7 @@ def write_line_flow(string,dest):
 	if verbose: 
 		print >>sys.stderr, "sending line: "+string
 	for o in list(string):
-		dest.write(o);
-
+		dest.write(o)
 		if o == "\t":
 			o = " "
 		
@@ -250,6 +249,8 @@ if not force:
 	else:
 		print >>sys.stderr, "couldn't find fuser. so i can't check if "+tty_dev_name+" is in use."
 	tty_dev = file(tty_dev_name,"r+",0)
+	# get a prompt, clean up the input buffer
+	write_line_flow("", tty_dev)
 	if len(args)<1:
 		if verbose:
 			print >>sys.stderr, "processing stdin"
