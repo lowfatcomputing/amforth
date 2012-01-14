@@ -415,9 +415,10 @@ variable tick
                     . The UP itself is stored in a register pair.
                 </para>
                 <para>
-                    The size of the user area is defined at compile time
-                    in the device definition section. This may change in
-                    future versions.
+                    The size of the user area is determinded by the size the system
+                    itself uses plus a configurable number at compile time. For self
+                    defined tasks this user supplied number can be changed for task
+                    local variables.
                 </para>
 		
 		<para>
@@ -452,7 +453,7 @@ variable tick
 							</row>
 							<row>
 								<entry>8</entry>
-								<entry>SP</entry>
+								<entry>SP (m</entry>
 							</row>
 							<row>
 								<entry>10</entry>
@@ -473,15 +474,19 @@ variable tick
 							</row>
 							<row>
 								<entry>18</entry>
-								<entry>KEY</entry>
+								<entry>KEY (character IO)</entry>
 							</row>
 							<row>
 								<entry>20</entry>
-								<entry>KEY?</entry>
+								<entry>KEY? (character IO)</entry>
 							</row>
 							<row>
 								<entry>22</entry>
-								<entry>/KEY</entry>
+								<entry>REFILL (deferred)</entry>
+							</row>
+							<row>
+								<entry>24</entry>
+								<entry>SOURCE (deferred)</entry>
 							</row>
 
 						</tbody>
