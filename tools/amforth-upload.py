@@ -79,12 +79,12 @@ def write_line_flow(string,dest):
 		    string = string + "\n"
 	string = re.sub("(^| )\( .*?\)"," ",string)
 	string = re.sub("(^| )\( [^\)]*$"," \n",string)
-        #string = re.sub("(^| )\\\\ .*","",string)
+    #string = re.sub("(^| )\\\\ .*","",string)
 
-	if re.match("^\s*$",string):
-		if verbose:
-			print >>sys.stderr, "skipping empty line"
-		return	
+#	if re.match("^\s*$",string):
+#		if verbose:
+#			print >>sys.stderr, "skipping empty line"
+#		return	
 
 	if debug:
 		print >>sys.stderr, "line after comment stripping: "+string
@@ -188,11 +188,6 @@ def write_file_flow(in_file,dest):
 		else:
 			break		
 
-
-
-#in_file = file("file.frt")
-#tty_dev = file("/dev/ttyS0","w+",0)
-
 tty_dev_name = "/dev/ttyS0"
 force = False
 verbose = False
@@ -250,7 +245,7 @@ if not force:
 		print >>sys.stderr, "couldn't find fuser. so i can't check if "+tty_dev_name+" is in use."
 	tty_dev = file(tty_dev_name,"r+",0)
 	# get a prompt, clean up the input buffer
-	write_line_flow("", tty_dev)
+	write_line_flow("\n", tty_dev)
 	if len(args)<1:
 		if verbose:
 			print >>sys.stderr, "processing stdin"
@@ -263,3 +258,4 @@ if not force:
 endtime = time.time()
 runtime = endtime - starttime
 print "\ntime: ", runtime, " seconds"
+
