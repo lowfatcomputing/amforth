@@ -49,14 +49,11 @@ EE_CURRENT:
     .dw EE_FORTHWORDLIST
 EE_FORTHWORDLIST:
     .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-EE_ROOTWORDLIST:
-    .dw VE_ROOT      ; some root word list
 EE_ORDERLISTLEN:
-    .dw 2
+    .dw 1
 EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
     .dw EE_FORTHWORDLIST      ; get/set-order
-    .dw EE_ROOTWORDLIST
-    .byte  (NUMWORDLISTS-2)*CELLSIZE ; two slots are already used
+    .byte  (NUMWORDLISTS-1)*CELLSIZE ; two slots are already used
 
 EE_RECOGNIZERS:
 EE_RECOGNIZERLISTLEN:
