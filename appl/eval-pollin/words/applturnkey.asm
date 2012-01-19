@@ -22,7 +22,7 @@ PFA_APPLTURNKEY:
     .dw XT_DROP
     .dw XT_DECIMAL
     .dw XT_DOT
-    .dw XT_SLITERAL
+    .dw XT_DOSLITERAL
     .dw 4
     .db "kHz "
     .dw XT_ITYPE

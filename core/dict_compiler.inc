@@ -1,4 +1,5 @@
 .include "words/literal.asm"
+.include "words/sliteral.asm"
 .include "words/g_mark.asm"
 .include "words/g_resolve.asm"
 .include "words/l_mark.asm"
@@ -54,7 +55,6 @@
 .include "words/store-ee-array.asm"
 .include "words/get-current.asm"
 .include "words/get-order.asm"
-.include "words/order.asm"
 ;.include "words/set-recognizer.asm"
 ;.include "words/get-recognizer.asm"
 

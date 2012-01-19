@@ -9,7 +9,7 @@ VE_ENV_FORTHVERSION:
 XT_ENV_FORTHVERSION:
     .dw DO_COLON
 PFA_EN_FORTHVERSION:
-    .dw XT_SLITERAL
+    .dw XT_DOSLITERAL
     .dw 3
-    .db "4.6",0
+    .db "4.7",0
     .dw XT_EXIT

@@ -65,7 +65,7 @@
 .include "words/udslashmod.asm"
 .include "words/digitq.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.include "words/sliteral.asm"
+.include "words/do-sliteral.asm"
 .include "words/scomma.asm"
 .include "words/itype.asm"
 .include "words/icount.asm"

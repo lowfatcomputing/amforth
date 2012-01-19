@@ -14,7 +14,7 @@ PFA_APPLTURNKEY:
     .dw XT_INTON
     .dw XT_VER
     .dw XT_SPACE
-    .dw XT_SLITERAL
+    .dw XT_DOSLITERAL
     .dw 10
     .db "Forthduino"
     .dw XT_ITYPE

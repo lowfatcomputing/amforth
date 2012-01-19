@@ -17,7 +17,7 @@ PFA_SQUOTE:
     .dw XT_DOCONDBRANCH
     .dw PFA_SQUOTE1
       .dw XT_COMPILE
-      .dw XT_SLITERAL    ; ( -- addr n)
+      .dw XT_DOSLITERAL    ; ( -- addr n)
       .dw XT_SCOMMA
 PFA_SQUOTE1:
     .dw XT_EXIT

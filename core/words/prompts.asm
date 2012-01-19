@@ -10,7 +10,7 @@ XT_PROMPTRDY:
     .dw DO_COLON
 PFA_PROMPTRDY:
     .dw XT_CR
-    .dw XT_SLITERAL
+    .dw XT_DOSLITERAL
     .dw 2
     .db "> "
     .dw XT_ITYPE
@@ -27,7 +27,7 @@ PFA_PROMPTRDY:
 XT_PROMPTOK:
     .dw DO_COLON
 PFA_PROMPTOK:
-    .dw XT_SLITERAL
+    .dw XT_DOSLITERAL
     .dw 3
     .db " ok",0
     .dw XT_ITYPE
@@ -44,7 +44,7 @@ PFA_PROMPTOK:
 XT_PROMPTERROR:
     .dw DO_COLON
 PFA_PROMPTERROR:
-	.dw XT_SLITERAL
+	.dw XT_DOSLITERAL
 	.dw 4
 	.db  " ?? "
     .dw XT_ITYPE
