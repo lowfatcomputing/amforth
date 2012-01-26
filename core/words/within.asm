@@ -18,3 +18,5 @@ PFA_WITHIN:
     .dw XT_OR
     .dw XT_EQUALZERO
     .dw XT_EXIT
+; alternativly
+; : within over - >r - r> u< ;

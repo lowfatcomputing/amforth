@@ -9,7 +9,8 @@ VE_ONLY:
 XT_ONLY:
     .dw DO_COLON
 PFA_ONLY:
-    .dw XT_FORTH_WORDLIST
+    .dw XT_DOLITERAL
+    .dw EE_FORTHWORDLIST
     .dw XT_DOLITERAL
     .dw 1
     .dw XT_SET_ORDER
