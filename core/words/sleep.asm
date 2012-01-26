@@ -36,9 +36,8 @@ PFA_SLEEP:
 	andi	tosl, 7				; leave only legal mode bits
 	lsl		tosl				; move to correct location (bits 3-1)
 	ori		tosl, 1				; set the SE bit
-	out		SMCR, tosl			; set the sleep config
+	out_	SMCR, tosl			; set the sleep config
 	sleep						; nighty-night
-	clr		tosl				; need to clean up the SMCR reg before we leave
-	out		SMCR, tosl			; 0 protects against accidental sleeps
+	out_	SMCR, zerol			; 0 protects against accidental sleeps
 	loadtos						; pop argument from stack
-    jmp 	DO_NEXT
+    jmp_    DO_NEXT
