@@ -9,7 +9,7 @@
     <import file="p1284-16.xml"/>
     <import file="p8-12.xml"/>
 
-    <target name="compile">
+    <target name="compile" depends="p16-8.hex, p32-8.hex, p328-16.hex, p1284-16.hex, p644-16.hex">
        
     </target>
 </project>
