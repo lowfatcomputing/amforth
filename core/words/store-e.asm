@@ -24,8 +24,7 @@ PFA_STOREE:
     jmp_ DO_NEXT
     
 PFA_STOREE1:
-    in_ temp0, EECR
-    sbrc temp0,EEPE
+    sbic EECR, EEPE
     rjmp PFA_STOREE1
 
 PFA_STOREE2: ; estore_wait_low_spm:

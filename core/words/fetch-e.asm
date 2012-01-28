@@ -23,8 +23,7 @@ PFA_FETCHE:
     jmp_ DO_NEXT
 
 PFA_FETCHE1:
-    in_ temp1, EECR
-    sbrc temp1,EEPE
+    sbic EECR, EEPE
     rjmp PFA_FETCHE1
 
     out_ EEARH,zh
