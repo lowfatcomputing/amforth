@@ -1,5 +1,5 @@
 ; ( -- addr len ) 
-; System
+; String
 ; runtime portion of sliteral
 ;VE_DOSLITERAL:
 ;  .dw $ff0a

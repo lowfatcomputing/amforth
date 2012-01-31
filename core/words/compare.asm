@@ -1,6 +1,6 @@
 ; ( r-addr r-len f-addr f-len --  f) 
-; Tools
-; compares string in RAM with string in flash
+; String
+; compares two strings in RAM
 VE_COMPARE:
     .dw $ff07
     .db "compare",0

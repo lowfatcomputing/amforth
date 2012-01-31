@@ -1,5 +1,5 @@
 ; (C: addr len -- ) 
-; Compiler
+; String
 ; compiles a string to flash, at runtime leaves ( -- flash-addr count) on stack
 VE_SLITERAL:
   .dw $0008
