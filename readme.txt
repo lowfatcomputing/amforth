@@ -1,7 +1,14 @@
-Date: 21.2.2009
+Date: 2.2.2012
 
 Author: 
     Matthias Trute <mtrute@users.sourceforge.net> 
+
+Contributors:
+    Erich Waelde
+    Michael Kalus
+    Leon Maurer
+    Ullrich Hoffmann
+    Karl Lund
 
 License: General Public License (GPL) Version2 from 1991. See the
 	file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
@@ -21,8 +28,8 @@ control.
 amforth is implemented in assembly and forth. The code is stable 
 and well tested.
 
-All words have ans94-draft6 (core and extension word sets) stack 
-diagrams, but not nessesairly the complete semantics. Some words
+All words have ans94-draft6 (core and various extension word sets) 
+stack diagrams, but not nessesairly the complete semantics. Some words
 from the standard are omitted, ask for them if you need them.
 
 Since release 2.1 amforth is a library.
