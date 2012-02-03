@@ -20,6 +20,9 @@
 .equ F_CPU = 8000000
 
 ; terminal settings
+
+; define which usart to use.
+.include "drivers/usart_0.asm"
 ; check http://amforth.sourceforge.net/recipes/usart-settings.html
 ; for further information
 .set WANT_ISR_RX = 1 ; interrupt driven receive
@@ -35,9 +38,6 @@
 .else
   .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX 
 .endif
-
-; define which usart to use.
-.include "drivers/usart_0.asm"
 
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
 .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
