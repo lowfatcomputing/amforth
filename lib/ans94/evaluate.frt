@@ -5,18 +5,21 @@
 
 variable strlen
 variable str
-variable old-source
 
 : source-string str @ strlen @ ;
 
 : evaluate \ i*x addr len -- j*y 
-    ['] source defer@ old-source !
+    ['] source defer@ >r 
     >in @ >r
     0 >in !
     strlen !
     str !
     ['] source-string is source
-    interpret
-    old-source @ is source
+    ['] interpret catch
     r> >in !
+    r> is source
+    throw
 ;
+
+\ todo: make it immediate: if compiled, copy the string 
+\ to ram first and interpret the copy
