@@ -28,7 +28,7 @@ XT_NAFETCH:
 PFA_NAFETCH:
     movw zl, al
     add zl, tosl
-    adc zh, ah
+    adc zh, tosh
     ld tosl, Z+
     ld tosh, Z+
     jmp_ DO_NEXT

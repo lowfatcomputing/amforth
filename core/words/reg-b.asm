@@ -28,7 +28,7 @@ XT_NBFETCH:
 PFA_NBFETCH:
     movw zl, bl
     add zl, tosl
-    adc zh, bh
+    adc zh, tosh
     ld tosl, Z+
     ld tosh, Z+
     jmp_ DO_NEXT
