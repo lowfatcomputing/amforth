@@ -8,12 +8,13 @@ variable strlen
 variable str
 : source-string str @ strlen @ ;
 : copy-string ( i-addr len ram -- )
-  swap 2/ 1+ 0 ?do
-    ( i-addr r-addr -- )
-    over @i over !
-    swap 1+ swap cell+
+  rot rot     ( -- ram i-addr len )
+  2/ 1+       ( -- ram i-addr f-cells )
+  over + swap
+  ?do
+    i @i over ! cell+
   loop
-  drop drop
+  drop
 ;
 
 \ we have to distinguish between interpreted (RAM)
