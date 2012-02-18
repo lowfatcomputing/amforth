@@ -1,5 +1,5 @@
 	<bookinfo>
-		<title>amforth 4.5</title>
+		<title>amforth 4.8</title>
 		<subtitle>Technical Documentation</subtitle>
 		<author>
 			<personname>
@@ -11,7 +11,7 @@
 		</author>
 		<pubdate>2011</pubdate>
 		<copyright>
-			<year>2007, 2011</year>
+			<year>2007, 2012</year>
 			<holder>Matthias Trute</holder>
 		</copyright>
 	</bookinfo>

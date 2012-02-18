@@ -169,7 +169,7 @@
 					<title>DO_DOES</title>
 					<para>
 						This code is the runtime part of the forth word
-						<command>DOES</command>
+						<command>DOES></command>
 						. It pushes the current address of the MCU IP register onto the
 						returnstack and jumps to DO_DOES. DO_DOES gets that address back,
 						saves the current IP and sets the forth IP to the address it got
@@ -180,14 +180,31 @@
 			<sect2 id="INTERPRETER">
 			    <title>Interpreter</title>
 			    <para>
-			      The interpreter a line based command interpreter. It uses <command>ACCEPT</command> to aquire  a
-			      complete input text line. If the line is completed (by sending the CR/LF character(s))
-			      the line is processed by <command>INTERPRET</command>. It splits the line into whitespace delimited words.
-			      The word is analyzed using a sorted list of recognizer words which are specialized
-			      to deal with e.g. the wordlists or convert strings into numbers. This list can be
-			      changed at runtime. Its possible to extend the interpreter to recognize e.g. 
-			      floating  point numbers without recompiling and reflashing the controller.
+			      The interpreter is a line based command interpreter. It based upon <command>REFILL</command> 
+			      to aquire the next line of characters, located at a position <command>SOURCE</command> points to.
+			      While processing the line, the pointer <code>>IN</code> is adjusted accordingly. Both
+			      words <command>REFILL</command> and <command>SOURCE</command> are USER based deferred words which
+			      allows to use any input source on a thread specific level. The interpreter itself
+			      does not use any static buffers or variables (>IN is a USER variable as well).
 			    </para>
+			    <para>
+			      A given string is handled by <command>INTERPRET</command> which splits it 
+			      into whitespace delimited words. Every word is processed using a list of 
+			      recognizers. Processing ends either when the string end is reached or an exception occures.
+			    </para>
+			    <sect3 id="SOURCE">
+			      <title>SOURCE and REFILL</title>
+			      <para>
+			        <command>SOURCE</command> provides an addr/len string pair that does not change
+			        during processing. The task of REFILL is to fill the string buffer, SOURCE will
+			        point to when finished.
+			      </para>
+			     <para>
+			      There is one default input source: The terminal input buffer. This buffer gets filled with REFILL-TIB
+			      that reads from the serial input buffers (KEY). SOURCE points to the Terminal Input Buffer itself.
+			      Another input source are plain strings, used by EVALUATE.
+			     </para>
+			    </sect3>
 			    <sect3 id="RECOGNIZER">
 			      <title>Recognizer</title>
 			      <para>
