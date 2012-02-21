@@ -11,5 +11,5 @@ XT_ENV_FORTHVERSION:
 PFA_EN_FORTHVERSION:
     .dw XT_DOSLITERAL
     .dw 3
-    .db "4.7",0
+    .db "4.8",0
     .dw XT_EXIT
