@@ -23,7 +23,7 @@ PFA_ITYPE1:
     .dw XT_DUP         ; ( -- addr addr )
     .dw XT_FETCHI      ; ( -- addr c1c2 )
     .dw XT_DUP
-    .dw XT_EMIT
+    .dw XT_LOWEMIT
     .dw XT_HIEMIT
     .dw XT_1PLUS    ; ( -- addr+cell )
     .dw XT_DOLOOP
@@ -35,7 +35,7 @@ PFA_ITYPE2:
     .dw PFA_ITYPE3
       .dw XT_DUP     ; well, tricky
       .dw XT_FETCHI
-      .dw XT_EMIT
+      .dw XT_LOWEMIT
 PFA_ITYPE3:
     .dw XT_DROP        ; ( -- )
     .dw XT_EXIT
@@ -52,5 +52,22 @@ XT_HIEMIT:
     .dw DO_COLON
 PFA_HIEMIT:
     .dw XT_BYTESWAP
+    .dw XT_LOWEMIT
+    .dw XT_EXIT
+
+; ( w -- )
+; R( -- )
+; content of cell fetched on stack.
+;VE_LOWEMIT:
+;    .dw $ff07
+;    .db "lowemit"
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_LOWEMIT
+XT_LOWEMIT:
+    .dw DO_COLON
+PFA_LOWEMIT:
+    .dw XT_DOLITERAL
+    .dw $00ff
+    .dw XT_AND
     .dw XT_EMIT
     .dw XT_EXIT
