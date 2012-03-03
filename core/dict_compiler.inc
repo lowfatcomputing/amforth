@@ -42,7 +42,6 @@
 .include "words/end-code.asm"
 
 .include "words/environment.asm"
-.include "words/environment-q.asm"
 .include "words/env-wordlists.asm"
 .include "words/env-slashpad.asm"
 .include "words/env-slashhold.asm"
@@ -58,3 +57,4 @@
 ;.include "words/set-recognizer.asm"
 ;.include "words/get-recognizer.asm"
 
+.include "words/compare.asm"
