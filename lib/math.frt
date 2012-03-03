@@ -19,7 +19,7 @@ marker -math
   0< if dnegate then
 ;
 
-\ ?negate  n1 n -- n2  negate d1 if n is negative
+\ ?negate  n1 n -- n2  negate n1 if n is negative
 : ?negate
   0< if negate then
 ;
