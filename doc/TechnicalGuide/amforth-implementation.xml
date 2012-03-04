@@ -18,24 +18,11 @@
             <sect2 id="ANS_CORE">
                 <title>Core and Core EXT</title>
                 <para>
-                    From the CORE word set only the words >NUMBER, and EVALUATE are
-                    missing. From the CORE EXT the words C", COMPILE, ,
-                    CONVERT, EXPECT, SPAN, PICK, RESTORE-INPUT, ROLL are
-                    not implemented.
+                    Al words from the CORE word set are available. CORE EXT drops 
+                    the words C", COMPILE, CONVERT, EXPECT, SPAN, and  ROLL.
                 </para>
                 <para>
                     The following words have non-standard behavior
-                </para>
-                <para>
-                    words created with
-                    <command>:</command>
-                    are immediately visible. An earlier definition with
-                    the same name will never be accessible. Work arounds
-                    may be done with
-                    <command>DEFER</command>
-                    and
-                    <command>IS</command>
-                    .
                 </para>
                 <para>
                     Loop counters are checked on signed compares.
@@ -152,7 +139,7 @@
                     <command>DUMP</command>
                     are implemented or can easily be done. The word
                     <command>SEE</command>
-                    won't be supported since amforth highly uses the
+                    won't be supported since amforth uses a
                     optimization strategy to strip forth headers
                     whenever possible. The other reason for dropping
                     <command>SEE</command>
@@ -218,10 +205,11 @@
             <sect2 id="ANS_SEARCHORDER">
                 <title>Word Lists and Search Order</title>
                 <para>
-                    Amforth supports the ANS Search Order Wordlist. A Word list consist of a linked list
-                    of words. There are no limits on the number of word lists defined. Only the length of
-                    the search order is limied: There can be up to 8 entries at any given moment.
-                    This limit can be changed at compile time in the application definition file.
+                    Amforth supports the ANS Search Order Wordlist. A word list consist of a linked list
+                    of words in the dictionary. There are no limits on the number of word lists 
+                    defined. Only the length of the active search order is limied: There can be 
+                    up to 8 entries at any given moment. This limit can be changed at compile 
+                    time in the application definition file.
                 </para>
                 <para>
                     Internally the wordlist identifier is the address where the wordlist start
@@ -238,7 +226,9 @@
                     <command>CMOVE></command>
                     ,
                     <command>CMOVE</command>
-                    and
+                    ,
+                    <command>COMPARE></command>
+                    , and
                     <command>/STRING</command>
                     are implemented.
                 </para>
@@ -247,7 +237,6 @@
                     ,
                     <command>BLANK</command>
                     ,
-                    <command>COMPARE</command>
                     and
                     <command>SEARCH</command>
                     are not implemented.

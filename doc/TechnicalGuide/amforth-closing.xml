@@ -3,16 +3,10 @@
         <sect1 id="ANS94_WORDS">
             <title>More ANS94 Words</title>
             <para>
-                There are a few missing words from the standard CORE
-                word set. Many of them are related with string
-                parameters, like <command>evaluate</command>.
-                The difficulty arises from the fact, that the storage
-                location of a string cannot be determined by simply
-                looking at the address. A solution may be a state smart
-                implementation with some helper words. If running
-                interactively, these words may use RAM addresses, if
-                called within a compiled word they use flash addresses.
-                Not really smart however..
+                Amforth supports the ANS94 Core Wordset. Other word
+                sets are more or less completly supported as well. Some
+                deprecated words (like <command>expect</command> and
+                <command>query</command> are left out however.
             </para>
             <para>
                 Support for Blocks may be useful. It is not trivial to
@@ -28,7 +22,7 @@
         <sect1 id="MoreController">
             <title>More Controller Types</title>
             <para>
-                Amforth can be used on any atemga with at least 8KB flash memory.
+                Amforth can be used on any atmega with at least 8KB flash memory.
                 A system with at least 16Kb is recommended. There are pre-generated 
                 driver files from the XML part description files. 
                 Atxmega's may work with a future version.
