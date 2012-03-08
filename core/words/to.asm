@@ -19,10 +19,6 @@ PFA_TO:
     .dw XT_DOTO
     .dw XT_COMMA
     .dw XT_EXIT
-PFA_TO1:
-    .dw XT_FETCHI
-    .dw XT_STOREE
-    .dw XT_EXIT
 
 ; ( n -- ) (R: IP -- IP+1)
 ; Tools
@@ -40,13 +36,12 @@ PFA_DOTO:
     .dw XT_1PLUS
     .dw XT_TO_R
     .dw XT_FETCHI
+PFA_TO1:
+    .dw XT_DUP
     .dw XT_FETCHI
-    .dw XT_STOREE
-    .DW XT_EXIT
-
-; : (to) r> dup 1+ >r i@ e! ;
-; : to ( x <name> -- )
-;     ' 1+  state @
-;     if compile (to)  , exit then
-;     i@ e!  ; immediate
-
+    .dw XT_SWAP
+    .dw XT_1PLUS
+    .dw XT_1PLUS
+    .dw XT_FETCHI
+    .dw XT_EXECUTE
+    .dw XT_EXIT

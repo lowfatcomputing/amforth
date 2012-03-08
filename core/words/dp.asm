@@ -10,3 +10,5 @@ XT_DP:
     .dw PFA_DOVALUE
 PFA_DP:
     .dw EE_DP
+    .dw XT_FETCHE
+    .dw XT_STOREE

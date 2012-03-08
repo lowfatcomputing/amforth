@@ -10,3 +10,5 @@ XT_HERE:
     .dw PFA_DOVALUE
 PFA_HERE:
     .dw EE_HERE
+    .dw XT_FETCHE
+    .dw XT_STOREE

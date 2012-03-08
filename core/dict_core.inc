@@ -11,8 +11,11 @@
 .include "words/dovariable.asm"
 .include "words/doconstant.asm"
 .include "words/douser.asm"
+.include "words/do-value.asm"
 .include "words/fetch.asm"
 .include "words/store.asm"
+.include "words/fetch-u.asm"
+.include "words/store-u.asm"
 .include "words/cstore.asm"
 .include "words/cfetch.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;

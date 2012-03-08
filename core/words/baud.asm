@@ -10,3 +10,5 @@ XT_BAUD:
   .dw PFA_DOVALUE
 PFA_BAUD:          ; ( -- )
   .dw EE_UBRRVAL
+  .dw XT_FETCHE
+  .dw XT_STOREE

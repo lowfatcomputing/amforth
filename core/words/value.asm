@@ -24,12 +24,10 @@ PFA_VALUE:
     .dw XT_DOTO
     .dw PFA_EDP
     .dw XT_STOREE
-    .dw XT_EXIT
-
-PFA_DOVALUE:
-    call_ DO_DODOES
-    .dw XT_FETCHI
+    .dw XT_COMPILE
     .dw XT_FETCHE
+    .dw XT_COMPILE
+    .dw XT_STOREE
     .dw XT_EXIT
 
 ; : value ( n -- )
