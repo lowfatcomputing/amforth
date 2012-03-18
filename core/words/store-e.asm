@@ -9,6 +9,16 @@ VE_STOREE:
 XT_STOREE:
     .dw PFA_STOREE
 PFA_STOREE:
+.if WANT_UNIFIED == 1
+    ldi  zh, high(EEPROMEND)
+    ldi  zl, low(EEPROMEND)
+    cp  tosl, zl
+    cpc tosh, zh
+    brlt PFA_STOREE0
+    brbs 1, PFA_STOREE0
+    rjmp PFA_STOREE_OTHER
+.endif
+PFA_STOREE0:
     movw zl, tosl
     loadtos
     in_ temp2, SREG
@@ -39,3 +49,10 @@ PFA_STOREE2: ; estore_wait_low_spm:
     sbi EECR,EEPE
 
     ret
+.if WANT_UNIFIED == 1
+PFA_STOREE_OTHER:
+    adiw zl, 1
+    sub tosl, zl
+    sbc tosh, zh
+    jmp_ PFA_STOREI
+.endif
