@@ -14,10 +14,11 @@
 .include "words/do-value.asm"
 .include "words/fetch.asm"
 .include "words/store.asm"
-.include "words/fetch-u.asm"
-.include "words/store-u.asm"
 .include "words/cstore.asm"
 .include "words/cfetch.asm"
+.include "words/fetch-u.asm"
+.include "words/store-u.asm"
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 .include "words/dup.asm"
 .include "words/qdup.asm"
