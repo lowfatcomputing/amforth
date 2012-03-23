@@ -11,7 +11,7 @@ XT_INTERPRET:
 PFA_INTERPRET:
 PFA_INTERPRET1:
     .dw XT_PARSENAME ; ( -- addr len )
-    .dw XT_DUP   ; ( -- addr len len )
+    .dw XT_QDUP   ; ( -- addr len len )
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_INTERPRET5
@@ -24,18 +24,18 @@ PFA_INTERPRET1:
     .dw PFA_INTERPRET4
 PFA_INTERPRET2:
     ; ( -- addr len )
-    .dw XT_OVER
-    .dw XT_OVER
-    .dw XT_I
-    .dw XT_ROT
-    .dw XT_ROT
+    ; I comes from the return stack.
+    .dw XT_OVER ; ( -- addr len addr )
+    .dw XT_OVER ; ( -- addr len addr len  )
+    .dw XT_I    ; ( -- addr len addr len i )
+    .dw XT_ROT  ; ( -- addr len len i addr )
+    .dw XT_ROT  ; ( -- addr len i addr len )
     .dw XT_TO_R
     .dw XT_TO_R
 
     .dw XT_CELLS
     .dw XT_DOLITERAL
     .dw EE_RECOGNIZERLIST
-
     .dw XT_PLUS
     .dw XT_FETCHE
 
@@ -57,6 +57,5 @@ PFA_INTERPRET4:
     .dw PFA_INTERPRET1
 PFA_INTERPRET5:
     .dw xT_DROP
-    .dw XT_DROP
     .dw XT_EXIT
 
