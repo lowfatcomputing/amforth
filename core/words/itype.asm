@@ -33,11 +33,11 @@ PFA_ITYPE2:
     .dw XT_GREATERZERO
     .dw XT_DOCONDBRANCH
     .dw PFA_ITYPE3
-      .dw XT_DUP     ; well, tricky
+      .dw XT_DUP     ; make sure the drop below has always something to do
       .dw XT_FETCHI
       .dw XT_LOWEMIT
 PFA_ITYPE3:
-    .dw XT_DROP        ; ( -- )
+    .dw XT_DROP
     .dw XT_EXIT
 
 ; ( w -- )
