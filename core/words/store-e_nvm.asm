@@ -2,14 +2,14 @@
 ; Memory
 ; write n (2bytes) to eeprom address using nvm (atxmega)
 VE_STOREENVM:
-    .dw $ff06
-    .db "!e-nvm"
+    .dw $ff02
+    .db "!e"
     .dw VE_HEAD
     .set VE_HEAD = VE_STOREENVM
 XT_STOREENVM:
     .dw PFA_STOREENVM
 PFA_STOREENVM:
-    rcall nvm_waitfor
+    rcall nvm_waitforSPM
     lds temp0, NVM_STATUS
     sbrs temp0, NVM_EELOAD_bp
     rjmp PFA_STOREENVM1
@@ -26,7 +26,7 @@ PFA_STOREENVM1:
     sts NVM_DATA0, tosl
     ldi temp0, NVM_CMD_ERASE_WRITE_EEPROM_PAGE_gc
     call_ nvm_command
-    rcall nvm_waitfor
+    rcall nvm_waitforSPM
 
     adiw zl, 1
     
