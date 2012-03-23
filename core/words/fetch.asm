@@ -30,5 +30,4 @@ PFA_FETCHOTHER:
     sub tosl, zl
     sbc tosh, zh
     jmp_ PFA_FETCHE
-    jmp_ DO_NEXT
 .endif
