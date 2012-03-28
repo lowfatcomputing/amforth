@@ -12,6 +12,10 @@
 ; files include the *def.inc from atmel internally.
 .include "devices/atmega168/device.asm"
 
+; the dictionary search treats lowercase and uppercase
+; letters the same. Set to 0 if you do not want it
+.set WANT_IGNORECASE = 1
+
 ; amforth needs two essential parameters
 ; cpu clock in hertz, 1MHz is factory default
 .equ F_CPU = 16000000
