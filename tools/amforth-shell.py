@@ -37,7 +37,7 @@ def flatten(tree):
     return result
 
 def buildSearchPath():
-    path = ["."]
+    path = ["","."]
     # Append AMFORTH_LIB path
     if os.environ.has_key(AMFORTH_LIB):
         path.append(os.environ[AMFORTH_LIB].split(":"))

@@ -41,7 +41,7 @@ def merge(seq):
     return merged
 
 def search_and_open_file(filename):
-    directorylist=["."]
+    directorylist=["","."]
     if os.environ.has_key("AMFORTH_LIB"):
         directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
 	if debug:
