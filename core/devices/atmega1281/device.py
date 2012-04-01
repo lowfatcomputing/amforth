@@ -1,5 +1,5 @@
 # Partname: ATmega1281
-# Built using part description XML file version 70
+# Built using part description XML file version 72
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

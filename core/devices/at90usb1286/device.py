@@ -1,5 +1,5 @@
 # Partname: AT90USB1286
-# Built using part description XML file version 39
+# Built using part description XML file version 41
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

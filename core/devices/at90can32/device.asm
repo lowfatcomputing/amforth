@@ -1,5 +1,5 @@
 ; Partname:  AT90CAN32
-; Built using part description XML file version 53
+; Built using part description XML file version 55
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $0100
-.equ max_dict_addr = $3000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -139,7 +138,14 @@
 .org $0048
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2048
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 12288 ; minimum of 0x3000 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "AT90CAN32",0
 .set codestart=pc

@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $7000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -105,7 +104,14 @@
 .org $030
 	 rcall isr ; PLL Lock Change Interrupt
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 4096
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 28672 ; minimum of 0x7000 (from XML) and 0xffff
+mcu_name:
 	.dw 11
 	.db "ATmega64HVE",0
 .set codestart=pc

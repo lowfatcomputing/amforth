@@ -1,5 +1,5 @@
 # Partname: AT90PWM2
-# Built using part description XML file version 166
+# Built using part description XML file version 168
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

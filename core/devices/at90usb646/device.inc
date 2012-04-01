@@ -1,5 +1,5 @@
 ; Partname:  AT90USB646
-; Built using part description XML file version 23
+; Built using part description XML file version 25
 ; generated automatically, no not edit
 
 ; ********

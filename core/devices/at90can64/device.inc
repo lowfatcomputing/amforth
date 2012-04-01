@@ -1,5 +1,5 @@
 ; Partname:  AT90CAN64
-; Built using part description XML file version 54
+; Built using part description XML file version 56
 ; generated automatically, no not edit
 
 ; ********

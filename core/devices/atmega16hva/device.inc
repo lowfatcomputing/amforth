@@ -1,5 +1,5 @@
 ; Partname:  ATmega16HVA
-; Built using part description XML file version 38
+; Built using part description XML file version 40
 ; generated automatically, no not edit
 
 ; ********

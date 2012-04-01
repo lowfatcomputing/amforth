@@ -1,5 +1,5 @@
 ; Partname:  ATmega32U4
-; Built using part description XML file version 6
+; Built using part description XML file version 8
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $3800 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -148,7 +147,14 @@
 .org $054
 	 rcall isr ; Timer/Counter4 Fault Protection Interrupt
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2560
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 14336 ; minimum of 0x3800 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega32U4"
 .set codestart=pc

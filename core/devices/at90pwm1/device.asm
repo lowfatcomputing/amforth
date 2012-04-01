@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $0100
-.equ max_dict_addr = $C00 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -121,7 +120,14 @@
 .org $001F
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 512
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
+mcu_name:
 	.dw  8
 	.db "AT90PWM1"
 .set codestart=pc

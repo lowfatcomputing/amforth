@@ -1,5 +1,5 @@
 ; Partname:  ATmega3250
-; Built using part description XML file version 160
+; Built using part description XML file version 162
 ; generated automatically, no not edit
 
 ; ********

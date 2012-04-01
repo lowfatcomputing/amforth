@@ -1,5 +1,5 @@
 ; Partname:  AT90USB1287
-; Built using part description XML file version 66
+; Built using part description XML file version 68
 ; generated automatically, no not edit
 
 ; ********

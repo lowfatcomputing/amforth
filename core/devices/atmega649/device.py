@@ -1,5 +1,5 @@
 # Partname: ATmega649
-# Built using part description XML file version 172
+# Built using part description XML file version 174
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

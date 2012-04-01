@@ -1,5 +1,5 @@
 ; Partname:  ATmega103
-; Built using part description XML file version 234
+; Built using part description XML file version 236
 ; generated automatically, no not edit
 
 ; ********

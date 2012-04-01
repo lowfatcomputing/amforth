@@ -1,5 +1,5 @@
 ; Partname:  ATmega3250
-; Built using part description XML file version 160
+; Built using part description XML file version 162
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $3800 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -114,7 +113,14 @@
 .org $030
 	 rcall isr ; Pin Change Interrupt Request 3
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2048
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 14336 ; minimum of 0x3800 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega3250"
 .set codestart=pc

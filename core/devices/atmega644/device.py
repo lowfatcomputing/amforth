@@ -1,5 +1,5 @@
 # Partname: ATmega644
-# Built using part description XML file version 69
+# Built using part description XML file version 71
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

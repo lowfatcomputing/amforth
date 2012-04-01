@@ -1,5 +1,5 @@
 ; Partname:  ATmega32
-; Built using part description XML file version 229
+; Built using part description XML file version 232
 ; generated automatically, no not edit
 
 ; ********

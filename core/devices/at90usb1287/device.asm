@@ -1,5 +1,5 @@
 ; Partname:  AT90USB1287
-; Built using part description XML file version 66
+; Built using part description XML file version 68
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $F000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -148,7 +147,14 @@
 .org $04A
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 8192
+mcu_eepromsize:
+	.dw 4096
+mcu_maxdp:
+.	.dw 61440 ; minimum of 0xF000 (from XML) and 0xffff
+mcu_name:
 	.dw 11
 	.db "AT90USB1287",0
 .set codestart=pc

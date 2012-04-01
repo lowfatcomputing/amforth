@@ -1,5 +1,5 @@
 # Partname: ATmega329
-# Built using part description XML file version 236
+# Built using part description XML file version 238
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

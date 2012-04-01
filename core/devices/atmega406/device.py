@@ -1,5 +1,5 @@
 # Partname: ATmega406
-# Built using part description XML file version 200
+# Built using part description XML file version 202
 # generated automatically, do not edit
 MCUREGS = {
 	'VADCH': '$79',

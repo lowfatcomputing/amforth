@@ -1,5 +1,5 @@
 ; Partname:  ATmega323
-; Built using part description XML file version 201
+; Built using part description XML file version 203
 ; generated automatically, no not edit
 
 ; ********

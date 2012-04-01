@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = 0 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -102,7 +101,14 @@
 .org $02A
 	 rcall isr ; EEPROM Ready
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 1024
+mcu_eepromsize:
+	.dw 256
+mcu_maxdp:
+.	.dw 0 ; minimum of 0 (from XML) and 0xffff
+mcu_name:
 	.dw 12
 	.db "ATmega16HVA2"
 .set codestart=pc

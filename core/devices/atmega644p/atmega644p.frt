@@ -1,5 +1,5 @@
 \ Partname: ATmega644P
-\ Built using part description XML file version 52
+\ Built using part description XML file version 54
 \ generated automatically
 
 hex

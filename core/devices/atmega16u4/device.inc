@@ -1,5 +1,5 @@
 ; Partname:  ATmega16U4
-; Built using part description XML file version 6
+; Built using part description XML file version 8
 ; generated automatically, no not edit
 
 ; ********

@@ -1,5 +1,5 @@
 # Partname: AT90USB162
-# Built using part description XML file version 37
+# Built using part description XML file version 39
 # generated automatically, do not edit
 MCUREGS = {
 	'ACSR': '$50',

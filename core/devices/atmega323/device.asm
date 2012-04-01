@@ -1,5 +1,5 @@
 ; Partname:  ATmega323
-; Built using part description XML file version 201
+; Built using part description XML file version 203
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $60
-.equ max_dict_addr = 0 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -99,7 +98,14 @@
 .org $28
 	 rcall isr ; Store Program Memory Ready
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2048
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 0 ; minimum of 0 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega323",0
 .set codestart=pc

@@ -1,5 +1,5 @@
 ; Partname:  ATmega8
-; Built using part description XML file version 232
+; Built using part description XML file version 235
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $60
-.equ max_dict_addr = $C00 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -94,7 +93,14 @@
 .org $012
 	 rcall isr ; Store Program Memory Ready
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 1024
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
+mcu_name:
 	.dw  7
 	.db "ATmega8",0
 .set codestart=pc

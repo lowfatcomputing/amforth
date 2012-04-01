@@ -1,5 +1,5 @@
 # Partname: ATmega165
-# Built using part description XML file version 124
+# Built using part description XML file version 126
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

@@ -1,5 +1,5 @@
 \ Partname: ATmega88
-\ Built using part description XML file version 232
+\ Built using part description XML file version 234
 \ generated automatically
 
 hex

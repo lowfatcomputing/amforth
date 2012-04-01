@@ -1,5 +1,5 @@
 ; Partname:  ATmega164P
-; Built using part description XML file version 46
+; Built using part description XML file version 48
 ; generated automatically, no not edit
 
 ; ********

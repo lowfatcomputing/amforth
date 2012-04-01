@@ -1,5 +1,5 @@
 ; Partname:  ATmega406
-; Built using part description XML file version 200
+; Built using part description XML file version 202
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $4800 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -106,7 +105,14 @@
 .org $02C
 	 rcall isr ; Store Program Memory Ready
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2048
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 18432 ; minimum of 0x4800 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega406",0
 .set codestart=pc

@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $1800 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -115,7 +114,14 @@
 .org $038
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 512
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 6144 ; minimum of 0x1800 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega16U2"
 .set codestart=pc

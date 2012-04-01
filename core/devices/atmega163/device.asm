@@ -1,5 +1,5 @@
 ; Partname:  ATmega163
-; Built using part description XML file version 205
+; Built using part description XML file version 207
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $60
-.equ max_dict_addr = 0 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -94,7 +93,14 @@
 .org $022
 	 rcall isr ; 2-Wire Serial Interface
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 1024
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 0 ; minimum of 0 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega163",0
 .set codestart=pc

@@ -12,6 +12,12 @@ use strict;
 my $PDDIR="../Atmel/Partdescriptionfiles/";
 # $PDDIR="local/";
 
+sub min {
+  my ($a, $b) = @_;
+  return $a if $a<$b;
+  return $b;
+}
+
 sub fmt_str {
     my ($str, $format) = @_;
     my $result;
@@ -25,7 +31,7 @@ sub fmt_str {
 sub readXML ($) {
     my ($basename) = @_;
     my ($timestamp, $number, $label, %regs, $partname, $defname);
-    my ($start, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
+    my ($start, $ramsize, $esize, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
     my ($numberusarts, %usartregs);
     use XML::LibXML;
     my $parser = new XML::LibXML;
@@ -35,6 +41,7 @@ sub readXML ($) {
     $basename =~ s/\.xml$//;
     $basename =~ s/\.gz$//;
     $fsize = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("PROG_FLASH");
+    $esize = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("EEPROM");    
     return unless int($fsize)>8000;
     my $admin = $doc -> getElementsByTagName("ADMIN") -> item(0);
     $partname = $admin -> getElementsByTagName("PART_NAME");
@@ -68,11 +75,10 @@ sub readXML ($) {
     print ASM "\n.nolist\n\t.include \"$defname\"\n.list\n\n";    
     
     $start = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("INT_SRAM")->item(0)->getChildrenByTagName("START_ADDR");
+    $ramsize = $doc->getElementsByTagName("MEMORY")->item(0)->getElementsByTagName("INT_SRAM")->item(0)->getChildrenByTagName("SIZE");
+
     print ASM ".equ ramstart =  $start\n";
 
-    
-    my $nrww = $doc->getElementsByTagName("NRWW_START_ADDR");
-    print ASM ".equ max_dict_addr = $nrww \n";
     print ASM ".equ CELLSIZE = 2\n";
 
 
@@ -157,7 +163,14 @@ sub readXML ($) {
 	}
     }
     print ASM ".nooverlap\n";
-    print ASM "mcustring:\n\t". fmt_str($partname, "%2d")."\n";
+    print ASM "mcu_info:\n";
+    my $nrww = $doc->getElementsByTagName("NRWW_START_ADDR");
+    $nrww =~ s/\$/0x/;
+    my $maxdp = min(hex($nrww), hex('0xffff'));
+    print ASM "mcu_ramsize:\n\t.dw $ramsize\n";
+    print ASM "mcu_eepromsize:\n\t.dw $esize\n";
+    print ASM "mcu_maxdp:\n.\t.dw $maxdp ; minimum of $nrww (from XML) and 0xffff\n";
+    print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
 
     close(FRT);

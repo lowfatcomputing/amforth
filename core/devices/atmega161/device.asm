@@ -1,5 +1,5 @@
 ; Partname:  ATmega161
-; Built using part description XML file version 231
+; Built using part description XML file version 233
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $60
-.equ max_dict_addr = 0 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -99,7 +98,14 @@
 .org $028
 	 rcall isr ; Analog Comparator
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 1024
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 0 ; minimum of 0 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega161",0
 .set codestart=pc

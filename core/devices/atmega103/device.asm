@@ -1,5 +1,5 @@
 ; Partname:  ATmega103
-; Built using part description XML file version 234
+; Built using part description XML file version 236
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $60
-.equ max_dict_addr =  
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -112,7 +111,14 @@
 .org $02E
 	 rcall isr ; Analog Comparator
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 4000
+mcu_eepromsize:
+	.dw 4096
+mcu_maxdp:
+.	.dw 0 ; minimum of  (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega103",0
 .set codestart=pc

@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $100
-.equ max_dict_addr = $3800 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -109,7 +108,14 @@
 .org $02C
 	 rcall isr ; LCD Start of Frame
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 2048
+mcu_eepromsize:
+	.dw 1024
+mcu_maxdp:
+.	.dw 14336 ; minimum of 0x3800 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega329P"
 .set codestart=pc

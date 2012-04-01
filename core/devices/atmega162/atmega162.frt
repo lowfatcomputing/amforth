@@ -1,5 +1,5 @@
 \ Partname: ATmega162
-\ Built using part description XML file version 255
+\ Built using part description XML file version 257
 \ generated automatically
 
 hex

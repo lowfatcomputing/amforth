@@ -1,5 +1,5 @@
 ; Partname:  AT90PWM2B
-; Built using part description XML file version 167
+; Built using part description XML file version 169
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $0100
-.equ max_dict_addr = $C00 
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -123,7 +122,14 @@
 .org $001F
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 512
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+.	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "AT90PWM2B",0
 .set codestart=pc

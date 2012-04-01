@@ -10,6 +10,6 @@ XT_ENV_CPU:
     .dw DO_COLON
 PFA_EN_CPU:
     .dw XT_DOLITERAL
-    .dw mcustring
+    .dw mcu_name
     .dw XT_ICOUNT
     .dw XT_EXIT

@@ -1,5 +1,5 @@
 ; Partname:  ATmega2561
-; Built using part description XML file version 168
+; Built using part description XML file version 170
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $200
-.equ max_dict_addr = $1F000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -186,7 +185,14 @@
 .org $070
 	 rcall isr ; USART3, Tx Complete
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 8192
+mcu_eepromsize:
+	.dw 4096
+mcu_maxdp:
+.	.dw 65535 ; minimum of 0x1F000 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega2561"
 .set codestart=pc

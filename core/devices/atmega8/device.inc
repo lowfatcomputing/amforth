@@ -1,5 +1,5 @@
 ; Partname:  ATmega8
-; Built using part description XML file version 232
+; Built using part description XML file version 235
 ; generated automatically, no not edit
 
 ; ********

@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $200
-.equ max_dict_addr = $F000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -192,7 +191,14 @@
 .org $070
 	 rcall isr ; USART3, Tx Complete
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 8192
+mcu_eepromsize:
+	.dw 4096
+mcu_maxdp:
+.	.dw 61440 ; minimum of 0xF000 (from XML) and 0xffff
+mcu_name:
 	.dw 10
 	.db "ATmega1280"
 .set codestart=pc

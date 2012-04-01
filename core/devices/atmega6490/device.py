@@ -1,5 +1,5 @@
 # Partname: ATmega6490
-# Built using part description XML file version 91
+# Built using part description XML file version 93
 # generated automatically, do not edit
 MCUREGS = {
 	'ADCH': '$79',

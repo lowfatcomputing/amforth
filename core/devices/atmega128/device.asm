@@ -1,5 +1,5 @@
 ; Partname:  ATmega128
-; Built using part description XML file version 265
+; Built using part description XML file version 267
 ; generated automatically, do not edit
 
 .nolist
@@ -7,7 +7,6 @@
 .list
 
 .equ ramstart =  $0100
-.equ max_dict_addr = $F000 
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -141,7 +140,14 @@
 .org $0044
 	 rcall isr ; Store Program Memory Read
 .nooverlap
-mcustring:
+mcu_info:
+mcu_ramsize:
+	.dw 4096
+mcu_eepromsize:
+	.dw 4096
+mcu_maxdp:
+.	.dw 61440 ; minimum of 0xF000 (from XML) and 0xffff
+mcu_name:
 	.dw  9
 	.db "ATmega128",0
 .set codestart=pc

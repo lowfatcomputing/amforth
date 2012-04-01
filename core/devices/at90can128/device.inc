@@ -1,5 +1,5 @@
 ; Partname:  AT90CAN128
-; Built using part description XML file version 170
+; Built using part description XML file version 172
 ; generated automatically, no not edit
 
 ; ********
