@@ -104,7 +104,7 @@ mcu_ramsize:
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-.	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
+	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
 mcu_name:
 	.dw 10
 	.db "ATmega8535"

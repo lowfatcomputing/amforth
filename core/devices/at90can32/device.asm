@@ -144,7 +144,7 @@ mcu_ramsize:
 mcu_eepromsize:
 	.dw 1024
 mcu_maxdp:
-.	.dw 12288 ; minimum of 0x3000 (from XML) and 0xffff
+	.dw 12288 ; minimum of 0x3000 (from XML) and 0xffff
 mcu_name:
 	.dw  9
 	.db "AT90CAN32",0

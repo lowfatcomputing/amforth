@@ -169,7 +169,7 @@ sub readXML ($) {
     my $maxdp = min(hex($nrww), hex('0xffff'));
     print ASM "mcu_ramsize:\n\t.dw $ramsize\n";
     print ASM "mcu_eepromsize:\n\t.dw $esize\n";
-    print ASM "mcu_maxdp:\n.\t.dw $maxdp ; minimum of $nrww (from XML) and 0xffff\n";
+    print ASM "mcu_maxdp:\n\t.dw $maxdp ; minimum of $nrww (from XML) and 0xffff\n";
     print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
 

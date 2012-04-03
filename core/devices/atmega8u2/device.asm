@@ -119,7 +119,7 @@ mcu_ramsize:
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-.	.dw 2048 ; minimum of 0x800 (from XML) and 0xffff
+	.dw 2048 ; minimum of 0x800 (from XML) and 0xffff
 mcu_name:
 	.dw  9
 	.db "ATmega8U2",0

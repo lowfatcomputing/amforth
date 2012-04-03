@@ -197,7 +197,7 @@ mcu_ramsize:
 mcu_eepromsize:
 	.dw 4096
 mcu_maxdp:
-.	.dw 65535 ; minimum of 0x1F000 (from XML) and 0xffff
+	.dw 65535 ; minimum of 0x1F000 (from XML) and 0xffff
 mcu_name:
 	.dw 10
 	.db "ATmega2560"

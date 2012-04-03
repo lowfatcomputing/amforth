@@ -99,7 +99,7 @@ mcu_ramsize:
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-.	.dw 0 ; minimum of 0 (from XML) and 0xffff
+	.dw 0 ; minimum of 0 (from XML) and 0xffff
 mcu_name:
 	.dw  9
 	.db "ATmega163",0
