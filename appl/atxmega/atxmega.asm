@@ -28,6 +28,4 @@
 .set stackstart  = RAMEND - 80
 .set rstackstart = RAMEND
 
-.set amforth_interpreter = $F000
-
 .include "amforth-low.asm"

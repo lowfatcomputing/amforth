@@ -14,7 +14,6 @@
 .equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-.set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8
 

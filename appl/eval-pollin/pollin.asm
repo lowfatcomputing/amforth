@@ -15,7 +15,6 @@
 
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-.set amforth_interpreter = max_dict_addr
 
 .set NUMWORDLISTS = 8
 .set WANT_TIMER_COUNTER_0 = 1

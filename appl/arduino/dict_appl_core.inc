@@ -9,8 +9,8 @@
 ;.include "dict_interrupt.inc"
 .include "dict_compiler.inc"
 ;.include "dict_usart.inc"
-.include "dict_wl.inc"
-.include "dict_mcu.inc"
+;.include "dict_wl.inc"
+;.include "dict_mcu.inc"
 ;.include "dict_minimum.inc"
 
 .include "words/fill.asm"
@@ -33,4 +33,4 @@
 .include "words/ms.asm"
 .include "words/show-wordlist.asm"
 .include "words/words.asm"
-.include "device.inc"
+;.include "device.inc"

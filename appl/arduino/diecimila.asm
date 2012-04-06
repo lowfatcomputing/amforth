@@ -31,7 +31,6 @@
 ; addresses of various data segments
 .set rstackstart = RAMEND      ; start address of return stack, grows downward
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
-.equ amforth_interpreter = max_dict_addr ; the same value as NRWW_START_ADDR
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 

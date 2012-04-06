@@ -17,6 +17,5 @@
 
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
-.set amforth_interpreter = NRWW_START_ADDR
 
 .include "amforth-low.asm"
