@@ -15,6 +15,14 @@ PFA_SEMICOLON:
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE
     .dw XT_FETCH
-    .dw XT_GET_CURRENT
-    .dw XT_STOREE
+    .dw XT_QDUP
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SEMICOLON1
+       .dw XT_GET_CURRENT
+       .dw XT_STOREE
+       .dw XT_ZERO
+       .dw XT_DOLITERAL
+       .dw COLON_SMUDGE
+       .dw XT_STORE
+PFA_SEMICOLON1:
     .dw XT_EXIT
