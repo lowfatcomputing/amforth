@@ -16,5 +16,6 @@ PFA_COLONNONAME:
 
     .dw XT_COMPILE
     .dw DO_COLON
+
     .dw XT_RBRACKET
     .dw XT_EXIT

@@ -1,11 +1,11 @@
-; ( --  ) (C: "<spaces>name" -- XT )
+; ( --  ) (C: "<spaces>name" -- voc-link )
 ; Compiler
-; parse the input and create an vocabulary entry without XT and data field (PF), the generated XT is empty
-;VE_DOCREATE:
-;    .dw $ff08
-;    .db "(create)",0
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOCREATE
+; parse the input and create an vocabulary entry without XT and data field (PF)
+VE_DOCREATE:
+    .dw $ff08
+    .db "(create)"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOCREATE
 XT_DOCREATE:
     .dw DO_COLON
 PFA_DOCREATE:
@@ -14,9 +14,9 @@ PFA_DOCREATE:
     .dw XT_HEADER
     .dw XT_EXIT
 
-; ( addr len wid -- XT )
+; ( addr len wid -- voc-link )
 ; Compiler
-; creates the vocabulary header without XT and data field (PF) in the wordlist wid, the generated XT is empty
+; creates the vocabulary header without XT and data field (PF) in the wordlist wid
 VE_HEADER:
     .dw $ff06
     .db "header"

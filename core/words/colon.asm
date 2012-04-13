@@ -10,6 +10,13 @@ XT_COLON:
     .dw DO_COLON
 PFA_COLON:
     .dw XT_DOCREATE
+    .dw XT_DOLITERAL
+    .dw COLON_SMUDGE
+.dseg
+COLON_SMUDGE: .byte 2
+.cseg
+    .dw XT_STORE
+    .dw XT_DP
     .dw XT_LATEST
     .dw XT_STORE
     .dw XT_COMPILE
