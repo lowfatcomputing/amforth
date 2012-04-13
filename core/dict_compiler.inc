@@ -21,6 +21,7 @@
 .include "words/qdo.asm"
 
 .include "words/create.asm"
+.include "words/latest.asm"
 .include "words/does.asm"
 .include "words/colon.asm"
 .include "words/colon-noname.asm"

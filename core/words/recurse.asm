@@ -9,8 +9,7 @@ VE_RECURSE:
 XT_RECURSE:
     .dw DO_COLON
 PFA_RECURSE:
-    .dw XT_DOLITERAL
-    .dw COLON_XT
+    .dw XT_LATEST
     .dw XT_FETCH
     .dw XT_COMMA
     .dw XT_EXIT

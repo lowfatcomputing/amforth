@@ -1,6 +1,6 @@
-; ( -- )  (R: nest-sys -- ) (C: colon-sys -- )
+; ( -- )
 ; Compiler
-; finish colon defintion, compiles (exit) and returns to interpreter state 
+; finish colon defintion, compiles (exit) and returns to interpret state 
 VE_SEMICOLON:
     .dw $0001
     .db $3b,0
@@ -12,8 +12,7 @@ PFA_SEMICOLON:
     .dw XT_COMPILE
     .dw XT_EXIT
     .dw XT_LBRACKET
-    .dw XT_DOLITERAL
-    .dw COLON_SMUDGE
+    .dw XT_LATEST
     .dw XT_FETCH
     .dw XT_QDUP
     .dw XT_DOCONDBRANCH
@@ -21,8 +20,7 @@ PFA_SEMICOLON:
        .dw XT_GET_CURRENT
        .dw XT_STOREE
        .dw XT_ZERO
-       .dw XT_DOLITERAL
-       .dw COLON_SMUDGE
+       .dw XT_LATEST
        .dw XT_STORE
 PFA_SEMICOLON1:
     .dw XT_EXIT
