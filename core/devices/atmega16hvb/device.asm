@@ -125,6 +125,8 @@ mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
 	.dw 6144 ; minimum of 0x1800 (from XML) and 0xffff
+mcu_numints:
+	.dw 29
 mcu_name:
 	.dw 11
 	.db "ATmega16HVB",0

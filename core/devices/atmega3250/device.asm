@@ -120,6 +120,8 @@ mcu_eepromsize:
 	.dw 1024
 mcu_maxdp:
 	.dw 14336 ; minimum of 0x3800 (from XML) and 0xffff
+mcu_numints:
+	.dw 25
 mcu_name:
 	.dw 10
 	.db "ATmega3250"

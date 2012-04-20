@@ -147,6 +147,8 @@ mcu_eepromsize:
 	.dw 4096
 mcu_maxdp:
 	.dw 61440 ; minimum of 0xF000 (from XML) and 0xffff
+mcu_numints:
+	.dw 35
 mcu_name:
 	.dw  9
 	.db "ATmega128",0

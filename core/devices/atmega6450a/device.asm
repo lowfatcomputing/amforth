@@ -120,6 +120,8 @@ mcu_eepromsize:
 	.dw 2048
 mcu_maxdp:
 	.dw 28672 ; minimum of 0x7000 (from XML) and 0xffff
+mcu_numints:
+	.dw 25
 mcu_name:
 	.dw 11
 	.db "ATmega6450A",0

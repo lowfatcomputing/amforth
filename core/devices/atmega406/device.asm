@@ -112,6 +112,8 @@ mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
 	.dw 18432 ; minimum of 0x4800 (from XML) and 0xffff
+mcu_numints:
+	.dw 23
 mcu_name:
 	.dw  9
 	.db "ATmega406",0

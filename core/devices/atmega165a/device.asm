@@ -112,6 +112,8 @@ mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
 	.dw 7168 ; minimum of 0x1C00 (from XML) and 0xffff
+mcu_numints:
+	.dw 22
 mcu_name:
 	.dw 10
 	.db "ATmega165A"

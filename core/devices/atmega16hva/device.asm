@@ -106,6 +106,8 @@ mcu_eepromsize:
 	.dw 256
 mcu_maxdp:
 	.dw 0 ; minimum of 0 (from XML) and 0xffff
+mcu_numints:
+	.dw 21
 mcu_name:
 	.dw 11
 	.db "ATmega16HVA",0
