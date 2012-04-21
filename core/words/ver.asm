@@ -13,7 +13,15 @@ PFA_VER:
     .dw XT_ITYPE
     .dw XT_SPACE
     .dw XT_ENV_FORTHVERSION
-    .dw XT_ITYPE
+    .dw XT_S2D
+    .dw XT_L_SHARP
+    .dw XT_SHARP
+    .dw XT_DOLITERAL
+    .dw '.'
+    .dw XT_HOLD
+    .dw XT_SHARP_S
+    .dw XT_SHARP_G
+    .dw XT_TYPE
     .dw XT_SPACE
     .dw XT_ENV_CPU
     .dw XT_ITYPE
