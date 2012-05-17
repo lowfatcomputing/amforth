@@ -33,11 +33,3 @@
  : range  ( selector low high -- selector x )
        2>r dup dup 2r> within
        0= if invert then ;
-
-\    : FOO ( selector -- )
-\       CASE
-\         3         OF  this       ENDOF
-\         5 9 RANGE OF  that       ENDOF
-\         1         OF  the-other  ENDOF
-\       ENDCASE
-    ;
