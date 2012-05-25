@@ -1,5 +1,7 @@
 \ ----- Test AvrAsm -----
 
+only forth also assembler
+
 : loadtos, 24 Y+ ld, 25 Y+ ld, ; \ define macro
 : savetos, -Y 25 st, -Y 24 st, ; \ from macros.asm
 
@@ -16,6 +18,8 @@ code ++_      \ ( x1 x2 x3 -- x4 )
   R14 1 subi,
  <radr brne,
 end-code
+
+previous
 
 \ code demojmp \ demo jump + dup
 \  adr> 0 jmp,       \ -+
