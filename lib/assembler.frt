@@ -13,7 +13,8 @@
 
 hex
 
-assembler definitions  \ vocabulary
+vocabulary assembler
+only forth also assembler definitions  \ vocabulary
 
   \ Store src to dest thru mask, FF00 0551 0333 mask! u. FD11
 : mask! ( dest1 src mask -- dest2 )
@@ -321,3 +322,4 @@ variable (lbl) 12 allot  \ RAM for 10 labels
 : <lbl ( c -- addr )  \ index c=0..9
     2* (lbl) + @ ;
 
+previous definitions
