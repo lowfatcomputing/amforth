@@ -1,13 +1,5 @@
 \ some definitions that may be useful
 
-: erase  ( addr n -- )
-  0 fill
-;
-
-: .(  \ (s -- )
-   [char] ) parse type
-; immediate
-
 \ dump free ressources
 : .res ( -- ) 
     base @ >r
