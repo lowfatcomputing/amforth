@@ -1,26 +1,32 @@
-\ simple timing operations.
-\ requires a ticker source (e.g. timer-interrupt.frt)
+\ generic timer routines, based
+\ upon hardware modules.
 
-\ uses 
-\  - ticks/sec 
-\  - tick
+\ requires
+\   timer0.frt OR timer1.frt
+\ provides
+\   expired?  -- checks whether a counter has expired
+\   elapsed   -- shows the elapsed time in ms
+\   after     -- execute a word after n ms after now
+\   ms        -- alternative implementation for ANS94 ms
 
-\ ( d1 -- d2) d1 milliseconds later is in d2 ticks
-: later ticks/sec 1000 m*/ tick @ s>d d+ ;
+: @tick 
+   \ timer0::tick @ 
+   timer1::tick @ 
+;
 
-\ ( d -- f ) is the timer limit reached?
-: expired? tick @ ud< ;
+: expired? ( n -- flag )
+   pause @tick - 0<
+;
 
-\ execute the word after d milliseconds
-\ rounded to the next tick interval.
-\ note the double cell for the time interval
-\ ex: ' foo 10. after
-: after ( xt d -- )
-   later
-   begin
-      pause
-      dup expired?
-   until
-   drop
-   execute
+\ alternative implementation for ms
+: ms @tick + begin dup expired? until drop ;
+
+: elapsed ( n -- )
+    @tick swap - u.
+;
+
+\ execute the word after u milliseconds
+\ ex: ' foo 10 after
+: after ( xt u -- )
+   ms execute
 ;
