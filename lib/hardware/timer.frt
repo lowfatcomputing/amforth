@@ -10,8 +10,8 @@
 \   ms        -- alternative implementation for ANS94 ms
 
 : @tick 
-   \ timer0::tick @ 
-   timer1::tick @ 
+   \ timer0.tick @ 
+   timer1.tick @ 
 ;
 
 : expired? ( n -- flag )
