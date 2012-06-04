@@ -20,7 +20,18 @@
 \  twi.ping?         -- checks if addr is a device
 \  twi.scan          -- prints a small list of devices
 \
-
+\ TWI (SCL) clock speed = CPU_clock/(16 + 2*bitrateregister*(4^prescaler))
+\ following the SCL clock speed in Hz for an 8Mhz device
+\                     f_cpu   8000000
+\      bitrate register (may be any value between 0 and 255)
+\               4      8       16      32      64      128    255
+\      prescaler                             
+\      0     333.333 250.000 166.667 100.000 55.556  29.412  15.209
+\      1     166.667 100.000 55.556  29.412  15.152  7.692   3.891
+\      2     55.556  29.412  15.152  7.692   3.876   1.946     978
+\      3     15.152  7.692   3.876   1.946     975     488     245
+\
+\
 \ enable twi
 : twi.init ( prescaler bitrate  -- )
     0 TWCR c! \ stop TWI
@@ -29,7 +40,6 @@
 ;
 
 \ some random initialization.
-\ on 16MHz devices use 40kHz twi clock speed
 : twi.init.default
     3 3 twi.init ;
 
@@ -40,7 +50,7 @@
 \ wait for twi finish
 : twi.wait ( -- )
     begin
-       TWCR c@ $80 and
+       pause TWCR c@ $80 and
     until
 ;
 
