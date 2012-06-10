@@ -133,7 +133,7 @@ hex
 ; 
 
 \ disable the pull up resistor
-: pin_highZ ( pinmask portaddr -- )
+: pin_pullup_off ( pinmask portaddr -- )
   over over pin_input low
 ;
 
@@ -142,5 +142,3 @@ hex
 : pin_pullup_on ( pinmask portaddr -- )
   over over pin_input high
 ;
-
-
