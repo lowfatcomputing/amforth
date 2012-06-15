@@ -8,7 +8,9 @@
 \   elapsed   -- shows the elapsed time in ms
 \   after     -- execute a word after n ms after now
 \   ms        -- alternative implementation for ANS94 ms
-
+\   every     -- runs a word every cycle. the word provides an exit flag
+\   every-second -- runs a word every second
+\
 : @tick 
    \ timer0.tick @ 
    timer1.tick @ 
@@ -30,3 +32,16 @@
 : after ( xt u -- )
    ms execute
 ;
+
+\ execute a word every u ms. The word
+\ has the stack effect ( -- f). If f is
+\ false, the loop ends
+: every ( xt u -- )
+   begin over over after until drop drop
+;
+
+\ 
+: every-second ( xt -- )
+   1000 every
+;
+
