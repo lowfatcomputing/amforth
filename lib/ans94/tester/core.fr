@@ -966,7 +966,7 @@ TESTING OUTPUT: . ." cr emit space spaces type u.
    ." YOU SHOULD SEE 0-5 SEPARATED BY TWO spaces:" cr
    5 1+ 0 do i [char] 0 + emit 2 spaces loop cr
    ." YOU SHOULD SEE TWO SEPARATE LINES:" cr
-   s" LINE 1" type cr s" LINE 2" type cr
+   s" LINE 1" itype cr s" LINE 2" itype cr
    ." YOU SHOULD SEE THE NUMBER RANGES OF SIGNED and UNSIGNED NUMBERS:" cr
    ."   SIGNED: " MIN-INT . MAX-INT . cr
    ." UNSIGNED: " 0 u. MAX-UINT u. cr

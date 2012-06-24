@@ -1,3 +1,7 @@
+\ environment queries are placed in a
+\ separate wordlist.
+
+\ helper routine
 : copy-string ( i-addr len ram -- )
   rot rot     ( -- ram i-addr len )
   2/ 1+       ( -- ram i-addr f-cells )
@@ -16,10 +20,10 @@
     environment search-wordlist dup
     if >r execute r> then
 ;
-;
+
 
 \ the compiled (Flash) strings are transferred
-\ to RAM and processed there.
+\ to RAM and this copy processed afterwards.
 : [environment?]
    ( iaddr len -- )
     dup >r

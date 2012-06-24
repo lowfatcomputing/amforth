@@ -3,11 +3,11 @@
 
 : postpone ( -- )
     parse-name find-name dup 0< 
-    if 
-	drop compile compile , exit 
+    if \ immediate word found
+	   drop compile compile , exit 
     then
-    if 
-	, exit 
+    if \ normal word found
+	  , exit 
     then
     drop
     -&13 throw 

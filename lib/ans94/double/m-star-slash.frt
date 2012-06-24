@@ -1,7 +1,3 @@
-\ double cell arithmetics.
-\ need 2x.frt 
-
-: m+ s>d d+ ;
 
 : m*/ ( d1 n2 u3 -- dquot ) \ double m-star-slash
     >r s>d >r abs rot rot

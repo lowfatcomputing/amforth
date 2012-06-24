@@ -37,29 +37,3 @@
 \ 2tuck	( w1 w2 w3 w4 -- w3 w4 w1 w2 w3 w4 )	gforth	two_tuck
 : 2tuck
  2swap 2over ;
-
-\ 2@ ( addr -- n1 n2 )
-: 2@
-  dup ( -- addr addr )
-  cell+ ( -- addr addr+2 )
-  @     ( -- addr n2 )
-  swap  ( -- n2 addr )
-  @ ;   ( -- n2 n1 )
-
-\ 2! ( n1 n2 addr -- )
-: 2!
-  swap ( -- n1 addr n2 )
-  over ( -- n1 addr n2 addr )
-  !    ( -- n1 addr )
-  cell+ ( -- n1 addr+2 )
-  ! ;
-
-: 2constant 
-    create , ,
-    does>
-    dup @i swap 1+ @i swap
-;
-
-: 2variable
-    here 2 cells allot constant
-;
