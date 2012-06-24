@@ -3,7 +3,7 @@
 ; what ' does in the interpreter mode, do in colon definitions
 VE_BRACKETTICK:
     .dw $0003
-    .db "[",$27,"]",0
+    .db "[']",0
     .dw VE_HEAD
     .set VE_HEAD = VE_BRACKETTICK
 XT_BRACKETTICK:

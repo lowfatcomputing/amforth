@@ -3,7 +3,7 @@
 ; compile 16 bit into flash at DP
 VE_COMMA:
     .dw $ff01
-    .db $2c,0 ; ,
+    .db ',',0 ; ,
     .dw VE_HEAD
     .set VE_HEAD = VE_COMMA
 XT_COMMA:

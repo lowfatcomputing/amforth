@@ -3,7 +3,7 @@
 ; search dictionary for name, returns XT or throw an exception -13
 VE_TICK:
     .dw $ff01
-    .db $27,0
+    .db "'",0
     .dw VE_HEAD
     .set VE_HEAD = VE_TICK
 XT_TICK:
