@@ -13,18 +13,14 @@
 \ enjoy!
 \
 \ it is meant to be run on a newly flashed
-\ controller, with all the dict_* files included
+\ controller, e.g. all the dict_* are included
 \ 
 
 \ include all sources 
-#include lib/ans94/postpone.frt 
-#include lib/ans94/marker.frt 
-#include lib/ans94/tester-amforth.frt 
-#include lib/ans94/2x.frt 
-#include lib/ans94/ans.frt 
-#include lib/math.frt 
-#include lib/ans94/dummies.frt 
-
+#include ans94/core.frt
+#include ans94/tester/tester-amforth.frt 
+#include ans94/double.frt
+#include ans94/core-ext/marker.frt
 \ and finally run all the tests
 
-#include lib/ans94/core.fr
+#include ans94/tester/core.fr
