@@ -169,6 +169,14 @@
 #       completion is needed for words defined interactively during
 #       the session.
 #
+#   #update-cpu
+#       This directive is only available in an interactive session.
+#       It causes the interaction code to read the controller name
+#       from the device and tries to load a specific python module
+#       which contains names for registers and addresses. These names
+#       can be used in forth code and get replace with the corresponding
+#       numbers.
+#
 #   #exit
 #       Exit an interactive session or the current upload immediately.
 #       If encountered during an upload, no further lines from the
@@ -350,7 +358,7 @@ class AMForth(object):
     interact_directives = [
         "#cd", "#edit", "#include", "#directive", "#ignore-error",
         "#error-on-output", "#string-start-word", "#quote-char-word",
-        "#timeout", "#timeout-next", "#update-words", "#exit"
+        "#timeout", "#timeout-next", "#update-words", "#exit", "#update-cpu"
         ]
 
     def __init__(self, serial_port="/dev/amforth", speed=38400):
@@ -364,6 +372,8 @@ class AMForth(object):
         self._readline_initialized = False
         self._amforth_dp = None
         self._amforth_words = []
+        self._amforth_regs  = {}
+        self._amforth_cpu = ""
         self._last_error = ()
         self._last_edited_file = None
         self._config = BehaviorManager()
@@ -539,6 +549,8 @@ class AMForth(object):
             except AMForthException, e:
                 self.progress_callback("Error", None, str(e))
                 raise
+            self.progress_callback("File", None, "mcudef")
+            self._update_cpu()
             self.progress_callback("File", None, fpath)
             try:
                 with open(fpath, "r") as f:
@@ -665,6 +677,8 @@ class AMForth(object):
 
             if not w:
                 continue
+            if w in self._amforth_regs:
+              w = self._amforth_regs[w]
 
             if char_quote:
                 result.append(w)
@@ -887,7 +901,11 @@ class AMForth(object):
         in_comment = False
         while True:
             try:
-                full_line = raw_input("> ")
+                if self._amforth_cpu:
+                  prompt="("+self._amforth_cpu+")> "
+                else:
+                  prompt="> "
+                full_line = raw_input(prompt)
             except EOFError, e:
                 print ""
                 break
@@ -912,6 +930,9 @@ class AMForth(object):
                         break
                     elif directive == "#update-words":
                         self._update_words()
+                        continue
+                    elif directive == "#update-cpu":
+                        self._update_cpu()
                         continue
                     elif directive == "#edit":
                         if directive_arg:
@@ -959,6 +980,7 @@ class AMForth(object):
             except IOError, e:
                 pass
             self._update_words()
+            self._update_cpu()
             atexit.register(readline.write_history_file, histfn)
 
     def _update_words(self):
@@ -975,6 +997,30 @@ class AMForth(object):
             if words[-3:] != " ok":
                 return # Something went wrong, just silently ignore
             self._amforth_words = words.split(" ") + self.interact_directives
+
+    def _update_cpu(self):
+        self.send_line("dp .")
+        dp = self.read_response()
+        if dp[-3:] != " ok":
+            return  # Something went wrong, just silently ignore
+        dp = int(dp[:-3])
+        self.send_line("s\" cpu\" environment search-wordlist drop execute itype")
+        words = self.read_response()
+        if words[-3:] != " ok":
+            return # Something went wrong, just silently ignore
+        mcudef = words[:-3].lower()
+        self._amforth_regs = {}
+        if os.environ.has_key("AMFORTH_LIB"):
+           for p in os.environ["AMFORTH_LIB"].split(":"):
+              sys.path.append(p+"/devices/"+mcudef)
+        try:
+          from device import MCUREGS
+          self._amforth_regs=MCUREGS
+          self._amforth_cpu = words[:-3]
+          self.progress_callback("Information", None, "using device.py for " + mcudef)
+        except:
+          self.progress_callback("Information", None, "failed loading device.py for " + mcudef + " .. continuing")
+        #print self._amforth_regs.keys()
 
     def _rlcompleter(self, text, state):
         if state == 0:
@@ -1002,10 +1048,10 @@ class AMForth(object):
                                         "#timeout", "#timeout-next"]:
                     self._rl_matches = []
                 else:
-                    self._rl_matches = [w + " "  for w in self._amforth_words
+                    self._rl_matches = [w + " "  for w in self._amforth_words+self._amforth_regs.keys()
                                         if not text or w.startswith(text)]
             else:
-                self._rl_matches = [w + " " for w in self._amforth_words
+                self._rl_matches = [w + " " for w in self._amforth_words+self._amforth_regs.keys()
                                     if not text or w.startswith(text)]
             if self._rl_matches:
                 return self._rl_matches[0]
