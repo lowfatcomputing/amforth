@@ -30,6 +30,7 @@ import getopt
 import os
 import re
 import time
+import fnmatch
 
 global verbose, debug, mcudef
 
@@ -42,24 +43,24 @@ def merge(seq):
 
 def search_and_open_file(filename):
     directorylist=["","."]
+    filedirs={}
+
     if os.environ.has_key("AMFORTH_LIB"):
-        directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
-	if debug:
-	    print >>sys.stderr, "Directorylist  "+str(directorylist)
-	
-    for directory in directorylist:
-	if debug:
-	    print >>sys.stderr, "Trying in  "+directory
-	try:
-	    filehandle = file(directory+"/"+filename,"r")
-	    if debug:
-		   print >>sys.stderr, "Found! in "+directory	    
-	    if verbose:
-        	print >>sys.stderr, "\nincluding file: '"+directory+"/"+filename+"'"
-	    return filehandle
-	except IOError:
-	    if debug:
-		print >>sys.stderr, "Sorry not found"
+      directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
+    for p in directorylist:
+      for root, dirs, files in os.walk(p):
+        for f in fnmatch.filter(files, filename):
+          if filedirs.has_key(f):
+            filedirs[f].append([root])
+          else:
+            filedirs[f]=[root]
+    for f in filedirs.keys():
+       if len(filedirs[f])==1:
+         print "benutze ", f," aus", filedirs[f][0]
+         filehandle = file(os.path.join(filedirs[f][0], f))
+         return filehandle
+       else:
+         print "nicht eindeutig: ", f , " ist in ", len(filedirs[f]), " Verzeichnissen"
 	# oops, no file found?
     print >>sys.stderr, "Could not find a module named "+filename
     print >>sys.stderr, "Sorry, giving up. You should check the controller!"
@@ -220,7 +221,7 @@ for opt, arg in opts:
 		debug = True
 	elif opt == "-c":
 		mcudef = arg
-		sys.path.append(mcudef)
+		sys.path.append("core/devices/"+mcudef)
 		try:
 			from device import *
 			usemcudef = True
