@@ -549,7 +549,7 @@ class AMForth(object):
             except AMForthException, e:
                 self.progress_callback("Error", None, str(e))
                 raise
-            self.progress_callback("File", None, "mcudef")
+            self.progress_callback("Information", None, "mcudef")
             self._update_cpu()
             self.progress_callback("File", None, fpath)
             try:
