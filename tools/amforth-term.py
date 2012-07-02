@@ -985,7 +985,7 @@ class AMForth(object):
 
     def _update_words(self):
         # TODO: - handle multiple wordlists in _update_words
-        self.send_line("dp .")
+        self.send_line("base @ decimal dp . base !")
         dp = self.read_response()
         if dp[-3:] != " ok":
             return  # Something went wrong, just silently ignore
