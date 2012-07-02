@@ -999,11 +999,6 @@ class AMForth(object):
             self._amforth_words = words.split(" ") + self.interact_directives
 
     def _update_cpu(self):
-        self.send_line("dp .")
-        dp = self.read_response()
-        if dp[-3:] != " ok":
-            return  # Something went wrong, just silently ignore
-        dp = int(dp[:-3])
         self.send_line("s\" cpu\" environment search-wordlist drop execute itype")
         words = self.read_response()
         if words[-3:] != " ok":
