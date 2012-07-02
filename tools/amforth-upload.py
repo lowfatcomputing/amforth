@@ -49,20 +49,19 @@ def search_and_open_file(filename):
       directorylist = merge([directorylist, os.environ["AMFORTH_LIB"].split(":")])
     for p in directorylist:
       for root, dirs, files in os.walk(p):
-        for f in fnmatch.filter(files, filename):
-          if filedirs.has_key(f):
-            filedirs[f].append([root])
-          else:
-            filedirs[f]=[root]
-    for f in filedirs.keys():
-       if len(filedirs[f])==1:
-         print "benutze ", f," aus", filedirs[f][0]
-         filehandle = file(os.path.join(filedirs[f][0], f))
-         return filehandle
-       else:
-         print "nicht eindeutig: ", f , " ist in ", len(filedirs[f]), " Verzeichnissen"
-	# oops, no file found?
-    print >>sys.stderr, "Could not find a module named "+filename
+        for f in files:
+          if os.path.join(root, f).endswith(filename): # better than fnmatch since it can deal with directiories
+            if filedirs.has_key(f):
+              filedirs[f].append([root])
+            else:
+              filedirs[f]=[root]
+    if len(filedirs[f])==1:
+       print "using ", f," from", filedirs[f][0]
+       filehandle = file(os.path.join(filedirs[f][0], f))
+       return filehandle
+    else:
+    # oops, too many files or no one at all no file found?
+    print "wrong # of files:", f , " can be found in ", len(filedirs[f]), " directories"
     print >>sys.stderr, "Sorry, giving up. You should check the controller!"
     sys.exit(2)
 
