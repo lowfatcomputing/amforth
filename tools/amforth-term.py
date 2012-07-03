@@ -1067,8 +1067,12 @@ class AMForth(object):
                 cmd = [self.editor, "+" + str(lineno), filename]
             elif exename in ["vi", "vim"]:
                 cmd = [self.editor, filename, "+" + str(lineno)]
+            elif exename == "mcedit":
+                cmd = [self.editor, " " + filename, ":" + str(lineno)]
             elif exename == "gedit":
                 cmd = [self.editor, "-b", filename, "+" + str(lineno)]
+            elif exename == "pn.exe":
+                cmd = [self.editor, " --line", " "+str(lineno)+" ", filename]
             else:
                 cmd = [self.editor, filename]
             try:
