@@ -1,6 +1,9 @@
 This folder contains some example codes not
 related to any application.
 
+easter.frt: calculates the date of easter. almost unmodfied version
+    of Will Baden's code
+
 fib.frt: simple benchmark. calculate a fibonacci number using
     different algorithm.
 
