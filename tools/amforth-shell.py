@@ -371,6 +371,7 @@ class AMForth(object):
         self._serialconn = None
         self._readline_initialized = False
         self._amforth_dp = None
+        self._filedirs = {}
         self._amforth_words = []
         self._amforth_regs  = {}
         self._amforth_cpu = ""
@@ -540,8 +541,14 @@ class AMForth(object):
             self._serialconn.timeout = self._config.current_behavior.timeout
 
     def upload_file(self, filename):
-        wd = self._config.current_behavior.working_directory
-        fpath = os.path.normpath(os.path.join(wd, filename))
+        self._update_files()
+        if len(self._filedirs[filename])>1:
+          # oops, too many files or no one at all no file found?
+          self.progress_callback("ERROR", None, "wrong # of files:"+ filename + " can be found in "+ len(self._filedirs[filename])+ " directories")
+          raise AMForthException("Wrong # of file occurances: " + filename)
+
+        self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
+        fpath = os.path.join(self._filedirs[filename][0], filename)
         self._config.push_file(fpath)
         try:
             try:
@@ -981,6 +988,7 @@ class AMForth(object):
                 pass
             self._update_words()
             self._update_cpu()
+            self._update_files()
             atexit.register(readline.write_history_file, histfn)
 
     def _update_words(self):
@@ -1017,6 +1025,24 @@ class AMForth(object):
           self.progress_callback("Information", None, "failed loading device.py for " + mcudef + " .. continuing")
         #print self._amforth_regs.keys()
 
+    def _update_files(self):
+      directorylist=["","."]
+      self._filedirs = {}
+      if os.environ.has_key("AMFORTH_LIB"):
+        directorylist = directorylist+ os.environ["AMFORTH_LIB"].split(":")
+      for p in directorylist:
+        for root, dirs, files in os.walk(p):
+          for f in files:
+            fpath=os.path.realpath(os.path.join(root, f))
+            fpathdir=os.path.dirname(fpath)
+            if self._filedirs.has_key(f):
+              for d in self._filedirs[f]:
+                if d==fpathdir:
+                  fpath=None
+              if fpath: self._filedirs[f].append(fpathdir)
+            else:
+              self._filedirs[f]=[fpathdir]
+
     def _rlcompleter(self, text, state):
         if state == 0:
             line_words = readline.get_line_buffer().split(" ")
@@ -1026,7 +1052,8 @@ class AMForth(object):
                 line_words = line_words[:-1]
             if line_words:
                 if line_words[-1] in ["#include", "#edit"]:
-                    self._rl_matches = glob.glob(text + "*")
+                    self._rl_matches = [f for f in self._filedirs.keys()
+                                          if f.startswith(text)]
                 elif line_words[-1] == "#cd":
                     fnames = glob.glob(text + '*')
                     self._rl_matches = [f + "/" for f in fnames
