@@ -358,7 +358,8 @@ class AMForth(object):
     interact_directives = [
         "#cd", "#edit", "#include", "#directive", "#ignore-error",
         "#error-on-output", "#string-start-word", "#quote-char-word",
-        "#timeout", "#timeout-next", "#update-words", "#exit", "#update-cpu"
+        "#timeout", "#timeout-next", "#update-words", "#exit", 
+        "#update-cpu", "#update-files"
         ]
 
     def __init__(self, serial_port="/dev/amforth", speed=38400):
@@ -940,6 +941,9 @@ class AMForth(object):
                         continue
                     elif directive == "#update-cpu":
                         self._update_cpu()
+                        continue
+                    elif directive == "#update-files":
+                        self._update_files()
                         continue
                     elif directive == "#edit":
                         if directive_arg:
