@@ -20,7 +20,8 @@ hex
 ' do 2 + @i    constant dodo      \ Adresse des xt zu "(do)" speichern
 ' ?do 2 + @i   constant doqdo     \ Adresse des xt zu "(?do)" speichern
 
-: see ( addr -- ) \ decompiler
+: see ( "<spaces>name" -- ) \ decompiler
+     parse-name find-name if
      dup @i over - 1  = if dup >name .name space ." is a primitive" then
      dup @i dovarxt   = if ." variable " 1+ dup @i . then
      dup @i douser    = if ." user " 1+ dup @i . then
@@ -46,6 +47,9 @@ hex
               1 = 
         until then
      drop 
+     else
+      ." not found"
+    then
 ;
 
 \ Beispiel:
