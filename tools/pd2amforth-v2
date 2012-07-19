@@ -1,0 +1,190 @@
+#!/usr/bin/perl -w
+
+# pd2amforth: Read all XML files in the
+# current directory, assume they are
+# Atmel Atmega Partdescription files
+# and produce device files for assembler
+# and amforth. The generated files may
+# need some further corrections however
+
+use strict;
+use XML::LibXML;
+
+my $PDDIR="../Atmel/Partdescriptionfiles/";
+$PDDIR="local/";
+#$PDDIR=".";
+sub min {
+  my ($a, $b) = @_;
+  return $a if $a<$b;
+  return $b;
+}
+
+sub fmt_str {
+    my ($str, $format) = @_;
+    my $result;
+    my $len = sprintf("$format", length $str);
+    $result  = ".dw $len\n";
+    $result .= "\t.db \"$str\"";
+    $result .= ",0" if length($str)%2;
+    return $result;
+}
+
+sub readXML ($) {
+    my ($basename) = @_;
+    my ($timestamp, $number, $label, %regs, $partname, $defname, $maxdp, $device);
+    my ($start, $ramsize, $esize, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
+    my ($numberusarts, %usartregs);
+    my ($firstentry) = (1);
+
+    my $parser = new XML::LibXML;
+    my $doc = $parser->parse_file ("$PDDIR/$basename");
+    $basename = lc $basename;
+
+    $basename =~ s/\.xml$//;
+    $basename =~ s/\.gz$//;
+    $device=$doc->getElementsByTagName("device")->item(0);
+    return unless $device->getAttribute("family")=~/megaAVR/;
+    foreach my $addressspace ($doc -> getElementsByTagName("address-space")) {
+      my $size = $addressspace->getAttribute("size");
+      $size=hex($size) if $size=~/x/;
+      $esize = $size if $addressspace->getAttribute("name")=~/eeprom/;
+      if($addressspace->getAttribute("name")=~/prog/) {
+        $fsize = $size;
+        $maxdp = $fsize;
+        foreach my $memory ($addressspace->getElementsByTagName("memory-segment")) {
+          if($memory->getAttribute("name")=~/BOOT_SECTION/) {
+            $size = $memory->getAttribute("start");
+            $size=hex($size) if $size=~/x/;
+            $maxdp = $size if $maxdp>$size
+          }
+        }
+      }
+      if($addressspace->getAttribute("name")=~/data/) {
+        foreach my $memory ($addressspace->getElementsByTagName("memory-segment")) {
+          if($memory->getAttribute("name")=~/IRAM/) {
+            $size = $memory->getAttribute("start");
+            $size=hex($size) if $size=~/x/;
+            $start = $size;
+            $size= $memory->getAttribute("size");
+            $size=hex($size) if $size=~/x/;
+            $ramsize = $size;
+          }
+        }
+      }
+    }
+    print "RAM: $ramsize EEPROM: $esize und FLASH $fsize maxdp=0x",sprintf("%X", $maxdp);
+    
+    return unless int($fsize)>8000;
+    
+    $partname = $device->getAttribute("name");
+    $defname = "unknown";
+    $defname = "m$1def.inc" if $partname=~/ATmega(.*)/;
+    $defname = "usb$1def.inc" if $partname=~/AT90USB(.*)/;
+    $defname = "can$1def.inc" if $partname=~/AT90CAN(.*)/;
+    $defname = "pwm$1def.inc" if $partname=~/AT90PWM(.*)/;
+    $defname = "unknown" if $defname=~/comp/;
+    return if $defname=~/unknown/;
+
+    mkdir $basename unless -d $basename;
+
+    open(FRT, ">$basename/$basename.frt") or die "$basename: $!\n";
+    open(ASM, ">$basename/device.asm") or die "$basename: $!\n";
+    open(PY, ">$basename/device.py") or die "$basename: $!\n";
+    open(INC, ">$basename/device.inc") or die "$basename: $!\n";
+    
+    print FRT "\\ Partname: $partname\n";
+    print FRT "\\ generated automatically\n\n";    
+    print ASM "; Partname:  $partname\n";
+    print ASM "; generated automatically, do not edit\n";    
+    print INC "; Partname:  $partname";
+    print INC "; generated automatically, no not edit\n";
+    print PY "# generated automatically, do not edit\n";
+    print PY "MCUREGS = {";
+    print ASM "\n.nolist\n\t.include \"$defname\"\n.list\n\n";    
+    print ASM ".equ ramstart =  $start\n";
+    print ASM ".equ CELLSIZE = 2\n";
+
+    print ASM ".macro readflashcell\n";
+    print ASM "\tlsl zl\n\trol zh\n\tlpm \@0, Z+\n\tlpm \@1, Z+\n" if int($fsize) <= 65536;
+    print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n\telpm \@0, Z+\n\telpm \@1, Z+\n" if int($fsize) > 65536;
+    print ASM ".endmacro\n";
+
+    print ASM ".macro writeflashcell\n";
+    print ASM "\tlsl zl\n\trol zh\n" if int($fsize) <= 65536;
+    print ASM "\tclr temp7\n\tlsl zl\n\trol zh\n\trol temp7\n\tout_ RAMPZ, temp7\n" if int($fsize) > 65536;
+    print ASM ".endmacro\n";
+    print ASM "\n; the following definitions are shortcuts for the respective forth source segments if set to 1\n";
+    foreach my $register ($doc -> getElementsByTagName("register")) {
+	my $caption=$register->getAttribute("caption");
+	my $name   =$register->getAttribute("name");
+	my $offset =$register->getAttribute("offset");
+	my $addr = $offset; $addr=hex($addr) if $addr=~/x/;
+	next if $addr<32; # heuristics to eliminate locks and fuses
+        print FRT "$addr constant $name\t\\ $caption\n";
+	print INC "; ( -- addr ) System Constant\n; R( -- )\n; $caption";
+	print INC "\nVE_${name}:\n\t" . fmt_str($name, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${name}\n";
+	print INC "XT_${name}:\n\t.dw PFA_DOVARIABLE\nPFA_${name}:\n\t.dw $addr\n";
+	if($firstentry==0) { print PY ","; } else {$firstentry=0;}
+        print PY "\n\t'${name}': '$addr'";
+	print INC "\n.endif\n";
+    }
+    print ASM "\n";
+    print ASM "\n.ifndef SPMEN\n .equ SPMEN = SELFPRGEN\n.endif\n";
+    print ASM "\n.ifndef SPMCSR\n .equ SPMCSR = SPMCR\n.endif\n";    
+    print ASM "\n.ifndef EEPE\n .equ EEPE = EEWE\n.endif\n";    
+    print ASM "\n.ifndef EEMPE\n .equ EEMPE = EEMWE\n.endif\n";    
+    $ivecsize = "2";
+    $ivecsize = "1" if int($fsize) <= 8192; # educated guess
+    $pclen    = "2";
+    $pclen    = "3" if int($fsize) > 132000; 
+
+    print ASM ".equ intvecsize = $ivecsize ; please verify; flash size: $fsize bytes\n";
+    print ASM ".equ pclen = $pclen ; please verify\n";
+    print FRT "\n\\ Interrupts\n";
+    print ASM ".overlap\n";
+    $number = 0;
+    foreach my $ivector ($doc -> getElementsByTagName("interrupt")) {
+        my ($name, $index, $addr, $caption);
+	$number++;
+	next if $number==1;
+        $index=$ivector->getAttribute("index");
+        $addr=$index*2;
+        $name =$ivector->getAttribute("name");
+        $caption=$ivector->getAttribute("caption");
+        if($firstentry==0) { print PY ","; } else {$firstentry=0;}
+        print PY  "\n\t'${name}Addr': '$addr'";
+	print ASM ".org $addr\n\t rcall isr ; $caption\n";
+        $caption = "$addr  constant ${name}Addr \\ $caption";
+	print FRT "".substr($caption, 0, 75)."\n"; # make sure the lines fit amforth' TIB
+    }
+    print ASM ".equ INTVECTORS = $number\n";
+    print ASM ".nooverlap\n";
+    print ASM "mcu_info:\n";
+    print ASM "mcu_ramsize:\n\t.dw $ramsize\n";
+    print ASM "mcu_eepromsize:\n\t.dw $esize\n";
+    print ASM "mcu_maxdp:\n\t.dw $maxdp ; minimum of $maxdp (from XML) and 0xffff\n";
+    print ASM "mcu_numints:\n\t.dw $number\n";
+    print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
+    print ASM ".set codestart=pc\n";
+
+    close(FRT);
+    print PY "\n}";
+}
+
+
+
+sub main {
+    my( $basename);
+    $|=1;
+    opendir(CWD, $PDDIR);
+    foreach (reverse sort readdir(CWD)) {
+        next unless /(.*).xml(\.gz)?$/;
+        $basename = $_;
+        print "$basename: ";
+        readXML($basename);
+        print "\n";
+    }
+    closedir(CWD);
+}
+
+main();
