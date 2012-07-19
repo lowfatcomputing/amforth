@@ -33,6 +33,7 @@ sub readXML ($) {
     my ($timestamp, $number, $label, %regs, $partname, $defname);
     my ($start, $ramsize, $esize, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
     my ($numberusarts, %usartregs);
+    my ($firstentry) = (1);
     use XML::LibXML;
     my $parser = new XML::LibXML;
     my $doc = $parser->parse_file ("$PDDIR/$basename");
@@ -93,7 +94,7 @@ sub readXML ($) {
     print ASM ".endmacro\n";
     print ASM "\n; the following definitions are shortcuts for the respective forth source segments if set to 1\n";
     foreach my $iomodule ($doc -> getElementsByTagName("IO_MODULE")) {
-        my ($firstentry) = (1);
+
 	my $iomods = $iomodule -> getElementsByTagName("MODULE_LIST");
 	$iomods =~ s/\[//;
 	$iomods =~ s/\]//;
@@ -125,7 +126,7 @@ sub readXML ($) {
 
 	  print INC "\n.endif\n";
 	}
-    print PY "\n}";
+
     }
     print ASM "\n";
     print ASM "\n.ifndef SPMEN\n .equ SPMEN = SELFPRGEN\n.endif\n";
@@ -156,10 +157,13 @@ sub readXML ($) {
 	  $source = $iv->[0] -> getElementsByTagName("SOURCE");
 	  $source =~ s/ /_/g;
 	  $source =~ s/,//g;
+	  if($firstentry==0) { print PY ","; } else {$firstentry=0;}
+	  print PY  "\n\t'${source}Addr': '\$$addr'";
           # print "$addr '$source': $name\n";
     	  $source = "$addr  constant ${source}Addr \\ $name";
 	  print FRT "".substr($source, 0, 75)."\n"; # make sure the lines fit amforth' TIB
 	  print ASM ".org \$$addr\n\t rcall isr ; $name\n";
+
 	}
     }
     print ASM ".nooverlap\n";
@@ -170,10 +174,12 @@ sub readXML ($) {
     print ASM "mcu_ramsize:\n\t.dw $ramsize\n";
     print ASM "mcu_eepromsize:\n\t.dw $esize\n";
     print ASM "mcu_maxdp:\n\t.dw $maxdp ; minimum of $nrww (from XML) and 0xffff\n";
+    print ASM "mcu_numints:\n\t.dw $number\n";
     print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
 
     close(FRT);
+    print PY "\n}";
 }
 
 
