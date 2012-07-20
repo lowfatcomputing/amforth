@@ -373,6 +373,7 @@ class AMForth(object):
         self._readline_initialized = False
         self._amforth_dp = None
         self._filedirs = {}
+        self._search_path = []
         self._amforth_words = []
         self._amforth_regs  = {}
         self._amforth_cpu = ""
@@ -541,16 +542,28 @@ class AMForth(object):
             # Restore the current timeout
             self._serialconn.timeout = self._config.current_behavior.timeout
 
+    def find_upload_file(self, filename, working_directory):
+        if os.path.isabs(filename):
+          return filename
+        for p in self._search_path:
+          fn = os.path.normpath(os.path.join(p, filename))
+          if not os.path.isabs(fn):
+             fn = os.path.normpath(os.path.join(working_directory, fn))
+          if os.path.exists(fn):
+             return fn
+          return filename        # The attempt to open later will fail...
+
     def upload_file(self, filename):
         self._update_files()
-        if len(self._filedirs[filename])>1:
-          # oops, too many files or no one at all no file found?
-          self.progress_callback("ERROR", None, "wrong # of files:"+ filename + " can be found in "+ len(self._filedirs[filename])+ " directories")
-          raise AMForthException("Wrong # of file occurances: " + filename)
-
-        self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
-        fpath = os.path.join(self._filedirs[filename][0], filename)
-        self._config.push_file(fpath)
+        if os.path.dirname(filename):
+          fpath=filename
+        else:
+          if len(self._filedirs[filename])!=1:
+            # oops, too many files or no one at all no file found?
+            raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")")
+          self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
+          fpath = os.path.join(self._filedirs[filename][0], filename)
+          self._config.push_file(fpath)
         try:
             try:
                 self.find_prompt()
@@ -682,11 +695,19 @@ class AMForth(object):
                 result[-1] += " " + w[:i+1]
                 result[-1] = result[-1][1:]  # remove extra initial space
                 w = w[i+1:]
+            if in_delim_comment:
+                try:
+                   i = w.index(")")
+                except ValueError:
+                   continue
+                in_delim_comment = False
+                w = w[i+1:]
 
             if not w:
                 continue
             if w in self._amforth_regs:
               w = self._amforth_regs[w]
+              continue
 
             if char_quote:
                 result.append(w)
@@ -699,17 +720,11 @@ class AMForth(object):
                 else:
                     raise AMForthException("Illegal nested comment")
                 continue
-            if w == ")":
-                if in_delim_comment:
-                    in_delim_comment = False
-                else:
-                    raise AMForthException("Comment end without begin")
-                continue
 
             if not in_delim_comment and not in_line_comment:
                 if w == "\\":
                     in_line_comment = True
-                    continue
+                    break
 
                 elif w in self._config.current_behavior.start_string_words:
                     in_string = True
