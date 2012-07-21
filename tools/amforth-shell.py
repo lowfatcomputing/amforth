@@ -380,6 +380,10 @@ class AMForth(object):
         self._last_error = ()
         self._last_edited_file = None
         self._config = BehaviorManager()
+        if os.environ.has_key("AMFORTH_LIB"):
+          self._search_list = os.environ["AMFORTH_LIB"].split(":")
+        else:
+          self._search_list=["."]
 
     @property
     def serial_port(self):
@@ -438,7 +442,17 @@ class AMForth(object):
 
     def parse_arg(self):
         "Argument parsing used when module is used as a script"
-        parser = argparse.ArgumentParser(description="Interact with AMForth")
+        parser = argparse.ArgumentParser(description="Interact with AMForth", 
+             epilog="""
+The environment variable AMFORTH_LIB can be set with to a colon (:) separated 
+list of directories that are recursivly searched for file names. If not set, 
+the current work directory is used instead.
+
+The script assumes to be located in the standard amforth installation under
+the tools/ directory. It uses files from the core/devices directories for
+additional definitions (e.g. register names)
+"""
+        )
         parser.add_argument("--timeout", "-t", action="store",
             type=float, default=15.0,
             help="Timeout for response in seconds (float value)")
@@ -465,7 +479,7 @@ class AMForth(object):
             help="Ignore errors during upload (not recommended)")
         parser.add_argument("--debug-serial", action="store_true",
             help="Output extra info about serial transfers in stderr")
-        parser.add_argument("files", nargs="*")
+        parser.add_argument("files", nargs="*", help="may be found via the environment variable AMFORTH_LIB")
         arg = parser.parse_args()
         self.debug = arg.debug_serial
         self.max_line_length = arg.line_length
@@ -570,7 +584,6 @@ class AMForth(object):
             except AMForthException, e:
                 self.progress_callback("Error", None, str(e))
                 raise
-            self.progress_callback("Information", None, "mcudef")
             self._update_cpu()
             self.progress_callback("File", None, fpath)
             try:
@@ -1012,7 +1025,7 @@ class AMForth(object):
 
     def _update_words(self):
         # TODO: - handle multiple wordlists in _update_words
-        self.send_line("base @ decimal dp . base !")
+        self.send_line("base @ decimal dp u. base !")
         dp = self.read_response()
         if dp[-3:] != " ok":
             return  # Something went wrong, just silently ignore
@@ -1026,35 +1039,34 @@ class AMForth(object):
             self._amforth_words = words.split(" ") + self.interact_directives
 
     def _update_cpu(self):
+        self.progress_callback("Information", None, "Updating Controller Type")
         self.send_line("s\" cpu\" environment search-wordlist drop execute itype")
         words = self.read_response()
         if words[-3:] != " ok":
             return # Something went wrong, just silently ignore
         mcudef = words[:-3].lower()
         self._amforth_regs = {}
-        if os.environ.has_key("AMFORTH_LIB"):
-           for p in os.environ["AMFORTH_LIB"].split(":"):
-              sys.path.append(p+"/devices/"+mcudef)
+        sys.path.insert(1,os.path.join(os.path.dirname(sys.argv[0]),"..", "core", "devices",mcudef))
         try:
           from device import MCUREGS
           self._amforth_regs=MCUREGS
           self._amforth_cpu = words[:-3]
-          self.progress_callback("Information", None, "using device.py for " + mcudef)
+          self.progress_callback("Information", None, "successfully loaded controller definitions for " + mcudef)
         except:
-          self.progress_callback("Information", None, "failed loading device.py for " + mcudef + " .. continuing")
+          self.progress_callback("Warning", None, "failed loading controller definitions for " + mcudef + " .. continuing")
         #print self._amforth_regs.keys()
 
     def _update_files(self):
-      directorylist=["","."]
+      self.progress_callback("Information", None, "Updating host files")
       self._filedirs = {}
-      if os.environ.has_key("AMFORTH_LIB"):
-        directorylist = directorylist+ os.environ["AMFORTH_LIB"].split(":")
-      for p in directorylist:
+      for p in self._search_list:
+        self.progress_callback("Information", None, "  Reading "+p)
         for root, dirs, files in os.walk(p):
           for f in files:
             fpath=os.path.realpath(os.path.join(root, f))
             fpathdir=os.path.dirname(fpath)
             if self._filedirs.has_key(f):
+              # check for duplicates
               for d in self._filedirs[f]:
                 if d==fpathdir:
                   fpath=None
