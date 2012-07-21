@@ -720,7 +720,6 @@ additional definitions (e.g. register names)
                 continue
             if w in self._amforth_regs:
               w = self._amforth_regs[w]
-              continue
 
             if char_quote:
                 result.append(w)
