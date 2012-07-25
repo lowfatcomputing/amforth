@@ -165,8 +165,8 @@ sub readXML ($) {
            my $bn = $bitfield->getAttribute("name");
            $needsdef{$bn} = 0;
            $bm=~s/0x/\$/;
-           print PY "$comma\n\t  '$bn': '$bm'";
-           print FRT "  $bm constant $bn \\ $bc\n";
+           print PY "$comma\n\t  '${name}_${bn}': '$bm'";
+           print FRT "  $bm constant ${name}_${bn} \\ $bc\n";
         }
       }
       print INC "\n.endif\n";
@@ -186,7 +186,7 @@ sub readXML ($) {
 	$number++;
 	next if $number==1;
         $index=$ivector->getAttribute("index");
-        $addr=$index*2;
+        $addr=$index*$ivecsize;
         $name =$ivector->getAttribute("name");
         $caption=$ivector->getAttribute("caption");
         print PY  "$comma\n\t'${name}Addr': '$addr'";
