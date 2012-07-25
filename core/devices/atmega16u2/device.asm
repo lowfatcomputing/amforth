@@ -1,12 +1,11 @@
 ; Partname:  ATmega16U2
-; Built using part description XML file version 1
 ; generated automatically, do not edit
 
 .nolist
 	.include "m16U2def.inc"
 .list
 
-.equ ramstart =  $100
+.equ ramstart =  256
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -18,111 +17,96 @@
 	lsl zl
 	rol zh
 .endmacro
-
-; the following definitions are shortcuts for the respective forth source segments if set to 1
-.set WANT_ANALOG_COMPARATOR = 0
-.set WANT_BOOT_LOAD = 0
-.set WANT_CPU = 0
-.set WANT_EEPROM = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
-.set WANT_PLL = 0
 .set WANT_PORTB = 0
-.set WANT_PORTC = 0
 .set WANT_PORTD = 0
-.set WANT_PS2 = 0
 .set WANT_SPI = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_EEPROM = 0
 .set WANT_TIMER_COUNTER_0 = 0
 .set WANT_TIMER_COUNTER_1 = 0
-.set WANT_USART1 = 0
+.set WANT_PLL = 0
 .set WANT_USB_DEVICE = 0
+.set WANT_PS2 = 0
+.set WANT_CPU = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_USART1 = 0
 .set WANT_WATCHDOG = 0
-
-
-.ifndef SPMEN
- .equ SPMEN = SELFPRGEN
-.endif
-
-.ifndef SPMCSR
- .equ SPMCSR = SPMCR
-.endif
-
-.ifndef EEPE
- .equ EEPE = EEWE
-.endif
-
-.ifndef EEMPE
- .equ EEMPE = EEMWE
-.endif
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_PORTC = 0
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
 .overlap
-.equ INTVECTORS = 38
-.org $002
+.org 2
 	 rcall isr ; External Interrupt Request 0
-.org $004
+.org 4
 	 rcall isr ; External Interrupt Request 1
-.org $006
+.org 6
 	 rcall isr ; External Interrupt Request 2
-.org $008
+.org 8
 	 rcall isr ; External Interrupt Request 3
-.org $00A
+.org 10
 	 rcall isr ; External Interrupt Request 4
-.org $00C
+.org 12
 	 rcall isr ; External Interrupt Request 5
-.org $00E
+.org 14
 	 rcall isr ; External Interrupt Request 6
-.org $010
+.org 16
 	 rcall isr ; External Interrupt Request 7
-.org $012
+.org 18
 	 rcall isr ; Pin Change Interrupt Request 0
-.org $014
+.org 20
 	 rcall isr ; Pin Change Interrupt Request 1
-.org $016
+.org 22
 	 rcall isr ; USB General Interrupt Request
-.org $018
+.org 24
 	 rcall isr ; USB Endpoint/Pipe Interrupt Communication Request
-.org $01A
+.org 26
 	 rcall isr ; Watchdog Time-out Interrupt
-.org $01C
+.org 28
 	 rcall isr ; Timer/Counter2 Capture Event
-.org $01E
+.org 30
 	 rcall isr ; Timer/Counter2 Compare Match B
-.org $20
+.org 32
 	 rcall isr ; Timer/Counter2 Compare Match B
-.org $22
+.org 34
 	 rcall isr ; Timer/Counter2 Compare Match C
-.org $24
+.org 36
 	 rcall isr ; Timer/Counter1 Overflow
-.org $026
+.org 38
 	 rcall isr ; Timer/Counter0 Compare Match A
-.org $028
+.org 40
 	 rcall isr ; Timer/Counter0 Compare Match B
-.org $02A
+.org 42
 	 rcall isr ; Timer/Counter0 Overflow
-.org $02C
+.org 44
 	 rcall isr ; SPI Serial Transfer Complete
-.org $02E
+.org 46
 	 rcall isr ; USART1, Rx Complete
-.org $030
+.org 48
 	 rcall isr ; USART1 Data register Empty
-.org $032
+.org 50
 	 rcall isr ; USART1, Tx Complete
-.org $034
+.org 52
 	 rcall isr ; Analog Comparator
-.org $036
+.org 54
 	 rcall isr ; EEPROM Ready
-.org $038
+.org 56
 	 rcall isr ; Store Program Memory Read
+.equ INTVECTORS = 29
 .nooverlap
+
+; compatability layer (maybe empty)
+
+; controller data area, environment query mcu-info
 mcu_info:
 mcu_ramsize:
 	.dw 512
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-	.dw 6144 ; minimum of 0x1800 (from XML) and 0xffff
+	.dw 12288 
 mcu_numints:
-	.dw 38
+	.dw 29
 mcu_name:
 	.dw 10
 	.db "ATmega16U2"

@@ -64,5 +64,22 @@ MCUREGS = {
 	'UCSRA': '$2B',
 	'UCSRB': '$2A',
 	'UDR': '$2C',
-	'WDTCR': '$41'
+	'WDTCR': '$41',
+	'INT0Addr': '$002',
+	'INT1Addr': '$004',
+	'TIMER2_COMPAddr': '$006',
+	'TIMER2_OVFAddr': '$008',
+	'TIMER1_CAPTAddr': '$00A',
+	'TIMER1_COMPAAddr': '$00C',
+	'TIMER1_COMPBAddr': '$00E',
+	'TIMER1_OVFAddr': '$010',
+	'TIMER0_OVFAddr': '$012',
+	'SPISTCAddr': '$014',
+	'UARTRXAddr': '$016',
+	'UARTUDREAddr': '$018',
+	'UARTTXAddr': '$01A',
+	'ADCAddr': '$01C',
+	'EE_RDYAddr': '$01E',
+	'ANA_COMPAddr': '$020',
+	'TWIAddr': '$022'
 }

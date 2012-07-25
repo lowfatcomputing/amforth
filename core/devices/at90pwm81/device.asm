@@ -1,12 +1,11 @@
 ; Partname:  AT90PWM81
-; Built using part description XML file version 1
 ; generated automatically, do not edit
 
 .nolist
 	.include "pwm81def.inc"
 .list
 
-.equ ramstart =  $0100
+.equ ramstart =  256
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -18,90 +17,77 @@
 	lsl zl
 	rol zh
 .endmacro
-
-; the following definitions are shortcuts for the respective forth source segments if set to 1
-.set WANT_AD_CONVERTER = 0
-.set WANT_ANALOG_COMPARATOR = 0
-.set WANT_BOOT_LOAD = 0
-.set WANT_CPU = 0
-.set WANT_DA_CONVERTER = 0
-.set WANT_EEPROM = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
 .set WANT_PORTB = 0
 .set WANT_PORTD = 0
+.set WANT_DA_CONVERTER = 0
 .set WANT_PORTE = 0
+.set WANT_SPI = 0
+.set WANT_WATCHDOG = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_AD_CONVERTER = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_CPU = 0
+.set WANT_EEPROM = 0
 .set WANT_PSC0 = 0
 .set WANT_PSC2 = 0
-.set WANT_SPI = 0
 .set WANT_TIMER_COUNTER_1 = 0
-.set WANT_WATCHDOG = 0
-
-
-.ifndef SPMEN
- .equ SPMEN = SELFPRGEN
-.endif
-
-.ifndef SPMCSR
- .equ SPMCSR = SPMCR
-.endif
-
-.ifndef EEPE
- .equ EEPE = EEWE
-.endif
-
-.ifndef EEMPE
- .equ EEMPE = EEMWE
-.endif
+.set WANT_BOOT_LOAD = 0
 .equ intvecsize = 1 ; please verify; flash size: 8192 bytes
 .equ pclen = 2 ; please verify
 .overlap
-.equ INTVECTORS = 20
-.org $0001
+.org 1
 	 rcall isr ; PSC2 Capture Event
-.org $0002
+.org 2
 	 rcall isr ; PSC2 End Cycle
-.org $0003
+.org 3
 	 rcall isr ; PSC2 End Of Enhanced Cycle
-.org $0004
+.org 4
 	 rcall isr ; PSC0 Capture Event
-.org $0005
+.org 5
 	 rcall isr ; PSC0 End Cycle
-.org $0006
+.org 6
 	 rcall isr ; PSC0 End Of Enhanced Cycle
-.org $0007
+.org 7
 	 rcall isr ; Analog Comparator 1
-.org $0008
+.org 8
 	 rcall isr ; Analog Comparator 2
-.org $0009
+.org 9
 	 rcall isr ; Analog Comparator 3
-.org $000A
+.org 10
 	 rcall isr ; External Interrupt Request 0
-.org $000B
+.org 11
 	 rcall isr ; Timer/Counter1 Capture Event
-.org $000C
+.org 12
 	 rcall isr ; Timer/Counter1 Overflow
-.org $000D
+.org 13
 	 rcall isr ; ADC Conversion Complete
-.org $000E
+.org 14
 	 rcall isr ; External Interrupt Request 1
-.org $000F
+.org 15
 	 rcall isr ; SPI Serial Transfer Complet
-.org $0010
+.org 16
 	 rcall isr ; External Interrupt Request 2
-.org $0011
+.org 17
 	 rcall isr ; Watchdog Timeout Interrupt
-.org $0012
+.org 18
 	 rcall isr ; EEPROM Ready
-.org $0013
+.org 19
 	 rcall isr ; Store Program Memory Read
+.equ INTVECTORS = 20
 .nooverlap
+
+; compatability layer (maybe empty)
+.equ EEPE = EEWE
+.equ EEMPE = EEMWE
+
+; controller data area, environment query mcu-info
 mcu_info:
 mcu_ramsize:
 	.dw 256
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-	.dw 3072 ; minimum of 0xC00 (from XML) and 0xffff
+	.dw 6144 
 mcu_numints:
 	.dw 20
 mcu_name:

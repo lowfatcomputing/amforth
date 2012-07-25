@@ -1,12 +1,11 @@
 ; Partname:  ATmega32HVB
-; Built using part description XML file version 1
 ; generated automatically, do not edit
 
 .nolist
 	.include "m32HVBdef.inc"
 .list
 
-.equ ramstart =  $100
+.equ ramstart =  256
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -18,113 +17,98 @@
 	lsl zl
 	rol zh
 .endmacro
-
-; the following definitions are shortcuts for the respective forth source segments if set to 1
 .set WANT_AD_CONVERTER = 0
-.set WANT_BANDGAP = 0
-.set WANT_BATTERY_PROTECTION = 0
-.set WANT_BOOT_LOAD = 0
-.set WANT_CELL_BALANCING = 0
-.set WANT_CHARGER_DETECT = 0
-.set WANT_COULOMB_COUNTER = 0
-.set WANT_CPU = 0
-.set WANT_EEPROM = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_WATCHDOG = 0
 .set WANT_FET = 0
+.set WANT_SPI = 0
+.set WANT_EEPROM = 0
+.set WANT_COULOMB_COUNTER = 0
+.set WANT_TWI = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_CELL_BALANCING = 0
+.set WANT_BATTERY_PROTECTION = 0
+.set WANT_CHARGER_DETECT = 0
+.set WANT_VOLTAGE_REGULATOR = 0
+.set WANT_BANDGAP = 0
+.set WANT_CPU = 0
 .set WANT_PORTA = 0
 .set WANT_PORTB = 0
 .set WANT_PORTC = 0
-.set WANT_SPI = 0
 .set WANT_TIMER_COUNTER_0 = 0
-.set WANT_TIMER_COUNTER_1 = 0
-.set WANT_TWI = 0
-.set WANT_VOLTAGE_REGULATOR = 0
-.set WANT_WATCHDOG = 0
-
-
-.ifndef SPMEN
- .equ SPMEN = SELFPRGEN
-.endif
-
-.ifndef SPMCSR
- .equ SPMCSR = SPMCR
-.endif
-
-.ifndef EEPE
- .equ EEPE = EEWE
-.endif
-
-.ifndef EEMPE
- .equ EEMPE = EEMWE
-.endif
+.set WANT_BOOT_LOAD = 0
 .equ intvecsize = 2 ; please verify; flash size: 32768 bytes
 .equ pclen = 2 ; please verify
 .overlap
-.equ INTVECTORS = 29
-.org $0002
+.org 2
 	 rcall isr ; Battery Protection Interrupt
-.org $0004
+.org 4
 	 rcall isr ; Voltage regulator monitor interrupt
-.org $0006
+.org 6
 	 rcall isr ; External Interrupt Request 0
-.org $0008
+.org 8
 	 rcall isr ; External Interrupt Request 1
-.org $000A
+.org 10
 	 rcall isr ; External Interrupt Request 2
-.org $000C
+.org 12
 	 rcall isr ; External Interrupt Request 3
-.org $000E
+.org 14
 	 rcall isr ; Pin Change Interrupt 0
-.org $0010
+.org 16
 	 rcall isr ; Pin Change Interrupt 1
-.org $0012
+.org 18
 	 rcall isr ; Watchdog Timeout Interrupt
-.org $0014
+.org 20
 	 rcall isr ; Bandgap Buffer Short Circuit Detected
-.org $0016
+.org 22
 	 rcall isr ; Charger Detect
-.org $0018
+.org 24
 	 rcall isr ; Timer 1 Input capture
-.org $001A
+.org 26
 	 rcall isr ; Timer 1 Compare Match A
-.org $001C
+.org 28
 	 rcall isr ; Timer 1 Compare Match B
-.org $001E
+.org 30
 	 rcall isr ; Timer 1 overflow
-.org $0020
+.org 32
 	 rcall isr ; Timer 0 Input Capture
-.org $0022
+.org 34
 	 rcall isr ; Timer 0 Comapre Match A
-.org $0024
+.org 36
 	 rcall isr ; Timer 0 Compare Match B
-.org $0026
+.org 38
 	 rcall isr ; Timer 0 Overflow
-.org $0028
+.org 40
 	 rcall isr ; Two-Wire Bus Connect/Disconnect
-.org $002A
+.org 42
 	 rcall isr ; Two-Wire Serial Interface
-.org $002C
+.org 44
 	 rcall isr ; SPI Serial transfer complete
-.org $002E
+.org 46
 	 rcall isr ; Voltage ADC Conversion Complete
-.org $0030
+.org 48
 	 rcall isr ; Coulomb Counter ADC Conversion Complete
-.org $0032
+.org 50
 	 rcall isr ; Coloumb Counter ADC Regular Current
-.org $0034
+.org 52
 	 rcall isr ; Coloumb Counter ADC Accumulator
-.org $036
+.org 54
 	 rcall isr ; EEPROM Ready
-.org $038
+.org 56
 	 rcall isr ; SPM Ready
+.equ INTVECTORS = 29
 .nooverlap
+
+; compatability layer (maybe empty)
+
+; controller data area, environment query mcu-info
 mcu_info:
 mcu_ramsize:
 	.dw 2048
 mcu_eepromsize:
 	.dw 1024
 mcu_maxdp:
-	.dw 14336 ; minimum of 0x3800 (from XML) and 0xffff
+	.dw 28672 
 mcu_numints:
 	.dw 29
 mcu_name:

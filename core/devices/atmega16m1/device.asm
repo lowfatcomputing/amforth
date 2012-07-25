@@ -1,12 +1,11 @@
 ; Partname:  ATmega16M1
-; Built using part description XML file version 1
 ; generated automatically, do not edit
 
 .nolist
 	.include "m16M1def.inc"
 .list
 
-.equ ramstart =  $0100
+.equ ramstart =  256
 .equ CELLSIZE = 2
 .macro readflashcell
 	lsl zl
@@ -18,114 +17,101 @@
 	lsl zl
 	rol zh
 .endmacro
-
-; the following definitions are shortcuts for the respective forth source segments if set to 1
-.set WANT_AD_CONVERTER = 0
-.set WANT_ANALOG_COMPARATOR = 0
-.set WANT_CAN = 0
-.set WANT_CPU = 0
-.set WANT_DA_CONVERTER = 0
-.set WANT_EEPROM = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
-.set WANT_LINUART = 0
 .set WANT_PORTB = 0
 .set WANT_PORTC = 0
 .set WANT_PORTD = 0
+.set WANT_CAN = 0
+.set WANT_ANALOG_COMPARATOR = 0
+.set WANT_DA_CONVERTER = 0
+.set WANT_CPU = 0
 .set WANT_PORTE = 0
-.set WANT_PSC = 0
-.set WANT_SPI = 0
 .set WANT_TIMER_COUNTER_0 = 0
 .set WANT_TIMER_COUNTER_1 = 0
+.set WANT_AD_CONVERTER = 0
+.set WANT_LINUART = 0
+.set WANT_SPI = 0
 .set WANT_WATCHDOG = 0
-
-
-.ifndef SPMEN
- .equ SPMEN = SELFPRGEN
-.endif
-
-.ifndef SPMCSR
- .equ SPMCSR = SPMCR
-.endif
-
-.ifndef EEPE
- .equ EEPE = EEWE
-.endif
-
-.ifndef EEMPE
- .equ EEMPE = EEMWE
-.endif
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_EEPROM = 0
+.set WANT_PSC = 0
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
 .overlap
-.equ INTVECTORS = 31
-.org $0002
+.org 2
 	 rcall isr ; Analog Comparator 0
-.org $0004
+.org 4
 	 rcall isr ; Analog Comparator 1
-.org $0006
+.org 6
 	 rcall isr ; Analog Comparator 2
-.org $0008
+.org 8
 	 rcall isr ; Analog Comparator 3
-.org $000A
+.org 10
 	 rcall isr ; PSC Fault
-.org $000C
+.org 12
 	 rcall isr ; PSC End of Cycle
-.org $000E
+.org 14
 	 rcall isr ; External Interrupt Request 0
-.org $0010
+.org 16
 	 rcall isr ; External Interrupt Request 1
-.org $0012
+.org 18
 	 rcall isr ; External Interrupt Request 2
-.org $0014
+.org 20
 	 rcall isr ; External Interrupt Request 3
-.org $0016
+.org 22
 	 rcall isr ; Timer/Counter1 Capture Event
-.org $0018
+.org 24
 	 rcall isr ; Timer/Counter1 Compare Match A
-.org $001A
+.org 26
 	 rcall isr ; Timer/Counter1 Compare Match B
-.org $001C
+.org 28
 	 rcall isr ; Timer1/Counter1 Overflow
-.org $001E
+.org 30
 	 rcall isr ; Timer/Counter0 Compare Match A
-.org $0020
+.org 32
 	 rcall isr ; Timer/Counter0 Compare Match B
-.org $0022
+.org 34
 	 rcall isr ; Timer/Counter0 Overflow
-.org $0024
+.org 36
 	 rcall isr ; CAN MOB, Burst, General Errors
-.org $0026
+.org 38
 	 rcall isr ; CAN Timer Overflow
-.org $0028
+.org 40
 	 rcall isr ; LIN Transfer Complete
-.org $002A
+.org 42
 	 rcall isr ; LIN Error
-.org $002C
+.org 44
 	 rcall isr ; Pin Change Interrupt Request 0
-.org $002E
+.org 46
 	 rcall isr ; Pin Change Interrupt Request 1
-.org $0030
+.org 48
 	 rcall isr ; Pin Change Interrupt Request 2
-.org $0032
+.org 50
 	 rcall isr ; Pin Change Interrupt Request 3
-.org $0034
+.org 52
 	 rcall isr ; SPI Serial Transfer Complete
-.org $0036
+.org 54
 	 rcall isr ; ADC Conversion Complete
-.org $0038
+.org 56
 	 rcall isr ; Watchdog Time-Out Interrupt
-.org $003A
+.org 58
 	 rcall isr ; EEPROM Ready
-.org $003C
+.org 60
 	 rcall isr ; Store Program Memory Read
+.equ INTVECTORS = 31
 .nooverlap
+
+; compatability layer (maybe empty)
+.equ EEPE = EEWE
+.equ EEMPE = EEMWE
+
+; controller data area, environment query mcu-info
 mcu_info:
 mcu_ramsize:
 	.dw 1024
 mcu_eepromsize:
 	.dw 512
 mcu_maxdp:
-	.dw 6144 ; minimum of 0x1800 (from XML) and 0xffff
+	.dw 12288 
 mcu_numints:
 	.dw 31
 mcu_name:

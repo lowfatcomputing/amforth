@@ -1,12 +1,11 @@
 ; Partname:  ATmega1281
-; Built using part description XML file version 72
 ; generated automatically, do not edit
 
 .nolist
 	.include "m1281def.inc"
 .list
 
-.equ ramstart =  $200
+.equ ramstart =  512
 .equ CELLSIZE = 2
 .macro readflashcell
 	clr temp7
@@ -24,15 +23,11 @@
 	rol temp7
 	out_ RAMPZ, temp7
 .endmacro
-
-; the following definitions are shortcuts for the respective forth source segments if set to 1
-.set WANT_AD_CONVERTER = 0
 .set WANT_ANALOG_COMPARATOR = 0
-.set WANT_BOOT_LOAD = 0
-.set WANT_CPU = 0
-.set WANT_EEPROM = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
-.set WANT_JTAG = 0
+.set WANT_USART0 = 0
+.set WANT_USART1 = 0
+.set WANT_TWI = 0
+.set WANT_SPI = 0
 .set WANT_PORTA = 0
 .set WANT_PORTB = 0
 .set WANT_PORTC = 0
@@ -40,158 +35,147 @@
 .set WANT_PORTE = 0
 .set WANT_PORTF = 0
 .set WANT_PORTG = 0
-.set WANT_SPI = 0
 .set WANT_TIMER_COUNTER_0 = 0
-.set WANT_TIMER_COUNTER_1 = 0
 .set WANT_TIMER_COUNTER_2 = 0
-.set WANT_TIMER_COUNTER_3 = 0
-.set WANT_TIMER_COUNTER_4 = 0
-.set WANT_TIMER_COUNTER_5 = 0
-.set WANT_TWI = 0
-.set WANT_USART0 = 0
-.set WANT_USART1 = 0
 .set WANT_WATCHDOG = 0
-
-
-.ifndef SPMEN
- .equ SPMEN = SELFPRGEN
-.endif
-
-.ifndef SPMCSR
- .equ SPMCSR = SPMCR
-.endif
-
-.ifndef EEPE
- .equ EEPE = EEWE
-.endif
-
-.ifndef EEMPE
- .equ EEMPE = EEMWE
-.endif
+.set WANT_TIMER_COUNTER_5 = 0
+.set WANT_TIMER_COUNTER_4 = 0
+.set WANT_TIMER_COUNTER_3 = 0
+.set WANT_TIMER_COUNTER_1 = 0
+.set WANT_EEPROM = 0
+.set WANT_JTAG = 0
+.set WANT_EXTERNAL_INTERRUPT = 0
+.set WANT_AD_CONVERTER = 0
+.set WANT_BOOT_LOAD = 0
+.set WANT_CPU = 0
 .equ intvecsize = 2 ; please verify; flash size: 131072 bytes
 .equ pclen = 2 ; please verify
 .overlap
-.equ INTVECTORS = 57
-.org $002
+.org 2
 	 rcall isr ; External Interrupt Request 0
-.org $004
+.org 4
 	 rcall isr ; External Interrupt Request 1
-.org $006
+.org 6
 	 rcall isr ; External Interrupt Request 2
-.org $008
+.org 8
 	 rcall isr ; External Interrupt Request 3
-.org $00A
+.org 10
 	 rcall isr ; External Interrupt Request 4
-.org $00C
+.org 12
 	 rcall isr ; External Interrupt Request 5
-.org $00E
+.org 14
 	 rcall isr ; External Interrupt Request 6
-.org $010
+.org 16
 	 rcall isr ; External Interrupt Request 7
-.org $012
+.org 18
 	 rcall isr ; Pin Change Interrupt Request 0
-.org $014
+.org 20
 	 rcall isr ; Pin Change Interrupt Request 1
-.org $016
+.org 22
 	 rcall isr ; Pin Change Interrupt Request 2
-.org $018
+.org 24
 	 rcall isr ; Watchdog Time-out Interrupt
-.org $01A
+.org 26
 	 rcall isr ; Timer/Counter2 Compare Match A
-.org $01C
+.org 28
 	 rcall isr ; Timer/Counter2 Compare Match B
-.org $01E
+.org 30
 	 rcall isr ; Timer/Counter2 Overflow
-.org $020
+.org 32
 	 rcall isr ; Timer/Counter1 Capture Event
-.org $022
+.org 34
 	 rcall isr ; Timer/Counter1 Compare Match A
-.org $024
+.org 36
 	 rcall isr ; Timer/Counter1 Compare Match B
-.org $026
+.org 38
 	 rcall isr ; Timer/Counter1 Compare Match C
-.org $028
+.org 40
 	 rcall isr ; Timer/Counter1 Overflow
-.org $02A
+.org 42
 	 rcall isr ; Timer/Counter0 Compare Match A
-.org $02C
+.org 44
 	 rcall isr ; Timer/Counter0 Compare Match B
-.org $02E
+.org 46
 	 rcall isr ; Timer/Counter0 Overflow
-.org $030
+.org 48
 	 rcall isr ; SPI Serial Transfer Complete
-.org $032
+.org 50
 	 rcall isr ; USART0, Rx Complete
-.org $034
+.org 52
 	 rcall isr ; USART0 Data register Empty
-.org $036
+.org 54
 	 rcall isr ; USART0, Tx Complete
-.org $038
+.org 56
 	 rcall isr ; Analog Comparator
-.org $03A
+.org 58
 	 rcall isr ; ADC Conversion Complete
-.org $03C
+.org 60
 	 rcall isr ; EEPROM Ready
-.org $03E
+.org 62
 	 rcall isr ; Timer/Counter3 Capture Event
-.org $040
+.org 64
 	 rcall isr ; Timer/Counter3 Compare Match A
-.org $042
+.org 66
 	 rcall isr ; Timer/Counter3 Compare Match B
-.org $044
+.org 68
 	 rcall isr ; Timer/Counter3 Compare Match C
-.org $046
+.org 70
 	 rcall isr ; Timer/Counter3 Overflow
-.org $048
+.org 72
 	 rcall isr ; USART1, Rx Complete
-.org $04A
+.org 74
 	 rcall isr ; USART1 Data register Empty
-.org $04C
+.org 76
 	 rcall isr ; USART1, Tx Complete
-.org $04E
+.org 78
 	 rcall isr ; 2-wire Serial Interface
-.org $050
+.org 80
 	 rcall isr ; Store Program Memory Read
-.org $052
+.org 82
 	 rcall isr ; Timer/Counter4 Capture Event
-.org $054
+.org 84
 	 rcall isr ; Timer/Counter4 Compare Match A
-.org $056
+.org 86
 	 rcall isr ; Timer/Counter4 Compare Match B
-.org $058
+.org 88
 	 rcall isr ; Timer/Counter4 Compare Match C
-.org $05A
+.org 90
 	 rcall isr ; Timer/Counter4 Overflow
-.org $05C
+.org 92
 	 rcall isr ; Timer/Counter5 Capture Event
-.org $05E
+.org 94
 	 rcall isr ; Timer/Counter5 Compare Match A
-.org $060
+.org 96
 	 rcall isr ; Timer/Counter5 Compare Match B
-.org $062
+.org 98
 	 rcall isr ; Timer/Counter5 Compare Match C
-.org $064
+.org 100
 	 rcall isr ; Timer/Counter5 Overflow
-.org $066
+.org 102
 	 rcall isr ; USART2, Rx Complete
-.org $068
+.org 104
 	 rcall isr ; USART2 Data register Empty
-.org $06A
+.org 106
 	 rcall isr ; USART2, Tx Complete
-.org $06C
+.org 108
 	 rcall isr ; USART3, Rx Complete
-.org $06E
+.org 110
 	 rcall isr ; USART3 Data register Empty
-.org $070
+.org 112
 	 rcall isr ; USART3, Tx Complete
+.equ INTVECTORS = 57
 .nooverlap
+
+; compatability layer (maybe empty)
+
+; controller data area, environment query mcu-info
 mcu_info:
 mcu_ramsize:
 	.dw 8192
 mcu_eepromsize:
 	.dw 4096
 mcu_maxdp:
-	.dw 61440 ; minimum of 0xF000 (from XML) and 0xffff
+	.dw 65535 
 mcu_numints:
 	.dw 57
 mcu_name:
