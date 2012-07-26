@@ -9,6 +9,7 @@ VE_WARM:
 XT_WARM:
     .dw DO_COLON
 PFA_WARM:
+    .dw XT_INITUSER
     .dw XT_DOLITERAL
     .dw XT_NOOP
     .dw XT_DOLITERAL
