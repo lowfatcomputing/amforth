@@ -1,5 +1,5 @@
 	<bookinfo>
-		<title>amforth 4.8</title>
+		<title>amforth 5.0</title>
 		<subtitle>Technical Documentation</subtitle>
 		<author>
 			<personname>
@@ -9,7 +9,7 @@
 			<email>mtrute@users.sourceforge.net
 			</email>
 		</author>
-		<pubdate>2011</pubdate>
+		<pubdate>2012</pubdate>
 		<copyright>
 			<year>2007, 2012</year>
 			<holder>Matthias Trute</holder>

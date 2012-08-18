@@ -46,9 +46,16 @@
                     operation all interrupts are turned off. This may
                     lead to lost characters on the serial line. One
                     solution is to send very slowly and hope that the
-                    receiver gets all characters. The program
-                    <command>ascii-xfer</command>
-                    can do the job:
+                    receiver gets all characters. A better solution is
+                    to send a character and wait for the echo from 
+                    the controller. This may sound awfully slow at the
+                    glance but it turned out to be a fast and reliable
+                    strategy.
+                </para>
+                <para>
+                    An example for the first strategy can be used with
+                    the program <command>ascii-xfer</command>. Calling
+                    it with the command line parameters
                     <cmdsynopsis>
                         <command>ascii-xfr</command>
                         <arg choice="plain">-s</arg>
@@ -57,39 +64,103 @@
                         <arg choice="plain">$file</arg>
                         <arg choice="plain">> $tty</arg>
                     </cmdsynopsis>
-                    This works but the upload of longer files needs a
+                    will work but the upload of longer files needs a
                     very long time: $delay_char can be 1 or 2 ms,
                     $delay_line around 800 ms.
                 </para>
                 <para>
-                    Another solution is
-                    <command>amforth-upload.py</command>
-                    . It was initially created by user
-                    <ulink url="http://pix.test.at/">
-                        <citetitle>pix</citetitle>
-                    </ulink>
-                    . His algorithm checks for the echo of every
-                    character sent to the controller. At line ends the
-                    uploader waits for the ok prompt to continue with
-                    the next line.
+                    An example for the alternative algorith are the
+                    tools <command>amforth-upload.py</command>
+                    and <command>amforth-term.py</command>. They
+                    are python scripts that uses a few external
+                    libraries wich can usually installed with the
+                    standard package managers.
                 </para>
                 <para>
-                    This algorithm works very fast without the risk of
-                    lost characters. An extension of this script
-                    provides limited library support. In the source
-                    files a command
+                    These tools provide some additional value beyond
+                    simply transferring text files. They analyze the
+                    source code and obey some additional commands.
+                    One command is the 
                     <cmdsynopsis>
                         <command>#include</command>
                         <arg choice="plain">filename</arg>
-                    </cmdsynopsis>
-                    is used to upload the content of
-                    <filename>filename</filename>
-                    instead of the two words. The sources will only work
-                    with this uploader utility, others will trigger the
-                    "word-not-found" exception on the microcontroller
-                    unless they recognize the #include syntax (similar
-                    to the c preprocessor).
+                    </cmdsynopsis>. When this command is found
+                    the content of the file <command>filename</command>
+                    is sent to the controller.
                 </para>
             </sect2>
         </sect1>
+        <sect1 id="ToolsMCU">
+           <title>Controller</title>
+           <para>There are a few tools that may be useful on the controller. They
+             are implemented as loadable forth code that may affect internal
+             data and workflows in a non-portable way. In particular are available
+             a profiler (counting calls to words), a call tracer (printing a 
+             stacktrace while executing the words), a timing utility (benchme),
+             a few memory dump tools and a <command>see</command> that may be
+             useful to revert the compilation process (gets some forth code
+             from compiled words).
+          </para>
+          <sect2 id="profiler">
+            <title>Profiler</title>
+            <para>After loading the file <filename>lib/profiler.frt</filename> 
+            into the controller, every colon word gets a counter 
+            (1cell) which is incremented everytime the word is called. Since this cell
+            can be used like any variable, it can be reset any time as well.
+<programlisting>
+> : foo 1 ;
+ ok
+> profiler:on
+ ok
+> ' foo xt>prf @ .
+0 ok
+> foo
+ok
+> ' foo xt>prf @ .
+1 ok
+> 0 ' foo xt>prf !
+ok
+>
+</programlisting>
+          </para>
+          </sect2>
+          <sect2 id="tracer">
+            <title>Tracer</title>
+            <para>
+After loading the file <filename>lib/tracer.frt</filename> into the controller, every word beeing
+defined afterwards prints it's name and the stack content at runtime.
+
+<programlisting>
+> : foo 1 ;
+ ok
+> : bar 2 foo ;
+  ok
+> : baz 3 bar ;
+ ok
+> trace:on
+ ok
+> baz
+   
+baz
+   
+bar
+0 2221 3 
+   
+foo
+0 2219 2 
+1 2221 3 
+ ok
+> .s
+0 2217 1 
+1 2219 2 
+2 2221 3 
+ ok
+> trace:off
+ ok
+> baz
+ ok
+>
+</programlisting></para>
+          </sect2>
+          </sect1>
     </chapter>

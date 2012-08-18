@@ -12,8 +12,7 @@
 				the minimum
 				flash capacity. The ATtiny's some machine instructions as
 				well. </para>
-		</sect1>
-		<sect1 id="Bootloader">
+		<sect2 id="Bootloader">
 			<title>Bootloader Support</title>
 			<para>Most bootloaders will not work with amforth since they do
 				not provide an
@@ -31,8 +30,8 @@
 				checkings, write success checks or simply turn 
 				on/off LEDs to visualize the flash programming.
 			</para>
-		</sect1>
-		<sect1 id="Fuses">
+		</sect2>
+		<sect2 id="Fuses">
 			<title>Fuses</title>
 			<para> Amforth uses the self programming feature of the ATmega
 				microcontrollers to work with the dictionary. It is ok to use the
@@ -47,5 +46,11 @@
 			    machine instruction spm may fail silently and the controller becomes
 			    unresponsive.
 			</para>
+		</sect2>
 		</sect1>
+		<sect1 id="ExternalModules">
+			<title>External Modules</title>
+			<para>Most external modules are accessed with library modules.
+            </para>
+        </sect1>
 	</chapter>

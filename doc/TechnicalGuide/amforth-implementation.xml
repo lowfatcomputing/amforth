@@ -19,10 +19,7 @@
                 <title>Core and Core EXT</title>
                 <para>
                     Al words from the CORE word set are available. CORE EXT drops 
-                    the words C", COMPILE, CONVERT, EXPECT, SPAN, and  ROLL.
-                </para>
-                <para>
-                    The following words have non-standard behavior
+                    the words C", CONVERT, EXPECT, SPAN, and  ROLL.
                 </para>
                 <para>
                     Loop counters are checked on signed compares.
@@ -139,15 +136,7 @@
                     <command>DUMP</command>
                     are implemented or can easily be done. The word
                     <command>SEE</command>
-                    won't be supported since amforth uses a
-                    optimization strategy to strip forth headers
-                    whenever possible. The other reason for dropping
-                    <command>SEE</command>
-                    is that amforth is OpenSource software. If your
-                    vendor does not disclose the full source, let me
-                    know. He violates the GPL. Nevertheless a word
-                    <command>XT2NFA</command> exists that leads to
-                    the name field.
+                    is available as well.
                 </para>
                 <para>
                     <command>STATE</command>
@@ -279,9 +268,11 @@
             </para>
             </sect3>
             <sect3 id="QUIT"><title>QUIT</title>
-            <para>QUIT repeats the initialization of the stack pointers by reading
+            <para>QUIT intializes both data and return stack pointers by reading
             them from the user area and enters the traditional ACCEPT -- INTERPRET 
-            loop that never ends. </para>
+            loop that never ends. It provides the topmost exception catcher as
+            well. Depending on the exception thrown, it prints an error message
+            and restarts itself.</para>
             </sect3>
             </sect2>
             <sect2 id="AMFORTH_MCU">
