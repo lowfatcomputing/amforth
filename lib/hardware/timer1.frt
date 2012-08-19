@@ -25,20 +25,19 @@ variable timer1.preload
   1 timer1.tick +!
 ;
 
-: timer1.init
-    0 timer1.preload !
-    0 timer1.tick !
-    ['] timer1.isr TIMER1_OVFAddr int!
-;
-
 \ some settings for 8bit timer to
 \ get 1ms ticks
 \ f_cpu  prescaler preload
 \  16MHz   8       63536
 \   8MHz   64      64536
+: timer1.init ( preload -- )
+      timer1.preload !
+    0 timer1.tick !
+    ['] timer1.isr TIMER1_OVFAddr int!
+;
+
 : timer1.start
-        0 timer1.tick !
-    63536 timer1.preload !
+    0 timer1.tick !
     %00000010 TCCR1B c!
     %00000001 TIMSK1 c! \ enable overflow interrupt
 ;
