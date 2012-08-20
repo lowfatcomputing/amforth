@@ -1,5 +1,5 @@
 	<chapter id="Sources">
-		<title>Source Organisation</title>
+		<title>Source Organization</title>
 		<sect1 id="src_overview">
 			<title>Overview</title>
 			<para> amforth is written using the standard Atmel AVR 8 bit assembly
@@ -9,7 +9,7 @@
 				the chicken-and-egg problem: how to compile the compiler words.
 			</para>
 			<para> The source code can be processed with both the AVR Studio and
-				the linux avr assembler avra.</para>
+				the Linux avr assembler avra.</para>
 			<para>
 				amforth consists of a great number of small source files. Nearly all
 				words are coded in their own source files. These files are organized
@@ -120,7 +120,7 @@
 					<filename>dict_core.inc</filename> if the amount of writable 
 					dictionary space is an issue. As a helper the file 
 					<filename>dict_appl_core.inc</filename> can be used to place
-					application specifiic words in the core area.
+					application specific words in the core area.
 				</para>
 				</sect3>
 				<sect3 id="src_dict_minimum"><title><filename>dict_minimum.inc</filename></title>
@@ -141,7 +141,7 @@
 					Some words have their source files within the
 					<filename>core/words</filename> directory but have to be included via the
 					<filename>dict_appl.inc</filename> or <filename>dict_appl_core.inc</filename>
-					files. These words may provide the hardware dependecies to access the
+					files. These words may provide the hardware dependencies to access the
 					amforth system. The serial line terminal is an example.
 				</para>
 				</sect3>
@@ -153,7 +153,7 @@
 					important settings for the serial IO port (which port and which
 					parameters), the interrupt vectors and some macros.</para>
 				<para>Adapting another ATmega microcontroller is as easy as
-					copy and edit an existing file from a similiar type.</para>
+					copy and edit an existing file from a similar type.</para>
 				<para>
 					The last definition is a string with the device name in clear text.
 					This string is used within the word

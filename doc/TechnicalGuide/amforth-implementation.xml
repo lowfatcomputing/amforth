@@ -1,10 +1,10 @@
     <chapter id="Implementation">
         <title>Implementation</title>
-        <sect1 id="ANS">
-            <title>ANS Words</title>
+        <sect1 id="ANS94">
+            <title>ANS94 Words</title>
             <para>
             amforth is close to the ANS94 Forth standard. The main difference comes from
-            the fact that the AVR ATmegas use a Havard architecture (separate code and
+            the fact that the AVR ATmegas use a Harvard architecture (separate code and
             data address space) that amforth does not hide. amforth gives full and unmodified
             access to the whole address space.  
             </para>
@@ -12,8 +12,8 @@
                 amforth implements most or all words from the ANS word
                 sets CORE, CORE EXT, EXCEPTION and DOUBLE NUMBERS. A loadable
                 floating point library that contains the basic routines is
-                avaliable. Words from the word sets LOCALS and FILE-ACCESS
-                are dropped completly. The others are partially implemented.
+                available. Words from the word sets LOCALS and FILE-ACCESS
+                are dropped completely. The others are partially implemented.
             </para>
             <sect2 id="ANS_CORE">
                 <title>Core and Core EXT</title>
@@ -111,7 +111,7 @@
                     the basic words to deal with single precision floats. The floats
                     are managed on the standard data stack. After loading the library
                     floats can be entered directly at the command prompt. Some speed
-                    senstive words are available as assembly code as well.
+                    sensitive words are available as assembly code as well.
                 </para>
             </sect2>
             <sect2 id="ANS_LOCALS">
@@ -196,7 +196,7 @@
                 <para>
                     Amforth supports the ANS Search Order Wordlist. A word list consist of a linked list
                     of words in the dictionary. There are no limits on the number of word lists 
-                    defined. Only the length of the active search order is limied: There can be 
+                    defined. Only the length of the active search order is limited: There can be 
                     up to 8 entries at any given moment. This limit can be changed at compile 
                     time in the application definition file.
                 </para>
@@ -232,6 +232,32 @@
                 </para>
             </sect2>
         </sect1>
+        <sect1 id="forth200x">
+          <title>Forth 200x</title>
+          <para>amforth provides the <command>defer/is</command>,
+          <command>buffer:</command> and the <command>structure</command>
+          extensions from the forth 200x standards.
+        </para>
+        <sect2 id="defer">
+          <title>Defer and IS</title>
+          <para><command>defer</command> give the possibility of vectored execution. Amforth
+          has 3 different kind of such vectors, varying in how they are stored: EEPROM, RAM
+          or the USER area. The EEPROM makes it possible to save the settings permanently,
+          the RAM enables frequent changes. Finally the user area is for multitasking.</para>
+        </sect2>
+        <sect2 id="buffer">
+          <title>Buffer:</title>
+          <para>The buffer allocates a named memory (RAM) region. It is superior to
+          the usual <code>create foo xx allot</code> since amforth has a non-unified
+          memory model and the code snippet does not the same as an unified memory
+          model forth (with the dictionary being at the same memory as the allot
+          command works).</para>
+        </sect2>
+        <sect2 id="structure">
+          <title>Structures</title>
+          <para></para>
+        </sect2>
+        </sect1>
         <sect1 id="AMFORTH">
             <title>Amforth</title>
             <sect2 id="COLD"><title>COLD</title>
@@ -246,8 +272,8 @@
             </para>
             <para>The start addresses of the stacks are placed to the user area 
             for later use as well.</para>
-            
-            <sect3 id="WARM"><title>WARM</title>
+            </sect2>
+            <sect2 id="WARM"><title>WARM</title>
             <para>The word <code>WARM</code> is the high level part of the 
             forth VM initialization. When called from
             within forth it is the equivalent to a RESET.
@@ -255,8 +281,8 @@
             deferred word to do nothing, calls the application defined 
             <code>TURNKEY</code> action and finally hands over to <code>QUIT</code>.
             </para>
-            </sect3>
-            <sect3 id="TURNKEY"><title>TURNKEY</title>
+            </sect2>
+            <sect2 id="TURNKEY"><title>TURNKEY</title>
             <para>The <code>turnkey</code> is a EEPROM deferred word that 
             points to an application specific startup word.
             </para>
@@ -266,14 +292,13 @@
             port, switching to decimal number conversion and setting up the 
             character IO deferred words (KEY, EMIT etc).
             </para>
-            </sect3>
-            <sect3 id="QUIT"><title>QUIT</title>
-            <para>QUIT intializes both data and return stack pointers by reading
+            </sect2>
+            <sect2 id="QUIT"><title>QUIT</title>
+            <para>QUIT initializes both data and return stack pointers by reading
             them from the user area and enters the traditional ACCEPT -- INTERPRET 
             loop that never ends. It provides the topmost exception catcher as
             well. Depending on the exception thrown, it prints an error message
             and restarts itself.</para>
-            </sect3>
             </sect2>
             <sect2 id="AMFORTH_MCU">
                 <title>MCU Access</title>
@@ -289,7 +314,7 @@
                 </para>
                 <para>
                     Microcontrollers supporting the JTAG interface can
-                    be programmed to turn off JTAG at runtime. Similiar
+                    be programmed to turn off JTAG at runtime. Similar
                     the watch dog timer can be disabled. Since both
                     actions require strict timing they need to be
                     implemented as primitives:

@@ -5,12 +5,12 @@
             <para>
                 There a few number of tools on the host side (PC) that
                 are specifically written to support amforth. They are
-                written in script languages like perl and python and
+                written in script languages like Perl and python and
                 should work on all major operating systems. They are
                 not needed to use amforth but may be useful.
             </para>
             <sect2>
-        	<title>Partdescription Converter</title>
+        	<title>Part description Converter</title>
         	<para>
         	    The <command>pd2amforth.pl</command> script reads a part
         	    description file in XML format (comes with
@@ -69,11 +69,11 @@
                     $delay_line around 800 ms.
                 </para>
                 <para>
-                    An example for the alternative algorith are the
+                    An example for the alternative algorithm are the
                     tools <command>amforth-upload.py</command>
                     and <command>amforth-term.py</command>. They
                     are python scripts that uses a few external
-                    libraries wich can usually installed with the
+                    libraries which can usually installed with the
                     standard package managers.
                 </para>
                 <para>
@@ -96,7 +96,7 @@
              are implemented as loadable forth code that may affect internal
              data and workflows in a non-portable way. In particular are available
              a profiler (counting calls to words), a call tracer (printing a 
-             stacktrace while executing the words), a timing utility (benchme),
+             stack trace while executing the words), a timing utility (benchme),
              a few memory dump tools and a <command>see</command> that may be
              useful to revert the compilation process (gets some forth code
              from compiled words).
@@ -105,7 +105,7 @@
             <title>Profiler</title>
             <para>After loading the file <filename>lib/profiler.frt</filename> 
             into the controller, every colon word gets a counter 
-            (1cell) which is incremented everytime the word is called. Since this cell
+            (1cell) which is incremented every time the word is called. Since this cell
             can be used like any variable, it can be reset any time as well.
 <programlisting>
 > : foo 1 ;
@@ -127,7 +127,7 @@ ok
           <sect2 id="tracer">
             <title>Tracer</title>
             <para>
-After loading the file <filename>lib/tracer.frt</filename> into the controller, every word beeing
+After loading the file <filename>lib/tracer.frt</filename> into the controller, every word being
 defined afterwards prints it's name and the stack content at runtime.
 
 <programlisting>

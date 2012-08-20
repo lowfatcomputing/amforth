@@ -25,9 +25,9 @@
 				It is possible to change the word
 				<code>!i</code> to use an API and work
 				with existing bootloaders. <code>!i</code>
-				is a deferred word that can be re-targetted
+				is a deferred word that can be re-targeted
 				to more advanced words that may do address range
-				checkings, write success checks or simply turn 
+				checks, write success checks or simply turn 
 				on/off LEDs to visualize the flash programming.
 			</para>
 		</sect2>

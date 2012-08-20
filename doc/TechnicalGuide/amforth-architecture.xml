@@ -2,7 +2,7 @@
 
 	<chapter id="Architecture">
 		<title>Architecture</title>
-		<sect1 id="Architectur_Overview">
+		<sect1 id="Architecture_Overview">
 			<title>Overview</title>
 			<para> amforth is a 16 bit Forth implementing the indirect threading
 				model. The flash memory contains the whole dictionary. A few EEPROM
@@ -181,7 +181,7 @@
 			    <title>Interpreter</title>
 			    <para>
 			      The interpreter is a line based command interpreter. It based upon <command>REFILL</command> 
-			      to aquire the next line of characters, located at a position <command>SOURCE</command> points to.
+			      to acquire the next line of characters, located at a position <command>SOURCE</command> points to.
 			      While processing the line, the pointer <code>>IN</code> is adjusted accordingly. Both
 			      words <command>REFILL</command> and <command>SOURCE</command> are USER based deferred words which
 			      allows to use any input source on a thread specific level. The interpreter itself
@@ -190,7 +190,7 @@
 			    <para>
 			      A given string is handled by <command>INTERPRET</command> which splits it 
 			      into whitespace delimited words. Every word is processed using a list of 
-			      recognizers. Processing ends either when the string end is reached or an exception occures.
+			      recognizers. Processing ends either when the string end is reached or an exception occurs.
 			    </para>
 			    <sect3 id="SOURCE">
 			      <title>SOURCE and REFILL</title>
@@ -244,7 +244,7 @@
   if state @ if postpone fliteral then -1 else 0 
   then ;
                   </screen>
-                  The recognozer first tries to convert the string to a number. If that failes, the flag
+                  The recognizer first tries to convert the string to a number. If that fails, the flag
                   from the >float is essentially duplicated and the recognizer is left. If the conversion
                   succeeded, the floating point number is on the data stack. The recognizer now checks
                   whether the number needs to be compiled or not. In any case the success flag is
@@ -281,7 +281,7 @@
                         The Return Stack is the hardware stack of the
                         controller. It is managed with push/pop
                         assembler instructions. The default return stack
-                        starts at RAMEND und grows downward.
+                        starts at RAMEND and grows downward.
                     </para>
                 </sect3>
             </sect2>
@@ -293,8 +293,9 @@
                     switches the execution to a predefined word if an
                     interrupt occurs. When that word finishes execution,
                     the interrupted word is continued. The interrupt
-                    handlers are completly normal forth colon words
-                    without any stack effect.
+                    handlers are completely normal forth colon words
+                    without any stack effect. They do not get interrupted
+                    themselves.
                 </para>
                 <sect3><title>Example Interrupt Handling</title>
                 <para> The example illustrates the basic usage of interrupts. The
@@ -334,10 +335,19 @@ variable tick
         </screen></para>
         <para>To ease debugging the code, the word int-trap can be used. This word
           simulates the interrupt in any respect but a real hardware cause. To test
-          the routine from above enter the command
+          the routine the command <command>int-trap</command> can be used.
           <screen language="forth">
+ > tick @ .
+  1 ok
  > TIMER0_OVFAddr int-trap tick @ .
-          </screen>, it should increment tick by 1
+  2 ok
+ >
+          </screen>
+                </para>
+                <para>
+                  Note that under rare circumstances an interrupt handler 
+                  triggered by <command>int-trap</command> may get lost by 
+                  a real interrupt.
                 </para>
                 </sect3>
                 <sect3><title>Implementation Details</title>
@@ -359,12 +369,12 @@ variable tick
                     handling at forth level. This approach has a penalty
                     of 1 CPU cycle for checking and skipping the branch
                     instruction to the isr forth code if no interrupt
-                    occured.
+                    occurred.
                 </para>
 		<para> If an interrupt is detected, the forth VM clears the
 		  T-flag and continues with the word <command>ISR-EXEC</command>. 
 		  This word reads the currently active interrupt number and calls 
-		  the assoicated execution token.  When this word is finished, 
+		  the associated execution token.  When this word is finished, 
 		  the word <command>ISR-END</command> is called. This word clears 
 		  the interrupt flag for the controller (RETI).
 		</para>
@@ -380,9 +390,9 @@ variable tick
 		    If this is not done within the ISR, the interrupt
 		    is re-triggered immediatly after the ISR returned control.
         </para>
-		<para>The downside is a relativly long latency since the the
+		<para>The downside is a relatively long latency since the the
 		  forth VM has to be synchronized with the interrupt handling
-		  code in order to use normal colon words as ISR. This peanalty
+		  code in order to use normal colon words as ISR. This penalty
 		  is usually small since only words in assembly can cause the 
 		  delay.
 		</para>
@@ -392,8 +402,8 @@ variable tick
                 <title>Multitasking</title>
                 <para>
                     amforth does not implement multitasking directly. It
-                    only provides the basic functions. Within IO words
-                    the deferred word
+                    provides the basic functionality however. Within IO 
+                    words the deferred word
                     <command>PAUSE</command>
                     is called whenever possible. This word is
                     initialized to do nothing (
@@ -432,7 +442,7 @@ variable tick
                     . The UP itself is stored in a register pair.
                 </para>
                 <para>
-                    The size of the user area is determinded by the size the system
+                    The size of the user area is determined by the size the system
                     itself uses plus a configurable number at compile time. For self
                     defined tasks this user supplied number can be changed for task
                     local variables.
@@ -447,7 +457,7 @@ variable tick
 					<tgroup cols="2">
 						<thead>
 							<row>
-								<entry>Addressoffset (bytes)</entry>
+								<entry>Address offset (bytes)</entry>
 								<entry>Purpose</entry>
 							</row>
 						</thead>
@@ -470,7 +480,7 @@ variable tick
 							</row>
 							<row>
 								<entry>8</entry>
-								<entry>SP (m</entry>
+								<entry>SP (used by multitasker)</entry>
 							</row>
 							<row>
 								<entry>10</entry>
@@ -482,28 +492,32 @@ variable tick
 							</row>
 							<row>
 								<entry>14</entry>
-								<entry>EMIT (character IO)</entry>
+								<entry>EMIT (deferred)</entry>
 							</row>
 
 							<row>
 								<entry>16</entry>
-								<entry>EMIT? (character IO)</entry>
+								<entry>EMIT? (deferred)</entry>
 							</row>
 							<row>
 								<entry>18</entry>
-								<entry>KEY (character IO)</entry>
+								<entry>KEY (deferred)</entry>
 							</row>
 							<row>
 								<entry>20</entry>
-								<entry>KEY? (character IO)</entry>
+								<entry>KEY? (deferred)</entry>
 							</row>
 							<row>
 								<entry>22</entry>
-								<entry>REFILL (deferred)</entry>
+								<entry>SOURCE (deferred)</entry>
 							</row>
 							<row>
 								<entry>24</entry>
-								<entry>SOURCE (deferred)</entry>
+								<entry>&gt;IN</entry>
+							</row>
+							<row>
+								<entry>26</entry>
+								<entry>REFILL (deferred)</entry>
 							</row>
 
 						</tbody>
@@ -528,19 +542,19 @@ variable tick
 		<para>
 		    Beginning with release 3.7 the USER area has been split
 		    into two parts. The first one called system user area contains
-                    all the variabled described above. The second one is the application
-                    user area that contains all variabled defined with the USER command.
+                    all the variables described above. The second one is the application
+                    user area that contains all variables defined with the USER command.
 		    The default application user area is empty and by default of size zero.
                 </para>
             </sect2>
             <sect2 id="Wordlists">
               <title>Word Lists and Environment Queries</title>
               <para>
-                 Wordlists and environment queries are implemented using the
+                 Word lists and environment queries are implemented using the
                  same structure. They are based upon the simple linked list built
-                 with <command>create</command>. The wordlist identifier is
+                 with <command>create</command>. The word list identifier is
                  a EEPROM address that holds the starting point address for the
-                 wordlist search.
+                 word list search.
               </para>
               <para>
                  Environment queries are normal colon words. They are called within
@@ -548,7 +562,7 @@ variable tick
                  stack.
               </para>
               <para>
-                <command>find</command> uses an array of wordlist identifiers to
+                <command>find</command> uses an array of word list identifiers to
                 search for the word. This list can be accessed with 
                 <command>get-order</command> as well.
               </para>
@@ -616,11 +630,11 @@ variable tick
                     programming is a lot more then only a simple
                     instruction, amforth needs most of the forth core
                     system to achieve it. A side effect is that amforth
-                    cannot co-exist with classic bootloaders. If a
+                    cannot co-exist with classic boot loaders. If a
                     particular boot loader provides an API to enable
                     applications to call the flash write operation,
                     amforth can be restructured to use it. Currently
-                    only very few and seldom used bootloaders exist that
+                    only very few and seldom used boot loaders exist that
                     enable this feature.
                 </para>
                 <para>
@@ -641,10 +655,10 @@ variable tick
                 </para>
                 <para>
                 An alternative approach to place the elements in the flash shows picture
-                . Here all code goes into the RWW section. This layout definitly needs a
+                . Here all code goes into the RWW section. This layout definitely needs a
                 routine in the NRWW section that provides a cell level flash write functionality.
-                The usual bootloaders do not have such an runtime accessible API, only the 
-                DFU bootloader from atmel found on some USB enabled controllers does.
+                The usual boot loaders do not have such an runtime accessible API, only the 
+                DFU boot loader from atmel found on some USB enabled controllers does.
                 <figure>
                 <title>Alternative FLASH Structure</title>
                 <mediaobject>
@@ -713,7 +727,7 @@ variable tick
                     vector. This is an EEPROM variable that reads and
                     executes the XT at runtime. It is based on the
                     DEFER/IS standard. To define a deferred word in the
-                    EEPROM use the Edefer defintion word. The standard
+                    EEPROM use the Edefer definition word. The standard
                     word IS is used to put a new XT into it.
                 </para>
                 <para>
@@ -745,7 +759,7 @@ variable tick
                     <command>ALLOT</command>. 
                 </para>
                 <para>
-                  Forth defines a few transient buffer regions for varios purposes.
+                  Forth defines a few transient buffer regions for various purposes.
                   The most important is PAD, the scratch buffer. It is located 100 bytes
                   above the current HERE and goes to upper addresses. The Pictured Numeric 
                   Output is just at PAD and grows downward. The word WORD uses the area above

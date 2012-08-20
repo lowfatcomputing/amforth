@@ -17,7 +17,7 @@
                 the whole list occupy a lot of flash memory.
             </para>
             <para>
-                Some commonly used lowlevel words can be included with
+                Some commonly used low level words can be included with
                 the
                 <filename>dict_mcu.inc</filename>
                 include file at compile time.
@@ -271,7 +271,7 @@
                             </term>
                             <listitem>
                                 <para>
-                                    Sets the preload number to the given value and assigns the overflow interrrupt
+                                    Sets the preload number to the given value and assigns the overflow interrupt
                                     service routine.
                                 </para>
                             </listitem>
@@ -340,7 +340,7 @@
                             <listitem>
                                 <para>
                                     Checks whether a timer has expired. The timer is the initial
-                                    tick value. The maximum time range is 65 seconds. It calles
+                                    tick value. The maximum time range is 65 seconds. It calls
                                     <command>pause</command> internally.
                                 </para>
                             </listitem>

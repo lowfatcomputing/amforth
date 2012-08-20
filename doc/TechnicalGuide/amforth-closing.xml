@@ -4,7 +4,7 @@
             <title>More ANS94 Words</title>
             <para>
                 Amforth supports the ANS94 Core Wordset. Other word
-                sets are more or less completly supported as well. Some
+                sets are more or less completely supported as well. Some
                 deprecated words (like <command>expect</command> and
                 <command>query</command> are left out however.
             </para>
@@ -24,7 +24,7 @@
             <para>
                 Amforth can be used on any atmega with at least 8KB flash memory.
                 A system with at least 16Kb is recommended. There are pre-generated 
-                driver files from the XML part description files. 
+                driver files from the XML partdescription files. 
                 Atxmega's may work with a future version.
             </para>
         </sect1>
