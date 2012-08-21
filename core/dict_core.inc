@@ -74,8 +74,8 @@
 .include "words/dodo.asm"
 .include "words/doqdo.asm"
 .include "words/i.asm"
-.include "words/doloop.asm"
 .include "words/doplusloop.asm"
+.include "words/doloop.asm"
 .include "words/unloop.asm"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
