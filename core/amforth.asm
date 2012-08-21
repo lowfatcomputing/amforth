@@ -7,7 +7,6 @@
   jmp_ PFA_COLD
 .org pc_
 .include "drivers/generic-isr.asm"
-.include "amforth-interpreter.asm"
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
 ; lower part of the dictionary
@@ -16,6 +15,7 @@
 .set DPSTART = pc
 
 .org NRWW_START_ADDR
+.include "amforth-interpreter.asm"
 .include "dict_appl_core.inc"
 
 .set flashlast = pc
