@@ -577,7 +577,7 @@ additional definitions (e.g. register names)
             raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")")
           self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
           fpath = os.path.join(self._filedirs[filename][0], filename)
-          self._config.push_file(fpath)
+        self._config.push_file(fpath)
         try:
             try:
                 self.find_prompt()
