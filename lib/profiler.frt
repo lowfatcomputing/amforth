@@ -2,11 +2,11 @@
 \ of any word being defined afterwards.
 \
 \ global state: on and off
-variable profiling
-: profile:on -1 profiling ! ;
-: profile:off 0 profiling ! ;
+variable profiling?
+: profile:on -1 profiling? ! ;
+: profile:off 0 profiling? ! ;
 
-: profiler profiling @ if 1 swap +! else drop then ; 
+: profiler profiling? @ if 1 swap +! else drop then ; 
 \ re-define colon
 : : :
   here 2 allot postpone literal postpone profiler
