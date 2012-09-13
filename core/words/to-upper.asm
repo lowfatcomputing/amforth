@@ -11,18 +11,14 @@ XT_TOUPPER:
 PFA_TOUPPER:
     .dw XT_DUP 
     .dw XT_DOLITERAL 
-    .dw $61 
+    .dw 'a' 
     .dw XT_DOLITERAL 
-    .dw $7A 
-    .dw XT_1PLUS  
+    .dw 'z'+1
     .dw XT_WITHIN 
     .dw XT_DOCONDBRANCH
     .dw PFA_TOUPPER0 
-    .dw XT_DOLITERAL 
-    .dw $41 
-    .dw XT_DOLITERAL 
-    .dw $61 
-    .dw XT_MINUS 
-    .dw XT_PLUS 
+    .dw XT_DOLITERAL
+    .dw $df ; inverse of 0x20
+    .dw XT_AND 
 PFA_TOUPPER0:
     .dw XT_EXIT 
