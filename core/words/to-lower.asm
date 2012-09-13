@@ -13,7 +13,7 @@ PFA_TOLOWER:
     .dw XT_DOLITERAL
     .dw 'A'
     .dw XT_DOLITERAL
-    .dw 'Z'
+    .dw 'Z'+1
     .dw XT_WITHIN
     .dw XT_DOCONDBRANCH
     .dw PFA_TOLOWER0 
