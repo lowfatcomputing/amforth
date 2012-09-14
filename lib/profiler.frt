@@ -18,7 +18,7 @@ variable profiling?
 ;
 
 \ useful stuff
-: .prf xt>prf @ . ;
+: .prf xt>prf @ u. ;
 : prf-reset xt>prf 0 swap ! ;
 
 \ usage
