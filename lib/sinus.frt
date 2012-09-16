@@ -25,7 +25,7 @@ create sintab  \ 0...90 Grad, Index in Grad
 10000 , 
 
 : sinus@        sintab + @i ;
-: sin           ( grad -- sinus )
+: sin           ( degrees -- sinus )
                 dup 0< >r abs
                 360 mod  
                 dup 180 > if 180 - 1 >r else 0 >r then 
@@ -40,7 +40,7 @@ create sintab  \ 0...90 Grad, Index in Grad
 \ Notes:
 
 \ In gforth it has to be   : sinus@  ( grad -- )  cell * sintab + @i ;
-\ Since @i increments by 16 bytes each step in an atmega flash, 
+\ Since @i increments by 2 bytes each step in an atmega flash, 
 \ there is no need for cell adjustment in amforth.
 
 \ In the phrase 
