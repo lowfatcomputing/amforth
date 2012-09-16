@@ -6,7 +6,7 @@
 
 decimal
 
-create sintab  \ 0...90 Grad, Index in Grad 
+create sintab  \ 0...90 degrees, Index in degrees
 0000 ,  0175 ,  0349 ,  0523 ,  0698 ,  0872 ,  
 1045 ,  1219 ,  1392 ,  1564 ,  1736 ,  1908 , 
 2079 ,  2250 ,  2419 ,  2588 ,  2756 ,  2924 ,  
@@ -39,7 +39,7 @@ create sintab  \ 0...90 Grad, Index in Grad
 
 \ Notes:
 
-\ In gforth it has to be   : sinus@  ( grad -- )  cell * sintab + @i ;
+\ In gforth it has to be   : sinus@  ( degree -- )  cell * sintab + @i ;
 \ Since @i increments by 2 bytes each step in an atmega flash, 
 \ there is no need for cell adjustment in amforth.
 
