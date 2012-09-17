@@ -17,26 +17,6 @@
 	lsl zl
 	rol zh
 .endmacro
-.set WANT_AD_CONVERTER = 0
-.set WANT_WATCHDOG = 0
-.set WANT_FET = 0
-.set WANT_SPI = 0
-.set WANT_EEPROM = 0
-.set WANT_COULOMB_COUNTER = 0
-.set WANT_TWI = 0
-.set WANT_EXTERNAL_INTERRUPT = 0
-.set WANT_TIMER_COUNTER_1 = 0
-.set WANT_CELL_BALANCING = 0
-.set WANT_BATTERY_PROTECTION = 0
-.set WANT_CHARGER_DETECT = 0
-.set WANT_VOLTAGE_REGULATOR = 0
-.set WANT_BANDGAP = 0
-.set WANT_CPU = 0
-.set WANT_PORTA = 0
-.set WANT_PORTB = 0
-.set WANT_PORTC = 0
-.set WANT_TIMER_COUNTER_0 = 0
-.set WANT_BOOT_LOAD = 0
 .equ intvecsize = 2 ; please verify; flash size: 16384 bytes
 .equ pclen = 2 ; please verify
 .overlap
@@ -100,6 +80,10 @@
 .nooverlap
 
 ; compatability layer (maybe empty)
+.equ SPMEN = SELFPRGEN
+.equ SPMCSR = SPMCR
+.equ EEPE = EEWE
+.equ EEMPE = EEMWE
 
 ; controller data area, environment query mcu-info
 mcu_info:

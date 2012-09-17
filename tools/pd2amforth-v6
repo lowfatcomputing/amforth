@@ -153,7 +153,7 @@ sub readXML ($) {
 	$registerdups{$name}=$offset;
 	my $addr = $offset; $addr=hex($addr) if $addr=~/x/;
 	$needsdef{$name} = 0;
-        print FRT "$addr constant $name\t\\ $caption\n";
+        print FRT "&$addr constant $name\t\\ $caption\n";
 	print INC "; ( -- addr ) System Constant\n; R( -- )\n; $caption";
 	print INC "\nVE_${name}:\n\t" . fmt_str($name, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${name}\n";
 	print INC "XT_${name}:\n\t.dw PFA_DOVARIABLE\nPFA_${name}:\n\t.dw $addr\n";
@@ -191,7 +191,7 @@ sub readXML ($) {
         $caption=$ivector->getAttribute("caption");
         print PY  "$comma\n\t'${name}Addr': '$addr'";
 	print ASM ".org $addr\n\t rcall isr ; $caption\n";
-        $caption = "$addr  constant ${name}Addr \\ $caption";
+        $caption = "&$addr  constant ${name}Addr \\ $caption";
 	print FRT "".substr($caption, 0, 75)."\n"; # make sure the lines fit amforth' TIB
     }
     print ASM ".equ INTVECTORS = $number\n";
