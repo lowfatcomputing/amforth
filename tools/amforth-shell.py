@@ -556,28 +556,30 @@ additional definitions (e.g. register names)
             # Restore the current timeout
             self._serialconn.timeout = self._config.current_behavior.timeout
 
-    def find_upload_file(self, filename, working_directory):
-        if os.path.isabs(filename):
-          return filename
-        for p in self._search_path:
-          fn = os.path.normpath(os.path.join(p, filename))
-          if not os.path.isabs(fn):
-             fn = os.path.normpath(os.path.join(working_directory, fn))
-          if os.path.exists(fn):
-             return fn
-          return filename        # The attempt to open later will fail...
-
     def upload_file(self, filename):
         self._update_files()
         if os.path.dirname(filename):
           fpath=filename
+          self.progress_callback("Information", None,  "using "+ filename+" verbatim")
         else:
+          if not self._filedirs.has_key(filename):
+            self.progress_callback("Error", None,  "file "+ filename+" not found in search path")
+            raise AMForthException("file " + filename + " not found in search path")
           if len(self._filedirs[filename])!=1:
             # oops, too many files or no one at all no file found?
             raise AMForthException("Wrong # of file occurances: " + filename + " ("+str(len(self._filedirs[filename]))+")")
           self.progress_callback("Information", None,  "using "+ filename+" from"+ self._filedirs[filename][0])
           fpath = os.path.join(self._filedirs[filename][0], filename)
         self._config.push_file(fpath)
+        fdir=os.path.dirname(fpath)
+        print "**** " + self._config.current_behavior.working_directory
+        if os.path.isabs(fdir):
+          dirpath = os.path.normpath(fdir)
+        else:
+          oldpath = self._config.current_behavior.working_directory
+          dirpath = os.path.normpath(os.path.join(oldpath, fdir))
+        self._config.current_behavior.working_directory = dirpath
+
         try:
             try:
                 self.find_prompt()
@@ -594,6 +596,7 @@ additional definitions (e.g. register names)
                 raise AMForthException("Unknown file: " + fpath)
             self._last_error = ()
         finally:
+            print "**** " + self._config.current_behavior.working_directory
             self._config.pop_file()
             self._serialconn.timeout = self._config.current_behavior.timeout
             try:
@@ -1023,7 +1026,7 @@ additional definitions (e.g. register names)
             atexit.register(readline.write_history_file, histfn)
 
     def _update_words(self):
-        # TODO: - handle multiple wordlists in _update_words
+        # get all words that are available in the search order      
         self.send_line("base @ decimal dp u. base !")
         dp = self.read_response()
         if dp[-3:] != " ok":
@@ -1038,7 +1041,7 @@ additional definitions (e.g. register names)
             self._amforth_words = words.split(" ") + self.interact_directives
 
     def _update_cpu(self):
-        self.progress_callback("Information", None, "Updating Controller Type")
+        self.progress_callback("Information", None, "getting MCU name..")
         self.send_line("s\" cpu\" environment search-wordlist drop execute itype")
         words = self.read_response()
         if words[-3:] != " ok":
@@ -1050,13 +1053,12 @@ additional definitions (e.g. register names)
           from device import MCUREGS
           self._amforth_regs=MCUREGS
           self._amforth_cpu = words[:-3]
-          self.progress_callback("Information", None, "successfully loaded controller definitions for " + mcudef)
+          self.progress_callback("Information", None, "successfully loaded register definitions for " + mcudef)
         except:
-          self.progress_callback("Warning", None, "failed loading controller definitions for " + mcudef + " .. continuing")
-        #print self._amforth_regs.keys()
+          self.progress_callback("Warning", None, "failed loading register definitions for " + mcudef + " .. continuing")
 
     def _update_files(self):
-      self.progress_callback("Information", None, "Updating host files")
+      self.progress_callback("Information", None, "getting filenames on the host")
       self._filedirs = {}
       for p in self._search_list:
         self.progress_callback("Information", None, "  Reading "+p)
