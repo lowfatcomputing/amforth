@@ -11,7 +11,7 @@ my %RSTACK;
 my %CSTACK;
 my %CATEGORY;
 
-my $version="4.5";
+my $version="5.0";
 
 my $texdir="../doc";
 my $asmdir="../core/words";
@@ -134,6 +134,7 @@ sub latex_head {
 
 \\usepackage{lmodern}
 %\\usepackage[scaled]{luximono}
+\\usepackage[bookmarks]{hyperref}
 
 %\\setkomafont{descriptionlabel}{\bfseries\ttfamily}
 \\def\\colsa{|p{2cm}|p{4cm}|}
@@ -158,6 +159,7 @@ sub printLaTeX {
     next if $category=~/internal/;
 	print "$category\n";
 	print LATEX "\n\\section*{$category}\n";
+	print LATEX "\\addcontentsline{toc}{section}{$category}\n";
 	print LATEX "\n\\begin{description}\n";
 	foreach my $lbl (sort @{$CATEGORY{$category}}) {
 	    print "\t$lbl\n";
@@ -165,6 +167,8 @@ sub printLaTeX {
 	    my $xt  = $XT{$lbl};
 	    my $voc = $VOC{$lbl};
 	    my $shortlbl = substr($lbl, 3);
+	    my $descr = $DESCRIPTION{$lbl};
+	    
 	    my $dstack = $DSTACK{$lbl};
 	    my $rstack = $RSTACK{$lbl};
 	    my $cstack = $CSTACK{$lbl};
@@ -173,18 +177,21 @@ sub printLaTeX {
 	    print LATEX "% $lbl\n";
 	    $voc =~ s/\\/\\textbackslash/g;
 	    $voc =~ s/\#/\\#/g;
-	    $voc =~ s/_/\\_/g;
 	    $voc =~ s/]/{]}/g;
 	    $voc =~ s/\[/{[}/g;
+	    $voc =~ s/\$/\\\$/g;
+	    $voc =~ s/_/\\_/g;
+	    $voc =~ s/"/''/g; # '"
+	    $descr =~ s/_/\\_/g;
 	    print LATEX "\\item[$voc]\n";
+	    print LATEX "\\addcontentsline{toc}{subsection}{$voc}\n";
 	    print LATEX "   \\texttt{\n";
 	    # print LATEX "   \\verb$verbdelim$dstack$verbdelim\n";
 	    print LATEX "   $dstack\n";
 	    print LATEX "   \\\\$rstack\n" unless $rstack =~ /^\s*$/;
 	    print LATEX "   \\\\$cstack\n" unless $cstack =~ /^\s*$/;
 	    print LATEX "   }\\\\\n";
-	    print LATEX "$DESCRIPTION{$lbl}\n";
-	    print LATEX "\n";
+	    print LATEX "$descr\n\n";
 	
 	  }
 	print LATEX "\n\\end{description}\n";
