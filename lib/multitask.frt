@@ -1,3 +1,4 @@
+\ lib/multitask.frt
 \ -------------------------------------------------------------------
 \ Cooperative Multitasker based on 
 \ Message-ID: <1187362648.046634.262200@o80g2000hse.googlegroups.com>
@@ -14,44 +15,29 @@
 \   6  | SP0      | initial data stack pointer              |
 \   8  | sp       | -> top of stack                         |
 \  10  | handler  | catch/throw handler                     |
-\  12  | base     | numerical base                          |
-\  14  | emit     | deferred io words                       |
-\  16  | emit?    | .                                       |
-\  18  | key      | .                                       |
-\  20  | key?     | .                                       |
-\  22  | /key     | .                                       |
+\ ... more user variables (mostly IO related)
 
-
-\ Please note that with amforth rp@ @ accesses another location 
+\ please note that with amforth rp@ @ accesses another location 
 \ than r@ due to hardware characteristics.
-\ Added permanent storage of TCB address and stack locations.
 
 \ marker _multitask_
 
 decimal
+
 0 user status
 2 user follower
 
 :noname ( 'status1 -- 'status2 ) 
-    cell+ @ dup @ 1+ >r 
+    cell+ @ dup @ 1+ >r
 ;  constant pass
 
 :noname  ( 'status1 -- )  
-	up! sp @ sp! rp! 
+    up! sp @ sp! rp!
 ; constant wake
-
-\ stop multitasking
-: single ( -- )
-    ['] noop is pause
-;
 
 \ switch to the next task in the list
 : multitaskpause   ( -- )     
-    rp@ sp@ sp ! follower @ dup @ 1+ >r 
-; 
-\ start multitasking
-: multi ( -- )
-    ['] multitaskpause is pause
+    rp@ sp@ sp ! follower @ dup @ 1+ >r
 ;
 
 : stop         ( -- )     pass status ! pause ; \ sleep current task
@@ -59,6 +45,7 @@ decimal
 : task-awake   ( tid -- ) wake swap ! ;         \ wake another task
 
 : cell- negate cell+ negate ;
+
 \ continue the code as a task in a predefined tcb
 : activate ( tid -- )
    dup    6 + @ cell-
@@ -69,54 +56,16 @@ decimal
    task-awake 
 ;
 
-\ initialize the multitasker with the current task only
-: onlytask ( -- ) 
-    wake status !   \ own status is running
-    up@  follower ! \ point to myself
-;
-
-\ insert new task structure into task list
-: alsotask      ( tid -- )
-   ['] pause defer@ >r \ stop multitasking
-   single
-   follower @   ( -- tid f) 
-   over         ( -- tid f tid )
-   follower !   ( -- tid f )
-   swap cell+   ( -- f tid-f )
-   !
-   r> is pause  \ restore multitasking
-;
-
-\ print all tasks with their id and status
-: tasks ( -- )
-    status ( -- tid ) \ starting value
-    dup
-    begin      ( -- tid1 ctid )
-	dup u. ( -- tid1 ctid )
-	dup @  ( -- tid1 ctid status )
-            dup 
-	    wake = if ."   running" drop else
-	    pass = if ."  sleeping" else
-	          abort"   unknown" then
-	then
-\	dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
-\	dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
-\	dup 8 + @ ."    sp=" u.
-	cr
-	cell+ @ ( -- tid1 next-tid )
-	over  over =     ( -- f flag)
-    until
-    drop drop
-    ." Multitasker is " 
-    ['] pause defer@ ['] noop = if ." not " then
-    ." running"
-;
+\ task:     allocates stack space and creates the task control block
+\ alsotask  appends the tcb to the (circular, existing) list of TCB
 
 : task: ( C: dstacksize rstacksize add.usersize "name" -- )
         ( R: -- addr )
   create
     here ,                      \ store address of TCB
-    ( add.usersize ) &24 + allot \ default user area size
+    \ work around a limitation of environment? in colon defs
+    [ s" /user" environment search-wordlist drop execute ] literal
+    ( add.usersize ) + allot \ default user area size
                                 \ allocate stacks
     ( rstacksize ) allot here , \ store sp0
     ( dstacksize ) allot here , \ store rp0 
@@ -139,4 +88,57 @@ decimal
   dup tcb>rp0 over tcb>tid &4 + !       \ store rp0    in tid[4]
       &10  over tcb>tid &12 + !         \ store base   in tid[12]
       tcb>tid task-sleep                \ store 'pass' in tid[0]
+;
+
+\ stop multitasking
+: single ( -- ) \ initialize the multitasker with the serial terminal
+    ['] noop is pause ;
+
+\ start multitasking
+: multi ( -- )
+    ['] multitaskpause is pause ;
+
+
+\ initialize the multitasker with the current task only
+: onlytask ( -- ) 
+    wake status !   \ own status is running
+    up@  follower ! \ point to myself
+;
+
+
+\ insert new task structure into task list
+: alsotask      ( tid -- )
+   ['] pause defer@ >r \ stop multitasking
+   single
+   follower @   ( -- tid f) 
+   over         ( -- tid f tid )
+   follower !   ( -- tid f )
+   swap cell+   ( -- f tid-f )
+   !
+   r> is pause  \ restore multitasking
+;
+
+\ print all tasks with their id and status
+: tasks ( -- )
+    status ( -- tid ) \ starting value
+    dup
+    begin      ( -- tid1 ctid )
+      dup u. ( -- tid1 ctid )
+      dup @  ( -- tid1 ctid status )
+      dup 
+      wake = if ."   running" drop else
+      pass = if ."  sleeping" else
+          abort"   unknown" then
+      then
+\     dup 4 + @ ."   rp0=" dup u. cell- @ ."  TOR=" u.
+\     dup 6 + @ ."   sp0=" dup u. cell- @ ."  TOS=" u.
+\     dup 8 + @ ."    sp=" u.
+      cr
+      cell+ @ ( -- tid1 next-tid )
+      over  over =     ( -- f flag)
+    until
+    drop drop
+    ." Multitasker is " 
+    ['] pause defer@ ['] noop = if ." not " then
+    ." running"
 ;

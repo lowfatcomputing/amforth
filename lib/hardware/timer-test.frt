@@ -18,5 +18,5 @@
    @tick >r
    0 ?do dup execute loop drop
    @tick r> -
-   cr r> . ." iterations in " u. ." ms" cr
+   cr r> u. ." iterations in " u. ." ms" cr
 ;
