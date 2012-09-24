@@ -14,11 +14,7 @@
 
 variable timer0.tick
 
-\ preload for counter
-variable timer0.preload
-
 : timer0.isr
-  timer0.preload @ TCNT0 c!
   1 timer0.tick +!
 ;
 
@@ -28,14 +24,14 @@ variable timer0.preload
 \  16MHz   64       6
 \   8MHz   64     131
 : timer0.init ( preload -- )
-      timer0.preload !
+    TCNT0 c!
     0 timer0.tick !
     ['] timer0.isr TIMER0_OVFAddr int!
 ;
 
 : timer0.start
     0 timer0.tick !
-    %00000011 TCCR0B c! 
+    %00000011 TCCR0B c! \ prescaler 64
     %00000001 TIMSK0 c! \ enable overflow interrupt
 ;
 

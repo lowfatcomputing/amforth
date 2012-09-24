@@ -14,14 +14,7 @@
 
 variable timer1.tick
 
-\ preload for counter
-variable timer1.preload
-
 : timer1.isr
-  \ uses a lot of internal knowlegde, may not work on devices
-  \ where TCNT1H != TCNT1L+1 (e.g. Atmega128)
-  \ writes the high byte first in one (forth) transaction
-  timer1.preload @ TCNT1L ! 
   1 timer1.tick +!
 ;
 
@@ -31,7 +24,7 @@ variable timer1.preload
 \  16MHz   8       63536
 \   8MHz   64      64536
 : timer1.init ( preload -- )
-      timer1.preload !
+    TCNT1L ! 
     0 timer1.tick !
     ['] timer1.isr TIMER1_OVFAddr int!
 ;
