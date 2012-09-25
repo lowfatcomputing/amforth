@@ -5,26 +5,34 @@
 \   timer0.frt OR timer1.frt
 \ provides
 \   expired?  -- checks whether a counter has expired
-\   elapsed   -- shows the elapsed time in ms
+\   elapsed   -- get the elapsed time in ms
 \   after     -- execute a word after n ms after now
 \   ms        -- alternative implementation for ANS94 ms
 \   every     -- runs a word every cycle. the word provides an exit flag
 \   every-second -- runs a word every second
 \
 : @tick 
-   \ timer0.tick @ 
-   timer1.tick @ 
+   timer0.tick @ 
+   \ timer1.tick @ 
 ;
 
-: expired? ( n -- flag )
+\ a timer is generally a timer tick number.
+\ the actual meaning is either the start time
+\ or the desired end time. All math is done 
+\ using unsigned numbers. The maximum interval
+\ is 65.535 seconds (little more then a minute)
+
+\ check if the the timer t has expired
+: expired? ( t -- flag )
    pause @tick - 0<
 ;
 
 \ alternative implementation for ms
 : ms @tick + begin dup expired? until drop ;
 
-: elapsed ( n -- )
-    @tick swap - u.
+\ get the elapsed time since t
+: elapsed ( t -- n )
+    @tick swap -
 ;
 
 \ execute the word after u milliseconds
