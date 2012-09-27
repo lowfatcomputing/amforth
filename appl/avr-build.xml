@@ -25,8 +25,8 @@
 	<sequential>
 		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="-I @{includes}"/>
-		    <arg line="-I @{amforth.core}"/>
 		    <arg line="-I @{amforth.core}/devices/@{mcu}"/>
+		    <arg line="-I @{amforth.core}"/>
 		    <arg line="--listmac"/>
 		    <arg line="-l @{projectname}.lst"/>
 		    <arg line="-m @{projectname}.map"/>
@@ -47,8 +47,8 @@
 		<exec executable="@{binary}" spawn="false" failonerror="true">
 		    <arg line="@{avrasm}"/>
 		    <arg line="-I @{includes}"/>
-		    <arg line="-I @{amforth.core}"/>
 		    <arg line="-I @{amforth.core}/devices/@{mcu}"/>
+		    <arg line="-I @{amforth.core}"/>
 		    <arg line="-fI -v0"/>
 		    <arg line="-e @{projectname}.eep.hex"/>
 		    <arg line="-l @{projectname}.lst"/>
@@ -116,8 +116,6 @@
 	    <arg line="-c @{programmer}"/>
 		<arg line="-p @{mcu}"/>
 		<arg line="-P @{port}"/>
-		<arg line="-e"/>
-		<srg line="-B 24"/>
 		<!-- $(AVRDUDE) $(USB) -p $(MCU) -U hfuse:w:$(HFUSE):m -U lfuse:w:$(LFUSE):m -->
 		<arg line="-U hfuse:w:@{hfuse}:m"/>
 		<arg line="-U lfuse:w:@{lfuse}:m"/>
@@ -125,6 +123,29 @@
 	    </exec>
 	</sequential>
     </macrodef>
-	
+
+    <macrodef name="avrdude-3fuses">
+	<attribute name="binary"      default="avrdude" />
+	<attribute name="type"        default="avr910"/>
+	<attribute name="port"        default="${avr.programmer.@{type}port}" />
+	<attribute name="programmer"  default="${avr.programmer.@{type}}" />
+
+	<attribute name="mcu"         default="m88"/>
+	<attribute name="efuse"       default="0xnn"/>
+	<attribute name="hfuse"       default="0xnn"/>
+	<attribute name="lfuse"       default="0xnn"/>
+	<sequential>
+	    <exec executable="@{binary}" spawn="false" failonerror="true">
+	    <arg line="-c @{programmer}"/>
+		<arg line="-p @{mcu}"/>
+		<arg line="-P @{port}"/>
+		<arg line="-U hfuse:w:@{hfuse}:m"/>
+		<arg line="-U lfuse:w:@{lfuse}:m"/>
+		<arg line="-U efuse:w:@{efuse}:m"/>
+		<arg line="-v"/>
+	    </exec>
+	</sequential>
+    </macrodef>
+
     <loadproperties srcfile="../programmer.properties"/>
 </project>
