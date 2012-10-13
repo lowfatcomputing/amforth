@@ -123,8 +123,8 @@ sub latex_head {
     my ($title) = @_;
     return "
 \\documentclass[a4paper,10pt]{scrartcl}
-\\usepackage[ngerman]{babel} %neue deutsche Rechtschreibung
-\\usepackage[utf8x]{inputenc} %wegen Umlautproblemen
+\\usepackage[english]{babel}
+\\usepackage[utf8x]{inputenc}
 \\usepackage[T1]{fontenc}
 \\usepackage[landscape,lmargin=5mm,rmargin=5mm,bmargin=10mm]{geometry}
 
@@ -133,7 +133,6 @@ sub latex_head {
 \\columnsep=7mm
 
 \\usepackage{lmodern}
-%\\usepackage[scaled]{luximono}
 \\usepackage[bookmarks]{hyperref}
 
 %\\setkomafont{descriptionlabel}{\bfseries\ttfamily}
