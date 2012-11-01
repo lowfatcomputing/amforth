@@ -1,6 +1,6 @@
 ; (addr len -- [n|d size] f) 
 ; Numeric IO
-; convert a counted string at addr to a number
+; convert a string at addr to a number
 VE_NUMBER:
     .dw $ff06
     .db "number"
@@ -12,33 +12,13 @@ PFA_NUMBER:
     .dw XT_BASE
     .dw XT_FETCH
     .dw XT_TO_R
-; now check for +/- signs
-    .dw XT_OVER
-    .dw XT_CFETCH
-    .dw XT_DOLITERAL
-    .dw $2b
-    .dw XT_EQUAL
-    .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER_MINUSCHECK
-      .dw XT_DOLITERAL
-      .dw 1
-      .dw XT_SLASHSTRING
-PFA_NUMBER_MINUSCHECK:
-    .dw XT_OVER    ; ( -- addr len addr )
-    .dw XT_CFETCH
-    .dw XT_DOLITERAL
-    .dw $2d ; '-'
-    .dw XT_EQUAL  ; ( -- addr len flag )
-    .dw XT_DUP
-    .dw XT_TO_R   ; save the is-negative flag
-    .dw XT_DOCONDBRANCH
-    .dw PFA_NUMBER0
-    .dw XT_DOLITERAL      ; skip sign character
-    .dw 1
-    .dw XT_SLASHSTRING
-
-PFA_NUMBER0: ; ( addr len  -- )    
+    .dw XT_NUMBERSIGN
+    .dw XT_TO_R
     .dw XT_PRAEFIX
+    .dw XT_NUMBERSIGN
+    .dw XT_R_FROM
+    .dw XT_OR
+    .dw XT_TO_R
     .dw XT_TO_R
     .dw XT_TO_R
     .dw XT_ZERO       ; starting value
@@ -145,7 +125,7 @@ XT_SETBASE:
 PFA_SETBASE:        ; ( c -- ) 
     .dw XT_DUP 
     .dw XT_DOLITERAL
-    .dw $24 
+    .dw '$' 
     .dw XT_EQUAL 
     .dw XT_DOCONDBRANCH
     .dw PFA_SETBASE0 
@@ -155,7 +135,7 @@ PFA_SETBASE:        ; ( c -- )
 PFA_SETBASE0:
     .dw XT_DUP 
     .dw XT_DOLITERAL
-    .dw $25 
+    .dw '%' 
     .dw XT_EQUAL 
     .dw XT_DOCONDBRANCH
     .dw PFA_SETBASE1 
@@ -163,14 +143,60 @@ PFA_SETBASE0:
     .dw XT_BIN
     .dw XT_EXIT 
 PFA_SETBASE1:
+    .dw XT_DUP 
     .dw XT_DOLITERAL
-    .dw $26 
+    .dw '&'
     .dw XT_EQUAL 
     .dw XT_DOCONDBRANCH
     .dw PFA_SETBASE2 
+    .dw XT_DROP
     .dw XT_DECIMAL 
     .dw XT_EXIT 
 PFA_SETBASE2:        ; ( error) 
+    .dw XT_DOLITERAL
+    .dw '#'
+    .dw XT_EQUAL 
+    .dw XT_DOCONDBRANCH
+    .dw PFA_SETBASE3 
+    .dw XT_DECIMAL 
+    .dw XT_EXIT 
+PFA_SETBASE3:
     .dw XT_EXIT 
 
-
+; (c -- ) Numeric IO
+; R( -- )
+; set the BASE value depending on the character
+;VE_SETBASE:
+;    .dw $FF07 
+;    .db "setbase",0
+;    .dw VE_HEAD
+;    .set VE_HEAD = VE_SETBASE
+XT_NUMBERSIGN:
+    .dw DO_COLON 
+PFA_NUMBERSIGN:        ; ( c -- ) 
+    .dw XT_OVER
+    .dw XT_CFETCH
+    .dw XT_DOLITERAL
+    .dw '+'
+    .dw XT_EQUAL
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBERSIGN_MINUS
+      .dw XT_DOLITERAL
+      .dw 1
+      .dw XT_SLASHSTRING
+PFA_NUMBERSIGN_MINUS:
+    .dw XT_OVER    ; ( -- addr len addr )
+    .dw XT_CFETCH
+    .dw XT_DOLITERAL
+    .dw '-'
+    .dw XT_EQUAL  ; ( -- addr len flag )
+    .dw XT_DUP
+    .dw XT_TO_R
+    .dw XT_DOCONDBRANCH
+    .dw PFA_NUMBERSIGN_PLUS
+    .dw XT_DOLITERAL      ; skip sign character
+    .dw 1
+    .dw XT_SLASHSTRING
+PFA_NUMBERSIGN_PLUS:
+    .dw XT_R_FROM
+    .dw XT_EXIT
