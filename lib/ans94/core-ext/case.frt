@@ -3,11 +3,11 @@
 \    Message-ID: <1992Nov25.164255.23225@crd.ge.com>
 \    Date: 25 Nov 92 16:42:55 GMT
 
-0 constant case
+: case 0 ; immediate
 : of  ( #of -- orig #of+1 / x -- )
     1+    ( count OFs )
     >r    ( move off the stack in case the control-flow )
-	  ( stack is the data stack. )
+    ( stack is the data stack. )
     postpone over postpone = ( copy and test case value )
     postpone if    ( add orig to control flow stack )
     postpone drop  ( discards case value if = )
@@ -16,7 +16,7 @@
 
 : endof  ( orig1 #of -- orig2 #of )
     >r    ( move off the stack in case the control-flow )
-	  ( stack is the data stack. )
+    ( stack is the data stack. )
     postpone else
     r> ;  ( we can bring count back now )
  immediate
