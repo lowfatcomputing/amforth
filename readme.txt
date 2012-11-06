@@ -29,8 +29,9 @@ amforth is implemented in assembly and forth. The code is stable
 and well tested.
 
 All words have ans94-draft6 (core and various extension word sets) 
-stack diagrams, but not nessesairly the complete semantics. Some words
-from the standard are omitted, ask for them if you need them.
+and forth 200x stack diagrams, but not nessesairly the complete 
+semantics. Some words from the standards are omitted, ask for them 
+if you need them.
 
 Since release 2.1 amforth is a library.
 See http://amforth.svn.sourceforge.net/viewvc/amforth/appl/
