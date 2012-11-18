@@ -9,6 +9,6 @@
 XT_LRESOLVE:
     .dw DO_COLON
 PFA_LRESOLVE:
-    ;
+    .dw XT_QSTACK
     .dw XT_COMMA
     .dw XT_EXIT

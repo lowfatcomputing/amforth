@@ -9,6 +9,7 @@
 XT_GRESOLVE:
     .dw DO_COLON
 PFA_GRESOLVE:
+    .dw XT_QSTACK
     .dw XT_DP
     .dw XT_SWAP
     .dw XT_STOREI
