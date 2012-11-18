@@ -33,6 +33,7 @@ sub readXML ($) {
     my ($timestamp, $number, $label, %regs, $partname, $defname, $maxdp, $device);
     my ($start, $ramsize, $esize, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
     my ($numberusarts, %usartregs, %peripherals, %needsdef, %registerdups);
+    my ($has_smcr)=(0);
     my ($firstentry) = (1);
     
     $needsdef{"SPMEN"} = 1;
@@ -93,12 +94,14 @@ sub readXML ($) {
     return if $defname=~/unknown/;
 
     mkdir $basename unless -d $basename;
+    mkdir "$basename/words" unless -d "$basename/words";
 
     open(FRT, ">$basename/$basename.frt") or die "$basename: $!\n";
+    
     open(ASM, ">$basename/device.asm") or die "$basename: $!\n";
     open(PY,  ">$basename/device.py")  or die "$basename: $!\n";
     open(INC, ">$basename/device.inc") or die "$basename: $!\n";
-
+    open(SLEEP, ">$basename/words/sleep.asm") or die "$basename/words/sleep.asm: $!\n";
     print FRT "\\ Partname: $partname\n";
     print FRT "\\ generated automatically\n\n";    
 
@@ -146,17 +149,18 @@ sub readXML ($) {
       print INC ".if WANT_$mname == 1\n";
       print FRT "\\ $mname\n";
       foreach my $register ($module -> getElementsByTagName("register")) {
-	my $caption=$register->getAttribute("caption");
-	my $name   =$register->getAttribute("name");
-	my $offset =$register->getAttribute("offset");
-	next if $registerdups{$name};
-	$registerdups{$name}=$offset;
-	my $addr = $offset; $addr=hex($addr) if $addr=~/x/;
-	$needsdef{$name} = 0;
+        my $caption=$register->getAttribute("caption");
+        my $name   =$register->getAttribute("name");
+        my $offset =$register->getAttribute("offset");
+        $has_smcr=1 if $name=~/SMCR/;
+        next if $registerdups{$name};
+        $registerdups{$name}=$offset;
+        my $addr = $offset; $addr=hex($addr) if $addr=~/x/;
+        $needsdef{$name} = 0;
         print FRT "&$addr constant $name\t\\ $caption\n";
-	print INC "; ( -- addr ) System Constant\n; R( -- )\n; $caption";
-	print INC "\nVE_${name}:\n\t" . fmt_str($name, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${name}\n";
-	print INC "XT_${name}:\n\t.dw PFA_DOVARIABLE\nPFA_${name}:\n\t.dw $addr\n";
+        print INC "; ( -- addr ) System Constant\n; R( -- )\n; $caption";
+        print INC "\nVE_${name}:\n\t" . fmt_str($name, "\$ff%02d")."\n\t.dw VE_HEAD\n\t.set VE_HEAD=VE_${name}\n";
+        print INC "XT_${name}:\n\t.dw PFA_DOVARIABLE\nPFA_${name}:\n\t.dw $addr\n";
         print PY "$comma\n\t'${name}': '&$addr'";
         $comma = ",";
         foreach my $bitfield ($register->getElementsByTagName("bitfield")) {
@@ -183,16 +187,16 @@ sub readXML ($) {
     $number = 0;
     foreach my $ivector ($doc -> getElementsByTagName("interrupt")) {
         my ($name, $index, $addr, $caption);
-	$number++;
-	next if $number==1;
+        $number++;
+        next if $number==1;
         $index=$ivector->getAttribute("index");
         $addr=$index*$ivecsize;
         $name =$ivector->getAttribute("name");
         $caption=$ivector->getAttribute("caption");
         print PY  "$comma\n\t'${name}Addr': '$addr'";
-	print ASM ".org $addr\n\t rcall isr ; $caption\n";
+        print ASM ".org $addr\n\t rcall isr ; $caption\n";
         $caption = "&$addr  constant ${name}Addr \\ $caption";
-	print FRT "".substr($caption, 0, 75)."\n"; # make sure the lines fit amforth' TIB
+        print FRT "".substr($caption, 0, 75)."\n"; # make sure the lines fit amforth' TIB
     }
     print ASM ".equ INTVECTORS = $number\n";
     print ASM ".nooverlap\n";
@@ -210,9 +214,56 @@ sub readXML ($) {
     print ASM "mcu_numints:\n\t.dw $number\n";
     print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
-
     close(FRT);
     print PY "\n}";
+    if($has_smcr) {
+      print SLEEP "; ( mode -- ) 
+; MCU
+; put the controller into the specified sleep mode
+VE_SLEEP:
+    .dw \$ff05
+    .db \"sleep\", 0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_SLEEP
+XT_SLEEP:
+    .dw PFA_SLEEP
+PFA_SLEEP:
+  andi  tosl, 7        ; leave only legal mode bits
+  lsl    tosl        ; move to correct location (bits 3-1)
+  ori    tosl, 1        ; set the SE bit
+  out_  SMCR, tosl      ; set the sleep config
+  sleep            ; nighty-night
+  out_  SMCR, zerol      ; 0 protects against accidental sleeps
+  loadtos            ; pop argument from stack
+  jmp_    DO_NEXT
+"
+    } else {
+      print SLEEP  "; ( mode -- )
+; MCU
+; put the controller into the specified sleep mode
+VE_SLEEP:
+  .dw \$ff05
+  .db \"sleep\", 0
+  .dw VE_HEAD
+  .set VE_HEAD = VE_SLEEP
+XT_SLEEP:
+  .dw PFA_SLEEP
+PFA_SLEEP:
+  andi  tosl, 7             ; leave only legal mode bits
+  swap  tosl                ; move to correct location (bits 6-4, atmega32)
+  ori   tosl, \$80           ; set the SE bit (atmega32: bit 7, not bit 0)
+  out_  MCUCR, tosl         ; set the sleep config (atmega32: MCUCR not SMCR)
+  sleep                   ; nighty-night
+;; the 4 lower bits of MCUCR should not be touched
+  in_   tosl, MCUCR
+  andi  tosl, \$0F
+  out_  MCUCR, tosl
+  ;clr  tosl                ; need to clean up the SMCR reg before we leave
+  ;out    SMCR, tosl          ; 0 protects against accidental sleeps
+  loadtos                   ; pop argument from stack
+  jmp  DO_NEXT
+";
+    }
   }
 }
 
