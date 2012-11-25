@@ -33,7 +33,7 @@ sub readXML ($) {
     my ($timestamp, $number, $label, %regs, $partname, $defname, $maxdp, $device);
     my ($start, $ramsize, $esize, $ivecsize, $fsize, $mcustring, $coreversion, $pclen);
     my ($numberusarts, %usartregs, %peripherals, %needsdef, %registerdups);
-    my ($has_smcr)=(0);
+    my ($has_smcr, $has_wdtcsr, $has_jtag)=(0,0,0);
     my ($firstentry) = (1);
     
     $needsdef{"SPMEN"} = 1;
@@ -102,6 +102,7 @@ sub readXML ($) {
     open(PY,  ">$basename/device.py")  or die "$basename: $!\n";
     open(INC, ">$basename/device.inc") or die "$basename: $!\n";
     open(SLEEP, ">$basename/words/sleep.asm") or die "$basename/words/sleep.asm: $!\n";
+    open(WDT, ">$basename/words/no-wdt.asm") or die "$basename/words/no-wdt.asm: $!\n";
     print FRT "\\ Partname: $partname\n";
     print FRT "\\ generated automatically\n\n";    
 
@@ -153,6 +154,7 @@ sub readXML ($) {
         my $name   =$register->getAttribute("name");
         my $offset =$register->getAttribute("offset");
         $has_smcr=1 if $name=~/SMCR/;
+        $has_wdtcsr=1 if $name=~/WDTCSR/;
         next if $registerdups{$name};
         $registerdups{$name}=$offset;
         my $addr = $offset; $addr=hex($addr) if $addr=~/x/;
@@ -214,8 +216,65 @@ sub readXML ($) {
     print ASM "mcu_numints:\n\t.dw $number\n";
     print ASM "mcu_name:\n\t". fmt_str($partname, "%2d")."\n";
     print ASM ".set codestart=pc\n";
-    close(FRT);
+    
     print PY "\n}";
+    
+    close(PY);
+    close(FRT);
+    close(ASM);
+
+    print WDT "; ( -- ) 
+; MCU
+; disable watch dog timer at runtime
+VE_NOWDT:
+    .dw \$ff04
+    .db \"-wdt\"
+    .dw VE_HEAD
+    .set VE_HEAD = VE_NOWDT
+XT_NOWDT:
+    .dw PFA_NOWDT
+PFA_NOWDT:
+";
+  if($has_wdtcsr) {
+      print WDT "
+     in temp1,SREG
+     push temp1
+     ; Turn always off global interrupt.
+     cli
+     ; Reset Watchdog Timer
+     wdr
+     ; Clear WDRF in MCUSR
+     in temp1, MCUSR
+     andi temp1, (0xff & (0<<WDRF))
+     out MCUSR, temp1
+     ; Write logical one to WDCE and WDE
+     ; Keep old prescaler setting to prevent unintentional time-out
+     in_ temp1, WDTCSR
+     ori temp1, (1<<WDCE) | (1<<WDE)
+     out_ WDTCSR, temp1
+     ; Turn off WDT
+     ldi temp1, (0<<WDE)
+     out_ WDTCSR, temp1
+     ; restore status register
+     pop temp1
+     out SREG,temp1
+     jmp_ DO_NEXT
+";
+    } else {
+      print WDT "
+; Reset WDT
+  wdr
+; Write logical one to WDTOE and WDE
+  in_ temp1, WDTCR
+  ori temp1, (1<<WDTOE)|(1<<WDE)
+  out WDTCR, temp1
+; Turn off WDT
+  ldi temp1, (0<<WDE)
+  out_ WDTCR, temp1
+  jmp_ DO_NEXT
+";
+    }
+    close(WDT);
     if($has_smcr) {
       print SLEEP "; ( mode -- ) 
 ; MCU
@@ -264,6 +323,7 @@ PFA_SLEEP:
   jmp  DO_NEXT
 ";
     }
+    close(SLEEP);
   }
 }
 
