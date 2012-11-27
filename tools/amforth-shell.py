@@ -711,18 +711,20 @@ additional definitions (e.g. register names)
                 result[-1] += " " + w[:i+1]
                 result[-1] = result[-1][1:]  # remove extra initial space
                 w = w[i+1:]
+
             if in_delim_comment:
                 try:
-                   i = w.index(")")
+                    i = w.index(")")
                 except ValueError:
-                   continue
-                in_delim_comment = False
-                w = w[i+1:]
+                    pass
+                else:
+                    in_delim_comment = False
+                    w = w[i+1:]
 
             if not w:
                 continue
             if w in self._amforth_regs:
-              w = self._amforth_regs[w]
+                w = self._amforth_regs[w]
 
             if char_quote:
                 result.append(w)
@@ -739,7 +741,7 @@ additional definitions (e.g. register names)
             if not in_delim_comment and not in_line_comment:
                 if w == "\\":
                     in_line_comment = True
-                    break
+                    continue
 
                 elif w in self._config.current_behavior.start_string_words:
                     in_string = True
