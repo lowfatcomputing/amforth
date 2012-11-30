@@ -153,13 +153,6 @@ sub html_head {
 <head>
 <title>amforth: Words $title</title>
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>
-
-<!-- (en) Add your meta data here -->
-<!-- (de) Fuegen Sie hier ihre Meta-Daten ein -->
-<link href=\"/css/layout_styling_content.css\" rel=\"stylesheet\" type=\"text/css\"/>
-<!--[if lte IE 7]>
-<link href=\"/css/patches/patch_styling_content.css\" rel=\"stylesheet\" type=\"text/css\" />
-<![endif]-->
 <link href=\"/amforth.css\" rel=\"stylesheet\" type=\"text/css\"/>
 <!-- Piwik -->
 <script type=\"text/javascript\">
@@ -188,7 +181,6 @@ piwikTracker.enableLinkTracking();
 					<li><a href=\"/\">Home</a></li>
 					<li><a href=\"/faq.html\">FAQ</a></li>
 					<li><a href=\"/recipes/index.html\">Recipes</a></li>
-					<li><a href=\"/howto-customize.html\">Customize</a></li>
 					<li><a href=\"/links.html\">Links</a></li>
 					<li id=\"current\"><a href=\"/words/index.html\">Words</a></li>
 					<li><a href=\"http://sourceforge.net/projects/amforth\">Download</a></li>
