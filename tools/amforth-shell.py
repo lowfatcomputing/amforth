@@ -361,7 +361,19 @@ class AMForth(object):
         "#timeout", "#timeout-next", "#update-words", "#exit", 
         "#update-cpu", "#update-files"
         ]
-
+    # standard words are usually uppercase, but amforth needs
+    # them in lowercase.
+    stdwords = [
+        "IF", "ELSE", "WHILE", "UNTIL", "AGAIN", "BEGIN", "REPEAT",
+        "S\"", "VARIABLE", "CONSTANT", "DO", "LOOP", "+LOOP", "CELLS", 
+        "CELL", "ALLOT", "DUP", "DROP", "SWAP", "ROT", ">R", "R>", "EMIT",
+        "KEY", "EMIT?", "KEY?", "C!", "C@", "MS", "CREATE", "DOES>",
+        "2DROP", "2DUP", "2>R", "2R>", "ACCEPT", "MOD", "*/MOD", "/MOD",
+        "OVER", "2OVER", "2SWAP", ">BODY", ">IN", ">NUMBER", "?DUP",
+        "ABORT", "ABORT\"", "ABS", "AND", "BASE", "BL", "CR", "EXECUTE",
+        "HERE", "HOLD", "I", "J", "IMMEDIATE", "INVERT", "LEAVE", "LITERAL",
+        "MAX", "MIN", "MOVE", "NEGATE", "OR", "POSTPONE", "TYPE", "UNLOOP"
+    ]
     def __init__(self, serial_port="/dev/amforth", speed=38400):
         self.debug = False
         self.max_line_length = 80
@@ -725,7 +737,8 @@ additional definitions (e.g. register names)
                 continue
             if w in self._amforth_regs:
                 w = self._amforth_regs[w]
-
+            if w.upper() in self.stdwords:
+                w = w.lower()
             if char_quote:
                 result.append(w)
                 char_quote = False
