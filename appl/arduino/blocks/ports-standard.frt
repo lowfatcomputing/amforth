@@ -28,23 +28,20 @@ PORTC 4 portpin: digital.18
 PORTC 5 portpin: digital.19
 
 \ some digital ports have an alternative use
-\ the numbers correspond to the above digital.X
-
-10 constant SPI:SS
-11 constant SPI:MOSI
-12 constant SPI:MISO
-13 constant SPI:SCK
-
-18 constant TWI:SDA
-19 constant TWI:SCL
-13 constant LED_BUILTIN
-
-14 constant analog.0
-15 constant analog.1
-16 constant analog.2
-17 constant analog.3
-18 constant analog.4
-19 constant analog.5
+\ synonym is available since amforth 5.0
+synonym SPI:SS   digital.10
+synonym SPI:MOSI digital.11
+synonym SPI:MISO digital.12
+synonym SPI:SCK  digital.13
+synonym TWI:SDA  digital.18
+synonym TWI:SCL  digital.19
+synonym LED_BUILTIN digital.13
+synonym analog.0 digital.14
+synonym analog.1 digital.15
+synonym analog.2 digital.16
+synonym analog.3 digital.17
+synonym analog.4 digital.18
+synonym analog.5 digital.19
 \ not on all chips but defined in arduino sources
-20 constant analog.6
-21 constant analog.7
+synonym analog.6 digital.20
+synonym analog.7 digital.21
