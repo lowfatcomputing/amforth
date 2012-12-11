@@ -4,7 +4,8 @@
 SHELL=/bin/bash
 
 # --- edit these values ------------------------------------
-# Name of your application (useful, if you rename template.asm)
+# Name of your application (change it to the name of your
+# copy of the template.asm file)
 TARGET=template
 
 # versions before 2.1 may produce some warnings
