@@ -364,15 +364,99 @@ class AMForth(object):
     # standard words are usually uppercase, but amforth needs
     # them in lowercase.
     stdwords = [
-        "IF", "ELSE", "WHILE", "UNTIL", "AGAIN", "BEGIN", "REPEAT",
-        "S\"", "VARIABLE", "CONSTANT", "DO", "LOOP", "+LOOP", "CELLS", 
-        "CELL", "ALLOT", "DUP", "DROP", "SWAP", "ROT", ">R", "R>", "EMIT",
-        "KEY", "EMIT?", "KEY?", "C!", "C@", "MS", "CREATE", "DOES>",
-        "2DROP", "2DUP", "2>R", "2R>", "ACCEPT", "MOD", "*/MOD", "/MOD",
-        "OVER", "2OVER", "2SWAP", ">BODY", ">IN", ">NUMBER", "?DUP",
-        "ABORT", "ABORT\"", "ABS", "AND", "BASE", "BL", "CR", "EXECUTE",
-        "HERE", "HOLD", "I", "J", "IMMEDIATE", "INVERT", "LEAVE", "LITERAL",
-        "MAX", "MIN", "MOVE", "NEGATE", "OR", "POSTPONE", "TYPE", "UNLOOP"
+        # *** Wordset BLOCK
+        "BLK","BLOCK","BUFFER","EVALUATE","FLUSH","LOAD","SAVE-BUFFERS",
+        "UPDATE",
+        # *** Wordset BLOCK-EXT
+        "EMPTY-BUFFERS","LIST","REFILL","SCR","THRU",
+        # *** Wordset CORE
+        "#S","*/MOD","+LOOP","/MOD","0<","0=","1+","1-","2!",
+        "2*","2/","2@","2DROP","2DUP","2OVER","2SWAP",">BODY",
+        ">IN",">NUMBER",">R","?DUP","ABORT","ABORT\"","ABS",
+        "ACCEPT","ALIGN","ALIGNED","ALLOT","AND","BASE","BEGIN",
+        "BL","C!","C,","C@","CELL+","CELLS","CHAR","CHAR+",
+        "CHARS","CONSTANT","COUNT","CR","CREATE","DECIMAL",
+        "DEPTH","DO","DOES>","DROP","DUP","ELSE","EMIT","ENVIRONMENT?",
+        "EVALUATE","EXECUTE","EXIT","FILL","FIND","FM/MOD",
+        "HERE","HOLD","I","IF","IMMEDIATE","INVERT","J","KEY",
+        "LEAVE","LITERAL","LOOP","LSHIFT","M*","MAX","MIN",
+        "MOD","MOVE","NEGATE","OR","OVER","POSTPONE","QUIT",
+        "R>","R@","RECURSE","REPEAT","ROT","RSHIFT","S\"","S>D",
+        "SIGN","SM/REM","SOURCE","SPACE","SPACES","STATE","SWAP",
+        "THEN","TYPE","U.","U<","UM*","UM/MOD","UNLOOP","UNTIL",
+        "VARIABLE","WHILE","WORD","XOR","[CHAR]",
+        # *** Wordset CORE-EXT
+        ".R","0<>",
+        "0>","2>R","2R>","2R@",":NONAME","?DO","AGAIN","C\"",
+        "CASE","COMPILE,","ENDCASE","ENDOF","ERASE","FALSE",
+        "HEX","MARKER","NIP","OF","PAD","PARSE","PICK","REFILL",
+        "RESTORE-INPUT","ROLL","SAVE-INPUT","SOURCE-ID","TO",
+        "TRUE","TUCK","U.R","U>","UNUSED","VALUE","WITHIN",
+        "[COMPILE]",
+        # *** Wordset CORE-EXT-obsolescent
+        "#TIB","CONVERT","EXPECT","QUERY","SPAN",
+        "TIB",
+        # *** Wordset DOUBLE
+        "2CONSTANT","2LITERAL","2VARIABLE","D+","D-",
+        "D.","D.R","D0<","D0=","D2*","D2/","D<","D=","D>S",
+        "DABS","DMAX","DMIN","DNEGATE","M*/","M+",
+        # *** Wordset DOUBLE-EXT
+        "2ROT","DU<",
+        # *** Wordset EXCEPTION
+        "CATCH","THROW",
+        # *** Wordset EXCEPTION-EXT
+        "ABORT","ABORT\"",
+        # *** Wordset FACILITY
+        "AT-XY","KEY?","PAGE",
+        # *** Wordset FACILITY-EXT
+        "EKEY","EKEY>CHAR","EKEY?","EMIT?","MS","TIME&DATE",
+        # *** Wordset FILE
+        "BIN","CLOSE-FILE","CREATE-FILE","DELETE-FILE","FILE-POSITION",
+        "FILE-SIZE","INCLUDE-FILE","INCLUDED","OPEN-FILE","R/O",
+        "R/W","READ-FILE","READ-LINE","REPOSITION-FILE","RESIZE-FILE",
+        "S\"","SOURCE-ID","W/O","WRITE-FILE","WRITE-LINE",
+        # *** Wordset FILE-EXT
+        "FILE-STATUS",
+        "FLUSH-FILE","REFILL","RENAME-FILE",
+        # *** Wordset FLOAT
+        ">FLOAT","D>F",
+        "F!","F*","F+","F-","F/","F0<","F0=","F<","F>D","F@",
+        "FALIGN","FALIGNED","FCONSTANT","FDEPTH","FDROP","FDUP",
+        "FLITERAL","FLOAT+","FLOATS","FLOOR","FMAX","FMIN",
+        "FNEGATE","FOVER","FROT","FROUND","FSWAP","FVARIABLE",
+        "REPRESENT",
+        # *** Wordset FLOAT-EXT
+        "DF!","DF@","DFALIGN","DFALIGNED","DFLOAT+",
+        "DFLOATS","F**","F.","FABS","FACOS","FACOSH","FALOG",
+        "FASIN","FASINH","FATAN","FATAN2","FATANH","FCOS","FCOSH",
+        "FE.","FEXP","FEXPM1","FLN","FLNP1","FLOG","FS.","FSIN",
+        "FSINCOS","FSINH","FSQRT","FTAN","FTANH","F~","PRECISION",
+        "SET-PRECISION","SF!","SF@","SFALIGN","SFALIGNED","SFLOAT+",
+        "SFLOATS",
+        # *** Wordset LOCAL
+        "(LOCAL)","TO",
+        # *** Wordset LOCAL-EXT
+        "LOCALS|",
+        # *** Wordset MEMORY
+        "ALLOCATE","FREE",
+        "RESIZE",
+        # *** Wordset SEARCH
+        "DEFINITIONS","FIND","FORTH-WORDLIST","GET-CURRENT",
+        "GET-ORDER","SEARCH-WORDLIST","SET-CURRENT","SET-ORDER",
+        "WORDLIST",
+        # *** Wordset SEARCH-EXT
+        "ALSO","FORTH","ONLY","ORDER","PREVIOUS",
+        # *** Wordset STRING
+        "-TRAILING","/STRING","BLANK","CMOVE","CMOVE>","COMPARE",
+        "SEARCH","SLITERAL",
+        # *** Wordset TOOLS
+        ".S","DUMP","SEE","WORDS",
+        # *** Wordset TOOLS-EXT
+        ";CODE",
+        "AHEAD","ASSEMBLER","BYE","CODE","CS-PICK","CS-ROLL",
+        "EDITOR","STATE","[ELSE]","[IF]","[THEN]",
+        # *** Wordset TOOLS-EXT-obsolescent
+        "FORGET",
     ]
     def __init__(self, serial_port="/dev/amforth", speed=38400):
         self.debug = False
