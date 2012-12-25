@@ -33,13 +33,12 @@
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
-.set WANT_TIMER_COUNTER_0 = 1
-.set WANT_SPI = 1
-.set WANT_PORTA = 1
-.set WANT_PORTB = 1
-.set WANT_PORTC = 1
-.set WANT_PORTD = 1
-.set WANT_PORTJ = 1
-.set WANT_AD_CONVERTER = 1
+; settings for 1wire interface, if desired
+.equ OW_PORT=PORTE
+.EQU OW_BIT=4
+.equ OW_DDR=ddre
+.equ OW_PIN=pine
+.include "drivers/1wire.asm"
+
 ; include the whole source tree.
 .include "amforth.asm"

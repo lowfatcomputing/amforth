@@ -15,6 +15,14 @@
 ; files include the *def.inc from atmel internally.
 .include "device.asm"
 
+; there are many WANT options available. There are two
+; places where they are defined: core/macros.asm and
+; core/devices/<mcutype>/device.asm. Setting the value
+; to 1 enables the feature, setting to 0 disables it.
+; Most options are disabled by default. You should never
+; change the files mentioned above, only change them in
+; this file.
+
 ; the dictionary search treats lowercase and uppercase
 ; letters the same. Set to 0 if you do not want it
 .set WANT_IGNORECASE = 1
@@ -51,6 +59,13 @@
 .set stackstart  = RAMEND - 80 ; start address of data stack, grows downward
 ; change only if you know what to you do
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
+
+; settings for 1wire interface, if desired
+.equ OW_PORT=PORTE
+.EQU OW_BIT=4
+.equ OW_DDR=ddre
+.equ OW_PIN=pine
+.include "drivers/1wire.asm"
 
 ; include the whole source tree.
 .include "amforth.asm"

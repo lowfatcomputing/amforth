@@ -10,10 +10,10 @@
 ;     no external pull up, no external power supply for devices
 ;     ???
 ;
-.EQU OW_BIT=4
-.equ OW_PORT=PORTE
-.equ OW_DDR=ddre
-.equ OW_PIN=pine
+;.EQU OW_BIT=4
+;.equ OW_PORT=PORTE
+;.equ OW_DDR=ddre
+;.equ OW_PIN=pine
 
 ;               F_CPU
 ;    µsec   16000000   14745600    8000000  1000000
@@ -117,7 +117,7 @@ PFA_OW_RESET:
     DELAY   416
     ; we now have the result flag in TOS        
     mov tosl, tosh
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
     
 ;****f* 4e-onewire/OWSLOT
 ; NAME
@@ -207,4 +207,4 @@ PFA_OW_SLOT0:
     delay 2
     ; re-enable interrupts
     out SREG, temp1
-    rjmp DO_NEXT
+    jmp_ DO_NEXT
