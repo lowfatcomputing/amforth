@@ -26,5 +26,8 @@
 .dseg
 ; define a label for the 1st free ram address
 HERESTART:
-.cseg
+.eseg
 .include "amforth-eeprom.inc"
+; 1st free address in EEPROM.
+EDPSTART:
+.cseg

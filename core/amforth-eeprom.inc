@@ -1,4 +1,3 @@
-.eseg
     .dw -1           ; EEPROM Address 0 should not be used
 EE_DP:
     .dw DPSTART      ; Dictionary Pointer
@@ -19,6 +18,22 @@ EE_STOREI:
 .if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
   .error "Serial line cannot be set up properly (systematic baud error too high)"
 .endif
+EE_UBRRVAL:
+    .dw UBRR_VAL     ; BAUDRATE
+EE_ENVIRONMENT:
+    .dw VE_ENVHEAD   ; environmental queries
+EE_WL_FORTH:
+    .dw EE_FORTHWORDLIST; forth-wordlist
+EE_CURRENT:
+    .dw EE_FORTHWORDLIST
+EE_FORTHWORDLIST:
+    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
+EE_ORDERLISTLEN:
+    .dw 1
+EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
+    .dw EE_FORTHWORDLIST      ; get/set-order
+    .byte  (NUMWORDLISTS-1)*CELLSIZE ; two slots are already used
+
 ; default user area
 EE_INITUSER:
     .dw 0  ; USER_STATE
@@ -38,22 +53,6 @@ EE_INITUSER:
     .dw 0            ; USER_G_IN
     .dw XT_REFILLTIB ; USER_REFILL  
 
-EE_UBRRVAL:
-    .dw UBRR_VAL     ; BAUDRATE
-
-EE_ENVIRONMENT:
-    .dw VE_ENVHEAD   ; environmental queries
-EE_WL_FORTH:
-    .dw EE_FORTHWORDLIST; forth-wordlist
-EE_CURRENT:
-    .dw EE_FORTHWORDLIST
-EE_FORTHWORDLIST:
-    .dw VE_HEAD      ; pre-defined (compiled in) wordlist
-EE_ORDERLISTLEN:
-    .dw 1
-EE_ORDERLIST: ; list of wordlist id, exactly numwordlist entries
-    .dw EE_FORTHWORDLIST      ; get/set-order
-    .byte  (NUMWORDLISTS-1)*CELLSIZE ; two slots are already used
 
 EE_RECOGNIZERS:
 EE_RECOGNIZERLISTLEN:
@@ -65,6 +64,3 @@ EE_RECOGNIZERLIST:
     .dw -1
     .dw -1
     .dw -1
-; 1st free address in EEPROM.
-EDPSTART:
-.cseg
