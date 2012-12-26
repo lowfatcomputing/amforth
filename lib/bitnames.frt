@@ -25,22 +25,17 @@
 
 hex
 
-\ At compiletime:
-\ Store combination of portaddress and bit number in a cell and give it a name.
-\ At runtime:
-\ Get pinmask and portaddress on stack.
-: portpin: create ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
-    1 swap lshift
-    8 lshift or ,               \ packed value
-  does> @i                      \ get packed value
-    dup 8 rshift swap ff and    \ 
+: bitmask: create ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
+    , ,
+  does> 
+    dup @i swap 1+ @i
 ;
 
-: bitmask: create ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
-    8 lshift or ,               \ packed value
-  does> @i                      \ get packed value
-    dup 8 rshift swap ff and    \ 
+: portpin: ( C: "ccc" portadr n -- ) ( R: -- pinmask portadr )
+    1 swap lshift \ make it a bitmask
+    bitmask:
 ;
+
 
 
 \ Turn a port pin on, dont change the others.
