@@ -1,5 +1,5 @@
 ; ( -- wid) 
-; System Variable
+; System Value
 ; word list identifier of the environmental search list
 VE_ENVIRONMENT:
     .dw $ff0b

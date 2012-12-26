@@ -30,6 +30,3 @@ PFA_VALUE:
     .dw XT_STOREE
     .dw XT_EXIT
 
-; : value ( n -- )
-;	create edp e@ dup , dup 1+ 1+ edp e! e! does> i@ e@ ;
-
