@@ -8,16 +8,15 @@
 ; cpu clock in hertz
 .equ F_CPU = 16000000
 ; baud rate of terminal
-.include "drivers/usart_0.asm"
+
 .equ BAUD = 9600
-.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
-.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
+.include "drivers/usart_0.asm"
 .set rstackstart = RAMEND
 .set stackstart  = RAMEND - 80
 
 .set NUMWORDLISTS = 8
 
 ; some registers
-.set WANT_PORTA = 1
+.set WANT_PORTA = 0
 
 .include "amforth.asm"

@@ -18,7 +18,6 @@
 .include "words/is.asm"
 
 .include "dict_compiler.inc"
-.include "dict_usart.inc"
 .include "words/show-wordlist.asm"
 .include "dict_interrupt.inc"
 

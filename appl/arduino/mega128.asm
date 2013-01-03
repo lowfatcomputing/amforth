@@ -19,11 +19,7 @@
 ; cpu clock in hertz, 1MHz is factory default
 .equ F_CPU = 16000000
 
-; initial baud rate of terminal
-.include "drivers/usart_0.asm"
-.equ BAUD = 9600
-.equ USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
-.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
+
 .equ TIBSIZE  = $64    ; ANS94 needs at least 80 characters per line
 .equ APPUSERSIZE = 10  ; size of application specific user area in bytes
 
@@ -37,6 +33,10 @@
 .equ OW_PORT=PORTE
 .EQU OW_BIT=4
 .include "drivers/1wire.asm"
+
+; initial baud rate of terminal
+.equ BAUD = 38400
+.include "drivers/usart_0.asm"
 
 ; include the whole source tree.
 .include "amforth.asm"

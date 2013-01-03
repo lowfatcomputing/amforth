@@ -1,6 +1,5 @@
 .include "dict_minimum.inc"
 .include "device.inc"
-.include "dict_usart.inc"
 .include "dict_compiler.inc"
 .include "dict_interrupt.inc"
 .include "words/applturnkey.asm"

@@ -39,14 +39,6 @@
 
 ; 9600 @ 8N1 is commonly used.
 .equ BAUD = 9600
-.equ USART_C_VALUE = bm_ASYNC | bm_NO_PARITY | bm_1STOPBIT | bm_8BIT
-
-; dont touch the next 5 lines
-.if WANT_ISR_RX == 1
-  .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX | bm_ENABLE_INT_RX
-.else
-  .set USART_B_VALUE = bm_ENABLE_TX | bm_ENABLE_RX 
-.endif
 
 ; define which usart to use.
 .include "drivers/usart_0.asm"
@@ -61,7 +53,7 @@
 .equ NUMWORDLISTS = 8 ; number of word lists in the searh order, at least 8
 
 ; settings for 1wire interface, if desired
-.equ OW_PORT=PORTE
+.equ OW_PORT=PORTA
 .EQU OW_BIT=4
 .include "drivers/1wire.asm"
 
