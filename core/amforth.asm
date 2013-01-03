@@ -7,8 +7,6 @@
   jmp_ PFA_COLD
 .org pc_
 .include "drivers/generic-isr.asm"
-.set VE_HEAD = $0000
-.set VE_ENVHEAD = $0000
 ; lower part of the dictionary
 .include "dict_appl.inc"
 
