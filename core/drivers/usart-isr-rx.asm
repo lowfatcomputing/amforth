@@ -11,10 +11,18 @@
 .dseg
 usart_rx_in: .byte 1
 usart_rx_out: .byte 1
-usart_rx_data: .byte usart_rx_size
+usart_rx_data: .byte usart_rx_size+2
 .cseg
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; forth code:
+; : rx-isr USART_DATA c@
+;    usart_rx_data usart_rx_in c@ dup >r
+;    + !
+;    r> 1+ usart_rx_mask and usart_rx_in c!
+; ;
+; setup with
+; ' rx-isr URXCaddr int!
 usart_rx_isr:
   push xl
   in xl, SREG
