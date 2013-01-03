@@ -36,8 +36,6 @@
 ; settings for 1wire interface, if desired
 .equ OW_PORT=PORTE
 .EQU OW_BIT=4
-.equ OW_DDR=ddre
-.equ OW_PIN=pine
 .include "drivers/1wire.asm"
 
 ; include the whole source tree.

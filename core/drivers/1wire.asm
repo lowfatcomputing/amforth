@@ -12,8 +12,8 @@
 ;
 ;.EQU OW_BIT=4
 ;.equ OW_PORT=PORTE
-;.equ OW_DDR=ddre
-;.equ OW_PIN=pine
+.set OW_DDR=(OW_PORT-1)
+.set OW_PIN=(OW_DDR-1)
 
 ;               F_CPU
 ;    µsec   16000000   14745600    8000000  1000000
