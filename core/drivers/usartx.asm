@@ -1,4 +1,11 @@
 
+.equ USART_A_VALUE = 0
+.equ USART_B_VALUE = USART_TXEN_bm | USART_RXEN_bm
+.equ USART_C_VALUE = USART_CHSIZE_8BIT_gc
+
+.set WANT_ISR_TX = 0
+.set WANT_ISR_RX = 0
+
 .if WANT_ISR_RX == 1
   .include "drivers/usartx-isr-rx.asm"
   .include "words/usartx-rx-isr.asm"

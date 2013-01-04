@@ -1,6 +1,3 @@
-; Partname:  AT90CAN128
-; Built using part description XML file version 170
-; generated automatically
 .nolist
 	.include "ATXmega128A1def.inc"
 .list
@@ -35,8 +32,17 @@
 .equ INTVECTORS = 10
 .org $200
 
-
-mcustring:
+; controller data area, environment query mcu-info
+mcu_info:
+mcu_ramsize:
+	.dw 512
+mcu_eepromsize:
+	.dw 512
+mcu_maxdp:
+	.dw 4096 
+mcu_numints:
+	.dw 29
+mcu_name:
 	.dw 14
 	.db "ATXMega 128 A1"
 .set codestart=pc
