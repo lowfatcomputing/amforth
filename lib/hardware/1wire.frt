@@ -3,7 +3,7 @@
 \   romid is now a forth 2012 buffer.
 \   assembly part rewritten from scratch
 \   renamed to file extension frt
-\ 
+\ requires buffer:
 \ NAME
 \   1wire.frt
 \ SYNOPSIS
@@ -154,22 +154,46 @@ rombit 1+ constant discmark     ( used as byte variable )
    cr
 ;
 
-\ This version of SENDID expects the address of an 8-byte ID )
+\ owcur is the device the host is currently
+\ communicating with.
+8 buffer: owcurrent
+
+\ define a 1wire device. At compile time
+\ take 8 numbers from the stack, at runtime
+\ copy these numbers to owcurrent and give
+\ this address back to the caller
+\ e.g.
+\ $28 $4C $75 $CC $2 $0 $0 $CD owdev: sensor1
+\ note that the byte order is the same that 
+\ owshowids prints.
+: owdevice:
+    ( n1 .. n8 -- )
+    create
+    c, c, c, c,
+    c, c, c, c,
+    does>
+      ( -- addr )
+      8 0 do
+       dup i + @i
+       owcurrent 7 i - + c!
+      loop drop owcurrent ;
+
+\ This version of OWSENDID expects the address of an 8-byte ID )
 \ Start an addressed command.  This sends RESET, Match ROM [55h], )
 \ and the 8 bytes of ROMID.  It should be followed by a DS18B20   )
 \ function command. )
 
-: sendid ( addr -- )
+: owsendid ( addr -- )
    owreset if
       $55 owput    ( send Match ROM command )
-      8 over + swap do  i @i owput  loop  ( send 8 id bytes )
+      8 over + swap do  i c@ owput  loop  ( send 8 id bytes )
    else ." failed" drop then
 ;
 
 \ Function commands that can follow SENDID )
 
-: readscratch ( addr -- )  ( display 9 bytes of scratchpad )
-   sendid
+: owdumpscratch ( addr -- )  ( display 9 bytes of scratchpad )
+   owsendid
    $BE owput  owget . owget . owget . owget .
    owget . owget . owget . owget . owget . 
 ;
