@@ -6,6 +6,7 @@
 .include "words/l_resolve.asm"
 ; .include "words/qpairs.asm"
 
+.include "words/ahead.asm"
 .include "words/if.asm"
 .include "words/else.asm"
 .include "words/then.asm"
