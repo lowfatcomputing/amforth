@@ -163,9 +163,13 @@ rombit 1+ constant discmark     ( used as byte variable )
 \ copy these numbers to owcurrent and give
 \ this address back to the caller
 \ e.g.
-\ $28 $4C $75 $CC $2 $0 $0 $CD owdev: sensor1
+\ > hex owshowids
+\   28 4C 75 CC 2  0  0 CD 
+\  ok
+\ > 28 4C 75 CC 2  0  0 CD owdevice: sensor1
+\ > sensor1 ( -- owcurrent)
 \ note that the byte order is the same that 
-\ owshowids prints.
+\ owshowids prints, your numbers will be different.
 : owdevice:
     ( n1 .. n8 -- )
     create
