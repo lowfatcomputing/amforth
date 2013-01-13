@@ -67,7 +67,7 @@ hex
 ;
 
 : is_low? ( pinmask portaddr -- f)
-    c@ invert and
+    c@ and 0=
 ;
 
 : is_high? ( pinmask portaddr -- f)
