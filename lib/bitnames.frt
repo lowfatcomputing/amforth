@@ -71,7 +71,7 @@ hex
 ;
 
 : is_high? ( pinmask portaddr -- f)
-    c@ and
+    c@ and 0>
 ;
 
 \ write the pins masked as output
