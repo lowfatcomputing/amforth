@@ -2,7 +2,7 @@
 ; some defaults
 
 .set WANT_ISR_TX = 0
-.set WANT_ISR_RX = 1
+.set WANT_ISR_RX = 0
 .set WANT_IGNORECASE = 0
 .set WANT_UNIFIED = 0
 
@@ -110,4 +110,49 @@
 	.else
 	call @0
 	.endif
+.endmacro
+
+;               F_CPU
+;    µsec   16000000   14745600    8000000  1000000
+;    1            16      14,74          8        1
+;    10          160     147,45         80       10
+;    100        1600    1474,56        800      100
+;    1000      16000   14745,6        8000     1000
+;
+; cycles = µsec * f_cpu / 1e6
+; n_loops=cycles/5
+;
+;     cycles already used will be subtracted from the delay
+;     the waittime resolution is 1 cycle (delay from exact to +1 cycle)
+;     the maximum delay at 20MHz (50ns/clock) is 38350ns
+;     waitcount register must specify an immediate register
+;
+; busy waits a specfied amount of microseconds
+.macro   delay
+      .set cycles = ( ( @0 * F_CPU ) / 1000000 )
+      .if (cycles > ( 256 * 255 * 4 + 2))
+        .error "MACRO delay - too many cycles to burn"
+      .else
+        .if (cycles > 6)
+          .set  loop_cycles = (cycles / 4)      
+          ldi   zl,low(loop_cycles)
+          ldi   zh,high(loop_cycles)
+delay_loop:
+          sbiw  Z, 1
+          brne  delay_loop
+          .set  cycles = (cycles - (loop_cycles * 4))
+        .endif
+        .if (cycles > 0)
+          .if   (cycles & 4)
+            rjmp  pc+1
+            rjmp  pc+1
+          .endif
+          .if   (cycles & 2)
+            rjmp  pc+1
+          .endif
+          .if   (cycles & 1)
+            nop
+          .endif
+        .endif
+      .endif
 .endmacro
