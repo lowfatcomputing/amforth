@@ -4,17 +4,16 @@
 \   [c] 2012 Bradford J. Rodriguez for the inital version
 \ modified 
 
-$28 $4C $75 $CC $2 $0 $0 $CD owdev: sensor1
+$28 $4C $75 $CC $2 $0 $0 $CD 1w.device: sensor1
 
-: owconvert ( addr -- )  ( start a temperature conversion )
-   owsendid ( remember to allow 750 msec for conv.)
-   $44 owput
+: 1w.convert ( addr -- )  ( start a temperature conversion )
+   1w.matchrom
+   $44 c!1w
 ;
 
-: readtemp ( addr -- n )   ( read first 2 bytes of scratchpad )
-   dup >r
-   owsendid
-   $be owput  owget ( LSbyte )  owget ( MSbyte )
+: 1w.readtemp ( addr -- n )   ( read first 2 bytes of scratchpad )
+   dup >r 1w.matchrom
+   $be c!1w  c@1w ( LSbyte )  c@1w ( MSbyte )
    8 lshift or    ( convert 2 bytes to single 16-bit value )
    r> c@
    $28 = if     \ there are a few temp sensors with different
@@ -25,16 +24,6 @@ $28 $4C $75 $CC $2 $0 $0 $CD owdev: sensor1
    then
 ;
 
-\ Demonstrates how to scale temperature and format for PAD )
-\ Expects the value 'n' returned by READTEMP.  N=8 corresponds )
-\ to 0.5 degrees Celsius.  Format is [-]nn.n )
-
-: temp>pad ( n -- )
-   s>d swap over dabs <# # [char] . hold #s rot sign #>
-   pad place
-;
-
-\ Example usage: 
-\ sensor1 owconvert  750 ms  sensor1 readtemp temp>pad
-\ pad count type
+\ Example usage (prints the centigrades)
+\ sensor1 1w.convert 750 ms sensor1 1w.readtemp u.
 

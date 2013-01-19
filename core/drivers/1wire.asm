@@ -15,11 +15,11 @@
 .set OW_DDR=(OW_PORT-1)
 .set OW_PIN=(OW_DDR-1)
 
-;****f* 4e-onewire/OWRESET
+;****f* 1W.RESET
 ; NAME
-;   OWRESET
+;   1W.RESET
 ; SYNOPSIS
-;   OWRESET ( -- f )  Initialize 1-wire devices; return true if present
+;   1W.RESET ( -- f )  Initialize 1-wire devices; return true if present
 ; DESCRIPTION
 ;   This configures the port pin used by the 1-wire interface, and then
 ;   sends an "initialize" sequence to the 1-wire devices.  If any device
@@ -36,8 +36,8 @@
 ; Hardware
 ; Initialize 1-wire devices; return true if present
 VE_OW_RESET:
-    .dw $ff07
-    .db "owreset",0
+    .dw $ff08
+    .db "1w.reset"
     .dw VE_HEAD
     .set VE_HEAD = VE_OW_RESET
 XT_OW_RESET:
@@ -75,11 +75,11 @@ PFA_OW_RESET:
     mov tosl, tosh
     jmp_ DO_NEXT
     
-;****f* 4e-onewire/OWSLOT
+;****f* 1W.SLOT
 ; NAME
-;   OWSLOT
+;   1W.SLOT
 ; SYNOPSIS
-;   OWSLOT ( c -- c' ) Write and read one bit to/from 1-wire.
+;   1W.SLOT ( c -- c' ) Write and read one bit to/from 1-wire.
 ; DESCRIPTION
 ;   The "touch byte" function is described in Dallas App Note 74.
 ;   It outputs a byte to the 1-wire pin, LSB first, and reads back
@@ -129,8 +129,8 @@ PFA_OW_RESET:
 ; Hardware
 ; Write and read one bit to/from 1-wire.
 VE_OW_SLOT:
-    .dw $ff06
-    .db "owslot"
+    .dw $ff07
+    .db "1w.slot",0
     .dw VE_HEAD
     .set VE_HEAD = VE_OW_SLOT
 XT_OW_SLOT:

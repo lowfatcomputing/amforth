@@ -12,8 +12,8 @@
 \
 \ USES
 \   Uses the following kernel functions (provided by 1wire.asm)
-\   OWRESET [ -- f ]  Initialize 1-wire devices; return true if present
-\   OWSLOT [ c -- c' ] Write and read one bit to/from 1-wire.
+\   1W.RESET [ -- f ]  Initialize 1-wire devices; return true if present
+\   1W.SLOT [ c -- c' ] Write and read one bit to/from 1-wire.
 \
 \ COPYRIGHT
 \   [c] 2012 Bradford J. Rodriguez.
@@ -38,7 +38,7 @@
 
 
 \ Basic 1-wire operations 
-\ OWTOUCH ( c1 -- c2 )  Write and read one byte to/from 1-wire bus.
+\ 1W.TOUCH ( c1 -- c2 )  Write and read one byte to/from 1-wire bus.
 \     This implements the "touch byte" function described in Dallas
 \     Application Note 74.  It expects a byte c1 which is sent over the
 \     1-wire bus.  To perform a read operation, this must be FF hex. 
@@ -46,24 +46,27 @@
 \     read operation, this is the read data; for a write operation, this
 \     has no significance and can be discarded.
 \ 
-\ OWPUT ( c -- )  Write one byte to the 1-wire bus.
-\     This uses OWTOUCH to write one byte of data.  The value returned
-\     by OWTOUCH is discarded.
+\ C!1W ( c -- )  Write one byte to the 1-wire bus.
+\     This uses 1W.TOUCH to write one byte of data.  The value returned
+\     by 1W.TOUCH is discarded.
 \     
-\ OWGET ( -- c )  Read one byte from the 1-wire bus.
-\     This uses OWTOUCH with an input parameter of FF hex to read one
+\ C@1W ( -- c )  Read one byte from the 1-wire bus.
+\     This uses 1W.TOUCH with an input parameter of FF hex to read one
 \     byte from a 1-wire device.
 \ 
-: owtouch ( c1 -- c2 ) 
-    owslot owslot owslot owslot owslot owslot owslot owslot ;
+: 1w.touch ( c1 -- c2 ) 
+    1w.slot 1w.slot 1w.slot 1w.slot
+    1w.slot 1w.slot 1w.slot 1w.slot ;
 
-: owput ( c -- ) owtouch drop ;  
-: owget ( -- c ) $ff owtouch ;
+: c!1w ( c -- ) 1w.touch drop ;  
+: c@1w ( -- c ) $ff 1w.touch ;
 
 \ SHOWID should be used ONLY if there is a single 1-wire device attached.
-: owshowid  owreset if
-    $33 owput owget . owget . owget . owget .
-    owget . owget . owget . owget . 
+: 1w.showid  
+   1w.reset if
+    $33 c!1w 
+    c@1w . c@1w . c@1w . c@1w .
+    c@1w . c@1w . c@1w . c@1w .
   then ;
 
 \ Maxim 1-wire ROM Search algorithm 
@@ -103,13 +106,13 @@ rombit 1+ constant discmark     ( used as byte variable )
         0 doneflag c!  
         exit
     then
-    owreset if          ( presence signal detected? )
+    1w.reset if          ( presence signal detected? )
 
         1 rombit c!         ( yes: set ROM bit index to 1 )
         0 discmark c!       ( set discrepancy marker to 0 )
-        $f0 owput           ( send search command on bus )
+        $f0 c!1w            ( send search command on bus )
         begin
-            $03 owslot owslot    ( read two bits: ba000000 )
+            $03 1w.slot 1w.slot    ( read two bits: ba000000 )
             dup $c0 = if        ( bitA = bitB = 1?)
                 drop
                 0 lastdisc c! 
@@ -128,7 +131,7 @@ rombit 1+ constant discmark     ( used as byte variable )
                 $40 and         ( bit A value )
                 !rombit
             then then
-            @rombit if 1 else 0 then owslot drop ( send ROM bit to bus )
+            @rombit if 1 else 0 then 1w.slot drop ( send ROM bit to bus )
             rombit c@ 1+ dup rombit c!
         $40 > until
         discmark c@ dup lastdisc c!
@@ -145,7 +148,7 @@ rombit 1+ constant discmark     ( used as byte variable )
 
 \ Demonstrates how to use ROMSEARCH to find all attached devices )
 
-: owshowids ( -- )
+: 1w.scan ( -- )
    newsearch
    begin
       romsearch
@@ -154,9 +157,9 @@ rombit 1+ constant discmark     ( used as byte variable )
    cr
 ;
 
-\ owcur is the device the host is currently
+\ 1w.current is the device the host is currently
 \ communicating with.
-8 buffer: owcurrent
+8 buffer: 1w.current
 
 \ define a 1wire device. At compile time
 \ take 8 numbers from the stack, at runtime
@@ -170,7 +173,7 @@ rombit 1+ constant discmark     ( used as byte variable )
 \ > sensor1 ( -- owcurrent)
 \ note that the byte order is the same that 
 \ owshowids prints, your numbers will be different.
-: owdevice:
+: 1w.device:
     ( n1 .. n8 -- )
     create
     c, c, c, c,
@@ -179,25 +182,25 @@ rombit 1+ constant discmark     ( used as byte variable )
       ( -- addr )
       8 0 do
        dup i + @i
-       owcurrent 7 i - + c!
-      loop drop owcurrent ;
+       1w.current 7 i - + c!
+      loop drop 1w.current ;
 
-\ This version of OWSENDID expects the address of an 8-byte ID )
-\ Start an addressed command.  This sends RESET, Match ROM [55h], )
-\ and the 8 bytes of ROMID.  It should be followed by a DS18B20   )
-\ function command. )
+\ Start an addressed command.  This sends RESET, Match ROM [55h],
+\ and the 8 bytes of ROMID.  It should be followed by a DS18B20
+\ function command.
 
-: owsendid ( addr -- )
-   owreset if
-      $55 owput    ( send Match ROM command )
-      8 over + swap do  i c@ owput  loop  ( send 8 id bytes )
+: 1w.matchrom ( addr -- )
+   1w.reset if
+      $55 c!1w    ( send Match ROM command )
+      8 over + swap do  i c@ c!1w loop  ( send 8 id bytes )
    else ." failed" drop then
 ;
 
-\ Function commands that can follow SENDID )
+\ Function commands that may follow 1w.matchrom
 
-: owdumpscratch ( addr -- )  ( display 9 bytes of scratchpad )
-   owsendid
-   $BE owput  owget . owget . owget . owget .
-   owget . owget . owget . owget . owget . 
+: 1w.dumpscratch ( -- )  ( display 9 bytes of scratchpad )
+   $BE c!1w
+   c@1w . c@1w . c@1w . c@1w .
+   c@1w . c@1w . c@1w . c@1w . 
+   c@1w .
 ;
