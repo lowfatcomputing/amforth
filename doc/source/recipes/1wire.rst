@@ -1,0 +1,105 @@
+=====================
+Dallas 1-Wire Devices
+=====================
+
+Dallas 1-Wire devices use 1 wire (besides gound level) to connect a peripheral 
+device with the hostmaster. A common use case are the temperature sensors
+DS18[S|B]20. The communication protocol between the device and the microcontroller 
+is simple but at some points very timing sensible.
+
+The typical wiring is shown in the picture. The pull up resisitor is recommended as
+well as the connection to VCC. 
+.. image: 1wire-basic.png
+
+This recipe is based upon work from Brad Rodriguez for the 4€4th project. He split
+the 1wire module into two parts: a bitlevel layer for all the dirty, time critical
+work with only 2 small assembly words, and all other stuff in portable forth code.
+Despite the fact, that he uses another controller type, the forth code remained the 
+same.
+
+
+To use the onewire module new AmForth hexfiles have to be created with the 
+file :file:`drivers/1wire.asm` included into your project master file (e.g. 
+:file:`template.asm`) All configuration is done using 4 constants that are set
+in the same file. They define, which pin is connected to the 1wire bus. There are
+no defaults.
+::
+
+  ; Port and Pin for the 1-wire bus.
+  .EQU OW_BIT=4
+  .equ OW_PORT=PORTE
+
+  ; 
+  ; AmForth versions up to and including 5.0 need the following
+  ; two lines. For later version simply omit them
+  .equ OW_DDR=ddre
+  .equ OW_PIN=pine
+  ;
+  ; for AmForth version up to and including 5.0 the next line should
+  ; go to your dict_appl.inc
+  .include "drivers/1wire.asm"
+
+After burning the new system into the controller, two new words are
+available: ``owreset`` and ``owslot``. The ``owreset``
+reinitializes the 1wire bus and gives a flag, whether at least one device is 
+present or not. It would not make much sense to continue, if no device is 
+recognized.
+
+::
+
+  : 1wirejob ... owreset if
+      do-the-job
+    then ... ;
+
+The ``owslot`` writes the LSB to the 1wire bus and reads
+one bit back, if a 1 was written. It turns off all interrupts for approx 
+60 microseconds to achieve the correct timing. The lower byte of the
+TOS is rotated so repeated calls to ``owslot`` can transfer
+all bits of a bytes without further code. It is probably the smartest
+word of the whole package.
+
+::
+  : owtouch ( c1 -- c2 ) 
+      owslot owslot owslot owslot 
+      owslot owslot owslot owslot ;
+
+  : owput ( c -- ) owtouch drop ;  
+  : owget ( -- c ) $ff owtouch ;
+
+1-Wire Tools
+------------
+
+The first useful tool is the lowlevel ``owreset``.
+It checks whether at least one 1wire device is present and
+working or not. Another useful tools are in the file 
+:file:`1wire.frt`. They perform a ROM search to print all
+ROM id's of the connected devices.
+
+::
+
+  (ATmega1280)> hex owshowids 
+
+   10 11 E5 68  2  8  0 2A
+   28 4C 75 CC  2  0  0 CD
+  ok
+  (ATmega1280)> 
+
+Code specialized for temperature sensors is in the file 
+:file:`1wire-temp.frt`. Keep in mind, that at least 2 different 
+sensor types are available with different result codings. The 
+code is not currently capable to take care of the differences.
+
+:: 
+
+  > hex create sensor2 28 , 4C , 75 , CC , 2 , 0 , 0 , CD ,
+  ok
+  > decimal sensor2 owconvert 750 ms sensor2 readtemp temp>pad pad count type
+  18.0 ok
+  >
+
+Possible Improvements
+---------------------
+
+The module opens the door to the 1wire world. It is by far not complete
+or finished. Some things could (or should?) be done better. Feel free to
+improve them and share them, please.

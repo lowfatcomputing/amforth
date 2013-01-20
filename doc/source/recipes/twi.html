@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>amforth recipe: Using TWI (I2C)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link href="../amforth.css" rel="stylesheet" type="text/css"/>
+<!-- Piwik -->
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/amforth/" : "http://sourceforge.net/apps/piwik/amforth/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://sourceforge.net/apps/piwik/amforth/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>
+<!-- End Piwik Tag -->
+<script Language="JavaScript">
+<!--
+function compute(form) {
+    fcpu=8000000;
+    br=10;
+    ps=0;
+    if (form.fcpu.value!=""){fcpu=(eval(form.fcpu.value));}
+    if (form.br.value!=""){br=(eval(form.br.value));}
+    if (form.ps.value!=""){ps=(eval(form.ps.value));}
+    scl=fcpu/(16+2*br*Math.pow(4,ps));
+    scl = scl.toFixed(0);
+    form.scl.value=scl;
+    d=document.getElementById("forth");
+    d.innerHTML="<pre>\\ at CPU " +fcpu+" Hz run the I2C clock at " + scl +" Hz\n"+ps+" " + br + " twi.init</pre>";
+  }// -->
+</script>
+
+</head>
+<body>
+<div id="page_margins">
+	<div id="page">
+		<div id="header" role="banner">
+			<h1>amforth recipe: Two Wire Interface TWI/I2C</h1>
+		</div>
+	<!-- begin: main navigation #nav -->
+	<div id="nav" role="navigation">
+    	    <div class="hlist">
+    	    <ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="../faq.html">FAQ</a></li>
+					<li id="current"><a href="index.html">Recipes</a></li>
+					<li><a href="../links.html">Links</a></li>
+					<li><a href="../words/index.html">Words</a></li>
+					<li><a href="http://sourceforge.net/projects/amforth">Download</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- end: main navigation -->
+		<!-- begin: main content area #main -->
+		<div id="main">
+			<!-- begin: #col1 static column -->
+			<div id="col1">
+				<div id="col1_content" class="clearfix">
+				</div>
+				<div id="ie_clearing">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+			</div>
+			<!-- end: #col1 -->
+
+			<!-- begin: #col2 static column -->
+			<div id="col2">
+				<div id="col2_content" class="clearfix">
+				    <p></p>
+				</div>
+				<div id="ie_clearing">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+			</div>
+			<!-- end: #col2 -->
+
+			<!-- begin: #col1 - first float column -->
+			<div id="col3">
+				<div id="col3_content" class="clearfix"> <a id="content" name="content"></a>
+					<!-- skiplink anchor: Content -->
+
+<h1>TWI/I2C</h1>
+<h2>SCL Clock Calculator</h2>
+
+<p>Here you can determine the SCL Clock speed for various settings. Just enter your
+parameters. You may need to enable JavaScript.</p>
+
+<p><form name="TWI">
+<table border=1><tr>
+<tr><td>F_CPU (Hz)</td><td><input type="text" name="fcpu" size=15 value="8000000" onchange="compute(this.form)"></td></tr>
+<tr><td>Bitrate Register (0..255)</td><td><input type="text" name="br" size=15 value="10" onchange="compute(this.form)"></td></tr>
+<tr><td>Prescaler</td><td align=center>
+      <select name="ps" onChange="compute(this.form)">
+                                          <option value="0">0
+                                          <option value="1">1
+					  <option value="2">2
+					  <option value="3">3
+                                          </select></td></tr>
+</table>
+<hr>
+<table border=1><tr>
+<tr>
+    <td> SCL Frequency (Hz) </td><td> <input type="text" name="scl"   size=15></td>
+</tr>
+<tr>
+    <td> Forth Code</td><td><div id="forth"></div></td>
+</tr>
+</table>
+</form></p>
+
+<p>Note: No Warranty!</p>
+
+<p>
+Most client devices want a clock speed of 100kHz or 400 kHz. 
+The bitrate regeister should be well above 10 if the controller
+is the bus master.
+</p>
+<pre>
+ TWI (SCL) clock speed = CPU_clock/(16 + 2*bitrateregister*(4^prescaler))
+ following the SCL clock speed in Hz for an 8Mhz device
+                     f_cpu   8000000
+      bitrate register (may be any value between 0 and 255)
+               4      8       16      32      64      128    255
+      prescaler                             
+      0     333.333 250.000 166.667 100.000 55.556  29.412  15.209
+      1     166.667 100.000 55.556  29.412  15.152  7.692   3.891
+      2     55.556  29.412  15.152  7.692   3.876   1.946     978
+      3     15.152  7.692   3.876   1.946     975     488     245
+
+</pre>
+
+</div>
+				<div id="ie_clearing">&nbsp;</div>
+				<!-- End: IE Column Clearing -->
+				</div>
+			</div>
+			<!-- end: #col3 -->
+		</div>
+		<!-- end: #main -->
+		<!-- begin: #footer -->
+		<div id="footer">
+ <p>Hosted by <a 
+    href="http://sourceforge.net/projects/amforth">
+    <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=179967&type=10" 
+    width="80" height="15" border="0" 
+    alt="Get amforth: Forth for AVR ATmega at SourceForge.net. Fast, secure and Free Open Source software downloads" />
+    </a>
+<a href="mailto:amforth-devel@lists.sourceforge.net">amforth-devel@lists.sourceforge.net</a></p>
+<br />
+Layout based on <a href="http://www.yaml.de/">YAML</a></div>
+		<!-- end: #footer -->
+	</div>
+</div>
+</body>
+</html>
