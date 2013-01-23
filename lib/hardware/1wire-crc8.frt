@@ -1,4 +1,4 @@
-\ 2013-01-21  EW  1wire.crc8.fs
+\ 2013-01-21  EW  ewlib/1wire_crc8.fs
 \ 1wire 8bit crc check, as used by ds18s20
 \ based on C code by Colin O'Flynn and M.Thomas, found at
 \ http://www.siwawi.arubi.uni-kl.de/avr_projects/tempsensor/ds18x20_demo_20110209.zip
@@ -47,4 +47,19 @@ variable 1w.crc.fbit    \ feedbackbit
 \ process N bytes from stack, compare with crc, leave flag
 : 1w.crc8? ( crc xN-1 .. x0 N -- t/f )
   1w.crc8  =
+;
+
+\ same as 1w.crc8, but process data in reverse (stack) order!
+: 1w.crc8.rev  ( x0 .. xN-1 N -- crc )
+  0 1w.crc.shreg !
+  0 1w.crc.byte  !
+  0 1w.crc.fbit  !
+  1 over ?do i pick (1w.crc8)  -1 +loop
+  0 ?do drop loop
+  1w.crc.shreg @
+;
+: 1w.crc8.rev? ( x0 .. xN-1 crc N -- t/f )
+  swap >r \ save crc
+  1w.crc8.rev
+  r> =
 ;

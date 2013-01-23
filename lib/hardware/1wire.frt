@@ -58,8 +58,10 @@
     1w.slot 1w.slot 1w.slot 1w.slot
     1w.slot 1w.slot 1w.slot 1w.slot ;
 
-: c!1w ( c -- ) 1w.touch drop ;  
+: c!1w ( c -- ) 1w.touch drop ;
 : c@1w ( -- c ) $ff 1w.touch ;
+: n>1w ( xN .. x1 N -- )  0 ?do c!1w loop ;
+: n<1w ( N -- x1 .. xN )  0 ?do c@1w loop ;
 
 \ SHOWID should be used ONLY if there is a single 1-wire device attached.
 : 1w.showid  
@@ -166,37 +168,45 @@ rombit 1+ constant discmark     ( used as byte variable )
 \ copy these numbers to owcurrent and give
 \ this address back to the caller
 \ e.g.
-\ > hex owshowids
+\ > hex 1w.scan
 \   28 4C 75 CC 2  0  0 CD 
 \  ok
-\ > 28 4C 75 CC 2  0  0 CD owdevice: sensor1
-\ > sensor1 ( -- owcurrent)
+\ > 28 4C 75 CC 2  0  0 CD 1w.device: sensor1
+\ > sensor1 ( -- addr)
 \ note that the byte order is the same that 
-\ owshowids prints, your numbers will be different.
+\ 1w.scan prints, your numbers will be different.
 : 1w.device:
     ( n1 .. n8 -- )
     create
     c, c, c, c,
     c, c, c, c,
     does>
-      ( -- addr )
-      8 0 do
-       dup i + @i
-       1w.current 7 i - + c!
-      loop drop 1w.current ;
+      ( -- n1 .. n8 )
+      8 bounds do
+       i @i
+      loop ;
 
 \ Start an addressed command.  This sends RESET, Match ROM [55h],
 \ and the 8 bytes of ROMID.  It should be followed by a DS18B20
 \ function command.
 
-: 1w.matchrom ( addr -- )
+: 1w.matchrom ( rom-id -- )
    1w.reset if
       $55 c!1w    ( send Match ROM command )
-      8 over + swap do  i c@ c!1w loop  ( send 8 id bytes )
+      8 0 do  c!1w loop  ( send 8 id bytes )
    else ." failed" drop then
 ;
 
-\ Function commands that may follow 1w.matchrom
+: 1w.skiprom ( -- )
+   1w.reset if
+      $cc c!1w
+   then
+;
+
+\ Function commands that address a single device.
+\ They require either a 1w.skiprom to talk to the
+\ only device present on the bus or 1w.matchrom with
+\ a specific ROM-ID to activate a specific one.
 
 : 1w.dumpscratch ( -- )  ( display 9 bytes of scratchpad )
    $BE c!1w
