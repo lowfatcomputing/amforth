@@ -3,9 +3,9 @@ Disabling the terminal command echo
 ===================================
 
 Sometimes it may be desirable to turn off the echo function
-in ``accept`` when entering commands. One solution to
-do it is to temporarily redirect the ``emit`` to do
-nothing. 
+in :command:`accept` when entering commands. One solution to
+do it is to temporarily redirect the :command:`emit` to do
+nothing.
 
 ::
 

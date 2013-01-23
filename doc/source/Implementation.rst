@@ -119,46 +119,29 @@ Programming Tools
 =================
 
 Variants of the words
-:command:`.S`
-,
-:command:`?`
-and
-:command:`DUMP`
+:command:`.S`, :command:`?`
+and :command:`DUMP`
 are implemented or can easily be done. The word
-:command:`SEE`
-is available as well.
+:command:`SEE` is available as well.
 
-:command:`STATE`
-works as specified.
+:command:`STATE` works as specified.
 
-The word
-:command:`WORDS`
+The word :command:`WORDS`
 does not sort the word list and does not take care
 of screen sizes.
 
-The words
-:command:`;CODE`
-and
-:command:`ASSEMBLER`
+The words :command:`;CODE`
+and :command:`ASSEMBLER`
 are not supported. amforth has a loadable assembler
 which can be used with the words
-:command:`CODE`
-and
-:command:`END-CODE`
+:command:`CODE` and :command:`END-CODE`
 .
 
 The control stack commands
-:command:`CS-ROLL`
-,
-:command:`CS-PICK`
-and
-:command:`AHEAD`
-are not implemented. The compiler words operate with
-the more traditional
-:command:`MARK`
-/
-:command:`RESOLVE`
-word pairs.
+:command:`CS-ROLL` , and ,
+:command:`CS-PICK` are not implemented. The 
+compiler words operate with the more traditional
+:command:`MARK` / :command:`RESOLVE` word pairs.
 
 :command:`FORGET`
 is not implemented since it would be nearly impossible to
@@ -168,12 +151,8 @@ from the library.
 
 An EDITOR is not implemented.
 
-:command:`[IF]`
-,
-:command:`[ELSE]`
-and
-:command:`[THEN]`
-are not implemented.
+:command:`[IF]`, :command:`[ELSE]`
+and :command:`[THEN]` are not implemented.
 
 Word Lists and Search Order
 ===========================

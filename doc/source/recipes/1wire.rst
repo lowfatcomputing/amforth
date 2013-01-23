@@ -9,7 +9,7 @@ is simple but at some points very timing sensible.
 
 The typical wiring is shown in the picture. The pull up resisitor is recommended as
 well as the connection to VCC. 
-.. image: 1wire-basic.png
+.. image: 1wire-basic.*
 
 This recipe is based upon work from Brad Rodriguez for the 4€4th project. He split
 the 1wire module into two parts: a bitlevel layer for all the dirty, time critical
@@ -40,7 +40,7 @@ no defaults.
   .include "drivers/1wire.asm"
 
 After burning the new system into the controller, two new words are
-available: ``owreset`` and ``owslot``. The ``owreset``
+available: :command:`owreset` and :command:`owslot`. The :command:`owreset`
 reinitializes the 1wire bus and gives a flag, whether at least one device is 
 present or not. It would not make much sense to continue, if no device is 
 recognized.
@@ -51,10 +51,10 @@ recognized.
       do-the-job
     then ... ;
 
-The ``owslot`` writes the LSB to the 1wire bus and reads
+The :command:`owslot` writes the LSB to the 1wire bus and reads
 one bit back, if a 1 was written. It turns off all interrupts for approx 
 60 microseconds to achieve the correct timing. The lower byte of the
-TOS is rotated so repeated calls to ``owslot`` can transfer
+TOS is rotated so repeated calls to :command:`owslot` can transfer
 all bits of a bytes without further code. It is probably the smartest
 word of the whole package.
 
@@ -69,9 +69,9 @@ word of the whole package.
 1-Wire Tools
 ------------
 
-The first useful tool is the lowlevel ``owreset``.
+The first useful tool is the lowlevel :command:`owreset`.
 It checks whether at least one 1wire device is present and
-working or not. Another useful tools are in the file 
+working or not. Other useful tools are in the file 
 :file:`1wire.frt`. They perform a ROM search to print all
 ROM id's of the connected devices.
 

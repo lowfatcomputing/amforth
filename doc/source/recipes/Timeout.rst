@@ -1,3 +1,5 @@
+.. _TimeOutLoop:
+
 =================
 Loop With Timeout
 =================

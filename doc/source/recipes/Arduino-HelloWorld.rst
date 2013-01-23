@@ -15,7 +15,7 @@ First: A few constants:
   > $25 constant PORTB
   > $24 constant DDRB
 
-The sign > is the command prompt, if you see it, you can
+The sign :command:`>` is the command prompt, if you see it, you can
 enter any commands. You'll never enter that character yourselves.
 A command line can be up to 80 characters
 long, if you need a longer one, you'll need to change the 
@@ -52,14 +52,21 @@ can be used as part of a command name.
 
 The first command in this example sets up the Data Direction Register 
 to make the LED Port an output pin. In arduino sketch it would be
-<pre>void setup() { pinMode(13, OUTPUT); }</pre>
+
+::
+
+  void setup() { 
+     pinMode(13, OUTPUT); 
+  }
+
+The same in Forth is
 
 ::
 
   > : led-init  $80 DDRB c! ;
 
 By entering the command line the interpreter will learn a new command:
-led-init. This command can be called immediatly after the command prompt
+:command:`led-init`. This command can be called immediatly after the command prompt
 says OK. And it can be used in further command definitions.
 
 It writes the 8bit number 128 (hex 80) to the register DDRB (hex 24) 
@@ -76,12 +83,12 @@ Here the 7th bit will be set to 1, and that makes the led to be connected
 to VCC (5V) and it will turn on (the LED is connected to ground already).
 
 If the led-on command does not turn on the LED just call the
-led-init command (again). The led-init is needed after an reset
+:command:`led-init` command (again). The led-init is needed after an reset
 or power cycle as well.
 
 Now that the led is active, we want a command to turn it off. One solution
-is to repeat the command from above: 0 PORTB c! . Smarter is a new command
-word:
+is to repeat the command from above: :command:`0 PORTB c!`. Smarter is a 
+new command word:
 
 ::
 
@@ -128,15 +135,15 @@ To make it blink "forever", the next word is helpful
     key drop \ we do not want to keep this key stroke
   ;
 
-This wird prints some text ("press any key to stop) and starts a loop.
+This wird prints some text ("press any key to stop") and starts a loop.
 This loop lets the led blink one and checks for a keystroke. If no key
 is pressed, the loops is repeated. If a key is pressed, the loop is
-finished. The last two commands are housekeeping: read the key pressed
+terminated. The last two commands are housekeeping: read the key pressed
 and forget it. Otherwise the key pressed would be the first character
 of the next command line.
 
 The advantage of defining many words is that you can test them immediatly.
 Thus any further code can rely on words already being tested and that
 makes debugging alot easier. The drawback of that many words? You need
-more code space for the names of the commmands. There is no speed
+some more code space for the names of the commmands. There is no speed
 penalty.

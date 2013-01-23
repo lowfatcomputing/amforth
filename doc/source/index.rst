@@ -9,14 +9,16 @@ Welcome to AmForth's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
 
    Preface
    TG
    Cookbook
+   refcard
 
 Indices and tables
 ==================
+
+
 
 * :ref:`genindex`
 * :ref:`modindex`

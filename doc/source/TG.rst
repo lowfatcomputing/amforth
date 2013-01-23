@@ -3,7 +3,6 @@ Technical Guide
 ===============
 
 .. toctree::
-    :maxdepth: 2
 
     FirstSteps
     Hardware

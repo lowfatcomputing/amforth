@@ -8,4 +8,5 @@ Hardware Modules
     EEPROM
     Interrupts
     Timer
+    TWI
     Usart

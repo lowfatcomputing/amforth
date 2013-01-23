@@ -3,7 +3,6 @@ Cookbook
 ========
 
 .. toctree::
-     :maxdepth: 2
 
      recipes/Boards
      recipes/Hardware

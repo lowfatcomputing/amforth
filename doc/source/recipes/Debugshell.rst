@@ -3,11 +3,12 @@ Debug Shell
 ===========
 
 A debugger is a tool to check data at runtime. For amforth there is no
-single tool for that purpose. There are a Tracer
-and a `Profiler "profiler.html"`_ available. They modify the code
-generation to achieve their goals. The debugshell presented is called at 
-explicit breakpoints to stop the execution of the current word and gives 
-an indepenedent command prompt to execute arbitrary commands. 
+single tool for that purpose. There are a :ref:`Tracer`
+and a :ref:`Profiler` available. They modify the code
+generation to achieve their goals. The debugshell presented here 
+is called at explicit breakpoints to stop the execution of the 
+current word and gives an indepenedent command prompt to execute 
+arbitrary commands. 
 
 This debugshell core can be modified and expanded in many ways.
 One example is the Watcher Utility for memory access.

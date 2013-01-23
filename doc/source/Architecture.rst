@@ -159,10 +159,10 @@ Interpreter
 
 The interpreter is a line based command interpreter. It based upon :command:`REFILL`
 to acquire the next line of characters, located at a position :command:`SOURCE` points to.
-While processing the line, the pointer >IN is adjusted accordingly. Both
+While processing the line, the pointer :command:`>IN` is adjusted accordingly. Both
 words :command:`REFILL` and :command:`SOURCE` are USER based deferred words which
 allows to use any input source on a thread specific level. The interpreter itself
-does not use any static buffers or variables (>IN is a USER variable as well).
+does not use any static buffers or variables (:command:`>IN` is a USER variable as well).
 
 A given string is handled by :command:`INTERPRET` which splits it
 into whitespace delimited words. Every word is processed using a list of
@@ -175,14 +175,15 @@ SOURCE and REFILL
 during processing. The task of REFILL is to fill the string buffer, SOURCE will
 point to when finished.
 
-There is one default input source: The terminal input buffer. This buffer gets filled with REFILL-TIB
-that reads from the serial input buffers (KEY). SOURCE points to the Terminal Input Buffer itself.
-Another input source are plain strings, used by EVALUATE.
+There is one default input source: The terminal input buffer. This buffer gets filled with 
+:command:`REFILL-TIB` that reads from the serial input buffers (:command:`KEY`). 
+:command:`SOURCE` points to the Terminal Input Buffer itself.
+Another input source are plain strings, used by :command:`EVALUATE`.
 
 Recognizer
 ----------
 
-A recognizer gets the word address (API is not yet finalized) of the current word.
+A recognizer gets the string information of the current word.
 If the word can be processed, the recognizer is responsible to do so. A word from
 the dictionary has to be either executed or compiled, a number as well. A recognizer
 must not change the word buffer content. Finally the recognizer returns a flag to
@@ -203,28 +204,27 @@ entries is a compile time setting (currently 6 slot are available).
 Example Recognizer
 ~~~~~~~~~~~~~~~~~~
 
-A recognizer gets the address of a counted word in memory and leaves at least the flag
+A recognizer gets the address/len pair of a word in RAM and leaves at least the flag
 for the interpreter. If any data is to be left on the stack (e.g. numeric values) it
 has to be beneath the flag.
 
 The small example illustrates the integration of the floating point library for amforth.
-It is based upon a conversion word >float which takes a string and tries to convert it into a
-float. The word fliteral compiles a floating point number into the dictionary.
+It is based upon a conversion word :command:`>float` which takes a string and tries to 
+convert it into a float. The word fliteral compiles a floating point number into the 
+dictionary.
 
 ::
 
-    : rec-float  \\ addr -- (f|) -1 | 0
-    count >float
+    : rec-float  \\ addr len -- (f|) -1 | 0
+    >float
     if state @ if postpone fliteral then -1 else 0
     then ;
 
 The recognizer first tries to convert the string to a number. If that fails, the flag
-from the >float is essentially duplicated and the recognizer is left. If the conversion
+from the :command:`>float` is essentially duplicated and the recognizer is left. If the conversion
 succeeded, the floating point number is on the data stack. The recognizer now checks
 whether the number needs to be compiled or not. In any case the success flag is
 returned.
-
-Future versions may change the API from counted strings at addr to addr/len information.
 
 Stacks
 ######
@@ -232,13 +232,12 @@ Stacks
 Data Stack
 ----------
 
-The data stack uses the CPU register pair YH:YL as its data
+The data stack uses the CPU register pair :command:`YH:YL` as its data
 pointer. The Top-Of-Stack element (TOS) is in a register pair.
 Compared to a straight forward implementation this approach saves
-code space and gives higher execution speed (approx 10-20%). Saving even more stack
-elements does not really provide a greater
-benefit (much more code and only little speed
-enhancements).
+code space and gives higher execution speed (approx 10-20%). Saving even 
+more stack elements does not really provide a greater benefit (much more 
+code and only little speed enhancements).
 
 The data stack starts at a configurable distance
 below the return stack (RAMEND) and grows
@@ -322,11 +321,10 @@ It is called whenever an interrupt occurs. The code
 is the same for all interrupts. It takes the number
 of the interrupt from its vector address and stores
 this in a RAM cell. Then the low level ISR sets the
-:command:`T`
-flag in the status register of the controller and returns
-with RET.
+:command:`T` flag in the status register of the controller 
+and returns with :command:`RET`.
 
-The second step is taken from the inner interpreter.
+The second step does the inner interpreter.
 It checks the T-flag every time it is entered and,
 if it is set, it switches to interrupt
 handling at forth level. This approach has a penalty
@@ -339,7 +337,7 @@ T-flag and continues with the word :command:`ISR-EXEC`.
 This word reads the currently active interrupt number and calls
 the associated execution token.  When this word is finished,
 the word :command:`ISR-END` is called. This word clears
-the interrupt flag for the controller (RETI).
+the interrupt flag for the controller (:command:`RETI`).
 
 This interrupt processing has two advantages: There are
 no lost interrupts (the controller itself disables interrupts
@@ -364,27 +362,18 @@ Multitasking
 amforth does not implement multitasking directly. It
 provides the basic functionality however. Within IO
 words the deferred word
-:command:`PAUSE`
-is called whenever possible. This word is
-initialized to do nothing (
-:command:`NOOP`
-).
+:command:`PAUSE` is called whenever possible. This word is
+initialized to do nothing (:command:`NOOP`).
 
 Exception Handling
 ##################
 
-amforth implements the
-:command:`CATCH`
-and
-:command:`THROW`
-exception handling. The outermost catch frame is
-located at the interpreter level in the word
-:command:`QUIT`
-. If an exception with the value -1 or -2 is thrown,
-:command:`QUIT`
-will print a message and re-start itself. Other
-values silently restart
-:command:`QUIT`
+amforth implements the :command:`CATCH`
+and :command:`THROW` exception handling. The outermost catch 
+frame is located at the interpreter level in the word
+:command:`QUIT`. If an exception with the value -1 or 
+-2 is thrown, :command:`QUIT` will print a message and 
+re-start itself. Other values silently restart :command:`QUIT`
 .
 
 User Area
@@ -394,9 +383,7 @@ The User Area is a special RAM storage area. It
 contains the USER variables and the User deferred
 definitions. Access is based upon the value of the
 user pointer UP. It can be changed with the word
-:command:`UP!`
-and read with
-:command:`UP@`
+:command:`UP!` and read with :command:`UP@`
 . The UP itself is stored in a register pair.
 
 The size of the user area is determined by the size the system
@@ -509,15 +496,7 @@ language.
 FLASH Structure Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: flash-structure.png
-
-.. image:: flash-structure.eps
-
-.. COMMENT: <mediaobject>
-            <imageobject>
-            <imagedata fileref="flash2-structure.eps" format="EPS" scale="33"/>
-            </imageobject>
-            </mediaobject>
+.. image:: flash-structure.*
 
 The reason for this split is a technical one: to
 work with a dictionary in flash the controller needs
@@ -561,9 +540,7 @@ DFU boot loader from atmel found on some USB enabled controllers does.
 Alternative FLASH Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: flash2-structure.png
-
-.. image:: flash2-structure.eps
+.. image:: flash2-structure.*
 
 The unused flash area beyond 0x1FFFF is not directly accessible for amforth.
 It could be used as a block device.
@@ -572,8 +549,7 @@ Flash Write
 -----------
 
 The word performing the actual flash write
-operation is
-:command:`I!`
+operation is :command:`I!`
 (i-store). This word takes the value and the
 address of a single cell to be written to flash
 from the data stack. The address is a word
@@ -622,12 +598,9 @@ word IS is used to put a new XT into it.
 Low level space management is done through the the
 EDP variable. This is not a forth value but a EEPROM
 based variable. To read the current value an
-:command:`@e`
-operation must be used, changes are written back
-with
-:command:`!e`
-. It contains the highest EEPROM address currently
-allocated. The name is based on the DP variable,
+:command:`@e` operation must be used, changes are written 
+back with :command:`!e`. It contains the highest EEPROM address 
+currently allocated. The name is based on the DP variable,
 which points to the highest dictionary address.
 
 RAM
@@ -659,9 +632,7 @@ memory pool.
 RAM Structure Overview
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: ram-structure.png
-
-.. image:: ram-structure.eps
+.. image:: ram-structure.*
 
 Another layout, that makes the external RAM easily available is shown in
 :ref:`RAM2_FIGURE`. Here are the stacks at the beginning of the internal RAM and the
@@ -674,28 +645,18 @@ working with external RAM instead of internal.
 RAM Structure Overview
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: ram2-structure.png
-
-.. image:: ram2-structure.eps
+.. image:: ram2-structure.*
 
 With amforth all three sections can be accessed
 using their RAM addresses. That makes it quite easy
-to work with words like
-:command:`C@`
-. The word
-:command:`!`
+to work with words like :command:`C@`. The word :command:`!`
 implements a LSB byte order: The lower part of the
 cell is stored at the lower address.
 
-For the RAM there is the word
-:command:`Rdefer`
+For the RAM there is the word :command:`Rdefer`
 which defines a deferred word, placed in RAM. As a
-special case there is the word
-:command:`Udefer`
+special case there is the word :command:`Udefer`
 , which sets up a deferred word in the user area. To
-put an XT into them the word
-:command:`IS`
+put an XT into them the word :command:`IS`
 is used. This word is smart enough to distinguish
 between the various Xdefer definitions.
-
-

@@ -5,7 +5,7 @@ Port Code From C
 There is a lot of C code out there. And there is no easy way
 to use it in AmForth. This recipe gives some hints for porting
 C code. A lot of more examples can be found at 
-` Rosetta Code http://rosettacode.org/wiki/Category:Forth`_.
+`Rosetta Code <http://rosettacode.org/wiki/Category:Forth>`_.
 
 Register Names and Bits
 -----------------------
@@ -20,8 +20,8 @@ Single bits are straight forward:
 ::
 
  C:
-   TIMSK0 |= (1&lt;&lt;OCIE0); /* set the bit */
-   TIMSK0 &= ~(1&lt;&lt;OCIE0); /* clear the bit */
+   TIMSK0 |= (1<<OCIE0); /* set the bit */
+   TIMSK0 &= ~(1<<OCIE0); /* clear the bit */
  AmForth:
    \ set the bit
    : or! dup c@ rot or swap c! ;
@@ -67,7 +67,7 @@ Counted Loops
 ::
  
  C:
-   for(i=0;i&lt;10;i++) {
+   for(i=0;i<10;i++) {
      foo();
    }
  AmForth:
@@ -79,7 +79,7 @@ of ``loop``:
 ::
 
  C:
-   for(i=0;i&lt;10;i+2) {
+   for(i=0;i<10;i+2) {
      foo();
    }
  AmForth:

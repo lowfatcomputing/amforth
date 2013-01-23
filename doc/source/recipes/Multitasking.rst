@@ -21,9 +21,10 @@ To change the action of ``pause`` you need to define a word and apply it with th
  \ and turn it off
  ' noop is pause
 
-Amforth' multitasker makes use of the user area as the task control structure. The long term credit to
-the multitasker's design seem to go back to Bill Muench, as stated at 
-`hforth http://www.taygeta.com/hforth.html`_. The current code is based on a 
+Amforth' multitasker makes use of the user area as the task control 
+structure. The long term credit to the multitasker's design seem to 
+go back to Bill Muench, as stated at `hforth 
+<http://www.taygeta.com/hforth.html>`_. The current code is based on a 
 usenet article from Brad Eckert from Fri, 17 Aug 2007.
 
 ::

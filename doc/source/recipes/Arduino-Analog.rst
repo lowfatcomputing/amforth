@@ -21,7 +21,7 @@ The ADC on the atmega has a resolution of 10 bits, thus a number between 0 and 1
 as the result.
 
 Note that the ADC module needs some time between two conversion. If you do it too
-fast, expect malfunctions or even crashes. A simple :file:`10 ms`  circumvent most problems.
+fast, expect malfunctions or even crashes. A simple :command:`10 ms`  circumvent most problems.
 
 ::
 
