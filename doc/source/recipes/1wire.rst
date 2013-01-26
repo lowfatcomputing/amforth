@@ -9,7 +9,9 @@ is simple but at some points very timing sensible.
 
 The typical wiring is shown in the picture. The pull up resisitor is recommended as
 well as the connection to VCC. 
-.. image: 1wire-basic.*
+
+.. figure:: 1wire-basic.*
+    :align: right
 
 This recipe is based upon work from Brad Rodriguez for the 4€4th project. He split
 the 1wire module into two parts: a bitlevel layer for all the dirty, time critical
@@ -22,7 +24,8 @@ To use the onewire module new AmForth hexfiles have to be created with the
 file :file:`drivers/1wire.asm` included into your project master file (e.g. 
 :file:`template.asm`) All configuration is done using 4 constants that are set
 in the same file. They define, which pin is connected to the 1wire bus. There are
-no defaults.
+no defaults
+
 ::
 
   ; Port and Pin for the 1-wire bus.

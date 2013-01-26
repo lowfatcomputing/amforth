@@ -1052,16 +1052,6 @@ Numeric IO
 
 
 
-R( -- )
--------
-
-* :command:`built`
-  ( -- )
-  prints the date and time the hex file was generated
-
-
-
-
 Search Order
 ------------
 
@@ -1291,6 +1281,11 @@ System
 * :command:`allot`
   ( n -- )
   allocate or release memory in RAM
+
+* :command:`built`
+  ( -- )
+  (R: -- )
+  prints the date and time the hex file was generated
 
 * :command:`cold`
   ( -- )

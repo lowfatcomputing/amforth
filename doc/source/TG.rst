@@ -3,7 +3,7 @@ Technical Guide
 ===============
 
 .. toctree::
-
+    Preface
     FirstSteps
     Hardware
     Sources

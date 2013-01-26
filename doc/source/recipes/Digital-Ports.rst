@@ -16,7 +16,8 @@ it afterwards regardless of others.
 Output pins
 -----------
 
-.. image: LED-Basic.*
+.. figure:: LED-Basic.*
+    :align: right
 
 The simplest hardware is a LED connected to one pin.
 The following sequence initializes the pin and turns 
