@@ -99,3 +99,6 @@ synonym SPI:SCK   digital.52
 synonym TWI:SDA   digital.20  
 synonym TWI:SCL   digital.21  
 synonym LED_BUILTIN digital.13  
+
+synonym SERIAL:RX   digital.0
+synonym SERIAL:TX   digital.1
