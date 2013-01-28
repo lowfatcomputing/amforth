@@ -71,9 +71,21 @@ hex
 ;
 
 : is_high? ( pinmask portaddr -- f)
-    c@ and 0>
+    c@ over and =
 ;
 
+: wait_low ( pinmask portaddr -- )
+    begin 
+      over over is_low?
+    until drop drop
+;
+
+: wait_high ( pinmask portaddr -- )
+    begin 
+      over over is_high?
+    until drop drop
+;
+ 
 \ write the pins masked as output
 \ read the current value, mask all but
 \ the desired bits and set the new
