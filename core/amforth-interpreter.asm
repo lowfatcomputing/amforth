@@ -1,19 +1,4 @@
 ; the inner interpreter.
-DO_DODOES:
-    savetos
-    movw tosl, wl
-    adiw tosl, 1
-    ; the following takes the address from a real uC-call
-.if (pclen==3)
-    pop wh ; some 128K Flash devices use 3 cells for call/ret
-.endif
-    pop wh
-    pop wl
-
-    push XH
-    push XL
-    movw XL, wl
-    rjmp DO_NEXT
 
 DO_COLON:
     push XH
