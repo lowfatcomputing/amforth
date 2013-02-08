@@ -78,7 +78,7 @@ UCSZ00. Elder controllers do not have a number suffix, just delete it
 The next file to edit is the Makefile (or the build.xml if you want
 to use the ant utility). First set the right controller type:
 
-::
+.. code-block:
 
   # the MCU should be identical to the device
   # setting in template.asm, it set
@@ -145,3 +145,5 @@ interrupt and poll based routines:
 Settings the value of 1 select the interrupt based routines, otherwise the
 poll driven routines are used. It is recommended to leave the options as
 they are set.
+
+.. seealso:: :ref:`Redirect IO`

@@ -1,11 +1,10 @@
 
-
 ===================
 Source Organization
 ===================
 
 Overview
-########
+--------
 
 amforth is written using the standard Atmel AVR 8 bit assembly
 language. That does not mean that every word is actually written in
@@ -69,7 +68,7 @@ the source code easier to read. :file:`user.inc` contains the layout
 of the system user area.
 
 Core system
-###########
+-----------
 
 The file :file:`amforth.asm` is the core of amforth. Here is the startup code 
 for the microcontroller, and the forth inner interpreter with the interrupt
@@ -89,7 +88,7 @@ to size limitations in the NRWW section with smaller atmegas. They
 are usually included by the application specific include file(s).
 
 :file:`dict_core.inc`
----------------------
+.....................
 
 The file :file:`dict_core.inc`
 contains all words for the NRWW flash section, Since the word
@@ -102,20 +101,20 @@ dictionary space is an issue. As a helper the file
 application specific words in the core area.
 
 :file:`dict_minimum.inc`
-------------------------
+........................
 
 A useful forth system needs in addition to the above at least the
 file :file:`dict_minimum.inc`, which includes the
 forth interpreter words.
 
 :file:`dict_compiler.inc`
--------------------------
+.........................
 
 An almost complete forth system with a compiler gives the third
 include file: :file:`dict_compiler.inc`.
 
 :file:`dict_appl.inc` and :file:`dict_appl_core.inc`
-----------------------------------------------------
+....................................................
 
 Some words have their source files within the
 :file:`core/words` directory but have to be included via the
@@ -124,7 +123,7 @@ files. These words may provide the hardware dependencies to access the
 amforth system. The serial line terminal is an example.
 
 Device Settings
-===============
+---------------
 
 Every Atmega has its own specific settings. They are based on
 the official include files provided by Atmel and define the
@@ -136,11 +135,10 @@ copy and edit an existing file from a similar type.
 
 The last definition is a string with the device name in clear text.
 This string is used within the word
-:command:`VER`
-.
+:command:`VER`.
 
 Application Code
-################
+----------------
 
 Every build of amforth needs an application. There are a few
 sample applications, which can be used either directly (AVR
@@ -155,10 +153,7 @@ settings etc. Then the device specific part needs to be included and
 as the last step the amforth core is included.
 
 For a comfortable development cycle the use of a build utility such
-as
-:command:`make`
-or
-:command:`ant`
+as :command:`make` or :command:`ant`
 is recommended. The assembler needs a few settings and the proper
 order of the include directories.
 

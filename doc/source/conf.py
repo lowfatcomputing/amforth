@@ -25,7 +25,9 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig']
+extensions = ['sphinx.ext.todo', 'sphinx.ext.pngmath', 'sphinx.ext.ifconfig',
+#	      'sphinxcontrib.aafig'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -79,6 +81,7 @@ exclude_patterns = []
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.
 #show_authors = False
+show_authors = True
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'

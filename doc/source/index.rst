@@ -14,13 +14,3 @@ Contents:
    TG
    Cookbook
    refcard
-
-Indices and tables
-==================
-
-
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-

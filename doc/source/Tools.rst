@@ -3,7 +3,7 @@ Tools
 =====
 
 Host
-####
+----
 
 There a few number of tools on the host side (PC) that
 are specifically written to support amforth. They are
@@ -12,7 +12,7 @@ should work on all major operating systems. They are
 not needed to use amforth but may be useful.
 
 Part description Converter
-==========================
+..........................
 
 The :command:`pd2amforth.pl` script reads a part
 description file in XML format (comes with
@@ -20,7 +20,7 @@ the Atmel Studio package) and produces
 the controller specific :file:`devices/controllername/*` files.
 
 Documentation
-=============
+.............
 
 The tool :command:`makerefcard`
 reads the assembly files from the
@@ -34,7 +34,7 @@ creates the linked overview of all words on the
 amforth homepage.
 
 Uploader
-========
+........
 
 To transfer forth code to the microcontroller some
 precautions need to taken. During a flash write
@@ -75,7 +75,7 @@ the content of the file :command:`filename`
 is sent to the controller.
 
 Controller
-##########
+----------
 
 There are a few tools that may be useful on the controller. They
 are implemented as loadable forth code that may affect internal
@@ -87,60 +87,65 @@ useful to revert the compilation process (gets some forth code
 from compiled words).
 
 Profiler
-========
+........
 
 After loading the file :file:`lib/profiler.frt`
 into the controller, every colon word gets a counter
 (1cell) which is incremented every time the word is called. Since this cell
 can be used like any variable, it can be reset any time as well.
-> : foo 1 ;
-ok
-> profiler:on
-ok
-> ' foo xt>prf @ .
-0 ok
-> foo
-ok
-> ' foo xt>prf @ .
-1 ok
-> 0 ' foo xt>prf !
-ok
->
+
+::
+
+ > : foo 1 ;
+ ok
+ > profiler:on
+ ok
+ > ' foo xt>prf @ .
+ 0 ok
+ > foo
+ ok
+ > ' foo xt>prf @ .
+ 1 ok
+ > 0 ' foo xt>prf !
+ ok
+ >
 
 Tracer
-======
+......
 
 After loading the file :file:`lib/tracer.frt` into the controller, every word being
 defined afterwards prints it's name and the stack content at runtime.
 
-> : foo 1 ;
-ok
-> : bar 2 foo ;
-ok
-> : baz 3 bar ;
-ok
-> trace:on
-ok
-> baz
+::
 
-baz
+ > : foo 1 ;
+ ok
+ > : bar 2 foo ;
+ ok
+ > : baz 3 bar ;
+ ok
+ > trace:on
+ ok
+ > baz
 
-bar
-0 2221 3
+ baz
 
-foo
-0 2219 2
-1 2221 3
-ok
-> .s
-0 2217 1
-1 2219 2
-2 2221 3
-ok
-> trace:off
-ok
-> baz
-ok
->
+ bar
+ 0 2221 3
+
+ foo
+ 0 2219 2
+ 1 2221 3
+ ok
+ > .s
+ 0 2217 1
+ 1 2219 2
+ 2 2221 3
+ ok
+ > trace:off
+ ok
+ > baz
+ ok
+ >
 
 

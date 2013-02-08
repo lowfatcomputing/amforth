@@ -1,3 +1,5 @@
+.. _Disable Command Prompt Echo:
+
 ===================================
 Disabling the terminal command echo
 ===================================

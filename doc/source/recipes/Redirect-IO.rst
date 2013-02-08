@@ -1,3 +1,5 @@
+.. _Redirect IO:
+
 ===========
 Redirect IO
 ===========
@@ -84,15 +86,15 @@ There are some notes that may affect your program
   two WANT settings. They default in :file:`macros.asm`
   to WANT_RX_ISR=1 and WANT_TX_ISR=0.
 
-    +--------------------+--------------------+
-    |   WANT\_RX\_ISR      |      WANT\_TX\_ISR   |
-    +----------+---------+----------+---------+
-    +   0      |    1    |    0     |    1    |
-    +----------+---------+----------+---------+
-    | rx-poll  | rx-isr  | tx-poll  | tx-isr  |
-    +----------+---------+----------+---------+
-    | rx?-poll | rx?-isr | tx?-poll | tx?-isr |
-    +----------+---------+----------+---------+
+  +--------------------+--------------------+
+  |   WANT_RX_ISR      |      WANT_TX_ISR   |
+  +==========+=========+==========+=========+
+  |   0      |    1    |    0     |    1    |
+  +----------+---------+----------+---------+
+  | rx-poll  | rx-isr  | tx-poll  | tx-isr  |
+  | and      | and     | and      | and     |
+  | rx?-poll | rx?-isr | tx?-poll | tx?-isr |
+  +----------+---------+----------+---------+
 
 * All IO words with more complexity (e.g. ``type``
   or ``accept`` call any of the 4 deferred words. There
@@ -100,4 +102,6 @@ There are some notes that may affect your program
 * Amforth uses the control characters for the line editing
   (e.g. backspace, TAB, CR/LF). Characters are 8bit numbers 
   (ASCII). Multibyte-Characters are not currently supported.
-* Another IO related recipe is the  Disable Command Prompt Echo
+
+.. seealso:: :ref:`Disable Command Prompt Echo`
+

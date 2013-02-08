@@ -1,11 +1,10 @@
 
-
 ==============
 Implementation
 ==============
 
 ANS94 Words
-###########
+-----------
 
 amforth is close to the ANS94 Forth standard. The main difference comes from
 the fact that the AVR ATmegas use a Harvard architecture (separate code and
@@ -19,7 +18,7 @@ available. Words from the word sets LOCALS and FILE-ACCESS
 are dropped completely. The others are partially implemented.
 
 Core and Core EXT
-=================
+.................
 
 Al words from the CORE word set are available. CORE EXT drops
 the words C", CONVERT, EXPECT, SPAN, and  ROLL.
@@ -27,13 +26,13 @@ the words C", CONVERT, EXPECT, SPAN, and  ROLL.
 Loop counters are checked on signed compares.
 
 Block
-=====
+.....
 
 amforth has limited block support with I2C/TWI
 serial eeprom chips with 2 byte addresses.
 
 Double Number
-=============
+.............
 
 Double cell numbers work as expected. Not all words
 are implemented. Entering them directly using the
@@ -41,62 +40,47 @@ dot- notation work for dots at the end of the number,
 not if the dot is somewhere within it.
 
 Exception
-=========
+.........
 
 Exceptions are fully supported. The words
-:command:`ABORT`
-and
-:command:`ABORT"`
+:command:`ABORT` and :command:`ABORT"`
 use them internally.
 
-The
-:command:`THROW`
-codes -1, -2 and -13 work as specified.
+The :command:`THROW` codes -1, -2 and -13 work as 
+specified.
 
 The implementation is based upon a variable HANDLER
 which holds the current return stack pointer
 position. This variable is a USER variable.
 
 Facility
-========
+........
 
-The basic system uses the
-:command:`KEY?`
-and
-:command:`EMIT?`
-words as deferred words in the USER area.
+The basic system uses the :command:`KEY?`
+and :command:`EMIT?` words as deferred words 
+in the USER area.
 
-The word
-:command:`MS`
-is implemented with the word
-:command:`1MS`
-which busy waits almost exactly 1 millisecond. The
-calculation is based upon the frequency specified at
+The word :command:`MS` is implemented with the word
+:command:`1MS` which busy waits almost exactly 1 millisecond. 
+The calculation is based upon the frequency specified at
 compile time.
 
-The words
-:command:`TIME&DATE`
-,
-:command:`EKEY`
-,
-:command:`EKEY>CHAR`
-are not implemented.
+The words :command:`TIME&DATE`, :command:`EKEY`,
+:command:`EKEY>CHAR` are not implemented.
 
 To control a VT100 terminal the words
-:command:`AT-XY`
-and
-:command:`PAGE`
+:command:`AT-XY` and :command:`PAGE`
 are written in forth code. They emit the ANSI
 control codes according to the VT100 terminal codes.
 
 File Access
-===========
+...........
 
 amforth does not have filesystem support. It does
 not contain any words from this word set.
 
 Floating Point
-==============
+..............
 
 amforth has a loadable floating point library. It contains
 the basic words to deal with single precision floats. The floats
@@ -105,18 +89,18 @@ floats can be entered directly at the command prompt. Some speed
 sensitive words are available as assembly code as well.
 
 Locals
-======
+......
 
 amforth does not currently support locals.
 
 Memory Allocation
-=================
+.................
 
 amforth does not support the words from the memory
 allocation word set.
 
 Programming Tools
-=================
+.................
 
 Variants of the words
 :command:`.S`, :command:`?`
@@ -155,7 +139,7 @@ An EDITOR is not implemented.
 and :command:`[THEN]` are not implemented.
 
 Word Lists and Search Order
-===========================
+...........................
 
 Amforth supports the ANS Search Order Wordlist. A word list consist of a linked list
 of words in the dictionary. There are no limits on the number of word lists
@@ -169,36 +153,24 @@ a new EEPROM cell. Since the ANS standard does not give named wordlist
 there is library code available that uses the old fashioned vocabulary.
 
 Strings
-=======
+.......
 
-:command:`SLITERAL`
-,
-:command:`CMOVE>`
-,
-:command:`CMOVE`
-,
-:command:`COMPARE>`
-, and
-:command:`/STRING`
-are implemented.
+:command:`SLITERAL`, :command:`CMOVE>`,
+:command:`CMOVE`, :command:`COMPARE>`, and
+:command:`/STRING` are implemented.
 
-:command:`-TRAILING`
-,
-:command:`BLANK`
-,
-and
-:command:`SEARCH`
-are not implemented.
+:command:`-TRAILING`, :command:`BLANK`,
+and :command:`SEARCH` are not implemented.
 
 Forth 200x
-##########
+----------
 
 amforth provides the :command:`defer/is`,
 :command:`buffer:` and the :command:`structure`
 extensions from the forth 200x standards.
 
 Defer and IS
-============
+............
 
 :command:`defer` give the possibility of vectored execution. Amforth
 has 3 different kind of such vectors, varying in how they are stored: EEPROM, RAM
@@ -206,7 +178,7 @@ or the USER area. The EEPROM makes it possible to save the settings permanently,
 the RAM enables frequent changes. Finally the user area is for multitasking.
 
 Buffer:
-=======
+.......
 
 The buffer allocates a named memory (RAM) region. It is superior to
 the usual create foo xx allot since amforth has a non-unified
@@ -215,13 +187,13 @@ model forth (with the dictionary being at the same memory as the allot
 command works).
 
 Structures
-==========
+..........
 
 Amforth
-#######
+-------
 
 COLD
-====
+....
 
 The startup code is in the file :file:`cold.asm`.
 It gets called directly from the address 0 vector.
@@ -236,7 +208,7 @@ The start addresses of the stacks are placed to the user area
 for later use as well.
 
 WARM
-====
+....
 
 The word WARM is the high level part of the
 forth VM initialization. When called from
@@ -246,7 +218,7 @@ deferred word to do nothing, calls the application defined
 TURNKEY action and finally hands over to QUIT.
 
 TURNKEY
-=======
+.......
 
 The turnkey is a EEPROM deferred word that
 points to an application specific startup word.
@@ -258,7 +230,7 @@ port, switching to decimal number conversion and setting up the
 character IO deferred words (KEY, EMIT etc).
 
 QUIT
-====
+....
 
 QUIT initializes both data and return stack pointers by reading
 them from the user area and enters the traditional ACCEPT -- INTERPRET
@@ -267,13 +239,11 @@ well. Depending on the exception thrown, it prints an error message
 and restarts itself.
 
 MCU Access
-==========
+..........
 
 amforth provides wrapper words for the
 microcontroller instructions
-:command:`SLEEP`
-and
-:command:`WDR`
+:command:`SLEEP` and :command:`WDR` 
 (watch dog reset). To work properly, the MCU needs
 more configuration. amforth itself does not call
 these words.
@@ -283,13 +253,11 @@ be programmed to turn off JTAG at runtime. Similar
 the watch dog timer can be disabled. Since both
 actions require strict timing they need to be
 implemented as primitives:
-:command:`-JTAG`
-and
-:command:`-WDT`
+:command:`-JTAG` and :command:`-WDT`
 .
 
 Assembler
-=========
+.........
 
 Lubos Pekny has written an assembler for amforth. To support it, amforth
 provides the two words CODE and END-CODE. The first
@@ -299,8 +267,8 @@ code there. The word END-CODE places a JUMP NEXT into
 the data field. This finishes the machine instruction execution and jumps back
 to the forth interpreter.
 
-Memory
-======
+Memories
+........
 
 Atmega microcontroller have three different types of
 memory. RAM, EEPROM and Flash. The words
@@ -329,9 +297,7 @@ turnkey action). It is accessible without further
 changes.
 
 For RAM only there is the special word pair
-:command:`c@`
-/
-:command:`c!`
+:command:`c@`/:command:`c!`
 which operate with the lower half of a stack cell.
 The upper byte is either ignored or set to 0 (zero).
 
@@ -340,7 +306,7 @@ handling, which may be masked with the block word
 set.
 
 Input Output
-============
+............
 
 amforth uses character terminal IO. A serial console is
 used. All IO is based upon the standard words
@@ -380,7 +346,7 @@ and
 can be redirected to fetch the data from them.
 
 Strings
-=======
+.......
 
 Strings can be stored in two areas: RAM and FLASH.
 It is not possible to distinguish between the
@@ -397,5 +363,3 @@ copies the string from the RAM into flash using the
 word
 :command:`S,`
 .
-
-

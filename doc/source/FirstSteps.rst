@@ -8,7 +8,7 @@ VT100
 or similar hardware. A customization may change these requirements.
 
 User Interface
-##############
+--------------
 
 amforth has a simple user interface. Connect your system to a serial
 terminal (or a PC) and you get, after pressing the enter key, the

@@ -3,11 +3,11 @@ Technical Guide
 ===============
 
 .. toctree::
-    Preface
+    :maxdepth: 2
+
     FirstSteps
     Hardware
     Sources
     Architecture
     Implementation
-    Library
     Tools

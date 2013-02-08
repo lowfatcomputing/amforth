@@ -3,7 +3,7 @@ Architecture
 ============
 
 Overview
-########
+--------
 
 amforth is a 16 bit Forth implementing the indirect threading
 model. The flash memory contains the whole dictionary. A few EEPROM
@@ -19,7 +19,7 @@ the Top-Of-Stack cell. The hardware stack is used as the return
 stack. Some registers are used for temporary data in primitives.
 
 CPU -- Forth VM Mapping
-#######################
+-----------------------
 
 The Forth VM has a few registers that need to be mapped to the
 microcontroller registers. The mapping has been extended over time
@@ -30,7 +30,7 @@ in the table :ref:`register_mappings`.
 .. _register_mappings:
 
 Register Mapping
-----------------
+................
 
 +------------------------------+--------------------+
 | Forth Register               | ATmega Register(s) |
@@ -51,7 +51,7 @@ Register Mapping
 +------------------------------+--------------------+
 
 Extended Forth VM Register Mapping
-----------------------------------
+..................................
 
 +------------------------------+--------------------+
 | Forth Register               | ATmega Register(s) |
@@ -76,86 +76,102 @@ T Flag in the machine status register SREG for signalling
 an interrupt. Any other code must not change that bit.
 
 Core System
-###########
+-----------
 
 Threading Model
----------------
+...............
 
-amforth implements the classic indirect threaded variant of
-forth.
+AmForth implements the classic indirect threaded variant of
+forth. The registers and their mappings are shown in table
+:ref:`register_mappings`.
 
 Inner Interpreter
------------------
+.................
 
 For the indirect threading model an inner interpreter is
 needed. The inner interpreter does the interrupt handling too.
+It repeatly reads the cell, the :command:`IP` points to, takes this number
+as the address for the next code segment and jumps to that code.
+It is expected that this code segment does a jump back to the
+inner interpreter (NEXT). The :command:`IP` is incremented by 1 just before
+the jumps are done to get the next cell.
 
-EXECUTE
--------
+::
 
-This operation reads the cell the IP currently points to and
-uses the value read as the destination of a branch. This EXECUTE
-is not the forth word EXECUTE. The forth EXECUTE sets the IP from
-the data stack TOS element.
+   Check_Interrupt
+   W  <- [IP]   ; read at IP
+   IP <- IP+1   ; advance IP
+   X  <- [W]    ; EXECUTE phase, W points to execution token
+   JMP [X]      ; read execution token and execute its code
 
 NEXT
-----
+~~~~
 
-The NEXT routine is the core of the inner interpreter. It
-consists of 4 steps which are executed for every forth word.
+The NEXT routine is the core of the inner interpreter. It does the
+mapping between the execution tokens and the corresponding machine
+code. It consists of 4 steps which are executed for every forth word.
 
-The first step in NEXT is to check whether an interrupt needs to
-be handled. It is done by looking at the
-:command:`T`
+The first step is to check whether an interrupt needs to
+be handled. It is done by looking at the :command:`T`
 flag in the machine status register. If it is set, the code jumps
-to the interrupt handling part. If the flag is cleared the
-following normal NEXT routine runs.
+to the interrupt handling part. 
 
-The next step is to read the cell the IP points to and
-stores this value in the W register. For a COLON word W contains
-the address of the code field.
+The next step is to read the cell the :command:`IP` points to and
+stores this value in the W register. For a COLON word 
+W contains the address of the code field.
 
-The 3rd step is to increase the IP register by 1.
+The 3rd step is to increase the :command:`IP` register by 1.
 
-The 4th step is to read the content of the cell the W
-register points to. The value is stored in the scratch pad
-register X. The data in X is the address of the machine code to be
-executed in the last step.
+The 4th step is the EXECUTE step.
+
+EXECUTE
+~~~~~~~
+
+This operation is the JUMP.  It reads the content of the cell the 
+:command:`W` register points to. The result is stored in the scratch pad
+register :command:`X`. The data in :command:`X` is the address of the machine code to be
+executed in the last step. This step is used by the forth command 
+:command:`EXECUTE` too. The forth command does not get the address 
+of the next destination from the current :command:`IP` but from the data stack. 
 
 This last step finally jumps to the machine code pointed to
-by the X scratch pad register.
+by the :command:`X` scratch pad register.
+
 
 DO COLON
---------
+~~~~~~~~
 
-DO COLON (aka NEST) first pushes the IP (which points to the
-next word to be executed when the current word is done) to the
-return stack. It then increments W by one flash cell, so that it
-points to the body of the (colon) word, and sets IP to point to
-that value. Then it continues with NEXT, which begins executing
-the words in the body of the (parent) colon word.
+DO COLON (aka NEST) is the subcroutine call. It pushes the 
+:command:`IP` onto the return stack. It then increments :command:`W` 
+by one flash cell, so that it points to the body of the (colon) word, 
+and sets :command:`IP` to that value. Then it continues with 
+:command:`NEXT`, which begins executing the words in the body 
+of the (parent) colon word. Note that :command:`W` points to
+the execution token of the current word, so W+1 points to the
+parameter field (body) of the forth word.
+
+::
+
+  push IP
+  IP <- W+1
+  JMP NEXT
 
 EXIT
-----
+~~~~
 
-The code for EXIT (aka UNNEST) is the forth word
-:command:`EXIT`
-in the dictionary. It reads the IP from the return stack and jumps
-to NEXT. The return stack pointer is incremented by 2 (1 flash
-cell).
+The code for EXIT (aka UNNEST) is the return from a subroutine.
+It is defined in the forth word :command:`EXIT` in the dictionary. 
+It reads the :command:`IP` from the return stack and jumps to NEXT. The return 
+stack pointer is incremented by 2 (1 flash cell).
 
-DO_DOES
--------
+::
 
-This code is the runtime part of the forth word
-:command:`DOES>`
-. It pushes the current address of the MCU IP register onto the
-returnstack and jumps to DO_DOES. DO_DOES gets that address back,
-saves the current IP and sets the forth IP to the address it got
-from the stack. Finally it continues with NEXT.
+  pop IP
+  JMP NEXT
 
-Interpreter
-###########
+
+Text Interpreter
+----------------
 
 The interpreter is a line based command interpreter. It based upon :command:`REFILL`
 to acquire the next line of characters, located at a position :command:`SOURCE` points to.
@@ -169,11 +185,11 @@ into whitespace delimited words. Every word is processed using a list of
 recognizers. Processing ends either when the string end is reached or an exception occurs.
 
 SOURCE and REFILL
------------------
+.................
 
 :command:`SOURCE` provides an addr/len string pair that does not change
-during processing. The task of REFILL is to fill the string buffer, SOURCE will
-point to when finished.
+during processing. The task of :command:`REFILL` is to fill the string 
+buffer, :command:`SOURCE` points to when finished.
 
 There is one default input source: The terminal input buffer. This buffer gets filled with 
 :command:`REFILL-TIB` that reads from the serial input buffers (:command:`KEY`). 
@@ -181,7 +197,7 @@ There is one default input source: The terminal input buffer. This buffer gets f
 Another input source are plain strings, used by :command:`EVALUATE`.
 
 Recognizer
-----------
+..........
 
 A recognizer gets the string information of the current word.
 If the word can be processed, the recognizer is responsible to do so. A word from
@@ -201,8 +217,8 @@ The not-found recognizer prints the word and throws an exception -13 which can b
 The list of the recognizers is kept in the EEPROM, the maximum size of the
 entries is a compile time setting (currently 6 slot are available).
 
-Example Recognizer
-~~~~~~~~~~~~~~~~~~
+Example
+~~~~~~~
 
 A recognizer gets the address/len pair of a word in RAM and leaves at least the flag
 for the interpreter. If any data is to be left on the stack (e.g. numeric values) it
@@ -227,10 +243,10 @@ whether the number needs to be compiled or not. In any case the success flag is
 returned.
 
 Stacks
-######
+------
 
 Data Stack
-----------
+..........
 
 The data stack uses the CPU register pair :command:`YH:YL` as its data
 pointer. The Top-Of-Stack element (TOS) is in a register pair.
@@ -244,7 +260,7 @@ below the return stack (RAMEND) and grows
 downward.
 
 Return Stack
-------------
+............
 
 The Return Stack is the hardware stack of the
 controller. It is managed with push/pop
@@ -252,7 +268,7 @@ assembler instructions. The default return stack
 starts at RAMEND and grows downward.
 
 Interrupts
-##########
+----------
 
 Amforth routes the low level interrupts into the
 forth inner interpreter. The inner interpreter
@@ -263,8 +279,8 @@ handlers are completely normal forth colon words
 without any stack effect. They do not get interrupted
 themselves.
 
-Example Interrupt Handling
---------------------------
+Example
+.......
 
 The example illustrates the basic usage of interrupts. The
 code implements a very basic timer functionality.
@@ -312,8 +328,8 @@ Note that under rare circumstances an interrupt handler
 triggered by :command:`int-trap` may get lost by
 a real interrupt.
 
-Implementation Details
-----------------------
+Implementation
+..............
 
 The processing of interrupts takes place in two steps:
 The first one is the low level part.
@@ -357,7 +373,7 @@ is usually small since only words in assembly can cause the
 delay.
 
 Multitasking
-############
+------------
 
 amforth does not implement multitasking directly. It
 provides the basic functionality however. Within IO
@@ -365,8 +381,8 @@ words the deferred word
 :command:`PAUSE` is called whenever possible. This word is
 initialized to do nothing (:command:`NOOP`).
 
-Exception Handling
-##################
+Exceptions
+----------
 
 amforth implements the :command:`CATCH`
 and :command:`THROW` exception handling. The outermost catch 
@@ -377,7 +393,7 @@ re-start itself. Other values silently restart :command:`QUIT`
 .
 
 User Area
-#########
+---------
 
 The User Area is a special RAM storage area. It
 contains the USER variables and the User deferred
@@ -394,8 +410,6 @@ local variables.
 The first USER area is located at the first data address
 (usually RAMSTART).
 
-USER Area
----------
 +--------------------------+-----------------------------+
 | Address offset (bytes)   | Purpose                     |
 +--------------------------+-----------------------------+
@@ -446,7 +460,7 @@ user area that contains all variables defined with the USER command.
 The default application user area is empty and by default of size zero.
 
 Word Lists and Environment Queries
-##################################
+----------------------------------
 
 Word lists and environment queries are implemented using the
 same structure. They are based upon the simple linked list built
@@ -462,11 +476,11 @@ stack.
 search for the word. This list can be accessed with
 :command:`get-order` as well.
 
-Memory Layout
-#############
+Memories
+--------
 
 Flash
------
+.....
 
 The flash memory is divided into 4 sections. The
 first section, starting at address 0, contains the
@@ -496,7 +510,11 @@ language.
 FLASH Structure Overview
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: flash-structure.*
+.. _flashstructure:
+
+.. figure:: flash-structure.*
+
+    Default Flash Structure
 
 The reason for this split is a technical one: to
 work with a dictionary in flash the controller needs
@@ -540,13 +558,17 @@ DFU boot loader from atmel found on some USB enabled controllers does.
 Alternative FLASH Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: flash2-structure.*
+.. _flash2structure:
+
+.. figure:: flash2-structure.*
+
+    Alternative Flash Structure
 
 The unused flash area beyond 0x1FFFF is not directly accessible for amforth.
 It could be used as a block device.
 
 Flash Write
------------
+...........
 
 The word performing the actual flash write
 operation is :command:`I!`
@@ -623,29 +645,28 @@ above the current HERE and goes to upper addresses. The Pictured Numeric
 Output is just at PAD and grows downward. The word WORD uses the area above
 HERE as it's buffer to store the just recognized word from SOURCE.
 
-:ref:`RAM_FIGURE` shows an ram layout that can be used on systems
+.. _ramfigure:
+
+.. figure:: ram-structure.*
+
+    Ram Structure
+
+:ref:`ramfigure` shows an RAM layout that can be used on systems
 without external RAM. All elements are located within the internal
 memory pool.
 
-.. _RAM_FIGURE:
+.. _ram2figure:
 
-RAM Structure Overview
-~~~~~~~~~~~~~~~~~~~~~~
+.. figure:: ram2-structure.*
 
-.. image:: ram-structure.*
+    Alternative RAM Structure
 
 Another layout, that makes the external RAM easily available is shown in
-:ref:`RAM2_FIGURE`. Here are the stacks at the beginning of the internal RAM and the
+:ref:`ram2figure`. Here are the stacks at the beginning of the internal RAM and the
 data space region. All other buffers grow directly into the external data space. From
 an application point of view there is not difference but a speed penalty when
 working with external RAM instead of internal.
 
-.. _RAM2_FIGURE:
-
-RAM Structure Overview
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: ram2-structure.*
 
 With amforth all three sections can be accessed
 using their RAM addresses. That makes it quite easy
@@ -660,3 +681,41 @@ special case there is the word :command:`Udefer`
 put an XT into them the word :command:`IS`
 is used. This word is smart enough to distinguish
 between the various Xdefer definitions.
+
+DOES>
+-----
+
+:command:`DOES>` is used to change the runtime 
+action of a word that :command:`create` 
+has already defined. 
+
+Its working is described best using a
+simple example: defining a constant. The standard
+word :command:`constant` does exactly the
+same.
+
+::
+
+  > : con create , does> @i ;
+   ok
+  > 42 con answer
+   ok
+  > answer .
+   42 ok
+
+The first command creates a new command :command:`con`. With
+it a new word gets defined, in this example :command:`answer`.
+:command:`con` calls :command:`create`, that parses the source
+buffer and creates a wordlist entry :command:`answer`.  After that, 
+within :command:`con` the top-of-stack element (42) is compiled into
+the newly defined word. The :command:`does>` changes the 
+runtime of the newly defined word :command:`answer` to the code 
+that follows :command:`does>`.
+
+:command:`does>` is an immediate word. That means, it is not compiled 
+into the new word (con) but executed. This compile time action creates 
+a small data structure similiar to the wordlist entry for a noname: word. 
+The address of this data structure is an execution token. This execution 
+token replaces the standard XT that :command:`create` has already 
+written for words that are defined using :command:`con`. This
+leads unevitably to a flash erase cycle.
