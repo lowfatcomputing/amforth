@@ -16,8 +16,8 @@ well as the connection to VCC.
 This recipe is based upon work from Brad Rodriguez for the 4€4th project. He split
 the 1wire module into two parts: a bitlevel layer for all the dirty, time critical
 work with only 2 small assembly words, and all other stuff in portable forth code.
-Despite the fact, that he uses another controller type, the forth code remained the 
-same.
+Despite the fact, that he uses another controller type, the forth code remained 
+almost the same. 
 
 
 To use the onewire module new AmForth hexfiles have to be created with the 
@@ -43,31 +43,31 @@ no defaults
   .include "drivers/1wire.asm"
 
 After burning the new system into the controller, two new words are
-available: :command:`owreset` and :command:`owslot`. The :command:`owreset`
+available: :command:`1w.reset` and :command:`1w.slot`. The :command:`1w.reset`
 reinitializes the 1wire bus and gives a flag, whether at least one device is 
 present or not. It would not make much sense to continue, if no device is 
 recognized.
 
 ::
 
-  : 1wirejob ... owreset if
+  : 1wirejob ... 1w.reset if
       do-the-job
     then ... ;
 
-The :command:`owslot` writes the LSB to the 1wire bus and reads
+The :command:`1w.slot` writes the LSB to the 1wire bus and reads
 one bit back, if a 1 was written. It turns off all interrupts for approx 
 60 microseconds to achieve the correct timing. The lower byte of the
-TOS is rotated so repeated calls to :command:`owslot` can transfer
+TOS is rotated so repeated calls to :command:`1w.slot` can transfer
 all bits of a bytes without further code. It is probably the smartest
 word of the whole package.
 
 ::
-  : owtouch ( c1 -- c2 ) 
-      owslot owslot owslot owslot 
-      owslot owslot owslot owslot ;
+  : 1w.touch ( c1 -- c2 ) 
+      1w.slot 1w.slot 1w.slot 1w.slot 
+      1w.slot 1w.slot 1w.slot 1w.slot ;
 
-  : owput ( c -- ) owtouch drop ;  
-  : owget ( -- c ) $ff owtouch ;
+  : 1w.put ( c -- ) 1w.touch drop ;  
+  : 1w.get ( -- c ) $ff 1w.touch ;
 
 1-Wire Tools
 ------------
@@ -80,7 +80,7 @@ ROM id's of the connected devices.
 
 ::
 
-  (ATmega1280)> hex owshowids 
+  (ATmega1280)> hex 1w.showids 
 
    10 11 E5 68  2  8  0 2A
    28 4C 75 CC  2  0  0 CD
@@ -96,7 +96,7 @@ code is not currently capable to take care of the differences.
 
   > hex create sensor2 28 , 4C , 75 , CC , 2 , 0 , 0 , CD ,
   ok
-  > decimal sensor2 owconvert 750 ms sensor2 readtemp temp>pad pad count type
+  > decimal sensor2 1w.convert 750 ms sensor2 readtemp temp>pad pad count type
   18.0 ok
   >
 
