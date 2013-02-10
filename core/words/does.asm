@@ -46,14 +46,8 @@ PFA_DODOES:
     .dw XT_R_FROM
     .dw XT_GET_CURRENT
     .dw XT_FETCHE
-    .dw XT_ICOUNT ; nfa>xt
-    .dw XT_DOLITERAL
-    .dw $00ff
-    .dw XT_AND
-    .dw XT_1PLUS
-    .dw XT_2SLASH
-    .dw XT_PLUS
-    .dw XT_1PLUS
+    .dw XT_NFA2LFA
+    .dw XT_1PLUS   ; lfa>xt
 
     .dw XT_STOREI
     .dw XT_EXIT

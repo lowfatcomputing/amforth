@@ -21,6 +21,7 @@
 .include "words/leave.asm"
 .include "words/qdo.asm"
 
+
 .include "words/create.asm"
 .include "words/latest.asm"
 .include "words/does.asm"
@@ -61,3 +62,4 @@
 ;.include "words/get-recognizer.asm"
 
 .include "words/compare.asm"
+.include "words/nfa2lfa.asm"

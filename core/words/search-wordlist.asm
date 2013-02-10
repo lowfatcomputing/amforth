@@ -38,16 +38,11 @@ PFA_SEARCH_WORDLIST1:
       .dw XT_DROP
       .dw XT_DROP
       .dw XT_R_FROM ; ( -- iaddr )
-      .dw XT_ICOUNT
       .dw XT_DUP
-      .dw XT_TO_R   ; save flags
-      .dw XT_DOLITERAL
-      .dw $00ff
-      .dw XT_AND
-      .dw XT_1PLUS
-      .dw XT_2SLASH
-      .dw XT_PLUS
-      .dw XT_1PLUS
+      .dw XT_FETCHI
+      .dw XT_TO_R
+      .dw XT_NFA2LFA
+      .dw XT_1PLUS  ; lfa2xt
       .dw XT_DOLITERAL
       .dw 1
       .dw XT_R_FROM ; check flags
@@ -60,13 +55,7 @@ PFA_SEARCH_WORDLISTIMMEDIATE:
 PFA_SEARCH_WORDLISTNEXT:
       ; next try
       .dw XT_R_FROM
-      .dw XT_ICOUNT
-      .dw XT_DOLITERAL
-      .dw $00ff
-      .dw XT_AND
-      .dw XT_1PLUS
-      .dw XT_2SLASH
-      .dw XT_PLUS
+      .dw XT_NFA2LFA
       .dw XT_FETCHI
       .dw XT_DOBRANCH
       .dw PFA_SEARCH_WORDLIST0
