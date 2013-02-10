@@ -463,8 +463,7 @@ Word Lists and Environment Queries
 ----------------------------------
 
 Word lists and environment queries are implemented using the
-same structure. They are based upon the simple linked list built
-with :command:`create`. The word list identifier is
+same structure. The word list identifier is
 a EEPROM address that holds the starting point address for the
 word list search.
 
@@ -475,6 +474,29 @@ stack.
 :command:`find` uses an array of word list identifiers to
 search for the word. This list can be accessed with
 :command:`get-order` as well.
+
+Wordlist Header
+...............
+
+Word lists are implemented as a single linked list. The list entry
+consists of 4 elements:
+
+* Name Field (NF) (variable length, at least 2 flash cells).
+* Link Field (LF) (1 flash cell)
+* Execution Token (XT) (1 flash cell)
+* Parameter Field (Body) (variable length)
+
+The wording is some mixture of old style fig-forth and
+the more modern variants.
+
+The namefield itself is a struture containing the flags,
+the length information in the first flash cell
+and the characters of the word name in a packed format afterwards.
+
+The anchor of any wordlist points to the name field address of the
+first element. The last element has a zero link field content. The
+lists are created from lower addresses to higher ones, the links go
+from higher addresses backwards to lower ones.
 
 Memories
 --------
