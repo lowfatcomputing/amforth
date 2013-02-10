@@ -40,7 +40,7 @@ PFA_USARTX:          ; ( -- )
   .dw TERM_USART + USART_CTRLC_offset
   .dw XT_CSTORE
 
-  .dw XT_BAUD
+  .dw XT_UBRR
   .dw XT_DUP
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL

@@ -22,7 +22,7 @@ PFA_USART:          ; ( -- )
   .dw USART_C | bm_USARTC_en
   .dw XT_CSTORE
 
-  .dw XT_BAUD
+  .dw XT_UBRR
   .dw XT_DUP
   .dw XT_BYTESWAP
   .dw XT_DOLITERAL

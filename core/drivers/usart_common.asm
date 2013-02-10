@@ -27,5 +27,5 @@
   .set XT_USART_INIT_TX = XT_NOOP
 .endif
 
-.include "words/baud.asm"
+.include "words/ubrr.asm"
 .include "words/usart.asm"
