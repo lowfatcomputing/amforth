@@ -14,7 +14,7 @@
 hex
 
 : ?ascii ( char -- printable-char )
-  dup 21 < if drop 2e
+  dup 20 < if drop 2e
            else dup 7e > 
                 if drop 2e then
            then ;
@@ -43,8 +43,8 @@ hex
 : edump ( addr count -- )
   cr 0
   do dup .4hex space [char] - emit space
-  8 0 do dup i + @e   .4hex space loop 2 spaces
-  8 0 do dup i + @e split ?ascii emit ?ascii emit loop
-     8 + cr
-  8 +loop drop ;
+  08 0 do dup i cells + @e   .4hex space loop 2 spaces
+  08 0 do dup i cells + @e split ?ascii emit ?ascii emit loop
+     10 + cr
+  10 +loop drop ;
 
