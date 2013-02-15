@@ -140,4 +140,4 @@
 
 .include "words/tib.asm"
 
-.include "words/user-init.asm"
+.include "words/init-user.asm"
