@@ -1,6 +1,6 @@
-; ( -- sreg ) 
+; ( -- ) 
 ; Interrupt
-; turns off all interrupts and leaves SREG in TOS
+; turns off all interrupts 
 VE_INTOFF:
     .dw $ff04
     .db "-int"
@@ -9,8 +9,5 @@ VE_INTOFF:
 XT_INTOFF:
     .dw PFA_INTOFF
 PFA_INTOFF:
-    savetos
-    clr tosh
-    in tosl, SREG
     cli
     jmp_ DO_NEXT
