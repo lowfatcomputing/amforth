@@ -279,57 +279,6 @@ handlers are completely normal forth colon words
 without any stack effect. They do not get interrupted
 themselves.
 
-Example
-.......
-
-The example illustrates the basic usage of interrupts. The
-code implements a very basic timer functionality.
-
-We use the timer/counter 0 to generate an interrupt any time the
-overflow condition is triggered. It is a 8bit counter, the input
-is the internal oscillator using a prescaler of 1024. The overflow
-value is set to 256. This gives an interrupt rate of frequency/(1024*256).
-At 8Mhz this will be 32 interrupts per second.
-
-::
-
-    variable tick
-    \\ this code is executed as an interrupt
-    : timer-int-isr
-    1 tick +!
-    ;
-    : timer-init
-    5 TCCR0 c! \\ prescaler 1024, check data sheet
-    \['] timer-int-isr TIMER0_OVFAddr int!
-    0 tick !
-    ;
-    \\ turn on the timer, needs timer-init already in place
-    : +timer
-    1 TIMSK c!
-    ;
-    \\ stops the timer
-    : -timer
-    0 TIMSK c!
-    ;
-
-To ease debugging the code, the word int-trap can be used. This word
-simulates the interrupt in any respect but a real hardware cause. To test
-the routine the command :command:`int-trap` can be used.
-
-::
-
-    > tick @ .
-    1 ok
-    > TIMER0_OVFAddr int-trap tick @ .
-    2 ok
-    >
-
-Note that under rare circumstances an interrupt handler
-triggered by :command:`int-trap` may get lost by
-a real interrupt.
-
-Implementation
-..............
 
 The processing of interrupts takes place in two steps:
 The first one is the low level part.
@@ -371,6 +320,9 @@ forth VM has to be synchronized with the interrupt handling
 code in order to use normal colon words as ISR. This penalty
 is usually small since only words in assembly can cause the
 delay.
+
+.. seealso:: :ref:`Interrupt Service Routine`
+    :ref:`Interrupt Critical Section`
 
 Multitasking
 ------------
@@ -464,30 +416,33 @@ Word Lists and Environment Queries
 
 Word lists and environment queries are implemented using the
 same structure. The word list identifier is
-a EEPROM address that holds the starting point address for the
-word list search.
+a EEPROM address that holds the name field address of the
+first word in the word list.
 
 Environment queries are normal colon words. They are called within
 :command:`environment?` and leave there results at the data
 stack.
 
-:command:`find` uses an array of word list identifiers to
-search for the word. This list can be accessed with
-:command:`get-order` as well.
+:command:`find-name` (und :command:`find` for counted strings)
+uses an array of word list identifiers to search for the word. 
+This list can be accessed with :command:`get-order` as well.
 
 Wordlist Header
 ...............
 
-Word lists are implemented as a single linked list. The list entry
+Wordlists are implemented as a single linked list. The list entry
 consists of 4 elements:
 
 * Name Field (NF) (variable length, at least 2 flash cells).
-* Link Field (LF) (1 flash cell)
+* Link Field (LF) (1 flash cell), points to the NFA of the
+  next element.
 * Execution Token (XT) (1 flash cell)
 * Parameter Field (Body) (variable length)
 
 The wording is some mixture of old style fig-forth and
-the more modern variants.
+the more modern variants. The order makes it possible
+to implement the list iterators (:command:`search-wordlist`
+and :command:`show-wordlist`) is a straight forward way.
 
 The namefield itself is a struture containing the flags,
 the length information in the first flash cell

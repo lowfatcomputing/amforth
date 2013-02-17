@@ -6,7 +6,8 @@ Hardware Modules
     1wire
     Digital-Ports
     EEPROM
-    Interrupts
+    Interrupt-ISR
+    Interrupt-Critical-Section
     Timer
     TWI
     Usart

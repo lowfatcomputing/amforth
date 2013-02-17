@@ -1,6 +1,7 @@
-==========
-Interrupts
-==========
+.. _Interrupt Service Routine:
+
+Interrupt Service Routines
+..........................
 
 The interrupt forth word is simply a  colon word. It is
 executed within the context of the current user area
@@ -59,9 +60,6 @@ not be cleared.
 
 ``int!`` (and friends) uses the interrupt address from
 the datasheet as an index, but points to a different address in RAM.
-
-Internals
----------
 
 Interrupts are processed in two stages. First stage
 is a simple lowlevel processing routine. 
