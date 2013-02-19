@@ -53,4 +53,3 @@ Please note, that the file is named :file:`drivers/usart.asm` not
 :file:`drivers/usart_.asm`.
 
 Similiar changes are needed for the other usart modules (e.g. usart3).
-y

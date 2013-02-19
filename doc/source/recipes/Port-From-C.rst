@@ -17,7 +17,7 @@ uses the bitmaps as specified in the Atmel ressource files.
 
 Single bits are straight forward:
 
-::
+.. code-block:: forth
 
  C:
    TIMSK0 |= (1<<OCIE0); /* set the bit */

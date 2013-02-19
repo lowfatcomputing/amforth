@@ -1,3 +1,5 @@
+.. _Debug Shell:
+
 ===========
 Debug Shell
 ===========
@@ -17,7 +19,7 @@ Core
 ----
 The debug shell core is quite small. Only 3 lines of code:
 
-::
+.. code-block:: forth
 
  82 buffer: debugbuf
  : (?) cr ." debug> " debugbuf dup 80 accept ; 
@@ -35,7 +37,7 @@ The first extension is to have an on-off feature of
 the debugger. This can be achieved by an global flag
 or using deferred words:
 
-::
+.. code-block:: forth
 
  0 value debug?
  \ re-defines the ?? command and uses the old one
@@ -51,7 +53,7 @@ a reset.
 Another on-off implementation uses the deferred
 word technique.
 
-::
+.. code-block:: forth
 
   Edefer breakpoint
   ' ?? is breakpoint
@@ -60,7 +62,7 @@ word technique.
 Here you use the command ``breakpoint`` in 
 your code instead of the basic ``??`` command.
 
-::
+.. code-block:: forth
 
  : foo bar breakpoint baz ;
 
@@ -72,7 +74,7 @@ executes them as ordinary forth code it is possible to
 assign any interrupt source to the ``??``
 command (0 is an example interrupt number)
 
-::
+.. code-block:: forth
 
  > ' ?? 0 int!
  > 0 int-trap

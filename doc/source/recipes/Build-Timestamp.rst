@@ -80,7 +80,7 @@ contains the output of the :file:`svnversion -n` command. Uploading this
 file creates the forth command _svnversion_ that prints it in
 the terminal.
 
-::
+.. code-block:: forth
 
  \ #include svnversion.frt
 

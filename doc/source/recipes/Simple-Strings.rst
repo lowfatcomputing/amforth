@@ -35,13 +35,12 @@ is used to enter the string into some other buffer (see below for an example).
   hi ther ok
  >
 
-In colon definitions, ``s"`` does something completely different:
-It copies the whole string from the SOURCE buffer to flash (into the dictionary)
+In colon definitions, :command:`s"` does something completely different:
+It copies the whole string from the :command:`SOURCE` buffer to flash (into the dictionary)
 and at runtime provides the flash address and length of the string. This data
-can be used with e.g. ``ITYPE``.
+can be used with e.g. :command:`ITYPE`.
 
-
-::
+.. code-block:: forth
 
  \ allocate RAM for the string content.
  20 buffer: namestring

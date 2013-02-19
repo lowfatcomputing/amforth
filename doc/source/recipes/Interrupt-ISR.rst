@@ -9,7 +9,7 @@ and stack frame. It must not have any stack effect outside
 the word. Using ``throw`` is not recommended since it
 will affect the user area of the interrupted task.
 
-::
+.. code-block:: forth
 
  \ TIMER_0 example
  \
@@ -64,11 +64,11 @@ the datasheet as an index, but points to a different address in RAM.
 Interrupts are processed in two stages. First stage
 is a simple lowlevel processing routine. 
 
-# The low-level interrupt routine stores the index of the 
-  interrupt in a RAM cell (not directly accessible from 
-  amforth).
-# Sets the T-flag in the status register to signal the inner interpreter
-  that an interrupt needs attention.
+#. The low-level interrupt routine stores the index of the 
+   interrupt in a RAM cell (not directly accessible from 
+   amforth).
+#. Sets the T-flag in the status register to signal the inner interpreter
+   that an interrupt needs attention.
 
 The inner interpreter checks *every* time it is entered the
 T-flag. If it is set (1) the interrupt processing

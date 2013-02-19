@@ -8,7 +8,7 @@ use cases are records.
 To use structures, load the file :file:`lib/forth200x/structure.frt`
 into the controller. It has no further dependencies.
 
-::
+.. code-block:: forth
 
  \ simple test example for forth200x structures
  \ define a new data structure named list.

@@ -9,12 +9,15 @@ in :command:`accept` when entering commands. One solution to
 do it is to temporarily redirect the :command:`emit` to do
 nothing.
 
-::
+.. code-block:: forth
 
  variable tmpemit
  : -emit ['] emit defer@ tmpemit !
         ['] drop is emit ;
  : +emit tmpemit @ is emit ;
+
+.. code-block:: console
+
  > 1 2 3
  ok
  >  .s
@@ -26,9 +29,9 @@ nothing.
  ok
  >
 
-Alternativly the definition
+Alternately the definition
 
-::
+.. code-block:: forth
 
  : +emit tmpemit @ ['] emit defer! ;
 

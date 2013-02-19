@@ -90,9 +90,9 @@ Now that the led is active, we want a command to turn it off. One solution
 is to repeat the command from above: :command:`0 PORTB c!`. Smarter is a 
 new command word:
 
-::
+.. code-block:: forth
 
-  > : led-off  0 PORTB c! ;
+  : led-off  0 PORTB c! ;
 
 You can now use the newly defined commands to turn the led on and off:
 
@@ -105,9 +105,9 @@ You can now use the newly defined commands to turn the led on and off:
 Our next word will simplify this, saves many keystrokes, and gives the
 real blink experience:
 
-::
+.. code-block:: forth
 
-  > : led-blink led-on 500 ms led-off 500 ms ;
+  : led-blink led-on 500 ms led-off 500 ms ;
 
 Calling this command will turn the led on, waits half a second, turn it
 off again and waits again half a second before returning to the command
@@ -124,7 +124,7 @@ The led will blink for a few seconds.
 
 To make it blink "forever", the next word is helpful
 
-::
+.. code-block:: forth
 
   : blink-forever
     ." press any key to stop "

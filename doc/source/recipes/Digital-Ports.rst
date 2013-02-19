@@ -9,7 +9,7 @@ has a small library :file:`bitnames.frt` in the lib directory.
 With this library, you can give any pin a name and can manipulate 
 it afterwards regardless of others.
 
-::
+.. code-block:: forth
 
   PORTB 1 portpin: led
 

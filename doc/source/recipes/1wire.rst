@@ -29,17 +29,9 @@ no defaults
 ::
 
   ; Port and Pin for the 1-wire bus.
-  .EQU OW_BIT=4
+  .equ OW_BIT=4
   .equ OW_PORT=PORTE
 
-  ; 
-  ; AmForth versions up to and including 5.0 need the following
-  ; two lines. For later version simply omit them
-  .equ OW_DDR=ddre
-  .equ OW_PIN=pine
-  ;
-  ; for AmForth version up to and including 5.0 the next line should
-  ; go to your dict_appl.inc
   .include "drivers/1wire.asm"
 
 After burning the new system into the controller, two new words are
@@ -48,7 +40,7 @@ reinitializes the 1wire bus and gives a flag, whether at least one device is
 present or not. It would not make much sense to continue, if no device is 
 recognized.
 
-::
+.. code-block:: forth
 
   : 1wirejob ... 1w.reset if
       do-the-job
@@ -61,7 +53,8 @@ TOS is rotated so repeated calls to :command:`1w.slot` can transfer
 all bits of a bytes without further code. It is probably the smartest
 word of the whole package.
 
-::
+.. code-block:: forth
+
   : 1w.touch ( c1 -- c2 ) 
       1w.slot 1w.slot 1w.slot 1w.slot 
       1w.slot 1w.slot 1w.slot 1w.slot ;

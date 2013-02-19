@@ -248,22 +248,14 @@ microcontroller instructions
 more configuration. amforth itself does not call
 these words.
 
-Microcontrollers supporting the JTAG interface can
-be programmed to turn off JTAG at runtime. Similar
-the watch dog timer can be disabled. Since both
-actions require strict timing they need to be
-implemented as primitives:
-:command:`-JTAG` and :command:`-WDT`
-.
-
 Assembler
 .........
 
 Lubos Pekny has written an assembler for amforth. To support it, amforth
-provides the two words CODE and END-CODE. The first
+provides the two words :command:`CODE` and command:`END-CODE`. The first
 creates a dictionary entry and sets the code field to the data filed address. The
 interpreter will thus jump directly into the data field assuming some machine
-code there. The word END-CODE places a JUMP NEXT into
+code there. The word :command:`END-CODE` places a JUMP NEXT into
 the data field. This finishes the machine instruction execution and jumps back
 to the forth interpreter.
 
@@ -272,18 +264,12 @@ Memories
 
 Atmega microcontroller have three different types of
 memory. RAM, EEPROM and Flash. The words
-:command:`@`
-and
-:command:`!`
+:command:`@` and :command:`!`
 work on the RAM address space (which includes IO
 Ports and the CPU register), the words
-:command:`@e`
-and
-:command:`!e`
+:command:`@e` and :command:`!e`
 operate on the EEPROM and
-:command:`@i`
-and
-:command:`!i`
+:command:`@i` and :command:`!i`
 deal with the flash memory. All these words transfer
 one cell (2 bytes) between the memory and the data
 stack. The address is always the native address of
@@ -310,20 +296,11 @@ Input Output
 
 amforth uses character terminal IO. A serial console is
 used. All IO is based upon the standard words
-:command:`EMIT`
-/
-:command:`EMIT?`
-and
-:command:`KEY`
-/
-:command:`KEY?`
-. Additionally the word
-:command:`/KEY`
-is used to signal the sender to stop. All these
-words are deferred words in the USER area and can be
-changed with the
-:command:`IS`
-command.
+:command:`EMIT`/:command:`EMIT?` and 
+:command:`KEY`/:command:`KEY?`. Additionally the word
+:command:`/KEY` is used to signal the sender to stop. 
+All these words are deferred words in the USER area 
+and can be changed with the :command:`IS` command.
 
 The predefined words use an interrupt driven IO with
 a buffer for input and output. They do not implement

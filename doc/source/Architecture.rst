@@ -229,7 +229,7 @@ It is based upon a conversion word :command:`>float` which takes a string and tr
 convert it into a float. The word fliteral compiles a floating point number into the 
 dictionary.
 
-::
+.. code-block:: forth
 
     : rec-float  \\ addr len -- (f|) -1 | 0
     >float
@@ -336,13 +336,34 @@ initialized to do nothing (:command:`NOOP`).
 Exceptions
 ----------
 
-amforth implements the :command:`CATCH`
-and :command:`THROW` exception handling. The outermost catch 
+Amforth uses and supports exceptions as specified in the
+ANS wordset. It providess the :command:`CATCH`
+and :command:`THROW` commands. The outermost catch 
 frame is located at the interpreter level in the word
-:command:`QUIT`. If an exception with the value -1 or 
--2 is thrown, :command:`QUIT` will print a message and 
-re-start itself. Other values silently restart :command:`QUIT`
-.
+:command:`QUIT`. If an exception with a negative value is
+catched, :command:`QUIT` will print a message with this
+number and and re-start itself. Positive values silently 
+restart :command:`QUIT`.
+
+The next table lists the exceptions, amforth may throw
+itself.
+
++-----------+---------------------+---------------+
+| Exception |         Meaning     | Used in       |
++-----------+---------------------+---------------+
+|    -1     |  silent abort       | ABORT         |
++-----------+---------------------+---------------+
+|    -2     |  abort with message | ABORT"        |
++-----------+---------------------+---------------+
+|    -4     |  stack underflow    | ?STACK        |
++-----------+---------------------+---------------+
+|   -13     |  undefined word     | rec-notfound, |
+|           |                     | tick          |
++-----------+---------------------+---------------+
+|   -16     |  Invalid word       | (create)      |
++-----------+---------------------+---------------+
+|   -50     |  search order       | previous      |
++-----------+---------------------+---------------+
 
 User Area
 ---------
@@ -361,6 +382,8 @@ local variables.
 
 The first USER area is located at the first data address
 (usually RAMSTART).
+
+.. _userarea:
 
 +--------------------------+-----------------------------+
 | Address offset (bytes)   | Purpose                     |

@@ -26,7 +26,7 @@ The following screen shows the program output after
 power on reset (4), pressing the reset button (2)
 and an ordinary call to ``cold``:
 
-::
+.. code-block:: console
 
  -- power on --
  > 4 

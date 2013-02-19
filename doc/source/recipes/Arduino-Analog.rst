@@ -23,7 +23,7 @@ as the result.
 Note that the ADC module needs some time between two conversion. If you do it too
 fast, expect malfunctions or even crashes. A simple :command:`10 ms`  circumvent most problems.
 
-::
+.. code-block:: forth
 
  \ continously read the adc port
  \ and print the new value if it

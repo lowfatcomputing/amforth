@@ -92,7 +92,7 @@ are usually included by the application specific include file(s).
 
 The file :file:`dict_core.inc`
 contains all words for the NRWW flash section, Since the word
-:command:`I!` cannot write to this address range, no
+:command:`!i` cannot write to this address range, no
 new words can be compiled to this section at runtime. Thus it
 is advisable to include as many words as possible in
 :file:`dict_core.inc` if the amount of writable

@@ -23,7 +23,7 @@ Basic Knowledge of the German language is required.
 The 32 kHz external quartz can be used to generate a timer tick. The following
 definition may help:
 
-::
+.. code-block:: forth
 
  \ implement a timer with the 32kHz oszillator
  decimal

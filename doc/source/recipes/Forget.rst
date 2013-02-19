@@ -16,7 +16,7 @@ memory state to that you can return to any time afterwards. This includes all de
 and wordlists defined after the snapshot is taken. They get completly deleted and the
 occupied memories (flash, ram, eeprom) are available again.
 
-::
+.. code-block:: console
 
  > marker empty
   ok

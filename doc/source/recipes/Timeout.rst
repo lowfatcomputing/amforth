@@ -13,7 +13,7 @@ stupid) reason and the program essentially
 crashed.
 
 
-::
+.. code-block:: forth
 
  \ wait for twi finish
  : twi.wait ( -- )
@@ -39,7 +39,7 @@ to catch that exception. If it is not catched, the
 forth interpreter will do it and returns to the
 command prompt.
 
-::
+.. code-block:: forth
 
  \ timeout-begin is a potentially endless loop
  \ that terminates after a predefined timeout
@@ -69,7 +69,7 @@ obeyed:
    environment, change the variable to a user.
 * Dont forget to initialize and start the timer.
 
-::
+.. code-block:: forth
 
  \ testcase. timeout after 100ms
  : foo

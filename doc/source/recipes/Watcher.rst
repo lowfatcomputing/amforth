@@ -1,3 +1,5 @@
+.. _Watcher:
+
 =======
 Watcher
 =======
@@ -10,7 +12,7 @@ simplest case, a message is printed.
 The next few code lines use a single watch address. Any
 access to it is trapped and calls the Debug Shell.
 
-::
+.. code-block:: forth
 
  \ core routines
  variable watch-addr

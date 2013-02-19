@@ -8,7 +8,7 @@ Sometimes it is useful to watch a word working. A simple trace utility that
 prints the name of the word and the stack content at the beginning helps to 
 get important information. 
 
-::
+.. code-block:: forth
 
  \ flag to dynamically turn trace output
  \ on and off
@@ -25,7 +25,7 @@ get important information.
 After loading these few lines into the controller, every word beeing
 defined afterwards prints it's name and the stack content at runtime.
 
-::
+.. code-block:: console
 
  > : foo 1 ;
   ok

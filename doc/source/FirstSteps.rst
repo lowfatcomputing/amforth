@@ -12,9 +12,9 @@ User Interface
 
 amforth has a simple user interface. Connect your system to a serial
 terminal (or a PC) and you get, after pressing the enter key, the
-forth prompt ``>``
+forth prompt :command:`>`
 
-::
+.. code-block:: console
 
     > cold
     amforth 5.0 ATmega16 8000 kHz

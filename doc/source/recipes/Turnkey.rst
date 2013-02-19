@@ -4,7 +4,7 @@ Turnkey applications
 
 Turnkey application automatically execute a word upon startup.
 
-::
+.. code-block:: forth
 
  : myinit ( -- )
    \ some code 
@@ -22,7 +22,7 @@ Turnkey application automatically execute a word upon startup.
 Like the ``emit``-example it may be useful to execute the 
 build-in ``turnkey`` code as well.
 
-::
+.. code-block:: forth
 
  variable oldturnkey
  ' turnkey defer@ oldturnkey !

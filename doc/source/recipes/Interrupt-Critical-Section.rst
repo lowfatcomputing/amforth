@@ -6,7 +6,7 @@ Interrupt Critical Section
 There are situations where no interrupts should be allowed. These
 code segments are usually named critical sections.
 
-::
+.. code-block:: forth
 
  : bar ." bar" int? . ;
  : baz ." baz" int? . ;
@@ -33,7 +33,7 @@ scope. This is the reason, why the critical section must be paired
 within one definition afterwards. Otherwise the return stack will 
 have data that crashes the system.
 
-::
+.. code-block:: forth
 
  \ global interrupt enable state as forth flag
  : int? ( -- f )

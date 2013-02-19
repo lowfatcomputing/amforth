@@ -15,7 +15,7 @@ The next step is a system that uses interrupt driven terminal
 IO and possibly other interrupt sources. This makes it possible
 to include the sleep call into the pause deferred word.
 
-::
+.. code-block:: forth
 
   : mypause 0 sleep ; ' mypause is pause
 

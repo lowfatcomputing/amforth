@@ -12,7 +12,7 @@ for the user. All these words do not do the output work actually, they call
 ``emit`` for each and every single character. And ``emit`` 
 can be redefined.
 
-::
+.. code-block:: forth
 
   : morse-emit ( c -- )
     ... \ some code to let a buzzer beep for the character c
@@ -52,7 +52,7 @@ it in an input queue. Whenever the program is ready to process
 a character it checks the queue and reads the most un-read
 from it.
 
-::
+.. code-block:: forth
 
  : ps2-key-isr ( -- )
   \ get the most recent key stroke 
