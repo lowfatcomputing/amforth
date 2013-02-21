@@ -23,11 +23,10 @@ PFA_STOREE0:
     loadtos
     in_ temp2, SREG
     cli
-    mov temp1, tosl
     rcall PFA_STOREE1
     adiw zl,1
 
-    mov temp1, tosh
+    mov tosl, tosh
     rcall PFA_STOREE1
     out_ SREG, temp2
     loadtos
@@ -44,7 +43,7 @@ PFA_STOREE2: ; estore_wait_low_spm:
 
     out_ EEARH,zh
     out_ EEARL,zl
-    out_ EEDR, temp1
+    out_ EEDR, tosl
     sbi EECR,EEMPE
     sbi EECR,EEPE
 
