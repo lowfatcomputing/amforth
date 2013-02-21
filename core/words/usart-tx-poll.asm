@@ -38,17 +38,3 @@ PFA_TXQ_POLL:
   .dw bm_USART_TXRD
   .dw XT_AND
   .dw XT_EXIT
-
-; ( -- ) Hardware Access
-; R( --)
-; initialize usart
-;VE_USART_INIT_TX_POLL:
-;  .dw $ff06
-;  .db "+usart"
-;  .dw VE_HEAD
-;  .set VE_HEAD = VE_USART_INIT_TX_POLL
-XT_USART_INIT_TX_POLL:
-  .dw DO_COLON
-PFA_USART_INIT_TX_POLL:          ; ( -- )
-  .dw XT_EXIT
-
