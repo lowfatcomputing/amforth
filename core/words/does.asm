@@ -11,13 +11,13 @@ XT_DOES:
 PFA_DOES:
     .dw XT_COMPILE
     .dw XT_DODOES
-    .dw XT_COMPILE  ; store some machine code
-    .dw $940e       ; that will be called later
-    .dw XT_COMPILE  ; its address will replace the
-    .dw DO_DODOES   ; XT create has written
-    .dw XT_EXIT     ; see below, the return address gets changed
+    .dw XT_COMPILE  ; create a code snippet to be used in an embedded XT
+    .dw $940e       ; the address of this compiled
+    .dw XT_COMPILE  ; code will replace the XT of the 
+    .dw DO_DODOES   ; word that CREATE created
+    .dw XT_EXIT     ; 
 
-DO_DODOES:
+DO_DODOES: ; ( -- PFA )
     savetos
     movw tosl, wl
     adiw tosl, 1
