@@ -10,5 +10,5 @@ XT_ENV_FORTHVERSION:
     .dw DO_COLON
 PFA_EN_FORTHVERSION:
     .dw XT_DOLITERAL
-    .dw 50
+    .dw 51
     .dw XT_EXIT
