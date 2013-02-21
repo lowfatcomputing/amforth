@@ -40,17 +40,3 @@ PFA_RXQ_POLL:
   .dw XT_AND
   .dw XT_EQUAL
   .dw XT_EXIT
-
-; ( -- ) Hardware Access
-; R( --)
-; initialize usart
-;VE_USART_INIT_RX_POLL:
-;  .dw $ff06
-;  .db "+usart"
-;  .dw VE_HEAD
-;  .set VE_HEAD = VE_USART_INIT_RX_POLL
-XT_USART_INIT_RX_POLL:
-  .dw DO_COLON
-PFA_USART_INIT_RX_POLL:          ; ( -- )
-  .dw XT_EXIT
-
