@@ -58,6 +58,10 @@ hex
     c!
 ;
 
+
+\ synonym off low
+\ synonym on  high
+
 \ pulse the pin
 : pulse ( pinmask portaddr time -- )
     >r
