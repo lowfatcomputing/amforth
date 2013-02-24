@@ -8,9 +8,7 @@ attached to Digital-13. It is tested on a arduino mega.
 What does the code do? It lets the LED blink and
 gives some hints for using and enjoying amforth.
 
-First: A few constants:
-
-::
+First: A few constants::
 
   > $25 constant PORTB
   > $24 constant DDRB
@@ -28,15 +26,11 @@ only two of them: The Data Direction Register (DDR) and the PORT
 (Output) Register. The third register is used for reading
 from the port (PIN).
 
-To quickly test the hardware enter the following commands
-
-:: 
+To quickly test the hardware enter the following commands::
 
   > $80 DDRB c! $80 PORTB c! <enter>
 
-The led turns on. With
-
-::
+The led turns on. With::
 
   > 0 PORTB c!
 
@@ -51,33 +45,33 @@ seperated by at least one space. In forth almost every character
 can be used as part of a command name.
 
 The first command in this example sets up the Data Direction Register 
-to make the LED Port an output pin. In arduino sketch it would be
+to make the LED Port an output pin. In arduino sketch it would be:
 
-::
+.. code-block:: c
 
   void setup() { 
      pinMode(13, OUTPUT); 
   }
 
-The same in Forth is
+The same in Forth is:
 
-::
+.. code-block:: forth
 
-  > : led-init  $80 DDRB c! ;
+  : led-init  $80 DDRB c! ;
 
 By entering the command line the interpreter will learn a new command:
-:command:`led-init`. This command can be called immediatly after the command prompt
-says OK. And it can be used in further command definitions.
+:command:`led-init`. This command can be called immediatly after the 
+command prompt says OK. And it can be used in further command definitions.
 
 It writes the 8bit number 128 (hex 80) to the register DDRB (hex 24) 
 as defined above. This makes the 7th bit of PORTB an Output pin.
 
 Calling our newly defined word does not change anything
-visible. But with the next word, the LED will turn on
+visible. But with the next word, the LED will turn on:
 
-::
+.. code-block:: forth
 
-  > : led-on $80 PORTB c! ;
+  : led-on $80 PORTB c! ;
 
 Here the 7th bit will be set to 1, and that makes the led to be connected
 to VCC (5V) and it will turn on (the LED is connected to ground already).
@@ -113,10 +107,7 @@ Calling this command will turn the led on, waits half a second, turn it
 off again and waits again half a second before returning to the command
 prompt.
 
-With a command line like
-
-
-::
+With a command line like::
 
   > led-blink led-blink led-blink 
 
