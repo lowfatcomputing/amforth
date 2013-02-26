@@ -199,6 +199,16 @@ Another input source are plain strings, used by :command:`EVALUATE`.
 Recognizer
 ..........
 
+The text interpreter does only split the source into single, whitespace
+separated words. For each word, a list of specialized actions is used
+to analyze and operate on the particular word.
+
+.. _Recognizer-current:
+
+.. figure:: Recognizer-current.*
+    
+    Current Recognizer Implementation
+
 A recognizer gets the string information of the current word.
 If the word can be processed, the recognizer is responsible to do so. A word from
 the dictionary has to be either executed or compiled, a number as well. A recognizer
@@ -216,6 +226,7 @@ The not-found recognizer prints the word and throws an exception -13 which can b
 
 The list of the recognizers is kept in the EEPROM, the maximum size of the
 entries is a compile time setting (currently 6 slot are available).
+
 
 Example
 ~~~~~~~
@@ -241,6 +252,28 @@ from the :command:`>float` is essentially duplicated and the recognizer is left.
 succeeded, the floating point number is on the data stack. The recognizer now checks
 whether the number needs to be compiled or not. In any case the success flag is
 returned.
+
+New Recognizer
+~~~~~~~~~~~~~~
+
+In its current state, a recognizer not only parses
+and identified the word, but has to take care of the
+interpreter state and various other things (e.g. beeing
+postponed or not). This makes a single recognizer more
+complex and duplicates some code blocks (state smartness).
+To improve this situation, are more complex picture may
+be used in future versions:
+
+.. _Recognizer-new:
+
+.. figure:: Recognizer.*
+    
+    Future Recognizer Implementation
+
+With this structure the text interpreter is the only one that
+takes care of the state and acts on the execution tokens accordingly.
+The final goal is to get a system, that can be used in other forth's
+as well.
 
 Stacks
 ------
