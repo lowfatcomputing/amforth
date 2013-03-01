@@ -126,7 +126,7 @@ To make it blink "forever", the next word is helpful
     key drop \ we do not want to keep this key stroke
   ;
 
-This wird prints some text ("press any key to stop") and starts a loop.
+This word prints some text ("press any key to stop") and starts a loop.
 This loop lets the led blink one and checks for a keystroke. If no key
 is pressed, the loops is repeated. If a key is pressed, the loop is
 terminated. The last two commands are housekeeping: read the key pressed

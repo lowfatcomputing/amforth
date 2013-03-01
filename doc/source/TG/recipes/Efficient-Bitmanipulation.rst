@@ -7,7 +7,7 @@ Idea and Implementation: Enoch
 Some Atmegas have a number of General Purpose
 IO Registers. They are not connected to any
 hardware but can be used with special instructions.
-The are executed in one CPU cycle and have the
+They are executed in one CPU cycle and have the
 additional advantage to be interrupt safe.
 
 This solution differs from the bitnames approach in

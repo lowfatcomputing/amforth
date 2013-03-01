@@ -1,3 +1,5 @@
+.. _Upgrade Amforth:
+
 ===============
 Upgrade AmForth
 ===============
