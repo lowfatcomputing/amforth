@@ -11,4 +11,5 @@ Programming and Debugging
     Profiler
     Tracer
     Upgrade-Amforth
+    Unbreakable
     Watcher
