@@ -6,6 +6,7 @@ Programming and Debugging
     Build-Timestamp
     Customize
     Debugshell
+    Dumps
     Forget
     Port-From-C
     Profiler
