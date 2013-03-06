@@ -68,8 +68,6 @@ I get no serial prompt!
     pin). Check the serial settings. Default is 9600 8N1, no flow control. Check the fuses. Try
     to maximize the CPU frequency. The factory default of 1MHz works almost never reliably.
 
-    Use a :ref:`Upgrade` of amforth.
-
     Ask on the mailling list for help.
 
 What do all the words do?

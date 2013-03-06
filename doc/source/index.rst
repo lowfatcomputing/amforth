@@ -7,7 +7,7 @@ AmForth
 =======
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    faq
    TG/TG

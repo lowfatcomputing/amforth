@@ -24,10 +24,10 @@ The basic words to access EEPROM are ``@e`` and
 ``!e``. They operate with the standard 2bytes forth
 cells to read and write data. There is no byte-level access.
 
-::
+.. code-block:: forth
 
   2 @e u.
-  64 82 e!
+  64 82 !e
 
 Amforth uses EEPROM internally already. To keep track of the
 free memory area the command ``edp`` gives the
