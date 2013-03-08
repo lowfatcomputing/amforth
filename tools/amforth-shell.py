@@ -477,9 +477,28 @@ class AMForth(object):
         self._last_edited_file = None
         self._config = BehaviorManager()
         if os.environ.has_key("AMFORTH_LIB"):
-          self._search_list = os.environ["AMFORTH_LIB"].split(":")
+            self._search_list = os.environ["AMFORTH_LIB"].split(":")
         else:
-          self._search_list=["."]
+            self._search_list=["."]
+
+        # define application constants to substitute
+        try:
+            ad_file = open("appl_defs.frt")
+            ad_line = ad_file.readline()
+            ad_mat = re.match("^\\\\\s+(\S.*)\n", ad_line)
+            if ad_mat:
+                self.progress_callback("Information", None, "appl_defs: " + ad_mat.group(1))
+            ad_pat=re.compile("^\s*(\S+)\s+constant\s+(\S+)\s")
+            ad_def = {}
+            while ad_line:
+                ad_mat = ad_pat.match(ad_line)
+                if ad_mat:
+                    ad_def[ad_mat.group(2)] = ad_mat.group(1)
+                ad_line = ad_file.readline()
+        except:
+            ad_def = {}
+        self.progress_callback("Information", None, "appl_defs: %d loaded" % len(ad_def))
+        self._appl_defs = ad_def
 
     @property
     def serial_port(self):
@@ -819,9 +838,11 @@ additional definitions (e.g. register names)
 
             if not w:
                 continue
-            if w in self._amforth_regs:
+            if w in self._appl_defs:
+                w = self._appl_defs[w]
+            elif w in self._amforth_regs:
                 w = self._amforth_regs[w]
-            if w.upper() in self.stdwords:
+            elif w.upper() in self.stdwords:
                 w = w.lower()
             if char_quote:
                 result.append(w)
