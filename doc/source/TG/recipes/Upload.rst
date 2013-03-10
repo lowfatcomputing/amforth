@@ -68,7 +68,7 @@ or, if set, the directories from the environment variable AMFORTH_LIB.
 Be careful when using a directory with many files, the startup may take 
 a long time due to the directory tree scanning.
 
-::
+.. code-block:: bash
 
  mt@ayla:~/amforth$ grep AMFORTH ~/.profile
  AMFORTH=~/amforth

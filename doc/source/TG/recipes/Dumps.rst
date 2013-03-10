@@ -16,7 +16,9 @@ information easily and the numbers are quickly
 found in memory dumps and the assembler LST and 
 MAP files.
 
-The output looks like::
+The output looks like:
+
+.. code-block:: console
 
  > -1 -2 -3 .s
  65533 65534 65535  ok
@@ -39,7 +41,9 @@ provided by Enoch on the mailling list:
  ;
 
 
-The output looks like::
+The output looks like:
+
+.. code-block:: console
 
  > -1 -2 -3 .s
  -1 -2 -3  ok

@@ -17,7 +17,7 @@ is not connected to the allocated RAM. The correct solution is:
  variable my-array  42 cells allot
 
 This makes the dictionary entry named my-array, sets up the
-link to the RAM address and allocates an <em>additional</em>
+link to the RAM address and allocates an *additional*
 amount of 42 cells in RAM.
 
 Forth 200x introduced a new word named 

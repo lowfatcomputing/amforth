@@ -252,7 +252,7 @@ Assembler
 .........
 
 Lubos Pekny has written an assembler for amforth. To support it, amforth
-provides the two words :command:`CODE` and command:`END-CODE`. The first
+provides the two words :command:`CODE` and :command:`END-CODE`. The first
 creates a dictionary entry and sets the code field to the data filed address. The
 interpreter will thus jump directly into the data field assuming some machine
 code there. The word :command:`END-CODE` places a JUMP NEXT into

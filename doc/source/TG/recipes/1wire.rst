@@ -65,7 +65,7 @@ word of the whole package.
 1-Wire Tools
 ------------
 
-The first useful tool is the lowlevel :command:`owreset`.
+The first useful tool is the lowlevel :command:`1w.reset`.
 It checks whether at least one 1wire device is present and
 working or not. Other useful tools are in the file 
 :file:`1wire.frt`. They perform a ROM search to print all

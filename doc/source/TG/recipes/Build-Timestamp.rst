@@ -5,7 +5,7 @@ Build Timestamp
 AmForth has a version number, that can be read with an
 environment query:
 
-::
+.. code-block:: forth
 
  > s" version" environment? drop .
  50 ok
@@ -19,7 +19,7 @@ maybe useful as well. To get it, AmForth needs to be compiled with
 the file :file:`words/built.asm` included. Calling it prints the
 date and time the hexfile was generated in the current terminal.
 
-::
+.. code-block:: console
 
  > built
  Nov 22 2012 23:12:94 ok
@@ -28,7 +28,7 @@ date and time the hexfile was generated in the current terminal.
 The assembly code uses some avr asm specific macros, the
 string length information is hardcoded.
 
-::
+:: 
 
  ; ( -- ) System
  ; R( -- )
@@ -62,7 +62,7 @@ revision number.
 His solutions extends the Makefile to generate a small forth
 snippet that contains the information as a string.
 
-::
+.. code-block:: make
 
  AMFORTH := ../amforth/trunk
  CORE := $(AMFORTH)/core

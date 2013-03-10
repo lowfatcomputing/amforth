@@ -8,7 +8,9 @@ attached to Digital-13. It is tested on a arduino mega.
 What does the code do? It lets the LED blink and
 gives some hints for using and enjoying amforth.
 
-First: A few constants::
+First: A few constants:
+
+.. code-block:: forth
 
   > $25 constant PORTB
   > $24 constant DDRB
@@ -28,9 +30,13 @@ from the port (PIN).
 
 To quickly test the hardware enter the following commands::
 
+.. code-block:: forth
+
   > $80 DDRB c! $80 PORTB c! <enter>
 
 The led turns on. With::
+
+.. code-block:: forth
 
   > 0 PORTB c!
 
@@ -90,7 +96,7 @@ new command word:
 
 You can now use the newly defined commands to turn the led on and off:
 
-::
+.. code-block:: console
 
   > led-on led-off led-on led-off
 
@@ -107,7 +113,9 @@ Calling this command will turn the led on, waits half a second, turn it
 off again and waits again half a second before returning to the command
 prompt.
 
-With a command line like::
+With a command line like:
+
+.. code-block:: console
 
   > led-blink led-blink led-blink 
 
