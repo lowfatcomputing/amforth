@@ -11,9 +11,9 @@ my %RSTACK;
 my %CSTACK;
 my %CATEGORY;
 
-my $version="5.0";
+my $version="5.1";
 
-my $texdir="../doc";
+my $texdir="../doc/TG/source/TG";
 my $asmdir="../core/words";
 
 sub readASM {
@@ -119,10 +119,10 @@ sub readASM {
     }
 }
 
-sub latex_head {
+sub _head {
     my ($title) = @_;
     my ($r);
-    open(I, "refcard-head.tex") or die "refcard header not found";
+    open(I, "refcard-head.rst") or die "refcard header not found";
     while(<I>) {
       s/\*VERSION\*/$version/g;
       $r .= $_
@@ -131,26 +131,22 @@ sub latex_head {
     return $r;
 }
 
-sub latex_foot {
-    return "
-\\end{multicols}
-\\end{document}";
+sub _foot {
 }
 
 sub printLaTeX {
     my ($title) = @_;
-    open(LATEX, ">$texdir/refcard.tex") or die "$!\n";;
-    print LATEX latex_head($title);
+    open(LATEX, ">$texdir/refcard.rst") or die "$!\n";;
+    print LATEX _head($title);
     foreach my $category (sort keys %CATEGORY) {
     next if $category=~/^\s*$/;
     next if $category=~/internal/;
+
 	print "$category\n";
-	print LATEX "\n\\subsection*{$category}\n";
-	print LATEX "\\addcontentsline{toc}{section}{$category}\n";
-	print LATEX "\n\\begin{description}\n";
+	my $cattxt = $category;
+	$cattxt =~s/\s+(.*)/$1/;
+	print LATEX "\n$cattxt\n". "-" x length($cattxt) . "\n\n";
 	foreach my $lbl (sort @{$CATEGORY{$category}}) {
-	    print "\t$lbl\n";
-	
 	    my $xt  = $XT{$lbl};
 	    my $voc = $VOC{$lbl};
 	    my $shortlbl = substr($lbl, 3);
@@ -161,29 +157,29 @@ sub printLaTeX {
 	    my $cstack = $CSTACK{$lbl};
 	    my $verbdelim = "|";
 	    $verbdelim = "/" if $dstack=~/$verbdelim/;
-	    print LATEX "% $lbl\n";
-	    $voc =~ s/\\/\\textbackslash/g;
-	    $voc =~ s/\#/\\#/g;
-	    $voc =~ s/]/{]}/g;
-	    $voc =~ s/\[/{[}/g;
+	    # print LATEX ".. _ $lbl:\n";
+	    #$voc =~ s/\\/\\textbackslash/g;
+	    #$voc =~ s/\#/\\#/g;
+	    # $voc =~ s/]/{]}/g;
+	    ##voc =~ s/\[/{[}/g;
 	    $voc =~ s/\$/\\\$/g;
-	    $voc =~ s/_/\\_/g;
+	    #$voc =~ s/_/\\_/g;
 	    $voc =~ s/"/''/g; # '"
-	    $descr =~ s/_/\\_/g;
-	    print LATEX "\\item[$voc]\n";
-	    print LATEX "\\addcontentsline{toc}{subsection}{$voc}\n";
-	    print LATEX "   \\texttt{\n";
-	    # print LATEX "   \\verb$verbdelim$dstack$verbdelim\n";
-	    print LATEX "   $dstack\n";
-	    print LATEX "   \\\\$rstack\n" unless $rstack =~ /^\s*$/;
-	    print LATEX "   \\\\$cstack\n" unless $cstack =~ /^\s*$/;
-	    print LATEX "   }\\\\\n";
-	    print LATEX "$descr\n\n";
+	    #$voc =~ s/\+/\\\+/g;
+	    #$voc =~ s/-/\\-/g;
+	    #$voc =~ s/\*/\\\*/g;
+	    $voc =~ s/\\/\\\\/g;
+	    #$descr =~ s/_/\\_/g;
+	    print LATEX "* :command:`$voc`\n";
+	    print LATEX "  $dstack\n";
+	    print LATEX "  $rstack\n" unless $rstack =~ /^\s*$/;
+	    print LATEX "  $cstack\n" unless $cstack =~ /^\s*$/;
+	    print LATEX " $descr\n\n";
 	
 	  }
-	print LATEX "\n\\end{description}\n";
+	print LATEX "\n\n";
     }
-    print LATEX latex_foot();
+    print LATEX _foot();
 }
 
 opendir(CWD, $asmdir);
