@@ -13,4 +13,6 @@ Programming and Debugging
     Tracer
     Upgrade-Amforth
     Unbreakable
+    WalkingWordlists
     Watcher
+    
