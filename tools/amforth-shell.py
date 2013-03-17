@@ -16,6 +16,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
+# Patcher remarks:
+# ================
+# 
+# This uploader saves dictionary space and words clutter by substituting
+# uC register names and application constants with numbers. The
+# appl_defs.frt (Forth) file in the application's local directory
+# provides the constant definitions. In appl_defs.frt put each constant
+# on a line of its own. The first line, if it begins with a backslash
+# comment, would be echoed to the screen when uploading the Forth
+# code. It is recommended to place in appl_defs.frt global constant
+# definitions which would affect compilation of the library and the
+# project code. For example:
+#
+# \ Project Name
+# $d5 constant CRC8MSB
+# 10 constant max_number_of_users
+#
 # =====================================================================
 # DOCUMENTATION
 # =====================================================================
@@ -815,7 +832,7 @@ additional definitions (e.g. register names)
         directive = None
         directive_arg = []
         words = self._split_space_or_tab(line)
-        for w in words:
+        for iw,w in enumerate(words):
             if in_string:
                 try:
                     i = w.index('"')
@@ -857,7 +874,7 @@ additional definitions (e.g. register names)
                 continue
 
             if not in_delim_comment and not in_line_comment:
-                if w == "\\":
+                if w == "\\" and (iw == 0 or words[iw-1] != "postpone"):
                     in_line_comment = True
                     continue
 
