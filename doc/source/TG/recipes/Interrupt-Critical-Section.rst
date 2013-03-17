@@ -49,5 +49,22 @@ have data that crashes the system.
     r> r> if +int then >r \ will crash if not matched
  ;
 
+A possible modification is to add the PAUSE vector as well and
+turn off the cooperative multitasker during the critical section.
 
+.. code-block:: forth
 
+ : critical[ \ ( -- ) R( XT -- n*f XT )
+    r> 
+       int? >r  \ get the global interrupt flag
+       ['] pause defer@ >r \ get current multitasker
+     >r \ restore the returnstack
+    -int single
+ ;
+
+ : ]critical \ ( -- ) R( n*f XT -- XT )
+    r> 
+    r> ['] pause defer! \ restore multitasker
+    r> if +int then     \ restore global interrupt flag
+    >r \ will crash if not matched
+ ;

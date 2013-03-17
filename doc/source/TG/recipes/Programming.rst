@@ -10,6 +10,7 @@ Programming and Debugging
     Forget
     Port-From-C
     Profiler
+    RAM-Efficiency
     Tracer
     Upgrade-Amforth
     Unbreakable

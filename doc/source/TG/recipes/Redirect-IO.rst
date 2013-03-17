@@ -4,13 +4,16 @@
 Redirect IO
 ===========
 
+The IO system consists of 4 words: :command:`EMIT`, :command:`EMIT?`,
+:command:`KEY` and :command:`KEY?`. The are deferred words, e.g.
+they can be changed at runtime. 
+
 Output
 ------
 
-Amforth uses many words like ``."`` and ``type`` to write information 
-for the user. All these words do not do the output work actually, they call 
-``emit`` for each and every single character. And ``emit`` 
-can be redefined.
+Amforth has many words like ``."`` and ``type`` to write information. 
+All these words do not do the output work actually, they call 
+``emit`` for each and every single character.
 
 .. code-block:: forth
 
@@ -38,19 +41,19 @@ gets reset to serial IO whenever you call ``WARM``.
 Input
 -----
 
-similar to the output, the usual line based input word
-such as ``accept`` use the word pair ``key``
-and ``key?`` get actually get a character or check
-for whether a new character is available respectivly. And like
-the ``emit`` words, they can be redefined as well.
+Input is based upon single characters. The command :command:`key?`
+checks whether an unread character is available and :command:`key`
+fetches it. To read an user supplied buffer, the command :command:`accept`
+can be used. It reads until either the buffer is filled or an
+end-of-line character is found (Carriege Return and/or line feed).
 
-Entering characters is usually a bit more complicated since
-the code usually knows, how to deal with them but does not know
-when they arrive. This leads to an layered design with a small
-interrupt service routine that reads the character and places
-it in an input queue. Whenever the program is ready to process
-a character it checks the queue and reads the most un-read
-from it.
+Depending on the input source, different strategies may be used.
+The simplest way is to poll the input device frequently and hope
+that no character is lost. More sophisticated is the use of
+interrupts. They can be called at any time and almost garantuee
+that no characters will be lost. The interrupt usually fills an
+internal small buffer :command:`key` and :command:`key?`
+can deal with.
 
 .. code-block:: forth
 
