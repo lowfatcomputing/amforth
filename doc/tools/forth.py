@@ -152,9 +152,11 @@ class ForthLexer(RegexLexer):
             # Numbers
             (r'(\$[0-9A-Fa-f]+)', Number.Hex),
             (r'(\#|%|&|\-|\+)?[0-9]+', Number.Integer),
+            (r'(\#|%|&|\-|\+)?[0-9\.]+', Keyword.Type),
             # amforth specific
             (r'(@i|!i|@e|!e|pause|noop|turnkey|sleep|'
-             r'itype|icompare|sp@|sp!|rp@|rp!|up@|up!)'+delimiter, Keyword.Type),
+             r'itype|icompare|sp@|sp!|rp@|rp!|up@|up!|'
+             r'sp0|rp0|\(evaluate\)|int-trap|int!)'+delimiter, Keyword.Type),
             (valid_name, Name.Function),      # Anything else is executed
 
         ],
