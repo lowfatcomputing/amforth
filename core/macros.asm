@@ -6,11 +6,10 @@
 .set WANT_IGNORECASE = 0
 .set WANT_UNIFIED = 0
 
+.set BAUD_MAXERROR = 10
 ; Dictionary setup
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
-
-;
 
 .include "user.inc"
 

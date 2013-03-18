@@ -15,7 +15,7 @@ EE_STOREI:
 .equ BAUD_REAL  = (F_CPU/(16*(UBRR_VAL+1)))     ; effective baud rate
 .equ BAUD_ERROR = ((BAUD_REAL*1000)/BAUD-1000)  ; error in pro mille
 
-.if ((BAUD_ERROR>10) || (BAUD_ERROR<-10))       ; accept +/-10 error (pro mille)
+.if ((BAUD_ERROR>BAUD_MAXERROR) || (BAUD_ERROR<-BAUD_MAXERROR))       
   .error "Serial line cannot be set up properly (systematic baud error too high)"
 .endif
 EE_UBRRVAL:
