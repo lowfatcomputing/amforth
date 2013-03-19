@@ -28,13 +28,13 @@ only two of them: The Data Direction Register (DDR) and the PORT
 (Output) Register. The third register is used for reading
 from the port (PIN).
 
-To quickly test the hardware enter the following commands::
+To quickly test the hardware enter the following commands:
 
 .. code-block:: forth
 
   > $80 DDRB c! $80 PORTB c! <enter>
 
-The led turns on. With::
+The led turns on. With:
 
 .. code-block:: forth
 
