@@ -6,7 +6,9 @@
 .set WANT_IGNORECASE = 0
 .set WANT_UNIFIED = 0
 
+; 10 per mille (1 per cent) is ok.
 .set BAUD_MAXERROR = 10
+
 ; Dictionary setup
 .set VE_HEAD = $0000
 .set VE_ENVHEAD = $0000
