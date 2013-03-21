@@ -4,6 +4,7 @@ Programming and Debugging
 .. toctree::
 
     Build-Timestamp
+    Ctrl-C
     Customize
     Debugshell
     Dumps
