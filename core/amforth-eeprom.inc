@@ -64,3 +64,6 @@ EE_RECOGNIZERLIST:
     .dw -1
     .dw -1
     .dw -1
+
+EE_WLSCOPE:
+    .dw XT_CURRENT_SCOPE  ; default wordlist scope

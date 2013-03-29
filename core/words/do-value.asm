@@ -1,11 +1,11 @@
 ; ( -- n )
 ; System
 ; runtime of value
-;VE_DOVALUE:
-;    .dw $ff07
-;    .db "(value)", 0
-;    .dw VE_HEAD
-;    .set VE_HEAD = VE_DOVALUE
+VE_DOVALUE:
+    .dw $ff07
+    .db "(value)", 0
+    .dw VE_HEAD
+    .set VE_HEAD = VE_DOVALUE
 XT_DOVALUE:
     .dw PFA_DOVALUE
 PFA_DOVALUE:

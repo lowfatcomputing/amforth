@@ -10,12 +10,15 @@ XT_COLON:
     .dw DO_COLON
 PFA_COLON:
     .dw XT_DOCREATE
-    .dw XT_DOLITERAL
-    .dw COLON_SMUDGE
 .dseg
-COLON_SMUDGE: .byte 2
+COLON_SMUDGE: .byte 4
 .cseg
-    .dw XT_STORE
+    .dw XT_DOLITERAL
+    .dw COLON_SMUDGE+2
+    .dw XT_STORE		; save wid
+    .dw XT_DOLITERAL
+    .dw COLON_SMUDGE+0
+    .dw XT_STORE		; save voc-link
     .dw XT_DP
     .dw XT_LATEST
     .dw XT_STORE

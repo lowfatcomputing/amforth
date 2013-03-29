@@ -10,7 +10,6 @@ XT_CODE:
     .dw DO_COLON
 PFA_CODE:
     .dw XT_DOCREATE
-    .dw XT_GET_CURRENT
     .dw XT_STOREE
     .dw XT_DP
     .dw XT_1PLUS

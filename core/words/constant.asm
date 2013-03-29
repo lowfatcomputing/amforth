@@ -10,7 +10,6 @@ XT_CONSTANT:
     .dw DO_COLON
 PFA_CONSTANT:
     .dw XT_DOCREATE
-    .dw XT_GET_CURRENT
     .dw XT_STOREE
     .dw XT_COMPILE
     .dw PFA_DOVARIABLE
