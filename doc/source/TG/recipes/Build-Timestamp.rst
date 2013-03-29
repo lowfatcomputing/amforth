@@ -28,7 +28,7 @@ date and time the hexfile was generated in the current terminal.
 The assembly code uses some avr asm specific macros, the
 string length information is hardcoded.
 
-:: 
+.. code-block:: none
 
  ; ( -- ) System
  ; R( -- )

@@ -19,7 +19,7 @@ image that works everywhere.
 
 First make a copy of the appl/template directory (myapp in this example).
 
-::
+.. code-block:: bash
 
  mt@ayla:~/amforth/appl$ cp -r template myapp
 
@@ -28,7 +28,7 @@ Next edit the template.asm in the mayapp directory. You may
 want to rename the file later. There are only a few lines that
 need your attention.
 
-::
+.. code-block:: none
 
  ; include the amforth device definition file. These
  ; files include the *def.inc from atmel internally.
@@ -39,7 +39,7 @@ but does not specify the controller type itself. The magic
 is in the list of INCLUDE directory that is defined in the
 Makefile. Alternatively change the line to
 
-::
+.. code-block:: none
 
  .include "devices/atmega1280/device.asm"
 
@@ -53,7 +53,7 @@ The next essential information is the frequency your controller
 uses. It is necessairy (at least) to calculate the proper usart settings
 and to get the right delay in the forth word ``ms``.
 
-::
+.. code-block:: none
 
  ; amforth needs two essential parameters
  ; cpu clock in hertz, 1MHz is factory default
@@ -67,7 +67,7 @@ UCSZ00. Elder controllers do not have a number suffix, just delete it
 (atmega32 may serve as an example for it).
 
 
-::
+.. code-block:: none
 
  ; initial baud rate of terminal
  .include "drivers/usart_0.asm"
@@ -78,7 +78,7 @@ UCSZ00. Elder controllers do not have a number suffix, just delete it
 The next file to edit is the Makefile (or the build.xml if you want
 to use the ant utility). First set the right controller type:
 
-.. code-block:
+.. code-block:: none
 
   # the MCU should be identical to the device
   # setting in template.asm, it set
@@ -86,7 +86,7 @@ to use the ant utility). First set the right controller type:
 
 The last change is the placement of the avrasm2.exe and the Appnotes2 directory.
 
-::
+.. code-block:: make
 
  # directories
  DIR_ATMEL=../../Atmel
@@ -94,7 +94,7 @@ The last change is the placement of the avrasm2.exe and the Appnotes2 directory.
 To flash the controller, the program avrdude is used. Depending on your programmer,
 define the BURNER variable as well:
 
-::
+.. code-block:: make
 
  # programmers / flags
  USB=-c avr911  -P /dev/ttyUSB3
@@ -116,7 +116,7 @@ The files core/devices/$MCU/device.asm contain among other things a
 complete list of WANT Options that can be used to include device specific
 Names into the dictionary. 
 
-::
+.. code-block:: none
 
  .set WANT_AD_CONVERTER = 0
  .set WANT_ANALOG_COMPARATOR = 0
@@ -137,7 +137,7 @@ setting, valid for both pre-defined and self-defined words.
 The 3rd group switches the USART terminal communiction between
 interrupt and poll based routines:
 
-::
+.. code-block:: none
 
  .set WANT_ISR_TX = 0
  .set WANT_ISR_RX = 1

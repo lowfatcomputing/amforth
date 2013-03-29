@@ -13,7 +13,7 @@ pre-process the sources: e.g. replace the register names with their numeric valu
 This saves valuable flash (dictionary) space since most of these registers are used 
 only once.
 
-::
+.. code-block:: bash
 
   mt@ayla:~/amforth$ cat tools/test.frt
  \ this is a test
@@ -48,7 +48,7 @@ command prompt with dynamic command completion and command history (stored
 accross multiple invocations), a lot of runtime checks and so on. To enter
 an interactive session, just call it with the port name
 
-::
+.. code-block:: bash
 
  mt@ayla:~/amforth$ u0 -i
  |I=Entering amforth interactive interpreter

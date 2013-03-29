@@ -96,7 +96,7 @@ It is expected that this code segment does a jump back to the
 inner interpreter (NEXT). The :command:`IP` is incremented by 1 just before
 the jumps are done to get the next cell.
 
-::
+.. code-block:: none
 
    Check_Interrupt
    W  <- [IP]   ; read at IP
@@ -150,7 +150,7 @@ of the (parent) colon word. Note that :command:`W` points to
 the execution token of the current word, so W+1 points to the
 parameter field (body) of the forth word.
 
-::
+.. code-block:: none
 
   push IP
   IP <- W+1
@@ -164,7 +164,7 @@ It is defined in the forth word :command:`EXIT` in the dictionary.
 It reads the :command:`IP` from the return stack and jumps to NEXT. The return 
 stack pointer is incremented by 2 (1 flash cell).
 
-::
+.. code-block:: none
 
   pop IP
   JMP NEXT
@@ -727,7 +727,7 @@ simple example: defining a constant. The standard
 word :command:`constant` does exactly the
 same.
 
-::
+.. code-block:: console
 
   > : con create , does> @i ;
    ok

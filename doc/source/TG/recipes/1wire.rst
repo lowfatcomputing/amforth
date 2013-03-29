@@ -26,7 +26,7 @@ file :file:`drivers/1wire.asm` included into your project master file (e.g.
 in the same file. They define, which pin is connected to the 1wire bus. There are
 no defaults
 
-::
+.. code-block:: none
 
   ; Port and Pin for the 1-wire bus.
   .equ OW_BIT=4
@@ -71,7 +71,7 @@ working or not. Other useful tools are in the file
 :file:`1wire.frt`. They perform a ROM search to print all
 ROM id's of the connected devices.
 
-::
+.. code-block:: console
 
   (ATmega1280)> hex 1w.showids 
 
@@ -85,7 +85,7 @@ Code specialized for temperature sensors is in the file
 sensor types are available with different result codings. The 
 code is not currently capable to take care of the differences.
 
-:: 
+.. code-block:: console
 
   > hex create sensor2 28 , 4C , 75 , CC , 2 , 0 , 0 , CD ,
   ok

@@ -12,7 +12,8 @@ cvariable
 :command:`cvariable` acts like :command:`variable` but
 does not allocate a cell (2 bytes) but only 1 byte
 of RAM. Access to it is limited to :command:`c@` and
-:command:`c!`. 
+:command:`c!`. To indicate the size, one may want to
+use the `Hungarian Notation <http://en.wikipedia.org/wiki/Hungarian_notation>`_.
 
 There are a few possible implementations. One uses carnal
 knowledge of the inner workings, the other one relies

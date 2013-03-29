@@ -22,16 +22,18 @@ the exact storage location.
 
 AmForth uses the deferred words technique already internally:
 
-* :command:`turnkey`, is an EEPROM based deferred word that is executed
-    from :command:`QUIT` usually during startup and reset.
+* :command:`turnkey` is an EEPROM based deferred word that is executed
+  from :command:`QUIT` usually during startup and reset.
 * the words :command:`key`, :command:`key?`,
-    :command:`emit`, and :command:`emit?` are USER
-    deferred words for low level terminal IO.
+  :command:`emit`, and :command:`emit?` are USER
+  deferred words for low level terminal IO.
 * :command:`refill` and :command:`source` are
-    USER deferred words used by the forth interpreter
-    to get the next command line.
+  USER deferred words used by the forth interpreter
+  to get the next command line.
 * :command:`pause` is a RAM based deferred word
-    that is called whenever a task switch can be done.
+  that is called whenever a task switch can be done.
+* :command:`!i` does the actual flash write of a single
+  cell. It is intended for :ref:`Unbreakable`
 
 Since there is no standard defer word, the programmer
 has to take care where to store the execution tokens. An
