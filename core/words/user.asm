@@ -10,7 +10,7 @@ XT_USER:
     .dw DO_COLON
 PFA_USER:
     .dw XT_DOCREATE
-    .dw XT_STOREE
+    .dw XT_REVEAL
 
     .dw XT_COMPILE
     .dw PFA_DOUSER

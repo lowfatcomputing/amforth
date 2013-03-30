@@ -12,6 +12,7 @@ PFA_SEMICOLON:
     .dw XT_COMPILE
     .dw XT_EXIT
     .dw XT_LBRACKET
+    ; delayed REVEAL with error check
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE+0
     .dw XT_FETCH
@@ -21,7 +22,7 @@ PFA_SEMICOLON:
 ;
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE+2
-    .dw XT_FETCH		; ( voc-link wid )
+    .dw XT_FETCH		; ( NFA WID )
     .dw XT_STOREE
     .dw XT_ZERO
     .dw XT_DOLITERAL

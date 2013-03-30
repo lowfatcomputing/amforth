@@ -18,7 +18,7 @@ COLON_SMUDGE: .byte 4
     .dw XT_STORE		; save wid
     .dw XT_DOLITERAL
     .dw COLON_SMUDGE+0
-    .dw XT_STORE		; save voc-link
+    .dw XT_STORE		; save NFA
     .dw XT_DP
     .dw XT_LATEST
     .dw XT_STORE

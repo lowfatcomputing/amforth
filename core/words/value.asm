@@ -10,7 +10,7 @@ XT_VALUE:
     .dw DO_COLON
 PFA_VALUE:
     .dw XT_DOCREATE
-    .dw XT_STOREE
+    .dw XT_REVEAL
 
     .dw XT_COMPILE
     .dw PFA_DOVALUE

@@ -23,6 +23,8 @@
 
 
 .include "words/create.asm"
+.include "words/header.asm"
+.include "words/reveal.asm"
 .include "words/latest.asm"
 .include "words/does.asm"
 .include "words/colon.asm"
