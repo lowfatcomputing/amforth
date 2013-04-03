@@ -9,7 +9,7 @@ get-order 1+ can_lib swap set-order     \ can_lib would be searched first
    2dup
    4 >  if                              \ name length check
       s" can_" tuck icompare  if        \ name prefix check
-         4 - swap 4 + swap              \ drop prefix from created word
+         4 /string                      \ drop prefix from created word
          can_lib exit
       then
    else
