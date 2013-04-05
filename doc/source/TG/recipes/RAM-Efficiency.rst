@@ -57,7 +57,7 @@ an implementation of a value that stores a single byte:
      here ,            \ the address for the methods
      postpone c@       \ method for the read operation
      postpone c!       \ method for the write (TO) operation
-     here 1 allot !    \ allocate the memory and initialize it
+     here 1 allot c!   \ allocate the memory and initialize it
    ;
 
 
