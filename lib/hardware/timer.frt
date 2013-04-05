@@ -14,6 +14,7 @@
 : @tick 
    timer0.tick @ 
    \ timer1.tick @ 
+   \ timer2.tick @
 ;
 
 \ a timer is generally a timer tick number.
@@ -24,7 +25,7 @@
 
 \ check if the the timer t has expired
 : expired? ( t -- flag )
-   pause @tick - 0<
+   pause @tick - 0> invert
 ;
 
 \ alternative implementation for ms
