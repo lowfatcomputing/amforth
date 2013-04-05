@@ -14,6 +14,7 @@ lines 5-8:
 
 .. code-block:: text
    :linenos:
+   :emphasize-lines: 5-8
 
      lds xh, USART_DATA
      ; optional: check for certain character(s) (e.g. CTRL-C)
