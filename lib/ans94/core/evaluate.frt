@@ -7,15 +7,6 @@
 variable strlen
 variable str
 : source-string str @ strlen @ ;
-: copy-string ( i-addr len ram -- )
-  rot rot     ( -- ram i-addr len )
-  2/ 1+       ( -- ram i-addr f-cells )
-  over + swap
-  ?do
-    i @i over ! cell+
-  loop
-  drop
-;
 
 \ we have to distinguish between interpreted (RAM)
 \ and compiled (Flash) strings. First the RAM
@@ -39,7 +30,7 @@ variable str
 : [evaluate]
    ( iaddr len -- )
     dup >r
-    here copy-string
+    here imove
     here r> (evaluate)
 ;
 

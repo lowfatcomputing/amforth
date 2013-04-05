@@ -1,17 +1,6 @@
 \ environment queries are placed in a
 \ separate wordlist.
 
-\ helper routine
-: copy-string ( i-addr len ram -- )
-  rot rot     ( -- ram i-addr len )
-  2/ 1+       ( -- ram i-addr f-cells )
-  over + swap
-  ?do
-    i @i over ! cell+
-  loop
-  drop
-;
-
 \ we have to distinguish between interpreted (RAM)
 \ and compiled (Flash) strings. First the RAM
 \ strings
@@ -27,7 +16,7 @@
 : [environment?]
    ( iaddr len -- )
     dup >r
-    here copy-string
+    here imove
     here r> (environment?)
 ;
 
@@ -46,7 +35,7 @@
 \ and switch to the environment queries wordlist
 get-current environment set-current
 
-: /counted-strings &32 ;
+: /counted-strings &60 ;
 : floored 0 ;
 : address-unit-bits $10 ;
 : max-char $ff ;
