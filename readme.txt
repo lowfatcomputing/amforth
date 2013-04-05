@@ -1,4 +1,4 @@
-Date: 15.12.2012
+Date: 5.4.2013
 
 Author: 
     Matthias Trute <mtrute@users.sourceforge.net> 
@@ -9,6 +9,7 @@ Contributors:
     Leon Maurer
     Ullrich Hoffmann
     Karl Lund
+    Enoch
 
 License: General Public License (GPL) Version2 from 1991. See the
 file LICENSE.txt or http://www.gnu.org/licenses/gpl.html
