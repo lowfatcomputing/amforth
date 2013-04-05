@@ -1,10 +1,15 @@
 \ ******************************************
 \ some exceptions 
 \ ******************************************
+
+: ?throw ( f exc -- )
+   if throw then 
+;
+  
 : ?comp  ( -- )
-    state @ 0= 
-    if -&14 throw then ;
+    state @ 0= -&14 ?throw
+;
 
 : ?pairs ( n1 n2 -- ) 
-    - 
-    if -&22 throw then ;
+    - -&22 ?throw 
+;
