@@ -32,5 +32,5 @@
   .set XT_USART_INIT_TX = XT_USART_INIT_XTX_POLL
 .endif
 
-.include "words/baud.asm"
+.include "words/ubrr.asm"
 .include "words/usartx.asm"
