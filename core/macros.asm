@@ -2,7 +2,7 @@
 ; some defaults
 
 .set WANT_ISR_TX = 0
-.set WANT_ISR_RX = 0
+.set WANT_ISR_RX = 1
 .set WANT_IGNORECASE = 0
 .set WANT_UNIFIED = 0
 
