@@ -24,6 +24,7 @@
 
 .include "words/create.asm"
 .include "words/header.asm"
+.include "words/wlscope.asm"
 .include "words/reveal.asm"
 .include "words/latest.asm"
 .include "words/does.asm"
