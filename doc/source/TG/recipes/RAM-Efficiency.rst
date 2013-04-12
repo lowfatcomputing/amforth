@@ -44,10 +44,10 @@ Use of such small variables is just like other ones:
 cvalue
 ------
 
-Value is targeted to the EEPROM usage pattern: Write seldom,
-read often. The underlying implementation can use different
+The standard VALUE fits perfect the EEPROM usage pattern: Write
+seldom, read often. The underlying implementation can use different
 memories as well. The following example illustrates this with
-an implementation of a value that stores a single byte:
+an implementation of a value that stores a single byte in RAM:
 
 .. code-block:: forth
 
@@ -75,10 +75,9 @@ Using this new value is straight forward:
    42 ok
    >
 
-After definition the new size restricted value is used like any other value.
-To read it, simply call its name. To write to it, use the TO operation.
-Note that the :command:`to` is the same as for the standard (eeprom) value's.
-It is also save against overflows:
+After its definition the new size restricted value is used like any other value.
+To read it, simply call its name. To write to it, use the TO command.
+As a bonus, all operations are save against overflows:
 
 .. code-block:: none
 

@@ -7,7 +7,7 @@ Controller
 
 amforth is designed to run on AVR Atmega
 microcontrollers. It requires
-ca 7KB flash memory for the basic
+ca 8KB flash memory for the basic
 system and can address 128KB of
 flash memory.
 

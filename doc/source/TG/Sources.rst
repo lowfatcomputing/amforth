@@ -21,8 +21,8 @@ with include files, named after the pattern
 :file:`dict*.inc`.
 
 The include hierarchy is as follows: Top level is the application specific
-file (template.asm). It included the file (core/):file:`amforth.asm` only. This file includes
-the two (appl/) files :file:`dict_appl.inc` for the low address words (RWW space) and the
+file (template.asm). It included the file :file:`core/amforth.asm` only. This file includes
+the two files from the application directory: :file:`dict_appl.inc` for the low address words (RWW space) and the
 file :file:`dict_appl_core.inc` for the high address space words (NRWW). These two include
 files use other :file:`dict*` files and direct words defintion files. Any cross-references
 are solved by the assembler. The user needs to take care that the highest used address
