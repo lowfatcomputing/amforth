@@ -59,19 +59,18 @@ will work but the upload of longer files needs a
 very long time: $delayChar can be 1 or 2 ms,
 $delayLine around 800 ms.
 
-An example for the alternative algorithm are the
-tools :command:`amforth-upload.py`
-and :command:`amforth-term.py`. They
-are python scripts that uses a few external
-libraries which can usually installed with the
-standard package managers.
+Uploader++
+..........
 
-These tools provide some additional value beyond
-simply transferring text files. They analyze the
-source code and obey some additional commands.
-One command is the :command:`#include filename`. 
-When this command is found the content of the 
-file :file:`filename` is sent to the controller.
+The powerful Python script :command:`amforth-shell.py` is using
+echo to regulate uploading. It recognizes Forth comments, single
+and multi line, and skips uploading them. The shell also features
+automatic file inclusion via `#include filename.frt`
+meta commands and, what can save a lot of dictionary space and
+clutter, it does constant substitution for the AVR register names
+and the project's own definitions (via a locally provided
+:file:`appl_defs.frt` file). The shell has much more to offer,
+please read its script.
 
 Controller
 ----------
