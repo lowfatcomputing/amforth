@@ -1,9 +1,9 @@
-.include "dict_core.inc"
-.include "dict_interrupt.inc"
+#include "dict_core.inc"
+#include "dict_interrupt.inc"
 
-.include "words/store-e.asm"
-.include "words/fetch-e.asm"
+#include "words/store-e.S"
+#include "words/fetch-e.S"
 
-.include "words/store-i.asm"
-.include "words/fetch-i.asm"
-.include "words/store-i_big.asm"
+#include "words/store-i.S"
+#include "words/fetch-i.S"
+#include "words/store-i_big.S"

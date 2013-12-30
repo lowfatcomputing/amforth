@@ -1,7 +1,7 @@
-.include "dict_core.inc"
-.include "words/store-e.asm"
-.include "words/fetch-e.asm"
+#include "dict_core.inc"
+#include "words/store-e.S"
+#include "words/fetch-e.S"
 
-.include "words/store-i.asm"
-.include "words/store-i_nrww.asm"
-.include "words/fetch-i.asm"
+#include "words/store-i.S"
+#include "words/store-i_nrww.S"
+#include "words/fetch-i.S"

@@ -9,74 +9,74 @@
 ; R( -- )
 ; ADC Data Register High Byte
 VE_ADCH:
-	.dw $ff04
-	.db "ADCH"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "ADCH"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ADCH
 XT_ADCH:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ADCH:
-	.dw $79
+	.word 0x79
 ; ( -- addr ) System Constant
 ; R( -- )
 ; ADC Data Register Low Byte
 VE_ADCL:
-	.dw $ff04
-	.db "ADCL"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "ADCL"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ADCL
 XT_ADCL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ADCL:
-	.dw $78
+	.word 0x78
 ; ( -- addr ) System Constant
 ; R( -- )
 ; The ADC Control and Status register
 VE_ADCSRA:
-	.dw $ff06
-	.db "ADCSRA"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "ADCSRA"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ADCSRA
 XT_ADCSRA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ADCSRA:
-	.dw $7A
+	.word 0x7A
 ; ( -- addr ) System Constant
 ; R( -- )
 ; ADC Control and Status Register B
 VE_ADCSRB:
-	.dw $ff06
-	.db "ADCSRB"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "ADCSRB"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ADCSRB
 XT_ADCSRB:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ADCSRB:
-	.dw $7B
+	.word 0x7B
 ; ( -- addr ) System Constant
 ; R( -- )
 ; The ADC multiplexer Selection Register
 VE_ADMUX:
-	.dw $ff05
+	.word 0xff05
 	.db "ADMUX",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_ADMUX
 XT_ADMUX:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ADMUX:
-	.dw $7C
+	.word 0x7C
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Digital Input Disable Register 0
 VE_DIDR0:
-	.dw $ff05
+	.word 0xff05
 	.db "DIDR0",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_DIDR0
 XT_DIDR0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DIDR0:
-	.dw $7E
+	.word 0x7E
 
 .endif
 
@@ -87,26 +87,26 @@ PFA_DIDR0:
 ; R( -- )
 ; Analog Comparator Control And Status Register
 VE_ACSR:
-	.dw $ff04
-	.db "ACSR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "ACSR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ACSR
 XT_ACSR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ACSR:
-	.dw $50
+	.word 0x50
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Digital Input Disable Register 1
 VE_DIDR1:
-	.dw $ff05
+	.word 0xff05
 	.db "DIDR1",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_DIDR1
 XT_DIDR1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DIDR1:
-	.dw $7F
+	.word 0x7F
 
 .endif
 
@@ -117,14 +117,14 @@ PFA_DIDR1:
 ; R( -- )
 ; Store Program Memory Control Register
 VE_SPMCSR:
-	.dw $ff06
-	.db "SPMCSR"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "SPMCSR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPMCSR
 XT_SPMCSR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPMCSR:
-	.dw $57
+	.word 0x57
 
 .endif
 
@@ -135,146 +135,146 @@ PFA_SPMCSR:
 ; R( -- )
 ; Clock Prescale Register
 VE_CLKPR:
-	.dw $ff05
+	.word 0xff05
 	.db "CLKPR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_CLKPR
 XT_CLKPR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_CLKPR:
-	.dw $61
+	.word 0x61
 ; ( -- addr ) System Constant
 ; R( -- )
 ; General Purpose IO Register 0
 VE_GPIOR0:
-	.dw $ff06
-	.db "GPIOR0"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "GPIOR0"
+	.word VE_HEAD
 	.set VE_HEAD=VE_GPIOR0
 XT_GPIOR0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_GPIOR0:
-	.dw $3E
+	.word 0x3E
 ; ( -- addr ) System Constant
 ; R( -- )
 ; General Purpose IO Register 1
 VE_GPIOR1:
-	.dw $ff06
-	.db "GPIOR1"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "GPIOR1"
+	.word VE_HEAD
 	.set VE_HEAD=VE_GPIOR1
 XT_GPIOR1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_GPIOR1:
-	.dw $4A
+	.word 0x4A
 ; ( -- addr ) System Constant
 ; R( -- )
 ; General Purpose IO Register 2
 VE_GPIOR2:
-	.dw $ff06
-	.db "GPIOR2"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "GPIOR2"
+	.word VE_HEAD
 	.set VE_HEAD=VE_GPIOR2
 XT_GPIOR2:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_GPIOR2:
-	.dw $4B
+	.word 0x4B
 ; ( -- addr ) System Constant
 ; R( -- )
 ; MCU Control Register
 VE_MCUCR:
-	.dw $ff05
+	.word 0xff05
 	.db "MCUCR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_MCUCR
 XT_MCUCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_MCUCR:
-	.dw $55
+	.word 0x55
 ; ( -- addr ) System Constant
 ; R( -- )
 ; MCU Status Register
 VE_MCUSR:
-	.dw $ff05
+	.word 0xff05
 	.db "MCUSR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_MCUSR
 XT_MCUSR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_MCUSR:
-	.dw $54
+	.word 0x54
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Oscillator Calibration Value
 VE_OSCCAL:
-	.dw $ff06
-	.db "OSCCAL"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "OSCCAL"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OSCCAL
 XT_OSCCAL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OSCCAL:
-	.dw $66
+	.word 0x66
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Power Reduction Register
 VE_PRR:
-	.dw $ff03
+	.word 0xff03
 	.db "PRR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PRR
 XT_PRR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PRR:
-	.dw $64
+	.word 0x64
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Sleep Mode Control Register
 VE_SMCR:
-	.dw $ff04
-	.db "SMCR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "SMCR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SMCR
 XT_SMCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SMCR:
-	.dw $53
+	.word 0x53
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Stack Pointer High
 VE_SPH:
-	.dw $ff03
+	.word 0xff03
 	.db "SPH",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPH
 XT_SPH:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPH:
-	.dw $5E
+	.word 0x5E
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Stack Pointer Low
 VE_SPL:
-	.dw $ff03
+	.word 0xff03
 	.db "SPL",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPL
 XT_SPL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPL:
-	.dw $5D
+	.word 0x5D
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Status Register
 VE_SREG:
-	.dw $ff04
-	.db "SREG"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "SREG"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SREG
 XT_SREG:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SREG:
-	.dw $5F
+	.word 0x5F
 
 .endif
 
@@ -285,50 +285,50 @@ PFA_SREG:
 ; R( -- )
 ; EEPROM Address Register High Byte
 VE_EEARH:
-	.dw $ff05
+	.word 0xff05
 	.db "EEARH",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_EEARH
 XT_EEARH:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EEARH:
-	.dw $42
+	.word 0x42
 ; ( -- addr ) System Constant
 ; R( -- )
 ; EEPROM Address Register Low Byte
 VE_EEARL:
-	.dw $ff05
+	.word 0xff05
 	.db "EEARL",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_EEARL
 XT_EEARL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EEARL:
-	.dw $41
+	.word 0x41
 ; ( -- addr ) System Constant
 ; R( -- )
 ; EEPROM Control Register
 VE_EECR:
-	.dw $ff04
-	.db "EECR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "EECR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_EECR
 XT_EECR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EECR:
-	.dw $3F
+	.word 0x3F
 ; ( -- addr ) System Constant
 ; R( -- )
 ; EEPROM Data Register
 VE_EEDR:
-	.dw $ff04
-	.db "EEDR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "EEDR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_EEDR
 XT_EEDR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EEDR:
-	.dw $40
+	.word 0x40
 
 .endif
 
@@ -339,62 +339,62 @@ PFA_EEDR:
 ; R( -- )
 ; External Interrupt Control Register 
 VE_EICRA:
-	.dw $ff05
+	.word 0xff05
 	.db "EICRA",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_EICRA
 XT_EICRA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EICRA:
-	.dw $69
+	.word 0x69
 ; ( -- addr ) System Constant
 ; R( -- )
 ; External Interrupt Flag Register
 VE_EIFR:
-	.dw $ff04
-	.db "EIFR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "EIFR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_EIFR
 XT_EIFR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EIFR:
-	.dw $3C
+	.word 0x3C
 ; ( -- addr ) System Constant
 ; R( -- )
 ; External Interrupt Mask Register
 VE_EIMSK:
-	.dw $ff05
+	.word 0xff05
 	.db "EIMSK",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_EIMSK
 XT_EIMSK:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_EIMSK:
-	.dw $3D
+	.word 0x3D
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Pin Change Mask Register 0
 VE_PCMSK0:
-	.dw $ff06
-	.db "PCMSK0"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "PCMSK0"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PCMSK0
 XT_PCMSK0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PCMSK0:
-	.dw $6B
+	.word 0x6B
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Pin Change Mask Register 1
 VE_PCMSK1:
-	.dw $ff06
-	.db "PCMSK1"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "PCMSK1"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PCMSK1
 XT_PCMSK1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PCMSK1:
-	.dw $6C
+	.word 0x6C
 
 .endif
 
@@ -405,14 +405,14 @@ PFA_PCMSK1:
 ; R( -- )
 ; On-Chip Debug Related Register in I/O Memory
 VE_OCDR:
-	.dw $ff04
-	.db "OCDR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "OCDR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCDR
 XT_OCDR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCDR:
-	.dw $51
+	.word 0x51
 
 .endif
 
@@ -423,242 +423,242 @@ PFA_OCDR:
 ; R( -- )
 ; LCD Contrast Control Register
 VE_LCDCCR:
-	.dw $ff06
-	.db "LCDCCR"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDCCR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDCCR
 XT_LCDCCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDCCR:
-	.dw $E7
+	.word 0xE7
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Control Register A
 VE_LCDCRA:
-	.dw $ff06
-	.db "LCDCRA"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDCRA"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDCRA
 XT_LCDCRA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDCRA:
-	.dw $E4
+	.word 0xE4
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Control and Status Register B
 VE_LCDCRB:
-	.dw $ff06
-	.db "LCDCRB"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDCRB"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDCRB
 XT_LCDCRB:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDCRB:
-	.dw $E5
+	.word 0xE5
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 0
 VE_LCDDR0:
-	.dw $ff06
-	.db "LCDDR0"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR0"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR0
 XT_LCDDR0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR0:
-	.dw $EC
+	.word 0xEC
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 1
 VE_LCDDR1:
-	.dw $ff06
-	.db "LCDDR1"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR1"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR1
 XT_LCDDR1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR1:
-	.dw $ED
+	.word 0xED
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 10
 VE_LCDDR10:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR10",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR10
 XT_LCDDR10:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR10:
-	.dw $F6
+	.word 0xF6
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 11
 VE_LCDDR11:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR11",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR11
 XT_LCDDR11:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR11:
-	.dw $F7
+	.word 0xF7
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 12
 VE_LCDDR12:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR12",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR12
 XT_LCDDR12:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR12:
-	.dw $F8
+	.word 0xF8
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 13
 VE_LCDDR13:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR13",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR13
 XT_LCDDR13:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR13:
-	.dw $F9
+	.word 0xF9
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 15
 VE_LCDDR15:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR15",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR15
 XT_LCDDR15:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR15:
-	.dw $FB
+	.word 0xFB
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 16
 VE_LCDDR16:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR16",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR16
 XT_LCDDR16:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR16:
-	.dw $FC
+	.word 0xFC
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 17
 VE_LCDDR17:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR17",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR17
 XT_LCDDR17:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR17:
-	.dw $FD
+	.word 0xFD
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 18
 VE_LCDDR18:
-	.dw $ff07
+	.word 0xff07
 	.db "LCDDR18",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR18
 XT_LCDDR18:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR18:
-	.dw $FE
+	.word 0xFE
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 2
 VE_LCDDR2:
-	.dw $ff06
-	.db "LCDDR2"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR2"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR2
 XT_LCDDR2:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR2:
-	.dw $EE
+	.word 0xEE
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 3
 VE_LCDDR3:
-	.dw $ff06
-	.db "LCDDR3"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR3"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR3
 XT_LCDDR3:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR3:
-	.dw $EF
+	.word 0xEF
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 5
 VE_LCDDR5:
-	.dw $ff06
-	.db "LCDDR5"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR5"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR5
 XT_LCDDR5:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR5:
-	.dw $F1
+	.word 0xF1
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 6
 VE_LCDDR6:
-	.dw $ff06
-	.db "LCDDR6"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR6"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR6
 XT_LCDDR6:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR6:
-	.dw $F2
+	.word 0xF2
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 7
 VE_LCDDR7:
-	.dw $ff06
-	.db "LCDDR7"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR7"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR7
 XT_LCDDR7:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR7:
-	.dw $F3
+	.word 0xF3
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Data Register 8
 VE_LCDDR8:
-	.dw $ff06
-	.db "LCDDR8"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDDR8"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDDR8
 XT_LCDDR8:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDDR8:
-	.dw $F4
+	.word 0xF4
 ; ( -- addr ) System Constant
 ; R( -- )
 ; LCD Frame Rate Register
 VE_LCDFRR:
-	.dw $ff06
-	.db "LCDFRR"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "LCDFRR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_LCDFRR
 XT_LCDFRR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_LCDFRR:
-	.dw $E6
+	.word 0xE6
 
 .endif
 
@@ -669,38 +669,38 @@ PFA_LCDFRR:
 ; R( -- )
 ; Port A Data Direction Register
 VE_DDRA:
-	.dw $ff04
-	.db "DDRA"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRA"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRA
 XT_DDRA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRA:
-	.dw $21
+	.word 0x21
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port A Input Pins
 VE_PINA:
-	.dw $ff04
-	.db "PINA"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PINA"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PINA
 XT_PINA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PINA:
-	.dw $20
+	.word 0x20
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port A Data Register
 VE_PORTA:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTA",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTA
 XT_PORTA:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTA:
-	.dw $22
+	.word 0x22
 
 .endif
 
@@ -711,38 +711,38 @@ PFA_PORTA:
 ; R( -- )
 ; Port B Data Direction Register
 VE_DDRB:
-	.dw $ff04
-	.db "DDRB"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRB"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRB
 XT_DDRB:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRB:
-	.dw $24
+	.word 0x24
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port B Input Pins
 VE_PINB:
-	.dw $ff04
-	.db "PINB"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PINB"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PINB
 XT_PINB:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PINB:
-	.dw $23
+	.word 0x23
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port B Data Register
 VE_PORTB:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTB",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTB
 XT_PORTB:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTB:
-	.dw $25
+	.word 0x25
 
 .endif
 
@@ -753,38 +753,38 @@ PFA_PORTB:
 ; R( -- )
 ; Port C Data Direction Register
 VE_DDRC:
-	.dw $ff04
-	.db "DDRC"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRC"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRC
 XT_DDRC:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRC:
-	.dw $27
+	.word 0x27
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port C Input Pins
 VE_PINC:
-	.dw $ff04
-	.db "PINC"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PINC"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PINC
 XT_PINC:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PINC:
-	.dw $26
+	.word 0x26
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port C Data Register
 VE_PORTC:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTC",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTC
 XT_PORTC:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTC:
-	.dw $28
+	.word 0x28
 
 .endif
 
@@ -795,38 +795,38 @@ PFA_PORTC:
 ; R( -- )
 ; Port D Data Direction Register
 VE_DDRD:
-	.dw $ff04
-	.db "DDRD"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRD"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRD
 XT_DDRD:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRD:
-	.dw $2A
+	.word 0x2A
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port D Input Pins
 VE_PIND:
-	.dw $ff04
-	.db "PIND"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PIND"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PIND
 XT_PIND:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PIND:
-	.dw $29
+	.word 0x29
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port D Data Register
 VE_PORTD:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTD",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTD
 XT_PORTD:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTD:
-	.dw $2B
+	.word 0x2B
 
 .endif
 
@@ -837,38 +837,38 @@ PFA_PORTD:
 ; R( -- )
 ; Data Direction Register, Port E
 VE_DDRE:
-	.dw $ff04
-	.db "DDRE"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRE"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRE
 XT_DDRE:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRE:
-	.dw $2D
+	.word 0x2D
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Input Pins, Port E
 VE_PINE:
-	.dw $ff04
-	.db "PINE"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PINE"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PINE
 XT_PINE:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PINE:
-	.dw $2C
+	.word 0x2C
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Data Register, Port E
 VE_PORTE:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTE",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTE
 XT_PORTE:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTE:
-	.dw $2E
+	.word 0x2E
 
 .endif
 
@@ -879,38 +879,38 @@ PFA_PORTE:
 ; R( -- )
 ; Data Direction Register, Port F
 VE_DDRF:
-	.dw $ff04
-	.db "DDRF"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRF"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRF
 XT_DDRF:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRF:
-	.dw $30
+	.word 0x30
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Input Pins, Port F
 VE_PINF:
-	.dw $ff04
-	.db "PINF"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PINF"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PINF
 XT_PINF:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PINF:
-	.dw $2F
+	.word 0x2F
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Data Register, Port F
 VE_PORTF:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTF",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTF
 XT_PORTF:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTF:
-	.dw $31
+	.word 0x31
 
 .endif
 
@@ -921,38 +921,38 @@ PFA_PORTF:
 ; R( -- )
 ; Port G Data Direction Register
 VE_DDRG:
-	.dw $ff04
-	.db "DDRG"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "DDRG"
+	.word VE_HEAD
 	.set VE_HEAD=VE_DDRG
 XT_DDRG:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_DDRG:
-	.dw $33
+	.word 0x33
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Port G Input Pins
 VE_PING:
-	.dw $ff04
-	.db "PING"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "PING"
+	.word VE_HEAD
 	.set VE_HEAD=VE_PING
 XT_PING:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PING:
-	.dw $32
+	.word 0x32
 ; ( -- addr ) System Constant
 ; R( -- )
 ;  Port G Data Register
 VE_PORTG:
-	.dw $ff05
+	.word 0xff05
 	.db "PORTG",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_PORTG
 XT_PORTG:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_PORTG:
-	.dw $34
+	.word 0x34
 
 .endif
 
@@ -963,38 +963,38 @@ PFA_PORTG:
 ; R( -- )
 ; SPI Control Register
 VE_SPCR:
-	.dw $ff04
-	.db "SPCR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "SPCR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPCR
 XT_SPCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPCR:
-	.dw $4C
+	.word 0x4C
 ; ( -- addr ) System Constant
 ; R( -- )
 ; SPI Data Register
 VE_SPDR:
-	.dw $ff04
-	.db "SPDR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "SPDR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPDR
 XT_SPDR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPDR:
-	.dw $4E
+	.word 0x4E
 ; ( -- addr ) System Constant
 ; R( -- )
 ; SPI Status Register
 VE_SPSR:
-	.dw $ff04
-	.db "SPSR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "SPSR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_SPSR
 XT_SPSR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_SPSR:
-	.dw $4D
+	.word 0x4D
 
 .endif
 
@@ -1005,74 +1005,74 @@ PFA_SPSR:
 ; R( -- )
 ; General Timer/Control Register
 VE_GTCCR:
-	.dw $ff05
+	.word 0xff05
 	.db "GTCCR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_GTCCR
 XT_GTCCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_GTCCR:
-	.dw $43
+	.word 0x43
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter0 Output Compare Register
 VE_OCR0A:
-	.dw $ff05
+	.word 0xff05
 	.db "OCR0A",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR0A
 XT_OCR0A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR0A:
-	.dw $47
+	.word 0x47
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter0 Control Register
 VE_TCCR0A:
-	.dw $ff06
-	.db "TCCR0A"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCCR0A"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCCR0A
 XT_TCCR0A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCCR0A:
-	.dw $44
+	.word 0x44
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter0
 VE_TCNT0:
-	.dw $ff05
+	.word 0xff05
 	.db "TCNT0",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCNT0
 XT_TCNT0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCNT0:
-	.dw $46
+	.word 0x46
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter0 Interrupt Flag register
 VE_TIFR0:
-	.dw $ff05
+	.word 0xff05
 	.db "TIFR0",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIFR0
 XT_TIFR0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIFR0:
-	.dw $35
+	.word 0x35
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter0 Interrupt Mask Register
 VE_TIMSK0:
-	.dw $ff06
-	.db "TIMSK0"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TIMSK0"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIMSK0
 XT_TIMSK0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIMSK0:
-	.dw $6E
+	.word 0x6E
 
 .endif
 
@@ -1083,158 +1083,158 @@ PFA_TIMSK0:
 ; R( -- )
 ; Timer/Counter1 Input Capture Register High Byte
 VE_ICR1H:
-	.dw $ff05
+	.word 0xff05
 	.db "ICR1H",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_ICR1H
 XT_ICR1H:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ICR1H:
-	.dw $87
+	.word 0x87
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Input Capture Register Low Byte
 VE_ICR1L:
-	.dw $ff05
+	.word 0xff05
 	.db "ICR1L",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_ICR1L
 XT_ICR1L:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ICR1L:
-	.dw $86
+	.word 0x86
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Output Compare Register A High Byte
 VE_OCR1AH:
-	.dw $ff06
-	.db "OCR1AH"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "OCR1AH"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR1AH
 XT_OCR1AH:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR1AH:
-	.dw $89
+	.word 0x89
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Output Compare Register A Low Byte
 VE_OCR1AL:
-	.dw $ff06
-	.db "OCR1AL"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "OCR1AL"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR1AL
 XT_OCR1AL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR1AL:
-	.dw $88
+	.word 0x88
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Output Compare Register B High Byte
 VE_OCR1BH:
-	.dw $ff06
-	.db "OCR1BH"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "OCR1BH"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR1BH
 XT_OCR1BH:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR1BH:
-	.dw $8B
+	.word 0x8B
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Output Compare Register B Low Byte
 VE_OCR1BL:
-	.dw $ff06
-	.db "OCR1BL"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "OCR1BL"
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR1BL
 XT_OCR1BL:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR1BL:
-	.dw $8A
+	.word 0x8A
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Control Register A
 VE_TCCR1A:
-	.dw $ff06
-	.db "TCCR1A"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCCR1A"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCCR1A
 XT_TCCR1A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCCR1A:
-	.dw $80
+	.word 0x80
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Control Register B
 VE_TCCR1B:
-	.dw $ff06
-	.db "TCCR1B"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCCR1B"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCCR1B
 XT_TCCR1B:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCCR1B:
-	.dw $81
+	.word 0x81
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter 1 Control Register C
 VE_TCCR1C:
-	.dw $ff06
-	.db "TCCR1C"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCCR1C"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCCR1C
 XT_TCCR1C:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCCR1C:
-	.dw $82
+	.word 0x82
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 High Byte
 VE_TCNT1H:
-	.dw $ff06
-	.db "TCNT1H"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCNT1H"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCNT1H
 XT_TCNT1H:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCNT1H:
-	.dw $85
+	.word 0x85
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Low Byte
 VE_TCNT1L:
-	.dw $ff06
-	.db "TCNT1L"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCNT1L"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCNT1L
 XT_TCNT1L:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCNT1L:
-	.dw $84
+	.word 0x84
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Interrupt Flag register
 VE_TIFR1:
-	.dw $ff05
+	.word 0xff05
 	.db "TIFR1",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIFR1
 XT_TIFR1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIFR1:
-	.dw $36
+	.word 0x36
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter1 Interrupt Mask Register
 VE_TIMSK1:
-	.dw $ff06
-	.db "TIMSK1"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TIMSK1"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIMSK1
 XT_TIMSK1:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIMSK1:
-	.dw $6F
+	.word 0x6F
 
 .endif
 
@@ -1245,74 +1245,74 @@ PFA_TIMSK1:
 ; R( -- )
 ; Asynchronous Status Register
 VE_ASSR:
-	.dw $ff04
-	.db "ASSR"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "ASSR"
+	.word VE_HEAD
 	.set VE_HEAD=VE_ASSR
 XT_ASSR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_ASSR:
-	.dw $B6
+	.word 0xB6
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter2 Output Compare Register
 VE_OCR2A:
-	.dw $ff05
+	.word 0xff05
 	.db "OCR2A",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_OCR2A
 XT_OCR2A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_OCR2A:
-	.dw $B3
+	.word 0xB3
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter2 Control Register
 VE_TCCR2A:
-	.dw $ff06
-	.db "TCCR2A"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TCCR2A"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCCR2A
 XT_TCCR2A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCCR2A:
-	.dw $B0
+	.word 0xB0
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter2
 VE_TCNT2:
-	.dw $ff05
+	.word 0xff05
 	.db "TCNT2",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_TCNT2
 XT_TCNT2:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TCNT2:
-	.dw $B2
+	.word 0xB2
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter2 Interrupt Flag Register
 VE_TIFR2:
-	.dw $ff05
+	.word 0xff05
 	.db "TIFR2",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIFR2
 XT_TIFR2:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIFR2:
-	.dw $37
+	.word 0x37
 ; ( -- addr ) System Constant
 ; R( -- )
 ; Timer/Counter2 Interrupt Mask register
 VE_TIMSK2:
-	.dw $ff06
-	.db "TIMSK2"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "TIMSK2"
+	.word VE_HEAD
 	.set VE_HEAD=VE_TIMSK2
 XT_TIMSK2:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_TIMSK2:
-	.dw $70
+	.word 0x70
 
 .endif
 
@@ -1323,74 +1323,74 @@ PFA_TIMSK2:
 ; R( -- )
 ; USART Baud Rate Register High Byte
 VE_UBRR0H:
-	.dw $ff06
-	.db "UBRR0H"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "UBRR0H"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UBRR0H
 XT_UBRR0H:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UBRR0H:
-	.dw $C5
+	.word 0xC5
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART Baud Rate Register Low Byte
 VE_UBRR0L:
-	.dw $ff06
-	.db "UBRR0L"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "UBRR0L"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UBRR0L
 XT_UBRR0L:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UBRR0L:
-	.dw $C4
+	.word 0xC4
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART Control and Status Register A
 VE_UCSR0A:
-	.dw $ff06
-	.db "UCSR0A"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "UCSR0A"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UCSR0A
 XT_UCSR0A:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UCSR0A:
-	.dw $C0
+	.word 0xC0
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART Control and Status Register B
 VE_UCSR0B:
-	.dw $ff06
-	.db "UCSR0B"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "UCSR0B"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UCSR0B
 XT_UCSR0B:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UCSR0B:
-	.dw $C1
+	.word 0xC1
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART Control and Status Register C
 VE_UCSR0C:
-	.dw $ff06
-	.db "UCSR0C"
-	.dw VE_HEAD
+	.word 0xff06
+	.ascii "UCSR0C"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UCSR0C
 XT_UCSR0C:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UCSR0C:
-	.dw $C2
+	.word 0xC2
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USART I/O Data Register
 VE_UDR0:
-	.dw $ff04
-	.db "UDR0"
-	.dw VE_HEAD
+	.word 0xff04
+	.ascii "UDR0"
+	.word VE_HEAD
 	.set VE_HEAD=VE_UDR0
 XT_UDR0:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_UDR0:
-	.dw $C6
+	.word 0xC6
 
 .endif
 
@@ -1401,38 +1401,38 @@ PFA_UDR0:
 ; R( -- )
 ; USI Control Register
 VE_USICR:
-	.dw $ff05
+	.word 0xff05
 	.db "USICR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_USICR
 XT_USICR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_USICR:
-	.dw $B8
+	.word 0xB8
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USI Data Register
 VE_USIDR:
-	.dw $ff05
+	.word 0xff05
 	.db "USIDR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_USIDR
 XT_USIDR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_USIDR:
-	.dw $BA
+	.word 0xBA
 ; ( -- addr ) System Constant
 ; R( -- )
 ; USI Status Register
 VE_USISR:
-	.dw $ff05
+	.word 0xff05
 	.db "USISR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_USISR
 XT_USISR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_USISR:
-	.dw $B9
+	.word 0xB9
 
 .endif
 
@@ -1443,13 +1443,13 @@ PFA_USISR:
 ; R( -- )
 ; Watchdog Timer Control Register
 VE_WDTCR:
-	.dw $ff05
+	.word 0xff05
 	.db "WDTCR",0
-	.dw VE_HEAD
+	.word VE_HEAD
 	.set VE_HEAD=VE_WDTCR
 XT_WDTCR:
-	.dw PFA_DOVARIABLE
+	.word PFA_DOVARIABLE
 PFA_WDTCR:
-	.dw $60
+	.word 0x60
 
 .endif

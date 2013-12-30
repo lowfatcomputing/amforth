@@ -106,8 +106,8 @@ diecimila.fuse:   EFUSE=0xF9
 # 'code' for trunk and x.y for the releases (i.e 5.0)
 #VERSION=5.0
 VERSION=code
-AMFORTH=$(HOME)/amforth-$(VERSION)
-CORE=$(AMFORTH)/core
+#AMFORTH=$(shell pwd)/amforth-$(VERSION)
+CORE=$(shell pwd)/../../core/
 
 # directories
 ATMEL=$(HOME)/atmel
@@ -126,22 +126,25 @@ AVRDUDE_FLAGS=-q -P $(PORT) -c $(PROGRAMMER)
 # ASSEMBLER TO USE
 # ----------------
 
-AS_INCLUDE=-I $(ATMEL)/include -I$(CORE)
+#AS_INCLUDE=-I $(ATMEL)/include -I $(CORE)
+AS_INCLUDE=-I /usr/avr/include/avr/ -isystem $(CORE) -isystem .
 
-ASM=wine $(ATMEL)/avrasm2.exe
+#ASM=wine $(ATMEL)/avrasm2.exe
 # flags Specific to avrasm2.exe
-AS_FLAGS=$(AS_INCLUDE) -fI -v0
+AS_FLAGS=#-march=intel,-msyntax=intel -mmnemonic=intel -mnaked-reg
 
-#ASM=avra $(AS_FLAGS)
+ASM=avr-gcc $(AS_FLAGS)
 
 #--------------------------
 # Generic assemble patterns
 #--------------------------
 
 # Assemble the target
-%.hex : %.asm
+%.hex : %.S
 	@echo "Producing Hexfiles for Arduino $*" 
-	@$(ASM) $(AS_FLAGS) -I $(CORE)/devices/$(MCU) -e $*.eep.hex -m $*.map -l $*.lst $<
+	$(ASM) -mmcu=$(MCU) $(AS_INCLUDE) -isystem $(CORE)/devices/$(MCU) $<
+	# avr-as should also output a .eep file when the time comes.
+	#@$(ASM) $(AS_FLAGS) -I $(CORE)/devices/$(MCU) -e $*.eep.hex -m $*.map -l $*.lst $<
 
 # Flash the target
 % : %.hex
@@ -170,22 +173,22 @@ AS_FLAGS=$(AS_INCLUDE) -fI -v0
 
 # ----------------------------------------------------------
 
-GENERIC_DEPENDECIES=*.inc words/*.asm $(CORE)/*.asm $(CORE)/words/*.asm $(CORE)/drivers/*.asm
+GENERIC_DEPENDECIES=*.inc words/*.S $(CORE)/*.S $(CORE)/words/*.S $(CORE)/drivers/*.S
 
 # Assemble all targets is the default action
 
 TARGET = leonardo.hex uno.hex duemilanove.hex mega128.hex sanguino.hex diecimila.hex
 
-%.asm: MCU=atmega328p
+%.S: MCU=atmega328p
 
 default: $(TARGET)
 
-$(TARGET) :  $(GENERIC_DEPENDENCIES)  $(CORE)/devices/*/*.asm $(CORE)/devices/*/*.inc
+$(TARGET) :  $(GENERIC_DEPENDENCIES)  $(CORE)/devices/*/*.S $(CORE)/devices/*/*.inc
 
 
 # Cleans everything
 clean:
-	rm -f *.hex ; rm -f *.eep.hex ; rm -f *.lst ; rm -f *.map ; rm -f *.cof ; rm -f *.obj
+	rm -f *.hex ; rm -f *.eep.hex ; rm -f *.lst ; rm -f *.map ; rm -f *.cof ; rm -f *.o
 
 # All other rules are target specific and must be typed one by one
 # as shown in the top.

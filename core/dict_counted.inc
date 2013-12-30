@@ -1,6 +1,6 @@
 
 
-.include "words/find.asm"
-.include "words/word.asm"
-.include "words/place.asm"
-.include "words/count.asm"
+#include "words/find.S"
+#include "words/word.S"
+#include "words/place.S"
+#include "words/count.S"

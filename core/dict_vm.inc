@@ -1,2 +1,2 @@
-.include "words/reg-a.asm"
-.include "words/reg-b.asm"
+#include "words/reg-a.S"
+#include "words/reg-b.S"
